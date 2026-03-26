@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>КП | Дизайн / Преподавание | Подробное предложение</title>
+    <title>КП | Дизайн & Преподавание | Запись в Telegram</title>
     <style>
         * {
             margin: 0;
@@ -21,7 +21,6 @@
             justify-content: center;
         }
 
-        /* главный переключатель направлений */
         .direction-switch {
             display: flex;
             gap: 20px;
@@ -30,6 +29,8 @@
             border-radius: 60px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         .dir-btn {
             border: none;
@@ -55,7 +56,6 @@
             transition: all 0.2s;
         }
 
-        /* общие стили страниц */
         .page {
             background: white;
             border-radius: 40px;
@@ -112,8 +112,7 @@
             margin: 28px 0;
         }
 
-        /* карточки услуг/курсов */
-        .service-card, .course-card {
+        .service-card, .course-card, .about-card {
             background: #f9fbfd;
             border-radius: 28px;
             padding: 24px;
@@ -125,7 +124,6 @@
             box-shadow: 0 12px 24px -12px rgba(0,0,0,0.1);
         }
 
-        /* тарифы внутри курса */
         .tariff-group {
             display: flex;
             gap: 18px;
@@ -252,15 +250,15 @@
         @media (max-width: 780px) {
             .page { padding: 28px 20px; }
             .grid-2col { grid-template-columns: 1fr; }
-            .direction-switch { flex-direction: column; width: 100%; align-items: stretch; border-radius: 40px; gap: 8px; background: transparent; box-shadow: none; }
-            .dir-btn { background: white; text-align: center; }
         }
+        
+        /* Модальное окно для формы записи */
         .modal {
             display: none;
             position: fixed;
-            top:0; left:0;
-            width:100%; height:100%;
-            background: rgba(0,0,0,0.5);
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
             justify-content: center;
             align-items: center;
             z-index: 1000;
@@ -272,6 +270,7 @@
             border-radius: 32px;
             padding: 32px;
             position: relative;
+            animation: fadeSlide 0.2s ease;
         }
         .close-modal {
             position: absolute;
@@ -279,6 +278,72 @@
             top: 16px;
             font-size: 28px;
             cursor: pointer;
+            color: #7f8c8d;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e44;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #cbdde4;
+            border-radius: 24px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #1e4a5f;
+            box-shadow: 0 0 0 3px rgba(30,74,95,0.1);
+        }
+        .submit-btn {
+            width: 100%;
+            background: #1e4a5f;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .submit-btn:hover {
+            background: #0f3a49;
+        }
+        
+        /* Стили для блока "О себе" */
+        .about-card {
+            background: linear-gradient(135deg, #f8fbfe 0%, #f0f5fa 100%);
+            border-left: 5px solid #1e4a5f;
+            margin-bottom: 20px;
+        }
+        .about-flex {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .avatar {
+            font-size: 5rem;
+            background: #1e4a5f20;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e2f0f5;
+        }
+        .about-text {
+            flex: 1;
         }
     </style>
 </head>
@@ -292,7 +357,17 @@
 <div class="proposal-wrapper" id="proposalRoot"></div>
 
 <script>
-    // -------------------- ДАННЫЕ ДЛЯ ДИЗАЙНА --------------------
+    // ==================== ДАННЫЕ О ПРЕПОДАВАТЕЛЕ ====================
+    const teacherInfo = {
+        name: "Александра Воронцова",
+        role: "Графический дизайнер, преподаватель IT-курсов",
+        experience: "9+ лет в дизайне, 6 лет в преподавании",
+        education: "Высшее образование: БГУИР, факультет информационных технологий",
+        achievements: "Сертифицированный эксперт Figma, автор методических пособий, спикер образовательных интенсивах",
+        about: "Помогаю бизнесу создавать визуально сильные проекты, а студентам — уверенно входить в IT. Сочетаю практический опыт дизайна с педагогическими методиками. Мои ученики успешно сдают экзамены, работают в IT-компаниях и реализуют собственные проекты."
+    };
+
+    // ==================== ДАННЫЕ ДЛЯ ДИЗАЙНА ====================
     const designServices = [
         { name: "Landing Page", shortDesc: "Одностраничный сайт для продаж, мероприятий.", fullDesc: "Входит: аналитика, уникальный дизайн, адаптив, прототип, 2 итерации правок. Срок: 5-7 дней. Стоимость: от 500 BYN." },
         { name: "Корпоративный сайт", shortDesc: "Многостраничный сайт для компании, каталог.", fullDesc: "Входит: структура, дизайн всех типовых страниц, анимации, форма связи, правки. Срок: 12-18 дней. Стоимость: от 1200 BYN." },
@@ -302,7 +377,7 @@
     ];
     const designStages = ["1. Брифинг", "2. Анализ и референсы", "3. Прототипирование", "4. Дизайн-концепция", "5. Согласование", "6. Передача файлов"];
 
-    // -------------------- ДАННЫЕ ПО КУРСАМ (С ПОДРОБНЫМ СОДЕРЖАНИЕМ) --------------------
+    // ==================== ДАННЫЕ ПО КУРСАМ ====================
     const coursesData = [
         { 
             name: "Scratch", 
@@ -356,6 +431,136 @@
         { title: "Метод. пособие «Основы Figma»", desc: "Гайд по интерфейсу, компоненты, библиотеки + кейсы.", price: "50 BYN" }
     ];
 
+    // ==================== ФУНКЦИЯ ОТПРАВКИ В TELEGRAM ====================
+    // ВАЖНО: замените BOT_TOKEN и CHAT_ID на свои!
+    const BOT_TOKEN = "YOUR_BOT_TOKEN";  // Замените на токен вашего бота
+    const CHAT_ID = "YOUR_CHAT_ID";      // Замените на ваш chat_id
+    
+    async function sendToTelegram(formData) {
+        const message = `📚 *НОВАЯ ЗАЯВКА НА КУРС*\n\n` +
+                        `👤 *Имя:* ${formData.name}\n` +
+                        `📞 *Телефон:* ${formData.phone}\n` +
+                        `💬 *Telegram:* @${formData.telegram.replace('@', '')}\n` +
+                        `🎓 *Курс:* ${formData.course}\n` +
+                        `💰 *Тариф:* ${formData.tariff}\n` +
+                        `📝 *Комментарий:* ${formData.comment || "—"}`;
+        
+        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+        
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: message,
+                    parse_mode: 'Markdown'
+                })
+            });
+            return response.ok;
+        } catch (error) {
+            console.error('Ошибка отправки:', error);
+            return false;
+        }
+    }
+
+    // Модальное окно с формой записи
+    function showEnrollmentModal() {
+        const modalDiv = document.createElement('div');
+        modalDiv.className = 'modal';
+        
+        // Получаем список курсов для селекта
+        const courseOptions = coursesData.map(course => {
+            if (course.singleTariff) {
+                return `<option value="${course.name}">${course.name} (${course.lessonsCount} занятий, ${course.price})</option>`;
+            } else {
+                return course.tariffs.map(t => `<option value="${course.name} - ${t.name}">${course.name} (${t.name}, ${t.lessons} зан., ${t.price})</option>`).join('');
+            }
+        }).join('');
+        
+        modalDiv.innerHTML = `
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2 style="margin-bottom: 20px;">📝 Запись на курс</h2>
+                <form id="enrollmentForm">
+                    <div class="form-group">
+                        <label>Выберите курс *</label>
+                        <select id="courseSelect" required>
+                            <option value="">-- Выберите курс --</option>
+                            ${courseOptions}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Ваше имя *</label>
+                        <input type="text" id="studentName" placeholder="Иван Иванов" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Телефон *</label>
+                        <input type="tel" id="studentPhone" placeholder="+375 XX XXX-XX-XX" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Telegram (никнейм) *</label>
+                        <input type="text" id="studentTelegram" placeholder="@username" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Комментарий (опционально)</label>
+                        <textarea id="studentComment" rows="3" placeholder="Ваши пожелания, удобное время и т.д."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">✈️ Отправить заявку</button>
+                </form>
+                <p style="font-size: 0.8rem; margin-top: 16px; color: #6e8b99;">После отправки я свяжусь с вами в Telegram для уточнения деталей</p>
+            </div>
+        `;
+        
+        document.body.appendChild(modalDiv);
+        modalDiv.style.display = 'flex';
+        
+        const closeBtn = modalDiv.querySelector('.close-modal');
+        closeBtn.onclick = () => modalDiv.remove();
+        modalDiv.onclick = (e) => { if(e.target === modalDiv) modalDiv.remove(); };
+        
+        const form = modalDiv.querySelector('#enrollmentForm');
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            
+            const courseValue = modalDiv.querySelector('#courseSelect').value;
+            if (!courseValue) {
+                alert('Пожалуйста, выберите курс');
+                return;
+            }
+            
+            const formData = {
+                name: modalDiv.querySelector('#studentName').value.trim(),
+                phone: modalDiv.querySelector('#studentPhone').value.trim(),
+                telegram: modalDiv.querySelector('#studentTelegram').value.trim(),
+                course: courseValue,
+                tariff: courseValue.split(' - ')[1] || 'Полный курс',
+                comment: modalDiv.querySelector('#studentComment').value.trim()
+            };
+            
+            if (!formData.name || !formData.phone || !formData.telegram) {
+                alert('Пожалуйста, заполните все обязательные поля');
+                return;
+            }
+            
+            // Отправка в Telegram
+            const submitBtn = form.querySelector('.submit-btn');
+            submitBtn.textContent = 'Отправка...';
+            submitBtn.disabled = true;
+            
+            const success = await sendToTelegram(formData);
+            
+            if (success) {
+                alert('✅ Заявка успешно отправлена! Я свяжусь с вами в ближайшее время.');
+                modalDiv.remove();
+            } else {
+                alert('❌ Ошибка отправки. Пожалуйста, попробуйте позже или свяжитесь напрямую по контактам ниже.');
+                submitBtn.textContent = '✈️ Отправить заявку';
+                submitBtn.disabled = false;
+            }
+        };
+    }
+
     // Модальное окно для деталей дизайн-услуг
     function showDesignModal(service) {
         const modalDiv = document.createElement('div');
@@ -378,13 +583,33 @@
         };
     }
 
-    // Рендер страницы ДИЗАЙН
+    // ==================== РЕНДЕР СТРАНИЦ ====================
+    
+    // Рендер страницы ДИЗАЙН (с блоком о преподавателе)
     function renderDesignPage() {
         return `
             <div class="page">
                 <div class="badge">КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ | НАПРАВЛЕНИЕ ДИЗАЙН</div>
                 <h1>🎨 Профессиональный дизайн<br>под ключ</h1>
-                <div class="page-subtitle">Разработка визуальных решений для бизнеса: от лендингов до корпоративных порталов. Работаем с Figma, Adobe, создаем презентации.</div>
+                
+                <!-- Блок о преподавателе -->
+                <div class="about-card">
+                    <div class="about-flex">
+                        <div class="avatar">👩‍🎨</div>
+                        <div class="about-text">
+                            <h3 style="margin-bottom: 5px;">${teacherInfo.name}</h3>
+                            <p style="color: #1e4a5f; font-weight: 500;">${teacherInfo.role}</p>
+                            <p style="margin-top: 8px;">${teacherInfo.about}</p>
+                            <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 12px;">
+                                <span>⭐ ${teacherInfo.experience}</span>
+                                <span>📚 ${teacherInfo.education}</span>
+                                <span>🏆 ${teacherInfo.achievements}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="page-subtitle">Разработка визуальных решений для бизнеса: от лендингов до корпоративных порталов.</div>
                 
                 <h2>✨ Услуги дизайна</h2>
                 <div class="grid-2col">
@@ -419,13 +644,31 @@
         `;
     }
 
-    // Рендер страницы ПРЕПОДАВАНИЕ (курсы с детальным описанием тарифов)
+    // Рендер страницы ПРЕПОДАВАНИЕ (с общей кнопкой записи)
     function renderTeachingPage() {
         return `
             <div class="page">
                 <div class="badge">КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ | IT-ОБРАЗОВАНИЕ</div>
                 <h1>📚 Преподавание компьютерных курсов</h1>
-                <div class="page-subtitle">Индивидуальные и групповые занятия по программированию, дизайну, подготовке к экзаменам. Выберите тариф и изучите программу.</div>
+                
+                <!-- Блок о преподавателе -->
+                <div class="about-card">
+                    <div class="about-flex">
+                        <div class="avatar">👩‍🏫</div>
+                        <div class="about-text">
+                            <h3 style="margin-bottom: 5px;">${teacherInfo.name}</h3>
+                            <p style="color: #1e4a5f; font-weight: 500;">${teacherInfo.role}</p>
+                            <p style="margin-top: 8px;">${teacherInfo.about}</p>
+                            <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 12px;">
+                                <span>⭐ ${teacherInfo.experience}</span>
+                                <span>📚 ${teacherInfo.education}</span>
+                                <span>🏆 ${teacherInfo.achievements}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="page-subtitle">Индивидуальные и групповые занятия по программированию, дизайну, подготовке к экзаменам.</div>
                 
                 <h2>💻 Курсы с детальным содержанием</h2>
                 <div class="grid-2col">
@@ -441,7 +684,6 @@
                                             <div>${course.lessonsCount} занятий</div>
                                             <div class="price">${course.price}</div>
                                             <div class="course-content"><strong>Программа:</strong><ul>${course.content.map(c => `<li>${c}</li>`).join('')}</ul></div>
-                                            <button class="btn-primary enroll-course" data-course="${course.name}">Записаться на курс</button>
                                         </div>
                                     </div>
                                 </div>
@@ -457,7 +699,6 @@
                                                 <h4>${t.name} (${t.lessons} зан.)</h4>
                                                 <div class="price">${t.price}</div>
                                                 <div class="course-content"><strong>Что входит:</strong><ul>${t.content.map(item => `<li>${item}</li>`).join('')}</ul></div>
-                                                <button class="btn-primary enroll-course" data-course="${course.name} — ${t.name}">Выбрать ${t.name}</button>
                                             </div>
                                         `).join('')}
                                     </div>
@@ -467,9 +708,13 @@
                     }).join('')}
                 </div>
 
+                <!-- Единая кнопка записи -->
+                <div style="text-align: center; margin: 20px 0 16px;">
+                    <button class="btn-primary" id="unifiedEnrollBtn" style="padding: 16px 48px; font-size: 1.1rem;">🎓 Записаться на курс →</button>
+                </div>
+
                 <div class="package-note">
-                    📦 Пакетные предложения: приобретите любые 2 курса со скидкой 10% или абонемент на 64 занятия (выбор из нескольких направлений) — скидка 8%. 
-                    Также доступны методические пособия.
+                    📦 Пакетные предложения: приобретите любые 2 курса со скидкой 10% или абонемент на 64 занятия — скидка 8%. Также доступны методические пособия.
                 </div>
 
                 <h2>📖 Методологические пособия (отдельная покупка)</h2>
@@ -485,7 +730,7 @@
                 </div>
 
                 <div class="contact-block">
-                    <div><strong>🎓 Запишитесь на пробный урок</strong><br>Подберем удобное расписание и формат (очно/онлайн)</div>
+                    <div><strong>🎓 Остались вопросы?</strong><br>Напишите, подберём удобный формат обучения</div>
                     <div class="contact-info">
                         <div class="contact-item">📱 <a href="tel:+375291234567">+375 (29) 123-45-67</a></div>
                         <div class="contact-item">✉️ <a href="mailto:edu@teach.by">edu@teach.by</a></div>
@@ -493,15 +738,14 @@
                     </div>
                     <button class="btn-primary" id="contactTeachBtn">Получить консультацию</button>
                 </div>
-                <footer>При выборе тарифа вы получаете подробный syllabus и доступ в закрытый канал с материалами. Стоимость указана за полный курс.</footer>
+                <footer>При выборе курса вы получите подробный syllabus. После отправки заявки я свяжусь с вами в Telegram.</footer>
             </div>
         `;
     }
 
-    // Глобальные обработчики после рендера
+    // ==================== ОБРАБОТЧИКИ ====================
     function attachHandlersForCurrentPage(pageType) {
         if (pageType === 'design') {
-            // кнопки "подробнее" в дизайн-услугах
             document.querySelectorAll('.detail-design-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     const servAttr = btn.getAttribute('data-serv');
@@ -512,19 +756,16 @@
                 });
             });
             const globalBrief = document.getElementById('globalBriefBtn');
-            if (globalBrief) globalBrief.onclick = () => alert("📋 Перейти к брифу: https://forms.fill/design_brief (демо). После заполнения мы свяжемся в течение дня.");
+            if (globalBrief) globalBrief.onclick = () => alert("📋 Перейти к брифу: https://forms.fill/design_brief (демо).");
             const contactBtn = document.getElementById('contactDesignBtn');
             if (contactBtn) contactBtn.onclick = () => window.open('https://t.me/design_teacher', '_blank');
         } 
         else if (pageType === 'teaching') {
-            // кнопки записи на курс
-            document.querySelectorAll('.enroll-course').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const courseName = btn.getAttribute('data-course') || "курс";
-                    alert(`✅ Заявка на курс "${courseName}" принята! Менеджер свяжется для уточнения дат старта и формы оплаты.`);
-                });
-            });
-            // покупка методичек
+            // Единая кнопка записи
+            const enrollBtn = document.getElementById('unifiedEnrollBtn');
+            if (enrollBtn) enrollBtn.onclick = () => showEnrollmentModal();
+            
+            // Покупка методичек
             document.querySelectorAll('.buy-method').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const method = btn.getAttribute('data-method') || "пособие";
@@ -532,11 +773,12 @@
                 });
             });
             const contactTeach = document.getElementById('contactTeachBtn');
-            if (contactTeach) contactTeach.onclick = () => alert("📞 Оставьте заявку: +375291234567 или Telegram @design_teacher — ответим за 30 минут и подберем курс.");
+            if (contactTeach) contactTeach.onclick = () => alert("📞 Оставьте заявку: +375291234567 или Telegram @design_teacher — ответим за 30 минут.");
         }
     }
 
-    let currentDirection = 'design'; // 'design' или 'teaching'
+    // ==================== ПЕРЕКЛЮЧЕНИЕ НАПРАВЛЕНИЙ ====================
+    let currentDirection = 'design';
     const root = document.getElementById('proposalRoot');
     const btnDesign = document.getElementById('switchDesign');
     const btnTeaching = document.getElementById('switchTeaching');
@@ -574,6 +816,9 @@
     };
 
     render();
+    
+    // Предупреждение о настройке Telegram бота
+    console.log('⚠️ Для отправки заявок в Telegram замените BOT_TOKEN и CHAT_ID в коде на свои значения');
 </script>
 </body>
 </html>
