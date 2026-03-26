@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>КП | Дизайн & Преподавание | Запись в Telegram</title>
+    <title>КП | Екатерина Мищенко | Дизайн & Преподавание</title>
     <style>
         * {
             margin: 0;
@@ -123,6 +123,25 @@
             transform: translateY(-4px);
             box-shadow: 0 12px 24px -12px rgba(0,0,0,0.1);
         }
+        
+        .intro-block {
+            background: linear-gradient(135deg, #f8fbfe 0%, #f0f5fa 100%);
+            border-radius: 28px;
+            padding: 28px 32px;
+            margin: 20px 0 30px 0;
+            border-left: 5px solid #1e4a5f;
+        }
+        .intro-block p {
+            font-size: 1.05rem;
+            line-height: 1.5;
+            color: #2c3e44;
+        }
+        .intro-quote {
+            font-style: italic;
+            margin-top: 12px;
+            color: #1e4a5f;
+            font-weight: 500;
+        }
 
         .tariff-group {
             display: flex;
@@ -241,6 +260,19 @@
             margin: 20px 0;
             font-weight: 500;
         }
+        .stats-grid {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+        .stat-item {
+            background: white;
+            padding: 12px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #1e4a5f;
+        }
         footer {
             margin-top: 32px;
             text-align: center;
@@ -252,7 +284,6 @@
             .grid-2col { grid-template-columns: 1fr; }
         }
         
-        /* Модальное окно для формы записи */
         .modal {
             display: none;
             position: fixed;
@@ -298,11 +329,6 @@
             font-size: 1rem;
             transition: 0.2s;
         }
-        .form-group input:focus, .form-group select:focus {
-            outline: none;
-            border-color: #1e4a5f;
-            box-shadow: 0 0 0 3px rgba(30,74,95,0.1);
-        }
         .submit-btn {
             width: 100%;
             background: #1e4a5f;
@@ -315,11 +341,6 @@
             cursor: pointer;
             transition: 0.2s;
         }
-        .submit-btn:hover {
-            background: #0f3a49;
-        }
-        
-        /* Стили для блока "О себе" */
         .about-card {
             background: linear-gradient(135deg, #f8fbfe 0%, #f0f5fa 100%);
             border-left: 5px solid #1e4a5f;
@@ -328,14 +349,14 @@
         .about-flex {
             display: flex;
             gap: 28px;
-            align-items: center;
+            align-items: flex-start;
             flex-wrap: wrap;
         }
         .avatar {
-            font-size: 5rem;
+            font-size: 4rem;
             background: #1e4a5f20;
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -357,14 +378,28 @@
 <div class="proposal-wrapper" id="proposalRoot"></div>
 
 <script>
-    // ==================== ДАННЫЕ О ПРЕПОДАВАТЕЛЕ ====================
+    // ==================== ИНФОРМАЦИЯ О ЕКАТЕРИНЕ МИЩЕНКО ====================
     const teacherInfo = {
-        name: "Александра Воронцова",
-        role: "Графический дизайнер, преподаватель IT-курсов",
-        experience: "9+ лет в дизайне, 6 лет в преподавании",
-        education: "Высшее образование: БГУИР, факультет информационных технологий",
-        achievements: "Сертифицированный эксперт Figma, автор методических пособий, спикер образовательных интенсивах",
-        about: "Помогаю бизнесу создавать визуально сильные проекты, а студентам — уверенно входить в IT. Сочетаю практический опыт дизайна с педагогическими методиками. Мои ученики успешно сдают экзамены, работают в IT-компаниях и реализуют собственные проекты."
+        name: "Мищенко Екатерина",
+        role: "Преподаватель информатики | Графический дизайнер",
+        education: "В 2017 году окончила педагогический университет имени И. П. Шамякина",
+        experience: "Педагогический опыт с 2017 года",
+        career: "Начинала в государственной школе, затем продолжила путь в онлайн-образовании. Именно в онлайн-школе открыла для себя мир дизайна и начала совмещать преподавание с творчеством.",
+        students: "Общий опыт работы с учениками — более 600 человек",
+        examSuccess: "Более 150 учеников успешно сдали ЕГЭ и ОГЭ по информатике на высший балл",
+        philosophy: "Верю, что каждый ученик способен на большее, чем думает. Моя задача — найти подход, вдохновить и дать инструменты для достижения цели. В дизайне ценю функциональность и эстетику, в преподавании — индивидуальный маршрут и результат."
+    };
+    
+    // Вступление для блока ДИЗАЙН
+    const designIntro = {
+        title: "Почему дизайн — это важно",
+        text: "Дизайн — это не просто красивая картинка. Это инструмент коммуникации, который помогает бизнесу говорить с клиентом на одном языке. Я создаю визуальные решения, которые работают: привлекают внимание, вызывают доверие и ведут к цели. В каждом проекте для меня важны три вещи: глубокая аналитика перед стартом, чистота визуального кода и удобство для конечного пользователя. Мои работы — это результат многолетнего опыта в образовании и дизайне, где я научилась слышать потребности и превращать их в эстетичные и функциональные продукты."
+    };
+    
+    // Вступление для блока ПРЕПОДАВАНИЕ
+    const teachingIntro = {
+        title: "Мой подход к преподаванию",
+        text: "Я убеждена: качественное образование — это когда сложное становится понятным, а обучение приносит радость. За годы работы в школе и онлайн я выработала систему, которая дает реальные результаты. Мои ученики не просто заучивают материал — они понимают логику, учатся мыслить алгоритмически и применять знания на практике. Горжусь тем, что более 150 моих выпускников сдали экзамены на высший балл и поступили в вузы мечты. В каждом ученике я вижу личность, поэтому подбираю индивидуальный темп и подход. Моя цель — не просто научить, а вдохновить на дальнейшее развитие в IT и дизайне."
     };
 
     // ==================== ДАННЫЕ ДЛЯ ДИЗАЙНА ====================
@@ -433,8 +468,8 @@
 
     // ==================== ФУНКЦИЯ ОТПРАВКИ В TELEGRAM ====================
     // ВАЖНО: замените BOT_TOKEN и CHAT_ID на свои!
-    const BOT_TOKEN = "YOUR_BOT_TOKEN";  // Замените на токен вашего бота
-    const CHAT_ID = "YOUR_CHAT_ID";      // Замените на ваш chat_id
+    const BOT_TOKEN = "YOUR_BOT_TOKEN";
+    const CHAT_ID = "YOUR_CHAT_ID";
     
     async function sendToTelegram(formData) {
         const message = `📚 *НОВАЯ ЗАЯВКА НА КУРС*\n\n` +
@@ -464,12 +499,10 @@
         }
     }
 
-    // Модальное окно с формой записи
     function showEnrollmentModal() {
         const modalDiv = document.createElement('div');
         modalDiv.className = 'modal';
         
-        // Получаем список курсов для селекта
         const courseOptions = coursesData.map(course => {
             if (course.singleTariff) {
                 return `<option value="${course.name}">${course.name} (${course.lessonsCount} занятий, ${course.price})</option>`;
@@ -492,7 +525,7 @@
                     </div>
                     <div class="form-group">
                         <label>Ваше имя *</label>
-                        <input type="text" id="studentName" placeholder="Иван Иванов" required>
+                        <input type="text" id="studentName" placeholder="Екатерина" required>
                     </div>
                     <div class="form-group">
                         <label>Телефон *</label>
@@ -543,7 +576,6 @@
                 return;
             }
             
-            // Отправка в Telegram
             const submitBtn = form.querySelector('.submit-btn');
             submitBtn.textContent = 'Отправка...';
             submitBtn.disabled = true;
@@ -561,7 +593,6 @@
         };
     }
 
-    // Модальное окно для деталей дизайн-услуг
     function showDesignModal(service) {
         const modalDiv = document.createElement('div');
         modalDiv.className = 'modal';
@@ -585,36 +616,40 @@
 
     // ==================== РЕНДЕР СТРАНИЦ ====================
     
-    // Рендер страницы ДИЗАЙН (с блоком о преподавателе)
     function renderDesignPage() {
         return `
             <div class="page">
                 <div class="badge">КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ | НАПРАВЛЕНИЕ ДИЗАЙН</div>
                 <h1>🎨 Профессиональный дизайн<br>под ключ</h1>
                 
-                <!-- Блок о преподавателе -->
+                <!-- Блок о Екатерине Мищенко -->
                 <div class="about-card">
                     <div class="about-flex">
-                        <div class="avatar">👩‍🎨</div>
+                        <div class="avatar">🎨</div>
                         <div class="about-text">
                             <h3 style="margin-bottom: 5px;">${teacherInfo.name}</h3>
                             <p style="color: #1e4a5f; font-weight: 500;">${teacherInfo.role}</p>
-                            <p style="margin-top: 8px;">${teacherInfo.about}</p>
-                            <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 12px;">
-                                <span>⭐ ${teacherInfo.experience}</span>
-                                <span>📚 ${teacherInfo.education}</span>
-                                <span>🏆 ${teacherInfo.achievements}</span>
+                            <p>${teacherInfo.education}</p>
+                            <p>${teacherInfo.career}</p>
+                            <div class="stats-grid">
+                                <span class="stat-item">📚 ${teacherInfo.experience}</span>
+                                <span class="stat-item">👥 ${teacherInfo.students}</span>
+                                <span class="stat-item">🏆 ${teacherInfo.examSuccess}</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="page-subtitle">Разработка визуальных решений для бизнеса: от лендингов до корпоративных порталов.</div>
+                <!-- Вступление для дизайна -->
+                <div class="intro-block">
+                    <p>${designIntro.text}</p>
+                    <div class="intro-quote">✨ «Дизайн — это язык, на котором бизнес говорит с миром. Я помогаю найти правильные слова.»</div>
+                </div>
                 
                 <h2>✨ Услуги дизайна</h2>
                 <div class="grid-2col">
                     ${designServices.map(s => `
-                        <div class="service-card" data-service-name="${s.name}">
+                        <div class="service-card">
                             <h3>✨ ${s.name}</h3>
                             <p>${s.shortDesc}</p>
                             <button class="btn-secondary detail-design-btn" data-serv='${JSON.stringify(s)}'>Подробнее о сроках и стоимости →</button>
@@ -631,11 +666,11 @@
                 </div>
 
                 <div class="contact-block">
-                    <div><strong>📞 Есть вопросы по дизайну?</strong><br>Проконсультируем по срокам и портфолио</div>
+                    <div><strong>📞 Есть вопросы по дизайну?</strong><br>Проконсультирую по срокам и портфолио</div>
                     <div class="contact-info">
                         <div class="contact-item">📱 <a href="tel:+375291234567">+375 (29) 123-45-67</a></div>
-                        <div class="contact-item">✉️ <a href="mailto:design@teach.by">design@teach.by</a></div>
-                        <div class="contact-item">💬 <a href="https://t.me/design_teacher" target="_blank">@design_teacher</a></div>
+                        <div class="contact-item">✉️ <a href="mailto:ekaterina@design.by">ekaterina@design.by</a></div>
+                        <div class="contact-item">💬 <a href="https://t.me/ekaterina_teacher" target="_blank">@ekaterina_teacher</a></div>
                     </div>
                     <button class="btn-primary" id="contactDesignBtn">Написать в Telegram</button>
                 </div>
@@ -644,31 +679,35 @@
         `;
     }
 
-    // Рендер страницы ПРЕПОДАВАНИЕ (с общей кнопкой записи)
     function renderTeachingPage() {
         return `
             <div class="page">
                 <div class="badge">КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ | IT-ОБРАЗОВАНИЕ</div>
                 <h1>📚 Преподавание компьютерных курсов</h1>
                 
-                <!-- Блок о преподавателе -->
+                <!-- Блок о Екатерине Мищенко -->
                 <div class="about-card">
                     <div class="about-flex">
                         <div class="avatar">👩‍🏫</div>
                         <div class="about-text">
                             <h3 style="margin-bottom: 5px;">${teacherInfo.name}</h3>
                             <p style="color: #1e4a5f; font-weight: 500;">${teacherInfo.role}</p>
-                            <p style="margin-top: 8px;">${teacherInfo.about}</p>
-                            <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 12px;">
-                                <span>⭐ ${teacherInfo.experience}</span>
-                                <span>📚 ${teacherInfo.education}</span>
-                                <span>🏆 ${teacherInfo.achievements}</span>
+                            <p>${teacherInfo.education}</p>
+                            <p>${teacherInfo.career}</p>
+                            <div class="stats-grid">
+                                <span class="stat-item">📚 ${teacherInfo.experience}</span>
+                                <span class="stat-item">👥 ${teacherInfo.students}</span>
+                                <span class="stat-item">🏆 ${teacherInfo.examSuccess}</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="page-subtitle">Индивидуальные и групповые занятия по программированию, дизайну, подготовке к экзаменам.</div>
+                <!-- Вступление для преподавания -->
+                <div class="intro-block">
+                    <p>${teachingIntro.text}</p>
+                    <div class="intro-quote">🌟 «Каждый ученик может достичь высоты, если найти правильный путь. Я помогаю этот путь увидеть.»</div>
+                </div>
                 
                 <h2>💻 Курсы с детальным содержанием</h2>
                 <div class="grid-2col">
@@ -708,7 +747,6 @@
                     }).join('')}
                 </div>
 
-                <!-- Единая кнопка записи -->
                 <div style="text-align: center; margin: 20px 0 16px;">
                     <button class="btn-primary" id="unifiedEnrollBtn" style="padding: 16px 48px; font-size: 1.1rem;">🎓 Записаться на курс →</button>
                 </div>
@@ -733,8 +771,8 @@
                     <div><strong>🎓 Остались вопросы?</strong><br>Напишите, подберём удобный формат обучения</div>
                     <div class="contact-info">
                         <div class="contact-item">📱 <a href="tel:+375291234567">+375 (29) 123-45-67</a></div>
-                        <div class="contact-item">✉️ <a href="mailto:edu@teach.by">edu@teach.by</a></div>
-                        <div class="contact-item">💬 <a href="https://t.me/design_teacher" target="_blank">@design_teacher</a></div>
+                        <div class="contact-item">✉️ <a href="mailto:ekaterina@edu.by">ekaterina@edu.by</a></div>
+                        <div class="contact-item">💬 <a href="https://t.me/ekaterina_teacher" target="_blank">@ekaterina_teacher</a></div>
                     </div>
                     <button class="btn-primary" id="contactTeachBtn">Получить консультацию</button>
                 </div>
@@ -743,7 +781,6 @@
         `;
     }
 
-    // ==================== ОБРАБОТЧИКИ ====================
     function attachHandlersForCurrentPage(pageType) {
         if (pageType === 'design') {
             document.querySelectorAll('.detail-design-btn').forEach(btn => {
@@ -758,26 +795,23 @@
             const globalBrief = document.getElementById('globalBriefBtn');
             if (globalBrief) globalBrief.onclick = () => alert("📋 Перейти к брифу: https://forms.fill/design_brief (демо).");
             const contactBtn = document.getElementById('contactDesignBtn');
-            if (contactBtn) contactBtn.onclick = () => window.open('https://t.me/design_teacher', '_blank');
+            if (contactBtn) contactBtn.onclick = () => window.open('https://t.me/ekaterina_teacher', '_blank');
         } 
         else if (pageType === 'teaching') {
-            // Единая кнопка записи
             const enrollBtn = document.getElementById('unifiedEnrollBtn');
             if (enrollBtn) enrollBtn.onclick = () => showEnrollmentModal();
             
-            // Покупка методичек
             document.querySelectorAll('.buy-method').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const method = btn.getAttribute('data-method') || "пособие";
-                    alert(`📘 Вы выбрали "${method}". Для оформления напишите в Telegram @design_teacher или на почту edu@teach.by.`);
+                    alert(`📘 Вы выбрали "${method}". Для оформления напишите в Telegram @ekaterina_teacher или на почту ekaterina@edu.by.`);
                 });
             });
             const contactTeach = document.getElementById('contactTeachBtn');
-            if (contactTeach) contactTeach.onclick = () => alert("📞 Оставьте заявку: +375291234567 или Telegram @design_teacher — ответим за 30 минут.");
+            if (contactTeach) contactTeach.onclick = () => alert("📞 Оставьте заявку: +375291234567 или Telegram @ekaterina_teacher — ответим за 30 минут.");
         }
     }
 
-    // ==================== ПЕРЕКЛЮЧЕНИЕ НАПРАВЛЕНИЙ ====================
     let currentDirection = 'design';
     const root = document.getElementById('proposalRoot');
     const btnDesign = document.getElementById('switchDesign');
@@ -817,7 +851,6 @@
 
     render();
     
-    // Предупреждение о настройке Telegram бота
     console.log('⚠️ Для отправки заявок в Telegram замените BOT_TOKEN и CHAT_ID в коде на свои значения');
 </script>
 </body>
