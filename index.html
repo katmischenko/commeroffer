@@ -12,30 +12,110 @@
         }
 
         body {
-            background: #eef2f5;
+            background: linear-gradient(135deg, #f5f7fa 0%, #eef2f5 100%);
             font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
-            padding: 32px 20px;
+            padding: 40px 24px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
         }
 
+        .proposal-wrapper {
+            max-width: 1300px;
+            width: 100%;
+        }
+
+        /* Карточка специалиста (главная) */
+        .expert-card {
+            background: linear-gradient(135deg, #ffffff 0%, #fefefe 100%);
+            border-radius: 48px;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2);
+            padding: 48px 52px;
+            margin-bottom: 32px;
+            transition: all 0.3s;
+            border: 1px solid rgba(30, 74, 95, 0.15);
+        }
+
+        .expert-header {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+        .expert-avatar {
+            background: linear-gradient(135deg, #1e4a5f 0%, #2c6e7e 100%);
+            width: 120px;
+            height: 120px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            box-shadow: 0 15px 25px -8px rgba(30, 74, 95, 0.3);
+        }
+        .expert-title h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #1e2f35;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+        .expert-title p {
+            font-size: 1.1rem;
+            color: #1e4a5f;
+            font-weight: 500;
+        }
+        .expert-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin: 24px 0 20px 0;
+            padding: 20px 0;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .stat-block {
+            text-align: center;
+            flex: 1;
+            min-width: 140px;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #1e4a5f;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: #5f7f8c;
+            margin-top: 6px;
+        }
+        .expert-bio {
+            line-height: 1.6;
+            color: #2c3e44;
+            margin-top: 16px;
+        }
+        .expert-bio p {
+            margin-bottom: 12px;
+        }
+
+        /* Переключатель направлений */
         .direction-switch {
             display: flex;
             gap: 20px;
             background: white;
             padding: 8px 20px;
             border-radius: 60px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            margin-bottom: 32px;
             flex-wrap: wrap;
             justify-content: center;
         }
         .dir-btn {
             border: none;
             background: transparent;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             padding: 12px 36px;
             border-radius: 50px;
@@ -47,19 +127,14 @@
         .dir-btn.active {
             background: #1e4a5f;
             color: white;
-            box-shadow: 0 6px 14px rgba(30,74,95,0.25);
+            box-shadow: 0 6px 14px rgba(30, 74, 95, 0.25);
         }
 
-        .proposal-wrapper {
-            max-width: 1400px;
-            width: 100%;
-            transition: all 0.2s;
-        }
-
+        /* Основные страницы */
         .page {
             background: white;
             border-radius: 40px;
-            box-shadow: 0 25px 45px -12px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1);
             padding: 48px 52px;
             animation: fadeSlide 0.4s ease;
         }
@@ -69,40 +144,19 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        h1 {
-            font-size: 2.4rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.3rem;
-        }
-        .page-subtitle {
-            font-size: 1rem;
-            color: #5f7f8c;
-            margin-bottom: 28px;
-            border-left: 3px solid #1e4a5f;
-            padding-left: 16px;
-        }
         h2 {
-            font-size: 1.7rem;
+            font-size: 1.8rem;
             font-weight: 600;
-            margin: 2rem 0 1rem 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            margin: 1.5rem 0 1.2rem 0;
+            color: #1e2f35;
+            border-left: 4px solid #1e4a5f;
+            padding-left: 20px;
         }
         h3 {
             font-weight: 600;
-            font-size: 1.25rem;
-            margin: 0 0 10px 0;
-        }
-        .badge {
-            background: #eef2fa;
-            padding: 5px 14px;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            font-weight: 500;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
             color: #1e4a5f;
-            display: inline-block;
         }
 
         .grid-2col {
@@ -112,37 +166,20 @@
             margin: 28px 0;
         }
 
-        .service-card, .course-card, .about-card {
-            background: #f9fbfd;
+        .service-card, .course-card, .method-card {
+            background: #fafcfe;
             border-radius: 28px;
             padding: 24px;
-            transition: all 0.2s;
+            transition: all 0.25s;
             border: 1px solid #e9f0f4;
         }
-        .service-card:hover, .course-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px -12px rgba(0,0,0,0.1);
-        }
-        
-        .intro-block {
-            background: linear-gradient(135deg, #f8fbfe 0%, #f0f5fa 100%);
-            border-radius: 28px;
-            padding: 28px 32px;
-            margin: 20px 0 30px 0;
-            border-left: 5px solid #1e4a5f;
-        }
-        .intro-block p {
-            font-size: 1.05rem;
-            line-height: 1.5;
-            color: #2c3e44;
-        }
-        .intro-quote {
-            font-style: italic;
-            margin-top: 12px;
-            color: #1e4a5f;
-            font-weight: 500;
+        .service-card:hover, .course-card:hover, .method-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.1);
+            border-color: #cbdde4;
         }
 
+        /* Тарифы курсов */
         .tariff-group {
             display: flex;
             gap: 18px;
@@ -155,32 +192,36 @@
             border-radius: 24px;
             padding: 18px;
             border: 1px solid #e0edf2;
-            transition: 0.2s;
         }
         .tariff h4 {
             font-size: 1.2rem;
             color: #1e4a5f;
             margin-bottom: 8px;
         }
-        .tariff .price {
-            font-weight: 800;
-            font-size: 1.3rem;
+        .price-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
             margin: 12px 0;
-            color: #0f2b32;
+            font-weight: 600;
         }
+        .price-byn { color: #1e4a5f; }
+        .price-rub { color: #5f7f8c; }
         .course-content {
             font-size: 0.85rem;
             background: #f3f8fc;
             padding: 12px;
             border-radius: 20px;
             margin: 12px 0 0;
-            list-style-position: inside;
-            color: #2c4e5e;
+        }
+        .course-content ul {
+            padding-left: 20px;
+            margin-top: 6px;
         }
         .course-content li {
-            margin: 6px 0;
-            line-height: 1.3;
+            margin: 5px 0;
         }
+
         .btn-primary, .btn-secondary {
             padding: 12px 28px;
             border-radius: 40px;
@@ -211,18 +252,42 @@
             background: #f0f6fa;
             border-color: #1e4a5f;
         }
+
         .stages-list {
             display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin: 20px 0;
+            flex-direction: column;
+            gap: 16px;
+            margin: 24px 0;
         }
-        .stage {
-            background: #eef3f8;
-            padding: 8px 18px;
-            border-radius: 40px;
+        .stage-item {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 16px 20px;
+            border-left: 4px solid #1e4a5f;
+        }
+        .stage-title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #1e4a5f;
+            margin-bottom: 6px;
+        }
+        .stage-desc {
             font-size: 0.9rem;
+            color: #4a6672;
+            line-height: 1.4;
         }
+
+        .package-card {
+            background: linear-gradient(135deg, #eef3f8 0%, #e6edf2 100%);
+            border-radius: 28px;
+            padding: 24px 32px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .package-card h3 {
+            margin-bottom: 12px;
+        }
+
         .contact-block {
             background: #f1f6f9;
             border-radius: 32px;
@@ -241,7 +306,7 @@
         }
         .contact-item {
             background: white;
-            padding: 8px 18px;
+            padding: 10px 20px;
             border-radius: 60px;
             display: flex;
             align-items: center;
@@ -252,38 +317,7 @@
             color: #1e4a5f;
             font-weight: 500;
         }
-        .package-note {
-            background: #eef3f0;
-            padding: 14px 24px;
-            border-radius: 32px;
-            text-align: center;
-            margin: 20px 0;
-            font-weight: 500;
-        }
-        .stats-grid {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            margin-top: 16px;
-        }
-        .stat-item {
-            background: white;
-            padding: 12px 20px;
-            border-radius: 40px;
-            font-weight: 600;
-            color: #1e4a5f;
-        }
-        footer {
-            margin-top: 32px;
-            text-align: center;
-            font-size: 0.75rem;
-            color: #6e8b99;
-        }
-        @media (max-width: 780px) {
-            .page { padding: 28px 20px; }
-            .grid-2col { grid-template-columns: 1fr; }
-        }
-        
+
         .modal {
             display: none;
             position: fixed;
@@ -296,12 +330,11 @@
         }
         .modal-content {
             background: white;
-            max-width: 500px;
+            max-width: 520px;
             width: 90%;
             border-radius: 32px;
             padding: 32px;
             position: relative;
-            animation: fadeSlide 0.2s ease;
         }
         .close-modal {
             position: absolute;
@@ -309,7 +342,6 @@
             top: 16px;
             font-size: 28px;
             cursor: pointer;
-            color: #7f8c8d;
         }
         .form-group {
             margin-bottom: 20px;
@@ -318,7 +350,6 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #2c3e44;
         }
         .form-group input, .form-group select, .form-group textarea {
             width: 100%;
@@ -326,8 +357,6 @@
             border: 1px solid #cbdde4;
             border-radius: 24px;
             font-family: inherit;
-            font-size: 1rem;
-            transition: 0.2s;
         }
         .submit-btn {
             width: 100%;
@@ -337,521 +366,217 @@
             padding: 14px;
             border-radius: 40px;
             font-weight: 600;
-            font-size: 1rem;
             cursor: pointer;
-            transition: 0.2s;
         }
-        .about-card {
-            background: linear-gradient(135deg, #f8fbfe 0%, #f0f5fa 100%);
-            border-left: 5px solid #1e4a5f;
-            margin-bottom: 20px;
+
+        @media (max-width: 780px) {
+            .expert-card, .page { padding: 28px 24px; }
+            .grid-2col { grid-template-columns: 1fr; }
+            .expert-header { flex-direction: column; text-align: center; }
         }
-        .about-flex {
-            display: flex;
-            gap: 28px;
-            align-items: flex-start;
-            flex-wrap: wrap;
-        }
-        .avatar {
-            font-size: 4rem;
-            background: #1e4a5f20;
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #e2f0f5;
-        }
-        .about-text {
-            flex: 1;
+        footer {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #7f8c8d;
         }
     </style>
 </head>
 <body>
+<div class="proposal-wrapper">
+    <!-- Карточка специалиста (всегда вверху) -->
+    <div class="expert-card">
+        <div class="expert-header">
+            <div class="expert-avatar">👩‍🏫</div>
+            <div class="expert-title">
+                <h1>Мищенко Екатерина</h1>
+                <p>Преподаватель информатики · Графический дизайнер · Эксперт в IT-образовании</p>
+            </div>
+        </div>
+        <div class="expert-stats">
+            <div class="stat-block"><div class="stat-number">2017</div><div class="stat-label">начало педагогического пути</div></div>
+            <div class="stat-block"><div class="stat-number">650+</div><div class="stat-label">учеников всего</div></div>
+            <div class="stat-block"><div class="stat-number">150+</div><div class="stat-label">сдали ЕГЭ/ОГЭ на высший балл</div></div>
+            <div class="stat-block"><div class="stat-number">3 года</div><div class="stat-label">опыт в дизайне</div></div>
+        </div>
+        <div class="expert-bio">
+            <p>📚 <strong>Образование:</strong> Педагогический университет имени И. П. Шамякина, 2017 год. Сразу после вуза работала в государственной школе, где отточила методику преподавания. Затем ушла в онлайн-образование, что позволило совмещать педагогику с дизайном.</p>
+            <p>🎨 <strong>Дизайн-направление:</strong> в онлайн-школе открыла для себя мир визуальных коммуникаций. За 3 года создала более 50 успешных проектов: от лендингов до корпоративных сайтов. Убеждена: хороший дизайн решает бизнес-задачи и делает сложное понятным.</p>
+            <p>💡 <strong>Миссия:</strong> помогать ученикам достигать высоких результатов на экзаменах, а бизнесу — находить визуальный голос. Индивидуальный подход, структурированность и забота о каждом проекте — мои принципы.</p>
+        </div>
+    </div>
 
-<div class="direction-switch">
-    <button id="switchDesign" class="dir-btn active">🎨 Дизайн-услуги</button>
-    <button id="switchTeaching" class="dir-btn">📚 Преподавание & Курсы</button>
+    <!-- Переключатель направлений -->
+    <div class="direction-switch">
+        <button id="switchDesign" class="dir-btn active">🎨 Дизайн-услуги</button>
+        <button id="switchTeaching" class="dir-btn">📚 Преподавание & Курсы</button>
+    </div>
+
+    <div id="dynamicContent"></div>
 </div>
 
-<div class="proposal-wrapper" id="proposalRoot"></div>
-
 <script>
-    // ==================== ИНФОРМАЦИЯ О ЕКАТЕРИНЕ МИЩЕНКО ====================
-    const teacherInfo = {
-        name: "Мищенко Екатерина",
-        role: "Преподаватель информатики | Графический дизайнер",
-        education: "В 2017 году окончила педагогический университет имени И. П. Шамякина",
-        experience: "Педагогический опыт с 2017 года",
-        career: "Начинала в государственной школе, затем продолжила путь в онлайн-образовании. Именно в онлайн-школе открыла для себя мир дизайна и начала совмещать преподавание с творчеством.",
-        students: "Общий опыт работы с учениками — более 600 человек",
-        examSuccess: "Более 150 учеников успешно сдали ЕГЭ и ОГЭ по информатике на высший балл",
-        philosophy: "Верю, что каждый ученик способен на большее, чем думает. Моя задача — найти подход, вдохновить и дать инструменты для достижения цели. В дизайне ценю функциональность и эстетику, в преподавании — индивидуальный маршрут и результат."
-    };
+    // ========== ДАННЫЕ ==========
+    // Цены: BYN и RUB (1 BYN ≈ 28 RUB)
+    const prices = { byn: 1, rub: 28 };
     
-    // Вступление для блока ДИЗАЙН
-    const designIntro = {
-        title: "Почему дизайн — это важно",
-        text: "Дизайн — это не просто красивая картинка. Это инструмент коммуникации, который помогает бизнесу говорить с клиентом на одном языке. Я создаю визуальные решения, которые работают: привлекают внимание, вызывают доверие и ведут к цели. В каждом проекте для меня важны три вещи: глубокая аналитика перед стартом, чистота визуального кода и удобство для конечного пользователя. Мои работы — это результат многолетнего опыта в образовании и дизайне, где я научилась слышать потребности и превращать их в эстетичные и функциональные продукты."
-    };
-    
-    // Вступление для блока ПРЕПОДАВАНИЕ
-    const teachingIntro = {
-        title: "Мой подход к преподаванию",
-        text: "Я убеждена: качественное образование — это когда сложное становится понятным, а обучение приносит радость. За годы работы в школе и онлайн я выработала систему, которая дает реальные результаты. Мои ученики не просто заучивают материал — они понимают логику, учатся мыслить алгоритмически и применять знания на практике. Горжусь тем, что более 150 моих выпускников сдали экзамены на высший балл и поступили в вузы мечты. В каждом ученике я вижу личность, поэтому подбираю индивидуальный темп и подход. Моя цель — не просто научить, а вдохновить на дальнейшее развитие в IT и дизайне."
-    };
-
-    // ==================== ДАННЫЕ ДЛЯ ДИЗАЙНА ====================
     const designServices = [
-        { name: "Landing Page", shortDesc: "Одностраничный сайт для продаж, мероприятий.", fullDesc: "Входит: аналитика, уникальный дизайн, адаптив, прототип, 2 итерации правок. Срок: 5-7 дней. Стоимость: от 500 BYN." },
-        { name: "Корпоративный сайт", shortDesc: "Многостраничный сайт для компании, каталог.", fullDesc: "Входит: структура, дизайн всех типовых страниц, анимации, форма связи, правки. Срок: 12-18 дней. Стоимость: от 1200 BYN." },
-        { name: "Интернет-магазин", shortDesc: "Каталог, корзина, оформление.", fullDesc: "Входит: дизайн карточек, корзины, личного кабинета, адаптив. Срок: 20-25 дней. Стоимость: от 2000 BYN." },
-        { name: "Создание презентаций", shortDesc: "Презентации под бренд, инвесторам.", fullDesc: "Входит: концепция, визуализация, анимация, фирменный стиль. Срок: 2-5 дней. Стоимость: от 150 BYN за слайд." },
-        { name: "Дизайн сайта (без верстки)", shortDesc: "Только макет Figma для разработчика.", fullDesc: "Входит: дизайн главной и внутренних, UI-kit, адаптивные версии, прототип. Срок: от 7 дней. Стоимость: от 800 BYN." }
-    ];
-    const designStages = ["1. Брифинг", "2. Анализ и референсы", "3. Прототипирование", "4. Дизайн-концепция", "5. Согласование", "6. Передача файлов"];
-
-    // ==================== ДАННЫЕ ПО КУРСАМ ====================
-    const coursesData = [
         { 
-            name: "Scratch", 
-            desc: "Визуальное программирование для детей и новичков. Развитие логики и алгоритмического мышления.",
-            tariffs: [
-                { name: "Базовый", lessons: 32, price: "320 BYN", content: ["Основы алгоритмов", "Циклы и условия", "Создание игр", "Анимации", "Финальный проект: мультфильм"] },
-                { name: "Расширенный", lessons: 64, price: "590 BYN", content: ["Все из базового", "Сложные проекты", "Работа со списками", "Клонирование", "Создание RPG игры", "Презентация портфолио"] }
-            ]
+            name: "Landing Page", shortDesc: "Одностраничный сайт для продаж, мероприятий, промо.",
+            details: ["Анализ целевой аудитории и конкурентов", "Разработка структуры и прототипа", "Уникальный дизайн с адаптивом под мобильные", "2 итерации правок", "Передача макета в Figma"],
+            terms: "5–7 дней",
+            costByn: 500, costRub: 14000
         },
         { 
-            name: "Python", 
-            desc: "От основ до проектов: боты, парсинг,数据分析. Подготовка к олимпиадам.",
-            tariffs: [
-                { name: "Базовый", lessons: 32, price: "400 BYN", content: ["Синтаксис, переменные", "Условные операторы", "Циклы, списки", "Функции", "Решение задач ЕГЭ/ОГЭ (начало)"] },
-                { name: "Расширенный", lessons: 64, price: "750 BYN", content: ["ООП", "Работа с файлами", "Telegram бот", "Парсинг сайтов", "Подготовка к олимпиадам", "Курсовой проект"] }
-            ]
+            name: "Корпоративный сайт", shortDesc: "Многостраничный сайт для компании, каталог услуг, блог.",
+            details: ["Анализ бизнес-задач и структуры", "Дизайн всех типовых страниц (главная, услуги, новости, контакты)", "Анимации и интерактивные элементы", "Адаптив под все устройства", "Правки до 2-х итераций"],
+            terms: "12–18 дней",
+            costByn: 1200, costRub: 33600
         },
         { 
-            name: "HTML/CSS/JS", 
-            desc: "Верстка сайтов, адаптив, интерактивность. Финальный проект — личный сайт.",
-            tariffs: [
-                { name: "Базовый", lessons: 32, price: "420 BYN", content: ["HTML5 семантика", "CSS стилизация", "Flex/Grid", "Адаптив", "Формы"] },
-                { name: "Профессиональный", lessons: 64, price: "780 BYN", content: ["JavaScript: основы, DOM", "События, анимации", "Сборка проекта", "Git", "Финальный сайт-портфолио"] }
-            ]
+            name: "Интернет-магазин", shortDesc: "Каталог, корзина, оформление заказа, личный кабинет.",
+            details: ["Дизайн карточек товаров", "Корзина и оформление заказа", "Личный кабинет покупателя", "Фильтры и поиск", "Прототип сценариев покупки"],
+            terms: "20–25 дней",
+            costByn: 2000, costRub: 56000
         },
         { 
-            name: "Дизайн в Figma", 
-            desc: "Интерфейсы, прототипирование, авто-лейауты, дизайн-системы.",
-            tariffs: [
-                { name: "Базовый", lessons: 32, price: "380 BYN", content: ["Интерфейс Figma", "Фигуры, текст", "Компоненты", "Прототипирование", "Лендинг"] },
-                { name: "Расширенный", lessons: 64, price: "720 BYN", content: ["Авто-лейауты", "Векторная графика", "Дизайн-системы", "Анимация в Figma", "UI-кит для приложения"] }
-            ]
+            name: "Создание презентаций", shortDesc: "Презентации под бренд, для инвесторов, защиты проектов.",
+            details: ["Концепция и структура", "Визуализация данных", "Анимация переходов", "Адаптация под корпоративный стиль", "Формат PowerPoint/Google Slides"],
+            terms: "2–5 дней",
+            costByn: 150, costRub: 4200
         },
         { 
-            name: "Подготовка к ЕГЭ / ОГЭ по информатике", 
-            desc: "Разбор всех типов заданий, программирование (Python, алгоритмы), теория.",
-            singleTariff: true, lessonsCount: 48, price: "680 BYN",
-            content: ["Разбор 1-27 заданий", "Алгоритмизация", "Python с нуля", "Эмуляция экзамена", "Разбор вариантов", "Индивидуальный трек"]
-        },
-        { 
-            name: "Цифровая грамотность", 
-            desc: "Безопасность, офисные пакеты, облачные сервисы, основы ИКТ.",
-            singleTariff: true, lessonsCount: 24, price: "300 BYN",
-            content: ["Кибербезопасность", "Google Docs/Excel", "Облачные хранилища", "Этикет в сети", "Работа с почтой", "Итоговый тест"]
+            name: "Дизайн сайта (без верстки)", shortDesc: "Только макет в Figma для передачи разработчику.",
+            details: ["Дизайн главной и 3-5 внутренних страниц", "UI-kit (стили, компоненты)", "Адаптивные версии (мобильная, планшет)", "Интерактивный прототип", "Подготовка к передаче разработчику"],
+            terms: "от 7 дней",
+            costByn: 800, costRub: 22400
         }
+    ];
+
+    const coursesData = [
+        { name: "Scratch", desc: "Визуальное программирование для детей и новичков.", hourPriceByn: 12, hourPriceRub: 336,
+          tariffs: [{ name: "Базовый", hours: 32, content: ["Основы алгоритмов", "Циклы и условия", "Создание игр", "Анимации", "Финальный проект: мультфильм"] },
+                    { name: "Расширенный", hours: 64, content: ["Все из базового", "Сложные проекты", "Работа со списками", "Клонирование", "Создание RPG игры"] }] },
+        { name: "Python", desc: "От основ до проектов: боты, парсинг, подготовка к ЕГЭ.", hourPriceByn: 14, hourPriceRub: 392,
+          tariffs: [{ name: "Базовый", hours: 32, content: ["Синтаксис, переменные", "Условные операторы", "Циклы, списки", "Функции", "Решение задач ЕГЭ/ОГЭ (начало)"] },
+                    { name: "Расширенный", hours: 64, content: ["ООП", "Работа с файлами", "Telegram бот", "Парсинг сайтов", "Курсовой проект"] }] },
+        { name: "HTML/CSS/JS", desc: "Верстка сайтов, адаптив, интерактивность.", hourPriceByn: 13, hourPriceRub: 364,
+          tariffs: [{ name: "Базовый", hours: 32, content: ["HTML5 семантика", "CSS стилизация", "Flex/Grid", "Адаптив", "Формы"] },
+                    { name: "Профессиональный", hours: 64, content: ["JavaScript: основы, DOM", "События, анимации", "Сборка проекта", "Git", "Финальный сайт-портфолио"] }] },
+        { name: "Дизайн в Figma", desc: "Интерфейсы, прототипирование, дизайн-системы.", hourPriceByn: 15, hourPriceRub: 420,
+          tariffs: [{ name: "Базовый", hours: 32, content: ["Интерфейс Figma", "Фигуры, текст", "Компоненты", "Прототипирование", "Лендинг"] },
+                    { name: "Расширенный", hours: 64, content: ["Авто-лейауты", "Векторная графика", "Дизайн-системы", "Анимация в Figma", "UI-кит для приложения"] }] },
+        { name: "Подготовка к ЕГЭ/ОГЭ по информатике", desc: "Разбор всех типов заданий, Python, теория.", hourPriceByn: 16, hourPriceRub: 448, singleTariff: true, hours: 48,
+          content: ["Разбор 1-27 заданий", "Алгоритмизация", "Python с нуля", "Эмуляция экзамена", "Разбор вариантов", "Индивидуальный трек"] },
+        { name: "Цифровая грамотность", desc: "Безопасность, офисные пакеты, облачные сервисы.", hourPriceByn: 10, hourPriceRub: 280, singleTariff: true, hours: 24,
+          content: ["Кибербезопасность", "Google Docs/Excel", "Облачные хранилища", "Этикет в сети", "Работа с почтой", "Итоговый тест"] }
     ];
 
     const methodPubs = [
-        { title: "Метод. пособие по Python", desc: "120 страниц, задачи, теория, чек-листы для преподавателей.", price: "45 BYN" },
-        { title: "Метод. пособие по HTML/CSS", desc: "Структура курса, макеты, готовые упражнения.", price: "40 BYN" },
-        { title: "Метод. пособие «Основы Figma»", desc: "Гайд по интерфейсу, компоненты, библиотеки + кейсы.", price: "50 BYN" }
+        { title: "Метод. пособие по Python", desc: "120 страниц, теория, задачи, шаблоны кода.", priceByn: 45, priceRub: 1260, content: ["Теория с примерами", "50+ практических задач", "Чек-листы для самопроверки", "Шаблоны проектов", "Гайд по подготовке к ЕГЭ"] },
+        { title: "Метод. пособие по HTML/CSS", desc: "Структура курса, макеты, готовые упражнения.", priceByn: 40, priceRub: 1120, content: ["Пошаговая структура курса", "5 готовых макетов для верстки", "Упражнения на Flex/Grid", "Адаптив: принципы и практика", "Финальный проект"] },
+        { title: "Метод. пособие «Основы Figma»", desc: "Гайд по интерфейсу, компоненты, библиотеки.", priceByn: 50, priceRub: 1400, content: ["Интерфейс и инструменты", "Работа с компонентами", "Создание дизайн-системы", "Авто-лейауты", "Практические кейсы"] }
     ];
 
-    // ==================== ФУНКЦИЯ ОТПРАВКИ В TELEGRAM ====================
-    // ВАЖНО: замените BOT_TOKEN и CHAT_ID на свои!
+    const stages = [
+        { title: "Брифинг и анализ", desc: "Провожу детальное интервью: цели проекта, целевая аудитория, пожелания по стилю, технические требования. Заполняем бриф, обсуждаем сроки." },
+        { title: "Исследование и референсы", desc: "Анализирую конкурентов, собираю референсы по стилю, создаю moodboard. Согласовываем визуальное направление." },
+        { title: "Прототипирование", desc: "Создаю структуру страниц (wireframes), утверждаю логику взаимодействия. На этом этапе важна функциональность." },
+        { title: "Дизайн-концепция", desc: "Разрабатываю дизайн ключевых страниц с учетом фирменного стиля, типографики, цветовой гаммы. Показываю 2-3 варианта." },
+        { title: "Согласование и правки", desc: "Вношу корректировки по замечаниям, дорабатываю детали до идеала. До 2-х итераций входит в стоимость." },
+        { title: "Передача материалов", desc: "Финализирую макеты в Figma, подготавливаю UI-kit, экспортирую все необходимые файлы. Даю чек-лист для разработчиков." }
+    ];
+
+    const packages = [
+        { name: "Стартовый пакет", desc: "Любой базовый курс (32 часа) + 1 методическое пособие в подарок", discount: "Экономия до 40 BYN / 1120 RUB" },
+        { name: "Оптимальный пакет", desc: "Любой расширенный курс (64 часа) + 2 любых пособия со скидкой 20%", discount: "Скидка 20% на пособия" },
+        { name: "Семейный пакет", desc: "2 курса для двоих учеников (скидка 15% на второй курс) + бесплатная консультация", discount: "−15% на второй курс" },
+        { name: "Дизайн + Обучение", desc: "Заказ дизайн-проекта + любой курс — скидка 10% на всё", discount: "10% на комплекс" }
+    ];
+
+    // Telegram данные
+    const TELEGRAM_LINK = "https://t.me/katerin_mischenko";
     const BOT_TOKEN = "YOUR_BOT_TOKEN";
     const CHAT_ID = "YOUR_CHAT_ID";
-    
+
     async function sendToTelegram(formData) {
-        const message = `📚 *НОВАЯ ЗАЯВКА НА КУРС*\n\n` +
-                        `👤 *Имя:* ${formData.name}\n` +
-                        `📞 *Телефон:* ${formData.phone}\n` +
-                        `💬 *Telegram:* @${formData.telegram.replace('@', '')}\n` +
-                        `🎓 *Курс:* ${formData.course}\n` +
-                        `💰 *Тариф:* ${formData.tariff}\n` +
-                        `📝 *Комментарий:* ${formData.comment || "—"}`;
-        
+        const message = `📚 *НОВАЯ ЗАЯВКА НА КУРС*\n\n👤 *Имя:* ${formData.name}\n📞 *Телефон:* ${formData.phone}\n💬 *Telegram:* ${formData.telegram}\n🎓 *Курс:* ${formData.course}\n💰 *Тариф:* ${formData.tariff}\n📝 *Комментарий:* ${formData.comment || "—"}`;
         const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-        
         try {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    chat_id: CHAT_ID,
-                    text: message,
-                    parse_mode: 'Markdown'
-                })
-            });
+            const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'Markdown' }) });
             return response.ok;
-        } catch (error) {
-            console.error('Ошибка отправки:', error);
-            return false;
-        }
+        } catch { return false; }
     }
 
     function showEnrollmentModal() {
-        const modalDiv = document.createElement('div');
-        modalDiv.className = 'modal';
-        
-        const courseOptions = coursesData.map(course => {
-            if (course.singleTariff) {
-                return `<option value="${course.name}">${course.name} (${course.lessonsCount} занятий, ${course.price})</option>`;
-            } else {
-                return course.tariffs.map(t => `<option value="${course.name} - ${t.name}">${course.name} (${t.name}, ${t.lessons} зан., ${t.price})</option>`).join('');
-            }
-        }).join('');
-        
-        modalDiv.innerHTML = `
-            <div class="modal-content">
-                <span class="close-modal">&times;</span>
-                <h2 style="margin-bottom: 20px;">📝 Запись на курс</h2>
-                <form id="enrollmentForm">
-                    <div class="form-group">
-                        <label>Выберите курс *</label>
-                        <select id="courseSelect" required>
-                            <option value="">-- Выберите курс --</option>
-                            ${courseOptions}
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Ваше имя *</label>
-                        <input type="text" id="studentName" placeholder="Екатерина" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Телефон *</label>
-                        <input type="tel" id="studentPhone" placeholder="+375 XX XXX-XX-XX" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Telegram (никнейм) *</label>
-                        <input type="text" id="studentTelegram" placeholder="@username" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Комментарий (опционально)</label>
-                        <textarea id="studentComment" rows="3" placeholder="Ваши пожелания, удобное время и т.д."></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">✈️ Отправить заявку</button>
-                </form>
-                <p style="font-size: 0.8rem; margin-top: 16px; color: #6e8b99;">После отправки я свяжусь с вами в Telegram для уточнения деталей</p>
-            </div>
-        `;
-        
-        document.body.appendChild(modalDiv);
-        modalDiv.style.display = 'flex';
-        
-        const closeBtn = modalDiv.querySelector('.close-modal');
-        closeBtn.onclick = () => modalDiv.remove();
-        modalDiv.onclick = (e) => { if(e.target === modalDiv) modalDiv.remove(); };
-        
-        const form = modalDiv.querySelector('#enrollmentForm');
-        form.onsubmit = async (e) => {
+        const modal = document.createElement('div'); modal.className = 'modal';
+        const courseOptions = coursesData.map(c => c.singleTariff ? `<option value="${c.name}">${c.name} (${c.hours} ч, ${c.hourPriceByn * c.hours} BYN / ${c.hourPriceRub * c.hours} RUB)</option>` : 
+            c.tariffs.map(t => `<option value="${c.name} - ${t.name}">${c.name} (${t.name}, ${t.hours} ч, ${c.hourPriceByn * t.hours} BYN / ${c.hourPriceRub * t.hours} RUB)</option>`).join('')).join('');
+        modal.innerHTML = `<div class="modal-content"><span class="close-modal">&times;</span><h2>📝 Запись на курс</h2>
+            <form id="enrollForm"><div class="form-group"><label>Выберите курс *</label><select id="courseSelect" required>${courseOptions}</select></div>
+            <div class="form-group"><label>Ваше имя *</label><input type="text" id="studentName" placeholder="Иван Иванов" required></div>
+            <div class="form-group"><label>Телефон *</label><input type="tel" id="studentPhone" placeholder="+375 33 328-41-52" required></div>
+            <div class="form-group"><label>Telegram (никнейм) *</label><input type="text" id="studentTelegram" placeholder="@username" required></div>
+            <div class="form-group"><label>Комментарий</label><textarea id="studentComment" rows="2" placeholder="Удобное время, пожелания..."></textarea></div>
+            <button type="submit" class="submit-btn">✈️ Отправить заявку</button></form><p style="font-size:0.75rem; margin-top:12px;">Данные придут мне в Telegram, свяжусь в ближайшее время.</p></div>`;
+        document.body.appendChild(modal); modal.style.display = 'flex';
+        modal.querySelector('.close-modal').onclick = () => modal.remove();
+        modal.querySelector('#enrollForm').onsubmit = async (e) => {
             e.preventDefault();
-            
-            const courseValue = modalDiv.querySelector('#courseSelect').value;
-            if (!courseValue) {
-                alert('Пожалуйста, выберите курс');
-                return;
-            }
-            
-            const formData = {
-                name: modalDiv.querySelector('#studentName').value.trim(),
-                phone: modalDiv.querySelector('#studentPhone').value.trim(),
-                telegram: modalDiv.querySelector('#studentTelegram').value.trim(),
-                course: courseValue,
-                tariff: courseValue.split(' - ')[1] || 'Полный курс',
-                comment: modalDiv.querySelector('#studentComment').value.trim()
-            };
-            
-            if (!formData.name || !formData.phone || !formData.telegram) {
-                alert('Пожалуйста, заполните все обязательные поля');
-                return;
-            }
-            
-            const submitBtn = form.querySelector('.submit-btn');
-            submitBtn.textContent = 'Отправка...';
-            submitBtn.disabled = true;
-            
-            const success = await sendToTelegram(formData);
-            
-            if (success) {
-                alert('✅ Заявка успешно отправлена! Я свяжусь с вами в ближайшее время.');
-                modalDiv.remove();
-            } else {
-                alert('❌ Ошибка отправки. Пожалуйста, попробуйте позже или свяжитесь напрямую по контактам ниже.');
-                submitBtn.textContent = '✈️ Отправить заявку';
-                submitBtn.disabled = false;
-            }
+            const formData = { name: modal.querySelector('#studentName').value, phone: modal.querySelector('#studentPhone').value, telegram: modal.querySelector('#studentTelegram').value, course: modal.querySelector('#courseSelect').value, tariff: modal.querySelector('#courseSelect').value.split(' - ')[1] || 'Полный курс', comment: modal.querySelector('#studentComment').value };
+            if (!formData.name || !formData.phone || !formData.telegram) return alert('Заполните обязательные поля');
+            const btn = e.target.querySelector('.submit-btn'); btn.textContent = 'Отправка...'; btn.disabled = true;
+            const ok = await sendToTelegram(formData);
+            alert(ok ? '✅ Заявка отправлена! Свяжусь с вами в Telegram.' : '❌ Ошибка, напишите в Telegram @katerin_mischenko');
+            modal.remove();
         };
     }
 
     function showDesignModal(service) {
-        const modalDiv = document.createElement('div');
-        modalDiv.className = 'modal';
-        modalDiv.innerHTML = `
-            <div class="modal-content">
-                <span class="close-modal">&times;</span>
-                <h3>🎯 ${service.name}</h3>
-                <p style="margin: 16px 0;"><strong>Подробно:</strong> ${service.fullDesc}</p>
-                <button class="btn-primary" id="modalBriefBtn">📋 Заполнить бриф на дизайн</button>
-            </div>
-        `;
-        document.body.appendChild(modalDiv);
-        modalDiv.style.display = 'flex';
-        modalDiv.querySelector('.close-modal').onclick = () => modalDiv.remove();
-        modalDiv.onclick = (e) => { if(e.target === modalDiv) modalDiv.remove(); };
-        modalDiv.querySelector('#modalBriefBtn').onclick = () => {
-            alert("📝 Бриф на дизайн: https://forms.fill/design_brief (демо). Мы свяжемся в течение часа.");
-            modalDiv.remove();
-        };
+        const modal = document.createElement('div'); modal.className = 'modal';
+        modal.innerHTML = `<div class="modal-content"><span class="close-modal">&times;</span><h3>🎯 ${service.name}</h3>
+            <div style="margin: 16px 0;"><strong>📌 Что входит:</strong><ul>${service.details.map(d => `<li>${d}</li>`).join('')}</ul></div>
+            <div style="margin: 12px 0;"><strong>⏱ Срок выполнения:</strong> ${service.terms}</div>
+            <div><strong>💰 Стоимость:</strong> ${service.costByn} BYN / ${service.costRub} RUB</div>
+            <button class="btn-primary" style="margin-top: 20px; width:100%;" id="contactDesignModal">📞 Связаться для заказа</button></div>`;
+        document.body.appendChild(modal); modal.style.display = 'flex';
+        modal.querySelector('.close-modal').onclick = () => modal.remove();
+        modal.querySelector('#contactDesignModal').onclick = () => { window.open(TELEGRAM_LINK, '_blank'); modal.remove(); };
     }
 
-    // ==================== РЕНДЕР СТРАНИЦ ====================
-    
     function renderDesignPage() {
-        return `
-            <div class="page">
-                <div class="badge">КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ | НАПРАВЛЕНИЕ ДИЗАЙН</div>
-                <h1>🎨 Профессиональный дизайн<br>под ключ</h1>
-                
-                <!-- Блок о Екатерине Мищенко -->
-                <div class="about-card">
-                    <div class="about-flex">
-                        <div class="avatar">🎨</div>
-                        <div class="about-text">
-                            <h3 style="margin-bottom: 5px;">${teacherInfo.name}</h3>
-                            <p style="color: #1e4a5f; font-weight: 500;">${teacherInfo.role}</p>
-                            <p>${teacherInfo.education}</p>
-                            <p>${teacherInfo.career}</p>
-                            <div class="stats-grid">
-                                <span class="stat-item">📚 ${teacherInfo.experience}</span>
-                                <span class="stat-item">👥 ${teacherInfo.students}</span>
-                                <span class="stat-item">🏆 ${teacherInfo.examSuccess}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Вступление для дизайна -->
-                <div class="intro-block">
-                    <p>${designIntro.text}</p>
-                    <div class="intro-quote">✨ «Дизайн — это язык, на котором бизнес говорит с миром. Я помогаю найти правильные слова.»</div>
-                </div>
-                
-                <h2>✨ Услуги дизайна</h2>
-                <div class="grid-2col">
-                    ${designServices.map(s => `
-                        <div class="service-card">
-                            <h3>✨ ${s.name}</h3>
-                            <p>${s.shortDesc}</p>
-                            <button class="btn-secondary detail-design-btn" data-serv='${JSON.stringify(s)}'>Подробнее о сроках и стоимости →</button>
-                        </div>
-                    `).join('')}
-                </div>
-
-                <h2>📋 Этапы работы</h2>
-                <div class="stages-list">
-                    ${designStages.map(st => `<span class="stage">${st}</span>`).join('')}
-                </div>
-                <div style="text-align:center; margin: 20px 0 10px">
-                    <button class="btn-primary" id="globalBriefBtn">🧾 Заполнить бриф на дизайн-проект</button>
-                </div>
-
-                <div class="contact-block">
-                    <div><strong>📞 Есть вопросы по дизайну?</strong><br>Проконсультирую по срокам и портфолио</div>
-                    <div class="contact-info">
-                        <div class="contact-item">📱 <a href="tel:+375291234567">+375 (29) 123-45-67</a></div>
-                        <div class="contact-item">✉️ <a href="mailto:ekaterina@design.by">ekaterina@design.by</a></div>
-                        <div class="contact-item">💬 <a href="https://t.me/ekaterina_teacher" target="_blank">@ekaterina_teacher</a></div>
-                    </div>
-                    <button class="btn-primary" id="contactDesignBtn">Написать в Telegram</button>
-                </div>
-                <footer>Актуальность предложения: 30 дней. Кликайте на кнопки для деталей услуг.</footer>
-            </div>
-        `;
+        return `<div class="page"><h2>🎨 Услуги дизайна</h2><div class="grid-2col">${designServices.map(s => `<div class="service-card"><h3>✨ ${s.name}</h3><p>${s.shortDesc}</p><button class="btn-secondary detail-design" data-serv='${JSON.stringify(s)}'>Подробнее →</button></div>`).join('')}</div>
+        <h2>📋 Этапы работы над дизайн-проектом</h2><div class="stages-list">${stages.map(s => `<div class="stage-item"><div class="stage-title">${s.title}</div><div class="stage-desc">${s.desc}</div></div>`).join('')}</div>
+        <div class="contact-block"><div><strong>📞 Свяжитесь для заказа дизайна</strong><br>Обсудим детали и сроки</div><div class="contact-info"><div class="contact-item">📱 <a href="tel:+375333284152">+375 33 328-41-52</a></div><div class="contact-item">💬 <a href="${TELEGRAM_LINK}" target="_blank">@katerin_mischenko</a></div></div><button class="btn-primary" id="designContactBtn">Написать в Telegram</button></div><footer>Все цены указаны в BYN и RUB. Дизайн-проекты включают правки до 2-х итераций.</footer></div>`;
     }
 
     function renderTeachingPage() {
-        return `
-            <div class="page">
-                <div class="badge">КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ | IT-ОБРАЗОВАНИЕ</div>
-                <h1>📚 Преподавание компьютерных курсов</h1>
-                
-                <!-- Блок о Екатерине Мищенко -->
-                <div class="about-card">
-                    <div class="about-flex">
-                        <div class="avatar">👩‍🏫</div>
-                        <div class="about-text">
-                            <h3 style="margin-bottom: 5px;">${teacherInfo.name}</h3>
-                            <p style="color: #1e4a5f; font-weight: 500;">${teacherInfo.role}</p>
-                            <p>${teacherInfo.education}</p>
-                            <p>${teacherInfo.career}</p>
-                            <div class="stats-grid">
-                                <span class="stat-item">📚 ${teacherInfo.experience}</span>
-                                <span class="stat-item">👥 ${teacherInfo.students}</span>
-                                <span class="stat-item">🏆 ${teacherInfo.examSuccess}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Вступление для преподавания -->
-                <div class="intro-block">
-                    <p>${teachingIntro.text}</p>
-                    <div class="intro-quote">🌟 «Каждый ученик может достичь высоты, если найти правильный путь. Я помогаю этот путь увидеть.»</div>
-                </div>
-                
-                <h2>💻 Курсы с детальным содержанием</h2>
-                <div class="grid-2col">
-                    ${coursesData.map(course => {
-                        if (course.singleTariff) {
-                            return `
-                                <div class="course-card">
-                                    <h3>📌 ${course.name}</h3>
-                                    <p>${course.desc}</p>
-                                    <div class="tariff-group">
-                                        <div class="tariff">
-                                            <h4>📘 Полный курс</h4>
-                                            <div>${course.lessonsCount} занятий</div>
-                                            <div class="price">${course.price}</div>
-                                            <div class="course-content"><strong>Программа:</strong><ul>${course.content.map(c => `<li>${c}</li>`).join('')}</ul></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            `;
-                        } else {
-                            return `
-                                <div class="course-card">
-                                    <h3>💡 ${course.name}</h3>
-                                    <p>${course.desc}</p>
-                                    <div class="tariff-group">
-                                        ${course.tariffs.map(t => `
-                                            <div class="tariff">
-                                                <h4>${t.name} (${t.lessons} зан.)</h4>
-                                                <div class="price">${t.price}</div>
-                                                <div class="course-content"><strong>Что входит:</strong><ul>${t.content.map(item => `<li>${item}</li>`).join('')}</ul></div>
-                                            </div>
-                                        `).join('')}
-                                    </div>
-                                </div>
-                            `;
-                        }
-                    }).join('')}
-                </div>
-
-                <div style="text-align: center; margin: 20px 0 16px;">
-                    <button class="btn-primary" id="unifiedEnrollBtn" style="padding: 16px 48px; font-size: 1.1rem;">🎓 Записаться на курс →</button>
-                </div>
-
-                <div class="package-note">
-                    📦 Пакетные предложения: приобретите любые 2 курса со скидкой 10% или абонемент на 64 занятия — скидка 8%. Также доступны методические пособия.
-                </div>
-
-                <h2>📖 Методологические пособия (отдельная покупка)</h2>
-                <div class="grid-2col" style="margin-bottom: 20px;">
-                    ${methodPubs.map(m => `
-                        <div class="service-card">
-                            <h3>📘 ${m.title}</h3>
-                            <p>${m.desc}</p>
-                            <div class="price" style="font-size: 1.2rem; margin: 10px 0;">${m.price}</div>
-                            <button class="btn-secondary buy-method" data-method="${m.title}">Купить пособие</button>
-                        </div>
-                    `).join('')}
-                </div>
-
-                <div class="contact-block">
-                    <div><strong>🎓 Остались вопросы?</strong><br>Напишите, подберём удобный формат обучения</div>
-                    <div class="contact-info">
-                        <div class="contact-item">📱 <a href="tel:+375291234567">+375 (29) 123-45-67</a></div>
-                        <div class="contact-item">✉️ <a href="mailto:ekaterina@edu.by">ekaterina@edu.by</a></div>
-                        <div class="contact-item">💬 <a href="https://t.me/ekaterina_teacher" target="_blank">@ekaterina_teacher</a></div>
-                    </div>
-                    <button class="btn-primary" id="contactTeachBtn">Получить консультацию</button>
-                </div>
-                <footer>При выборе курса вы получите подробный syllabus. После отправки заявки я свяжусь с вами в Telegram.</footer>
-            </div>
-        `;
+        return `<div class="page"><div class="package-card"><h3>📦 Пакетные предложения</h3><div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">${packages.map(p => `<div style="flex:1; min-width:200px;"><strong>${p.name}</strong><br>${p.desc}<br><span style="color:#1e4a5f; font-weight:600;">${p.discount}</span></div>`).join('')}</div></div>
+        <h2>💻 Курсы (стоимость за 1 академический час)</h2><div class="grid-2col">${coursesData.map(c => { const priceH = `${c.hourPriceByn} BYN / ${c.hourPriceRub} RUB за час`;
+            if (c.singleTariff) return `<div class="course-card"><h3>📌 ${c.name}</h3><p>${c.desc}</p><div class="tariff"><div><strong>${c.hours} часов</strong></div><div class="price-row"><span class="price-byn">${c.hourPriceByn * c.hours} BYN</span><span class="price-rub">${c.hourPriceRub * c.hours} RUB</span></div><div class="course-content"><strong>Программа:</strong><ul>${c.content.map(i=>`<li>${i}</li>`).join('')}</ul></div></div></div>`;
+            else return `<div class="course-card"><h3>💡 ${c.name}</h3><p>${c.desc}</p><div class="tariff-group">${c.tariffs.map(t => `<div class="tariff"><h4>${t.name}</h4><div>${t.hours} часов</div><div class="price-row"><span class="price-byn">${c.hourPriceByn * t.hours} BYN</span><span class="price-rub">${c.hourPriceRub * t.hours} RUB</span></div><div class="course-content"><strong>Что входит:</strong><ul>${t.content.map(i=>`<li>${i}</li>`).join('')}</ul></div></div>`).join('')}</div></div>`;
+        }).join('')}</div>
+        <div style="text-align:center; margin:20px 0;"><button class="btn-primary" id="unifiedEnrollBtn" style="padding:14px 48px;">🎓 Записаться на курс →</button></div>
+        <h2>📖 Методические пособия</h2><div class="grid-2col">${methodPubs.map(m => `<div class="method-card"><h3>📘 ${m.title}</h3><p>${m.desc}</p><div class="price-row"><span class="price-byn">${m.priceByn} BYN</span><span class="price-rub">${m.priceRub} RUB</span></div><div class="course-content"><strong>Содержание:</strong><ul>${m.content.map(i=>`<li>${i}</li>`).join('')}</ul></div><button class="btn-secondary buy-method-btn">🛒 Купить пособие</button></div>`).join('')}</div>
+        <div class="contact-block"><div><strong>🎓 Остались вопросы?</strong><br>Напишите, подберём удобный формат</div><div class="contact-info"><div class="contact-item">📱 <a href="tel:+375333284152">+375 33 328-41-52</a></div><div class="contact-item">💬 <a href="${TELEGRAM_LINK}" target="_blank">@katerin_mischenko</a></div></div><button class="btn-primary" id="teachingContactBtn">Получить консультацию</button></div><footer>Цены указаны за 1 академический час (45 мин). Пакетные скидки суммируются.</footer></div>`;
     }
 
-    function attachHandlersForCurrentPage(pageType) {
-        if (pageType === 'design') {
-            document.querySelectorAll('.detail-design-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const servAttr = btn.getAttribute('data-serv');
-                    if (servAttr) {
-                        const service = JSON.parse(servAttr);
-                        showDesignModal(service);
-                    }
-                });
-            });
-            const globalBrief = document.getElementById('globalBriefBtn');
-            if (globalBrief) globalBrief.onclick = () => alert("📋 Перейти к брифу: https://forms.fill/design_brief (демо).");
-            const contactBtn = document.getElementById('contactDesignBtn');
-            if (contactBtn) contactBtn.onclick = () => window.open('https://t.me/ekaterina_teacher', '_blank');
-        } 
-        else if (pageType === 'teaching') {
-            const enrollBtn = document.getElementById('unifiedEnrollBtn');
-            if (enrollBtn) enrollBtn.onclick = () => showEnrollmentModal();
-            
-            document.querySelectorAll('.buy-method').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const method = btn.getAttribute('data-method') || "пособие";
-                    alert(`📘 Вы выбрали "${method}". Для оформления напишите в Telegram @ekaterina_teacher или на почту ekaterina@edu.by.`);
-                });
-            });
-            const contactTeach = document.getElementById('contactTeachBtn');
-            if (contactTeach) contactTeach.onclick = () => alert("📞 Оставьте заявку: +375291234567 или Telegram @ekaterina_teacher — ответим за 30 минут.");
-        }
-    }
-
-    let currentDirection = 'design';
-    const root = document.getElementById('proposalRoot');
-    const btnDesign = document.getElementById('switchDesign');
-    const btnTeaching = document.getElementById('switchTeaching');
-
-    function setActiveDirection(dir) {
-        if (dir === 'design') {
-            btnDesign.classList.add('active');
-            btnTeaching.classList.remove('active');
+    let current = 'design';
+    const container = document.getElementById('dynamicContent');
+    function render() { container.innerHTML = current === 'design' ? renderDesignPage() : renderTeachingPage(); attachHandlers(); }
+    function attachHandlers() {
+        if (current === 'design') {
+            document.querySelectorAll('.detail-design').forEach(btn => btn.addEventListener('click', () => showDesignModal(JSON.parse(btn.dataset.serv))));
+            const btn = document.getElementById('designContactBtn'); if(btn) btn.onclick = () => window.open(TELEGRAM_LINK, '_blank');
         } else {
-            btnTeaching.classList.add('active');
-            btnDesign.classList.remove('active');
+            const enroll = document.getElementById('unifiedEnrollBtn'); if(enroll) enroll.onclick = () => showEnrollmentModal();
+            document.querySelectorAll('.buy-method-btn').forEach(btn => btn.onclick = () => window.open(`${TELEGRAM_LINK}?text=Хочу%20приобрести%20методическое%20пособие`, '_blank'));
+            const contact = document.getElementById('teachingContactBtn'); if(contact) contact.onclick = () => window.open(TELEGRAM_LINK, '_blank');
         }
     }
-
-    function render() {
-        if (currentDirection === 'design') {
-            root.innerHTML = renderDesignPage();
-        } else {
-            root.innerHTML = renderTeachingPage();
-        }
-        attachHandlersForCurrentPage(currentDirection);
-    }
-
-    btnDesign.onclick = () => {
-        if (currentDirection === 'design') return;
-        currentDirection = 'design';
-        setActiveDirection('design');
-        render();
-    };
-    btnTeaching.onclick = () => {
-        if (currentDirection === 'teaching') return;
-        currentDirection = 'teaching';
-        setActiveDirection('teaching');
-        render();
-    };
-
+    document.getElementById('switchDesign').onclick = () => { if(current==='design') return; current='design'; document.querySelectorAll('.dir-btn').forEach(b=>b.classList.remove('active')); document.getElementById('switchDesign').classList.add('active'); render(); };
+    document.getElementById('switchTeaching').onclick = () => { if(current==='teaching') return; current='teaching'; document.querySelectorAll('.dir-btn').forEach(b=>b.classList.remove('active')); document.getElementById('switchTeaching').classList.add('active'); render(); };
     render();
-    
-    console.log('⚠️ Для отправки заявок в Telegram замените BOT_TOKEN и CHAT_ID в коде на свои значения');
 </script>
 </body>
 </html>
