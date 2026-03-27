@@ -227,18 +227,20 @@
             text-align: center;
         }
         .price-per-hour {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 800;
             color: #1e4a5f;
             background: linear-gradient(135deg, #1e4a5f10, #2c6e7e10);
             display: inline-block;
-            padding: 6px 16px;
+            padding: 4px 12px;
             border-radius: 40px;
+            white-space: nowrap;
         }
         .price-total {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #7f8c8d;
-            margin-top: 8px;
+            margin-top: 6px;
+            white-space: nowrap;
         }
         .course-content {
             font-size: 0.85rem;
@@ -289,7 +291,7 @@
             border-color: #1e4a5f;
         }
 
-        /* Горизонтальные этапы работы */
+        /* Горизонтальные этапы работы с понятным интерфейсом */
         .stages-horizontal {
             display: flex;
             flex-wrap: wrap;
@@ -299,7 +301,7 @@
         }
         .stage-horiz-item {
             flex: 1;
-            min-width: 160px;
+            min-width: 150px;
             background: #f9fbfe;
             border-radius: 24px;
             padding: 20px 16px;
@@ -328,6 +330,12 @@
             color: #1e4a5f;
             margin-bottom: 8px;
         }
+        .stage-hint {
+            font-size: 0.7rem;
+            color: #9aabb3;
+            margin-top: 8px;
+            font-style: italic;
+        }
         .stage-desc-horiz {
             font-size: 0.8rem;
             color: #5f7f8c;
@@ -340,54 +348,86 @@
         .stage-horiz-item.active .stage-desc-horiz {
             display: block;
         }
+        .stage-horiz-item.active {
+            background: white;
+            border-color: #1e4a5f;
+            box-shadow: 0 8px 20px -8px rgba(30,74,95,0.15);
+        }
+        .stage-horiz-item.active .stage-number {
+            opacity: 1;
+        }
 
-        /* Пакетные предложения в новом формате */
-        .packages-new {
+        /* Новые пакетные предложения */
+        .packages-premium {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
-            margin: 28px 0 24px;
+            gap: 24px;
+            margin: 28px 0 32px;
         }
-        .package-offer {
+        .premium-card {
             flex: 1;
-            min-width: 240px;
-            background: linear-gradient(145deg, #ffffff, #fafcff);
-            border-radius: 28px;
-            padding: 24px;
+            min-width: 260px;
+            background: linear-gradient(145deg, #ffffff, #fafdff);
+            border-radius: 32px;
+            padding: 28px 24px;
             text-align: center;
-            border: 2px solid rgba(30, 74, 95, 0.2);
-            transition: all 0.25s;
+            border: 2px solid rgba(30, 74, 95, 0.15);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
         }
-        .package-offer:hover {
-            transform: translateY(-5px);
+        .premium-card:hover {
+            transform: translateY(-8px);
             border-color: #1e4a5f;
-            box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.15);
         }
-        .package-icon {
-            font-size: 2.5rem;
-            margin-bottom: 12px;
+        .premium-badge {
+            position: absolute;
+            top: 12px;
+            right: -30px;
+            background: #1e4a5f;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 4px 30px;
+            transform: rotate(45deg);
+            width: 120px;
         }
-        .package-title {
-            font-size: 1.3rem;
+        .premium-icon {
+            font-size: 2.8rem;
+            margin-bottom: 16px;
+        }
+        .premium-title {
+            font-size: 1.5rem;
             font-weight: 800;
             color: #1e4a5f;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
         }
-        .package-detail {
+        .premium-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #1e4a5f;
+            margin: 16px 0;
+        }
+        .premium-price small {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #7f8c8d;
+        }
+        .premium-desc {
             font-size: 0.9rem;
             color: #2c3e44;
-            margin: 12px 0;
-            line-height: 1.4;
+            margin: 16px 0;
+            line-height: 1.5;
         }
-        .package-savings {
-            display: inline-block;
-            background: linear-gradient(135deg, #1e4a5f, #2c6e7e);
-            color: white;
-            padding: 6px 16px;
-            border-radius: 40px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-top: 12px;
+        .premium-list {
+            text-align: left;
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+        .premium-list li {
+            margin: 8px 0;
+            font-size: 0.85rem;
         }
 
         .contact-block {
@@ -483,6 +523,8 @@
             .grid-2col { grid-template-columns: 1fr; }
             .expert-header { flex-direction: column; text-align: center; }
             .stages-horizontal { flex-direction: column; }
+            .price-per-hour { white-space: normal; font-size: 1.1rem; }
+            .price-total { white-space: normal; }
         }
     </style>
 </head>
@@ -520,12 +562,12 @@
 </div>
 
 <script>
-    // ========== КУРСЫ С ЦЕНАМИ (RUB первым, BYN вторым, жирно за час) ==========
+    // ========== КУРСЫ С ОБНОВЛЕННЫМИ ЦЕНАМИ (рыночный анализ) ==========
     const coursesData = [
         { 
             name: "Scratch", 
-            desc: "Визуальное программирование для детей и новичков. Развитие логики и алгоритмического мышления.",
-            pricePerLessonRub: 1260, pricePerLessonByn: 45,
+            desc: "Визуальное программирование для детей 7-12 лет. Развитие логики и алгоритмического мышления.",
+            pricePerLessonRub: 1100, pricePerLessonByn: 40,
             tariffs: [
                 { name: "Базовый", hours: 32, content: ["Основы алгоритмов", "Циклы и условия", "Создание игр", "Анимации", "Финальный проект: мультфильм"] },
                 { name: "Расширенный", hours: 64, content: ["Все из базового", "Сложные проекты", "Работа со списками", "Клонирование", "Создание RPG игры", "Презентация портфолио"] }
@@ -533,8 +575,8 @@
         },
         { 
             name: "Python", 
-            desc: "От основ до проектов: боты, парсинг,数据分析. Подготовка к олимпиадам и ЕГЭ.",
-            pricePerLessonRub: 1680, pricePerLessonByn: 60,
+            desc: "Современный язык программирования: от основ до создания Telegram-ботов и парсинга.",
+            pricePerLessonRub: 1500, pricePerLessonByn: 54,
             tariffs: [
                 { name: "Базовый", hours: 32, content: ["Синтаксис, переменные", "Условные операторы", "Циклы, списки", "Функции", "Решение задач ЕГЭ/ОГЭ (начало)"] },
                 { name: "Расширенный", hours: 64, content: ["ООП", "Работа с файлами", "Telegram бот", "Парсинг сайтов", "Подготовка к олимпиадам", "Курсовой проект"] }
@@ -542,8 +584,8 @@
         },
         { 
             name: "HTML/CSS/JS", 
-            desc: "Верстка сайтов, адаптив, интерактивность. Финальный проект — личный сайт.",
-            pricePerLessonRub: 1540, pricePerLessonByn: 55,
+            desc: "Создание современных сайтов: верстка, адаптив, интерактивность.",
+            pricePerLessonRub: 1400, pricePerLessonByn: 50,
             tariffs: [
                 { name: "Базовый", hours: 32, content: ["HTML5 семантика", "CSS стилизация", "Flex/Grid", "Адаптив", "Формы"] },
                 { name: "Профессиональный", hours: 64, content: ["JavaScript: основы, DOM", "События, анимации", "Сборка проекта", "Git", "Финальный сайт-портфолио"] }
@@ -551,8 +593,8 @@
         },
         { 
             name: "Дизайн в Figma", 
-            desc: "Интерфейсы, прототипирование, авто-лейауты, дизайн-системы.",
-            pricePerLessonRub: 1624, pricePerLessonByn: 58,
+            desc: "Профессиональный дизайн интерфейсов: от прототипа до дизайн-системы.",
+            pricePerLessonRub: 1450, pricePerLessonByn: 52,
             tariffs: [
                 { name: "Базовый", hours: 32, content: ["Интерфейс Figma", "Фигуры, текст", "Компоненты", "Прототипирование", "Лендинг"] },
                 { name: "Расширенный", hours: 64, content: ["Авто-лейауты", "Векторная графика", "Дизайн-системы", "Анимация в Figma", "UI-кит для приложения"] }
@@ -560,33 +602,63 @@
         },
         { 
             name: "Подготовка к ЕГЭ/ОГЭ по информатике", 
-            desc: "Разбор всех типов заданий, программирование (Python, алгоритмы), теория.",
-            pricePerLessonRub: 1820, pricePerLessonByn: 65,
+            desc: "Интенсивная подготовка с разбором всех типов заданий, программирование на Python.",
+            pricePerLessonRub: 1700, pricePerLessonByn: 62,
             singleTariff: true, hours: 48,
-            content: ["Разбор 1-27 заданий", "Алгоритмизация", "Python с нуля", "Эмуляция экзамена", "Разбор вариантов", "Индивидуальный трек"]
+            content: ["Разбор 1-27 заданий", "Алгоритмизация", "Python с нуля", "Эмуляция экзамена", "Разбор вариантов", "Индивидуальный трек", "Пробные экзамены"]
         },
         { 
             name: "Цифровая грамотность", 
-            desc: "Безопасность, офисные пакеты, облачные сервисы, основы ИКТ.",
-            pricePerLessonRub: 1120, pricePerLessonByn: 40,
+            desc: "Базовые навыки работы с компьютером, безопасность, офисные программы.",
+            pricePerLessonRub: 900, pricePerLessonByn: 32,
             singleTariff: true, hours: 24,
             content: ["Кибербезопасность", "Google Docs/Excel", "Облачные хранилища", "Этикет в сети", "Работа с почтой", "Итоговый тест"]
         }
     ];
 
+    // Методические пособия (добавлено пособие для ЕГЭ/ОГЭ)
     const methodPubs = [
-        { title: "Метод. пособие по Python", desc: "120 страниц, теория, задачи, шаблоны кода.", priceRub: 1260, priceByn: 45, content: ["Теория с примерами", "50+ практических задач", "Чек-листы для самопроверки", "Шаблоны проектов", "Гайд по подготовке к ЕГЭ"] },
-        { title: "Метод. пособие по HTML/CSS", desc: "Структура курса, макеты, готовые упражнения.", priceRub: 1120, priceByn: 40, content: ["Пошаговая структура курса", "5 готовых макетов для верстки", "Упражнения на Flex/Grid", "Адаптив: принципы и практика", "Финальный проект"] },
-        { title: "Метод. пособие «Основы Figma»", desc: "Гайд по интерфейсу, компоненты, библиотеки.", priceRub: 1400, priceByn: 50, content: ["Интерфейс и инструменты", "Работа с компонентами", "Создание дизайн-системы", "Авто-лейауты", "Практические кейсы"] }
+        { title: "Метод. пособие по Python", desc: "120 страниц, теория, задачи, шаблоны кода.", priceRub: 1200, priceByn: 43, content: ["Теория с примерами", "50+ практических задач", "Чек-листы для самопроверки", "Шаблоны проектов", "Гайд по подготовке к ЕГЭ"] },
+        { title: "Метод. пособие по HTML/CSS", desc: "Структура курса, макеты, готовые упражнения.", priceRub: 1100, priceByn: 39, content: ["Пошаговая структура курса", "5 готовых макетов для верстки", "Упражнения на Flex/Grid", "Адаптив: принципы и практика", "Финальный проект"] },
+        { title: "Метод. пособие «Основы Figma»", desc: "Гайд по интерфейсу, компоненты, библиотеки.", priceRub: 1300, priceByn: 46, content: ["Интерфейс и инструменты", "Работа с компонентами", "Создание дизайн-системы", "Авто-лейауты", "Практические кейсы"] },
+        { title: "Метод. пособие «ЕГЭ/ОГЭ Информатика»", desc: "Полный разбор всех заданий, алгоритмы, типовые ошибки, 150+ задач.", priceRub: 1500, priceByn: 54, content: ["Разбор всех типов заданий 1-27", "Алгоритмы и программирование", "Типовые ошибки и лайфхаки", "150+ задач с решениями", "Чек-листы для подготовки", "Демо-версии экзаменов"] }
     ];
 
-    // Новые пакетные предложения
-    const packagesNew = [
-        { icon: "🎯", title: "Стартовый набор", detail: "Любой базовый курс (32 занятия) + 1 методическое пособие", savings: "Экономия 45 BYN / 1260 RUB" },
-        { icon: "⚡", title: "Профи-пакет", detail: "Любой расширенный курс (64 занятия) + 2 любых пособия", savings: "Скидка 20% на пособия" },
-        { icon: "👥", title: "Семейный формат", detail: "2 курса для двоих учеников (индивидуально или в паре)", savings: "−15% на второй курс" },
-        { icon: "🎨", title: "Дизайн+Обучение", detail: "Дизайн-проект + любой образовательный курс", savings: "Скидка 12% на комплекс" },
-        { icon: "📚", title: "Абонемент MAX", detail: "64 занятия в любом направлении + все пособия в подарок", savings: "Экономия до 120 BYN / 3360 RUB" }
+    // НОВЫЕ ПАКЕТНЫЕ ПРЕДЛОЖЕНИЯ (совсем другие)
+    const premiumPackages = [
+        {
+            icon: "🚀",
+            title: "Старт",
+            priceRub: "11 900",
+            priceByn: "425",
+            desc: "Идеальный старт в IT или дизайне",
+            features: ["Любой базовый курс (32 занятия)", "1 методическое пособие в подарок", "Бесплатная консультация", "Сертификат о прохождении"]
+        },
+        {
+            icon: "⚡",
+            title: "Профи",
+            priceRub: "22 500",
+            priceByn: "804",
+            desc: "Полное погружение в профессию",
+            features: ["Любой расширенный курс (64 занятия)", "2 методических пособия (на выбор)", "3 персональные консультации", "Помощь с проектом", "Приоритетная поддержка", "Сертификат с отличием"],
+            popular: true
+        },
+        {
+            icon: "👨‍👩‍👧",
+            title: "Семейный",
+            priceRub: "31 500",
+            priceByn: "1125",
+            desc: "Обучение для двоих с выгодой",
+            features: ["2 курса для 2 учеников", "Любые направления", "Скидка 20% на методички", "Гибкий график занятий", "Общий чат с преподавателем"]
+        },
+        {
+            icon: "🎓",
+            title: "Эксперт",
+            priceRub: "39 900",
+            priceByn: "1425",
+            desc: "Максимальная подготовка к ЕГЭ",
+            features: ["Подготовка к ЕГЭ/ОГЭ (48 занятий)", "Интенсив по Python", "Все методические пособия", "5 пробных экзаменов", "Разбор индивидуальных ошибок", "Гарантия результата"]
+        }
     ];
 
     const designServices = [
@@ -607,7 +679,7 @@
           terms: "от 7 дней", costRub: 22400, costByn: 800 }
     ];
 
-    // Этапы для горизонтального отображения с описанием
+    // Этапы с понятным интерфейсом
     const stagesHorizontal = [
         { number: "01", title: "Брифинг", desc: "Детальное интервью: цели, аудитория, стиль, сроки. Заполнение брифа и определение задач." },
         { number: "02", title: "Анализ", desc: "Исследование конкурентов, создание moodboard, подбор референсов. Согласование направления." },
@@ -636,12 +708,12 @@
             if (c.singleTariff) {
                 const totalRub = c.pricePerLessonRub * c.hours;
                 const totalByn = c.pricePerLessonByn * c.hours;
-                return `<option value="${c.name}">${c.name} (${c.hours} зан., ${c.pricePerLessonRub} RUB / ${c.pricePerLessonByn} BYN за час, итого ${totalRub} RUB / ${totalByn} BYN)</option>`;
+                return `<option value="${c.name}">${c.name} (${c.hours} зан., ${c.pricePerLessonRub}₽ / ${c.pricePerLessonByn}Br за час, итого ${totalRub}₽ / ${totalByn}Br)</option>`;
             } else {
                 return c.tariffs.map(t => {
                     const totalRub = c.pricePerLessonRub * t.hours;
                     const totalByn = c.pricePerLessonByn * t.hours;
-                    return `<option value="${c.name} - ${t.name}">${c.name} (${t.name}, ${t.hours} зан., ${c.pricePerLessonRub} RUB / ${c.pricePerLessonByn} BYN за час, итого ${totalRub} RUB / ${totalByn} BYN)</option>`;
+                    return `<option value="${c.name} - ${t.name}">${c.name} (${t.name}, ${t.hours} зан., ${c.pricePerLessonRub}₽ / ${c.pricePerLessonByn}Br за час, итого ${totalRub}₽ / ${totalByn}Br)</option>`;
                 }).join('');
             }
         }).join('');
@@ -670,7 +742,7 @@
         modal.innerHTML = `<div class="modal-content" style="position:relative;"><span class="close-modal">&times;</span><h3>🎯 ${service.name}</h3>
             <div style="margin: 16px 0;"><strong>📌 Что входит:</strong><ul>${service.details.map(d => `<li>${d}</li>`).join('')}</ul></div>
             <div style="margin: 12px 0;"><strong>⏱ Срок:</strong> ${service.terms}</div>
-            <div><strong>💰 Стоимость:</strong> ${service.costRub} RUB / ${service.costByn} BYN</div>
+            <div><strong>💰 Стоимость:</strong> ${service.costRub} ₽ / ${service.costByn} Br</div>
             <button class="btn-primary" style="margin-top: 20px; width:100%;" id="designModalContact">📞 Связаться для заказа</button></div>`;
         document.body.appendChild(modal); modal.style.display = 'flex';
         modal.querySelector('.close-modal').onclick = () => modal.remove();
@@ -679,27 +751,27 @@
 
     function renderDesignPage() {
         return `<div class="page"><h2>🎨 Услуги дизайна</h2><div class="grid-2col">${designServices.map(s => `<div class="service-card"><h3>✨ ${s.name}</h3><p>${s.shortDesc}</p><button class="btn-secondary detail-design" data-serv='${JSON.stringify(s)}'>Подробнее →</button></div>`).join('')}</div>
-        <h2>📋 Этапы работы</h2><div class="stages-horizontal" id="stagesContainer">${stagesHorizontal.map((s, idx) => `<div class="stage-horiz-item" data-stage="${idx}"><div class="stage-number">${s.number}</div><div class="stage-title-horiz">${s.title}</div><div class="stage-desc-horiz">${s.desc}</div></div>`).join('')}</div>
-        <div class="contact-block"><div><strong>📞 Свяжитесь для заказа дизайна</strong><br>Обсудим детали и сроки</div><div class="contact-info"><div class="contact-item">📱 <a href="tel:+375333284152">+375 33 328-41-52</a></div><div class="contact-item">💬 <a href="${TELEGRAM_LINK}" target="_blank">@katerin_mischenko</a></div></div><button class="btn-primary" id="designContactBtn">Написать в Telegram</button></div><footer>Дизайн-проекты включают правки до 2-х итераций. Все цены в RUB и BYN.</footer></div>`;
+        <h2>📋 Этапы работы (нажмите на этап для подробностей)</h2><div class="stages-horizontal" id="stagesContainer">${stagesHorizontal.map((s, idx) => `<div class="stage-horiz-item" data-stage="${idx}"><div class="stage-number">${s.number}</div><div class="stage-title-horiz">${s.title}</div><div class="stage-hint">▼ нажмите ▼</div><div class="stage-desc-horiz">${s.desc}</div></div>`).join('')}</div>
+        <div class="contact-block"><div><strong>📞 Свяжитесь для заказа дизайна</strong><br>Обсудим детали и сроки</div><div class="contact-info"><div class="contact-item">📱 <a href="tel:+375333284152">+375 33 328-41-52</a></div><div class="contact-item">💬 <a href="${TELEGRAM_LINK}" target="_blank">@katerin_mischenko</a></div></div><button class="btn-primary" id="designContactBtn">Написать в Telegram</button></div><footer>Дизайн-проекты включают правки до 2-х итераций. Все цены в рублях (₽) и белорусских рублях (Br).</footer></div>`;
     }
 
     function renderTeachingPage() {
-        return `<div class="page"><h2>📦 Пакетные предложения</h2><div class="packages-new">${packagesNew.map(p => `<div class="package-offer"><div class="package-icon">${p.icon}</div><div class="package-title">${p.title}</div><div class="package-detail">${p.detail}</div><div class="package-savings">${p.savings}</div></div>`).join('')}</div>
-        <h2>💻 Курсы</h2><div class="grid-2col">${coursesData.map(c => { 
+        return `<div class="page"><h2>🏆 Пакетные предложения</h2><div class="packages-premium">${premiumPackages.map(p => `<div class="premium-card">${p.popular ? '<div class="premium-badge">🔥 ПОПУЛЯРНЫЙ</div>' : ''}<div class="premium-icon">${p.icon}</div><div class="premium-title">${p.title}</div><div class="premium-price">${p.priceRub} ₽ <small>/</small> ${p.priceByn} Br</div><div class="premium-desc">${p.desc}</div><ul class="premium-list">${p.features.map(f => `<li>✓ ${f}</li>`).join('')}</ul><button class="btn-primary select-package" data-package="${p.title}">Выбрать пакет →</button></div>`).join('')}</div>
+        <h2>💻 Курсы (цены за 1 занятие)</h2><div class="grid-2col">${coursesData.map(c => { 
             if (c.singleTariff) {
                 const totalRub = c.pricePerLessonRub * c.hours;
                 const totalByn = c.pricePerLessonByn * c.hours;
-                return `<div class="course-card"><h3>📌 ${c.name}</h3><p>${c.desc}</p><div class="tariff"><div class="price-block"><div class="price-per-hour">${c.pricePerLessonRub} RUB / ${c.pricePerLessonByn} BYN <span style="font-size:0.8rem;">за занятие</span></div><div class="price-total">всего: ${totalRub} RUB / ${totalByn} BYN (${c.hours} занятий)</div></div><div class="course-content"><strong>Программа:</strong><ul>${c.content.map(i=>`<li>${i}</li>`).join('')}</ul></div></div></div>`;
+                return `<div class="course-card"><h3>📌 ${c.name}</h3><p>${c.desc}</p><div class="tariff"><div class="price-block"><div class="price-per-hour">${c.pricePerLessonRub}₽ / ${c.pricePerLessonByn}Br за час</div><div class="price-total">всего: ${totalRub}₽ / ${totalByn}Br (${c.hours} занятий)</div></div><div class="course-content"><strong>Программа:</strong><ul>${c.content.map(i=>`<li>${i}</li>`).join('')}</ul></div></div></div>`;
             } else {
                 return `<div class="course-card"><h3>💡 ${c.name}</h3><p>${c.desc}</p><div class="tariff-group">${c.tariffs.map(t => { 
                     const totalRub = c.pricePerLessonRub * t.hours;
                     const totalByn = c.pricePerLessonByn * t.hours;
-                    return `<div class="tariff"><h4>${t.name}</h4><div class="price-block"><div class="price-per-hour">${c.pricePerLessonRub} RUB / ${c.pricePerLessonByn} BYN <span style="font-size:0.8rem;">за занятие</span></div><div class="price-total">всего: ${totalRub} RUB / ${totalByn} BYN (${t.hours} занятий)</div></div><div class="course-content"><strong>Что входит:</strong><ul>${t.content.map(i=>`<li>${i}</li>`).join('')}</ul></div></div>`}).join('')}</div></div>`;
+                    return `<div class="tariff"><h4>${t.name}</h4><div class="price-block"><div class="price-per-hour">${c.pricePerLessonRub}₽ / ${c.pricePerLessonByn}Br за час</div><div class="price-total">всего: ${totalRub}₽ / ${totalByn}Br (${t.hours} занятий)</div></div><div class="course-content"><strong>Что входит:</strong><ul>${t.content.map(i=>`<li>${i}</li>`).join('')}</ul></div></div>`}).join('')}</div></div>`;
             }
         }).join('')}</div>
         <div style="text-align:center; margin:28px 0;"><button class="btn-primary" id="unifiedEnrollBtn" style="padding:16px 52px; font-size:1rem;">🎓 Записаться на курс →</button></div>
-        <h2>📖 Методические пособия</h2><div class="grid-2col">${methodPubs.map(m => `<div class="method-card"><h3>📘 ${m.title}</h3><p>${m.desc}</p><div class="price-block" style="text-align:left; margin:12px 0;"><div class="price-per-hour" style="font-size:1.2rem;">${m.priceRub} RUB / ${m.priceByn} BYN</div></div><div class="course-content"><strong>Содержание:</strong><ul>${m.content.map(i=>`<li>${i}</li>`).join('')}</ul></div><button class="btn-secondary buy-method-btn">🛒 Купить пособие</button></div>`).join('')}</div>
-        <div class="contact-block"><div><strong>🎓 Остались вопросы?</strong><br>Напишите, подберём удобный формат</div><div class="contact-info"><div class="contact-item">📱 <a href="tel:+375333284152">+375 33 328-41-52</a></div><div class="contact-item">💬 <a href="${TELEGRAM_LINK}" target="_blank">@katerin_mischenko</a></div></div><button class="btn-primary" id="teachingContactBtn">Получить консультацию</button></div><footer>Цены указаны за 1 занятие (академический час). Пакетные скидки суммируются. Возможна оплата по частям.</footer></div>`;
+        <h2>📖 Методические пособия</h2><div class="grid-2col">${methodPubs.map(m => `<div class="method-card"><h3>📘 ${m.title}</h3><p>${m.desc}</p><div class="price-block" style="text-align:left; margin:12px 0;"><div class="price-per-hour" style="font-size:1.2rem; display:inline-block;">${m.priceRub}₽ / ${m.priceByn}Br</div></div><div class="course-content"><strong>Содержание:</strong><ul>${m.content.map(i=>`<li>${i}</li>`).join('')}</ul></div><button class="btn-secondary buy-method-btn">🛒 Купить пособие</button></div>`).join('')}</div>
+        <div class="contact-block"><div><strong>🎓 Остались вопросы?</strong><br>Напишите, подберём удобный формат</div><div class="contact-info"><div class="contact-item">📱 <a href="tel:+375333284152">+375 33 328-41-52</a></div><div class="contact-item">💬 <a href="${TELEGRAM_LINK}" target="_blank">@katerin_mischenko</a></div></div><button class="btn-primary" id="teachingContactBtn">Получить консультацию</button></div><footer>Цены указаны за 1 занятие (академический час). Пакетные предложения включают все преимущества. Возможна оплата по частям.</footer></div>`;
     }
 
     let current = 'design';
@@ -709,19 +781,18 @@
         if (current === 'design') {
             document.querySelectorAll('.detail-design').forEach(btn => btn.addEventListener('click', () => showDesignModal(JSON.parse(btn.dataset.serv))));
             const btn = document.getElementById('designContactBtn'); if(btn) btn.onclick = () => window.open(TELEGRAM_LINK, '_blank');
-            // Горизонтальные этапы: клик для показа описания
             const stagesItems = document.querySelectorAll('.stage-horiz-item');
             stagesItems.forEach(item => {
                 item.addEventListener('click', () => {
                     stagesItems.forEach(i => i.classList.remove('active'));
                     item.classList.add('active');
                 });
-                // Показываем описание первого по умолчанию
                 if (item.getAttribute('data-stage') === '0') item.classList.add('active');
             });
         } else {
             const enroll = document.getElementById('unifiedEnrollBtn'); if(enroll) enroll.onclick = () => showEnrollmentModal();
             document.querySelectorAll('.buy-method-btn').forEach(btn => btn.onclick = () => window.open(`${TELEGRAM_LINK}?text=Хочу%20приобрести%20методическое%20пособие`, '_blank'));
+            document.querySelectorAll('.select-package').forEach(btn => btn.onclick = () => { alert(`📦 Вы выбрали пакет "${btn.dataset.package}". Напишите в Telegram @katerin_mischenko для оформления!`); window.open(TELEGRAM_LINK, '_blank'); });
             const contact = document.getElementById('teachingContactBtn'); if(contact) contact.onclick = () => window.open(TELEGRAM_LINK, '_blank');
         }
     }
