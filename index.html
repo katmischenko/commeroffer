@@ -26,7 +26,7 @@
             width: 100%;
         }
 
-        /* Стиль карточки эксперта — современный градиент */
+        /* Карточка эксперта */
         .expert-card {
             background: linear-gradient(135deg, #ffffff 0%, #fefefe 100%);
             border-radius: 56px;
@@ -35,7 +35,6 @@
             margin-bottom: 40px;
             transition: all 0.3s;
             border: 1px solid rgba(0, 0, 0, 0.05);
-            backdrop-filter: blur(2px);
         }
 
         .expert-header {
@@ -111,7 +110,7 @@
             margin-bottom: 16px;
         }
 
-        /* Переключатель — молодежный стиль */
+        /* Переключатель */
         .direction-switch {
             display: flex;
             gap: 16px;
@@ -189,7 +188,6 @@
             margin: 32px 0;
         }
 
-        /* Карточки курсов и услуг */
         .course-card, .service-card, .method-card {
             background: #ffffff;
             border-radius: 32px;
@@ -224,18 +222,26 @@
             color: #1e4a5f;
             margin-bottom: 12px;
         }
-        .price-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #1e4a5f10, #2c6e7e10);
-            padding: 8px 16px;
-            border-radius: 40px;
-            font-weight: 700;
+        .price-block {
+            background: linear-gradient(135deg, #f0f6fa, #e8f0f5);
+            padding: 12px 16px;
+            border-radius: 24px;
             margin: 12px 0;
         }
-        .price-badge span {
-            font-size: 1.4rem;
+        .price-per-lesson {
+            font-size: 0.85rem;
+            color: #5f7f8c;
+            margin-bottom: 6px;
+        }
+        .price-total {
+            font-size: 1.3rem;
             font-weight: 800;
             color: #1e4a5f;
+        }
+        .price-total span {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #5f7f8c;
         }
         .course-content {
             font-size: 0.85rem;
@@ -275,7 +281,6 @@
         .btn-primary:hover {
             background: #0f3a49;
             transform: scale(1.02);
-            box-shadow: 0 8px 18px rgba(30,74,95,0.25);
         }
         .btn-secondary {
             background: white;
@@ -287,7 +292,6 @@
             border-color: #1e4a5f;
         }
 
-        /* Этапы работ — стильные */
         .stages-list {
             display: flex;
             flex-direction: column;
@@ -299,14 +303,12 @@
             border-radius: 24px;
             padding: 20px 24px;
             border-left: 5px solid #1e4a5f;
-            transition: 0.2s;
         }
         .stage-title {
             font-weight: 800;
             font-size: 1rem;
             color: #1e4a5f;
             margin-bottom: 8px;
-            letter-spacing: -0.2px;
         }
         .stage-desc {
             font-size: 0.9rem;
@@ -314,7 +316,6 @@
             line-height: 1.45;
         }
 
-        /* Пакетные предложения — яркий блок */
         .packages-grid {
             display: flex;
             flex-wrap: wrap;
@@ -404,6 +405,7 @@
             width: 90%;
             border-radius: 40px;
             padding: 36px;
+            position: relative;
         }
         .close-modal {
             position: absolute;
@@ -484,41 +486,75 @@
 </div>
 
 <script>
-    // ========== ЦЕНЫ: стоимость ЗА ОДНО ЗАНЯТИЕ (академический час) ==========
-    const LESSON_PRICE_BYN = 54;
-    const LESSON_PRICE_RUB = 1512; // 54*28
+    // ========== КУРСЫ С ИНДИВИДУАЛЬНЫМИ ЦЕНАМИ (рыночный анализ) ==========
+    // Цены указаны за 1 занятие (академический час) и общая стоимость за курс
+    // BYN и RUB (курс ~1 BYN = 28 RUB)
     
     const coursesData = [
-        { name: "Scratch", desc: "Визуальное программирование для детей и новичков. Развитие логики.",
-          tariffs: [{ name: "Базовый", hours: 32, content: ["Основы алгоритмов", "Циклы и условия", "Создание игр", "Анимации", "Финальный проект: мультфильм"] },
-                    { name: "Расширенный", hours: 64, content: ["Все из базового", "Сложные проекты", "Работа со списками", "Клонирование", "Создание RPG игры"] }] },
-        { name: "Python", desc: "От основ до проектов: боты, парсинг, подготовка к ЕГЭ.",
-          tariffs: [{ name: "Базовый", hours: 32, content: ["Синтаксис, переменные", "Условные операторы", "Циклы, списки", "Функции", "Решение задач ЕГЭ/ОГЭ"] },
-                    { name: "Расширенный", hours: 64, content: ["ООП", "Работа с файлами", "Telegram бот", "Парсинг сайтов", "Курсовой проект"] }] },
-        { name: "HTML/CSS/JS", desc: "Верстка сайтов, адаптив, интерактивность.",
-          tariffs: [{ name: "Базовый", hours: 32, content: ["HTML5 семантика", "CSS стилизация", "Flex/Grid", "Адаптив", "Формы"] },
-                    { name: "Профессиональный", hours: 64, content: ["JavaScript: основы, DOM", "События, анимации", "Сборка проекта", "Git", "Финальный сайт"] }] },
-        { name: "Дизайн в Figma", desc: "Интерфейсы, прототипирование, дизайн-системы.",
-          tariffs: [{ name: "Базовый", hours: 32, content: ["Интерфейс Figma", "Фигуры, текст", "Компоненты", "Прототипирование", "Лендинг"] },
-                    { name: "Расширенный", hours: 64, content: ["Авто-лейауты", "Векторная графика", "Дизайн-системы", "Анимация в Figma", "UI-кит"] }] },
-        { name: "Подготовка к ЕГЭ/ОГЭ", desc: "Разбор всех типов заданий, Python, теория.", singleTariff: true, hours: 48,
-          content: ["Разбор 1-27 заданий", "Алгоритмизация", "Python с нуля", "Эмуляция экзамена", "Разбор вариантов", "Индивидуальный трек"] },
-        { name: "Цифровая грамотность", desc: "Безопасность, офисные пакеты, облачные сервисы.", singleTariff: true, hours: 24,
-          content: ["Кибербезопасность", "Google Docs/Excel", "Облачные хранилища", "Этикет в сети", "Работа с почтой", "Итоговый тест"] }
+        { 
+            name: "Scratch", 
+            desc: "Визуальное программирование для детей и новичков. Развитие логики и алгоритмического мышления.",
+            pricePerLessonByn: 45, pricePerLessonRub: 1260,
+            tariffs: [
+                { name: "Базовый", hours: 32, content: ["Основы алгоритмов", "Циклы и условия", "Создание игр", "Анимации", "Финальный проект: мультфильм"] },
+                { name: "Расширенный", hours: 64, content: ["Все из базового", "Сложные проекты", "Работа со списками", "Клонирование", "Создание RPG игры", "Презентация портфолио"] }
+            ]
+        },
+        { 
+            name: "Python", 
+            desc: "От основ до проектов: боты, парсинг,数据分析. Подготовка к олимпиадам и ЕГЭ.",
+            pricePerLessonByn: 60, pricePerLessonRub: 1680,
+            tariffs: [
+                { name: "Базовый", hours: 32, content: ["Синтаксис, переменные", "Условные операторы", "Циклы, списки", "Функции", "Решение задач ЕГЭ/ОГЭ (начало)"] },
+                { name: "Расширенный", hours: 64, content: ["ООП", "Работа с файлами", "Telegram бот", "Парсинг сайтов", "Подготовка к олимпиадам", "Курсовой проект"] }
+            ]
+        },
+        { 
+            name: "HTML/CSS/JS", 
+            desc: "Верстка сайтов, адаптив, интерактивность. Финальный проект — личный сайт.",
+            pricePerLessonByn: 55, pricePerLessonRub: 1540,
+            tariffs: [
+                { name: "Базовый", hours: 32, content: ["HTML5 семантика", "CSS стилизация", "Flex/Grid", "Адаптив", "Формы"] },
+                { name: "Профессиональный", hours: 64, content: ["JavaScript: основы, DOM", "События, анимации", "Сборка проекта", "Git", "Финальный сайт-портфолио"] }
+            ]
+        },
+        { 
+            name: "Дизайн в Figma", 
+            desc: "Интерфейсы, прототипирование, авто-лейауты, дизайн-системы.",
+            pricePerLessonByn: 58, pricePerLessonRub: 1624,
+            tariffs: [
+                { name: "Базовый", hours: 32, content: ["Интерфейс Figma", "Фигуры, текст", "Компоненты", "Прототипирование", "Лендинг"] },
+                { name: "Расширенный", hours: 64, content: ["Авто-лейауты", "Векторная графика", "Дизайн-системы", "Анимация в Figma", "UI-кит для приложения"] }
+            ]
+        },
+        { 
+            name: "Подготовка к ЕГЭ/ОГЭ по информатике", 
+            desc: "Разбор всех типов заданий, программирование (Python, алгоритмы), теория.",
+            pricePerLessonByn: 65, pricePerLessonRub: 1820,
+            singleTariff: true, hours: 48,
+            content: ["Разбор 1-27 заданий", "Алгоритмизация", "Python с нуля", "Эмуляция экзамена", "Разбор вариантов", "Индивидуальный трек"]
+        },
+        { 
+            name: "Цифровая грамотность", 
+            desc: "Безопасность, офисные пакеты, облачные сервисы, основы ИКТ.",
+            pricePerLessonByn: 40, pricePerLessonRub: 1120,
+            singleTariff: true, hours: 24,
+            content: ["Кибербезопасность", "Google Docs/Excel", "Облачные хранилища", "Этикет в сети", "Работа с почтой", "Итоговый тест"]
+        }
     ];
 
     const methodPubs = [
-        { title: "Метод. пособие по Python", desc: "120 страниц, теория, задачи, шаблоны кода.", priceByn: 45, priceRub: 1260, content: ["Теория с примерами", "50+ практических задач", "Чек-листы", "Шаблоны проектов", "Гайд по ЕГЭ"] },
-        { title: "Метод. пособие по HTML/CSS", desc: "Структура курса, макеты, упражнения.", priceByn: 40, priceRub: 1120, content: ["Пошаговая структура", "5 макетов для верстки", "Упражнения Flex/Grid", "Адаптив", "Финальный проект"] },
-        { title: "Метод. пособие «Основы Figma»", desc: "Гайд по интерфейсу, компоненты, библиотеки.", priceByn: 50, priceRub: 1400, content: ["Интерфейс и инструменты", "Работа с компонентами", "Дизайн-система", "Авто-лейауты", "Практические кейсы"] }
+        { title: "Метод. пособие по Python", desc: "120 страниц, теория, задачи, шаблоны кода.", priceByn: 45, priceRub: 1260, content: ["Теория с примерами", "50+ практических задач", "Чек-листы для самопроверки", "Шаблоны проектов", "Гайд по подготовке к ЕГЭ"] },
+        { title: "Метод. пособие по HTML/CSS", desc: "Структура курса, макеты, готовые упражнения.", priceByn: 40, priceRub: 1120, content: ["Пошаговая структура курса", "5 готовых макетов для верстки", "Упражнения на Flex/Grid", "Адаптив: принципы и практика", "Финальный проект"] },
+        { title: "Метод. пособие «Основы Figma»", desc: "Гайд по интерфейсу, компоненты, библиотеки.", priceByn: 50, priceRub: 1400, content: ["Интерфейс и инструменты", "Работа с компонентами", "Создание дизайн-системы", "Авто-лейауты", "Практические кейсы"] }
     ];
 
-    // Обновленные пакетные предложения
+    // Пакетные предложения
     const packages = [
-        { name: "🚀 Стартовый", desc: "Любой курс 32 занятия + 1 методичка в подарок", discount: "Экономия до 45 BYN / 1260 RUB" },
-        { name: "🎯 Профессионал", desc: "Курс 64 занятия + 2 любых пособия со скидкой 25%", discount: "−25% на методички" },
-        { name: "👥 Для двоих", desc: "2 курса для 2 учеников — скидка 15% на второй", discount: "−15% на второй курс" },
-        { name: "🎨 Дизайн+Курс", desc: "Дизайн-проект + любой курс — скидка 12%", discount: "12% на комплекс" }
+        { name: "🚀 Стартовый", desc: "Любой базовый курс (32 занятия) + 1 методичка в подарок", discount: "Экономия до 45 BYN / 1260 RUB" },
+        { name: "🎯 Профессионал", desc: "Любой расширенный курс (64 занятия) + 2 пособия со скидкой 25%", discount: "−25% на методички" },
+        { name: "👥 Для двоих", desc: "2 курса для 2 учеников — скидка 15% на второй курс", discount: "−15% на второй курс" },
+        { name: "🎨 Дизайн+Обучение", desc: "Дизайн-проект + любой курс — скидка 12%", discount: "12% на комплекс" }
     ];
 
     const designServices = [
@@ -563,15 +599,25 @@
 
     function showEnrollmentModal() {
         const modal = document.createElement('div'); modal.className = 'modal';
-        const courseOptions = coursesData.map(c => c.singleTariff ? 
-            `<option value="${c.name}">${c.name} (${c.hours} занятий, ${c.hours * LESSON_PRICE_BYN} BYN / ${c.hours * LESSON_PRICE_RUB} RUB)</option>` :
-            c.tariffs.map(t => `<option value="${c.name} - ${t.name}">${c.name} (${t.name}, ${t.hours} зан., ${t.hours * LESSON_PRICE_BYN} BYN / ${t.hours * LESSON_PRICE_RUB} RUB)</option>`).join('')).join('');
+        const courseOptions = coursesData.map(c => {
+            if (c.singleTariff) {
+                const totalByn = c.pricePerLessonByn * c.hours;
+                const totalRub = c.pricePerLessonRub * c.hours;
+                return `<option value="${c.name}">${c.name} (${c.hours} зан., ${c.pricePerLessonByn} BYN/зан., итого ${totalByn} BYN / ${totalRub} RUB)</option>`;
+            } else {
+                return c.tariffs.map(t => {
+                    const totalByn = c.pricePerLessonByn * t.hours;
+                    const totalRub = c.pricePerLessonRub * t.hours;
+                    return `<option value="${c.name} - ${t.name}">${c.name} (${t.name}, ${t.hours} зан., ${c.pricePerLessonByn} BYN/зан., итого ${totalByn} BYN / ${totalRub} RUB)</option>`;
+                }).join('');
+            }
+        }).join('');
         modal.innerHTML = `<div class="modal-content" style="position:relative;"><span class="close-modal">&times;</span><h2 style="margin-bottom:20px;">📝 Запись на курс</h2>
             <form id="enrollForm"><div class="form-group"><label>Выберите курс *</label><select id="courseSelect" required>${courseOptions}</select></div>
             <div class="form-group"><label>Ваше имя *</label><input type="text" id="studentName" placeholder="Иван Иванов" required></div>
             <div class="form-group"><label>Телефон *</label><input type="tel" id="studentPhone" placeholder="+375 33 328-41-52" required></div>
             <div class="form-group"><label>Telegram *</label><input type="text" id="studentTelegram" placeholder="@username" required></div>
-            <div class="form-group"><label>Комментарий</label><textarea id="studentComment" rows="2" placeholder="Удобное время..."></textarea></div>
+            <div class="form-group"><label>Комментарий</label><textarea id="studentComment" rows="2" placeholder="Удобное время, пожелания..."></textarea></div>
             <button type="submit" class="submit-btn">✈️ Отправить заявку</button></form><p style="font-size:0.7rem; margin-top:12px;">Данные придут мне в Telegram, свяжусь с вами.</p></div>`;
         document.body.appendChild(modal); modal.style.display = 'flex';
         modal.querySelector('.close-modal').onclick = () => modal.remove();
@@ -606,19 +652,21 @@
 
     function renderTeachingPage() {
         return `<div class="page"><h2>📦 Пакетные предложения</h2><div class="packages-grid">${packages.map(p => `<div class="package-card-new"><div class="package-name">${p.name}</div><div class="package-desc">${p.desc}</div><div class="package-discount">${p.discount}</div></div>`).join('')}</div>
-        <h2>💻 Курсы (стоимость — ${LESSON_PRICE_BYN} BYN / ${LESSON_PRICE_RUB} RUB за занятие)</h2><div class="grid-2col">${coursesData.map(c => { 
+        <h2>💻 Курсы</h2><div class="grid-2col">${coursesData.map(c => { 
             if (c.singleTariff) {
-                const totalByn = c.hours * LESSON_PRICE_BYN;
-                const totalRub = c.hours * LESSON_PRICE_RUB;
-                return `<div class="course-card"><h3>📌 ${c.name}</h3><p>${c.desc}</p><div class="tariff"><div class="price-badge"><span>${totalByn} BYN</span> / <span>${totalRub} RUB</span> (${c.hours} занятий)</div><div class="course-content"><strong>Программа:</strong><ul>${c.content.map(i=>`<li>${i}</li>`).join('')}</ul></div></div></div>`;
+                const totalByn = c.pricePerLessonByn * c.hours;
+                const totalRub = c.pricePerLessonRub * c.hours;
+                return `<div class="course-card"><h3>📌 ${c.name}</h3><p>${c.desc}</p><div class="tariff"><div class="price-block"><div class="price-per-lesson">💰 ${c.pricePerLessonByn} BYN / ${c.pricePerLessonRub} RUB за занятие</div><div class="price-total">${totalByn} BYN <span>/</span> ${totalRub} RUB <span>за весь курс (${c.hours} занятий)</span></div></div><div class="course-content"><strong>Программа:</strong><ul>${c.content.map(i=>`<li>${i}</li>`).join('')}</ul></div></div></div>`;
             } else {
-                return `<div class="course-card"><h3>💡 ${c.name}</h3><p>${c.desc}</p><div class="tariff-group">${c.tariffs.map(t => { const totalB = t.hours * LESSON_PRICE_BYN; const totalR = t.hours * LESSON_PRICE_RUB;
-                    return `<div class="tariff"><h4>${t.name}</h4><div class="price-badge"><span>${totalB} BYN</span> / <span>${totalR} RUB</span> (${t.hours} зан.)</div><div class="course-content"><strong>Что входит:</strong><ul>${t.content.map(i=>`<li>${i}</li>`).join('')}</ul></div></div>`}).join('')}</div></div>`;
+                return `<div class="course-card"><h3>💡 ${c.name}</h3><p>${c.desc}</p><div class="tariff-group">${c.tariffs.map(t => { 
+                    const totalB = c.pricePerLessonByn * t.hours;
+                    const totalR = c.pricePerLessonRub * t.hours;
+                    return `<div class="tariff"><h4>${t.name}</h4><div class="price-block"><div class="price-per-lesson">💰 ${c.pricePerLessonByn} BYN / ${c.pricePerLessonRub} RUB за занятие</div><div class="price-total">${totalB} BYN <span>/</span> ${totalR} RUB <span>за ${t.hours} занятий</span></div></div><div class="course-content"><strong>Что входит:</strong><ul>${t.content.map(i=>`<li>${i}</li>`).join('')}</ul></div></div>`}).join('')}</div></div>`;
             }
         }).join('')}</div>
         <div style="text-align:center; margin:28px 0;"><button class="btn-primary" id="unifiedEnrollBtn" style="padding:16px 52px; font-size:1rem;">🎓 Записаться на курс →</button></div>
-        <h2>📖 Методические пособия</h2><div class="grid-2col">${methodPubs.map(m => `<div class="method-card"><h3>📘 ${m.title}</h3><p>${m.desc}</p><div class="price-badge"><span>${m.priceByn} BYN</span> / <span>${m.priceRub} RUB</span></div><div class="course-content"><strong>Содержание:</strong><ul>${m.content.map(i=>`<li>${i}</li>`).join('')}</ul></div><button class="btn-secondary buy-method-btn">🛒 Купить пособие</button></div>`).join('')}</div>
-        <div class="contact-block"><div><strong>🎓 Остались вопросы?</strong><br>Напишите, подберём удобный формат</div><div class="contact-info"><div class="contact-item">📱 <a href="tel:+375333284152">+375 33 328-41-52</a></div><div class="contact-item">💬 <a href="${TELEGRAM_LINK}" target="_blank">@katerin_mischenko</a></div></div><button class="btn-primary" id="teachingContactBtn">Получить консультацию</button></div><footer>Цена указана за 1 занятие (академический час). Пакетные скидки суммируются.</footer></div>`;
+        <h2>📖 Методические пособия</h2><div class="grid-2col">${methodPubs.map(m => `<div class="method-card"><h3>📘 ${m.title}</h3><p>${m.desc}</p><div class="price-block" style="display:inline-block; width:auto;"><div class="price-total">${m.priceByn} BYN / ${m.priceRub} RUB</div></div><div class="course-content"><strong>Содержание:</strong><ul>${m.content.map(i=>`<li>${i}</li>`).join('')}</ul></div><button class="btn-secondary buy-method-btn">🛒 Купить пособие</button></div>`).join('')}</div>
+        <div class="contact-block"><div><strong>🎓 Остались вопросы?</strong><br>Напишите, подберём удобный формат</div><div class="contact-info"><div class="contact-item">📱 <a href="tel:+375333284152">+375 33 328-41-52</a></div><div class="contact-item">💬 <a href="${TELEGRAM_LINK}" target="_blank">@katerin_mischenko</a></div></div><button class="btn-primary" id="teachingContactBtn">Получить консультацию</button></div><footer>Цены указаны за 1 занятие (академический час). Стоимость курса = цена занятия × количество занятий. Пакетные скидки суммируются.</footer></div>`;
     }
 
     let current = 'design';
