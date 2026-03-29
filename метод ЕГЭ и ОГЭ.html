@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Методическое пособие | ЕГЭ / ОГЭ Информатика | Полный разбор, алгоритмы, 150+ задач</title>
+    <!-- Google Fonts & Modern Normalize -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f1f5f9;
+            color: #0a0c10;
+            line-height: 1.4;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* card / glassmorph elements */
+        .card {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(0px);
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: #0f172a;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.9rem 2rem;
+            border-radius: 3rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            box-shadow: 0 8px 18px -6px #2563eb60;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: scale(1.02);
+            box-shadow: 0 12px 22px -10px #1e40af80;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #cbd5e1;
+            color: #1e293b;
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: #f8fafc;
+            border-color: #94a3b8;
+        }
+
+        /* header hero */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-radius: 2rem;
+            padding: 2.5rem 2rem;
+            margin-bottom: 2.5rem;
+            color: white;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+        }
+
+        .badge {
+            display: inline-block;
+            background: #3b82f620;
+            backdrop-filter: blur(4px);
+            padding: 0.3rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #b9d0ff;
+            letter-spacing: 0.3px;
+        }
+
+        .price-tag {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .price-small {
+            font-size: 1rem;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            transition: all 0.2s;
+            border: 1px solid #eef2ff;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin: 2rem 0 1rem 0;
+            border-left: 5px solid #2563eb;
+            padding-left: 1.2rem;
+        }
+
+        .topic-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin: 1rem 0;
+        }
+
+        .topic-tag {
+            background: #eef2ff;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #1e40af;
+        }
+
+        .demo-box {
+            background: #f8fafd;
+            border-radius: 1.2rem;
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0;
+            margin: 1.2rem 0;
+        }
+
+        .code-inline {
+            background: #eef2ff;
+            font-family: monospace;
+            padding: 0.2rem 0.4rem;
+            border-radius: 10px;
+            font-size: 0.85rem;
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+        }
+
+        @media (max-width: 780px) {
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+            .hero {
+                padding: 1.8rem;
+            }
+            .price-tag {
+                font-size: 2rem;
+            }
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #475569;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 2rem;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #fef9c3 0%, #fef9c3 40%, transparent 60%);
+            padding: 0 0.2rem;
+            font-weight: 600;
+        }
+
+        .price-block {
+            background: #ffffffcc;
+            backdrop-filter: blur(8px);
+            border-radius: 2rem;
+            padding: 1rem 1.5rem;
+            display: inline-flex;
+            align-items: baseline;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    
+    <!-- Hero блок -->
+    <div class="hero">
+        <div class="badge">🔥 Официальный формат 2026 | ФИПИ</div>
+        <h1 style="font-size: 2.6rem; font-weight: 800; margin: 0.8rem 0 0.5rem; letter-spacing: -0.02em;">ЕГЭ / ОГЭ <br>Информатика</h1>
+        <p style="font-size: 1.2rem; opacity: 0.9; max-width: 80%; margin-bottom: 1.5rem;">Методическое пособие: полный разбор заданий, универсальные алгоритмы, 150+ задач с решениями.</p>
+        <div class="price-block" style="background: #ffffff20; backdrop-filter: blur(12px); display: inline-flex;">
+            <span class="price-tag">3360₽</span> <span style="font-size: 1.5rem;">/</span> <span class="price-tag">120 Br</span>
+        </div>
+        <div style="margin-top: 1.8rem;">
+            <a href="#buy" class="btn btn-primary" style="background: white; color: #0f172a; box-shadow: 0 6px 14px rgba(0,0,0,0.1);">📘 Купить пособие →</a>
+            <a href="#sample" class="btn btn-outline" style="margin-left: 0.8rem; background: rgba(255,255,255,0.1); color: white; border-color: rgba(255,255,255,0.3);">📖 Смотреть разбор</a>
+        </div>
+    </div>
+
+    <!-- Краткие фичи -->
+    <div class="feature-grid">
+        <div class="feature-item">
+            <div class="feature-icon">🧩</div>
+            <h3>Полный разбор заданий</h3>
+            <p>Каждый номер ОГЭ и ЕГЭ разобран пошагово: от теории до экзаменационного оформления.</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">⚙️</div>
+            <h3>Алгоритмы вместо зубрежки</h3>
+            <p>Пошаговые инструкции, которые работают для любого варианта. Системный подход к решению.</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">📚</div>
+            <h3>150+ задач + ответы</h3>
+            <p>Тематические блоки и реальные тренировочные варианты. Все с пояснениями ключевых моментов.</p>
+        </div>
+    </div>
+
+    <!-- Оглавление / главные разделы -->
+    <div class="card" style="padding: 1.8rem; margin: 1.8rem 0;">
+        <h2 style="font-weight: 700; margin-bottom: 1rem;">🔍 Структура пособия — всё для результата</h2>
+        <div class="two-columns">
+            <div>
+                <ul style="list-style: none; line-height: 2;">
+                    <li>✅ <strong>Разбор ОГЭ</strong> (№1–15): кодирование, исполнители, графы, логика</li>
+                    <li>✅ <strong>Разбор ЕГЭ</strong> (№1–27): динамическое программирование, теория игр, IP-сети</li>
+                    <li>✅ <strong>Алгоритмический практикум</strong>: 20 авторских схем решений</li>
+                    <li>✅ <strong>Программирование Python / Pascal</strong> — 25 задач с кодом</li>
+                </ul>
+            </div>
+            <div>
+                <ul style="list-style: none; line-height: 2;">
+                    <li>✅ <strong>Информационные модели</strong> (Excel, БД, графы) — 15 кейсов</li>
+                    <li>✅ <strong>Компьютерные сети</strong>: маски, IP, протоколы — полный разбор</li>
+                    <li>✅ <strong>6 тренировочных вариантов</strong> (ОГЭ, ЕГЭ базовый, ЕГЭ профиль)</li>
+                    <li>✅ <strong>Ответы и комментарии</strong> ко всем 150+ задачам</li>
+                </ul>
+            </div>
+        </div>
+        <div class="topic-list" style="margin-top: 1rem;">
+            <span class="topic-tag">Системы счисления</span>
+            <span class="topic-tag">Кодирование звука/изображений</span>
+            <span class="topic-tag">Черепашка / Робот</span>
+            <span class="topic-tag">Динамика и рекурсия</span>
+            <span class="topic-tag">Логические уравнения</span>
+            <span class="topic-tag">Анализ программ</span>
+        </div>
+    </div>
+
+    <!-- Демо-блок "алгоритм" -->
+    <div id="sample">
+        <h2 class="section-title">🎯 Алгоритм — который реально помогает (пример)</h2>
+        <div class="demo-box">
+            <h3 style="margin-bottom: 0.6rem;">📌 Задача на кодирование звука (ЕГЭ / ОГЭ)</h3>
+            <p><strong>Условие:</strong> Стереозапись с частотой 48 кГц, глубиной 24 бита, длительностью 2 минуты. Найти объем в Мбайтах.</p>
+            <p><strong>Алгоритм (по шагам):</strong></p>
+            <ol style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                <li>Перевести частоту в Гц: 48 кГц = 48000 Гц</li>
+                <li>Время в секунды: 2 мин = 120 сек</li>
+                <li>Формула: <span class="code-inline">V(бит) = f × t × глубина × кол-во каналов</span></li>
+                <li>Подстановка: <span class="code-inline">48000 × 120 × 24 × 2 = 276 480 000 бит</span></li>
+                <li>Перевод в Мбайты: <span class="code-inline">÷8 ÷1024 ÷1024 ≈ 32,96 Мбайт</span></li>
+            </ol>
+            <p style="color: #2d3a5e;">💡 В пособии каждый алгоритм сопровождается цветными схемами и таблицей трассировки. Никакой магии — только структура.</p>
+        </div>
+    </div>
+
+    <!-- Почему этот формат -->
+    <div class="two-columns" style="margin: 2rem 0;">
+        <div class="card" style="padding: 1.6rem;">
+            <h3>📘 Для кого идеально</h3>
+            <p>✅ Учащиеся 9–11 классов, готовящиеся к экзаменам с нуля или высокий балл (80+)<br>
+            ✅ Репетиторы: готовая база с алгоритмами и 150+ задачами<br>
+            ✅ Учителя: для факультативов и интенсивной подготовки</p>
+        </div>
+        <div class="card" style="padding: 1.6rem; background: linear-gradient(145deg, #fefce8, #ffffff);">
+            <h3>⚡ Что вы получите</h3>
+            <p>📎 Электронная версия (PDF) — можно читать с любого устройства<br>
+            📎 Разбор всех прототипов ФИПИ 2025–2026<br>
+            📎 Алгоритмические карты для быстрого повторения<br>
+            📎 Бонус: чек-лист подготовки за 30 дней</p>
+        </div>
+    </div>
+
+    <!-- Статистика по задачам -->
+    <div class="card" style="background: #0f172a; color: white; text-align: center; padding: 2rem; margin: 2rem 0;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 2rem;">
+            <div><span style="font-size: 2.5rem; font-weight: 800;">150+</span><br>задач с разбором</div>
+            <div><span style="font-size: 2.5rem; font-weight: 800;">27</span><br>тем ЕГЭ полностью</div>
+            <div><span style="font-size: 2.5rem; font-weight: 800;">98%</span><br>учеников отмечают рост баллов</div>
+        </div>
+    </div>
+
+    <!-- Превью разбора одного задания (ОГЭ/ЕГЭ) -->
+    <h2 class="section-title">🧠 Фрагмент: «Полный разбор задания ЕГЭ №8 (циклы)»</h2>
+    <div class="demo-box" style="background: #ffffff;">
+        <p><strong>Код программы (Python):</strong></p>
+        <pre style="background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: 1rem; overflow-x: auto;">s = 0
+for i in range(1, 11):
+    if i % 2 == 0:
+        s += 1
+print(s)</pre>
+        <p><strong>🔎 Разбор:</strong> Цикл от 1 до 10, условие i % 2 == 0 проверяет четность. Четные числа: 2,4,6,8,10 → 5 раз. <br> Ответ: <span class="code-inline">5</span>. В пособии подобные задания сгруппированы по типам + даны альтернативные способы (трассировка таблицей).</p>
+    </div>
+
+    <!-- Цена и кнопка покупки -->
+    <div id="buy" style="margin: 2.5rem 0; text-align: center;">
+        <div class="card" style="padding: 2rem; background: white; border: 1px solid #eef2ff;">
+            <h2 style="font-size: 2rem; font-weight: 800;">Старт к высоким баллам уже сегодня</h2>
+            <p style="margin: 0.5rem 0 1rem; font-size: 1.1rem;">Мгновенный доступ ко всем материалам. Подходит для подготовки к ОГЭ и ЕГЭ 2026.</p>
+            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; align-items: baseline;">
+                <span style="font-size: 2.5rem; font-weight: 800;">3360₽</span>
+                <span style="font-size: 1.8rem; font-weight: 600;">/ 120 Br</span>
+            </div>
+            <div style="margin-top: 1.5rem;">
+                <a href="#" class="btn btn-primary" style="background: #2563eb; padding: 1rem 3rem; font-size: 1.2rem;">📥 Купить пособие (PDF + бонусы)</a>
+                <p style="font-size: 0.75rem; margin-top: 1rem; color: #4b5563;">Оплата картой РФ, Беларусь (ErIP), быстрая выдача на почту</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Вопросы / финальный блок -->
+    <div class="footer-note">
+        <p>© Методическое пособие «ЕГЭ/ОГЭ Информатика» — Полный разбор, алгоритмы, 150+ задач.<br>
+        Все материалы соответствуют кодификатору ФИПИ. Авторская методика с гарантией результата.</p>
+        <p style="margin-top: 0.5rem;">📩 По вопросам приобретения: info@infogege.ru | Telegram: @infoposobie</p>
+    </div>
+
+</div>
+</body>
+</html>
