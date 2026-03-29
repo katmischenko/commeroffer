@@ -242,7 +242,7 @@
             margin: 6px 0;
         }
 
-        .btn-primary, .btn-secondary {
+        .btn-primary, .btn-secondary, .btn-outline {
             padding: 12px 28px;
             border-radius: 50px;
             font-weight: 600;
@@ -269,6 +269,14 @@
         .btn-secondary:hover {
             background: #F5F9FF;
             border-color: #8AACCA;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #4F728B;
+            color: #4F728B;
+        }
+        .btn-outline:hover {
+            background: #F5F9FF;
         }
 
         .stages-horizontal {
@@ -506,7 +514,7 @@
             <div class="expert-avatar">EK</div>
             <div class="expert-title">
                 <h1>Мищенко Екатерина</h1>
-                <p>Преподаватель информатики · Графический дизайнер </p>
+                <p>Преподаватель информатики · Графический дизайнер · Эксперт IT-образования</p>
             </div>
         </div>
         <div class="expert-stats">
@@ -531,7 +539,7 @@
 </div>
 
 <script>
-    // Цены за час (BYN)
+    // Данные курсов (цены за час)
     const coursesData = [
         { name: "Scratch", desc: "Визуальное программирование для детей 7-12 лет. Развитие логики и алгоритмического мышления.", priceHourByn: 45, priceHourRub: 1260,
           tariffs: [{ name: "Базовый", hours: 32 }, { name: "Расширенный", hours: 64 }],
@@ -555,23 +563,28 @@
           content: ["Кибербезопасность", "Google Docs/Excel", "Облачные хранилища", "Этикет в сети", "Работа с почтой", "Итоговый тест"] }
     ];
 
+    // Методические пособия с подробным описанием
     const methodPubs = [
-        { name: "Метод. пособие по Python", priceByn: 80, desc: "120 страниц, теория, задачи, шаблоны кода.", rub: 2240 },
-        { name: "Метод. пособие по HTML/CSS", priceByn: 65, desc: "Структура курса, макеты, упражнения.", rub: 1820 },
-        { name: "Метод. пособие «Основы Figma»", priceByn: 55, desc: "Гайд по интерфейсу, компоненты, библиотеки.", rub: 1540 },
-        { name: "Метод. пособие «ЕГЭ/ОГЭ Информатика»", priceByn: 120, desc: "Полный разбор заданий, алгоритмы, 150+ задач.", rub: 3360 }
+        { name: "Метод. пособие по Python", priceByn: 80, rub: 2240, shortDesc: "120 страниц, теория, задачи, шаблоны кода.",
+          fullDesc: "Подробное руководство по Python для преподавателей и самостоятельного изучения. Включает: теорию с примерами, 50+ практических задач, чек-листы для самопроверки, шаблоны проектов, гайд по подготовке к ЕГЭ. 120 страниц." },
+        { name: "Метод. пособие по HTML/CSS", priceByn: 65, rub: 1820, shortDesc: "Структура курса, макеты, упражнения.",
+          fullDesc: "Пошаговая структура курса по веб-верстке. 5 готовых макетов для практики, упражнения на Flex/Grid, принципы адаптивной верстки, финальный проект. 95 страниц." },
+        { name: "Метод. пособие «Основы Figma»", priceByn: 55, rub: 1540, shortDesc: "Гайд по интерфейсу, компоненты, библиотеки.",
+          fullDesc: "Полное руководство по Figma: интерфейс и инструменты, работа с компонентами, создание дизайн-системы, авто-лейауты, практические кейсы. 85 страниц." },
+        { name: "Метод. пособие «ЕГЭ/ОГЭ Информатика»", priceByn: 120, rub: 3360, shortDesc: "Полный разбор заданий, алгоритмы, 150+ задач.",
+          fullDesc: "Комплексная подготовка к экзаменам: разбор всех типов заданий 1-27, алгоритмы и программирование на Python, типовые ошибки и лайфхаки, 150+ задач с решениями, чек-листы для подготовки, демо-версии экзаменов. 210 страниц." }
     ];
 
     const threePackages = [
-        { name: "Стартовый", priceRub: "11 900", priceByn: "725", period: "32 занятия / 2-3 месяца", features: ["Любой базовый курс на выбор", "Методическое пособие по выбранному курсу в подарок", "Доступ в закрытый чат с учениками", "Скидка 10% на следующий курс"], badge: "ЭКОНОМИЯ" },
-        { name: "Оптимальный", priceRub: "22 900", priceByn: "1350", period: "64 занятия / 4-6 месяцев", features: ["Любой расширенный курс на выбор", "2 методических пособия по курсу в подарок", "3 персональные консультации", "Приоритетная поддержка", "Скидка 15%"], badge: "ЛУЧШИЙ ВЫБОР" },
-        { name: "ЕГЭ Интенсив", priceRub: "33 900", priceByn: "1575", period: "48 занятий + интенсивы", features: ["Подготовка к ЕГЭ/ОГЭ (48 занятий)", "Все методические пособия по информатике", "5 пробных экзаменов", "Индивидуальный трек", "Доступ к закрытому каналу"], badge: "МАКСИМУМ" }
+        { name: "Стартовый", priceRub: "11 900", priceByn: "425", period: "32 занятия / 2-3 месяца", features: ["Любой базовый курс на выбор", "Методическое пособие по выбранному курсу в подарок", "Доступ в закрытый чат с учениками", "Скидка 10% на следующий курс"], badge: "ЭКОНОМИЯ" },
+        { name: "Оптимальный", priceRub: "22 900", priceByn: "820", period: "64 занятия / 4-6 месяцев", features: ["Любой расширенный курс на выбор", "2 методических пособия по курсу в подарок", "3 персональные консультации", "Приоритетная поддержка", "Скидка 15%"], badge: "ЛУЧШИЙ ВЫБОР" },
+        { name: "ЕГЭ Интенсив", priceRub: "33 900", priceByn: "1210", period: "48 занятий + интенсивы", features: ["Подготовка к ЕГЭ/ОГЭ (48 занятий)", "Все методические пособия по информатике", "5 пробных экзаменов", "Индивидуальный трек", "Доступ к закрытому каналу"], badge: "МАКСИМУМ" }
     ];
 
     const designServices = [
-        { name: "Landing Page", shortDesc: "Одностраничный сайт для продаж, промо.", details: ["Анализ ЦА и конкурентов", "Структура и прототип", "Уникальный дизайн + адаптив", "2 итерации правок", "Макет в Figma"], terms: "5–7 дней", costRub: 14000, costByn: 950 },
-        { name: "Корпоративный сайт", shortDesc: "Многостраничный сайт для компании.", details: ["Анализ бизнес-задач", "Дизайн типовых страниц", "Анимации", "Адаптив", "Правки 2 итерации"], terms: "12–18 дней", costRub: 33600, costByn: 1700 },
-        { name: "Интернет-магазин", shortDesc: "Каталог, корзина, личный кабинет.", details: ["Дизайн карточек товаров", "Корзина и оформление", "Личный кабинет", "Фильтры", "Прототип сценариев"], terms: "20–25 дней", costRub: 56000, costByn: 2500 },
+        { name: "Landing Page", shortDesc: "Одностраничный сайт для продаж, промо.", details: ["Анализ ЦА и конкурентов", "Структура и прототип", "Уникальный дизайн + адаптив", "2 итерации правок", "Макет в Figma"], terms: "5–7 дней", costRub: 14000, costByn: 500 },
+        { name: "Корпоративный сайт", shortDesc: "Многостраничный сайт для компании.", details: ["Анализ бизнес-задач", "Дизайн типовых страниц", "Анимации", "Адаптив", "Правки 2 итерации"], terms: "12–18 дней", costRub: 33600, costByn: 1200 },
+        { name: "Интернет-магазин", shortDesc: "Каталог, корзина, личный кабинет.", details: ["Дизайн карточек товаров", "Корзина и оформление", "Личный кабинет", "Фильтры", "Прототип сценариев"], terms: "20–25 дней", costRub: 56000, costByn: 2000 },
         { name: "Презентации", shortDesc: "Под бренд, для инвесторов, защиты.", details: ["Концепция и структура", "Визуализация данных", "Анимация", "Фирменный стиль", "PPT/Google Slides"], terms: "2–5 дней", costRub: 4200, costByn: 150 },
         { name: "Дизайн сайта (без верстки)", shortDesc: "Только макет Figma для разработчика.", details: ["Дизайн главной + 3-5 страниц", "UI-kit", "Адаптивные версии", "Интерактивный прототип", "Передача разработчику"], terms: "от 7 дней", costRub: 22400, costByn: 800 }
     ];
@@ -597,6 +610,51 @@
         } catch { return false; }
     }
 
+    function showMethodDetail(method) {
+        const modal = document.createElement('div'); modal.className = 'modal';
+        modal.innerHTML = `<div class="modal-content"><span class="close-modal">&times;</span>
+            <h3>${method.name}</h3>
+            <div style="margin: 16px 0;"><strong>Описание:</strong> ${method.fullDesc}</div>
+            <div><strong>Цена:</strong> ${method.rub} ₽ / ${method.priceByn} Br</div>
+            <button class="btn-primary" style="margin-top: 20px; width:100%;" id="buyFromDetail">Купить пособие</button>
+        </div>`;
+        document.body.appendChild(modal); modal.style.display = 'flex';
+        modal.querySelector('.close-modal').onclick = () => modal.remove();
+        modal.querySelector('#buyFromDetail').onclick = () => { showMethodPurchaseModal(); modal.remove(); };
+    }
+
+    function showMethodPurchaseModal() {
+        const modal = document.createElement('div'); modal.className = 'modal';
+        const options = methodPubs.map(m => `<option value="${m.name} — ${m.priceByn} Br / ${m.rub} ₽">${m.name} — ${m.priceByn} Br / ${m.rub} ₽</option>`).join('');
+        modal.innerHTML = `<div class="modal-content"><span class="close-modal">&times;</span><h2>Приобретение методического пособия</h2>
+            <form id="methodForm">
+                <div class="form-group"><label>Выберите пособие *</label><select id="methodSelect" required>${options}</select></div>
+                <div class="form-group"><label>Ваше имя *</label><input type="text" id="buyerName" required></div>
+                <div class="form-group"><label>Телефон *</label><input type="tel" id="buyerPhone" required></div>
+                <div class="form-group"><label>Telegram *</label><input type="text" id="buyerTelegram" placeholder="@username" required></div>
+                <div class="form-group"><label>Email (для отправки)</label><input type="email" id="buyerEmail"></div>
+                <button type="submit" class="submit-btn">Отправить заявку</button>
+            </form></div>`;
+        document.body.appendChild(modal); modal.style.display = 'flex';
+        modal.querySelector('.close-modal').onclick = () => modal.remove();
+        modal.querySelector('#methodForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const data = {
+                name: modal.querySelector('#buyerName').value,
+                phone: modal.querySelector('#buyerPhone').value,
+                telegram: modal.querySelector('#buyerTelegram').value,
+                email: modal.querySelector('#buyerEmail').value,
+                method: modal.querySelector('#methodSelect').value
+            };
+            if (!data.name || !data.phone || !data.telegram) return alert('Заполните обязательные поля');
+            const message = `ПОКУПКА МЕТОДИЧЕСКОГО ПОСОБИЯ\n\nПокупатель: ${data.name}\nТелефон: ${data.phone}\nTelegram: ${data.telegram}\nEmail: ${data.email || '-'}\nПособие: ${data.method}`;
+            const btn = e.target.querySelector('.submit-btn'); btn.textContent = 'Отправка...'; btn.disabled = true;
+            const ok = await sendToTelegram(message);
+            alert(ok ? 'Заявка отправлена! Свяжусь для уточнения деталей оплаты и отправки.' : 'Ошибка, напишите @katerin_mischenko');
+            modal.remove();
+        };
+    }
+
     function showEnrollmentModal() {
         const modal = document.createElement('div'); modal.className = 'modal';
         const courseOptions = coursesData.map(c => {
@@ -617,68 +675,22 @@
             <form id="enrollForm">
                 <div class="form-group"><label>Выберите курс *</label><select id="courseSelect" required>${courseOptions}</select></div>
                 <div class="form-group"><label>Ваше имя (родитель/студент) *</label><input type="text" id="parentName" required></div>
-                <div class="form-row">
-                    <div class="form-group"><label>Имя ребенка</label><input type="text" id="childName"></div>
-                    <div class="form-group"><label>Возраст ребенка</label><input type="text" id="childAge"></div>
-                </div>
+                <div class="form-row"><div class="form-group"><label>Имя ребенка</label><input type="text" id="childName"></div><div class="form-group"><label>Возраст ребенка</label><input type="text" id="childAge"></div></div>
                 <div class="form-group"><label>Телефон *</label><input type="tel" id="phone" required></div>
                 <div class="form-group"><label>Telegram *</label><input type="text" id="telegram" placeholder="@username" required></div>
                 <div class="form-group"><label>Комментарий</label><textarea id="comment" rows="2"></textarea></div>
                 <button type="submit" class="submit-btn">Отправить заявку</button>
             </form></div>`;
-        
         document.body.appendChild(modal); modal.style.display = 'flex';
         modal.querySelector('.close-modal').onclick = () => modal.remove();
         modal.querySelector('#enrollForm').onsubmit = async (e) => {
             e.preventDefault();
-            const data = {
-                parent: modal.querySelector('#parentName').value,
-                childName: modal.querySelector('#childName').value,
-                childAge: modal.querySelector('#childAge').value,
-                phone: modal.querySelector('#phone').value,
-                telegram: modal.querySelector('#telegram').value,
-                course: modal.querySelector('#courseSelect').value,
-                comment: modal.querySelector('#comment').value
-            };
+            const data = { parent: modal.querySelector('#parentName').value, childName: modal.querySelector('#childName').value, childAge: modal.querySelector('#childAge').value, phone: modal.querySelector('#phone').value, telegram: modal.querySelector('#telegram').value, course: modal.querySelector('#courseSelect').value, comment: modal.querySelector('#comment').value };
             if (!data.parent || !data.phone || !data.telegram) return alert('Заполните обязательные поля');
             const message = `НОВАЯ ЗАЯВКА НА КУРС\n\nРодитель: ${data.parent}\nРебенок: ${data.childName || '-'} (${data.childAge || '-'})\nТелефон: ${data.phone}\nTelegram: ${data.telegram}\nКурс: ${data.course}\nКомментарий: ${data.comment || '-'}`;
             const btn = e.target.querySelector('.submit-btn'); btn.textContent = 'Отправка...'; btn.disabled = true;
             const ok = await sendToTelegram(message);
             alert(ok ? 'Заявка отправлена! Свяжусь в Telegram.' : 'Ошибка, напишите @katerin_mischenko');
-            modal.remove();
-        };
-    }
-
-    function showMethodModal() {
-        const modal = document.createElement('div'); modal.className = 'modal';
-        const options = methodPubs.map(m => `<option value="${m.name} — ${m.priceByn} Br / ${Math.round(m.priceByn * 28)} ₽">${m.name} — ${m.priceByn} Br / ${Math.round(m.priceByn * 28)} ₽</option>`).join('');
-        
-        modal.innerHTML = `<div class="modal-content"><span class="close-modal">&times;</span><h2>Приобретение методического пособия</h2>
-            <form id="methodForm">
-                <div class="form-group"><label>Выберите пособие *</label><select id="methodSelect" required>${options}</select></div>
-                <div class="form-group"><label>Ваше имя *</label><input type="text" id="buyerName" required></div>
-                <div class="form-group"><label>Телефон *</label><input type="tel" id="buyerPhone" required></div>
-                <div class="form-group"><label>Telegram *</label><input type="text" id="buyerTelegram" placeholder="@username" required></div>
-                <div class="form-group"><label>Email (для отправки)</label><input type="email" id="buyerEmail"></div>
-                <button type="submit" class="submit-btn">Купить пособие</button>
-            </form></div>`;
-        
-        document.body.appendChild(modal); modal.style.display = 'flex';
-        modal.querySelector('.close-modal').onclick = () => modal.remove();
-        modal.querySelector('#methodForm').onsubmit = async (e) => {
-            e.preventDefault();
-            const data = {
-                name: modal.querySelector('#buyerName').value,
-                phone: modal.querySelector('#buyerPhone').value,
-                telegram: modal.querySelector('#buyerTelegram').value,
-                email: modal.querySelector('#buyerEmail').value,
-                method: modal.querySelector('#methodSelect').value
-            };
-            if (!data.name || !data.phone || !data.telegram) return alert('Заполните обязательные поля');
-            const message = `ПОКУПКА МЕТОДИЧЕСКОГО ПОСОБИЯ\n\nПокупатель: ${data.name}\nТелефон: ${data.phone}\nTelegram: ${data.telegram}\nEmail: ${data.email || '-'}\nПособие: ${data.method}`;
-            const btn = e.target.querySelector('.submit-btn'); btn.textContent = 'Отправка...'; btn.disabled = true;
-            const ok = await sendToTelegram(message);
-            alert(ok ? 'Заявка отправлена! Свяжусь для уточнения деталей оплаты и отправки.' : 'Ошибка, напишите @katerin_mischenko');
             modal.remove();
         };
     }
@@ -702,25 +714,21 @@
 
     function renderTeachingPage() {
         return `<div class="page"><h2>Пакетные предложения</h2><div class="packages-three">${threePackages.map(p => `
-            <div class="package-card">
-                <div class="package-header"><div class="package-badge">${p.badge}</div><div class="package-name">${p.name}</div><div class="package-price">${p.priceRub} ₽ / ${p.priceByn} Br</div><div class="package-period">${p.period}</div></div>
-                <div class="package-body"><ul class="package-features">${p.features.map(f => `<li>${f}</li>`).join('')}</ul><button class="btn-primary select-package" data-package="${p.name}" style="width:100%;">Выбрать пакет</button></div>
-            </div>`).join('')}</div>
+            <div class="package-card"><div class="package-header"><div class="package-badge">${p.badge}</div><div class="package-name">${p.name}</div><div class="package-price">${p.priceRub} ₽ / ${p.priceByn} Br</div><div class="package-period">${p.period}</div></div>
+            <div class="package-body"><ul class="package-features">${p.features.map(f => `<li>${f}</li>`).join('')}</ul><button class="btn-primary select-package" data-package="${p.name}" style="width:100%;">Выбрать пакет</button></div></div>`).join('')}</div>
         <h2>Образовательные курсы</h2><div class="grid-2col">${coursesData.map(c => { 
             if (c.singleTariff) {
-                const totalRub = c.priceHourRub * c.hours;
-                const totalByn = c.priceHourByn * c.hours;
+                const totalRub = c.priceHourRub * c.hours, totalByn = c.priceHourByn * c.hours;
                 return `<div class="course-card"><h3>${c.name}</h3><p>${c.desc}</p><div class="price-hour">Стоимость: ${c.priceHourRub}₽ / ${c.priceHourByn}Br за час занятий</div><div class="tariff"><div class="price-total">${totalRub}₽ / ${totalByn}Br (${c.hours} занятий)</div><div class="course-content"><strong>Программа:</strong><ul>${c.content.map(i=>`<li>${i}</li>`).join('')}</ul></div></div></div>`;
             } else {
-                return `<div class="course-card"><h3>${c.name}</h3><p>${c.desc}</p><div class="price-hour">Стоимость: ${c.priceHourRub}₽ / ${c.priceHourByn}Br за час занятий</div><div class="tariff-group">${c.tariffs.map(t => {
-                    const totalRub = c.priceHourRub * t.hours;
-                    const totalByn = c.priceHourByn * t.hours;
+                return `<div class="course-card"><h3>${c.name}</h3><p>${c.desc}</p><div class="price-hour">Стоимость: ${c.priceHourRub}₽ / ${c.priceHourByn}Br за час занятий</div><div class="tariff-group">${c.tariffs.map(t => { const totalRub = c.priceHourRub * t.hours, totalByn = c.priceHourByn * t.hours;
                     return `<div class="tariff"><h4>${t.name}</h4><div class="price-total">${totalRub}₽ / ${totalByn}Br (${t.hours} занятий)</div><div class="course-content"><strong>Что входит:</strong><ul>${c.content[t.name === "Базовый" ? "basic" : "extended"].map(i=>`<li>${i}</li>`).join('')}</ul></div></div>`}).join('')}</div></div>`;
             }
         }).join('')}</div>
         <div style="text-align:center; margin: 28px 0;"><button class="btn-primary" id="unifiedEnrollBtn" style="padding:16px 52px; font-size:1rem;">Записаться на курс</button></div>
         
-        <h2>Методические пособия</h2><div class="grid-2col">${methodPubs.map(m => `<div class="method-card"><h3>${m.name}</h3><p>${m.desc}</p><div class="price-total" style="font-size:1.2rem; margin:12px 0;">${Math.round(m.priceByn * 28)}₽ / ${m.priceByn}Br</div><button class="btn-secondary buy-method-card" data-method="${m.name}">Купить пособие</button></div>`).join('')}</div>
+        <h2>Методические пособия</h2><div class="grid-2col">${methodPubs.map(m => `<div class="method-card"><h3>${m.name}</h3><p>${m.shortDesc}</p><div class="price-total" style="font-size:1.2rem; margin:12px 0;">${m.rub}₽ / ${m.priceByn}Br</div><button class="btn-outline method-detail-btn" data-method-index="${methodPubs.indexOf(m)}">Подробнее</button></div>`).join('')}</div>
+        <div style="text-align:center; margin: 20px 0 30px;"><button class="btn-primary" id="buyMethodMainBtn" style="padding:14px 40px;">Купить пособие</button></div>
         
         <div class="contact-block"><div><strong>Остались вопросы?</strong><br>Напишите, подберём удобный формат</div><div class="contact-info"><div class="contact-item">📱 <a href="tel:+375333284152">+375 33 328-41-52</a></div><div class="contact-item">💬 <a href="${TELEGRAM_LINK}" target="_blank">@katerin_mischenko</a></div></div><button class="btn-primary" id="teachingContactBtn">Получить консультацию</button></div>
         <footer>Стоимость указана за 1 академический час. Общая сумма курса = час × количество занятий. Пакеты включают максимальную выгоду!</footer></div>`;
@@ -732,17 +740,15 @@
     function attachHandlers() {
         if (current === 'design') {
             document.querySelectorAll('.detail-design').forEach(btn => btn.addEventListener('click', () => showDesignModal(JSON.parse(btn.dataset.serv))));
-            const btn = document.getElementById('designContactBtn'); if(btn) btn.onclick = () => window.open(TELEGRAM_LINK, '_blank');
-            const stagesItems = document.querySelectorAll('.stage-horiz-item');
-            stagesItems.forEach((item, idx) => {
-                item.addEventListener('click', () => { stagesItems.forEach(i => i.classList.remove('active')); item.classList.add('active'); });
-                if (idx === 0) item.classList.add('active');
-            });
+            document.getElementById('designContactBtn')?.addEventListener('click', () => window.open(TELEGRAM_LINK, '_blank'));
+            const stages = document.querySelectorAll('.stage-horiz-item');
+            stages.forEach((item, idx) => { item.addEventListener('click', () => { stages.forEach(i => i.classList.remove('active')); item.classList.add('active'); }); if (idx === 0) item.classList.add('active'); });
         } else {
-            const enroll = document.getElementById('unifiedEnrollBtn'); if(enroll) enroll.onclick = () => showEnrollmentModal();
-            document.querySelectorAll('.buy-method-card').forEach(btn => btn.addEventListener('click', () => showMethodModal()));
+            document.getElementById('unifiedEnrollBtn')?.addEventListener('click', () => showEnrollmentModal());
+            document.getElementById('buyMethodMainBtn')?.addEventListener('click', () => showMethodPurchaseModal());
+            document.querySelectorAll('.method-detail-btn').forEach(btn => { btn.addEventListener('click', () => { const idx = parseInt(btn.dataset.methodIndex); showMethodDetail(methodPubs[idx]); }); });
             document.querySelectorAll('.select-package').forEach(btn => btn.addEventListener('click', () => { alert(`Вы выбрали пакет "${btn.dataset.package}". Напишите в Telegram @katerin_mischenko для оформления!`); window.open(TELEGRAM_LINK, '_blank'); }));
-            const contact = document.getElementById('teachingContactBtn'); if(contact) contact.onclick = () => window.open(TELEGRAM_LINK, '_blank');
+            document.getElementById('teachingContactBtn')?.addEventListener('click', () => window.open(TELEGRAM_LINK, '_blank'));
         }
     }
     
