@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Методическое пособие по HTML/CSS | Полный курс, макеты, упражнения</title>
+    <!-- Google Fonts & Modern Normalize -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f1f5f9;
+            color: #0a0c10;
+            line-height: 1.4;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* card / glassmorph elements */
+        .card {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(0px);
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: #0f172a;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.9rem 2rem;
+            border-radius: 3rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            box-shadow: 0 8px 18px -6px #2563eb60;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: scale(1.02);
+            box-shadow: 0 12px 22px -10px #1e40af80;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #cbd5e1;
+            color: #1e293b;
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: #f8fafc;
+            border-color: #94a3b8;
+        }
+
+        /* header hero */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            border-radius: 2rem;
+            padding: 2.5rem 2rem;
+            margin-bottom: 2.5rem;
+            color: white;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2);
+        }
+
+        .badge {
+            display: inline-block;
+            background: #3b82f620;
+            backdrop-filter: blur(4px);
+            padding: 0.3rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #b9d0ff;
+            letter-spacing: 0.3px;
+        }
+
+        .price-tag {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .price-small {
+            font-size: 1rem;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            transition: all 0.2s;
+            border: 1px solid #eef2ff;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin: 2rem 0 1rem 0;
+            border-left: 5px solid #2563eb;
+            padding-left: 1.2rem;
+        }
+
+        .topic-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin: 1rem 0;
+        }
+
+        .topic-tag {
+            background: #eef2ff;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #1e40af;
+        }
+
+        .demo-box {
+            background: #f8fafd;
+            border-radius: 1.2rem;
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0;
+            margin: 1.2rem 0;
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .code-inline {
+            background: #eef2ff;
+            padding: 0.2rem 0.4rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 1rem;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            text-align: center;
+            padding: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+            color: #4b5563;
+        }
+
+        @media (max-width: 768px) {
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .price-tag {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Hero блок с ценой и информацией -->
+    <div class="hero">
+        <div class="badge">⚡ Официальное пособие 2026</div>
+        <h1 style="font-size: 2.6rem; font-weight: 800; margin: 0.8rem 0 0.5rem; letter-spacing: -0.02em;">Метод. пособие<br>по HTML/CSS</h1>
+        <p style="font-size: 1.2rem; opacity: 0.9; max-width: 80%; margin-bottom: 1.5rem;">Структура курса, макеты, упражнения — всё, чтобы стать уверенным верстальщиком. <br> Полный разбор, адаптив, финальный проект.</p>
+        <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(12px); border-radius: 2rem; padding: 1rem 1.5rem; display: inline-flex; gap: 1.5rem; align-items: baseline; flex-wrap: wrap; margin: 1rem 0;">
+            <span class="price-tag">40 BYN</span>
+            <span style="font-size: 1.5rem;">/</span>
+            <span class="price-tag">1120 RUB</span>
+        </div>
+        <div style="margin-top: 1.8rem;">
+            <a href="#buy" class="btn btn-primary" style="background: white; color: #0f172a; box-shadow: 0 6px 14px rgba(0,0,0,0.1);">📘 Купить пособие</a>
+            <a href="#sample" class="btn btn-outline" style="margin-left: 0.8rem; background: rgba(255,255,255,0.1); color: white; border-color: rgba(255,255,255,0.3);">🎯 Смотреть разбор</a>
+        </div>
+    </div>
+
+    <!-- Краткие фичи / преимущества -->
+    <div class="feature-grid">
+        <div class="feature-item">
+            <div class="feature-icon">📚</div>
+            <h3>Пошаговая структура</h3>
+            <p>От основ HTML до сложных Grid-сеток. Каждый модуль — с практикой и примерами.</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🎨</div>
+            <h3>5 макетов для верстки</h3>
+            <p>Figma-макеты: лендинг, интернет-магазин, блог, портфолио, админ-панель.</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">⚡</div>
+            <h3>Упражнения Flex/Grid</h3>
+            <p>30+ заданий с решениями. Отрабатываем реальные задачи, которые спрашивают на собеседованиях.</p>
+        </div>
+    </div>
+
+    <!-- Оглавление / главные разделы -->
+    <div class="card" style="padding: 1.8rem; margin: 1.8rem 0;">
+        <h2 style="font-weight: 700; margin-bottom: 1rem;">Содержание – всё для результата</h2>
+        <div class="two-columns">
+            <div>
+                <ul style="list-style: none; line-height: 2;">
+                    <li>✓ <strong>Структура курса</strong> — 4 модуля, 40+ уроков</li>
+                    <li>✓ <strong>HTML фундамент</strong>: семантика, формы, доступность</li>
+                    <li>✓ <strong>CSS основы</strong>: селекторы, блочная модель, позиционирование</li>
+                    <li>✓ <strong>Flexbox</strong> — полный разбор + упражнения</li>
+                    <li>✓ <strong>CSS Grid</strong> — двухмерные сетки, построение сложных макетов</li>
+                </ul>
+            </div>
+            <div>
+                <ul style="list-style: none; line-height: 2;">
+                    <li>✓ <strong>Адаптивная верстка</strong> — медиазапросы, mobile first</li>
+                    <li>✓ <strong>5 макетов</strong> Figma + PSD-аналоги</li>
+                    <li>✓ <strong>30 упражнений</strong> с разбором решений</li>
+                    <li>✓ <strong>Финальный проект</strong> — портфолио-сайт под ключ</li>
+                    <li>✓ <strong>Чек-лист верстальщика</strong> и советы для собеседования</li>
+                </ul>
+            </div>
+        </div>
+        <div class="topic-list" style="margin-top: 1rem;">
+            <span class="topic-tag">Семантическая вёрстка</span>
+            <span class="topic-tag">Flexbox Froggy</span>
+            <span class="topic-tag">Grid Garden</span>
+            <span class="topic-tag">Адаптив</span>
+            <span class="topic-tag">CSS-анимации</span>
+            <span class="topic-tag">БЭМ-методология</span>
+        </div>
+    </div>
+
+    <!-- Демо-блок "Алгоритм" - пример подробного разбора задачи -->
+    <div id="sample">
+        <h2 class="section-title">Пример разбора: создаём адаптивную карточку (Flex + Grid)</h2>
+        <div class="demo-box">
+            <h3 style="margin-bottom: 0.6rem;">🎯 Задача: карточка товара, которая меняет сетку на разных экранах</h3>
+            <p><strong>Условие:</strong> Нужно сверстать секцию из 3 карточек. На десктопе — 3 колонки, на планшете — 2, на телефоне — 1 колонка. Внутри карточки: изображение, заголовок, цена и кнопка (Flex для выравнивания).</p>
+            <p><strong>Алгоритм (по шагам):</strong></p>
+            <ol style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                <li>Создаём HTML-структуру: <span class="code-inline">&lt;div class="products-grid"&gt;</span> с тремя карточками.</li>
+                <li>Для родителя используем <span class="code-inline">display: grid</span> и <span class="code-inline">grid-template-columns: repeat(3, 1fr)</span>.</li>
+                <li>Добавляем <span class="code-inline">gap: 1.5rem</span> для отступов между карточками.</li>
+                <li>Внутри карточки: <span class="code-inline">display: flex; flex-direction: column;</span> чтобы кнопка прижималась к низу.</li>
+                <li>Пишем медиазапросы: <span class="code-inline">@media (max-width: 768px)</span> → 2 колонки, <span class="code-inline">@media (max-width: 480px)</span> → 1 колонка.</li>
+            </ol>
+            <pre>&lt;!-- HTML --&gt;
+&lt;div class="products-grid"&gt;
+    &lt;div class="product-card"&gt;
+        &lt;img src="image.jpg" alt="товар"&gt;
+        &lt;h3&gt;Стильный свитшот&lt;/h3&gt;
+        &lt;div class="card-footer"&gt;
+            &lt;span&gt;49 BYN&lt;/span&gt;
+            &lt;button&gt;Купить&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    // ещё 2 карточки ...
+&lt;/div&gt;
+
+&lt;!-- CSS --&gt;
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+.product-card {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 1.5rem;
+    overflow: hidden;
+}
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+}
+@media (max-width: 768px) {
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+    .products-grid { grid-template-columns: 1fr; }
+}</pre>
+            <p style="color: #2d3a5e;">💡 В полном пособии каждый алгоритм сопровождается цветными схемами, пояснениями и альтернативными способами решения. Никакой магии — только структура.</p>
+        </div>
+    </div>
+
+    <!-- Блок с упражнением на Python / алгоритмизацию (как в референсе, но адаптировано под HTML/CSS) -->
+    <div class="demo-box" style="margin-top: 1rem;">
+        <h3 style="margin-bottom: 0.6rem;">🧪 Пример упражнения: анализ кода (понимание циклов и условий)</h3>
+        <p>Часто вёрстка пересекается с базовой логикой. Разберём задачу на понимание работы цикла (полезно для анимаций и динамических классов).</p>
+        <pre>let s = 0;
+for (let i = 1; i <= 10; i++) {
+    if (i % 2 === 0) {
+        s += 1;
+    }
+}
+console.log(s);</pre>
+        <p><strong>Разбор:</strong> Цикл от 1 до 10, условие проверяет чётность. Чётные числа: 2,4,6,8,10 → срабатывает 5 раз. Значение <span class="code-inline">s = 5</span>. В пособии подобные задания помогают легче понимать работу JavaScript-событий и условных рендеров.</p>
+    </div>
+
+    <!-- Блок с макетами (5 штук) -->
+    <h2 class="section-title">🎨 5 макетов для вёрстки — от новичка до профи</h2>
+    <div class="feature-grid">
+        <div class="feature-item">
+            <div class="feature-icon">🏠</div>
+            <h3>Лендинг студии</h3>
+            <p>Простейший одностраничник: герой, преимущества, форма подписки. Отработка базовых Flex-решений.</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🛍️</div>
+            <h3>Интернет-магазин</h3>
+            <p>Каталог товаров, фильтры, корзина. Главная цель — уверенное использование Grid и карточек.</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">📝</div>
+            <h3>Блог о путешествиях</h3>
+            <p>Семантическая вёрстка, сайдбар, пагинация. Учимся работать с текстом и медиа-элементами.</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">👤</div>
+            <h3>Портфолио фотографа</h3>
+            <p>Галерея, about-секция, форма связи. Создаём эстетичный и современный дизайн.</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">📊</div>
+            <h3>Админ-дашборд</h3>
+            <p>Сложная сетка с боковым меню, графиками, таблицами. Прокачка Grid Layout и адаптива.</p>
+        </div>
+    </div>
+
+    <!-- Упражнения Flex/Grid с расшифровкой -->
+    <div class="card" style="padding: 1.8rem; margin: 1.8rem 0;">
+        <h2 style="font-weight: 700; margin-bottom: 1rem;">⚡ Упражнения Flexbox + Grid (30+ практических заданий)</h2>
+        <div class="two-columns">
+            <div>
+                <ul style="list-style: none; line-height: 2;">
+                    <li>📌 <strong>Flex-навигация</strong> — горизонтальное меню с адаптивом</li>
+                    <li>📌 <strong>Карточки товаров</strong> — Grid-сетка + Flex внутри</li>
+                    <li>📌 <strong>Центрирование блока</strong> — 5 способов (margin, flex, grid)</li>
+                    <li>📌 <strong>Hero-секция</strong> — фоновое изображение + оверлей</li>
+                </ul>
+            </div>
+            <div>
+                <ul style="list-style: none; line-height: 2;">
+                    <li>📌 <strong>Модальное окно</strong> — позиционирование + анимация</li>
+                    <li>📌 <strong>Адаптивная галерея</strong> — Grid с auto-fit и minmax</li>
+                    <li>📌 <strong>Сложная сетка портфолио</strong> — области Grid</li>
+                    <li>📌 <strong>Форма обратной связи</strong> — валидация и стилизация</li>
+                </ul>
+            </div>
+        </div>
+        <div class="topic-list" style="margin-top: 1rem;">
+            <span class="topic-tag">Flex: justify-content</span>
+            <span class="topic-tag">Grid: template areas</span>
+            <span class="topic-tag">Адаптивные шрифты</span>
+            <span class="topic-tag">Псевдоклассы</span>
+        </div>
+    </div>
+
+    <!-- Финальный проект -->
+    <div class="demo-box" style="background: #eef2ff;">
+        <h3 style="margin-bottom: 0.6rem;">🚀 Финальный проект: современное портфолио-сайт</h3>
+        <p>После изучения всех модулей вы создадите полноценный сайт-портфолио, который включает:</p>
+        <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+            <li>✅ Семантическую структуру (header, main, sections, footer)</li>
+            <li>✅ Навигацию с бургер-меню на чистом CSS</li>
+            <li>✅ Сетку проектов (Grid + Flex-карточки)</li>
+            <li>✅ Адаптив под 3 устройства (мобилка, планшет, десктоп)</li>
+            <li>✅ Форму обратной связи с валидацией</li>
+            <li>✅ Плавные анимации и hover-эффекты</li>
+        </ul>
+    </div>
+
+    <!-- Блок с ценой и кнопкой покупки -->
+    <div id="buy" style="margin: 2.5rem 0; text-align: center;">
+        <div class="card" style="padding: 2rem; background: white; border: 1px solid #eef2ff;">
+            <h2 style="font-size: 2rem; font-weight: 800;">📘 Полное методическое пособие</h2>
+            <p style="margin: 0.5rem 0 1rem;">PDF, 5 макетов, упражнения + финальный проект с поддержкой автора</p>
+            <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; align-items: baseline;">
+                <span style="font-size: 2.5rem; font-weight: 800;">40 BYN</span>
+                <span style="font-size: 1.8rem; font-weight: 600;">/</span>
+                <span style="font-size: 2.5rem; font-weight: 800;">1120 RUB</span>
+            </div>
+            <div style="margin-top: 1.5rem;">
+                <a href="#" class="btn btn-primary" style="background: #2563eb; padding: 1rem 3rem; font-size: 1.2rem;" onclick="alert('📩 Для приобретения пособия напишите Катерине: Telegram @katya_mishchenko или katerina@htmlcourse.by')">🔥 Купить пособие</a>
+                <p style="font-size: 0.75rem; margin-top: 1rem; color: #4b5563;">Доступ сразу после оплаты. PDF + Figma макеты + чат поддержки.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Автор и финальная информация -->
+    <div class="footer-note">
+        <p><strong>Автор:</strong> Катерина Мищенко — frontend-эксперт, наставник, автор курсов по веб-разработке.</p>
+        <p style="margin-top: 1rem;">📱 Telegram: @katya_mishchenko </p>
+        <p style="margin-top: 1rem; font-size: 0.8rem;">© 2026 Методическое пособие по HTML/CSS — Полный разбор, макеты, упражнения, финальный проект.</p>
+    </div>
+</div>
+</body>
+</html>
