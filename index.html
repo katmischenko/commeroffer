@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Екатерина Мищенко | Дизайн & Преподавание</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #F7F9FC;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            padding: 48px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .proposal-wrapper {
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        /* Блок о человеке с увеличенным фото */
+        .expert-card-new {
+            background: white;
+            border-radius: 48px;
+            padding: 0;
+            margin-bottom: 48px;
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(95, 158, 160, 0.2);
+        }
+        .expert-image {
+            flex: 1;
+            min-width: 360px;
+            background: linear-gradient(145deg, #5F9EA0, #2D3E50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 56px;
+        }
+        .expert-image img {
+            width: 100%;
+            max-width: 380px;
+            border-radius: 32px;
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.2);
+            border: 4px solid white;
+        }
+        .expert-info {
+            flex: 2;
+            padding: 48px 56px;
+        }
+        .expert-badge {
+            display: inline-block;
+            background: #FEF5F5;
+            color: #5F9EA0;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+        .expert-info h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #2D3E50;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+        .expert-info .title {
+            font-size: 1.1rem;
+            color: #5F9EA0;
+            font-weight: 500;
+            margin-bottom: 24px;
+            border-left: 3px solid #D9A7A7;
+            padding-left: 16px;
+        }
+        .expert-stats-new {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            margin: 24px 0 24px;
+        }
+        .stat-item-new {
+            text-align: left;
+        }
+        .stat-number-new {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #5F9EA0;
+        }
+        .stat-label-new {
+            font-size: 0.75rem;
+            color: #8C9AA8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+        }
+        .expert-desc {
+            color: #3A4B5C;
+            line-height: 1.6;
+            margin-top: 16px;
+        }
+        .expert-desc p {
+            margin-bottom: 12px;
+        }
+
+        @media (max-width: 780px) {
+            .expert-card-new { flex-direction: column; }
+            .expert-image { padding: 32px; min-width: auto; }
+            .expert-info { padding: 32px; }
+            .expert-info h1 { font-size: 2rem; }
+        }
+
+        .direction-switch {
+            display: flex;
+            gap: 16px;
+            background: white;
+            padding: 8px 20px;
+            border-radius: 80px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            border: 1px solid rgba(95, 158, 160, 0.25);
+        }
+        .dir-btn {
+            border: none;
+            background: transparent;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 12px 32px;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-family: inherit;
+            color: #2D3E50;
+        }
+        .dir-btn.active {
+            background: linear-gradient(135deg, #5F9EA0, #2D3E50);
+            color: white;
+            box-shadow: 0 6px 14px rgba(95, 158, 160, 0.25);
+        }
+
+        .page {
+            background: white;
+            border-radius: 48px;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.06);
+            padding: 48px 56px;
+            animation: fadeSlide 0.4s ease;
+        }
+
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 1.8rem 0 1.4rem 0;
+            color: #2D3E50;
+            position: relative;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #5F9EA0, #D9A7A7);
+            border-radius: 4px;
+        }
+        h3 {
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: #5F9EA0;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 32px 0;
+        }
+
+        .course-card, .service-card, .method-card {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 28px;
+            transition: all 0.3s;
+            border: 1px solid #E9EEF2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .course-card:hover, .service-card:hover, .method-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px -12px rgba(95, 158, 160, 0.12);
+            border-color: #D9A7A7;
+        }
+
+        .price-hour {
+            font-size: 0.95rem;
+            color: #7A8B9B;
+            margin: 12px 0 8px;
+            font-weight: 500;
+        }
+        .tariff-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .tariff {
+            flex: 1;
+            background: #FAFCFE;
+            border-radius: 28px;
+            padding: 20px;
+            border: 1px solid #E9EEF2;
+        }
+        .tariff h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #5F9EA0;
+            margin-bottom: 12px;
+        }
+        .price-total {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #2D3E50;
+            margin: 12px 0;
+        }
+        .course-content {
+            font-size: 0.85rem;
+            background: #FAFCFE;
+            padding: 16px;
+            border-radius: 24px;
+            margin: 16px 0 8px;
+        }
+        .course-content ul {
+            padding-left: 20px;
+            margin-top: 8px;
+        }
+
+        .btn-primary, .btn-secondary, .btn-outline {
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+            border: none;
+            margin-top: 16px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #5F9EA0, #2D3E50);
+            color: white;
+            box-shadow: 0 4px 10px rgba(95, 158, 160, 0.25);
+        }
+        .btn-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 18px rgba(95, 158, 160, 0.35);
+        }
+        .btn-secondary {
+            background: white;
+            border: 1.5px solid #E9EEF2;
+            color: #5F9EA0;
+        }
+        .btn-secondary:hover {
+            background: #FAFCFE;
+            border-color: #D9A7A7;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #5F9EA0;
+            color: #5F9EA0;
+        }
+        .btn-outline:hover {
+            background: #FAFCFE;
+        }
+
+        /* Пакеты */
+        .packages-savings {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin: 32px 0 40px;
+            justify-content: center;
+        }
+        .saving-card {
+            flex: 1;
+            min-width: 260px;
+            background: linear-gradient(145deg, #FFFFFF, #FAFCFE);
+            border-radius: 36px;
+            padding: 28px 24px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #E9EEF2;
+            position: relative;
+            overflow: hidden;
+        }
+        .saving-card:hover {
+            transform: translateY(-6px);
+            border-color: #5F9EA0;
+            box-shadow: 0 20px 35px -12px rgba(95, 158, 160, 0.2);
+        }
+        .saving-badge {
+            position: absolute;
+            top: 16px;
+            right: -30px;
+            background: #D9A7A7;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 5px 35px;
+            transform: rotate(45deg);
+            width: 120px;
+        }
+        .saving-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        .saving-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #2D3E50;
+            margin-bottom: 12px;
+        }
+        .saving-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #5F9EA0;
+            margin: 16px 0;
+        }
+        .saving-price small {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #8C9AA8;
+        }
+        .saving-discount {
+            display: inline-block;
+            background: #FEF5F5;
+            color: #D9A7A7;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin: 12px 0;
+        }
+        .saving-features {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .saving-features li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            border-bottom: 1px solid #E9EEF2;
+            color: #3A4B5C;
+        }
+        .saving-features li:before {
+            content: "✓";
+            color: #5F9EA0;
+            font-weight: 700;
+        }
+
+        .contact-block {
+            background: #FAFCFE;
+            border-radius: 40px;
+            padding: 32px 40px;
+            margin-top: 48px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+            border: 1px solid #E9EEF2;
+        }
+        .contact-info {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .contact-item {
+            background: white;
+            padding: 10px 24px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            border: 1px solid #E9EEF2;
+        }
+        .contact-item a {
+            text-decoration: none;
+            color: #5F9EA0;
+        }
+
+        /* Стили для страницы деталей пособия */
+        .method-detail-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #f5f7fb;
+            z-index: 2000;
+            overflow-y: auto;
+            display: none;
+            padding: 1rem;
+        }
+        .method-detail-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            border: 1px solid #E9EEF2;
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #5F9EA0;
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+            transition: 0.2s;
+            font-family: inherit;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .back-btn:hover {
+            background: #FAFCFE;
+            transform: translateX(-4px);
+            border-color: #5F9EA0;
+        }
+
+        @media (max-width: 780px) {
+            .expert-card, .page { padding: 28px 20px; }
+            .grid-2col { grid-template-columns: 1fr; }
+            .contact-block { flex-direction: column; text-align: center; padding: 24px; }
+            .contact-info { justify-content: center; }
+            .packages-savings { gap: 16px; }
+            .saving-card { min-width: auto; }
+        }
+
+        footer {
+            margin-top: 32px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #8C9AA8;
+        }
+    </style>
+</head>
+<body>
+<div class="proposal-wrapper">
+    <!-- Блок о человеке с увеличенным фото -->
+    <div class="expert-card-new">
+        <div class="expert-image">
+            <img src="5936904886807104842_121.jpg" alt="Екатерина Мищенко">
+        </div>
+        <div class="expert-info">
+            <div class="expert-badge">Преподаватель & Дизайнер</div>
+            <h1>Мищенко Екатерина</h1>
+            <div class="title">Преподаватель информатики · Графический дизайнер · Эксперт IT-образования</div>
+            <div class="expert-stats-new">
+                <div class="stat-item-new"><div class="stat-number-new">2017</div><div class="stat-label-new">начало пути</div></div>
+                <div class="stat-item-new"><div class="stat-number-new">650+</div><div class="stat-label-new">учеников</div></div>
+                <div class="stat-item-new"><div class="stat-number-new">150+</div><div class="stat-label-new">высший балл ЕГЭ/ОГЭ</div></div>
+                <div class="stat-item-new"><div class="stat-number-new">3 года</div><div class="stat-label-new">дизайн-практика</div></div>
+            </div>
+            <div class="expert-desc">
+                <p><strong>Образование:</strong> Педагогический университет имени И. П. Шамякина, 2017. Начинала в государственной школе, затем ушла в онлайн-образование — так соединила педагогику с дизайном.</p>
+                <p><strong>Дизайн-направление:</strong> 3 года создаю визуальные решения: от лендингов до корпоративных порталов. Убеждена: хороший дизайн решает бизнес-задачи и делает сложное понятным.</p>
+                <p><strong>Миссия:</strong> помогать ученикам достигать высоких результатов, а бизнесу — находить визуальный голос. Индивидуальный подход, структура и забота — мои принципы.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="direction-switch">
+        <button id="switchTeaching" class="dir-btn active">Курсы и образование</button>
+        <button id="switchDesign" class="dir-btn">Дизайн-проекты</button>
+    </div>
+
+    <div id="dynamicContent"></div>
+</div>
+
+<!-- Контейнер для страницы деталей методического пособия -->
+<div id="methodDetailPage" class="method-detail-page">
+    <div class="method-detail-container">
+        <button class="back-btn" id="backToMainBtn"><i class="fas fa-arrow-left"></i> Назад к предложению</button>
+        <div id="methodDetailContent"></div>
+    </div>
+</div>
+
+<script>
+    // Данные курсов
+    const coursesData = [
+        { name: "Scratch", desc: "Визуальное программирование для детей 7-12 лет. Развитие логики и алгоритмического мышления.", priceHourByn: 45, priceHourRub: 1260,
+          tariffs: [{ name: "Базовый", hours: 32 }, { name: "Расширенный", hours: 64 }],
+          content: { basic: ["Основы алгоритмов", "Циклы и условия", "Создание игр", "Анимации", "Финальный проект: мультфильм"],
+                     extended: ["Все из базового", "Сложные проекты", "Работа со списками", "Клонирование", "Создание RPG игры"] } },
+        { name: "Python", desc: "Современный язык программирования: от основ до создания Telegram-ботов и парсинга.", priceHourByn: 65, priceHourRub: 1820,
+          tariffs: [{ name: "Базовый", hours: 32 }, { name: "Расширенный", hours: 64 }],
+          content: { basic: ["Синтаксис, переменные", "Условные операторы", "Циклы, списки", "Функции", "Решение задач ЕГЭ/ОГЭ"],
+                     extended: ["ООП", "Работа с файлами", "Telegram бот", "Парсинг сайтов", "Курсовой проект"] } },
+        { name: "HTML/CSS/JS", desc: "Создание современных сайтов: верстка, адаптив, интерактивность.", priceHourByn: 55, priceHourRub: 1540,
+          tariffs: [{ name: "Базовый", hours: 32 }, { name: "Профессиональный", hours: 64 }],
+          content: { basic: ["HTML5 семантика", "CSS стилизация", "Flex/Grid", "Адаптив", "Формы"],
+                     extended: ["JavaScript: основы, DOM", "События, анимации", "Сборка проекта", "Git", "Финальный сайт"] } },
+        { name: "Дизайн в Figma", desc: "Профессиональный дизайн интерфейсов: от прототипа до дизайн-системы.", priceHourByn: 70, priceHourRub: 1960,
+          tariffs: [{ name: "Базовый", hours: 32 }, { name: "Расширенный", hours: 64 }],
+          content: { basic: ["Интерфейс Figma", "Фигуры, текст", "Компоненты", "Прототипирование", "Лендинг"],
+                     extended: ["Авто-лейауты", "Векторная графика", "Дизайн-системы", "Анимация в Figma", "UI-кит"] } },
+        { name: "Подготовка к ЕГЭ/ОГЭ по информатике", desc: "Интенсивная подготовка с разбором всех типов заданий, программирование на Python.", priceHourByn: 80, priceHourRub: 2240, singleTariff: true, hours: 48,
+          content: ["Разбор 1-27 заданий", "Алгоритмизация", "Python с нуля", "Эмуляция экзамена", "Разбор вариантов", "Пробные экзамены"] },
+        { name: "Цифровая грамотность", desc: "Базовые навыки работы с компьютером, безопасность, офисные программы.", priceHourByn: 45, priceHourRub: 1260, singleTariff: true, hours: 24,
+          content: ["Кибербезопасность", "Google Docs/Excel", "Облачные хранилища", "Этикет в сети", "Работа с почтой", "Итоговый тест"] }
+    ];
+
+    // Методические пособия с измененными цветами:
+    // Python -> зеленый (был у ЕГЭ)
+    // ЕГЭ/ОГЭ -> синий (был у Python)
+    // HTML -> фиолетовый (новый)
+    // Figma -> остается оранжевый
+    const methodPubs = [
+        {
+            id: "python",
+            name: "Python: полное пособие",
+            badge: "Python",
+            badgeIcon: "fab fa-python",
+            accentColor: "#2E7D32",
+            accentLight: "rgba(46, 125, 50, 0.12)",
+            accentBorder: "rgba(46, 125, 50, 0.3)",
+            gradientStart: "#1b5e20",
+            gradientEnd: "#0c4710",
+            priceByn: 45,
+            priceRub: 1260,
+            stats: { pages: 120, illustrations: 50, cases: 5, projects: 5 },
+            heroDesc: "120 страниц • теория • 50+ задач • чек-листы • 5 проектов • гайд ЕГЭ",
+            toc: [
+                { num: "01", title: "Синтаксис и основы", desc: "Переменные, типы данных, операторы", pages: "стр. 6–24" },
+                { num: "02", title: "Условные операторы и циклы", desc: "if/else, for, while", pages: "стр. 25–44" },
+                { num: "03", title: "Структуры данных", desc: "Списки, кортежи, словари, множества", pages: "стр. 45–68" },
+                { num: "04", title: "Функции и модули", desc: "Создание функций, аргументы, импорт", pages: "стр. 69–88" },
+                { num: "05", title: "ООП и проекты", desc: "Классы, объекты, Telegram-бот", pages: "стр. 89–112" },
+                { num: "🎁", title: "Бонус: ЕГЭ", desc: "Разбор заданий 16, 17, 23, 25, 27", pages: "стр. 113–118" }
+            ],
+            chapters: [
+                { icon: "🐍", title: "Синтаксис и основы", desc: "Полный разбор переменных, типов данных, условных операторов и циклов." },
+                { icon: "📚", title: "Структуры данных", desc: "Списки, словари, кортежи — работа с данными как профессионал." },
+                { icon: "⚙️", title: "Функции и модули", desc: "Создание переиспользуемого кода, импорт библиотек." },
+                { icon: "🤖", title: "Telegram-бот", desc: "Пошаговое создание бота с нуля." },
+                { icon: "🎓", title: "Подготовка к ЕГЭ", desc: "Разбор задач, алгоритмы, типовые ошибки." }
+            ],
+            examples: [
+                { tag: "📖 стр. 30–31", title: "Циклы", desc: "Подробный разбор for и while с примерами." },
+                { tag: "🐍 стр. 55–56", title: "Работа со списками", desc: "Срезы, генераторы, методы списков." },
+                { tag: "🤖 стр. 92–93", title: "Создание Telegram-бота", desc: "Пошаговая инструкция с кодом." }
+            ]
+        },
+        {
+            id: "html",
+            name: "Методическое пособие по HTML/CSS",
+            badge: "HTML/CSS",
+            badgeIcon: "fab fa-html5",
+            accentColor: "#8B5CF6",
+            accentLight: "rgba(139, 92, 246, 0.12)",
+            accentBorder: "rgba(139, 92, 246, 0.3)",
+            gradientStart: "#7c3aed",
+            gradientEnd: "#5b21b6",
+            priceByn: 40,
+            priceRub: 1120,
+            stats: { pages: 95, illustrations: 50, cases: 5, projects: 3 },
+            heroDesc: "95 страниц • 5 макетов • 30+ упражнений • финальный проект",
+            toc: [
+                { num: "01", title: "Основы HTML5", desc: "Семантика, структура документа", pages: "стр. 6–22" },
+                { num: "02", title: "CSS стилизация", desc: "Селекторы, цвета, шрифты", pages: "стр. 23–45" },
+                { num: "03", title: "Flexbox и Grid", desc: "Современные методы верстки", pages: "стр. 46–68" },
+                { num: "04", title: "Адаптивная верстка", desc: "Медиа-запросы", pages: "стр. 69–82" },
+                { num: "05", title: "Финальный проект", desc: "Создание сайта-портфолио", pages: "стр. 83–92" }
+            ],
+            chapters: [
+                { icon: "📄", title: "HTML5 семантика", desc: "Правильная структура документа, доступность, SEO." },
+                { icon: "🎨", title: "CSS стилизация", desc: "Цвета, шрифты, анимации, позиционирование." },
+                { icon: "📐", title: "Flex/Grid", desc: "Современные методы верстки без костылей." },
+                { icon: "📱", title: "Адаптив", desc: "Верстка под все устройства: от мобильных до десктопа." }
+            ],
+            examples: [
+                { tag: "📖 стр. 18–19", title: "Семантические теги", desc: "Когда использовать header, main, article." },
+                { tag: "🎨 стр. 34–35", title: "CSS Grid Layout", desc: "Создание сложных сеток за 10 минут." },
+                { tag: "📱 стр. 72–73", title: "Медиа-запросы", desc: "Настройка брейкпоинтов для адаптива." }
+            ]
+        },
+        {
+            id: "figma",
+            name: "Основы Figma",
+            badge: "Figma",
+            badgeIcon: "fab fa-figma",
+            accentColor: "#F24E1E",
+            accentLight: "rgba(242, 78, 30, 0.12)",
+            accentBorder: "rgba(242, 78, 30, 0.3)",
+            gradientStart: "#d93c0c",
+            gradientEnd: "#b53008",
+            priceByn: 55,
+            priceRub: 1540,
+            stats: { pages: 113, illustrations: 70, cases: 5, projects: 3 },
+            heroDesc: "113 страниц • 70+ иллюстраций • 5 кейсов • 3 проекта",
+            toc: [
+                { num: "01", title: "Интерфейс и инструменты", desc: "Фреймы, сетки, горячие клавиши", pages: "стр. 6–19" },
+                { num: "02", title: "Компоненты и Variants", desc: "Главные компоненты, экземпляры, свойства", pages: "стр. 20–39" },
+                { num: "03", title: "Дизайн-система", desc: "Стили, переменные, тёмная тема", pages: "стр. 40–61" },
+                { num: "04", title: "Авто-лейауты", desc: "Hug / Fill / Fixed, резиновые интерфейсы", pages: "стр. 62–81" },
+                { num: "05", title: "Практические кейсы", desc: "Лендинг, дашборд, UI-кит", pages: "стр. 82–105" },
+                { num: "🎁", title: "Бонусные материалы", desc: "Чек-лист, шпаргалка, плагины", pages: "стр. 106–112" }
+            ],
+            chapters: [
+                { icon: "🖌️", title: "Интерфейс и инструменты", desc: "Полный разбор панелей, настройка фреймов, сеток и горячих клавиш." },
+                { icon: "🧩", title: "Компоненты + Variants", desc: "Создание переиспользуемых элементов, вариантов кнопок." },
+                { icon: "🎨", title: "Дизайн-система", desc: "Цветовые и текстовые стили, переменные, переключение тем." },
+                { icon: "⚡", title: "Авто-лейауты", desc: "Адаптивные интерфейсы, которые не ломаются." }
+            ],
+            examples: [
+                { tag: "📖 стр. 6–7", title: "Интерфейс Figma", desc: "Схема рабочей области, таблица «Фрейм vs Группа»." },
+                { tag: "🎛️ стр. 30–31", title: "Варианты компонентов", desc: "Объединение кнопок в Variants, 12 состояний." },
+                { tag: "🎨 стр. 54–55", title: "Переменные и темы", desc: "Создание цветовых переменных, светлая и тёмная тема." }
+            ]
+        },
+        {
+            id: "ege",
+            name: "ЕГЭ / ОГЭ Информатика",
+            badge: "ЕГЭ/ОГЭ",
+            badgeIcon: "fas fa-graduation-cap",
+            accentColor: "#306998",
+            accentLight: "rgba(48, 105, 152, 0.12)",
+            accentBorder: "rgba(48, 105, 152, 0.3)",
+            gradientStart: "#1a4d7a",
+            gradientEnd: "#0e3a5c",
+            priceByn: 120,
+            priceRub: 3360,
+            stats: { pages: 210, illustrations: 120, cases: 150, projects: 5 },
+            heroDesc: "210 страниц • 150+ задач • 5 пробных экзаменов",
+            toc: [
+                { num: "01", title: "Разбор заданий 1-10", desc: "Системы счисления, логика, таблицы", pages: "стр. 8–42" },
+                { num: "02", title: "Разбор заданий 11-20", desc: "Алгоритмы, массивы, строки", pages: "стр. 43–88" },
+                { num: "03", title: "Программирование на Python", desc: "Решение задач 17, 25, 27", pages: "стр. 89–134" },
+                { num: "04", title: "Алгоритмы и структуры", desc: "Динамическое программирование", pages: "стр. 135–172" },
+                { num: "05", title: "Пробные экзамены", desc: "5 вариантов с разбором", pages: "стр. 173–208" }
+            ],
+            chapters: [
+                { icon: "📊", title: "Системы счисления", desc: "Перевод чисел, арифметика в разных системах." },
+                { icon: "🐍", title: "Python для ЕГЭ", desc: "Решение типовых задач, оптимизация кода." },
+                { icon: "🧠", title: "Алгоритмы", desc: "Динамическое программирование, рекурсия, графы." },
+                { icon: "📝", title: "Пробные экзамены", desc: "Полноценные варианты с проверкой." }
+            ],
+            examples: [
+                { tag: "📖 стр. 25–26", title: "Задание №8", desc: "Поиск и анализ информации в таблицах." },
+                { tag: "🐍 стр. 102–103", title: "Задание №27", desc: "Оптимальное программирование на Python." },
+                { tag: "📝 стр. 185–186", title: "Пробный вариант №3", desc: "Полный разбор с комментариями." }
+            ]
+        }
+    ];
+
+    const savingPackages = [
+        { icon: "🎯", title: "Стартовый", priceRub: "38 304", priceByn: "1 368", hours: 32, discount: "−22%", savings: "Экономия 10 976₽ / 392 byn", features: ["Любой базовый курс (32 занятия по цене 25 занятий)", "Методическое пособие в подарок", "Чек-лист 'Первые 5 шагов'", "Шпаргалки/Памятки", "Учебный трекер"] },
+        { icon: "⚡", title: "Оптимальный", priceRub: "71 800", priceByn: "2 564", hours: 64, discount: "−27%", savings: "Экономия 26 760₽ / 956 byn", features: ["Любой расширенный курс (64 занятия по цене 46 занятий)", "2 методических пособия в подарок", "Шпаргалки/Памятки", "Учебный трекер"] },
+        { icon: "🎓", title: "ЕГЭ Интенсив", priceRub: "78 500", priceByn: "2 804", hours: 48, discount: "−27%", savings: "Экономия 29 020₽ / 1 036 byn", features: ["Подготовка к ЕГЭ/ОГЭ (48 занятий)", "Курс Python", "Все методические пособия по информатике", "5 пробных экзаменов", "Индивидуальный трек подготовки"] },
+        { icon: "👥", title: "Семейный", priceRub: "138 000", priceByn: "4 928", hours: 64, discount: "−30%", savings: "Экономия 59 120₽ / 2 112 byn", features: ["2 любых курса для двоих учеников","128 занятий (64 занятия на каждого ученика)", "Скидка 20% на методички", "Гибкое расписание", "Общий чат с преподавателем"] }
+    ];
+
+    const designServices = [
+        { name: "Landing Page", shortDesc: "Одностраничный сайт для продаж, промо.", details: ["Анализ ЦА и конкурентов", "Структура и прототип", "Уникальный дизайн + адаптив", "2 итерации правок", "Макет в Figma"], terms: "5–7 дней", costRub: 14000, costByn: 500 },
+        { name: "Корпоративный сайт", shortDesc: "Многостраничный сайт для компании.", details: ["Анализ бизнес-задач", "Дизайн типовых страниц", "Анимации", "Адаптив", "Правки 2 итерации"], terms: "12–18 дней", costRub: 33600, costByn: 1200 },
+        { name: "Интернет-магазин", shortDesc: "Каталог, корзина, личный кабинет.", details: ["Дизайн карточек товаров", "Корзина и оформление", "Личный кабинет", "Фильтры", "Прототип сценариев"], terms: "20–25 дней", costRub: 56000, costByn: 2000 },
+        { name: "Презентации", shortDesc: "Под бренд, для инвесторов, защиты.", details: ["Концепция и структура", "Визуализация данных", "Анимация", "Фирменный стиль", "PPT/Google Slides"], terms: "2–5 дней", costRub: 4200, costByn: 150 },
+        { name: "Дизайн сайта (без верстки)", shortDesc: "Только макет Figma для разработчика.", details: ["Дизайн главной + 3-5 страниц", "UI-kit", "Адаптивные версии", "Интерактивный прототип", "Передача разработчику"], terms: "от 7 дней", costRub: 22400, costByn: 800 }
+    ];
+
+    const stagesHorizontal = [
+        { number: "01", title: "Брифинг", desc: "Детальное интервью: цели, аудитория, стиль, сроки. Заполнение брифа." },
+        { number: "02", title: "Анализ", desc: "Исследование конкурентов, создание moodboard, подбор референсов." },
+        { number: "03", title: "Прототип", desc: "Создание структуры страниц (wireframes), утверждение логики." },
+        { number: "04", title: "Дизайн", desc: "Разработка дизайна ключевых страниц с учетом типографики." },
+        { number: "05", title: "Правки", desc: "Внесение корректировок, доработка деталей. До 2-х итераций." },
+        { number: "06", title: "Финал", desc: "Финализация в Figma, подготовка UI-kit, экспорт файлов." }
+    ];
+
+    const TELEGRAM_LINK = "https://t.me/katerin_mischenko";
+
+    function openTelegram() {
+        window.open(TELEGRAM_LINK, '_blank');
+    }
+
+    // Генерация HTML для страницы деталей пособия с уникальной цветовой схемой
+    function generateMethodHTML(method) {
+        const tocHTML = method.toc.map(item => `
+            <div class="toc-row">
+                <div class="toc-left">
+                    <span class="toc-num" style="background: ${method.accentLight}; color: ${method.accentColor};">${item.num}</span>
+                    <span class="toc-title">${item.title}</span>
+                    <span class="toc-desc">${item.desc}</span>
+                </div>
+                <div class="toc-pages" style="background: ${method.accentLight}; color: ${method.accentColor};">${item.pages}</div>
+            </div>
+        `).join('');
+        
+        const chaptersHTML = method.chapters.map(ch => `
+            <div class="chapter-card">
+                <div class="chapter-icon">${ch.icon}</div>
+                <h3 style="color: ${method.accentColor};">${ch.title}</h3>
+                <p>${ch.desc}</p>
+            </div>
+        `).join('');
+        
+        const examplesHTML = method.examples.map(ex => `
+            <div class="example-card">
+                <div class="example-tag" style="background: ${method.accentLight}; color: ${method.accentColor};">${ex.tag}</div>
+                <div class="example-title">${ex.title}</div>
+                <div class="example-desc">${ex.desc}</div>
+                <div class="example-pages" style="color: ${method.accentColor};">→ подробный разбор</div>
+            </div>
+        `).join('');
+        
+        return `
+            <style>
+                .method-detail-container .hero {
+                    background: linear-gradient(135deg, ${method.gradientStart} 0%, ${method.gradientEnd} 100%);
+                    border-radius: 2rem;
+                    padding: 2rem 2rem;
+                    margin-bottom: 2rem;
+                    position: relative;
+                    overflow: hidden;
+                }
+                .method-detail-container .hero::after {
+                    content: "${method.id === 'python' ? '🐍' : method.id === 'html' ? '🌐' : method.id === 'figma' ? '🎨' : '📚'}";
+                    font-size: 140px;
+                    position: absolute;
+                    bottom: -20px;
+                    right: -20px;
+                    opacity: 0.08;
+                    pointer-events: none;
+                }
+                .method-detail-container .badge-figma {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    background: rgba(255,255,255,0.15);
+                    border: 1px solid rgba(255,255,255,0.3);
+                    padding: 6px 14px;
+                    border-radius: 100px;
+                    color: white;
+                    font-size: 0.7rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    margin-bottom: 1.2rem;
+                }
+                .method-detail-container .hero h1 {
+                    font-size: clamp(1.6rem, 5vw, 2.8rem);
+                    font-weight: 800;
+                    line-height: 1.2;
+                    margin-bottom: 0.8rem;
+                    color: white;
+                }
+                .method-detail-container .hero p {
+                    font-size: 1rem;
+                    color: rgba(255,255,255,0.85);
+                    margin-bottom: 1.5rem;
+                }
+                .method-detail-container .hero-stats {
+                    display: flex;
+                    gap: 1.2rem;
+                    flex-wrap: wrap;
+                    margin-bottom: 1.5rem;
+                }
+                .method-detail-container .stat {
+                    display: flex;
+                    flex-direction: column;
+                }
+                .method-detail-container .stat-value {
+                    font-size: 1.5rem;
+                    font-weight: 800;
+                    color: white;
+                }
+                .method-detail-container .stat-label {
+                    font-size: 0.7rem;
+                    color: rgba(255,255,255,0.7);
+                }
+                .method-detail-container .content-section-method {
+                    background: white;
+                    border-radius: 1.5rem;
+                    padding: 1.5rem;
+                    margin-bottom: 1.5rem;
+                    box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.08);
+                    border: 1px solid #F0E8FF;
+                }
+                .method-detail-container .section-header-method {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 1.2rem;
+                    padding-bottom: 0.6rem;
+                    border-bottom: 2px solid #F0E8FF;
+                }
+                .method-detail-container .section-header-method i {
+                    font-size: 1.4rem;
+                    color: ${method.accentColor};
+                }
+                .method-detail-container .section-header-method h2 {
+                    font-size: 1.3rem;
+                    font-weight: 700;
+                    color: #1A162E;
+                    margin: 0;
+                }
+                .method-detail-container .toc-list {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0;
+                }
+                .method-detail-container .toc-row {
+                    display: flex;
+                    align-items: baseline;
+                    justify-content: space-between;
+                    padding: 0.7rem 0.3rem 0.7rem 0;
+                    border-bottom: 1px solid #F0E8FF;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                }
+                .method-detail-container .toc-left {
+                    display: flex;
+                    align-items: baseline;
+                    gap: 0.8rem;
+                    flex-wrap: wrap;
+                }
+                .method-detail-container .toc-num {
+                    font-weight: 700;
+                    width: 2rem;
+                    height: 2rem;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 60px;
+                    font-size: 0.75rem;
+                }
+                .method-detail-container .toc-title {
+                    font-weight: 600;
+                    color: #1A162E;
+                    font-size: 0.9rem;
+                }
+                .method-detail-container .toc-desc {
+                    font-size: 0.75rem;
+                    color: #6C6390;
+                }
+                .method-detail-container .toc-pages {
+                    font-size: 0.7rem;
+                    font-weight: 500;
+                    padding: 0.15rem 0.6rem;
+                    border-radius: 40px;
+                    white-space: nowrap;
+                }
+                .method-detail-container .chapters-grid-method {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                    gap: 1rem;
+                    margin-top: 0.5rem;
+                }
+                .method-detail-container .chapter-card {
+                    background: #FAF8FF;
+                    border-radius: 1.2rem;
+                    padding: 1rem;
+                    border: 1px solid #EEE6FF;
+                    transition: 0.2s;
+                }
+                .method-detail-container .chapter-card:hover {
+                    border-color: ${method.accentColor};
+                }
+                .method-detail-container .chapter-icon {
+                    font-size: 1.6rem;
+                    margin-bottom: 0.5rem;
+                }
+                .method-detail-container .chapter-card h3 {
+                    font-size: 1rem;
+                    font-weight: 700;
+                    margin-bottom: 0.4rem;
+                }
+                .method-detail-container .chapter-card p {
+                    font-size: 0.8rem;
+                    color: #4A4370;
+                    line-height: 1.4;
+                }
+                .method-detail-container .examples-grid-method {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                    gap: 1rem;
+                }
+                .method-detail-container .example-card {
+                    background: white;
+                    border-radius: 1.2rem;
+                    padding: 1rem;
+                    border: 1px solid #EEE6FF;
+                    transition: 0.2s;
+                }
+                .method-detail-container .example-card:hover {
+                    border-color: ${method.accentColor};
+                }
+                .method-detail-container .example-tag {
+                    font-size: 0.65rem;
+                    font-weight: 600;
+                    display: inline-block;
+                    padding: 3px 10px;
+                    border-radius: 40px;
+                    margin-bottom: 0.6rem;
+                }
+                .method-detail-container .example-title {
+                    font-weight: 700;
+                    font-size: 0.9rem;
+                    margin-bottom: 0.4rem;
+                    color: #1A162E;
+                }
+                .method-detail-container .example-desc {
+                    font-size: 0.8rem;
+                    color: #5A5380;
+                    margin: 0.4rem 0;
+                }
+                .method-detail-container .example-pages {
+                    font-size: 0.65rem;
+                    margin-top: 0.6rem;
+                    text-align: right;
+                }
+                .method-detail-container .buy-section {
+                    margin: 1.5rem 0 0;
+                    text-align: center;
+                }
+                .method-detail-container .btn-buy-large {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 12px;
+                    background: linear-gradient(135deg, ${method.accentColor}, ${method.gradientEnd});
+                    color: white;
+                    padding: 1rem 2.5rem;
+                    font-size: 1.1rem;
+                    font-weight: 700;
+                    border-radius: 60px;
+                    text-decoration: none;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 8px 20px ${method.accentColor}40;
+                    border: none;
+                    cursor: pointer;
+                    width: 100%;
+                    max-width: 320px;
+                }
+                .method-detail-container .btn-buy-large:hover {
+                    transform: translateY(-3px);
+                    box-shadow: 0 12px 28px ${method.accentColor}60;
+                }
+                .method-detail-container .price-large {
+                    font-size: 1.8rem;
+                    font-weight: 800;
+                    color: ${method.accentColor};
+                    margin: 0.5rem 0;
+                }
+                @media (max-width: 680px) {
+                    .method-detail-container .hero {
+                        padding: 1.5rem;
+                    }
+                    .method-detail-container .content-section-method {
+                        padding: 1.2rem;
+                    }
+                    .method-detail-container .toc-row {
+                        flex-direction: column;
+                        align-items: flex-start;
+                    }
+                    .method-detail-container .btn-buy-large {
+                        width: 100%;
+                        max-width: 100%;
+                        padding: 0.9rem 1.5rem;
+                        font-size: 1rem;
+                    }
+                }
+            </style>
+            <div class="hero">
+                <div class="badge-figma"><i class="${method.badgeIcon}"></i> Методическое пособие</div>
+                <h1>${method.name}</h1>
+                <p>${method.heroDesc}</p>
+                <div class="hero-stats">
+                    <div class="stat"><span class="stat-value">${method.stats.pages}</span><span class="stat-label">страниц</span></div>
+                    <div class="stat"><span class="stat-value">${method.stats.illustrations}+</span><span class="stat-label">иллюстраций</span></div>
+                    <div class="stat"><span class="stat-value">${method.stats.cases}</span><span class="stat-label">кейсов</span></div>
+                    <div class="stat"><span class="stat-value">${method.stats.projects}</span><span class="stat-label">проекта</span></div>
+                </div>
+            </div>
+            
+            <div class="content-section-method">
+                <div class="section-header-method">
+                    <i class="fas fa-list-ul"></i>
+                    <h2>Содержание пособия</h2>
+                </div>
+                <div class="toc-list">${tocHTML}</div>
+            </div>
+            
+            <div class="content-section-method">
+                <div class="section-header-method">
+                    <i class="fas fa-star"></i>
+                    <h2>Что вы изучите</h2>
+                </div>
+                <div class="chapters-grid-method">${chaptersHTML}</div>
+            </div>
+            
+            <div class="content-section-method">
+                <div class="section-header-method">
+                    <i class="fas fa-book-open"></i>
+                    <h2>Примеры страниц пособия</h2>
+                </div>
+                <div class="examples-grid-method">${examplesHTML}</div>
+            </div>
+            
+            <div class="buy-section">
+                <div class="price-large">${method.priceRub} ₽ / ${method.priceByn} Br</div>
+                <p style="margin-bottom: 1rem; font-size: 0.85rem;">PDF-пособие + бонусные материалы: чек-листы, шпаргалки</p>
+                <a href="${TELEGRAM_LINK}" target="_blank" class="btn-buy-large"><i class="fab fa-telegram"></i> Купить пособие</a>
+                <div style="margin-top: 1.2rem; font-size: 0.7rem; color: #887FB0;">Мгновенная выдача · Доступ навсегда · Обновления</div>
+            </div>
+        `;
+    }
+
+    function showMethodDetail(method) {
+        const detailPage = document.getElementById('methodDetailPage');
+        const detailContent = document.getElementById('methodDetailContent');
+        detailContent.innerHTML = generateMethodHTML(method);
+        detailPage.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMethodDetail() {
+        document.getElementById('methodDetailPage').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    function renderDesignPage() {
+        return `<div class="page"><h2>Услуги дизайна</h2><div class="grid-2col">${designServices.map(s => `<div class="service-card"><h3>${s.name}</h3><p>${s.shortDesc}</p><button class="btn-secondary detail-design" data-serv='${JSON.stringify(s)}'>Подробнее</button></div>`).join('')}</div>
+        <h2>Этапы работы</h2><div class="stages-horizontal" style="display: flex; flex-wrap: wrap; gap: 16px; margin: 32px 0;">${stagesHorizontal.map((s, idx) => `<div class="stage-horiz-item" data-stage="${idx}" style="flex:1; min-width:150px; background:#FAFCFE; border-radius:24px; padding:20px 16px; text-align:center; cursor:pointer; border:1px solid #E9EEF2;"><div class="stage-number" style="font-size:1.8rem; font-weight:800; color:#5F9EA0; opacity:0.6;">${s.number}</div><div class="stage-title-horiz" style="font-weight:700; color:#2D3E50;">${s.title}</div><div class="stage-desc-horiz" style="font-size:0.8rem; color:#7A8B9B; display:none; margin-top:12px;">${s.desc}</div></div>`).join('')}</div>
+        <div class="contact-block"><div><strong>Свяжитесь для заказа дизайна</strong><br>Обсудим детали и сроки</div><div class="contact-info"><div class="contact-item">📱 <a href="tel:+375333284152">+375 33 328-41-52</a></div><div class="contact-item">💬 <a href="${TELEGRAM_LINK}" target="_blank">@katerin_mischenko</a></div></div><button class="btn-primary" onclick="openTelegram()">Написать в Telegram</button></div></div>`;
+    }
+
+    function renderTeachingPage() {
+        return `<div class="page"><h2>Пакетные предложения</h2><div class="packages-savings">${savingPackages.map(p => `
+            <div class="saving-card">
+                <div class="saving-badge">${p.discount}</div>
+                <div class="saving-icon">${p.icon}</div>
+                <div class="saving-title">${p.title}</div>
+                <div class="saving-price">${p.priceRub} ₽ <small>/</small> ${p.priceByn} Br</div>
+                <div class="saving-discount">${p.savings} </div>
+                <ul class="saving-features">${p.features.map(f => `<li>${f}</li>`).join('')}</ul>
+                <button class="btn-primary" onclick="openTelegram()">Выбрать пакет →</button>
+            </div>`).join('')}</div>
+        <h2>Образовательные курсы</h2><div class="grid-2col">${coursesData.map(c => { 
+            if (c.singleTariff) {
+                const totalRub = c.priceHourRub * c.hours, totalByn = c.priceHourByn * c.hours;
+                return `<div class="course-card"><h3>${c.name}</h3><p>${c.desc}</p><div class="price-hour">Стоимость: ${c.priceHourRub}₽ / ${c.priceHourByn}Br за час занятий</div><div class="tariff"><div class="price-total">${totalRub}₽ / ${totalByn}Br (${c.hours} занятий)</div><div class="course-content"><strong>Программа:</strong><ul>${c.content.map(i=>`<li>${i}</li>`).join('')}</ul></div></div></div>`;
+            } else {
+                return `<div class="course-card"><h3>${c.name}</h3><p>${c.desc}</p><div class="price-hour">Стоимость: ${c.priceHourRub}₽ / ${c.priceHourByn}Br за час занятий</div><div class="tariff-group">${c.tariffs.map(t => { const totalRub = c.priceHourRub * t.hours, totalByn = c.priceHourByn * t.hours;
+                    return `<div class="tariff"><h4>${t.name}</h4><div class="price-total">${totalRub}₽ / ${totalByn}Br (${t.hours} занятий)</div><div class="course-content"><strong>Что входит:</strong><ul>${c.content[t.name === "Базовый" ? "basic" : "extended"].map(i=>`<li>${i}</li>`).join('')}</ul></div></div>`}).join('')}</div></div>`;
+            }
+        }).join('')}</div>
+        <div style="text-align:center; margin: 28px 0;"><button class="btn-primary" id="unifiedEnrollBtn" style="padding:16px 52px; font-size:1rem;">Записаться на курс →</button></div>
+        
+        <h2>Методические пособия</h2><div class="grid-2col">${methodPubs.map((m, idx) => `<div class="method-card"><h3>${m.name}</h3><p>${m.heroDesc.substring(0, 70)}...</p><div class="price-total" style="font-size:1.2rem; margin:12px 0;">${m.priceRub}₽ / ${m.priceByn}Br</div><button class="btn-outline method-detail-trigger" data-method-idx="${idx}">Подробнее →</button></div>`).join('')}</div>
+        <div style="text-align:center; margin: 20px 0 30px;"><button class="btn-primary" id="buyMethodMainBtn" style="padding:14px 40px;">Купить пособие →</button></div>
+        
+        <div class="contact-block"><div><strong>Остались вопросы?</strong><br>Напишите, подберём удобный формат</div><div class="contact-info"><div class="contact-item">📱 <a href="tel:+375333284152">+375 33 328-41-52</a></div><div class="contact-item">💬 <a href="${TELEGRAM_LINK}" target="_blank">@katerin_mischenko</a></div></div><button class="btn-primary" id="teachingContactBtn">Получить консультацию →</button></div>
+        </div>`;
+    }
+
+    let current = 'teaching';
+    const container = document.getElementById('dynamicContent');
+    function render() { container.innerHTML = current === 'design' ? renderDesignPage() : renderTeachingPage(); attachHandlers(); }
+    function attachHandlers() {
+        if (current === 'design') {
+            document.querySelectorAll('.detail-design').forEach(btn => btn.addEventListener('click', () => {
+                const service = JSON.parse(btn.dataset.serv);
+                alert(`Услуга: ${service.name}\nСрок: ${service.terms}\nСтоимость: ${service.costRub}₽ / ${service.costByn}Br\n\nСвяжитесь в Telegram для заказа!`);
+                openTelegram();
+            }));
+            const stages = document.querySelectorAll('.stage-horiz-item');
+            stages.forEach((item, idx) => { 
+                item.addEventListener('click', () => { 
+                    stages.forEach(i => { i.classList.remove('active'); const desc = i.querySelector('.stage-desc-horiz'); if(desc) desc.style.display = 'none'; });
+                    item.classList.add('active');
+                    const desc = item.querySelector('.stage-desc-horiz');
+                    if(desc) desc.style.display = 'block';
+                }); 
+                if (idx === 0) { 
+                    item.classList.add('active');
+                    const desc = item.querySelector('.stage-desc-horiz');
+                    if(desc) desc.style.display = 'block';
+                }
+            });
+        } else {
+            document.getElementById('unifiedEnrollBtn')?.addEventListener('click', () => openTelegram());
+            document.getElementById('buyMethodMainBtn')?.addEventListener('click', () => openTelegram());
+            document.getElementById('teachingContactBtn')?.addEventListener('click', () => openTelegram());
+            document.querySelectorAll('.method-detail-trigger').forEach(btn => {
+                btn.addEventListener('click', () => { const idx = parseInt(btn.dataset.methodIdx); showMethodDetail(methodPubs[idx]); });
+            });
+        }
+    }
+    
+    document.getElementById('switchTeaching').onclick = () => { if(current==='teaching') return; current='teaching'; document.querySelectorAll('.dir-btn').forEach(b=>b.classList.remove('active')); document.getElementById('switchTeaching').classList.add('active'); render(); };
+    document.getElementById('switchDesign').onclick = () => { if(current==='design') return; current='design'; document.querySelectorAll('.dir-btn').forEach(b=>b.classList.remove('active')); document.getElementById('switchDesign').classList.add('active'); render(); };
+    document.getElementById('backToMainBtn').onclick = () => closeMethodDetail();
+    window.openTelegram = openTelegram;
+    window.showMethodDetail = showMethodDetail;
+    window.closeMethodDetail = closeMethodDetail;
+    render();
+</script>
+</body>
+</html>
