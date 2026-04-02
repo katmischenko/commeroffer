@@ -505,7 +505,7 @@
             color: #8C9AA8;
         }
 
-        /* ========== ТОЛЬКО МОБИЛЬНАЯ АДАПТАЦИЯ (НЕ ТРОГАЕМ ОСТАЛЬНОЕ) ========== */
+        /* ========== МОБИЛЬНАЯ АДАПТАЦИЯ ========== */
         @media (max-width: 768px) {
             body {
                 padding: 20px 16px;
@@ -529,31 +529,48 @@
                 font-size: 0.85rem;
                 margin-bottom: 8px;
             }
-            /* Скрываем стандартные карточки пакетов, показываем аккордеон */
+            .expert-stats-new {
+                gap: 16px;
+                margin: 16px 0;
+            }
+            .stat-number-new {
+                font-size: 1.3rem;
+            }
+            /* Сетка — один столбец */
+            .grid-2col {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            /* Пакеты — аккордеон */
             .packages-savings {
                 display: none;
             }
             .packages-accordion {
                 display: flex;
             }
-            /* Тарифы в курсах — аккордеон на мобильных */
+            /* Карточки */
+            .page {
+                padding: 24px 20px;
+            }
+            .course-card, .service-card, .method-card {
+                padding: 20px;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            h3 {
+                font-size: 1.1rem;
+            }
+            .price-total {
+                font-size: 1.2rem;
+            }
             .tariff-group {
                 flex-direction: column;
             }
             .tariff {
                 margin-bottom: 12px;
             }
-            /* Общие отступы */
-            .grid-2col {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .page {
-                padding: 24px 20px;
-            }
-            h2 {
-                font-size: 1.5rem;
-            }
+            /* Контакты */
             .contact-block {
                 flex-direction: column;
                 text-align: center;
@@ -562,12 +579,25 @@
             .contact-info {
                 justify-content: center;
             }
+            /* Кнопки */
+            .btn-primary, .btn-secondary, .btn-outline {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+            .direction-switch {
+                gap: 10px;
+                padding: 6px 16px;
+            }
+            .dir-btn {
+                padding: 8px 20px;
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
 <body>
 <div class="proposal-wrapper">
-    <!-- Блок о человеке с увеличенным фото -->
+    <!-- Блок о человеке -->
     <div class="expert-card-new">
         <div class="expert-image">
             <img src="5936904886807104842_121.jpg" alt="Екатерина Мищенко">
@@ -634,7 +664,6 @@
           content: ["Кибербезопасность", "Google Docs/Excel", "Облачные хранилища", "Этикет в сети", "Работа с почтой", "Итоговый тест"] }
     ];
 
-    // Полные данные для методических пособий
     const methodPubsFull = [
         {
             id: "python", name: "Python: полное пособие", badge: "Python", badgeIcon: "fab fa-python",
@@ -737,7 +766,6 @@
         }
     ];
 
-    // Цветовые схемы для услуг дизайна
     const serviceColorSchemes = {
         "Landing Page": { accent: "#E34F26", gradientStart: "#d93c0c", gradientEnd: "#b53008", icon: "fa-rocket" },
         "Корпоративный сайт": { accent: "#2E7D32", gradientStart: "#1b5e20", gradientEnd: "#0c4710", icon: "fa-building" },
@@ -755,19 +783,19 @@
 
     const designServices = [
         { name: "Landing Page", shortDesc: "Одностраничный сайт для продаж, промо.", details: ["Анализ ЦА и конкурентов", "Структура и прототип", "Уникальный дизайн + адаптив", "2 итерации правок", "Макет в Figma"], terms: "5–7 дней", costRub: 14000, costByn: 500,
-          fullDesc: "Landing Page — это мощный инструмент для привлечения клиентов. Я создаю одностраничные сайты, которые конвертируют посетителей в заявки. Продуманная структура, цепляющий заголовок, призывы к действию — всё для максимальной эффективности.",
+          fullDesc: "Landing Page — мощный инструмент для привлечения клиентов. Создаю одностраничные сайты, которые конвертируют посетителей в заявки.",
           benefits: ["Повышение конверсии до 30%", "Адаптив под все устройства", "SEO-оптимизированная структура", "Готовность к интеграции с CRM"] },
         { name: "Корпоративный сайт", shortDesc: "Многостраничный сайт для компании.", details: ["Анализ бизнес-задач", "Дизайн типовых страниц", "Анимации", "Адаптив", "Правки 2 итерации"], terms: "12–18 дней", costRub: 33600, costByn: 1200,
-          fullDesc: "Корпоративный сайт — лицо вашей компании в интернете. Разрабатываю многостраничные сайты с продуманной архитектурой, которые вызывают доверие и презентуют бизнес наилучшим образом.",
-          benefits: ["Фирменный стиль и узнаваемость", "Удобная навигация", "Интеграция с соцсетями", "Быстрая загрузка страниц"] },
+          fullDesc: "Корпоративный сайт — лицо компании в интернете. Разрабатываю сайты с продуманной архитектурой, вызывающие доверие.",
+          benefits: ["Фирменный стиль и узнаваемость", "Удобная навигация", "Интеграция с соцсетями", "Быстрая загрузка"] },
         { name: "Интернет-магазин", shortDesc: "Каталог, корзина, личный кабинет.", details: ["Дизайн карточек товаров", "Корзина и оформление", "Личный кабинет", "Фильтры", "Прототип сценариев"], terms: "20–25 дней", costRub: 56000, costByn: 2000,
-          fullDesc: "Интернет-магазин, который продаёт. Проектирую удобные каталоги, понятную корзину и простой процесс оформления заказа. Увеличиваю средний чек и снижаю количество брошенных корзин.",
+          fullDesc: "Интернет-магазин, который продаёт. Проектирую удобные каталоги и простой процесс оформления заказа.",
           benefits: ["Удобные фильтры и поиск", "Быстрое оформление заказа", "Мобильная версия", "Интеграция с платёжными системами"] },
         { name: "Презентации", shortDesc: "Под бренд, для инвесторов, защиты.", details: ["Концепция и структура", "Визуализация данных", "Анимация", "Фирменный стиль", "PPT/Google Slides"], terms: "2–5 дней", costRub: 4200, costByn: 150,
-          fullDesc: "Презентации, которые убеждают. Создаю визуально сильные презентации для инвестиционных раундов, защиты проектов и выступлений. Чёткая структура, красивая визуализация данных.",
+          fullDesc: "Презентации, которые убеждают. Создаю визуально сильные презентации для инвестиционных раундов и выступлений.",
           benefits: ["Инфографика и диаграммы", "Анимация переходов", "Адаптация под бренд", "Готово для печати"] },
         { name: "Дизайн сайта (без верстки)", shortDesc: "Только макет Figma для разработчика.", details: ["Дизайн главной + 3-5 страниц", "UI-kit", "Адаптивные версии", "Интерактивный прототип", "Передача разработчику"], terms: "от 7 дней", costRub: 22400, costByn: 800,
-          fullDesc: "Полный дизайн-макет в Figma для передачи разработчику. Интерактивный прототип, UI-kit, адаптив под все устройства. Всё для быстрой и качественной разработки.",
+          fullDesc: "Полный дизайн-макет в Figma для передачи разработчику. Интерактивный прототип, UI-kit, адаптив под все устройства.",
           benefits: ["Интерактивный прототип", "Готовый UI-kit", "Адаптив под мобильные", "Подготовка к передаче"] }
     ];
 
@@ -786,7 +814,6 @@
     
     function openTelegram() { window.open(TELEGRAM_LINK, '_blank'); }
 
-    // Генерация страницы методического пособия
     function generateMethodHTML(method) {
         const tocHTML = method.toc.map(item => `<div class="toc-row"><div class="toc-left"><span class="toc-num" style="background: ${method.accentLight}; color: ${method.accentColor};">${item.num}</span><span class="toc-title">${item.title}</span><span class="toc-desc">${item.desc}</span></div><div class="toc-pages" style="background: ${method.accentLight}; color: ${method.accentColor};">${item.pages}</div></div>`).join('');
         const chaptersHTML = method.chapters.map(ch => `<div class="chapter-card"><div class="chapter-icon">${ch.icon}</div><h3 style="color: ${method.accentColor};">${ch.title}</h3><p>${ch.desc}</p></div>`).join('');
@@ -807,13 +834,11 @@
                 .detail-container .toc-pages { font-size: 0.7rem; padding: 0.15rem 0.6rem; border-radius: 40px; }
                 .detail-container .chapters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
                 .detail-container .chapter-card { background: #FAF8FF; border-radius: 1rem; padding: 1rem; transition: 0.2s; }
-                .detail-container .chapter-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
                 .detail-container .examples-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
                 .detail-container .example-card { background: white; border-radius: 1rem; padding: 1rem; border: 1px solid #EEE6FF; transition: 0.2s; }
-                .detail-container .example-card:hover { border-color: ${method.accentColor}; transform: translateY(-2px); }
                 .detail-container .example-tag { display: inline-block; padding: 3px 10px; border-radius: 40px; font-size: 0.65rem; margin-bottom: 0.6rem; }
-                .detail-container .btn-buy-large { background: ${method.accentColor}; color: white; padding: 0.8rem 2rem; border-radius: 40px; text-decoration: none; display: inline-block; margin-top: 1rem; border: none; cursor: pointer; font-weight: 600; transition: 0.2s; }
-                .detail-container .btn-buy-large:hover { transform: translateY(-2px); filter: brightness(0.95); }
+                .detail-container .btn-buy-large { background: ${method.accentColor}; color: white; padding: 0.8rem 2rem; border-radius: 40px; border: none; cursor: pointer; font-weight: 600; transition: 0.2s; }
+                .btn-buy-large:hover { transform: translateY(-2px); filter: brightness(0.95); }
                 .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
                 .contact-link { background: rgba(0,0,0,0.05); padding: 8px 18px; border-radius: 40px; text-decoration: none; color: #2D3E50; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 8px; }
                 @media (max-width: 768px) { .detail-container .hero { padding: 1.2rem; } .detail-container .hero h1 { font-size: 1.4rem; } }
@@ -844,11 +869,10 @@
         `;
     }
 
-    // Генерация страницы услуги дизайна
     function generateServiceHTML(service) {
         const colors = serviceColorSchemes[service.name] || serviceColorSchemes["Landing Page"];
         const detailsHTML = service.details.map(d => `<li>${d}</li>`).join('');
-        const benefitsHTML = service.benefits.map(b => `<li>${b}</li>`).join('');
+        const benefitsHTML = service.benefits.map(b => `<div class="benefit-card"><i class="fas fa-check"></i><p>${b}</p></div>`).join('');
         
         return `
             <style>
@@ -882,7 +906,7 @@
             </div>
             <div class="service-section">
                 <h3><i class="fas fa-star"></i> Преимущества</h3>
-                <div class="benefits-grid">${benefitsHTML.map(b => `<div class="benefit-card"><i class="fas fa-check"></i><p>${b}</p></div>`).join('')}</div>
+                <div class="benefits-grid">${benefitsHTML}</div>
             </div>
             <div class="service-section">
                 <h3><i class="fas fa-chart-line"></i> Почему выбирают меня</h3>
