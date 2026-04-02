@@ -573,23 +573,80 @@
             }
             .package-accordion-item {
                 border-radius: 16px;
+                border: 1px solid #E9EEF2;
+                overflow: hidden;
+                background: white;
             }
             .package-accordion-header {
-                padding: 12px 16px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 14px 16px;
+                cursor: pointer;
+                background: #FAFCFE;
             }
             .package-accordion-header .package-title {
-                font-size: 1rem;
+                font-size: 1.1rem;
+                font-weight: 700;
+                color: #2D3E50;
             }
             .package-accordion-header .package-badge-mobile {
-                font-size: 0.6rem;
-                padding: 2px 8px;
+                background: #D9A7A7;
+                color: white;
+                padding: 3px 10px;
+                border-radius: 40px;
+                font-size: 0.65rem;
+                font-weight: 700;
+                margin-left: 8px;
+            }
+            .package-accordion-header .package-price-mobile {
+                font-size: 0.9rem;
+                font-weight: 800;
+                color: #5F9EA0;
+            }
+            .package-accordion-header .toggle-icon {
+                color: #5F9EA0;
+                margin-left: 8px;
             }
             .package-accordion-content {
+                display: none;
                 padding: 0 16px 16px 16px;
+                background: white;
+            }
+            .package-accordion-item.open .package-accordion-content {
+                display: block;
+            }
+            .package-accordion-item.open .toggle-icon {
+                transform: rotate(180deg);
+            }
+            .saving-features {
+                list-style: none;
+                padding: 0;
+                margin: 12px 0;
             }
             .saving-features li {
-                font-size: 0.75rem;
                 padding: 6px 0;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 0.75rem;
+                border-bottom: 1px solid #E9EEF2;
+                color: #3A4B5C;
+            }
+            .saving-features li:before {
+                content: "✓";
+                color: #5F9EA0;
+                font-weight: 700;
+            }
+            .saving-discount-mobile {
+                display: inline-block;
+                background: #FEF5F5;
+                color: #D9A7A7;
+                padding: 4px 12px;
+                border-radius: 40px;
+                font-size: 0.7rem;
+                font-weight: 700;
+                margin: 8px 0;
             }
             
             /* Тарифы в курсах */
@@ -1034,11 +1091,17 @@
         const packagesAccordion = savingPackages.map(p => `
             <div class="package-accordion-item">
                 <div class="package-accordion-header" onclick="this.parentElement.classList.toggle('open')">
-                    <div><span class="package-title">${p.title}</span><span class="package-badge-mobile" style="margin-left:10px;">${p.discount}</span></div>
-                    <div><span class="package-price" style="font-size:1rem;">${p.priceRub} ₽ / ${p.priceByn} Br</span> <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span></div>
+                    <div>
+                        <span class="package-title">${p.title}</span>
+                        <span class="package-badge-mobile">${p.discount}</span>
+                    </div>
+                    <div>
+                        <span class="package-price-mobile">${p.priceRub} ₽ / ${p.priceByn} Br</span>
+                        <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
                 </div>
                 <div class="package-accordion-content">
-                    <div class="saving-discount" style="margin:10px 0;">${p.savings}</div>
+                    <div class="saving-discount-mobile">${p.savings}</div>
                     <ul class="saving-features">${p.features.map(f => `<li>${f}</li>`).join('')}</ul>
                     <button class="btn-primary" onclick="openTelegram()" style="width:100%;">Выбрать пакет →</button>
                 </div>
