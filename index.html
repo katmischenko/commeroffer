@@ -27,7 +27,7 @@
             width: 100%;
         }
 
-        /* Блок о человеке */
+        /* Блок о человеке — увеличенное фото */
         .expert-card-new {
             background: white;
             border-radius: 48px;
@@ -505,52 +505,54 @@
             color: #8C9AA8;
         }
 
-        /* Адаптивность */
+        /* ========== ТОЛЬКО МОБИЛЬНАЯ АДАПТАЦИЯ (НЕ ТРОГАЕМ ОСТАЛЬНОЕ) ========== */
         @media (max-width: 768px) {
             body {
                 padding: 20px 16px;
             }
-            .expert-card-new {
-                flex-direction: column;
-            }
+            /* Увеличенное фото */
             .expert-image {
+                padding: 40px;
                 min-width: auto;
-                padding: 32px;
             }
             .expert-image img {
-                max-width: 200px;
+                max-width: 260px;
             }
+            /* Краткая информация о человеке */
             .expert-info {
-                padding: 24px 20px;
+                padding: 20px 20px;
             }
             .expert-info h1 {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
-            .expert-stats-new {
-                gap: 16px;
+            .expert-desc p {
+                font-size: 0.85rem;
+                margin-bottom: 8px;
             }
-            .stat-number-new {
-                font-size: 1.3rem;
-            }
-            .grid-2col {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            /* На мобильных показываем аккордеон для пакетов, скрываем карточки */
+            /* Скрываем стандартные карточки пакетов, показываем аккордеон */
             .packages-savings {
                 display: none;
             }
             .packages-accordion {
                 display: flex;
             }
+            /* Тарифы в курсах — аккордеон на мобильных */
             .tariff-group {
                 flex-direction: column;
+            }
+            .tariff {
+                margin-bottom: 12px;
+            }
+            /* Общие отступы */
+            .grid-2col {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
             .page {
                 padding: 24px 20px;
             }
             h2 {
-                font-size: 1.6rem;
+                font-size: 1.5rem;
             }
             .contact-block {
                 flex-direction: column;
@@ -561,21 +563,11 @@
                 justify-content: center;
             }
         }
-
-        /* Для планшетов и десктопов */
-        @media (min-width: 769px) {
-            .packages-accordion {
-                display: none;
-            }
-            .packages-savings {
-                display: flex;
-            }
-        }
     </style>
 </head>
 <body>
 <div class="proposal-wrapper">
-    <!-- Блок о человеке -->
+    <!-- Блок о человеке с увеличенным фото -->
     <div class="expert-card-new">
         <div class="expert-image">
             <img src="5936904886807104842_121.jpg" alt="Екатерина Мищенко">
@@ -591,9 +583,9 @@
                 <div class="stat-item-new"><div class="stat-number-new">3 года</div><div class="stat-label-new">дизайн-практика</div></div>
             </div>
             <div class="expert-desc">
-                <p><strong>Образование:</strong> Педагогический университет имени И. П. Шамякина, 2017. Начинала в государственной школе, затем ушла в онлайн-образование — так соединила педагогику с дизайном.</p>
-                <p><strong>Дизайн-направление:</strong> 3 года создаю визуальные решения: от лендингов до корпоративных порталов. Убеждена: хороший дизайн решает бизнес-задачи и делает сложное понятным.</p>
-                <p><strong>Миссия:</strong> помогать ученикам достигать высоких результатов, а бизнесу — находить визуальный голос. Индивидуальный подход, структура и забота — мои принципы.</p>
+                <p><strong>Образование:</strong> Педагогический университет имени И. П. Шамякина, 2017. Начинала в государственной школе, затем ушла в онлайн-образование.</p>
+                <p><strong>Дизайн-направление:</strong> 3 года создаю визуальные решения: от лендингов до корпоративных порталов.</p>
+                <p><strong>Миссия:</strong> помогать ученикам достигать высоких результатов, а бизнесу — находить визуальный голос.</p>
             </div>
         </div>
     </div>
@@ -642,7 +634,7 @@
           content: ["Кибербезопасность", "Google Docs/Excel", "Облачные хранилища", "Этикет в сети", "Работа с почтой", "Итоговый тест"] }
     ];
 
-    // Полные данные для методических пособий (как было)
+    // Полные данные для методических пособий
     const methodPubsFull = [
         {
             id: "python", name: "Python: полное пособие", badge: "Python", badgeIcon: "fab fa-python",
@@ -745,6 +737,15 @@
         }
     ];
 
+    // Цветовые схемы для услуг дизайна
+    const serviceColorSchemes = {
+        "Landing Page": { accent: "#E34F26", gradientStart: "#d93c0c", gradientEnd: "#b53008", icon: "fa-rocket" },
+        "Корпоративный сайт": { accent: "#2E7D32", gradientStart: "#1b5e20", gradientEnd: "#0c4710", icon: "fa-building" },
+        "Интернет-магазин": { accent: "#1565C0", gradientStart: "#0d47a1", gradientEnd: "#0a3a80", icon: "fa-shopping-cart" },
+        "Презентации": { accent: "#8B5CF6", gradientStart: "#7c3aed", gradientEnd: "#5b21b6", icon: "fa-chalkboard" },
+        "Дизайн сайта (без верстки)": { accent: "#F39C12", gradientStart: "#e67e22", gradientEnd: "#d35400", icon: "fa-paintbrush" }
+    };
+
     const savingPackages = [
         { icon: "🎯", title: "Стартовый", priceRub: "38 304", priceByn: "1 368", discount: "−22%", savings: "Экономия 10 976₽ / 392 Br", features: ["Любой базовый курс (32 занятия по цене 25)", "Методическое пособие в подарок", "Чек-лист 'Первые 5 шагов'", "Шпаргалки/Памятки", "Учебный трекер"] },
         { icon: "⚡", title: "Оптимальный", priceRub: "71 800", priceByn: "2 564", discount: "−27%", savings: "Экономия 26 760₽ / 956 Br", features: ["Любой расширенный курс (64 занятия по цене 46)", "2 методических пособия в подарок", "Шпаргалки/Памятки", "Учебный трекер"] },
@@ -753,11 +754,21 @@
     ];
 
     const designServices = [
-        { name: "Landing Page", shortDesc: "Одностраничный сайт для продаж, промо.", details: ["Анализ ЦА и конкурентов", "Структура и прототип", "Уникальный дизайн + адаптив", "2 итерации правок", "Макет в Figma"], terms: "5–7 дней", costRub: 14000, costByn: 500 },
-        { name: "Корпоративный сайт", shortDesc: "Многостраничный сайт для компании.", details: ["Анализ бизнес-задач", "Дизайн типовых страниц", "Анимации", "Адаптив", "Правки 2 итерации"], terms: "12–18 дней", costRub: 33600, costByn: 1200 },
-        { name: "Интернет-магазин", shortDesc: "Каталог, корзина, личный кабинет.", details: ["Дизайн карточек товаров", "Корзина и оформление", "Личный кабинет", "Фильтры", "Прототип сценариев"], terms: "20–25 дней", costRub: 56000, costByn: 2000 },
-        { name: "Презентации", shortDesc: "Под бренд, для инвесторов, защиты.", details: ["Концепция и структура", "Визуализация данных", "Анимация", "Фирменный стиль", "PPT/Google Slides"], terms: "2–5 дней", costRub: 4200, costByn: 150 },
-        { name: "Дизайн сайта (без верстки)", shortDesc: "Только макет Figma для разработчика.", details: ["Дизайн главной + 3-5 страниц", "UI-kit", "Адаптивные версии", "Интерактивный прототип", "Передача разработчику"], terms: "от 7 дней", costRub: 22400, costByn: 800 }
+        { name: "Landing Page", shortDesc: "Одностраничный сайт для продаж, промо.", details: ["Анализ ЦА и конкурентов", "Структура и прототип", "Уникальный дизайн + адаптив", "2 итерации правок", "Макет в Figma"], terms: "5–7 дней", costRub: 14000, costByn: 500,
+          fullDesc: "Landing Page — это мощный инструмент для привлечения клиентов. Я создаю одностраничные сайты, которые конвертируют посетителей в заявки. Продуманная структура, цепляющий заголовок, призывы к действию — всё для максимальной эффективности.",
+          benefits: ["Повышение конверсии до 30%", "Адаптив под все устройства", "SEO-оптимизированная структура", "Готовность к интеграции с CRM"] },
+        { name: "Корпоративный сайт", shortDesc: "Многостраничный сайт для компании.", details: ["Анализ бизнес-задач", "Дизайн типовых страниц", "Анимации", "Адаптив", "Правки 2 итерации"], terms: "12–18 дней", costRub: 33600, costByn: 1200,
+          fullDesc: "Корпоративный сайт — лицо вашей компании в интернете. Разрабатываю многостраничные сайты с продуманной архитектурой, которые вызывают доверие и презентуют бизнес наилучшим образом.",
+          benefits: ["Фирменный стиль и узнаваемость", "Удобная навигация", "Интеграция с соцсетями", "Быстрая загрузка страниц"] },
+        { name: "Интернет-магазин", shortDesc: "Каталог, корзина, личный кабинет.", details: ["Дизайн карточек товаров", "Корзина и оформление", "Личный кабинет", "Фильтры", "Прототип сценариев"], terms: "20–25 дней", costRub: 56000, costByn: 2000,
+          fullDesc: "Интернет-магазин, который продаёт. Проектирую удобные каталоги, понятную корзину и простой процесс оформления заказа. Увеличиваю средний чек и снижаю количество брошенных корзин.",
+          benefits: ["Удобные фильтры и поиск", "Быстрое оформление заказа", "Мобильная версия", "Интеграция с платёжными системами"] },
+        { name: "Презентации", shortDesc: "Под бренд, для инвесторов, защиты.", details: ["Концепция и структура", "Визуализация данных", "Анимация", "Фирменный стиль", "PPT/Google Slides"], terms: "2–5 дней", costRub: 4200, costByn: 150,
+          fullDesc: "Презентации, которые убеждают. Создаю визуально сильные презентации для инвестиционных раундов, защиты проектов и выступлений. Чёткая структура, красивая визуализация данных.",
+          benefits: ["Инфографика и диаграммы", "Анимация переходов", "Адаптация под бренд", "Готово для печати"] },
+        { name: "Дизайн сайта (без верстки)", shortDesc: "Только макет Figma для разработчика.", details: ["Дизайн главной + 3-5 страниц", "UI-kit", "Адаптивные версии", "Интерактивный прототип", "Передача разработчику"], terms: "от 7 дней", costRub: 22400, costByn: 800,
+          fullDesc: "Полный дизайн-макет в Figma для передачи разработчику. Интерактивный прототип, UI-kit, адаптив под все устройства. Всё для быстрой и качественной разработки.",
+          benefits: ["Интерактивный прототип", "Готовый UI-kit", "Адаптив под мобильные", "Подготовка к передаче"] }
     ];
 
     const stagesHorizontal = [
@@ -771,45 +782,127 @@
 
     const TELEGRAM_LINK = "https://t.me/katerin_mischenko";
     const TELEGRAM_CHANNEL = "https://t.me/mischenko_edu";
+    const PHONE = "tel:+375333284152";
+    
     function openTelegram() { window.open(TELEGRAM_LINK, '_blank'); }
 
+    // Генерация страницы методического пособия
     function generateMethodHTML(method) {
-        return `... (полный HTML как в исходном коде, сгенерированный динамически) ...`;
+        const tocHTML = method.toc.map(item => `<div class="toc-row"><div class="toc-left"><span class="toc-num" style="background: ${method.accentLight}; color: ${method.accentColor};">${item.num}</span><span class="toc-title">${item.title}</span><span class="toc-desc">${item.desc}</span></div><div class="toc-pages" style="background: ${method.accentLight}; color: ${method.accentColor};">${item.pages}</div></div>`).join('');
+        const chaptersHTML = method.chapters.map(ch => `<div class="chapter-card"><div class="chapter-icon">${ch.icon}</div><h3 style="color: ${method.accentColor};">${ch.title}</h3><p>${ch.desc}</p></div>`).join('');
+        const examplesHTML = method.examples.map(ex => `<div class="example-card"><div class="example-tag" style="background: ${method.accentLight}; color: ${method.accentColor};">${ex.tag}</div><div class="example-title">${ex.title}</div><div class="example-desc">${ex.desc}</div><div class="example-pages" style="color: ${method.accentColor};">→ подробный разбор</div></div>`).join('');
+        
+        return `
+            <style>
+                .detail-container .hero { background: linear-gradient(135deg, ${method.gradientStart} 0%, ${method.gradientEnd} 100%); border-radius: 2rem; padding: 2rem; margin-bottom: 2rem; color: white; }
+                .detail-container .badge-figma { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); padding: 6px 14px; border-radius: 100px; font-size: 0.7rem; margin-bottom: 1.2rem; }
+                .detail-container .hero h1 { font-size: 1.8rem; margin: 0.5rem 0; }
+                .detail-container .hero-stats { display: flex; gap: 1rem; margin: 1rem 0; }
+                .detail-container .stat-value { font-size: 1.3rem; font-weight: 800; }
+                .detail-container .content-section { background: white; border-radius: 1.5rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+                .detail-container .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; border-bottom: 2px solid #F0E8FF; padding-bottom: 0.5rem; }
+                .detail-container .section-header i { font-size: 1.3rem; color: ${method.accentColor}; }
+                .detail-container .toc-row { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #F0E8FF; flex-wrap: wrap; }
+                .detail-container .toc-num { width: 2rem; height: 2rem; display: inline-flex; align-items: center; justify-content: center; border-radius: 60px; font-size: 0.7rem; font-weight: 700; }
+                .detail-container .toc-pages { font-size: 0.7rem; padding: 0.15rem 0.6rem; border-radius: 40px; }
+                .detail-container .chapters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+                .detail-container .chapter-card { background: #FAF8FF; border-radius: 1rem; padding: 1rem; transition: 0.2s; }
+                .detail-container .chapter-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+                .detail-container .examples-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+                .detail-container .example-card { background: white; border-radius: 1rem; padding: 1rem; border: 1px solid #EEE6FF; transition: 0.2s; }
+                .detail-container .example-card:hover { border-color: ${method.accentColor}; transform: translateY(-2px); }
+                .detail-container .example-tag { display: inline-block; padding: 3px 10px; border-radius: 40px; font-size: 0.65rem; margin-bottom: 0.6rem; }
+                .detail-container .btn-buy-large { background: ${method.accentColor}; color: white; padding: 0.8rem 2rem; border-radius: 40px; text-decoration: none; display: inline-block; margin-top: 1rem; border: none; cursor: pointer; font-weight: 600; transition: 0.2s; }
+                .detail-container .btn-buy-large:hover { transform: translateY(-2px); filter: brightness(0.95); }
+                .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+                .contact-link { background: rgba(0,0,0,0.05); padding: 8px 18px; border-radius: 40px; text-decoration: none; color: #2D3E50; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 8px; }
+                @media (max-width: 768px) { .detail-container .hero { padding: 1.2rem; } .detail-container .hero h1 { font-size: 1.4rem; } }
+            </style>
+            <div class="hero">
+                <div class="badge-figma"><i class="${method.badgeIcon}"></i> Методическое пособие</div>
+                <h1>${method.name}</h1>
+                <p>${method.heroDesc}</p>
+                <div class="hero-stats">
+                    <div class="stat"><span class="stat-value">${method.stats.pages}</span><span class="stat-label">страниц</span></div>
+                    <div class="stat"><span class="stat-value">${method.stats.illustrations}+</span><span class="stat-label">иллюстраций</span></div>
+                    <div class="stat"><span class="stat-value">${method.stats.cases}</span><span class="stat-label">кейсов</span></div>
+                    <div class="stat"><span class="stat-value">${method.stats.projects}</span><span class="stat-label">проекта</span></div>
+                </div>
+            </div>
+            <div class="content-section"><div class="section-header"><i class="fas fa-list-ul"></i><h2>Содержание пособия</h2></div><div class="toc-list">${tocHTML}</div></div>
+            <div class="content-section"><div class="section-header"><i class="fas fa-star"></i><h2>Что вы изучите</h2></div><div class="chapters-grid">${chaptersHTML}</div></div>
+            <div class="content-section"><div class="section-header"><i class="fas fa-book-open"></i><h2>Примеры страниц пособия</h2></div><div class="examples-grid">${examplesHTML}</div></div>
+            <div style="text-align:center; margin: 1rem 0 2rem;">
+                <div style="font-size:1.5rem; font-weight:800;">${method.priceRub} ₽ / ${method.priceByn} Br</div>
+                <button class="btn-buy-large" onclick="openTelegram()"><i class="fab fa-telegram"></i> Купить пособие</button>
+                <div class="contact-links" style="margin-top: 1.5rem;">
+                    <a href="${TELEGRAM_LINK}" class="contact-link"><i class="fab fa-telegram"></i> @katerin_mischenko</a>
+                    <a href="${TELEGRAM_CHANNEL}" class="contact-link"><i class="fab fa-telegram"></i> mischenko_edu</a>
+                    <a href="${PHONE}" class="contact-link"><i class="fas fa-phone"></i> +375 33 328-41-52</a>
+                </div>
+            </div>
+        `;
+    }
+
+    // Генерация страницы услуги дизайна
+    function generateServiceHTML(service) {
+        const colors = serviceColorSchemes[service.name] || serviceColorSchemes["Landing Page"];
+        const detailsHTML = service.details.map(d => `<li>${d}</li>`).join('');
+        const benefitsHTML = service.benefits.map(b => `<li>${b}</li>`).join('');
+        
+        return `
+            <style>
+                .detail-container .service-hero { background: linear-gradient(135deg, ${colors.gradientStart} 0%, ${colors.gradientEnd} 100%); border-radius: 2rem; padding: 2rem; margin-bottom: 2rem; color: white; }
+                .detail-container .service-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); padding: 6px 14px; border-radius: 100px; font-size: 0.7rem; margin-bottom: 1.2rem; }
+                .detail-container .service-hero h1 { font-size: 1.8rem; margin: 0.5rem 0; }
+                .detail-container .service-price { font-size: 2rem; font-weight: 800; margin: 1rem 0; }
+                .detail-container .service-section { background: white; border-radius: 1.5rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+                .detail-container .service-section h3 { color: ${colors.accent}; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+                .detail-container .service-list { padding-left: 1.5rem; margin: 1rem 0; }
+                .detail-container .service-list li { margin: 0.5rem 0; }
+                .detail-container .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem; }
+                .detail-container .benefit-card { background: #FAFCFE; border-radius: 1rem; padding: 1rem; text-align: center; border: 1px solid #E9EEF2; }
+                .detail-container .benefit-card i { font-size: 1.5rem; color: ${colors.accent}; margin-bottom: 0.5rem; }
+                .detail-container .btn-service { background: ${colors.accent}; color: white; padding: 0.8rem 2rem; border-radius: 40px; border: none; cursor: pointer; font-weight: 600; transition: 0.2s; margin-top: 0.5rem; }
+                .detail-container .btn-service:hover { transform: translateY(-2px); filter: brightness(0.95); }
+                .detail-container .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+                .detail-container .contact-link { background: rgba(0,0,0,0.05); padding: 8px 18px; border-radius: 40px; text-decoration: none; color: #2D3E50; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 8px; }
+                @media (max-width: 768px) { .detail-container .service-hero { padding: 1.2rem; } .detail-container .service-hero h1 { font-size: 1.4rem; } .detail-container .service-price { font-size: 1.5rem; } }
+            </style>
+            <div class="service-hero">
+                <div class="service-badge"><i class="fas ${colors.icon}"></i> Дизайн-услуга</div>
+                <h1>${service.name}</h1>
+                <p>${service.fullDesc}</p>
+                <div class="service-price">${service.costRub} ₽ / ${service.costByn} Br</div>
+                <div><strong>⏱ Срок выполнения:</strong> ${service.terms}</div>
+            </div>
+            <div class="service-section">
+                <h3><i class="fas fa-check-circle"></i> Что входит в услугу</h3>
+                <ul class="service-list">${detailsHTML}</ul>
+            </div>
+            <div class="service-section">
+                <h3><i class="fas fa-star"></i> Преимущества</h3>
+                <div class="benefits-grid">${benefitsHTML.map(b => `<div class="benefit-card"><i class="fas fa-check"></i><p>${b}</p></div>`).join('')}</div>
+            </div>
+            <div class="service-section">
+                <h3><i class="fas fa-chart-line"></i> Почему выбирают меня</h3>
+                <p>Более 50 успешно реализованных дизайн-проектов. Индивидуальный подход к каждому клиенту. Работаю до полного согласования. Даю рекомендации по дальнейшему развитию сайта.</p>
+            </div>
+            <div style="text-align:center; margin: 1rem 0 2rem;">
+                <button class="btn-service" onclick="openTelegram(); closeServiceDetail();"><i class="fab fa-telegram"></i> Связаться для заказа</button>
+                <div class="contact-links">
+                    <a href="${TELEGRAM_LINK}" class="contact-link"><i class="fab fa-telegram"></i> @katerin_mischenko</a>
+                    <a href="${TELEGRAM_CHANNEL}" class="contact-link"><i class="fab fa-telegram"></i> mischenko_edu</a>
+                    <a href="${PHONE}" class="contact-link"><i class="fas fa-phone"></i> +375 33 328-41-52</a>
+                </div>
+            </div>
+        `;
     }
 
     function showMethodDetail(method) {
         const detailPage = document.getElementById('methodDetailPage');
         const detailContent = document.getElementById('methodDetailContent');
-        
-        const tocHTML = method.toc.map(item => `<div class="toc-row"><div class="toc-left"><span class="toc-num" style="background: ${method.accentLight}; color: ${method.accentColor};">${item.num}</span><span class="toc-title">${item.title}</span><span class="toc-desc">${item.desc}</span></div><div class="toc-pages" style="background: ${method.accentLight}; color: ${method.accentColor};">${item.pages}</div></div>`).join('');
-        const chaptersHTML = method.chapters.map(ch => `<div class="chapter-card"><div class="chapter-icon">${ch.icon}</div><h3 style="color: ${method.accentColor};">${ch.title}</h3><p>${ch.desc}</p></div>`).join('');
-        const examplesHTML = method.examples.map(ex => `<div class="example-card"><div class="example-tag" style="background: ${method.accentLight}; color: ${method.accentColor};">${ex.tag}</div><div class="example-title">${ex.title}</div><div class="example-desc">${ex.desc}</div><div class="example-pages" style="color: ${method.accentColor};">→ подробный разбор</div></div>`).join('');
-        
-        detailContent.innerHTML = `
-            <style>
-                .detail-container .hero { background: linear-gradient(135deg, ${method.gradientStart} 0%, ${method.gradientEnd} 100%); border-radius: 2rem; padding: 2rem; margin-bottom: 2rem; }
-                .detail-container .badge-figma { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); padding: 6px 14px; border-radius: 100px; color: white; font-size: 0.7rem; margin-bottom: 1.2rem; }
-                .detail-container .hero h1 { font-size: 1.8rem; color: white; }
-                .detail-container .hero-stats { display: flex; gap: 1rem; margin: 1rem 0; }
-                .detail-container .stat-value { font-size: 1.3rem; font-weight: 800; color: white; }
-                .detail-container .content-section { background: white; border-radius: 1.5rem; padding: 1.5rem; margin-bottom: 1.5rem; }
-                .detail-container .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; border-bottom: 2px solid #F0E8FF; padding-bottom: 0.5rem; }
-                .detail-container .section-header i { font-size: 1.3rem; color: ${method.accentColor}; }
-                .detail-container .toc-row { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #F0E8FF; flex-wrap: wrap; }
-                .detail-container .toc-num { width: 2rem; height: 2rem; display: inline-flex; align-items: center; justify-content: center; border-radius: 60px; font-size: 0.7rem; }
-                .detail-container .chapters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
-                .detail-container .chapter-card { background: #FAF8FF; border-radius: 1rem; padding: 1rem; }
-                .detail-container .examples-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
-                .detail-container .example-card { background: white; border-radius: 1rem; padding: 1rem; border: 1px solid #EEE6FF; }
-                .detail-container .btn-buy-large { background: ${method.accentColor}; color: white; padding: 0.8rem 2rem; border-radius: 40px; text-decoration: none; display: inline-block; margin-top: 1rem; }
-                @media (max-width: 768px) { .detail-container .hero { padding: 1.2rem; } .detail-container .hero h1 { font-size: 1.4rem; } }
-            </style>
-            <div class="hero"><div class="badge-figma"><i class="${method.badgeIcon}"></i> Методическое пособие</div><h1>${method.name}</h1><p>${method.heroDesc}</p><div class="hero-stats"><div class="stat"><span class="stat-value">${method.stats.pages}</span><span class="stat-label">страниц</span></div><div class="stat"><span class="stat-value">${method.stats.illustrations}+</span><span class="stat-label">иллюстраций</span></div></div></div>
-            <div class="content-section"><div class="section-header"><i class="fas fa-list-ul"></i><h2>Содержание пособия</h2></div><div class="toc-list">${tocHTML}</div></div>
-            <div class="content-section"><div class="section-header"><i class="fas fa-star"></i><h2>Что вы изучите</h2></div><div class="chapters-grid">${chaptersHTML}</div></div>
-            <div class="content-section"><div class="section-header"><i class="fas fa-book-open"></i><h2>Примеры страниц пособия</h2></div><div class="examples-grid">${examplesHTML}</div></div>
-            <div class="buy-section" style="text-align:center; margin: 1rem 0;"><div class="price-large" style="font-size:1.5rem; font-weight:800;">${method.priceRub} ₽ / ${method.priceByn} Br</div><a href="${TELEGRAM_LINK}" target="_blank" class="btn-buy-large"><i class="fab fa-telegram"></i> Купить пособие</a></div>
-        `;
+        detailContent.innerHTML = generateMethodHTML(method);
         detailPage.style.display = 'block';
         document.body.style.overflow = 'hidden';
     }
@@ -817,33 +910,27 @@
     function showServiceDetail(service) {
         const detailPage = document.getElementById('serviceDetailPage');
         const detailContent = document.getElementById('serviceDetailContent');
-        detailContent.innerHTML = `
-            <div class="detail-card" style="background:white; border-radius:32px; padding:32px;">
-                <h2>${service.name}</h2>
-                <div class="detail-price" style="font-size:1.8rem; font-weight:800; color:#5F9EA0; margin:20px 0;">${service.costRub} ₽ / ${service.costByn} Br</div>
-                <p><strong>Срок выполнения:</strong> ${service.terms}</p>
-                <p><strong>Что входит в услугу:</strong></p>
-                <ul class="detail-list" style="margin:20px 0; padding-left:20px;">
-                    ${service.details.map(d => `<li style="margin:10px 0;">${d}</li>`).join('')}
-                </ul>
-                <button class="btn-primary" onclick="openTelegram(); document.getElementById('serviceDetailPage').style.display='none'; document.body.style.overflow='auto';">Связаться для заказа</button>
-            </div>
-        `;
+        detailContent.innerHTML = generateServiceHTML(service);
         detailPage.style.display = 'block';
         document.body.style.overflow = 'hidden';
     }
 
-    function closeServiceDetail() { document.getElementById('serviceDetailPage').style.display = 'none'; document.body.style.overflow = 'auto'; }
-    function closeMethodDetail() { document.getElementById('methodDetailPage').style.display = 'none'; document.body.style.overflow = 'auto'; }
+    function closeServiceDetail() { 
+        document.getElementById('serviceDetailPage').style.display = 'none'; 
+        document.body.style.overflow = 'auto'; 
+    }
+    function closeMethodDetail() { 
+        document.getElementById('methodDetailPage').style.display = 'none'; 
+        document.body.style.overflow = 'auto'; 
+    }
 
     function renderDesignPage() {
-        return `<div class="page"><h2>Услуги дизайна</h2><div class="grid-2col">${designServices.map(s => `<div class="service-card"><h3>${s.name}</h3><p>${s.shortDesc}</p><button class="btn-secondary service-detail-btn" data-serv='${JSON.stringify(s)}'>Подробнее</button></div>`).join('')}</div>
+        return `<div class="page"><h2>Услуги дизайна</h2><div class="grid-2col">${designServices.map((s, idx) => `<div class="service-card"><h3>${s.name}</h3><p>${s.shortDesc}</p><button class="btn-secondary service-detail-btn" data-service-idx="${idx}">Подробнее</button></div>`).join('')}</div>
         <h2>Этапы работы</h2><div class="stages-horizontal" style="display: flex; flex-wrap: wrap; gap: 16px; margin: 32px 0;">${stagesHorizontal.map((s, idx) => `<div class="stage-horiz-item" data-stage="${idx}" style="flex:1; min-width:150px; background:#FAFCFE; border-radius:24px; padding:20px 16px; text-align:center; cursor:pointer; border:1px solid #E9EEF2;"><div class="stage-number" style="font-size:1.8rem; font-weight:800; color:#5F9EA0; opacity:0.6;">${s.number}</div><div class="stage-title-horiz" style="font-weight:700; color:#2D3E50;">${s.title}</div><div class="stage-desc-horiz" style="font-size:0.8rem; color:#7A8B9B; display:none; margin-top:12px;">${s.desc}</div></div>`).join('')}</div>
-        <div class="contact-block"><div><strong>Свяжитесь для заказа дизайна</strong><br>Обсудим детали и сроки</div><div class="contact-info"><div class="contact-item">📱 <a href="tel:+375333284152">+375 33 328-41-52</a></div><div class="contact-item">💬 <a href="${TELEGRAM_LINK}" target="_blank">@katerin_mischenko</a></div><div class="contact-item">📢 <a href="${TELEGRAM_CHANNEL}" target="_blank">mischenko_edu</a></div></div><button class="btn-primary" onclick="openTelegram()">Написать в Telegram</button></div><footer>Дизайн-проекты включают правки до 2-х итераций.</footer></div>`;
+        <div class="contact-block"><div><strong>Свяжитесь для заказа дизайна</strong><br>Обсудим детали и сроки</div><div class="contact-info"><div class="contact-item">📱 <a href="${PHONE}">+375 33 328-41-52</a></div><div class="contact-item">💬 <a href="${TELEGRAM_LINK}" target="_blank">@katerin_mischenko</a></div><div class="contact-item">📢 <a href="${TELEGRAM_CHANNEL}" target="_blank">mischenko_edu</a></div></div><button class="btn-primary" onclick="openTelegram()">Написать в Telegram</button></div><footer>Дизайн-проекты включают правки до 2-х итераций.</footer></div>`;
     }
 
     function renderTeachingPage() {
-        // Мобильные пакеты-аккордеон
         const packagesAccordion = savingPackages.map(p => `
             <div class="package-accordion-item">
                 <div class="package-accordion-header" onclick="this.parentElement.classList.toggle('open')">
@@ -864,15 +951,14 @@
             <div class="packages-accordion">${packagesAccordion}</div>
             <h2>Образовательные курсы</h2><div class="grid-2col">${coursesData.map(c => { 
                 if (c.singleTariff) {
-                    return `<div class="course-card"><h3>${c.name}</h3><p>${c.desc}</p><div class="price-hour">${c.priceHourRub}₽ / ${c.priceHourByn}Br за час</div><div class="tariff"><div class="price-total">${c.priceRub}₽ / ${c.priceByn}Br (${c.hours} занятий)</div><div class="course-content"><strong>Программа:</strong><ul>${c.content.map(i=>`<li>${i}</li>`).join('')}</ul></div><button class="btn-primary" onclick="openTelegram()" style="width:100%;">Записаться</button></div></div>`;
+                    return `<div class="course-card"><h3>${c.name}</h3><p>${c.desc}</p><div class="price-hour">${c.priceHourRub}₽ / ${c.priceHourByn}Br за час</div><div class="tariff"><div class="price-total">${c.priceRub}₽ / ${c.priceByn}Br (${c.hours} занятий)</div><div class="course-content"><strong>Программа:</strong><ul>${c.content.map(i=>`<li>${i}</li>`).join('')}</ul></div></div></div>`;
                 } else {
-                    return `<div class="course-card"><h3>${c.name}</h3><p>${c.desc}</p><div class="price-hour">${c.priceHourRub}₽ / ${c.priceHourByn}Br за час</div><div class="tariff-group">${c.tariffs.map(t => `<div class="tariff"><h4>${t.name}</h4><div class="price-total">${t.priceRub}₽ / ${t.priceByn}Br (${t.hours} занятий)</div><div class="course-content"><strong>Что входит:</strong><ul>${t.content.map(i=>`<li>${i}</li>`).join('')}</ul></div><button class="btn-primary" onclick="openTelegram()" style="width:100%;">Выбрать</button></div>`).join('')}</div></div>`;
+                    return `<div class="course-card"><h3>${c.name}</h3><p>${c.desc}</p><div class="price-hour">${c.priceHourRub}₽ / ${c.priceHourByn}Br за час</div><div class="tariff-group">${c.tariffs.map(t => `<div class="tariff"><h4>${t.name}</h4><div class="price-total">${t.priceRub}₽ / ${t.priceByn}Br (${t.hours} занятий)</div><div class="course-content"><strong>Что входит:</strong><ul>${t.content.map(i=>`<li>${i}</li>`).join('')}</ul></div></div>`).join('')}</div></div>`;
                 }
             }).join('')}</div>
             <div style="text-align:center; margin: 28px 0;"><button class="btn-primary" id="unifiedEnrollBtn" style="padding:16px 52px; font-size:1rem;">Записаться на курс →</button></div>
             <h2>Методические пособия</h2><div class="grid-2col">${methodPubsFull.map((m, idx) => `<div class="method-card"><h3>${m.name}</h3><p>${m.heroDesc.substring(0, 70)}...</p><div class="price-total" style="font-size:1.2rem; margin:12px 0;">${m.priceRub}₽ / ${m.priceByn}Br</div><button class="btn-outline method-detail-trigger" data-method-idx="${idx}">Подробнее →</button></div>`).join('')}</div>
-            <div style="text-align:center; margin: 20px 0 30px;"><button class="btn-primary" id="buyMethodMainBtn" style="padding:14px 40px;">Купить пособие →</button></div>
-            <div class="contact-block"><div><strong>Остались вопросы?</strong><br>Напишите, подберём удобный формат</div><div class="contact-info"><div class="contact-item">📱 <a href="tel:+375333284152">+375 33 328-41-52</a></div><div class="contact-item">💬 <a href="${TELEGRAM_LINK}" target="_blank">@katerin_mischenko</a></div><div class="contact-item">📢 <a href="${TELEGRAM_CHANNEL}" target="_blank">mischenko_edu</a></div></div><button class="btn-primary" id="teachingContactBtn">Получить консультацию →</button></div>
+            <div class="contact-block"><div><strong>Остались вопросы?</strong><br>Напишите, подберём удобный формат</div><div class="contact-info"><div class="contact-item">📱 <a href="${PHONE}">+375 33 328-41-52</a></div><div class="contact-item">💬 <a href="${TELEGRAM_LINK}" target="_blank">@katerin_mischenko</a></div><div class="contact-item">📢 <a href="${TELEGRAM_CHANNEL}" target="_blank">mischenko_edu</a></div></div><button class="btn-primary" id="teachingContactBtn">Получить консультацию →</button></div>
             <footer>Стоимость указана за 1 академический час. Пакеты включают максимальную выгоду!</footer></div>`;
     }
 
@@ -881,7 +967,12 @@
     function render() { container.innerHTML = current === 'design' ? renderDesignPage() : renderTeachingPage(); attachHandlers(); }
     function attachHandlers() {
         if (current === 'design') {
-            document.querySelectorAll('.service-detail-btn').forEach(btn => btn.addEventListener('click', () => showServiceDetail(JSON.parse(btn.dataset.serv))));
+            document.querySelectorAll('.service-detail-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const idx = parseInt(btn.dataset.serviceIdx);
+                    showServiceDetail(designServices[idx]);
+                });
+            });
             const stages = document.querySelectorAll('.stage-horiz-item');
             stages.forEach((item, idx) => { 
                 item.addEventListener('click', () => { stages.forEach(i => i.classList.remove('active')); item.classList.add('active'); const desc = item.querySelector('.stage-desc-horiz'); if(desc) desc.style.display = 'block'; }); 
@@ -889,7 +980,6 @@
             });
         } else {
             document.getElementById('unifiedEnrollBtn')?.addEventListener('click', () => openTelegram());
-            document.getElementById('buyMethodMainBtn')?.addEventListener('click', () => openTelegram());
             document.getElementById('teachingContactBtn')?.addEventListener('click', () => openTelegram());
             document.querySelectorAll('.method-detail-trigger').forEach(btn => {
                 btn.addEventListener('click', () => { const idx = parseInt(btn.dataset.methodIdx); showMethodDetail(methodPubsFull[idx]); });
@@ -902,6 +992,7 @@
     document.getElementById('backFromServiceBtn').onclick = () => closeServiceDetail();
     document.getElementById('backFromMethodBtn').onclick = () => closeMethodDetail();
     window.openTelegram = openTelegram;
+    window.closeServiceDetail = closeServiceDetail;
     render();
 </script>
 </body>
