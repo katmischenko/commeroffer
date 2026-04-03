@@ -1087,51 +1087,44 @@
         <div class="contact-block"><div><strong>Свяжитесь для заказа дизайна</strong><br>Обсудим детали и сроки</div><div class="contact-info"><div class="contact-item">📱 <a href="${PHONE}">+375 33 328-41-52</a></div><div class="contact-item">💬 <a href="${TELEGRAM_LINK}" target="_blank">@katerin_mischenko</a></div><div class="contact-item">📢 <a href="${TELEGRAM_CHANNEL}" target="_blank">mischenko_edu</a></div></div><button class="btn-primary" onclick="openTelegram()">Написать в Telegram</button></div><footer>Дизайн-проекты включают правки до 2-х итераций.</footer></div>`;
     }
 
-   function renderTeachingPage() {
-  const packagesAccordion = savingPackages.map(p => ` <div class="package-accordion-item"> <div class="package-accordion-header" onclick="this.parentElement.classList.toggle('open')"> <div> <span class="package-title">${p.title}</span> <span class="package-badge-mobile">${p.discount}</span> </div> <div> <span class="package-price-mobile">${p.priceRub} ₽ / ${p.priceByn} Br</span> <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span> </div> </div> <div class="package-accordion-content"> <div class="saving-discount-mobile">${p.savings}</div> <ul class="saving-features">${p.features.map(f => ` < li > $ {
-        f
-      } < /li>`).join('')}</ul > < button class = "btn-primary"
-      onclick = "openTelegram()"
-      style = "width:100%;" > Выбрать пакет→ < /button> </div > < /div> `).join(''); return `<div class="page"> <h2>Пакетные предложения</h
-      2 > < div class = "packages-savings" > $ {
-        savingPackages.map(p => ` <div class="saving-card"> <div class="saving-badge">${p.discount}</div> <div class="saving-icon">${p.icon}</div> <div class="saving-title">${p.title}</div> <div class="saving-price">${p.priceRub} ₽ <small>/</small> ${p.priceByn} Br</div> <div class="saving-discount">${p.savings}</div> <ul class="saving-features">${p.features.map(f => ` < li > $ {
-              f
-            } < /li>`).join('')}</ul > < button class = "btn-primary"
-            onclick = "openTelegram()" > Выбрать пакет→ < /button> </div > `).join('')} </div> <div class="packages-accordion">${packagesAccordion}</div> <h2>Образовательные курсы</h2> <div class="grid-2col"> ${coursesData.map(c => { if (c.singleTariff) { return ` < div class = "course-card" > < h3 > $ {
-              c.name
-            } < /h3> <p>${c.desc}</p > < div class = "price-hour" > $ {
-              c.priceHourRub
-            }₽
-            / ${c.priceHourByn}Br за час</div > < div class = "tariff" > < div class = "price-total" > $ {
-              c.priceRub
-            }₽
-            / ${c.priceByn}Br (${c.hours} занятий)</div > < div class = "course-content" > < strong > Программа: < /strong><ul>${c.content.map(i => `<li>${i}</li > `).join('')}</ul></div> </div> </div>`;
-          } else {
-            return `<div class="course-card"> <h3>${c.name}</h3> <p>${c.desc}</p> <div class="price-hour">${c.priceHourRub}₽ / ${c.priceHourByn}Br за час</div> <div class="tariff-group"> ${c.tariffs.map(t => ` < div class = "tariff" > < h4 > $ {
-              t.name
-            } < /h4> <div class="price-total">${t.priceRub}₽ /
-            $ {
-              t.priceByn
-            }
-            Br($ {
-                t.hours
-              }
-              занятий) < /div> <div class="course-content"><strong>Что входит:</strong > < ul > $ {
-              t.content.map(i => `<li>${i}</li>`).join('')
-            } < /ul></div > < /div>`).join('')} </div > < /div>`; } }).join('')} </div > < div style = "text-align:center; margin: 28px 0;" > < button class = "btn-primary"
-            id = "unifiedEnrollBtn"
-            style = "padding:16px 52px; font-size:1rem;" > Записаться на курс→ < /button> </div > < h2 > Методические пособия < /h2> <div class="grid-2col"> ${methodPubsFull.map((m, idx) => `<div class="method-card"> <h3>${m.name}</h
-            3 > < p > $ {
-              m.heroDesc.substring(0, 70)
-            }... < /p> <div class="price-total" style="font-size:1.2rem; margin:12px 0;">${m.priceRub}₽ /
-            $ {
-              m.priceByn
-            }
-            Br < /div> <button class="btn-outline method-detail-trigger" data-method-idx="${idx}">Подробнее →</button > < /div>`).join('')} </div > < div class = "contact-block" > < div > < strong > Остались вопросы ? < /strong><br>Напишите, подберём удобный формат</div > < div class = "contact-info" > < div class = "contact-item" > 📱 < a href = "${PHONE}" > +375 33 328 - 41 - 52 < /a></div > < div class = "contact-item" > 💬 < a href = "${TELEGRAM_LINK}"
-            target = "_blank" > @katerin_mischenko < /a></div > < div class = "contact-item" > 📢 < a href = "${TELEGRAM_CHANNEL}"
-            target = "_blank" > mischenko_edu < /a></div > < /div> <button class="btn-primary" id="teachingContactBtn">Получить консультацию →</button > < /div> </div > `; 
-    } 
-         
+    function renderTeachingPage() {
+        const packagesAccordion = savingPackages.map(p => `
+            <div class="package-accordion-item">
+                <div class="package-accordion-header" onclick="this.parentElement.classList.toggle('open')">
+                    <div>
+                        <span class="package-title">${p.title}</span>
+                        <span class="package-badge-mobile">${p.discount}</span>
+                    </div>
+                    <div>
+                        <span class="package-price-mobile">${p.priceRub} ₽ / ${p.priceByn} Br</span>
+                        <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                </div>
+                <div class="package-accordion-content">
+                    <div class="saving-discount-mobile">${p.savings}</div>
+                    <ul class="saving-features">${p.features.map(f => `<li>${f}</li>`).join('')}</ul>
+                    <button class="btn-primary" onclick="openTelegram()" style="width:100%;">Выбрать пакет →</button>
+                </div>
+            </div>
+        `).join('');
+       
+        return `<div class="page"><h2>Пакетные предложения</h2>
+            <div class="packages-savings">${savingPackages.map(p => `
+                <div class="saving-card"><div class="saving-badge">${p.discount}</div><div class="saving-icon">${p.icon}</div><div class="saving-title">${p.title}</div><div class="saving-price">${p.priceRub} ₽ <small>/</small> ${p.priceByn} Br</div><div class="saving-discount">${p.savings}</div><ul class="saving-features">${p.features.map(f => `<li>${f}</li>`).join('')}</ul><button class="btn-primary" onclick="openTelegram()">Выбрать пакет →</button></div>`).join('')}</div>
+                <div class="packages-accordion">${packagesAccordion}</div> 
+            <h2>Образовательные курсы</h2><div class="grid-2col">${coursesData.map(c => { 
+                if (c.singleTariff) {
+                    return `<div class="course-card"><h3>${c.name}</h3><p>${c.desc}</p><div class="price-hour">${c.priceHourRub}₽ / ${c.priceHourByn}Br за час</div><div class="tariff"><div class="price-total">${c.priceRub}₽ / ${c.priceByn}Br (${c.hours} занятий)</div><div class="course-content"><strong>Программа:</strong><ul>${c.content.map(i=>`<li>${i}</li>`).join('')}</ul></div></div></div>`;
+                } else {
+                    return `<div class="course-card"><h3>${c.name}</h3><p>${c.desc}</p><div class="price-hour">${c.priceHourRub}₽ / ${c.priceHourByn}Br за час</div><div class="tariff-group">${c.tariffs.map(t => `<div class="tariff"><h4>${t.name}</h4><div class="price-total">${t.priceRub}₽ / ${t.priceByn}Br (${t.hours} занятий)</div><div class="course-content"><strong>Что входит:</strong><ul>${t.content.map(i=>`<li>${i}</li>`).join('')}</ul></div></div>`).join('')}</div></div>`;
+                }
+            }).join('')}</div>
+            <div style="text-align:center; margin: 28px 0;"><button class="btn-primary" id="unifiedEnrollBtn" style="padding:16px 52px; font-size:1rem;">Записаться на курс →</button></div>
+            <h2>Методические пособия</h2><div class="grid-2col">${methodPubsFull.map((m, idx) => `<div class="method-card"><h3>${m.name}</h3><p>${m.heroDesc.substring(0, 70)}...</p><div class="price-total" style="font-size:1.2rem; margin:12px 0;">${m.priceRub}₽ / ${m.priceByn}Br</div><button class="btn-outline method-detail-trigger" data-method-idx="${idx}">Подробнее →</button></div>`).join('')}</div>
+            <div class="contact-block"><div><strong>Остались вопросы?</strong><br>Напишите, подберём удобный формат</div><div class="contact-info"><div class="contact-item">📱 <a href="${PHONE}">+375 33 328-41-52</a></div><div class="contact-item">💬 <a href="${TELEGRAM_LINK}" target="_blank">@katerin_mischenko</a></div><div class="contact-item">📢 <a href="${TELEGRAM_CHANNEL}" target="_blank">mischenko_edu</a></div></div><button class="btn-primary" id="teachingContactBtn">Получить консультацию →</button></div>
+           </div>`;
+    }
+
     let current = 'teaching';
     const container = document.getElementById('dynamicContent');
     function render() { container.innerHTML = current === 'design' ? renderDesignPage() : renderTeachingPage(); attachHandlers(); }
