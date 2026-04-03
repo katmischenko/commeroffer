@@ -1111,7 +1111,7 @@
         return `<div class="page"><h2>Пакетные предложения</h2>
             <div class="packages-savings">${savingPackages.map(p => `
                 <div class="saving-card"><div class="saving-badge">${p.discount}</div><div class="saving-icon">${p.icon}</div><div class="saving-title">${p.title}</div><div class="saving-price">${p.priceRub} ₽ <small>/</small> ${p.priceByn} Br</div><div class="saving-discount">${p.savings}</div><ul class="saving-features">${p.features.map(f => `<li>${f}</li>`).join('')}</ul><button class="btn-primary" onclick="openTelegram()">Выбрать пакет →</button></div>`).join('')}</div>
-            <div class="packages-accordion">${packagesAccordion}</div> ??????
+                <div class="packages-accordion">${packagesAccordion}</div> ??????
             <h2>Образовательные курсы</h2><div class="grid-2col">${coursesData.map(c => { 
                 if (c.singleTariff) {
                     return `<div class="course-card"><h3>${c.name}</h3><p>${c.desc}</p><div class="price-hour">${c.priceHourRub}₽ / ${c.priceHourByn}Br за час</div><div class="tariff"><div class="price-total">${c.priceRub}₽ / ${c.priceByn}Br (${c.hours} занятий)</div><div class="course-content"><strong>Программа:</strong><ul>${c.content.map(i=>`<li>${i}</li>`).join('')}</ul></div></div></div>`;
