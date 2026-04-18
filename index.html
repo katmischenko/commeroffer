@@ -6,60 +6,440 @@
     <title>Мищенко Екатерина — преподавание и дизайн</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #F8FAFE; color: #0A0B0D; line-height: 1.4; overflow-x: hidden; }
-        .gradient-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 0% 0%, rgba(59,130,246,0.06) 0%, transparent 50%), radial-gradient(circle at 100% 100%, rgba(0,210,255,0.04) 0%, transparent 60%); pointer-events: none; z-index: -2; }
-        .grid-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; z-index: -1; }
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 28px; }
-        h1 { font-size: 4.8rem; font-weight: 800; letter-spacing: -0.03em; background: linear-gradient(135deg, #0A0B0D 0%, #1E40AF 40%, #38BDF8 100%); background-clip: text; -webkit-background-clip: text; color: transparent; line-height: 1.1; }
-        h2 { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 2rem; text-align: center; }
-        .bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin: 2rem 0 3rem; }
-        .bento-card { background: rgba(255,255,255,0.6); backdrop-filter: blur(16px); border-radius: 2rem; padding: 1.5rem; border: 1px solid rgba(59,130,246,0.12); transition: all 0.3s ease; }
-        .bento-card:hover { transform: translateY(-4px); border-color: rgba(59,130,246,0.3); background: rgba(255,255,255,0.8); }
-        @media (max-width: 1000px) { .bento-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 640px) { .bento-grid { grid-template-columns: 1fr; } h1 { font-size: 2.8rem; } h2 { font-size: 1.8rem; } }
-        .tabs-wrap { display: flex; justify-content: center; margin: 2rem 0 2.5rem; }
-        .tabs { background: rgba(255,255,255,0.6); backdrop-filter: blur(20px); border-radius: 60px; padding: 0.3rem; display: flex; gap: 0.3rem; border: 1px solid rgba(59,130,246,0.15); }
-        .tab-btn { background: transparent; border: none; padding: 0.6rem 2rem; font-weight: 600; border-radius: 60px; cursor: pointer; color: #475569; transition: all 0.2s; font-size: 0.95rem; }
-        .tab-btn.active { background: #3B82F6; color: white; box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #F8FAFE;
+            color: #0A0B0D;
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        /* Градиентный фон и сетка */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 0% 0%, rgba(59,130,246,0.06) 0%, transparent 50%),
+                        radial-gradient(circle at 100% 100%, rgba(0,210,255,0.04) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* Типографика */
+        h1 {
+            font-size: 4.8rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #0A0B0D 0%, #1E40AF 40%, #38BDF8 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Bento Grid */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0 3rem;
+        }
+
+        .bento-card {
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(16px);
+            border-radius: 2rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(59,130,246,0.12);
+            transition: all 0.3s ease;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(59,130,246,0.3);
+            background: rgba(255,255,255,0.8);
+        }
+
+        @media (max-width: 1000px) {
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 1.8rem; }
+            .container { padding: 0 20px; }
+        }
+
+        /* Шапка */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 1rem 0;
+            margin-bottom: 1rem;
+        }
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, #0A0B0D, #3B82F6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        /* Переключатель валют — исправленный */
+        .currency-switch {
+            display: flex;
+            gap: 0.3rem;
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(20px);
+            padding: 0.4rem;
+            border-radius: 60px;
+            border: 1px solid rgba(59,130,246,0.2);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .currency-btn {
+            background: transparent;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            color: #475569;
+            font-family: 'Inter', sans-serif;
+        }
+        .currency-btn.active {
+            background: #3B82F6;
+            color: white;
+            box-shadow: 0 2px 8px rgba(59,130,246,0.3);
+        }
+        @media (max-width: 500px) {
+            .currency-btn { padding: 0.4rem 0.8rem; font-size: 0.75rem; }
+        }
+
+        /* Табы */
+        .tabs-wrap {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0 2.5rem;
+        }
+        .tabs {
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 60px;
+            padding: 0.3rem;
+            display: flex;
+            gap: 0.3rem;
+            border: 1px solid rgba(59,130,246,0.15);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 0.6rem 2rem;
+            font-weight: 600;
+            border-radius: 60px;
+            cursor: pointer;
+            color: #475569;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+        .tab-btn.active {
+            background: #3B82F6;
+            color: white;
+            box-shadow: 0 4px 12px rgba(59,130,246,0.3);
+        }
+
         .tab-content { display: none; }
         .tab-content.active { display: block; }
-        .price-lg { font-size: 1.6rem; font-weight: 700; color: #0A0B0D; margin: 0.6rem 0 0.2rem; }
-        .price-sm { font-size: 0.8rem; color: #64748B; }
-        .old-price { text-decoration: line-through; color: #94A3B8; font-size: 0.85rem; margin-left: 0.3rem; }
-        .badge { display: inline-block; background: #DBEAFE; color: #1E40AF; padding: 0.2rem 0.8rem; border-radius: 30px; font-size: 0.7rem; font-weight: 600; margin-bottom: 0.7rem; }
-        .dev-badge { background: #FEF3C7; color: #B45309; padding: 0.2rem 0.8rem; border-radius: 30px; font-size: 0.7rem; display: inline-block; }
-        .feature-list { list-style: none; margin-top: 0.8rem; }
-        .feature-list li { padding: 0.25rem 0; display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: #334155; }
-        .feature-list li::before { content: "—"; color: #3B82F6; font-weight: 600; }
-        .promo-banner, .existing-promo, .design-promo { border-radius: 2rem; padding: 1.5rem 2rem; margin: 1.5rem 0 2rem; }
+
+        /* Цены */
+        .price-lg {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #0A0B0D;
+            margin: 0.6rem 0 0.2rem;
+        }
+        .price-sm {
+            font-size: 0.8rem;
+            color: #64748B;
+        }
+        .old-price {
+            text-decoration: line-through;
+            color: #94A3B8;
+            font-size: 0.85rem;
+            margin-left: 0.3rem;
+        }
+        .badge {
+            display: inline-block;
+            background: #DBEAFE;
+            color: #1E40AF;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 0.7rem;
+        }
+        .dev-badge {
+            background: #FEF3C7;
+            color: #B45309;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            display: inline-block;
+        }
+        .feature-list {
+            list-style: none;
+            margin-top: 0.8rem;
+        }
+        .feature-list li {
+            padding: 0.25rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #334155;
+        }
+        .feature-list li::before {
+            content: "—";
+            color: #3B82F6;
+            font-weight: 600;
+        }
+
+        /* Акции */
+        .promo-banner, .existing-promo, .design-promo {
+            border-radius: 2rem;
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0 2rem;
+        }
         .promo-banner { background: linear-gradient(135deg, #0A0B0D, #1E3A8A, #3B82F6); color: white; }
         .existing-promo { background: linear-gradient(135deg, #FEF9C3, #FDE047); color: #1E293B; }
         .design-promo { background: linear-gradient(135deg, #E0F2FE, #BAE6FD); color: #0A0B0D; }
-        .promo-flex { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; }
+        .promo-flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
         .promo-text h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.3rem; }
-        .timer { background: rgba(0,0,0,0.1); backdrop-filter: blur(8px); padding: 0.4rem 1.2rem; border-radius: 60px; font-weight: 600; font-size: 1rem; font-family: monospace; }
-        .btn-promo, .btn-existing, .btn-design { display: inline-block; padding: 0.5rem 1.5rem; border-radius: 40px; text-decoration: none; font-weight: 600; transition: 0.2s; }
+        .date-badge {
+            background: rgba(0,0,0,0.15);
+            backdrop-filter: blur(8px);
+            padding: 0.5rem 1.2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .existing-promo .date-badge { background: rgba(0,0,0,0.1); }
+        .btn-promo, .btn-existing, .btn-design {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+        }
         .btn-promo { background: white; color: #1E3A8A; }
         .btn-existing { background: #1E293B; color: #FEF9C3; }
         .btn-design { background: #0284C7; color: white; }
         .btn-promo:hover, .btn-existing:hover, .btn-design:hover { transform: scale(1.02); }
-        .quest-card { background: rgba(254,252,232,0.95); border-left: 4px solid #EAB308; margin: 0.8rem 0; padding: 0.6rem 0.8rem; border-radius: 1rem; font-size: 0.8rem; }
-        .btn-quest { background: #EAB308; color: #1E293B; padding: 0.2rem 0.8rem; border-radius: 30px; font-size: 0.7rem; font-weight: 600; text-decoration: none; display: inline-block; margin-top: 0.3rem; }
-        .stages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0 2.5rem; }
-        .stage-card { background: rgba(255,255,255,0.7); backdrop-filter: blur(12px); border-radius: 1.2rem; padding: 1rem; text-align: center; border: 1px solid rgba(59,130,246,0.15); }
-        .stage-num { font-weight: 700; font-size: 1.2rem; color: #3B82F6; }
-        .btn-telegram { display: inline-block; background: #3B82F6; color: white; padding: 0.8rem 2rem; border-radius: 60px; text-decoration: none; font-weight: 600; transition: 0.2s; }
-        .btn-telegram:hover { background: #2563EB; transform: translateY(-2px); }
-        .footer-cta { background: rgba(255,255,255,0.7); backdrop-filter: blur(16px); border-radius: 2rem; padding: 2.5rem; text-align: center; margin: 2rem 0 3rem; border: 1px solid rgba(59,130,246,0.15); }
-        .hero-stats { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin: 2rem 0; }
-        .stat-card { background: rgba(255,255,255,0.6); backdrop-filter: blur(8px); border-radius: 2rem; padding: 0.5rem 1.5rem; text-align: center; border: 1px solid rgba(59,130,246,0.12); }
-        .stat-number { font-size: 1.8rem; font-weight: 700; color: #3B82F6; }
-        .fade-up { opacity: 0; transform: translateY(24px); transition: all 0.6s ease; }
-        .fade-up.visible { opacity: 1; transform: translateY(0); }
-        .age-badge { display: inline-block; background: rgba(59,130,246,0.1); color: #2563EB; padding: 0.2rem 0.7rem; border-radius: 30px; font-size: 0.65rem; font-weight: 600; margin-bottom: 0.5rem; }
-        .hero-photo { width: 120px; height: 120px; background: linear-gradient(135deg, #3B82F6, #38BDF8); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: white; font-weight: 700; overflow: hidden; box-shadow: 0 20px 30px -10px rgba(59,130,246,0.3); }
-        .hero-photo img { width: 150%; height: 150%; object-fit: cover; }
+
+        .quest-card {
+            background: rgba(254,252,232,0.95);
+            border-left: 4px solid #EAB308;
+            margin: 0.8rem 0;
+            padding: 0.6rem 0.8rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+        }
+        .btn-quest {
+            background: #EAB308;
+            color: #1E293B;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 0.3rem;
+        }
+
+        /* Этапы */
+        .stages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0 2.5rem;
+        }
+        .stage-card {
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 1.2rem;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid rgba(59,130,246,0.15);
+        }
+        .stage-num {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #3B82F6;
+        }
+
+        .btn-telegram {
+            display: inline-block;
+            background: #3B82F6;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        .btn-telegram:hover {
+            background: #2563EB;
+            transform: translateY(-2px);
+        }
+
+        .footer-cta {
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(16px);
+            border-radius: 2rem;
+            padding: 2.5rem;
+            text-align: center;
+            margin: 2rem 0 3rem;
+            border: 1px solid rgba(59,130,246,0.15);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 2rem;
+            padding: 0.5rem 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(59,130,246,0.12);
+        }
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #3B82F6;
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 0.6s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .age-badge {
+            display: inline-block;
+            background: rgba(59,130,246,0.1);
+            color: #2563EB;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Фото героя */
+        .hero-photo {
+            width: 160px;
+            height: 160px;
+            background: linear-gradient(135deg, #3B82F6, #38BDF8);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: 700;
+            overflow: hidden;
+            box-shadow: 0 20px 30px -10px rgba(59,130,246,0.3);
+        }
+        .hero-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        @media (max-width: 640px) {
+            .hero-photo { width: 120px; height: 120px; font-size: 2rem; }
+            .stages-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* Индивидуальный курс — новинка */
+        .individual-card {
+            background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(56,189,248,0.1));
+            border: 1px solid rgba(59,130,246,0.3);
+            position: relative;
+        }
+        .new-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: #EAB308;
+            color: #1E293B;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
     </style>
 </head>
 <body>
@@ -68,12 +448,23 @@
 
 <main>
     <div class="container">
+        <!-- Шапка с переключателем валют -->
+        <div class="header fade-up">
+            <div class="logo">Mischenko<span style="color:#3B82F6">.</span>edu</div>
+            <div class="currency-switch">
+                <button class="currency-btn active" data-currency="rub">RUB</button>
+                <button class="currency-btn" data-currency="byn">BYN</button>
+                <button class="currency-btn" data-currency="usd">USD</button>
+                <button class="currency-btn" data-currency="kzt">KZT</button>
+            </div>
+        </div>
+
         <!-- Герой с фото -->
-        <div class="fade-up" style="text-align: center; padding: 3rem 0 1rem;">
+        <div class="fade-up" style="text-align: center; padding: 1rem 0 1rem;">
             <div class="hero-photo">
-                <!-- Вставьте ваше фото вместо текста ЕМ -->
+                <!-- ВСТАВЬТЕ ВАШЕ ФОТО: раскомментируйте строку ниже и замените "ваше_фото.jpg" на путь к вашему файлу -->
+                <img src="5936904886807104842_121.jpg" alt="Екатерина Мищенко">
                 <span></span>
-                 <img src="5936904886807104842_121.jpg" alt="Екатерина Мищенко">
             </div>
             <h1>Мищенко Екатерина</h1>
             <p style="font-size: 1.2rem; margin-top: 0.5rem; color: #475569;">Преподаватель информатики · Графический дизайнер · Эксперт IT-образования</p>
@@ -96,39 +487,55 @@
 
         <!-- ========= ПРЕПОДАВАНИЕ ========= -->
         <div id="teaching" class="tab-content active">
-            <!-- Стартовая акция только здесь -->
+            <!-- Стартовая акция с датами -->
             <div class="promo-banner fade-up">
                 <div class="promo-flex">
                     <div class="promo-text">
-                        <h3>СТАРТОВАЯ АКЦИЯ — 3 ДНЯ</h3>
+                        <h3>СТАРТОВАЯ АКЦИЯ</h3>
                         <p><strong>Любой курс — 24 занятия со скидкой 20%</strong><br>Квест «5 шагов» → бесплатный урок</p>
                         <p style="font-size:0.75rem;">Напиши «2026» в Telegram → получи чек-лист «5 шагов в IT»</p>
                     </div>
-                    <div class="timer" id="countdownNew">72:00:00</div>
+                    <div class="date-badge">📅 19.04 — 22.04</div>
                     <a href="https://t.me/katerin_mischenko" target="_blank" class="btn-promo">Записаться →</a>
                 </div>
             </div>
 
             <h2 class="fade-up">Образовательные курсы</h2>
             <div class="bento-grid">
-                <div class="bento-card fade-up"><div class="age-badge">7–12 лет</div><div style="font-weight: 700; font-size: 1.4rem;">Scratch</div><p>Визуальное программирование для детей.</p><div class="price-lg">950₽ / 35 Br <span class="price-sm">час</span></div><div>Базовый 30 400₽ / 1 132 Br</div><div>Расширенный 60 800₽ / 2 264 Br</div><div class="quest-card">Акция 24 занятия — 18 240₽ / 679 Br <span class="old-price">22 800₽ / 849 Br</span><br>Квест «5 шагов» → бесплатный урок!<br> <a href="https://t.me/katerin_mischenko" target="_blank" class="btn-quest">Участвовать</a></div><ul class="feature-list"><li>Основы алгоритмов</li><li>Циклы и условия</li><li>Создание игр</li></ul></div>
-                <div class="bento-card fade-up"><div class="age-badge">10+ лет</div><div style="font-weight: 700; font-size: 1.4rem;">Цифровая грамотность</div><div class="price-lg">800₽ / 30 Br <span class="price-sm">час</span></div><div>24 занятия — 19 200₽ / 715 Br</div><div class="quest-card">Акция 24 занятия — 15 360₽ / 572 Br <span class="old-price">19 200₽ / 715 Br</span><br>Квест «5 шагов» → бесплатный урок!<br> <a href="https://t.me/katerin_mischenko" target="_blank" class="btn-quest">Участвовать</a></div><ul class="feature-list"><li>Кибербезопасность</li><li>Google Docs/Excel</li><li>Облачные хранилища</li></ul></div>
-                <div class="bento-card fade-up"><div class="age-badge">12+ лет / взрослые</div><div style="font-weight: 700; font-size: 1.4rem;">Python</div><div class="price-lg">1 800₽ / 67 Br <span class="price-sm">час</span></div><div>Базовый 57 600₽ / 2 145 Br</div><div>Расширенный 115 200₽ / 4 290 Br</div><div class="quest-card">Акция 24 занятия — 34 560₽ / 1 286 Br <span class="old-price">43 200₽ / 1 608 Br</span><br>Квест «5 шагов» → бесплатный урок! + Методичка Python в подарок <br><a href="https://t.me/katerin_mischenko" target="_blank" class="btn-quest">Участвовать</a></div><ul class="feature-list"><li>Синтаксис, ООП</li><li>Telegram-боты</li><li>Решение задач ЕГЭ</li></ul></div>
-                <div class="bento-card fade-up"><div class="age-badge">12+ лет / взрослые</div><div style="font-weight: 700; font-size: 1.4rem;">HTML/CSS/JS</div><div class="price-lg">1 700₽ / 63 Br <span class="price-sm">час</span></div><div>Базовый 54 400₽ / 2 026 Br</div><div>Проф. 108 800₽ / 4 051 Br</div><div class="quest-card">Акция 24 занятия — 32 640₽ / 1 215 Br <span class="old-price">40 800₽ / 1 519 Br</span><br>Квест «5 шагов» → бесплатный урок! <br><a href="https://t.me/katerin_mischenko" target="_blank" class="btn-quest">Участвовать</a></div><ul class="feature-list"><li>Flex/Grid, адаптив</li><li>JavaScript, DOM</li><li>Git, финальный сайт</li></ul></div>
-                <div class="bento-card fade-up"><div class="age-badge">14+ лет / взрослые</div><div style="font-weight: 700; font-size: 1.4rem;">Дизайн в Figma</div><div class="price-lg">1 900₽ / 71 Br <span class="price-sm">час</span></div><div>Базовый 60 800₽ / 2 264 Br</div><div>Расширенный 121 600₽ / 4 527 Br</div><div class="quest-card">Акция 24 занятия — 36 480₽ / 1 358 Br <span class="old-price">45 600₽ / 1 698 Br</span><br>Квест «5 шагов» → бесплатный урок! <br><a href="https://t.me/katerin_mischenko" target="_blank" class="btn-quest">Участвовать</a></div><ul class="feature-list"><li>UI/UX, прототипы</li><li>Дизайн-системы</li><li>Анимация в Figma</li></ul></div>
-                <div class="bento-card fade-up"><div class="age-badge">15–17 лет</div><div style="font-weight: 700; font-size: 1.4rem;">Подготовка к ЕГЭ/ОГЭ</div><div class="price-lg">1 800₽ / 67 Br <span class="price-sm">час</span></div><div>48 занятий — 86 400₽ / 3 217 Br</div><div class="quest-card">Акция 24 занятия — 34 560₽ / 1 286 Br <span class="old-price">43 200₽ / 1 608 Br</span><br>Квест «5 шагов» → бесплатный урок! <br><a href="https://t.me/katerin_mischenko" target="_blank" class="btn-quest">Участвовать</a></div><ul class="feature-list"><li>Разбор 1–27 заданий</li><li>Программирование на Python</li><li>5 пробных экзаменов</li></ul></div>
+                <!-- НОВИНКА — Индивидуальный курс (в самом начале) -->
+                <div class="bento-card individual-card span-2 fade-up" style="position: relative;">
+                    <div class="new-badge">🔥 НОВИНКА</div>
+                    <div style="font-weight: 700; font-size: 1.5rem;">Индивидуальный курс</div>
+                    <p>Программа строится на основе пробелов ученика. Любой курс адаптируется под вас.</p>
+                    <div class="price-lg" data-base="2000">2 000 ₽</div>
+                    <div class="price-sm">час</div>
+                    <ul class="feature-list">
+                        <li>Диагностика знаний — определяем слабые места</li>
+                        <li>Персональная программа — только то, что нужно именно вам</li>
+                        <li>Гибкий график — занятия под ваш ритм жизни</li>
+                    </ul>
+                    <a href="https://t.me/katerin_mischenko" target="_blank" class="btn-quest" style="background:#3B82F6; color:white;">Узнать подробнее →</a>
+                </div>
+
+                <!-- Остальные курсы -->
+                <div class="bento-card fade-up"><div class="age-badge">7–12 лет</div><div style="font-weight: 700; font-size: 1.4rem;">Scratch</div><p>Визуальное программирование для детей.</p><div class="price-lg" data-base="950">950 ₽</div><div class="price-sm">час</div><div data-base="30400">Базовый 30 400 ₽</div><div data-base="60800">Расширенный 60 800 ₽</div><div class="quest-card">Акция 24 занятия — <span data-base="18240">18 240 ₽</span> <span class="old-price" data-base="22800">22 800 ₽</span><br>Квест «5 шагов» → бесплатный урок! <br><a href="https://t.me/katerin_mischenko" target="_blank" class="btn-quest">Участвовать</a></div><ul class="feature-list"><li>Основы алгоритмов</li><li>Циклы и условия</li><li>Создание игр</li></ul></div>
+                <div class="bento-card fade-up"><div class="age-badge">10+ лет</div><div style="font-weight: 700; font-size: 1.4rem;">Цифровая грамотность</div><div class="price-lg" data-base="800">800 ₽</div><div class="price-sm">час</div><div data-base="19200">24 занятия — 19 200 ₽</div><div class="quest-card">Акция 24 занятия — <span data-base="15360">15 360 ₽</span> <span class="old-price" data-base="19200">19 200 ₽</span><br>Квест «5 шагов» → бесплатный урок! <br><a href="https://t.me/katerin_mischenko" target="_blank" class="btn-quest">Участвовать</a></div><ul class="feature-list"><li>Кибербезопасность</li><li>Google Docs/Excel</li><li>Облачные хранилища</li></ul></div>
+                <div class="bento-card fade-up"><div class="age-badge">12+ лет / взрослые</div><div style="font-weight: 700; font-size: 1.4rem;">Python</div><div class="price-lg" data-base="1800">1 800 ₽</div><div class="price-sm">час</div><div data-base="57600">Базовый 57 600 ₽</div><div data-base="115200">Расширенный 115 200 ₽</div><div class="quest-card">Акция 24 занятия — <span data-base="34560">34 560 ₽</span> <span class="old-price" data-base="43200">43 200 ₽</span><br>Квест «5 шагов» → бесплатный урок! + Методичка Python в подарок <br><a href="https://t.me/katerin_mischenko" target="_blank" class="btn-quest">Участвовать</a></div><ul class="feature-list"><li>Синтаксис, ООП</li><li>Telegram-боты</li><li>Решение задач ЕГЭ</li></ul></div>
+                <div class="bento-card fade-up"><div class="age-badge">12+ лет / взрослые</div><div style="font-weight: 700; font-size: 1.4rem;">HTML/CSS/JS</div><div class="price-lg" data-base="1700">1 700 ₽</div><div class="price-sm">час</div><div data-base="54400">Базовый 54 400 ₽</div><div data-base="108800">Расширенный 108 800 ₽</div><div class="quest-card">Акция 24 занятия — <span data-base="32640">32 640 ₽</span> <span class="old-price" data-base="40800">40 800 ₽</span><br>Квест «5 шагов» → бесплатный урок! <br><a href="https://t.me/katerin_mischenko" target="_blank" class="btn-quest">Участвовать</a></div><ul class="feature-list"><li>Flex/Grid, адаптив</li><li>JavaScript, DOM</li><li>Git, финальный сайт</li></ul></div>
+                <div class="bento-card fade-up"><div class="age-badge">14+ лет / взрослые</div><div style="font-weight: 700; font-size: 1.4rem;">Дизайн в Figma</div><div class="price-lg" data-base="1900">1 900 ₽</div><div class="price-sm">час</div><div data-base="60800">Базовый 60 800 ₽</div><div data-base="121600">Расширенный 121 600 ₽</div><div class="quest-card">Акция 24 занятия — <span data-base="36480">36 480 ₽</span> <span class="old-price" data-base="45600">45 600 ₽</span><br>Квест «5 шагов» → бесплатный урок! <br><a href="https://t.me/katerin_mischenko" target="_blank" class="btn-quest">Участвовать</a></div><ul class="feature-list"><li>UI/UX, прототипы</li><li>Дизайн-системы</li><li>Анимация в Figma</li></ul></div>
+                <div class="bento-card fade-up"><div class="age-badge">15–17 лет</div><div style="font-weight: 700; font-size: 1.4rem;">Подготовка к ЕГЭ/ОГЭ</div><div class="price-lg" data-base="1800">1 800 ₽</div><div class="price-sm">час</div><div data-base="86400">48 занятий — 86 400 ₽</div><div class="quest-card">Акция 24 занятия — <span data-base="34560">34 560 ₽</span> <span class="old-price" data-base="43200">43 200 ₽</span><br>Квест «5 шагов» → бесплатный урок! <br><a href="https://t.me/katerin_mischenko" target="_blank" class="btn-quest">Участвовать</a></div><ul class="feature-list"><li>Разбор 1–27 заданий</li><li>Программирование на Python</li><li>5 пробных экзаменов</li></ul></div>
             </div>
 
             <!-- Пакеты -->
             <h2 class="fade-up">Пакетные предложения</h2>
             <div class="bento-grid">
-                <div class="bento-card fade-up"><div class="badge">-22%</div><div style="font-weight: 700; font-size: 1.2rem;">Стартовый</div><div class="price-lg">45 000 ₽ / 1 675 Br <span class="old-price">57 600 ₽ / 2 145 Br</span></div><ul class="feature-list"><li>32 занятия по цене 25 — экономия 12 600₽</li><li>Чек-лист «Первые 5 шагов» в подарок</li><li>Учебный трекер в подарок</li></ul></div>
-                <div class="bento-card fade-up"><div class="badge">-27%</div><div style="font-weight: 700; font-size: 1.2rem;">Оптимальный</div><div class="price-lg">82 800 ₽ / 3 083 Br <span class="old-price">115 200 ₽ / 4 290 Br</span></div><ul class="feature-list"><li>64 занятия по цене 46 — экономия 32 400₽</li><li>Шпаргалки/памятки в подарок</li><li>Учебный трекер в подарок</li></ul></div>
-                <div class="bento-card fade-up"><div class="badge">-27%</div><div style="font-weight: 700; font-size: 1.2rem;">ЕГЭ Интенсив</div><div class="price-lg">63 072 ₽ / 2 348 Br <span class="old-price">86 400 ₽ / 3 217 Br</span></div><ul class="feature-list"><li>48 занятий (ЕГЭ/ОГЭ + Python) — экономия 23 328₽</li><li>5 пробных экзаменов в подарок</li><li>Индивидуальный трек в подарок</li></ul></div>
-                <div class="bento-card fade-up"><div class="badge">-30%</div><div style="font-weight: 700; font-size: 1.2rem;">Семейный</div><div class="price-lg">161 280 ₽ / 6 005 Br <span class="old-price">230 400 ₽ / 8 578 Br</span></div><ul class="feature-list"><li>128 занятий на двоих — экономия 69 120₽</li><li>Гибкое расписание</li><li>Общий чат поддержки</li></ul></div>
+                <div class="bento-card fade-up"><div class="badge">-22%</div><div style="font-weight: 700; font-size: 1.2rem;">Стартовый</div><div class="price-lg" data-base="45000">45 000 ₽</div><ul class="feature-list"><li>32 занятия по цене 25 — экономия 12 600₽</li><li>Чек-лист «Первые 5 шагов» в подарок</li><li>Учебный трекер в подарок</li></ul></div>
+                <div class="bento-card fade-up"><div class="badge">-27%</div><div style="font-weight: 700; font-size: 1.2rem;">Оптимальный</div><div class="price-lg" data-base="82800">82 800 ₽</div><ul class="feature-list"><li>64 занятия по цене 46 — экономия 32 400₽</li><li>Шпаргалки/памятки в подарок</li><li>Учебный трекер в подарок</li></ul></div>
+                <div class="bento-card fade-up"><div class="badge">-27%</div><div style="font-weight: 700; font-size: 1.2rem;">ЕГЭ Интенсив</div><div class="price-lg" data-base="63072">63 072 ₽</div><ul class="feature-list"><li>48 занятий (ЕГЭ/ОГЭ + Python) — экономия 23 328₽</li><li>5 пробных экзаменов в подарок</li><li>Индивидуальный трек в подарок</li></ul></div>
+                <div class="bento-card fade-up"><div class="badge">-30%</div><div style="font-weight: 700; font-size: 1.2rem;">Семейный</div><div class="price-lg" data-base="161280">161 280 ₽</div><ul class="feature-list"><li>128 занятий на двоих — экономия 69 120₽</li><li>Гибкое расписание</li><li>Общий чат поддержки</li></ul></div>
             </div>
 
-            <!-- Акция для своих -->
+            <!-- Акция для своих с датами -->
             <div class="existing-promo fade-up">
                 <div class="promo-flex">
                     <div class="promo-text">
@@ -136,7 +543,7 @@
                         <p><strong>Продли курс → скидка 15% на следующий блок (от 15 занятий)</strong></p>
                         <p>Python 32 занятия: 48 960₽ вместо 57 600₽</p>
                     </div>
-                    <div class="timer" id="countdownExisting">72:00:00</div>
+                    <div class="date-badge">📅 19.04 — 22.04</div>
                     <a href="https://t.me/katerin_mischenko" target="_blank" class="btn-existing">Написать «ПРОДЛЕНИЕ15» →</a>
                 </div>
             </div>
@@ -144,7 +551,7 @@
             <!-- Методички -->
             <h2 class="fade-up">Методические пособия</h2>
             <div class="bento-grid">
-                <div class="bento-card fade-up"><div style="font-weight: 700; font-size: 1.3rem;">Python: полное пособие</div><p>18 разделов, 87 тем, 200+ задач, поддержка в чате.</p><div class="price-lg">4 990 ₽ / 186 Br</div></div>
+                <div class="bento-card fade-up"><div style="font-weight: 700; font-size: 1.3rem;">Python: полное пособие</div><p>18 разделов, 87 тем, 200+ задач, поддержка в чате.</p><div class="price-lg" data-base="4990">4 990 ₽</div></div>
                 <div class="bento-card fade-up"><div style="font-weight: 700; font-size: 1.1rem;">ЕГЭ / ОГЭ Информатика</div><p>Методическое пособие для подготовки</p><div><br><span class="dev-badge">В разработке</span></div></div>
                 <div class="bento-card fade-up"><div style="font-weight: 700; font-size: 1.1rem;">HTML/CSS пособие</div><p>Методическое пособие по вёрстке</p><div><br><span class="dev-badge">В разработке</span></div></div>
                 <div class="bento-card fade-up"><div style="font-weight: 700; font-size: 1.1rem;">Основы Figma</div><p>Дизайн интерфейсов</p><div><br><span class="dev-badge">В разработке</span></div></div>
@@ -163,23 +570,24 @@
                 <div class="stage-card"><div class="stage-num">6</div><strong>Передача</strong><br><span>Figma-файл, шрифты, гайдлайн</span></div>
             </div>
 
+            <!-- Акция дизайн с датами -->
             <div class="design-promo fade-up">
                 <div class="promo-flex">
                     <div class="promo-text">
                         <h3>ДИЗАЙН-ПРОЕКТЫ СО СКИДКОЙ 20% — 3 ДНЯ</h3>
                         <p>Лендинг: от 65 000₽ → от 52 000₽<br>Корпоративный сайт: от 150 000₽ → от 120 000₽<br>Интернет-магазин: от 280 000₽ → от 224 000₽</p>
                     </div>
-                    <div class="timer" id="countdownDesign">72:00:00</div>
+                    <div class="date-badge">📅 19.04 — 22.04</div>
                     <a href="https://t.me/katerin_mischenko" target="_blank" class="btn-design">Написать «ДИЗАЙН20» →</a>
                 </div>
             </div>
 
             <div class="bento-grid">
-                <div class="bento-card fade-up"><div style="font-weight: 700;">Дизайн-консультация</div><div class="price-lg">3 000 ₽ / 112 Br <span class="price-sm">час</span></div><ul class="feature-list"><li>Аудит интерфейса</li><li>Рекомендации</li><li>Гайд по улучшению</li></ul></div>
-                <div class="bento-card fade-up"><div style="font-weight: 700;">Презентации</div><div class="price-lg">от 5 000 ₽ / от 186 Br</div><ul class="feature-list"><li>Анимация, брендинг</li><li>PDF / PowerPoint</li><li>Индивидуальный дизайн</li></ul></div>
-                <div class="bento-card fade-up"><div style="font-weight: 700;">Лендинг</div><div class="price-lg">от 65 000 ₽ / от 2 420 Br</div><ul class="feature-list"><li>Адаптив, анимация</li><li>Формы захвата</li><li>SEO-оптимизация</li></ul></div>
-                <div class="bento-card fade-up"><div style="font-weight: 700;">Корпоративный сайт</div><div class="price-lg">от 150 000 ₽ / от 5 585 Br</div><ul class="feature-list"><li>CRM, админ-панель</li><li>Фирменный стиль</li><li>Многостраничный</li></ul></div>
-                <div class="bento-card fade-up"><div style="font-weight: 700;">Интернет-магазин</div><div class="price-lg">от 280 000 ₽ / от 10 425 Br</div><ul class="feature-list"><li>Каталог, фильтры</li><li>Корзина, оплата</li><li>Личный кабинет</li></ul></div>
+                <div class="bento-card fade-up"><div style="font-weight: 700;">Дизайн-консультация</div><div class="price-lg" data-base="3000">3 000 ₽</div><div class="price-sm">час</div><ul class="feature-list"><li>Аудит интерфейса</li><li>Рекомендации</li><li>Гайд по улучшению</li></ul></div>
+                <div class="bento-card fade-up"><div style="font-weight: 700;">Презентации</div><div class="price-lg" data-base="5000">от 5 000 ₽</div><ul class="feature-list"><li>Анимация, брендинг</li><li>PDF / PowerPoint</li><li>Индивидуальный дизайн</li></ul></div>
+                <div class="bento-card fade-up"><div style="font-weight: 700;">Лендинг</div><div class="price-lg" data-base="65000">от 65 000 ₽</div><ul class="feature-list"><li>Адаптив, анимация</li><li>Формы захвата</li><li>SEO-оптимизация</li></ul></div>
+                <div class="bento-card fade-up"><div style="font-weight: 700;">Корпоративный сайт</div><div class="price-lg" data-base="150000">от 150 000 ₽</div><ul class="feature-list"><li>CRM, админ-панель</li><li>Фирменный стиль</li><li>Многостраничный</li></ul></div>
+                <div class="bento-card fade-up"><div style="font-weight: 700;">Интернет-магазин</div><div class="price-lg" data-base="280000">от 280 000 ₽</div><ul class="feature-list"><li>Каталог, фильтры</li><li>Корзина, оплата</li><li>Личный кабинет</li></ul></div>
             </div>
         </div>
 
@@ -192,35 +600,70 @@
     </div>
 </main>
 
-<footer style="text-align: center; padding: 1.5rem 0; border-top: 1px solid #E2E8F0; color: #64748B;">
-    <div class="container">© 2026 Мищенко Екатерина — преподаватель информатики и дизайнер</div>
-</footer>
+
 
 <script>
-    function startTimer(elementId, durationHours = 72) {
-        let endTime = localStorage.getItem(elementId);
-        if (!endTime) {
-            endTime = Date.now() + durationHours * 3600 * 1000;
-            localStorage.setItem(elementId, endTime);
-        }
-        function update() {
-            const diff = endTime - Date.now();
-            if (diff <= 0) {
-                document.getElementById(elementId).innerHTML = 'Акция завершена';
-                return;
-            }
-            const hours = Math.floor(diff / 3600000);
-            const minutes = Math.floor((diff % 3600000) / 60000);
-            const seconds = Math.floor((diff % 60000) / 1000);
-            document.getElementById(elementId).innerHTML = `${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
-        }
-        update();
-        setInterval(update, 1000);
-    }
-    startTimer('countdownNew', 72);
-    startTimer('countdownExisting', 72);
-    startTimer('countdownDesign', 72);
+    // Курсы валют (база — RUB)
+    const rates = {
+        rub: 1,
+        byn: 0.034,
+        usd: 0.011,
+        kzt: 4.7
+    };
 
+    const currencySymbols = {
+        rub: '₽',
+        byn: 'Br',
+        usd: '$',
+        kzt: '₸'
+    };
+
+    // Функция пересчёта всех цен
+    function convertPrices(currency) {
+        const priceElements = document.querySelectorAll('[data-base]');
+        priceElements.forEach(el => {
+            const baseValue = parseFloat(el.getAttribute('data-base'));
+            if (isNaN(baseValue)) return;
+            
+            let converted;
+            if (currency === 'rub') {
+                converted = baseValue;
+            } else {
+                converted = baseValue * rates[currency];
+            }
+            
+            let formatted;
+            if (currency === 'kzt') {
+                formatted = Math.round(converted).toLocaleString('ru-RU');
+            } else if (currency === 'usd') {
+                formatted = converted.toFixed(2);
+            } else if (currency === 'byn') {
+                formatted = converted.toFixed(0);
+            } else {
+                formatted = Math.round(converted).toLocaleString('ru-RU');
+            }
+            
+            const originalText = el.innerText;
+            if (originalText.includes('от')) {
+                el.innerHTML = `от ${formatted} ${currencySymbols[currency]}`;
+            } else {
+                el.innerHTML = `${formatted} ${currencySymbols[currency]}`;
+            }
+        });
+    }
+
+    // Переключатель валют
+    const currencyBtns = document.querySelectorAll('.currency-btn');
+    currencyBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const currency = btn.getAttribute('data-currency');
+            currencyBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            convertPrices(currency);
+        });
+    });
+
+    // Табы
     const btns = document.querySelectorAll('.tab-btn');
     const contents = document.querySelectorAll('.tab-content');
     btns.forEach(btn => {
@@ -233,6 +676,7 @@
         });
     });
 
+    // Анимация при скролле
     const faders = document.querySelectorAll('.fade-up');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
