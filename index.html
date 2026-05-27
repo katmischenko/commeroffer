@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Мищенко Екатерина — преподаватель информатики</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -19,7 +19,7 @@
             line-height: 1.5;
         }
 
-        /* --- МОБИЛЬНЫЙ ФОН: ОБЛЕГЧЁННАЯ ВЕРСИЯ (экономия батареи) --- */
+        /* --- НОВЫЙ ФОН: КОД, СЕТКА, СОВРЕМЕННЫЕ ФИГУРЫ --- */
         .tech-bg {
             position: fixed;
             top: 0;
@@ -31,17 +31,27 @@
             overflow: hidden;
         }
 
-        /* Строки кода — их меньше на мобилке и они не двигаются */
+        /* 1. Строки кода (Python, JS, HTML) - их много, они создают атмосферу */
         .code-line {
             position: absolute;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
+            font-size: 12px;
             white-space: nowrap;
-            color: rgba(100, 150, 255, 0.1);
-            opacity: 0.4;
+            color: rgba(100, 150, 255, 0.12);
+            animation: slowFloat 40s infinite linear;
         }
         
-        /* Лёгкая сетка */
+        /* Разные анимации для того, чтобы строки двигались с разной скоростью */
+        .code-line.slow { animation-duration: 55s; }
+        .code-line.fast { animation-duration: 30s; }
+        .code-line.static { animation: none; opacity: 0.08; } /* статичные строки для постоянного фона */
+
+        @keyframes slowFloat {
+            0% { transform: translateY(0) translateX(0); }
+            100% { transform: translateY(-150px) translateX(80px); }
+        }
+
+        /* 2. IT-сетка (как разлиновка кода) */
         .code-grid {
             position: absolute;
             top: 0;
@@ -49,112 +59,129 @@
             width: 100%;
             height: 100%;
             background-image: 
-                repeating-linear-gradient(0deg, rgba(80, 120, 255, 0.03) 0px, rgba(80, 120, 255, 0.03) 1px, transparent 1px, transparent 40px),
-                repeating-linear-gradient(90deg, rgba(80, 120, 255, 0.03) 0px, rgba(80, 120, 255, 0.03) 1px, transparent 1px, transparent 40px);
+                repeating-linear-gradient(0deg, rgba(80, 120, 255, 0.05) 0px, rgba(80, 120, 255, 0.05) 1px, transparent 1px, transparent 40px),
+                repeating-linear-gradient(90deg, rgba(80, 120, 255, 0.05) 0px, rgba(80, 120, 255, 0.05) 1px, transparent 1px, transparent 40px);
         }
 
-        /* Абстрактные фигуры — только самые крупные */
+        /* 3. Абстрактные "окна" и фигуры (как интерфейс) */
         .interface-window {
             position: absolute;
-            border: 1px solid rgba(255, 100, 100, 0.06);
+            border: 1px solid rgba(255, 100, 100, 0.08);
             border-radius: 12px;
             background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(2px);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
         }
-        .win-1 { width: 250px; height: 200px; top: 15%; left: -80px; transform: rotate(5deg); }
-        .win-2 { width: 300px; height: 220px; bottom: 15%; right: -100px; transform: rotate(-3deg); }
+        
+        .win-1 { width: 320px; height: 240px; top: 15%; left: -100px; transform: rotate(5deg); }
+        .win-2 { width: 450px; height: 300px; bottom: 10%; right: -120px; transform: rotate(-3deg); }
+        .win-3 { width: 180px; height: 180px; top: 60%; left: 15%; border-radius: 50%; border: 1px solid rgba(100, 150, 255, 0.1); background: radial-gradient(circle, rgba(100,150,255,0.02) 0%, rgba(0,0,0,0) 70%);}
+        
         .corner-bracket {
             position: absolute;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 30px;
+            font-size: 40px;
             font-weight: 700;
             color: rgba(255, 100, 100, 0.05);
+            user-select: none;
         }
-        .bracket-1 { top: 10%; left: 5%; }
-        .bracket-2 { bottom: 10%; right: 5%; }
+        .bracket-1 { top: 10%; left: 5%; content: '{'; }
+        .bracket-2 { bottom: 10%; right: 5%; content: '}'; transform: rotate(180deg); }
+        .bracket-3 { top: 50%; right: 8%; content: '//'; font-size: 30px; opacity: 0.06;}
 
-        /* ---------- ОСНОВНОЙ КОНТЕЙНЕР ---------- */
         .container {
             position: relative;
             z-index: 2;
             max-width: 1100px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 28px;
         }
 
-        /* ---------- НАВИГАЦИЯ (MOBILE-FIRST) ---------- */
+        /* --- Стили контента (без изменений, всё чисто и читаемо) --- */
         .nav {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            padding: 24px 0;
+            padding: 32px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            gap: 16px;
+            flex-wrap: wrap;
+            gap: 20px;
         }
         .logo {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #ff4b4b;
-            text-align: center;
         }
         .logo span {
             color: #eef2ff;
         }
         .nav-links {
             display: flex;
+            gap: 36px;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 28px;
         }
         .nav-links a {
             text-decoration: none;
             color: #a0a8c0;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-family: 'JetBrains Mono', monospace;
             transition: color 0.2s;
         }
+        .nav-links a:hover {
+            color: #ff4b4b;
+        }
         .social-links {
             display: flex;
-            justify-content: center;
-            gap: 28px;
+            gap: 20px;
         }
         .social-links a {
             color: #a0a8c0;
             text-decoration: none;
             font-size: 0.8rem;
+            transition: color 0.2s;
+        }
+        .social-links a:hover {
+            color: #ff4b4b;
         }
 
-        /* ---------- КНОПКИ (удобные для пальцев) ---------- */
         .btn {
             display: inline-block;
-            padding: 12px 24px;
+            padding: 12px 28px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: all 0.3s;
             cursor: pointer;
             border: none;
             text-decoration: none;
-            text-align: center;
         }
         .btn-primary {
             background: #ff4b4b;
             color: #0a0c10;
+        }
+        .btn-primary:hover {
+            background: #ff6666;
+            transform: translateY(-2px);
         }
         .btn-outline {
             background: transparent;
             border: 1px solid rgba(255,255,255,0.2);
             color: #eef2ff;
         }
+        .btn-outline:hover {
+            border-color: #ff4b4b;
+            background: rgba(255,75,75,0.1);
+            transform: translateY(-2px);
+        }
 
-        /* ---------- HERO (адаптивный) ---------- */
         .hero {
             display: flex;
-            flex-direction: column;
-            gap: 40px;
-            margin: 40px 0;
+            flex-wrap: wrap;
+            gap: 60px;
+            margin: 60px 0 80px;
             align-items: center;
         }
         .hero-text {
-            text-align: center;
+            flex: 1.2;
         }
         .hero-badge {
             font-family: 'JetBrains Mono', monospace;
@@ -163,30 +190,29 @@
             background: rgba(255,75,75,0.1);
             display: inline-block;
             padding: 4px 12px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
         h1 {
-            font-size: 2.5rem;
+            font-size: 3.5rem;
             font-weight: 700;
             letter-spacing: -0.02em;
-            line-height: 1.2;
-            margin-bottom: 1rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
         }
         .hero-desc {
             font-size: 1rem;
             color: #a0a8c0;
-            max-width: 100%;
-            margin-bottom: 24px;
+            max-width: 500px;
+            margin-bottom: 32px;
         }
         .hero-stats {
             display: flex;
-            justify-content: center;
-            gap: 32px;
-            margin: 24px 0 32px;
+            gap: 48px;
+            margin: 32px 0 40px;
             flex-wrap: wrap;
         }
         .stat-number {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
             color: #ff4b4b;
             font-family: 'JetBrains Mono', monospace;
@@ -196,30 +222,40 @@
             color: #8a94b0;
         }
         .hero-photo {
-            width: 100%;
-            max-width: 280px;
+            flex: 0.8;
             background: rgba(255,255,255,0.02);
             border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 16px;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: #a0a8c0;
+            position: relative;
             overflow: hidden;
-            margin: 0 auto;
+            backdrop-filter: blur(2px);
+            text-align: center;
         }
         .hero-photo img {
-            width: 100%;
-            height: auto;
-            display: block;
+            max-width: 100%;
+            max-height: 100%;
             object-fit: cover;
+            opacity: 0.9;
         }
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 16px;
+        /* Заглушка, если фото ещё нет */
+        .photo-placeholder {
+            color: #8a94b0;
+            font-size: 0.85rem;
+        }
+        @media (max-width: 800px) {
+            .hero { flex-direction: column; }
+            h1 { font-size: 2.5rem; }
+            .hero-photo { min-height: 250px; width: 100%; }
         }
 
-        /* ---------- СЕКЦИИ (отступы уменьшены) ---------- */
         section {
-            margin: 60px 0;
+            margin: 80px 0;
         }
         .section-tag {
             font-family: 'JetBrains Mono', monospace;
@@ -229,45 +265,53 @@
             display: inline-block;
         }
         h2 {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 600;
             letter-spacing: -0.02em;
-            margin-bottom: 24px;
+            margin-bottom: 32px;
         }
 
-        /* Доверительный блок (почему я) */
         .trust-block {
             background: rgba(255,255,255,0.02);
             border: 1px solid rgba(255,255,255,0.05);
-            padding: 24px;
+            padding: 40px;
             margin: 20px 0;
         }
         .trust-item {
-            margin-bottom: 24px;
+            margin-bottom: 28px;
         }
         .trust-item strong {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: #ff4b4b;
             display: block;
             margin-bottom: 6px;
         }
         .trust-item p {
             color: #c0c8e0;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
-        /* Процесс (сетка для мобильных — 1 колонка) */
         .process-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
             text-align: center;
+        }
+        @media (max-width: 800px) {
+            .process-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+        }
+        @media (max-width: 500px) {
+            .process-grid { grid-template-columns: 1fr; }
         }
         .step-card {
             background: rgba(255,255,255,0.02);
             border: 1px solid rgba(255,255,255,0.05);
-            padding: 24px 20px;
+            padding: 28px 20px;
             transition: all 0.3s;
+        }
+        .step-card:hover {
+            border-color: rgba(255,75,75,0.3);
+            transform: translateY(-4px);
         }
         .step-number {
             font-size: 2rem;
@@ -280,50 +324,70 @@
         .newbie-promo {
             background: rgba(255,75,75,0.1);
             border: 1px solid rgba(255,75,75,0.3);
-            padding: 24px;
+            padding: 32px;
             text-align: center;
-            margin: 40px 0;
+            margin: 40px 0 48px;
         }
 
-        /* КУРСЫ — строки в столбик */
         .course-list {
             display: flex;
             flex-direction: column;
         }
         .course-row {
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 20px 0;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 24px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            gap: 8px;
+            gap: 16px;
         }
         .course-name {
             font-weight: 600;
+            width: 200px;
             font-size: 1rem;
         }
         .course-desc {
+            flex: 1;
             color: #8a94b0;
             font-size: 0.85rem;
-            text-align: left;
+            text-align: center;
         }
         .course-price {
             font-weight: 600;
+            width: 130px;
+            text-align: right;
             font-size: 1rem;
         }
+        @media (max-width: 800px) {
+            .course-row {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .course-name, .course-desc, .course-price {
+                width: auto;
+                text-align: left;
+            }
+        }
 
-        /* Пакеты */
         .packages-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-            margin: 32px 0;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin: 40px 0;
+        }
+        @media (max-width: 800px) {
+            .packages-grid { grid-template-columns: 1fr; }
         }
         .package-card {
             background: rgba(255,255,255,0.02);
             border: 1px solid rgba(255,255,255,0.05);
-            padding: 28px;
-            text-align: center;
+            padding: 32px;
+            transition: all 0.3s;
+        }
+        .package-card:hover {
+            border-color: rgba(255,75,75,0.3);
+            transform: translateY(-4px);
         }
         .package-card.featured {
             border-color: #ff4b4b;
@@ -339,62 +403,75 @@
             list-style: none;
         }
         .package-features li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             font-size: 0.85rem;
             color: #c0c8e0;
         }
 
-        /* Методички */
         .book-list {
             display: flex;
             flex-direction: column;
         }
         .book-row {
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
             padding: 20px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            gap: 8px;
+            gap: 16px;
         }
         .book-name {
             font-weight: 600;
-            font-size: 1rem;
+            width: 220px;
         }
         .book-desc {
+            flex: 1;
             color: #8a94b0;
             font-size: 0.85rem;
         }
         .book-price {
             font-weight: 600;
+            width: 100px;
+            text-align: right;
         }
         .book-status {
-            display: inline-block;
+            display: block;
             color: #ff4b4b;
             font-size: 0.8rem;
-            margin-top: 4px;
+            margin-top: 6px;
+        }
+        @media (max-width: 800px) {
+            .book-row {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .book-name, .book-desc, .book-price {
+                width: auto;
+                text-align: left;
+            }
         }
 
-        /* Отзывы */
         .testimonial {
             border-left: 3px solid #ff4b4b;
-            padding: 16px 0 16px 20px;
-            margin: 32px 0;
+            padding: 24px 0 24px 32px;
+            margin: 40px 0;
+            font-style: normal;
+            color: #c0c8e0;
         }
         .testimonial-text {
-            font-size: 0.9rem;
+            font-size: 1rem;
             line-height: 1.5;
         }
         .testimonial-author {
-            margin-top: 12px;
+            margin-top: 16px;
             color: #ff4b4b;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
         }
 
-        /* FAQ */
         .faq-item {
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding: 18px 0;
+            padding: 24px 0;
             cursor: pointer;
         }
         .faq-question {
@@ -402,124 +479,64 @@
             display: flex;
             justify-content: space-between;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
         .faq-answer {
-            margin-top: 12px;
+            margin-top: 14px;
             color: #8a94b0;
             display: none;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             line-height: 1.5;
         }
         .faq-answer.active {
             display: block;
         }
 
-        /* Финальный CTA */
         .final-cta {
             text-align: center;
-            padding: 40px 0;
+            padding: 60px 0;
             border-top: 1px solid rgba(255,75,75,0.2);
             margin: 40px 0;
         }
         .final-cta a {
             color: #ff4b4b;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             text-decoration: none;
             border-bottom: 1px solid #ff4b4b;
+            transition: 0.2s;
+        }
+        .final-cta a:hover {
+            color: #ff8888;
+            border-bottom-color: #ff8888;
         }
 
-        /* Подвал */
         footer {
-            padding: 32px 0;
+            padding: 48px 0;
             text-align: center;
             color: #5a6480;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             border-top: 1px solid rgba(255,255,255,0.05);
         }
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 24px;
+            gap: 32px;
             margin-top: 16px;
             flex-wrap: wrap;
         }
         .footer-links a {
             color: #8a94b0;
             text-decoration: none;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
         }
-
-        /* Планшетная и десктопная версия (адаптация) */
-        @media (min-width: 768px) {
-            .nav {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-            .hero {
-                flex-direction: row;
-                text-align: left;
-                gap: 60px;
-            }
-            .hero-text {
-                text-align: left;
-            }
-            .hero-desc {
-                max-width: 500px;
-            }
-            .hero-stats {
-                justify-content: flex-start;
-            }
-            .btn-group {
-                flex-direction: row;
-            }
-            .process-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 28px;
-            }
-            .packages-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .course-row {
-                flex-direction: row;
-                align-items: baseline;
-                gap: 16px;
-            }
-            .course-name {
-                width: 200px;
-            }
-            .course-desc {
-                text-align: center;
-                flex: 1;
-            }
-            .course-price {
-                width: 130px;
-                text-align: right;
-            }
-            .book-row {
-                flex-direction: row;
-                align-items: baseline;
-                gap: 16px;
-            }
-            .book-name {
-                width: 220px;
-            }
-            .book-desc {
-                flex: 1;
-            }
-            .book-price {
-                width: 100px;
-                text-align: right;
-            }
-            .hero-photo {
-                max-width: 350px;
-            }
+        .footer-links a:hover {
+            color: #ff4b4b;
         }
     </style>
 </head>
 <body>
 
-<!-- ФОН (облегчённый для мобильных) -->
+<!-- НОВЫЙ ФОН: КОД + СЕТКА + ИНТЕРФЕЙС -->
 <div class="tech-bg" id="techBg"></div>
 
 <div class="container">
@@ -534,7 +551,6 @@
         <div class="social-links">
             <a href="https://t.me/mischenko_edu" target="_blank">TG</a>
             <a href="https://vk.com/mischenko_edu" target="_blank">VK</a>
-            <a href="https://www.instagram.com/mischenko.educat/" target="_blank">IG</a>
             <a href="https://t.me/katerin_mischenko" target="_blank">CHAT</a>
         </div>
     </div>
@@ -549,14 +565,15 @@
                 <div><div class="stat-number">650+</div><div class="stat-label">учеников</div></div>
                 <div><div class="stat-number">86</div><div class="stat-label">средний балл</div></div>
             </div>
-            <div class="btn-group">
+            <div>
                 <a href="https://t.me/katerin_mischenko" target="_blank" class="btn-primary btn">Пробное занятие →</a>
-                <a href="#courses" class="btn-outline btn">смотреть курсы</a>
+                <a href="#courses" class="btn-outline btn" style="margin-left: 16px;">смотреть курсы</a>
             </div>
         </div>
         <div class="hero-photo">
-            <!-- ЗАМЕНИТЕ ССЫЛКУ НА РЕАЛЬНОЕ ФОТО -->
-            <img src="5240487957079202278_121.png" alt="Екатерина Мищенко">
+            <!-- СЮДА ВСТАВИТЬ ВАШЕ ФОТО. ЗАМЕНИТЕ ССЫЛКУ НА РЕАЛЬНУЮ. -->
+            <img src="5240487957079202278_121.png" alt="Екатерина Мищенко" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="photo-placeholder" style="display: none;">📸 Ваше фото</div>
         </div>
     </div>
 
@@ -650,7 +667,6 @@
         <div class="footer-links">
             <a href="https://t.me/mischenko_edu" target="_blank">Telegram-канал</a>
             <a href="https://vk.com/mischenko_edu" target="_blank">ВКонтакте</a>
-            <a href="https://www.instagram.com/mischenko.educat/" target="_blank">Instagram</a>
             <a href="https://t.me/katerin_mischenko" target="_blank">Чат в Telegram</a>
         </div>
         <p style="margin-top: 16px;">mischenkoekaterinaa@gmail.com</p>
@@ -658,15 +674,29 @@
 </footer>
 
 <script>
-    // Генерация фона (облегчённая для мобильных)
+    // --- ГЕНЕРАЦИЯ НОВОГО ФОНА: МНОГО КОДА, СЕТКА, ФИГУРЫ ---
     const codeSnippets = [
-        "def solve(x): return x * 2", "for i in range(10): print(i)",
-        "const data = await fetch('/api')", "function binarySearch(arr, target) {",
-        "import React from 'react'", "while True: print('learning')",
-        "if __name__ == '__main__': main()", "SELECT * FROM students",
-        "print(f'Result: {score}')", "class Student: def __init__(self):",
-        "const result = numbers.map(n => n * 2)", "@app.route('/')",
-        "try: execute()\nexcept: handle_error()", "npm start", "git commit"
+        "def solve(x): return x * 2",
+        "for i in range(10): print(i)",
+        "const data = await fetch('/api')",
+        "<div class='code'>Hello world</div>",
+        "function binarySearch(arr, target) {",
+        "import React from 'react'",
+        "while True: print('learning')",
+        "if __name__ == '__main__': main()",
+        "SELECT * FROM students WHERE grade > 80",
+        "print(f'Result: {score}')",
+        "class Student: def __init__(self): self.name = name",
+        "const result = numbers.map(n => n * 2)",
+        "@app.route('/')\ndef home(): return 'ok'",
+        "try: execute()\nexcept: handle_error()",
+        "npm start",
+        "git commit -m 'init'",
+        "let x = 10;",
+        "while(x > 0) { x--; }",
+        "response = requests.get(url)",
+        "document.querySelector('.btn')",
+        "plt.plot(x, y)"
     ];
 
     function generateTechBackground() {
@@ -674,43 +704,63 @@
         if (!bgContainer) return;
         bgContainer.innerHTML = '';
 
+        // 1. Сетка
         const grid = document.createElement('div');
         grid.className = 'code-grid';
         bgContainer.appendChild(grid);
 
-        // Меньше строк на мобилке для производительности
-        const linesCount = window.innerWidth < 768 ? 40 : 100;
-        for (let i = 0; i < linesCount; i++) {
+        // 2. Много строк кода (динамические и статичные)
+        for (let i = 0; i < 120; i++) {  // Много строк для плотности
             const line = document.createElement('div');
             line.className = 'code-line';
+            // Выбираем случайный сниппет
             line.textContent = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
+            // Случайное позиционирование
             line.style.left = Math.random() * 100 + '%';
             line.style.top = Math.random() * 100 + '%';
-            line.style.fontSize = 9 + Math.random() * 6 + 'px';
+            line.style.fontSize = 10 + Math.random() * 10 + 'px';
+            
+            // Добавляем классы для разной скорости
+            if (Math.random() > 0.7) {
+                line.classList.add('slow');
+            } else if (Math.random() > 0.8) {
+                line.classList.add('fast');
+            } else {
+                line.classList.add('static');
+            }
+            
+            line.style.animationDelay = Math.random() * 20 + 's';
             bgContainer.appendChild(line);
         }
 
+        // 3. Фальшивые "окна" интерфейса
         const win1 = document.createElement('div');
         win1.className = 'interface-window win-1';
         const win2 = document.createElement('div');
         win2.className = 'interface-window win-2';
+        const win3 = document.createElement('div');
+        win3.className = 'interface-window win-3';
         bgContainer.appendChild(win1);
         bgContainer.appendChild(win2);
+        bgContainer.appendChild(win3);
 
+        // 4. Скобки и символы
         const bracket1 = document.createElement('div');
         bracket1.className = 'corner-bracket bracket-1';
         bracket1.textContent = '{';
         const bracket2 = document.createElement('div');
         bracket2.className = 'corner-bracket bracket-2';
         bracket2.textContent = '}';
+        const bracket3 = document.createElement('div');
+        bracket3.className = 'corner-bracket bracket-3';
+        bracket3.textContent = '//';
+        
         bgContainer.appendChild(bracket1);
         bgContainer.appendChild(bracket2);
+        bgContainer.appendChild(bracket3);
     }
 
     generateTechBackground();
-    window.addEventListener('resize', () => {
-        generateTechBackground();
-    });
 
     function toggleFaq(element) {
         const answer = element.querySelector('.faq-answer');
