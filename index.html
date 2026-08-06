@@ -1,758 +1,908 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Мищенко Екатерина — преподаватель информатики</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Екатерина Мищенко — информатика и математика</title>
+<meta name="description" content="Репетитор по информатике и математике. Готовлю к ЕГЭ и ОГЭ, учу программировать. Пробное занятие — 1 500 ₽.">
+<meta property="og:title" content="Екатерина Мищенко — репетитор">
+<meta property="og:description" content="Информатика, математика, программирование. Индивидуальный подход, живые занятия, реальные результаты.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎯%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #0a0c10;
-            color: #eef2ff;
-            line-height: 1.5;
-        }
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Екатерина Мищенко — репетитор",
+  "description": "Репетитор по информатике и математике. Подготовка к ЕГЭ и ОГЭ, программирование.",
+  "url": "https://mischenko.edu",
+  "email": "mischenkoekaterinaa@gmail.com",
+  "sameAs": [
+    "https://t.me/mischenko_edu",
+    "https://www.instagram.com/mischenko.educat/"
+  ],
+  "priceRange": "₽₽",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.99",
+    "reviewCount": "650"
+  }
+}
+</script>
 
-        /* --- МОЩНЫЙ ФОН С ПЛАВАЮЩИМ КОДОМ (как на старом сайте) --- */
-        .code-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            overflow: hidden;
-            font-family: 'JetBrains Mono', monospace;
-        }
-        
-        /* Строки кода, которые плавают */
-        .floating-code {
-            position: absolute;
-            white-space: nowrap;
-            animation: floatCode 25s infinite linear;
-            opacity: 0;
-            font-weight: 500;
-        }
-        
-        /* Разная скорость и стили для разных строк */
-        .floating-code.slow { animation-duration: 40s; }
-        .floating-code.fast { animation-duration: 18s; }
-        .floating-code.very-slow { animation-duration: 55s; }
-        
-        /* Разные цвета для строк кода, как на старом сайте */
-        .floating-code.python { color: rgba(100, 150, 255, 0.25); text-shadow: 0 0 3px rgba(100, 150, 255, 0.2); }
-        .floating-code.js { color: rgba(255, 200, 100, 0.25); text-shadow: 0 0 3px rgba(255, 200, 100, 0.2); }
-        .floating-code.html { color: rgba(100, 255, 150, 0.25); text-shadow: 0 0 3px rgba(100, 255, 150, 0.2); }
-        .floating-code.shell { color: rgba(255, 100, 150, 0.25); text-shadow: 0 0 3px rgba(255, 100, 150, 0.2); }
-        
-        @keyframes floatCode {
-            0% {
-                transform: translateY(0) translateX(0);
-                opacity: 0;
-            }
-            15% {
-                opacity: 0.6;
-            }
-            85% {
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(-250px) translateX(120px);
-                opacity: 0;
-            }
-        }
+<style>
+:root {
+  --bg: #0c0a0f;
+  --surface: rgba(255,255,255,0.035);
+  --surface-hover: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.06);
+  --border-hover: rgba(255,107,107,0.3);
+  --text: #faf5f0;
+  --text-dim: #a098a8;
+  --accent: #ff6b6b;
+  --accent-glow: rgba(255,107,107,0.2);
+  --accent-soft: rgba(255,107,107,0.08);
+  --lavender: #b8a9c9;
+  --peach: #f4a261;
+  --mint: #88d8b0;
+  --radius: 24px;
+  --radius-sm: 16px;
+  --transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+::selection { background:var(--accent-soft); color:var(--accent); }
 
-        /* --- ОСНОВНОЙ КОНТЕЙНЕР --- */
-        .container {
-            position: relative;
-            z-index: 2;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+.ambient { position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+.orb { position:absolute; border-radius:50%; filter:blur(100px); opacity:0.4; animation:orbFloat 18s ease-in-out infinite alternate; }
+.orb-1 { width:700px; height:700px; background:radial-gradient(circle,rgba(255,107,107,0.15),transparent 70%); top:-15%; left:-10%; }
+.orb-2 { width:500px; height:500px; background:radial-gradient(circle,rgba(184,169,201,0.12),transparent 70%); bottom:10%; right:-5%; animation-delay:-6s; }
+.orb-3 { width:400px; height:400px; background:radial-gradient(circle,rgba(244,162,97,0.1),transparent 70%); top:50%; left:40%; animation-delay:-12s; }
+@keyframes orbFloat { 0% { transform:translate(0,0) scale(1); } 100% { transform:translate(30px,-20px) scale(1.05); } }
 
-        /* ========== МОБИЛЬНАЯ ВЕРСИЯ (ДО 768px) ========== */
-        @media (max-width: 768px) {
-            .container { padding: 0 16px; }
-            .nav {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-                padding: 20px 0;
-            }
-            .nav-links { gap: 25px; justify-content: center; }
-            .social-links { justify-content: center; }
-            
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                gap: 30px;
-                margin: 30px 0 50px;
-            }
-            .hero-text { order: 2; }
-            .hero-photo { order: 1; max-width: 260px; min-height: auto; margin: 0 auto; }
-            .hero-desc { max-width: 100%; margin-left: auto; margin-right: auto; }
-            .hero-stats { justify-content: center; }
-            .btn-group { flex-direction: column; gap: 12px; }
-            .btn-outline { margin-left: 0 !important; }
-            h1 { font-size: 2.2rem; }
-            
-            section { margin: 50px 0; }
-            h2 { font-size: 1.6rem; text-align: center; }
-            .section-tag { display: block; text-align: center; }
-            .trust-block { padding: 24px; }
-            .process-grid { grid-template-columns: 1fr; gap: 20px; }
-            
-            .course-row { flex-direction: column; align-items: flex-start; gap: 8px; padding: 20px 0; }
-            .course-name, .course-desc, .course-price { width: auto; text-align: left; }
-            .course-desc { text-align: left; }
-            
-            .packages-grid { grid-template-columns: 1fr; gap: 20px; }
-            .book-row { flex-direction: column; gap: 6px; }
-            .book-name, .book-desc, .book-price { width: auto; text-align: left; }
-            
-            .testimonial { padding: 16px 0 16px 20px; }
-            .final-cta { padding: 40px 0; }
-            .final-cta a { font-size: 1rem; }
-            .footer-links { gap: 16px; }
-        }
+.particles { position:fixed; inset:0; z-index:0; pointer-events:none; }
+.particle { position:absolute; width:3px; height:3px; border-radius:50%; background:var(--accent); opacity:0.15; animation:particleFloat linear infinite; }
+@keyframes particleFloat { 0% { transform:translateY(100vh) rotate(0deg); opacity:0; } 10% { opacity:0.3; } 90% { opacity:0.3; } 100% { transform:translateY(-10vh) rotate(360deg); opacity:0; } }
 
-        /* ========== ДЕСКТОПНАЯ ВЕРСИЯ (ОТ 769px) ========== */
-        @media (min-width: 769px) {
-            .nav { flex-direction: row; justify-content: space-between; }
-            .hero { flex-direction: row; text-align: left; gap: 60px; }
-            .hero-text { order: 1; }
-            .hero-photo { order: 2; max-width: 350px; min-height: 320px; }
-            .hero-desc { max-width: 500px; margin-left: 0; margin-right: 0; }
-            .hero-stats { justify-content: flex-start; }
-            .btn-group { flex-direction: row; }
-            
-            .process-grid { grid-template-columns: repeat(4, 1fr); gap: 28px; }
-            .packages-grid { grid-template-columns: repeat(3, 1fr); }
-            
-            .course-row { flex-direction: row; align-items: baseline; gap: 16px; }
-            .course-name { width: 200px; }
-            .course-desc { text-align: center; flex: 1; }
-            .course-price { width: 130px; text-align: right; }
-            
-            .book-row { flex-direction: row; align-items: baseline; gap: 16px; }
-            .book-name { width: 220px; }
-            .book-desc { flex: 1; }
-            .book-price { width: 100px; text-align: right; }
-            
-            section { margin: 80px 0; }
-            h2 { font-size: 1.8rem; text-align: left; }
-            .section-tag { display: inline-block; }
-        }
+.container { position:relative; z-index:2; max-width:1100px; margin:0 auto; padding:0 24px; }
 
-        /* --- ОБЩИЕ СТИЛИ (НЕ ЗАВИСЯТ ОТ ШИРИНЫ) --- */
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 32px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .logo {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: #ff4b4b;
-        }
-        .logo span { color: #eef2ff; }
-        .nav-links {
-            display: flex;
-            gap: 36px;
-            flex-wrap: wrap;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: #a0a8c0;
-            font-size: 0.85rem;
-            font-family: 'JetBrains Mono', monospace;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover { color: #ff4b4b; }
-        .social-links {
-            display: flex;
-            gap: 24px;
-        }
-        .social-links a {
-            color: #a0a8c0;
-            text-decoration: none;
-            font-size: 0.8rem;
-            transition: color 0.2s;
-        }
-        .social-links a:hover { color: #ff4b4b; }
+/* Back to top */
+.back-top {
+  position:fixed; bottom:24px; right:24px; width:44px; height:44px;
+  background:var(--surface); border:1px solid var(--border); border-radius:50%;
+  display:flex; align-items:center; justify-content:center; cursor:pointer;
+  opacity:0; transform:translateY(20px); transition:var(--transition);
+  z-index:999; color:var(--text); font-size:1.2rem; backdrop-filter:blur(12px);
+}
+.back-top.visible { opacity:1; transform:translateY(0); }
+.back-top:hover { border-color:var(--accent-glow); background:var(--accent-soft); color:var(--accent); }
 
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: all 0.3s;
-            cursor: pointer;
-            border: none;
-            text-decoration: none;
-        }
-        .btn-primary {
-            background: #ff4b4b;
-            color: #0a0c10;
-        }
-        .btn-primary:hover {
-            background: #ff6666;
-            transform: translateY(-2px);
-        }
-        .btn-outline {
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #eef2ff;
-        }
-        .btn-outline:hover {
-            border-color: #ff4b4b;
-            background: rgba(255,75,75,0.1);
-            transform: translateY(-2px);
-        }
+/* Mobile bottom bar */
+.mobile-bar {
+  display:none; position:fixed; bottom:0; left:0; right:0;
+  background:rgba(12,10,15,0.95); backdrop-filter:blur(20px);
+  border-top:1px solid var(--border); padding:12px 20px; z-index:998;
+  justify-content:space-between; align-items:center; gap:12px;
+}
+.mobile-bar-text { font-size:0.8rem; color:var(--text-dim); }
+.mobile-bar-text strong { color:var(--accent); font-size:0.9rem; }
+.mobile-bar .btn { padding:10px 20px; font-size:0.8rem; }
 
-        .hero {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 60px;
-            margin: 60px 0 80px;
-            align-items: center;
-        }
-        .hero-text { flex: 1.2; }
-        .hero-badge {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            color: #ff4b4b;
-            background: rgba(255,75,75,0.1);
-            display: inline-block;
-            padding: 4px 12px;
-            margin-bottom: 24px;
-        }
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-        .hero-desc {
-            font-size: 1rem;
-            color: #a0a8c0;
-            margin-bottom: 32px;
-        }
-        .hero-stats {
-            display: flex;
-            gap: 48px;
-            margin: 32px 0 40px;
-            flex-wrap: wrap;
-        }
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #ff4b4b;
-            font-family: 'JetBrains Mono', monospace;
-        }
-        .stat-label {
-            font-size: 0.7rem;
-            color: #8a94b0;
-        }
-        .hero-photo {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        .hero-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+nav { display:flex; align-items:center; justify-content:space-between; padding:24px 0; position:relative; }
+.logo { font-family:'JetBrains Mono',monospace; font-size:0.85rem; font-weight:500; color:var(--accent); letter-spacing:-0.01em; }
+.logo span { color:var(--text-dim); }
+.nav-links { display:flex; gap:28px; align-items:center; }
+.nav-links a { color:var(--text-dim); text-decoration:none; font-size:0.82rem; font-family:'JetBrains Mono',monospace; transition:var(--transition); position:relative; }
+.nav-links a:hover { color:var(--text); }
+.nav-social { display:flex; gap:12px; }
+.nav-social a { color:var(--text-dim); text-decoration:none; font-size:0.75rem; font-family:'JetBrains Mono',monospace; padding:8px 16px; border:1px solid var(--border); border-radius:100px; background:var(--surface); transition:var(--transition); }
+.nav-social a:hover { color:var(--accent); border-color:var(--accent-glow); background:var(--accent-soft); }
 
-        section {
-            margin: 80px 0;
-        }
-        .section-tag {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            color: #ff4b4b;
-            margin-bottom: 12px;
-            display: inline-block;
-        }
-        h2 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            margin-bottom: 32px;
-        }
+.burger { display:none; background:none; border:none; color:var(--text); font-size:1.5rem; cursor:pointer; }
+.mobile-nav { display:none; position:fixed; inset:0; background:rgba(12,10,15,0.97); backdrop-filter:blur(30px); z-index:1000; flex-direction:column; align-items:center; justify-content:center; gap:28px; }
+.mobile-nav.active { display:flex; }
+.mobile-nav a { color:var(--text); font-size:1.2rem; text-decoration:none; font-family:'JetBrains Mono',monospace; }
+.mobile-nav a:hover { color:var(--accent); }
+.mobile-close { position:absolute; top:24px; right:24px; background:none; border:none; color:var(--text); font-size:2rem; cursor:pointer; }
 
-        .trust-block {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 40px;
-            margin: 20px 0;
-        }
-        .trust-item {
-            margin-bottom: 28px;
-        }
-        .trust-item strong {
-            font-size: 1.1rem;
-            color: #ff4b4b;
-            display: block;
-            margin-bottom: 6px;
-        }
-        .trust-item p {
-            color: #c0c8e0;
-            font-size: 0.95rem;
-        }
+.hero { display:grid; grid-template-columns:1.4fr 1fr; gap:64px; align-items:center; padding:60px 0 80px; }
+.hero-greeting { font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:var(--accent); margin-bottom:20px; display:flex; align-items:center; gap:10px; }
+.hero-greeting::before { content:''; width:24px; height:1px; background:var(--accent); }
+h1 { font-size:3.2rem; font-weight:800; letter-spacing:-0.03em; line-height:1.05; margin-bottom:16px; }
+h1 em { font-style:normal; background:linear-gradient(135deg,var(--accent),var(--peach)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.hero-sub { font-size:1.1rem; color:var(--text-dim); max-width:460px; margin-bottom:8px; }
+.hero-sub2 { font-size:0.95rem; color:var(--lavender); max-width:460px; margin-bottom:36px; font-style:italic; }
+.hero-stats { display:flex; gap:32px; margin-bottom:40px; }
+.stat-box { padding:18px 22px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm); backdrop-filter:blur(12px); transition:var(--transition); }
+.stat-box:hover { border-color:var(--border-hover); transform:translateY(-3px); }
+.stat-num { font-size:1.5rem; font-weight:700; color:var(--accent); font-family:'JetBrains Mono',monospace; }
+.stat-label { font-size:0.68rem; color:var(--text-dim); margin-top:6px; text-transform:uppercase; letter-spacing:0.06em; }
 
-        .process-grid {
-            display: grid;
-            gap: 28px;
-            text-align: center;
-        }
-        .step-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 28px 20px;
-            transition: all 0.3s;
-        }
-        .step-card:hover {
-            border-color: rgba(255,75,75,0.3);
-            transform: translateY(-4px);
-        }
-        .step-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #ff4b4b;
-            font-family: 'JetBrains Mono', monospace;
-            margin-bottom: 12px;
-        }
+.btn-row { display:flex; gap:14px; flex-wrap:wrap; }
+.btn { display:inline-flex; align-items:center; gap:10px; padding:14px 32px; font-weight:600; font-size:0.9rem; border-radius:100px; cursor:pointer; border:none; text-decoration:none; transition:var(--transition); font-family:'Inter',sans-serif; }
+.btn-main { background:linear-gradient(135deg,var(--accent),#ff8a8a); color:#fff; box-shadow:0 8px 32px rgba(255,107,107,0.3); }
+.btn-main:hover { transform:translateY(-2px); box-shadow:0 12px 40px rgba(255,107,107,0.4); }
+.btn-ghost { background:var(--surface); border:1px solid var(--border); color:var(--text); backdrop-filter:blur(10px); }
+.btn-ghost:hover { border-color:var(--accent-glow); background:var(--accent-soft); transform:translateY(-2px); }
 
-        .newbie-promo {
-            background: rgba(255,75,75,0.1);
-            border: 1px solid rgba(255,75,75,0.3);
-            padding: 32px;
-            text-align: center;
-            margin: 40px 0 48px;
-        }
+.hero-photo { position:relative; border-radius:var(--radius); overflow:hidden; border:1px solid var(--border); background:var(--surface); aspect-ratio:3/4; max-width:340px; margin-left:auto; }
+.hero-photo img { width:100%; height:100%; object-fit:cover; display:block; }
+.hero-photo::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,transparent 50%,rgba(12,10,15,0.7)); pointer-events:none; }
 
-        .course-list {
-            display: flex;
-            flex-direction: column;
-        }
-        .course-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: baseline;
-            padding: 24px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            gap: 16px;
-        }
-        .course-name {
-            font-weight: 600;
-            font-size: 1rem;
-        }
-        .course-desc {
-            color: #8a94b0;
-            font-size: 0.85rem;
-        }
-        .course-price {
-            font-weight: 600;
-            font-size: 1rem;
-        }
+section { margin:100px 0; }
+.sec-tag { font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px; display:block; }
+h2 { font-size:1.9rem; font-weight:700; letter-spacing:-0.02em; margin-bottom:8px; }
+.sec-desc { color:var(--text-dim); font-size:1rem; margin-bottom:40px; max-width:500px; }
 
-        .packages-grid {
-            display: grid;
-            gap: 28px;
-            margin: 40px 0;
-        }
-        .package-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 32px;
-            transition: all 0.3s;
-            text-align: center;
-        }
-        .package-card:hover {
-            border-color: rgba(255,75,75,0.3);
-            transform: translateY(-4px);
-        }
-        .package-card.featured {
-            border-color: #ff4b4b;
-            background: rgba(255,75,75,0.05);
-        }
-        .package-price {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 16px 0;
-        }
-        .package-features {
-            margin: 20px 0;
-            list-style: none;
-        }
-        .package-features li {
-            margin-bottom: 10px;
-            font-size: 0.85rem;
-            color: #c0c8e0;
-        }
+.trust-bento { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+.trust-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:32px; backdrop-filter:blur(12px); transition:var(--transition); position:relative; overflow:hidden; }
+.trust-card::before { content:''; position:absolute; top:0; left:0; width:100%; height:2px; background:linear-gradient(90deg,var(--accent),transparent); opacity:0; transition:opacity 0.3s; }
+.trust-card:hover { border-color:var(--border-hover); transform:translateY(-4px); background:var(--surface-hover); }
+.trust-card:hover::before { opacity:1; }
+.trust-emoji { font-size:1.8rem; margin-bottom:14px; display:block; filter:grayscale(0.3); transition:var(--transition); }
+.trust-card:hover .trust-emoji { filter:grayscale(0); transform:scale(1.1); }
+.trust-card h3 { font-size:1.05rem; font-weight:600; margin-bottom:10px; }
+.trust-card p { font-size:0.9rem; color:var(--text-dim); line-height:1.65; }
 
-        .book-list {
-            display: flex;
-            flex-direction: column;
-        }
-        .book-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: baseline;
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            gap: 16px;
-        }
-        .book-name {
-            font-weight: 600;
-        }
-        .book-desc {
-            color: #8a94b0;
-            font-size: 0.85rem;
-        }
-        .book-price {
-            font-weight: 600;
-        }
-        .book-status {
-            display: block;
-            color: #ff4b4b;
-            font-size: 0.8rem;
-            margin-top: 6px;
-        }
+.process-bento { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.proc-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:28px 20px; text-align:center; backdrop-filter:blur(12px); transition:var(--transition); position:relative; }
+.proc-card:hover { border-color:var(--border-hover); transform:translateY(-5px); }
+.proc-num { width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg,var(--accent-soft),rgba(184,169,201,0.1)); border:1px solid var(--accent-glow); display:flex; align-items:center; justify-content:center; margin:0 auto 18px; font-family:'JetBrains Mono',monospace; font-weight:600; color:var(--accent); font-size:0.85rem; }
+.proc-card h3 { font-size:1rem; font-weight:600; margin-bottom:8px; }
+.proc-card p { font-size:0.85rem; color:var(--text-dim); line-height:1.6; }
 
-        .testimonial {
-            border-left: 3px solid #ff4b4b;
-            padding: 24px 0 24px 32px;
-            margin: 40px 0;
-            font-style: normal;
-            color: #c0c8e0;
-        }
-        .testimonial-text {
-            font-size: 1rem;
-            line-height: 1.5;
-        }
-        .testimonial-author {
-            margin-top: 16px;
-            color: #ff4b4b;
-            font-size: 0.85rem;
-        }
+.promo { background:linear-gradient(135deg,rgba(255,107,107,0.08),rgba(184,169,201,0.05)); border:1px solid var(--accent-glow); border-radius:var(--radius); padding:40px; text-align:center; backdrop-filter:blur(20px); position:relative; overflow:hidden; margin:60px 0; }
+.promo-glow { position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(circle,rgba(255,107,107,0.08),transparent 60%); animation:promoPulse 10s ease-in-out infinite; }
+@keyframes promoPulse { 0%,100% { transform:scale(1); opacity:0.4; } 50% { transform:scale(1.15); opacity:0.7; } }
+.promo > * { position:relative; z-index:1; }
+.promo h3 { font-size:1.4rem; color:var(--accent); margin-bottom:10px; font-weight:700; }
+.promo p { color:var(--text-dim); font-size:0.95rem; max-width:480px; margin:0 auto; }
 
-        .faq-item {
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding: 24px 0;
-            cursor: pointer;
-        }
-        .faq-question {
-            font-weight: 600;
-            display: flex;
-            justify-content: space-between;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-        }
-        .faq-answer {
-            margin-top: 14px;
-            color: #8a94b0;
-            display: none;
-            font-size: 0.9rem;
-        }
-        .faq-answer.active { display: block; }
+.cat-title { font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.08em; margin:48px 0 18px; display:flex; align-items:center; gap:14px; }
+.cat-title::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,var(--border),transparent); }
+.course-bento { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+.course-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:28px; backdrop-filter:blur(12px); transition:var(--transition); position:relative; overflow:hidden; display:flex; flex-direction:column; gap:12px; }
+.course-card::after { content:''; position:absolute; inset:0; border-radius:var(--radius); background:radial-gradient(circle at 85% 15%,rgba(255,107,107,0.05),transparent 60%); opacity:0; transition:opacity 0.4s; pointer-events:none; }
+.course-card:hover::after { opacity:1; }
+.course-card:hover { border-color:var(--border-hover); transform:translateY(-4px) scale(1.01); }
+.course-card.hot { border-color:var(--accent-glow); background:rgba(255,107,107,0.03); }
+.course-head { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+.course-name { font-size:1.05rem; font-weight:600; }
+.course-tags { display:flex; gap:6px; flex-wrap:wrap; }
+.tag { font-size:0.6rem; font-family:'JetBrains Mono',monospace; text-transform:uppercase; padding:3px 10px; border-radius:100px; letter-spacing:0.04em; font-weight:500; }
+.tag-exam { background:rgba(255,107,107,0.12); color:var(--accent); border:1px solid var(--accent-glow); }
+.tag-new { background:rgba(136,216,176,0.1); color:var(--mint); border:1px solid rgba(136,216,176,0.2); }
+.tag-age { background:rgba(184,169,201,0.12); color:var(--lavender); border:1px solid rgba(184,169,201,0.2); }
+.course-desc { font-size:0.87rem; color:var(--text-dim); line-height:1.6; flex:1; }
+.course-foot { display:flex; justify-content:space-between; align-items:center; margin-top:4px; }
+.course-price { font-family:'JetBrains Mono',monospace; font-weight:600; font-size:1rem; }
+.course-arrow { color:var(--text-dim); transition:var(--transition); }
+.course-card:hover .course-arrow { color:var(--accent); transform:translateX(5px); }
 
-        .final-cta {
-            text-align: center;
-            padding: 60px 0;
-            border-top: 1px solid rgba(255,75,75,0.2);
-            margin: 40px 0;
-        }
-        .final-cta a {
-            color: #ff4b4b;
-            font-size: 1.2rem;
-            text-decoration: none;
-            border-bottom: 1px solid #ff4b4b;
-            transition: 0.2s;
-        }
-        .final-cta a:hover {
-            color: #ff8888;
-            border-bottom-color: #ff8888;
-        }
+.sub-bento { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px; }
+.sub-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:32px 24px; text-align:center; backdrop-filter:blur(12px); transition:var(--transition); position:relative; overflow:hidden; display:flex; flex-direction:column; }
+.sub-card::before { content:''; position:absolute; top:0; left:0; width:100%; height:3px; background:linear-gradient(90deg,transparent,var(--accent),transparent); opacity:0; transition:opacity 0.3s; }
+.sub-card:hover::before { opacity:1; }
+.sub-card:hover { border-color:var(--border-hover); transform:translateY(-5px); }
+.sub-card.best { border-color:var(--accent-glow); background:rgba(255,107,107,0.04); box-shadow:0 8px 40px rgba(255,107,107,0.08); }
+.sub-card.best::before { opacity:1; }
+.sub-badge { font-family:'JetBrains Mono',monospace; font-size:0.6rem; color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px; }
+.sub-card h3 { font-size:1.1rem; font-weight:700; }
+.sub-price { font-size:1.8rem; font-weight:700; margin:14px 0; font-family:'JetBrains Mono',monospace; }
+.sub-price span { font-size:0.8rem; color:var(--text-dim); font-weight:400; font-family:'Inter',sans-serif; }
+.sub-list { list-style:none; margin:10px 0 20px; flex:1; text-align:left; padding:0 8px; }
+.sub-list li { font-size:0.85rem; color:var(--text-dim); margin-bottom:10px; display:flex; align-items:flex-start; gap:10px; }
+.sub-list li::before { content:'—'; color:var(--accent); font-weight:700; flex-shrink:0; }
+.sub-save { font-size:0.78rem; color:var(--accent); font-family:'JetBrains Mono',monospace; margin-top:auto; margin-bottom:16px; }
+.sub-card .btn { width:100%; justify-content:center; }
 
-        footer {
-            padding: 48px 0;
-            text-align: center;
-            color: #5a6480;
-            font-size: 0.75rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            margin-top: 16px;
-            flex-wrap: wrap;
-        }
-        .footer-links a {
-            color: #8a94b0;
-            text-decoration: none;
-            font-size: 0.75rem;
-        }
-        .footer-links a:hover { color: #ff4b4b; }
-    </style>
+.book-list { display:flex; flex-direction:column; }
+.book-item { display:grid; grid-template-columns:1fr auto auto; align-items:center; gap:24px; padding:20px 0; border-bottom:1px solid var(--border); transition:var(--transition); }
+.book-item:hover { padding-left:10px; }
+.book-title { font-weight:600; font-size:0.95rem; }
+.book-info { color:var(--text-dim); font-size:0.85rem; }
+.book-cost { font-family:'JetBrains Mono',monospace; font-weight:600; }
+.book-soon { color:var(--accent); font-size:0.78rem; font-family:'JetBrains Mono',monospace; }
+
+/* Results */
+.results-bento { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.result-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:28px; text-align:center; backdrop-filter:blur(12px); transition:var(--transition); position:relative; overflow:hidden; }
+.result-card:hover { border-color:var(--border-hover); transform:translateY(-4px); }
+.result-card::before { content:''; position:absolute; top:0; left:0; width:100%; height:2px; background:linear-gradient(90deg,var(--accent),transparent); opacity:0; transition:opacity 0.3s; }
+.result-card:hover::before { opacity:1; }
+.result-before { font-size:0.75rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:8px; }
+.result-arrow { font-size:1.2rem; color:var(--accent); margin:4px 0; }
+.result-after { font-size:1.6rem; font-weight:700; color:var(--accent); font-family:'JetBrains Mono',monospace; margin-bottom:6px; }
+.result-name { font-size:0.85rem; color:var(--text-dim); }
+
+.review-bento { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+.review-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:32px; backdrop-filter:blur(12px); transition:var(--transition); position:relative; }
+.review-card:hover { border-color:var(--border-hover); transform:translateY(-4px); }
+.review-card::before { content:'"'; position:absolute; top:14px; right:22px; font-size:3.5rem; color:var(--accent-glow); font-family:Georgia,serif; line-height:1; }
+.review-text { font-size:0.9rem; color:var(--text-dim); line-height:1.7; margin-bottom:20px; position:relative; z-index:1; font-style:italic; }
+.review-name { font-size:0.85rem; color:var(--accent); font-weight:600; }
+.review-meta { font-size:0.75rem; color:var(--text-dim); margin-top:4px; }
+
+/* Guarantees */
+.guarantee-bento { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.guarantee-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:28px; text-align:center; backdrop-filter:blur(12px); transition:var(--transition); }
+.guarantee-card:hover { border-color:var(--border-hover); transform:translateY(-4px); }
+.guarantee-icon { font-size:2rem; margin-bottom:12px; display:block; }
+.guarantee-card h3 { font-size:1rem; font-weight:600; margin-bottom:8px; }
+.guarantee-card p { font-size:0.85rem; color:var(--text-dim); line-height:1.6; }
+
+/* Calculator */
+.calc-box { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:32px; backdrop-filter:blur(12px); max-width:600px; margin:0 auto; }
+.calc-row { margin-bottom:20px; }
+.calc-row label { display:block; font-size:0.85rem; color:var(--text-dim); margin-bottom:8px; font-family:'JetBrains Mono',monospace; }
+.calc-row select, .calc-row input[type="range"] { width:100%; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px 16px; color:var(--text); font-family:'Inter',sans-serif; font-size:0.9rem; outline:none; }
+.calc-row select:focus { border-color:var(--accent-glow); }
+.calc-range-val { font-family:'JetBrains Mono',monospace; color:var(--accent); font-size:0.9rem; margin-left:8px; }
+.calc-result { text-align:center; margin-top:24px; padding-top:24px; border-top:1px solid var(--border); }
+.calc-result-price { font-size:2rem; font-weight:700; color:var(--accent); font-family:'JetBrains Mono',monospace; }
+.calc-result-save { font-size:0.85rem; color:var(--text-dim); margin-top:8px; }
+
+/* Contacts */
+.contacts-bento { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.contact-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:28px; text-align:center; backdrop-filter:blur(12px); transition:var(--transition); text-decoration:none; color:var(--text); }
+.contact-card:hover { border-color:var(--border-hover); transform:translateY(-4px); }
+.contact-icon { font-size:1.6rem; margin-bottom:10px; display:block; }
+.contact-card h3 { font-size:1rem; font-weight:600; margin-bottom:4px; }
+.contact-card p { font-size:0.85rem; color:var(--text-dim); }
+
+.faq-wrap { display:flex; flex-direction:column; gap:10px; }
+.faq-item { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm); overflow:hidden; backdrop-filter:blur(12px); transition:var(--transition); cursor:pointer; }
+.faq-item:hover { border-color:var(--border-hover); }
+.faq-q { padding:20px 26px; display:flex; justify-content:space-between; align-items:center; font-weight:600; font-size:0.9rem; font-family:'JetBrains Mono',monospace; }
+.faq-arrow { transition:transform 0.3s ease; color:var(--text-dim); font-size:0.75rem; }
+.faq-item.open .faq-arrow { transform:rotate(180deg); color:var(--accent); }
+.faq-a { max-height:0; overflow:hidden; transition:max-height 0.4s ease, padding 0.4s ease; color:var(--text-dim); font-size:0.88rem; line-height:1.65; }
+.faq-item.open .faq-a { max-height:300px; padding:0 26px 22px; }
+
+.cta-final { text-align:center; padding:80px 0 60px; position:relative; }
+.cta-final::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:120px; height:1px; background:linear-gradient(90deg,transparent,var(--accent),transparent); }
+.cta-final h2 { margin-bottom:12px; }
+.cta-final p { color:var(--text-dim); margin-bottom:32px; font-size:1.05rem; }
+
+footer { padding:40px 0; text-align:center; color:#4a4558; font-size:0.75rem; border-top:1px solid var(--border); }
+.footer-links { display:flex; justify-content:center; gap:24px; margin:14px 0; flex-wrap:wrap; }
+.footer-links a { color:var(--text-dim); text-decoration:none; font-size:0.78rem; transition:var(--transition); }
+.footer-links a:hover { color:var(--accent); }
+
+.reveal { opacity:0; transform:translateY(24px); transition:opacity 0.8s ease, transform 0.8s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+@media (max-width:900px) {
+  .burger { display:block; }
+  .nav-links, .nav-social { display:none; }
+  .hero { grid-template-columns:1fr; text-align:center; padding:30px 0 50px; }
+  .hero-text { order:2; }
+  .hero-photo { order:1; margin:0 auto; max-width:280px; }
+  .hero-sub, .hero-sub2 { margin:0 auto 24px; }
+  .hero-stats { justify-content:center; }
+  .btn-row { justify-content:center; }
+  h1 { font-size:2.2rem; }
+  .trust-bento { grid-template-columns:1fr; }
+  .process-bento { grid-template-columns:1fr; }
+  .course-bento { grid-template-columns:1fr; }
+  .sub-bento { grid-template-columns:1fr; }
+  .results-bento { grid-template-columns:1fr; }
+  .guarantee-bento { grid-template-columns:1fr; }
+  .contacts-bento { grid-template-columns:1fr; }
+  .review-bento { grid-template-columns:1fr; }
+  .book-item { grid-template-columns:1fr; gap:4px; }
+  .mobile-bar { display:flex; }
+  section { margin:60px 0; }
+  .back-top { bottom:70px; }
+}
+@media (min-width:901px) and (max-width:1100px) {
+  .process-bento { grid-template-columns:repeat(2,1fr); }
+  .results-bento { grid-template-columns:repeat(2,1fr); }
+  .guarantee-bento { grid-template-columns:repeat(2,1fr); }
+  .review-bento { grid-template-columns:1fr; }
+}
+
+::-webkit-scrollbar { width:6px; }
+::-webkit-scrollbar-track { background:var(--bg); }
+::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+::-webkit-scrollbar-thumb:hover { background:var(--text-dim); }
+</style>
+<base target="_blank">
 </head>
 <body>
 
-<!-- МОЩНЫЙ ФОН С ПЛАВАЮЩИМ КОДОМ -->
-<div class="code-bg" id="codeBg"></div>
+<div class="ambient"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+<div class="particles" id="particles"></div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Наверх">↑</button>
+
+<div class="mobile-bar" id="mobileBar">
+  <span class="mobile-bar-text">Пробное занятие <strong>1 500 ₽</strong></span>
+  <a href="https://t.me/katerin_mischenko" target="_blank" class="btn btn-main">Записаться</a>
+</div>
+
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" onclick="toggleNav()">&times;</button>
+  <a href="#why" onclick="toggleNav()">Почему я</a>
+  <a href="#process" onclick="toggleNav()">Как устроены занятия</a>
+  <a href="#courses" onclick="toggleNav()">Курсы</a>
+  <a href="#subs" onclick="toggleNav()">Абонементы</a>
+  <a href="#faq" onclick="toggleNav()">Вопросы</a>
+</div>
 
 <div class="container">
-    <div class="nav">
-        <div class="logo">&lt;mischenko<span>.edu</span>&gt;</div>
-        <div class="nav-links">
-            <a href="#process">[процесс]</a>
-            <a href="#courses">{курсы}</a>
-            <a href="#pricing">// цены</a>
-            <a href="#faq">[вопросы]</a>
-        </div>
-        <div class="social-links">
-            <a href="https://t.me/mischenko_edu" target="_blank">TG</a>
-            <a href="https://vk.com/mischenko_edu" target="_blank">VK</a>
-            <a href="https://www.instagram.com/mischenko.educat/" target="_blank">IG</a>
-            <a href="https://t.me/katerin_mischenko" target="_blank">CHAT</a>
-        </div>
+
+<nav>
+  <div class="logo">mischenko<span>.edu</span></div>
+  <div class="nav-links">
+    <a href="#why">Почему я</a>
+    <a href="#process">Как устроены занятия</a>
+    <a href="#courses">Курсы</a>
+    <a href="#subs">Абонементы</a>
+    <a href="#faq">Вопросы</a>
+  </div>
+  <div class="nav-social">
+    <a href="https://t.me/mischenko_edu" target="_blank">TG</a>
+    <a href="https://www.instagram.com/mischenko.educat/" target="_blank">IG</a>
+    <a href="https://t.me/katerin_mischenko" target="_blank">Написать</a>
+  </div>
+  <button class="burger" onclick="toggleNav()">☰</button>
+</nav>
+
+<div class="hero">
+  <div class="hero-text">
+    <div class="hero-greeting">Привет, я Катя</div>
+    <h1>Готовлю к <em>ЕГЭ и ОГЭ</em> по информатике и математике</h1>
+    <p class="hero-sub">И учу программировать так, чтобы это было интересно — не только полезно.</p>
+    <p class="hero-sub2">Каждый ученик получает свой маршрут, свой темп и свои аналогии. Без шаблонов, без зубрёжки, без скуки.</p>
+    <div class="hero-stats">
+      <div class="stat-box"><div class="stat-num" data-target="2017">0</div><div class="stat-label">год начала</div></div>
+      <div class="stat-box"><div class="stat-num" data-target="650">0</div><div class="stat-label">учеников</div></div>
+      <div class="stat-box"><div class="stat-num" data-target="96">0</div><div class="stat-label">средний балл ЕГЭ</div></div>
     </div>
-
-    <div class="hero">
-        <div class="hero-text">
-            <div class="hero-badge">$ whoami // преподаватель информатики</div>
-            <h1>Мищенко Екатерина</h1>
-            <p class="hero-desc">Готовлю к ЕГЭ и ОГЭ. Учу программировать с нуля. Индивидуальный план под каждого ученика.</p>
-            <div class="hero-stats">
-                <div><div class="stat-number">2017</div><div class="stat-label">начала путь</div></div>
-                <div><div class="stat-number">650+</div><div class="stat-label">учеников</div></div>
-                <div><div class="stat-number">86</div><div class="stat-label">средний балл</div></div>
-            </div>
-            <div class="btn-group">
-                <a href="https://t.me/katerin_mischenko" target="_blank" class="btn-primary btn">Пробное занятие →</a>
-                <a href="#courses" class="btn-outline btn">смотреть курсы</a>
-            </div>
-        </div>
-        <div class="hero-photo">
-            <img src="photo_2026-06-08_19-40-44.png" alt="Екатерина Мищенко" onerror="this.src='https://placehold.co/400x500/1a1a2e/8a94b0?text=Екатерина+Мищенко'">
-        </div>
+    <div class="btn-row">
+      <a href="https://t.me/katerin_mischenko" target="_blank" class="btn btn-main">Записаться на пробное →</a>
+      <a href="#courses" class="btn btn-ghost">Смотреть курсы</a>
     </div>
-
-    <section>
-        <div class="section-tag">// почему мне доверяют</div>
-        <h2>почему я</h2>
-        <div class="trust-block">
-            <div class="trust-item"><strong>⚡ 8 лет опыта</strong><p>Работала в госшколе, потом ушла в онлайн. Знаю, где дети реально спотыкаются.</p></div>
-            <div class="trust-item"><strong>🎯 Индивидуальный подход</strong><p>Никакой «общей программы». Сначала диагностика, потом план под твои задачи.</p></div>
-            <div class="trust-item"><strong>📈 Прозрачный прогресс</strong><p>Родители получают отчёты каждый месяц. Никакой магии — только честные результаты.</p></div>
-            <div class="trust-item"><strong>💬 24/7 на связи</strong><p>Вопрос можно задать в любое время. Отвечаю быстро, без лишних «записей на консультацию».</p></div>
-        </div>
-    </section>
-
-    <section id="process">
-        <div class="section-tag">// process</div>
-        <h2>как проходят занятия</h2>
-        <div class="process-grid">
-            <div class="step-card"><div class="step-number">01</div><h3>Диагностика и цель</h3><p>Определяем текущий уровень и ставим чёткие задачи</p></div>
-            <div class="step-card"><div class="step-number">02</div><h3>Индивидуальный план</h3><p>Составляем программу под твой запрос и темп</p></div>
-            <div class="step-card"><div class="step-number">03</div><h3>Уроки на практике</h3><p>Теория сразу закрепляется на реальных задачах и проектах</p></div>
-            <div class="step-card"><div class="step-number">04</div><h3>Разбор и отчёт</h3><p>Каждый месяц — прогресс, ошибки и следующие шаги</p></div>
-        </div>
-    </section>
-
-    <div class="newbie-promo">
-        <strong>🎁 АКЦИЯ ДЛЯ НОВИЧКОВ</strong><br>
-        При покупке первого пакета занятий — скидка 10%.
+  </div>
+  <div class="hero-photo">
+    <img src="5240487957079202278_121.png" alt="Екатерина Мищенко" onerror="this.src='https://placehold.co/400x520/121018/8b92a8?text=Екатерина+Мищенко'">
+  </div>
+</div>
+<section id="why" class="reveal">
+  <span class="sec-tag">// почему мне доверяют</span>
+  <h2>Не зубрёжка, а понимание</h2>
+  <p class="sec-desc">8 лет я объясняю сложное простыми словами. Знаю, где ученики спотыкаются — ещё до того, как они сами это понимают.</p>
+  <div class="trust-bento">
+    <div class="trust-card">
+      <span class="trust-emoji">⚡</span>
+      <h3>8 лет в деле</h3>
+      <p>Госшкола, онлайн, индивидуалы. Вижу типичные ошибки ещё до того, как ученик их совершит. Знаю, где реально спотыкаются — и как это исправить без мучений.</p>
     </div>
-
-    <section id="courses">
-        <div class="section-tag">// courses</div>
-        <h2>курсы</h2>
-        <div class="course-list">
-            <div class="course-row"><span class="course-name">Индивидуальный курс</span><span class="course-desc">Программа под твои пробелы и темп</span><span class="course-price">2 000 ₽ / час</span></div>
-            <div class="course-row"><span class="course-name">Scratch</span><span class="course-desc">Визуальное программирование для детей 7–12 лет</span><span class="course-price">950 ₽ / час</span></div>
-            <div class="course-row"><span class="course-name">Цифровая грамотность</span><span class="course-desc">Кибербезопасность, Google Docs, Excel, облака</span><span class="course-price">800 ₽ / час</span></div>
-            <div class="course-row"><span class="course-name">Python</span><span class="course-desc">Синтаксис, ООП, Telegram-боты, решение задач ЕГЭ</span><span class="course-price">1 800 ₽ / час</span></div>
-            <div class="course-row"><span class="course-name">HTML/CSS/JS</span><span class="course-desc">Вёрстка, адаптив, JavaScript, Git, финальный сайт</span><span class="course-price">1 700 ₽ / час</span></div>
-            <div class="course-row"><span class="course-name">ЕГЭ / ОГЭ информатика</span><span class="course-desc">Разбор всех заданий, программирование, 5 пробников</span><span class="course-price">1 800 ₽ / час</span></div>
-        </div>
-    </section>
-
-    <section id="pricing">
-        <div class="section-tag">// pricing</div>
-        <h2>пакетные предложения</h2>
-        <div class="packages-grid">
-            <div class="package-card"><h3>стартовый</h3><div class="package-price">45 000 ₽</div><ul class="package-features"><li>✓ 32 занятия</li><li>✓ экономия 12 600 ₽</li><li>✓ учебный трекер в подарок</li></ul><a href="https://t.me/katerin_mischenko" target="_blank" class="btn-outline btn">выбрать</a></div>
-            <div class="package-card featured"><h3>оптимальный</h3><div class="package-price">82 800 ₽</div><ul class="package-features"><li>✓ 64 занятия</li><li>✓ экономия 32 400 ₽</li><li>✓ шпаргалки + трекер в подарок</li></ul><a href="https://t.me/katerin_mischenko" target="_blank" class="btn-primary btn">выбрать</a></div>
-            <div class="package-card"><h3>ЕГЭ интенсив</h3><div class="package-price">63 072 ₽</div><ul class="package-features"><li>✓ 48 занятий (ЕГЭ + Python)</li><li>✓ экономия 23 328 ₽</li><li>✓ 5 пробных экзаменов в подарок</li></ul><a href="https://t.me/katerin_mischenko" target="_blank" class="btn-outline btn">выбрать</a></div>
-        </div>
-    </section>
-
-    <section>
-        <div class="section-tag">// materials</div>
-        <h2>методические пособия</h2>
-        <div class="book-list">
-            <div class="book-row"><span class="book-name">📘 Python: полное пособие</span><span class="book-desc">18 разделов, 87 тем, 200+ задач, поддержка в чате</span><span class="book-price">4 990 ₽</span></div>
-            <div class="book-row"><span class="book-name">📗 ЕГЭ / ОГЭ Информатика</span><span class="book-desc">Методическое пособие для подготовки</span><span class="book-price"><span class="book-status">в разработке</span></span></div>
-            <div class="book-row"><span class="book-name">📙 HTML/CSS пособие</span><span class="book-desc">Методическое пособие по вёрстке</span><span class="book-price"><span class="book-status">в разработке</span></span></div>
-        </div>
-    </section>
-
-    <section>
-        <div class="section-tag">// testimonials</div>
-        <h2>отзывы</h2>
-        <div class="testimonial"><div class="testimonial-text">«Я пришла к Екатерине в сентябре 11 класса с 50 баллами на пробнике. Думала, что ничего не получится. Она за полгода подняла меня до 92. Это не просто репетитор, а человек, который реально верит в тебя.»</div><div class="testimonial-author">— Анна, поступила в МГТУ им. Баумана</div></div>
-        <div class="testimonial"><div class="testimonial-text">«Мой Дима ненавидел информатику в школе — двойки и тройки были нормой. Екатерина нашла к нему подход: короткие видео, примеры из игр, постоянная поддержка. Сейчас он сам пишет простые скрипты и получает пятёрки. Огромное спасибо!»</div><div class="testimonial-author">— Мария, мама Дмитрия, 13 лет</div></div>
-        <div class="testimonial"><div class="testimonial-text">«Готовился к ЕГЭ с января по май интенсивно. Екатерина не просто натаскивала на задачи, а учила думать. На экзамене встретил нестандартное задание — и смог его решить, потому что понимал логику, а не тупо зубрил. Итог — 96 баллов и ИТМО.»</div><div class="testimonial-author">— Илья, ЕГЭ 96 баллов → ИТМО</div></div>
-    </section>
-
-    <section id="faq">
-        <div class="section-tag">// faq</div>
-        <h2>частые вопросы</h2>
-        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question">Как проходят онлайн-занятия? <span>▼</span></div><div class="faq-answer">Занятия проходят в Яндекс Телемосте. Используем интерактивную доску, код пишем вместе. Запись урока остаётся у вас навсегда.</div></div>
-        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question">Сколько длится занятие? <span>▼</span></div><div class="faq-answer">Стандартно 45–60 минут. Если нужно больше — договариваемся индивидуально.</div></div>
-        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question">Можно ли перенести занятие? <span>▼</span></div><div class="faq-answer">Да, достаточно предупредить за 2 часа. Перенос без штрафов, подберём удобное время.</div></div>
-        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question">Сколько времени нужно на подготовку к ЕГЭ? <span>▼</span></div><div class="faq-answer">Минимум 6 месяцев. Если начать за год — вообще идеально, без стресса и перегрузок.</div></div>
-        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question">Подходит ли для занятий с нуля? <span>▼</span></div><div class="faq-answer">Да. У меня есть программа для начинающих с полного нуля. Начнём с самых основ.</div></div>
-        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question">Как получить пробное занятие? <span>▼</span></div><div class="faq-answer">Нажмите на любую кнопку «Записаться» или «Пробное занятие» — я отвечу в Telegram, договоримся о времени.</div></div>
-    </section>
-
-    <div class="final-cta">
-        <a href="https://t.me/katerin_mischenko" target="_blank">✍️ Записаться на пробное занятие →</a>
+    <div class="trust-card">
+      <span class="trust-emoji">🎯</span>
+      <h3>Диагностика вместо шаблона</h3>
+      <p>Сначала разбираемся, что именно не клеится. Потом строим маршрут под тебя — не под «усреднённого ученика». Быстро усваиваешь — ускорим. Нужно разжевать — разжуём.</p>
     </div>
+    <div class="trust-card">
+      <span class="trust-emoji">📈</span>
+      <h3>Родители в курсе</h3>
+      <p>Каждый месяц — отчёт с цифрами, пробелами и планом. Никакой магии, только честная статистика. Видно, куда движемся и сколько осталось.</p>
+    </div>
+    <div class="trust-card">
+      <span class="trust-emoji">💬</span>
+      <h3>Между занятиями тоже работаем</h3>
+      <p>Вопрос в Telegram в 22:00? Нормально. Отвечаю быстро, без бюрократии и «записей на консультацию». Объясняю через аналогии, схемы и истории — так, чтобы дошло.</p>
+    </div>
+  </div>
+</section>
+
+<section id="process" class="reveal">
+  <span class="sec-tag">// process</span>
+  <h2>Как всё устроено</h2>
+  <p class="sec-desc">Четыре шага — от первого знакомства до уверенного результата. Без воды, только движение вперёд.</p>
+  <div class="process-bento">
+    <div class="proc-card">
+      <div class="proc-num">01</div>
+      <h3>Диагностика</h3>
+      <p>Смотрим, что уже есть, где дыры и к чему идём. Без воды — только факты и чёткий план на ближайшие месяцы.</p>
+    </div>
+    <div class="proc-card">
+      <div class="proc-num">02</div>
+      <h3>План под тебя</h3>
+      <p>Твой ритм = главный. Не шаблон. Ускоренная программа, смешанные курсы или разбор одной темы — всё гибко.</p>
+    </div>
+    <div class="proc-card">
+      <div class="proc-num">03</div>
+      <h3>Практика, а не лекции</h3>
+      <p>Объясняю через аналогии, рисую схемы, решаем вместе. Никакого «просто запомни» — только понимание логики.</p>
+    </div>
+    <div class="proc-card">
+      <div class="proc-num">04</div>
+      <h3>Разбор и рост</h3>
+      <p>Честный разбор: что получилось, что нет, что дальше. Родители видят динамику каждый месяц.</p>
+    </div>
+  </div>
+</section>
+
+<div class="promo reveal">
+  <div class="promo-glow"></div>
+  <h3>🎁 Пробное занятие — 1 500 ₽ вместо 1 800 ₽</h3>
+  <p>Разберём твой уровень, найдём пробелы, составим план. Без обязательств. Конкретная цена + понятная ценность.</p>
+</div>
+
+<section id="courses" class="reveal">
+  <span class="sec-tag">// courses</span>
+  <h2>Курсы</h2>
+  <p class="sec-desc">Три направления: школа, экзамены, программирование. Выбирай своё — или смешаем всё вместе.</p>
+
+  <div class="cat-title">Школьный курс</div>
+  <div class="course-bento">
+    <div class="course-card hot">
+      <div class="course-head">
+        <span class="course-name">Математика</span>
+        <div class="course-tags"><span class="tag tag-new">новое</span><span class="tag tag-age">10–17 лет</span></div>
+      </div>
+      <p class="course-desc">Алгебра и геометрия: от пробелов до уверенных знаний. Разбираем то, что "не зашло" в школе, и закрываем каждую дыру.</p>
+      <div class="course-foot"><span class="course-price">1 800 ₽ / час</span><span class="course-arrow">→</span></div>
+    </div>
+    <div class="course-card">
+      <div class="course-head">
+        <span class="course-name">Информатика</span>
+        <div class="course-tags"><span class="tag tag-age">10–17 лет</span></div>
+      </div>
+      <p class="course-desc">Школьная программа без сухого теоретизма. Логика, алгоритмы, основы программирования — всё на практике и в игровой форме.</p>
+      <div class="course-foot"><span class="course-price">1 600 ₽ / час</span><span class="course-arrow">→</span></div>
+    </div>
+  </div>
+
+  <div class="cat-title">Подготовка к экзаменам</div>
+  <div class="course-bento">
+    <div class="course-card hot">
+      <div class="course-head">
+        <span class="course-name">ЕГЭ / ОГЭ математика</span>
+        <div class="course-tags"><span class="tag tag-new">новое</span><span class="tag tag-exam">экзамен</span><span class="tag tag-age">15–18 лет</span></div>
+      </div>
+      <p class="course-desc">Задания 1–19, база и профиль, стратегия решения, 5 пробников. Готовлю думать, а не зубрить. Математика на рынке дороже информатики — и это честно отражено в цене.</p>
+      <div class="course-foot"><span class="course-price">2 400 ₽ / час</span><span class="course-arrow">→</span></div>
+    </div>
+    <div class="course-card hot">
+      <div class="course-head">
+        <span class="course-name">ЕГЭ / ОГЭ информатика</span>
+        <div class="course-tags"><span class="tag tag-exam">экзамен</span><span class="tag tag-age">15–18 лет</span></div>
+      </div>
+      <p class="course-desc">Разбор всех заданий, программирование на Python, 5 пробных экзаменов. Средний балл учеников — 96. Работаем на результат.</p>
+      <div class="course-foot"><span class="course-price">2 200 ₽ / час</span><span class="course-arrow">→</span></div>
+    </div>
+  </div>
+
+  <div class="cat-title">Программирование</div>
+  <div class="course-bento">
+    <div class="course-card">
+      <div class="course-head">
+        <span class="course-name">Индивидуальный курс</span>
+        <div class="course-tags"><span class="tag tag-age">любой возраст</span></div>
+      </div>
+      <p class="course-desc">Нестандартный запрос под ключ — смешанные курсы, ускоренная программа, подготовка к олимпиадам или вузу. Полностью кастомизированный план.</p>
+      <div class="course-foot"><span class="course-price">2 800 ₽ / час</span><span class="course-arrow">→</span></div>
+    </div>
+    <div class="course-card">
+      <div class="course-head">
+        <span class="course-name">Python</span>
+        <div class="course-tags"><span class="tag tag-age">13–17 лет</span></div>
+      </div>
+      <p class="course-desc">Синтаксис, ООП, Telegram-боты, парсинг, решение задач ЕГЭ. От первого print до реального проекта, который можно показать.</p>
+      <div class="course-foot"><span class="course-price">1 800 ₽ / час</span><span class="course-arrow">→</span></div>
+    </div>
+    <div class="course-card">
+      <div class="course-head">
+        <span class="course-name">HTML / CSS / JS</span>
+        <div class="course-tags"><span class="tag tag-age">13–17 лет</span></div>
+      </div>
+      <p class="course-desc">Вёрстка, адаптив, JavaScript, Git. Финальный проект — свой сайт, который можно добавить в портфолио.</p>
+      <div class="course-foot"><span class="course-price">1 600 ₽ / час</span><span class="course-arrow">→</span></div>
+    </div>
+    <div class="course-card">
+      <div class="course-head">
+        <span class="course-name">Цифровая грамотность</span>
+        <div class="course-tags"><span class="tag tag-age">10+ лет</span></div>
+      </div>
+      <p class="course-desc">Кибербезопасность, Google Docs, Excel, облака, основы работы с ПК. Навыки, которые пригодятся в школе, вузе и жизни.</p>
+      <div class="course-foot"><span class="course-price">1 000 ₽ / час</span><span class="course-arrow">→</span></div>
+    </div>
+    <div class="course-card">
+      <div class="course-head">
+        <span class="course-name">Scratch</span>
+        <div class="course-tags"><span class="tag tag-age">7–12 лет</span></div>
+      </div>
+      <p class="course-desc">Визуальное программирование для детей. Создаём игры и анимации, учимся логике через творчество — без сложного кода.</p>
+      <div class="course-foot"><span class="course-price">900 ₽ / час</span><span class="course-arrow">→</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="subs" class="reveal">
+  <span class="sec-tag">// subscriptions</span>
+  <h2>Абонементы на занятия</h2>
+  <p class="sec-desc">Чем больше занятий — тем выгоднее. Абонемент можно использовать для любого курса или смешать несколько.</p>
+  <div class="sub-bento">
+    <div class="sub-card">
+      <span class="sub-badge">для знакомства</span>
+      <h3>Лайт</h3>
+      <div class="sub-price">6 400 ₽</div>
+      <ul class="sub-list">
+        <li>4 занятия по 60 минут</li>
+        <li>1 600 ₽ за час</li>
+        <li>Подходит к любому курсу</li>
+        <li>Можно перенести за 2 часа</li>
+      </ul>
+      <span class="sub-save">экономия 800 ₽</span>
+      <a href="https://t.me/katerin_mischenko" target="_blank" class="btn btn-ghost">Выбрать</a>
+    </div>
+    <div class="sub-card">
+      <span class="sub-badge">популярный</span>
+      <h3>Стартовый</h3>
+      <div class="sub-price">45 000 ₽</div>
+      <ul class="sub-list">
+        <li>32 занятия по 60 минут</li>
+        <li>Экономия 12 600 ₽</li>
+        <li>Учебный трекер в подарок</li>
+        <li>Ежемесячный отчёт родителям</li>
+      </ul>
+      <span class="sub-save">выгода 22%</span>
+      <a href="https://t.me/katerin_mischenko" target="_blank" class="btn btn-ghost">Выбрать</a>
+    </div>
+    <div class="sub-card best">
+      <span class="sub-badge">лучшая цена</span>
+      <h3>Оптимальный</h3>
+      <div class="sub-price">82 800 ₽</div>
+      <ul class="sub-list">
+        <li>64 занятия по 60 минут</li>
+        <li>Экономия 32 400 ₽</li>
+        <li>Шпаргалки + трекер</li>
+        <li>Приоритет в расписании</li>
+      </ul>
+      <span class="sub-save">выгода 28%</span>
+      <a href="https://t.me/katerin_mischenko" target="_blank" class="btn btn-main">Выбрать</a>
+    </div>
+    <div class="sub-card">
+      <span class="sub-badge">для экзамена</span>
+      <h3>ЕГЭ интенсив</h3>
+      <div class="sub-price">79 200 ₽</div>
+      <ul class="sub-list">
+        <li>48 занятий (ЕГЭ + Python)</li>
+        <li>Экономия 26 400 ₽</li>
+        <li>5 пробных экзаменов</li>
+        <li>Разбор типичных ошибок</li>
+      </ul>
+      <span class="sub-save">выгода 25%</span>
+      <a href="https://t.me/katerin_mischenko" target="_blank" class="btn btn-ghost">Выбрать</a>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <span class="sec-tag">// materials</span>
+  <h2>Методические пособия</h2>
+  <p class="sec-desc">Конспекты, которые я пишу сама — без воды, только то, что реально нужно на экзамене и в проектах.</p>
+  <div class="book-list">
+    <div class="book-item">
+      <span class="book-title">📘 Python: полное пособие</span>
+      <span class="book-info">18 разделов, 87 тем, 200+ задач</span>
+      <span class="book-cost">4 990 ₽</span>
+    </div>
+    <div class="book-item">
+      <span class="book-title">📗 ЕГЭ / ОГЭ Информатика</span>
+      <span class="book-info">Методическое пособие для подготовки</span>
+      <span class="book-soon">в разработке</span>
+    </div>
+    <div class="book-item">
+      <span class="book-title">📙 HTML/CSS пособие</span>
+      <span class="book-info">Методическое пособие по вёрстке</span>
+      <span class="book-soon">в разработке</span>
+    </div>
+  </div>
+</section>
+<section class="reveal">
+  <span class="sec-tag">// results</span>
+  <h2>Реальные результаты</h2>
+  <p class="sec-desc">Цифры, которые можно проверить. Каждая история — с настоящим человеком.</p>
+  <div class="results-bento">
+    <div class="result-card">
+      <div class="result-before">50 баллов на пробнике</div>
+      <div class="result-arrow">→</div>
+      <div class="result-after">92 балла</div>
+      <div class="result-name">Анна, МГТУ им. Баумана</div>
+    </div>
+    <div class="result-card">
+      <div class="result-before">Двойки и тройки в школе</div>
+      <div class="result-arrow">→</div>
+      <div class="result-after">Пятёрки</div>
+      <div class="result-name">Дима, 13 лет</div>
+    </div>
+    <div class="result-card">
+      <div class="result-before">0 → 96 баллов</div>
+      <div class="result-arrow">→</div>
+      <div class="result-after">ИТМО</div>
+      <div class="result-name">Илья, поступил в ИТМО</div>
+    </div>
+    <div class="result-card">
+      <div class="result-before">6 по математике (Беларусь)</div>
+      <div class="result-arrow">→</div>
+      <div class="result-after">9 за пару занятий</div>
+      <div class="result-name">Василиса, школьница из Беларуси</div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <span class="sec-tag">// testimonials</span>
+  <h2>Что говорят ученики и родители</h2>
+  <p class="sec-desc">Реальные истории — без выдумки. Каждый отзыв можно проверить.</p>
+  <div class="review-bento">
+    <div class="review-card">
+      <p class="review-text">«Пришла к Кате в сентябре 11 класса с 50 баллами на пробнике. Думала — всё, провал, ничего не выйдет. А она за полгода вытащила меня до 92. Это не просто репетитор, который натаскивает на задачи. Это человек, который реально верит в тебя — и ты начинаешь верить в себя.»</p>
+      <div class="review-name">Анна</div>
+      <div class="review-meta">Поступила в МГТУ им. Баумана</div>
+    </div>
+    <div class="review-card">
+      <p class="review-text">«Мой Дима ненавидел информатику в школе. Двойки, тройки, слёзы перед контрольными. Катя нашла к нему подход за два занятия: короткие видео, примеры из игр, постоянная поддержка. Через три месяца он сам пишет скрипты и получает пятёрки. Я до сих пор не верю своим глазам.»</p>
+      <div class="review-name">Мария</div>
+      <div class="review-meta">Мама Дмитрия, 13 лет</div>
+    </div>
+    <div class="review-card">
+      <p class="review-text">«Готовился к ЕГЭ с января по май — интенсив, без выходных. Катя не зубрила меня шаблонами, а учила думать. На экзамене попалось нестандартное задание — и я его решил, потому что понимал логику, а не тупо зубрил алгоритм. Итог: 96 баллов и ИТМО.»</p>
+      <div class="review-name">Илья</div>
+      <div class="review-meta">ЕГЭ 96 баллов → ИТМО</div>
+    </div>
+    <div class="review-card">
+      <p class="review-text">«Занимаюсь с Катей полгода — она мне очень зашла. На любой вопрос отвечает, атмосфера на занятиях всегда позитивная. Даже когда в институте завал или личные дела — договариваемся, всё балансируем: и учёба, и программирование, и жизнь. Предмет знает отлично, особенно всё, что связано с кодом. Из минусов — иногда бывает строгой, но это скорее плюс: строгость умеренная, а эффективность и чуткость — это точно про неё. Рекомендую. Моя оценка 4.99/5 😄»</p>
+      <div class="review-name">Иван</div>
+      <div class="review-meta">Студент московского университета</div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="reveal">
+  <span class="sec-tag">// faq</span>
+  <h2>Частые вопросы</h2>
+  <p class="sec-desc">Если не нашли ответ — напишите мне в Telegram, отвечу за 10 минут.</p>
+  <div class="faq-wrap">
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Как проходят онлайн-занятия? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Занятия проходят в Яндекс Телемосте. Используем интерактивную доску, код пишем вместе. Запись урока остаётся у вас навсегда.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Сколько длится занятие? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Стандартно 45–60 минут. Если нужно больше — договариваемся индивидуально.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Можно ли перенести занятие? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Да, достаточно предупредить за 2 часа. Перенос без штрафов, подберём удобное время.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Сколько времени нужно на подготовку к ЕГЭ? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Минимум 6 месяцев. Если начать за год — вообще идеально, без стресса и перегрузок.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Подходит ли для занятий с нуля? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Да. У меня есть программа для начинающих с полного нуля. Начнём с самых основ.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Раньше вы вели только информатику. Почему теперь и математика? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">8 лет я преподавала математику в школе параллельно с информатикой. Ученики просили добавить математику — потому что мой подход работает и там: через понимание, а не зубрёжку. Решила вывести это в отдельное направление.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Как проходит подготовка к ЕГЭ по математике? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Так же, как и по информатике: сначала диагностика, потом план. Разбираем задания 1–19, базу и профиль, учим стратегию решения. 5 пробников, разбор типичных ошибок. Главное — не зубрить формулы, а понимать логику.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">А если мне не зайдёт пробное занятие? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Если после пробного поймёте, что не ваше — честно скажем и порекомендуем коллегу. Никакого давления и «нельзя отказаться». Главное, чтобы ученику было комфортно.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Как получить пробное занятие? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Нажмите на любую кнопку «Записаться» или «Пробное занятие» — я отвечу в Telegram, договоримся о времени.</div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <span class="sec-tag">// guarantees</span>
+  <h2>Если что-то пойдёт не так</h2>
+  <p class="sec-desc">Я работаю честно. Вот три вещи, которые могут вас успокоить.</p>
+  <div class="guarantee-bento">
+    <div class="guarantee-card">
+      <span class="guarantee-icon">🔄</span>
+      <h3>Перенос без штрафов</h3>
+      <p>Предупредили за 2 часа — перенесли без проблем. Болезнь, экзамен, форс-мажор — всё решаемо.</p>
+    </div>
+    <div class="guarantee-card">
+      <span class="guarantee-icon">💰</span>
+      <h3>Пробное без обязательств</h3>
+      <p>1 500 ₽ за разбор уровня и план. Если не зайдёт — порекомендую коллегу. Никакого давления.</p>
+    </div>
+    <div class="guarantee-card">
+      <span class="guarantee-icon">📊</span>
+      <h3>Отчёт каждый месяц</h3>
+      <p>Родители видят прогресс в цифрах. Если динамики нет — честно говорим и корректируем план.</p>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <span class="sec-tag">// calculator</span>
+  <h2>Рассчитайте стоимость</h2>
+  <p class="sec-desc">Выберите курс и количество занятий — увидите итоговую цену и экономию.</p>
+  <div class="calc-box">
+    <div class="calc-row">
+      <label>Курс</label>
+      <select id="calcCourse" onchange="updateCalc()">
+        <option value="1600">Информатика (школа) — 1 600 ₽/ч</option>
+        <option value="1800">Математика (школа) — 1 800 ₽/ч</option>
+        <option value="2200">ЕГЭ/ОГЭ информатика — 2 200 ₽/ч</option>
+        <option value="2400">ЕГЭ/ОГЭ математика — 2 400 ₽/ч</option>
+        <option value="1800">Python — 1 800 ₽/ч</option>
+        <option value="1600">HTML/CSS/JS — 1 600 ₽/ч</option>
+        <option value="1000">Цифровая грамотность — 1 000 ₽/ч</option>
+        <option value="900">Scratch — 900 ₽/ч</option>
+        <option value="2800">Индивидуальный курс — 2 800 ₽/ч</option>
+      </select>
+    </div>
+    <div class="calc-row">
+      <label>Количество занятий: <span class="calc-range-val" id="lessonsVal">32</span></label>
+      <input type="range" id="calcLessons" min="4" max="64" value="32" step="4" oninput="updateCalc()">
+    </div>
+    <div class="calc-result">
+      <div class="calc-result-price" id="calcPrice">45 000 ₽</div>
+      <div class="calc-result-save" id="calcSave">Экономия 12 600 ₽ (22%)</div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <span class="sec-tag">// contacts</span>
+  <h2>Связаться со мной</h2>
+  <p class="sec-desc">Отвечаю в Telegram за 10–15 минут. Можно задать любой вопрос — даже если ещё не решили заниматься.</p>
+  <div class="contacts-bento">
+    <a href="https://t.me/katerin_mischenko" target="_blank" class="contact-card">
+      <span class="contact-icon">💬</span>
+      <h3>Telegram</h3>
+      <p>@katerin_mischenko</p>
+    </a>
+    <a href="mailto:mischenkoekaterinaa@gmail.com" class="contact-card">
+      <span class="contact-icon">✉️</span>
+      <h3>Email</h3>
+      <p>mischenkoekaterinaa@gmail.com</p>
+    </a>
+    <a href="https://www.instagram.com/mischenko.educat/" target="_blank" class="contact-card">
+      <span class="contact-icon">📸</span>
+      <h3>Instagram</h3>
+      <p>@mischenko.educat</p>
+    </a>
+  </div>
+</section>
+
+<div class="cta-final reveal">
+  <h2>Готов начать?</h2>
+  <p>Пробное занятие — 1 500 ₽. Разберём твой уровень, найдём пробелы, составим план.</p>
+  <a href="https://t.me/katerin_mischenko" target="_blank" class="btn btn-main">Записаться на пробное →</a>
+</div>
+
 </div>
 
 <footer>
-    <div class="container">
-        <p>© 2026 Мищенко Екатерина — преподаватель информатики</p>
-        <div class="footer-links">
-            <a href="https://t.me/mischenko_edu" target="_blank">Telegram-канал</a>
-            <a href="https://vk.com/mischenko_edu" target="_blank">ВКонтакте</a>
-            <a href="https://www.instagram.com/mischenko.educat/" target="_blank">Instagram</a>
-            <a href="https://t.me/katerin_mischenko" target="_blank">Чат в Telegram</a>
-        </div>
-        <p style="margin-top: 16px;">mischenkoekaterinaa@gmail.com</p>
+  <div class="container">
+    <p>© 2026 Екатерина Мищенко — информатика и математика</p>
+    <div class="footer-links">
+      <a href="https://t.me/mischenko_edu" target="_blank">Telegram-канал</a>
+      <a href="https://www.instagram.com/mischenko.educat/" target="_blank">Instagram</a>
+      <a href="https://t.me/katerin_mischenko" target="_blank">Чат в Telegram</a>
     </div>
+    <p style="margin-top:14px; color:#4a4558;">mischenkoekaterinaa@gmail.com</p>
+  </div>
 </footer>
-
 <script>
-    // --- ГЕНЕРАЦИЯ МОЩНОГО ПЛАВАЮЩЕГО КОДА (почти как на старом сайте) ---
-    const pythonSnippets = [
-        "def solve(x): return x * 2",
-        "for i in range(10): print(i)",
-        "while True: print('learning')",
-        "if __name__ == '__main__': main()",
-        "class Student: def __init__(self): self.name = name",
-        "try: execute()\nexcept: handle_error()",
-        "import React from 'react'",
-        "print(f'Result: {score}')",
-        "response = requests.get(url)",
-        "plt.plot(x, y)"
-    ];
-    
-    const jsSnippets = [
-        "const data = await fetch('/api')",
-        "function binarySearch(arr, target) {",
-        "const result = numbers.map(n => n * 2)",
-        "document.querySelector('.btn')",
-        "let x = 10;",
-        "while(x > 0) { x--; }",
-        "npm start",
-        "git commit -m 'init'",
-        "const data = await fetch('/api')"
-    ];
-    
-    const htmlSnippets = [
-        "<div class='code'>Hello world</div>",
-        "@app.route('/')\ndef home(): return 'ok'"
-    ];
-    
-    const shellSnippets = [
-        "SELECT * FROM students WHERE grade > 80"
-    ];
+// Particles
+const particles = document.getElementById('particles');
+for (let i = 0; i < 30; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  p.style.left = Math.random() * 100 + '%';
+  p.style.animationDuration = (20 + Math.random() * 30) + 's';
+  p.style.animationDelay = Math.random() * 15 + 's';
+  p.style.width = (2 + Math.random() * 3) + 'px';
+  p.style.height = p.style.width;
+  particles.appendChild(p);
+}
 
-    function generateCodeBackground() {
-        const bgContainer = document.getElementById('codeBg');
-        if (!bgContainer) return;
-        bgContainer.innerHTML = '';
-        
-        // Создаем около 100 строк кода для плотного фона
-        const totalLines = 100;
-        
-        for (let i = 0; i < totalLines; i++) {
-            const codeLine = document.createElement('div');
-            codeLine.classList.add('floating-code');
-            
-            // Выбираем случайный тип строки для разнообразия цветов
-            const type = Math.random();
-            if (type < 0.4) {
-                codeLine.textContent = pythonSnippets[Math.floor(Math.random() * pythonSnippets.length)];
-                codeLine.classList.add('python');
-            } else if (type < 0.7) {
-                codeLine.textContent = jsSnippets[Math.floor(Math.random() * jsSnippets.length)];
-                codeLine.classList.add('js');
-            } else if (type < 0.85) {
-                codeLine.textContent = htmlSnippets[Math.floor(Math.random() * htmlSnippets.length)];
-                codeLine.classList.add('html');
-            } else {
-                codeLine.textContent = shellSnippets[Math.floor(Math.random() * shellSnippets.length)];
-                codeLine.classList.add('shell');
-            }
-            
-            // Случайное позиционирование
-            codeLine.style.left = Math.random() * 100 + '%';
-            codeLine.style.top = Math.random() * 100 + '%';
-            codeLine.style.fontSize = 11 + Math.random() * 12 + 'px';
-            
-            // Добавляем класс для разной скорости анимации
-            const randomSpeed = Math.random();
-            if (randomSpeed < 0.33) {
-                codeLine.classList.add('slow');
-            } else if (randomSpeed < 0.66) {
-                codeLine.classList.add('fast');
-            } else {
-                codeLine.classList.add('very-slow');
-            }
-            
-            // Добавляем задержку анимации
-            codeLine.style.animationDelay = Math.random() * 20 + 's';
-            
-            bgContainer.appendChild(codeLine);
-        }
+// FAQ
+function toggleFaq(item) {
+  const open = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+  if (!open) item.classList.add('open');
+}
+
+// Mobile nav
+function toggleNav() {
+  const nav = document.getElementById('mobileNav');
+  nav.classList.toggle('active');
+  document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+}
+
+// Scroll reveal
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Back to top
+const backTop = document.getElementById('backTop');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 600) backTop.classList.add('visible');
+  else backTop.classList.remove('visible');
+});
+
+// Count-up animation
+function animateValue(el, start, end, duration) {
+  let startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    const easeOut = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.floor(easeOut * (end - start) + start);
+    if (progress < 1) window.requestAnimationFrame(step);
+    else el.textContent = end;
+  };
+  window.requestAnimationFrame(step);
+}
+
+const statObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el = e.target;
+      const target = parseInt(el.dataset.target);
+      animateValue(el, 0, target, 2000);
+      statObserver.unobserve(el);
     }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-num').forEach(el => statObserver.observe(el));
 
-    // Запускаем генерацию фона
-    generateCodeBackground();
-    // Не обновляем фон при ресайзе, чтобы не было мерцания
+// Calculator
+function updateCalc() {
+  const pricePerHour = parseInt(document.getElementById('calcCourse').value);
+  const lessons = parseInt(document.getElementById('calcLessons').value);
+  document.getElementById('lessonsVal').textContent = lessons;
 
-    function toggleFaq(element) {
-        const answer = element.querySelector('.faq-answer');
-        const arrow = element.querySelector('.faq-question span');
-        answer.classList.toggle('active');
-        arrow.innerHTML = answer.classList.contains('active') ? '▲' : '▼';
-    }
+  const baseTotal = pricePerHour * lessons;
+  let finalPrice = baseTotal;
+  let saveText = '';
+
+  if (lessons >= 64) {
+    finalPrice = Math.round(baseTotal * 0.72);
+    saveText = 'Экономия ' + (baseTotal - finalPrice).toLocaleString('ru') + ' ₽ (28%) — как абонемент «Оптимальный»';
+  } else if (lessons >= 48) {
+    finalPrice = Math.round(baseTotal * 0.75);
+    saveText = 'Экономия ' + (baseTotal - finalPrice).toLocaleString('ru') + ' ₽ (25%) — как абонемент «ЕГЭ интенсив»';
+  } else if (lessons >= 32) {
+    finalPrice = Math.round(baseTotal * 0.78);
+    saveText = 'Экономия ' + (baseTotal - finalPrice).toLocaleString('ru') + ' ₽ (22%) — как абонемент «Стартовый»';
+  } else if (lessons >= 4) {
+    finalPrice = Math.round(baseTotal * 0.89);
+    saveText = 'Экономия ' + (baseTotal - finalPrice).toLocaleString('ru') + ' ₽ (11%) — как абонемент «Лайт»';
+  } else {
+    saveText = 'Выберите от 4 занятий, чтобы получить скидку';
+  }
+
+  document.getElementById('calcPrice').textContent = finalPrice.toLocaleString('ru') + ' ₽';
+  document.getElementById('calcSave').textContent = saveText;
+}
+updateCalc();
 </script>
+
 </body>
 </html>
