@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Екатерина Мищенко — репетитор по информатике, программированию и математике. 8+ лет преподавания, 4 года в онлайн-школе. Индивидуальные онлайн-занятия, ОГЭ и ЕГЭ.">
+  <meta name="theme-color" content="#101014">
+  <title>Екатерина Мищенко — информатика, программирование, математика</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#f5f3ef;--surface:#fff;--text:#15151a;--muted:#696770;--line:rgba(21,21,26,.12);--coral:#ff7657;--violet:#8d7cff;--mint:#b9e7d1;--yellow:#f4d36b;--shadow:0 18px 60px rgba(30,25,35,.08);--radius:28px}
+    [data-theme="dark"]{--bg:#101014;--surface:#18181e;--text:#f5f3ef;--muted:#aaa8b1;--line:rgba(255,255,255,.12);--coral:#ff8061;--shadow:0 18px 60px rgba(0,0,0,.25)}
+    *{box-sizing:border-box;margin:0;padding:0} html{scroll-behavior:smooth} body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);line-height:1.55;transition:.25s ease} a{color:inherit;text-decoration:none} button{font:inherit;color:inherit} .wrap{width:min(1180px,calc(100% - 40px));margin:auto}
+    .noise{position:fixed;inset:0;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");z-index:20}
+    header{position:sticky;top:0;z-index:10;padding:16px 0;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)} nav{display:flex;align-items:center;justify-content:space-between;gap:20px}.logo{font-family:Manrope;font-weight:800;letter-spacing:-.04em;font-size:19px}.logo span{color:var(--coral)} .navlinks{display:flex;gap:24px;font-size:14px;color:var(--muted)} .navlinks a:hover{color:var(--text)} .theme{border:1px solid var(--line);background:var(--surface);border-radius:999px;width:42px;height:42px;cursor:pointer}
+    .hero{padding:76px 0 70px;display:grid;grid-template-columns:1.3fr .7fr;gap:50px;align-items:center;min-height:680px}.eyebrow{display:inline-flex;gap:9px;align-items:center;border:1px solid var(--line);border-radius:999px;padding:8px 13px;font-size:13px;color:var(--muted);background:var(--surface)}.dot{width:7px;height:7px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 5px color-mix(in srgb,var(--coral) 15%,transparent)} h1{font-family:Manrope;font-size:clamp(50px,7vw,92px);line-height:.96;letter-spacing:-.065em;margin:24px 0}.accent{color:var(--coral)} .hero p{font-size:19px;max-width:690px;color:var(--muted)} .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;padding:14px 20px;font-weight:700;border:1px solid var(--line);background:var(--surface);transition:.2s}.btn:hover{transform:translateY(-2px)}.btn.primary{background:var(--text);color:var(--bg);border-color:var(--text)} .btn.coral{background:var(--coral);color:#161318;border-color:var(--coral)}
+    .portrait{min-height:470px;border-radius:40px;background:linear-gradient(145deg,var(--violet),var(--coral) 60%,var(--yellow));position:relative;overflow:hidden;box-shadow:var(--shadow);display:grid;place-items:center}.portrait:before,.portrait:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.17)}.portrait:before{width:280px;height:280px;top:-90px;right:-80px}.portrait:after{width:220px;height:220px;bottom:-80px;left:-70px}.initials{font-family:Manrope;font-size:150px;font-weight:800;letter-spacing:-.1em;color:#fff;position:relative;z-index:1}.portrait-note{position:absolute;z-index:2;bottom:22px;left:22px;right:22px;background:rgba(255,255,255,.85);color:#17151b;border-radius:20px;padding:14px 16px;font-size:13px;backdrop-filter:blur(12px)}
+    .ticker{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:13px 0;white-space:nowrap}.ticker-track{display:inline-block;animation:marquee 24s linear infinite;font-weight:700;color:var(--muted);font-size:13px;letter-spacing:.04em;text-transform:uppercase}.ticker-track span{margin:0 26px;color:var(--coral)}@keyframes marquee{to{transform:translateX(-50%)}}
+    section{padding:105px 0}.section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:40px}.kicker{font-size:13px;color:var(--coral);font-weight:800;text-transform:uppercase;letter-spacing:.12em}.section-title{font-family:Manrope;font-size:clamp(34px,5vw,62px);line-height:1;letter-spacing:-.055em;margin-top:10px}.section-head p{max-width:430px;color:var(--muted)}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{padding:27px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);min-height:150px}.stat strong{display:block;font-family:Manrope;font-size:42px;letter-spacing:-.05em}.stat span{color:var(--muted);font-size:14px}
+    .bento{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:30px;box-shadow:0 8px 35px rgba(0,0,0,.025);transition:.25s}.card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.card h3{font-family:Manrope;font-size:26px;letter-spacing:-.04em;margin:18px 0 8px}.card p{color:var(--muted)}.num{font-family:JetBrains Mono,monospace;font-size:12px;color:var(--coral)}.card.c1{grid-column:span 4;background:var(--mint);color:#151d1a}.card.c2{grid-column:span 4;background:var(--yellow);color:#231e12}.card.c3{grid-column:span 4;background:var(--violet);color:#fff}.card.c4{grid-column:span 7}.card.c5{grid-column:span 5;background:#17171c;color:#fff}.card.c5 p{color:#c9c7ce}.icon{font-size:34px}
+    .process{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;border:1px solid var(--line);background:var(--line);border-radius:var(--radius);overflow:hidden}.step{background:var(--surface);padding:28px;min-height:210px}.step b{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--bg);font-size:12px;margin-bottom:25px}.step h3{font-family:Manrope;font-size:21px;margin-bottom:8px}.step p{color:var(--muted);font-size:14px}
+    .method{display:grid;grid-template-columns:.75fr 1.25fr;gap:14px}.method-main{background:#17171c;color:#fff;border-radius:var(--radius);padding:42px;min-height:420px;position:relative;overflow:hidden}.method-main:after{content:"ME";position:absolute;font-family:Manrope;font-size:230px;font-weight:800;right:-15px;bottom:-70px;color:rgba(255,255,255,.05);letter-spacing:-.12em}.method-main h2{font-family:Manrope;font-size:clamp(42px,5vw,68px);line-height:.95;letter-spacing:-.06em;position:relative;z-index:1}.method-main p{color:#c8c6cd;max-width:470px;margin-top:20px;position:relative;z-index:1}.method-list{display:grid;gap:14px}.method-item{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:27px;display:flex;gap:18px;align-items:flex-start}.method-item b{font-family:Manrope;font-size:25px}.method-item p{color:var(--muted);font-size:14px;margin-top:5px}
+    .faq{max-width:850px}.faq details{border-top:1px solid var(--line);padding:22px 0}.faq details:last-child{border-bottom:1px solid var(--line)}summary{cursor:pointer;list-style:none;font-family:Manrope;font-weight:700;font-size:19px;display:flex;justify-content:space-between;gap:20px}summary::-webkit-details-marker{display:none}summary:after{content:"+";color:var(--coral);font-size:25px}details[open] summary:after{content:"−"}.faq details p{color:var(--muted);max-width:700px;padding-top:14px}
+    .contact{background:var(--coral);border-radius:40px;padding:55px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end;color:#181419}.contact h2{font-family:Manrope;font-size:clamp(40px,6vw,72px);line-height:.95;letter-spacing:-.06em}.contact p{margin-top:18px;max-width:600px}.contact .btn{background:#181419;color:#fff;border-color:#181419}.links{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.links a{border:1px solid rgba(24,20,25,.25);padding:11px 15px;border-radius:999px;font-size:14px;font-weight:700}
+    footer{padding:30px 0 45px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line)}
+    .reveal{opacity:0;transform:translateY(22px);transition:.7s ease}.reveal.visible{opacity:1;transform:none}
+    @media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto;padding-top:55px}.portrait{min-height:330px}.stats{grid-template-columns:repeat(2,1fr)}.card.c1,.card.c2,.card.c3,.card.c4,.card.c5{grid-column:span 12}.process{grid-template-columns:repeat(2,1fr)}.method{grid-template-columns:1fr}.contact{grid-template-columns:1fr}.links{justify-content:flex-start}.navlinks{display:none}}
+    @media(max-width:600px){.wrap{width:min(100% - 28px,1180px)}section{padding:75px 0}.hero h1{font-size:51px}.hero p{font-size:17px}.portrait{min-height:280px;border-radius:28px}.initials{font-size:100px}.stats{grid-template-columns:1fr}.stat{min-height:auto}.process{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:18px}.card,.method-main,.method-item{border-radius:22px;padding:23px}.contact{padding:32px 24px;border-radius:28px}.contact h2{font-size:43px}footer{display:block}footer span{display:block;margin-top:8px}}
+  </style>
+</head>
+<body>
+<div class="noise"></div>
+<header>
+  <div class="wrap"><nav>
+    <a class="logo" href="#top">ЕКАТЕРИНА <span>МИЩЕНКО</span></a>
+    <div class="navlinks"><a href="#about">Обо мне</a><a href="#directions">Направления</a><a href="#method">Mischenko Edu</a><a href="#faq">FAQ</a><a href="#contact">Контакты</a></div>
+    <button class="theme" id="theme" aria-label="Сменить тему">◐</button>
+  </nav></div>
+</header>
+
+<main id="top">
+  <section class="hero wrap reveal">
+    <div>
+      <div class="eyebrow"><i class="dot"></i> индивидуальные онлайн-занятия</div>
+      <h1>Учимся <span class="accent">понимать</span>, а не зубрить.</h1>
+      <p>Екатерина Мищенко — репетитор по информатике, программированию и математике. Помогаю выстроить понятную систему знаний и уверенно двигаться к цели.</p>
+      <div class="actions"><a class="btn primary" href="https://t.me/mischenko_edu" target="_blank" rel="noopener">Обсудить занятия ↗</a><a class="btn" href="#directions">Посмотреть направления ↓</a></div>
+    </div>
+    <div class="portrait"><div class="initials">ЕМ</div><div class="portrait-note"><b>Екатерина Мищенко</b><br>информатика · программирование · математика</div></div>
+  </section>
+
+  <div class="ticker"><div class="ticker-track">ИНФОРМАТИКА <span>✦</span> ПРОГРАММИРОВАНИЕ <span>✦</span> МАТЕМАТИКА <span>✦</span> ОГЭ <span>✦</span> ЕГЭ <span>✦</span> ПОНИМАНИЕ <span>✦</span> ПРАКТИКА <span>✦</span> СИСТЕМА <span>✦</span> ИНФОРМАТИКА <span>✦</span> ПРОГРАММИРОВАНИЕ <span>✦</span> МАТЕМАТИКА <span>✦</span> ОГЭ <span>✦</span> ЕГЭ <span>✦</span></div></div>
+
+  <section id="about" class="wrap">
+    <div class="section-head reveal"><div><div class="kicker">01 / обо мне</div><h2 class="section-title">Преподавание<br>с человеческим лицом.</h2></div><p>Не просто объясняю тему, а разбираюсь, где именно возник пробел, и выстраиваю обучение вокруг ученика.</p></div>
+    <div class="stats">
+      <div class="stat reveal"><strong>8+</strong><span>лет преподавания</span></div>
+      <div class="stat reveal"><strong>4</strong><span>года работы в онлайн-школе</span></div>
+      <div class="stat reveal"><strong>1:1</strong><span>индивидуальный формат</span></div>
+      <div class="stat reveal"><strong>∞</strong><span>вопросов — можно спрашивать</span></div>
+    </div>
+  </section>
+
+  <section id="directions" class="wrap">
+    <div class="section-head reveal"><div><div class="kicker">02 / направления</div><h2 class="section-title">Не один предмет.<br>Целая система.</h2></div><p>Направление и программа подбираются под задачу ученика: от закрытия пробелов до подготовки к экзамену.</p></div>
+    <div class="bento">
+      <article class="card c1 reveal"><div class="icon">⌘</div><div class="num">01 — ИНФОРМАТИКА</div><h3>Разобраться в информатике</h3><p>От базовых понятий до сложных задач, алгоритмов и экзаменационных тем.</p></article>
+      <article class="card c2 reveal"><div class="icon">&lt;/&gt;</div><div class="num">02 — ПРОГРАММИРОВАНИЕ</div><h3>Код, который понятен</h3><p>Учимся читать код, находить ошибки и самостоятельно строить решение.</p></article>
+      <article class="card c3 reveal"><div class="icon">∑</div><div class="num">03 — МАТЕМАТИКА</div><h3>Логика вместо зубрёжки</h3><p>Понимаем правила и связи между ними, а не запоминаем набор действий.</p></article>
+      <article class="card c4 reveal"><div class="num">04 — ОГЭ / ЕГЭ</div><h3>Подготовка к экзаменам</h3><p>Разбираем темы, тренируем экзаменационный формат, работаем над ошибками и постепенно собираем целостную стратегию решения.</p></article>
+      <article class="card c5 reveal"><div class="num">05 — ДИАГНОСТИКА</div><h3>Сначала понять точку А.</h3><p>Определяем, что уже получается, где есть пробелы и на что действительно стоит потратить время.</p></article>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="section-head reveal"><div><div class="kicker">03 / как проходит обучение</div><h2 class="section-title">Четыре шага.<br>Никакого хаоса.</h2></div><p>У обучения есть понятная логика: мы знаем, где находимся, куда идём и что делаем на следующем шаге.</p></div>
+    <div class="process">
+      <div class="step reveal"><b>01</b><h3>Диагностика</h3><p>Смотрим текущий уровень и находим реальные точки роста.</p></div>
+      <div class="step reveal"><b>02</b><h3>План</h3><p>Формируем последовательность тем и практики под цель.</p></div>
+      <div class="step reveal"><b>03</b><h3>Практика</h3><p>Решаем задачи, программируем, задаём вопросы и разбираем ошибки.</p></div>
+      <div class="step reveal"><b>04</b><h3>Закрепление</h3><p>Проверяем, что знание стало навыком и его можно применять самостоятельно.</p></div>
+    </div>
+  </section>
+
+  <section id="method" class="wrap">
+    <div class="section-head reveal"><div><div class="kicker">04 / методические материалы</div><h2 class="section-title">Mischenko Edu.</h2></div><p>Мои цифровые методические материалы для обучения и самостоятельной работы.</p></div>
+    <div class="method">
+      <div class="method-main reveal"><div class="kicker" style="color:#ff8061">MISCHENKO EDU</div><h2>Методика,<br>которой<br>можно пользоваться.</h2><p>Структурированные материалы, понятные объяснения, практика и система навигации — всё в одном цифровом пространстве.</p></div>
+      <div class="method-list">
+        <div class="method-item reveal"><b>01</b><div><h3>Понятная структура</h3><p>Материал разделён на темы и модули, чтобы не потеряться в большом объёме информации.</p></div></div>
+        <div class="method-item reveal"><b>02</b><div><h3>Теория + практика</h3><p>Не только прочитать правило, но и сразу увидеть, как оно работает в задаче.</p></div></div>
+        <div class="method-item reveal"><b>03</b><div><h3>Для реальной подготовки</h3><p>Материалы созданы с учётом преподавательской практики и экзаменационных задач.</p></div></div>
+        <div class="method-item reveal"><b>04</b><div><h3>Цифровой формат</h3><p>Можно возвращаться к нужной теме, повторять и использовать пособие как рабочий инструмент.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="wrap">
+    <div class="section-head reveal"><div><div class="kicker">05 / FAQ</div><h2 class="section-title">Частые вопросы.</h2></div></div>
+    <div class="faq">
+      <details class="reveal"><summary>Как проходят занятия?</summary><p>Индивидуально и онлайн. Формат позволяет выстраивать занятие вокруг конкретного ученика, его уровня, целей и вопросов.</p></details>
+      <details class="reveal"><summary>Можно ли начать, если есть большие пробелы?</summary><p>Да. Сначала определяем, какие темы требуют внимания, а затем выстраиваем последовательность обучения без попытки «проскочить» непонятный фундамент.</p></details>
+      <details class="reveal"><summary>Можно ли подготовиться к ОГЭ или ЕГЭ?</summary><p>Да. Подготовка включает изучение и повторение тем, практику экзаменационного формата и разбор ошибок.</p></details>
+      <details class="reveal"><summary>Есть ли методические материалы?</summary><p>Да. Я создаю собственные цифровые методические материалы Mischenko Edu для системной работы с учебным материалом.</p></details>
+      <details class="reveal"><summary>Как обсудить обучение?</summary><p>Напишите мне в Telegram — расскажите, какой предмет нужен, класс/уровень и цель обучения. Дальше обсудим формат.</p></details>
+    </div>
+  </section>
+
+  <section id="contact" class="wrap">
+    <div class="contact reveal">
+      <div><div class="kicker" style="color:#181419">06 / контакты</div><h2>Давайте<br>знакомиться.</h2><p>Напишите мне, чтобы обсудить занятия, подготовку к экзамену или методические материалы.</p></div>
+      <div class="links"><a href="https://t.me/mischenko_edu" target="_blank" rel="noopener">Telegram ↗</a><a href="mailto:mischenkoekaterinaa@gmail.com">Email ↗</a><a href="https://www.instagram.com/mischenko.educat/" target="_blank" rel="noopener">Instagram ↗</a></div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap"><span>© Екатерина Мищенко, 2026</span><span>Информатика · Программирование · Математика</span></footer>
+
+<script>
+  const root=document.documentElement, theme=document.getElementById('theme');
+  const saved=localStorage.getItem('theme'); if(saved) root.dataset.theme=saved;
+  theme.addEventListener('click',()=>{const dark=root.dataset.theme!=='dark';root.dataset.theme=dark?'dark':'light';localStorage.setItem('theme',root.dataset.theme)});
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
