@@ -100,28 +100,31 @@
   .hero-copy{grid-area:copy;min-width:0;position:relative;z-index:2}
   .hero-art{grid-area:art;position:relative;min-height:510px;display:grid;place-items:center;isolation:isolate}
   .hero-art::before{content:"";position:absolute;width:78%;aspect-ratio:1;border:1px solid rgba(142,201,255,.14);border-radius:50%;box-shadow:0 0 0 28px rgba(142,201,255,.025),0 0 0 58px rgba(255,157,69,.025);z-index:-1}
-  .notebook{
-    position:relative;z-index:2;width:min(100%,410px);min-height:400px;padding:30px 32px 28px;
-    background:linear-gradient(rgba(20,20,22,.03) 1px,transparent 1px) 0 0/100% 28px,#202024;
-    border:1px solid rgba(234,231,223,.18);border-radius:5px 18px 5px 18px;
-    box-shadow:0 30px 76px rgba(0,0,0,.56),0 0 0 1px rgba(142,201,255,.05);transform:rotate(1.5deg);
-  }
-  .notebook::before{content:"";position:absolute;left:17px;top:0;bottom:0;border-left:1px solid rgba(255,157,69,.3)}
-  .notebook::after{content:"";position:absolute;top:0;right:0;width:34px;height:34px;background:linear-gradient(225deg,rgba(142,201,255,.18) 0 49%,transparent 51%);pointer-events:none}
-  .notebook-top{display:flex;justify-content:space-between;align-items:center;padding-left:8px;margin-bottom:28px;color:var(--faint);font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
-  .notebook-top span:last-child{color:var(--marker);font-family:var(--hand);font-size:19px;letter-spacing:0;text-transform:none}
-  .notebook-title{font-size:clamp(23px,2.6vw,31px);font-weight:800;line-height:1.18;max-width:11ch;margin:0 0 24px 8px}
-  .notebook-title em{font-style:normal;color:var(--marker)}
-  .notebook-rule{height:1px;background:rgba(234,231,223,.13);margin:18px 0 20px 8px}
-  .notebook-example{margin-left:8px;padding:15px 17px;background:rgba(142,201,255,.07);border-left:2px solid var(--pen);color:var(--muted);font-size:13px;line-height:1.65}
-  .notebook-example strong{display:block;color:var(--ink);font-size:14px;margin-bottom:5px}
-  .notebook-formula{font-family:var(--hand);font-size:clamp(22px,2.3vw,28px);letter-spacing:-.02em;color:var(--pen);margin:18px 0 0 12px;transform:rotate(-2deg)}
-  .notebook-foot{display:flex;justify-content:space-between;align-items:end;margin:18px 0 0 8px;color:var(--faint);font-size:10px;letter-spacing:.08em}
-  .notebook-foot b{font-family:var(--hand);font-size:22px;color:var(--marker);font-weight:600;letter-spacing:0;transform:rotate(-4deg)}
-  .float-note{position:absolute;padding:13px 17px;background:#27221c;border:1px solid rgba(255,157,69,.3);box-shadow:0 14px 34px rgba(0,0,0,.35);font-family:var(--hand);font-size:23px;font-weight:700;color:var(--marker);z-index:3}
-  .float-note.one{top:42px;right:-8px;transform:rotate(6deg)}
-  .float-note.two{bottom:34px;left:-28px;background:#192128;border-color:rgba(142,201,255,.3);color:var(--pen);transform:rotate(-5deg)}
-  .art-pencil{position:absolute;right:8px;bottom:8px;width:150px;height:9px;border-radius:8px;background:linear-gradient(90deg,#8ec9ff 0 82%,#d6b28c 82% 94%,#25252a 94%);transform:rotate(-48deg);opacity:.9;z-index:1}
+  .idea-orbit{position:absolute;width:82%;aspect-ratio:1;border:1px solid rgba(142,201,255,.14);border-radius:50%;box-shadow:0 0 0 26px rgba(142,201,255,.025),0 0 0 54px rgba(255,157,69,.025)}
+  .idea-panel{position:relative;z-index:2;width:min(100%,410px);padding:23px 25px 19px;background:linear-gradient(145deg,#242429,#19191d 72%);border:1px solid rgba(234,231,223,.17);border-radius:17px 5px 17px 5px;box-shadow:0 30px 76px rgba(0,0,0,.56),inset 0 1px rgba(255,255,255,.035);transform:rotate(-1.2deg)}
+  .idea-panel-head{display:flex;align-items:center;gap:11px;padding-bottom:16px;border-bottom:1px solid rgba(234,231,223,.1);color:var(--muted)}
+  .idea-panel-head>span{display:flex;gap:4px}.idea-panel-head i{display:block;width:6px;height:6px;border-radius:50%;background:var(--marker);opacity:.8}
+  .idea-panel-head i:nth-child(2){background:var(--pen)}.idea-panel-head i:nth-child(3){background:#777}
+  .idea-panel-head b{font-size:10px;letter-spacing:.13em;text-transform:uppercase}.idea-panel-head small{margin-left:auto;font-size:9px;color:var(--faint);letter-spacing:.12em}
+  .idea-panel-label{margin:21px 0 9px;color:var(--pen);font-size:9px;font-weight:800;letter-spacing:.17em}
+  .idea-question{font-size:clamp(20px,2.3vw,26px);font-weight:800;line-height:1.25;max-width:15ch}.idea-question em{font-family:var(--hand);font-size:1.22em;font-style:normal;color:var(--marker);white-space:nowrap}
+  .code-window{margin-top:20px;background:#111216;border:1px solid rgba(142,201,255,.16);border-radius:8px;overflow:hidden}
+  .code-top{display:flex;justify-content:space-between;padding:9px 13px;background:rgba(142,201,255,.055);border-bottom:1px solid rgba(234,231,223,.08);font:10px var(--body);color:var(--muted)}
+  .code-top span:last-child{color:var(--pen)}.code-lines{padding:12px 13px 10px;font:12px/1.9 'JetBrains Mono',monospace;color:#e5e2da}
+  .code-lines div{display:flex;gap:14px;white-space:nowrap}.code-lines i{width:13px;color:#666;font-style:normal;font-size:10px}
+  .code-lines b{color:var(--marker);font-weight:600}.code-lines em{color:#7f9e85;font-style:normal}
+  .code-lines .indent{padding-left:17px}.code-lines .indent2{padding-left:34px;color:var(--pen)}
+  .code-result{display:flex;gap:8px;align-items:center;padding:8px 13px;border-top:1px solid rgba(234,231,223,.08);font-size:10px;color:var(--muted)}
+  .code-result span,.code-result b{color:#a6c99b}.code-result b{margin-left:auto}
+  .idea-bottom{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:16px;color:var(--faint);font-size:9px;letter-spacing:.07em}
+  .idea-bottom b{font-family:var(--hand);font-size:19px;color:var(--marker);font-weight:600;letter-spacing:0;white-space:nowrap;transform:rotate(-3deg)}
+  .idea-chip{position:absolute;z-index:3;padding:12px 15px;background:#252329;border:1px solid rgba(234,231,223,.15);box-shadow:0 15px 34px rgba(0,0,0,.4);border-radius:7px}
+  .idea-chip small{display:block;margin-bottom:5px;font-size:8px;font-weight:800;letter-spacing:.14em;color:var(--faint)}
+  .math-chip{top:54px;right:-5px;transform:rotate(5deg);color:var(--ink)}.math-chip b{display:block;font:600 21px var(--hand);color:var(--marker)}.math-chip span{font-size:9px;color:var(--muted)}
+  .graph-chip{bottom:48px;left:-18px;transform:rotate(-5deg);color:var(--pen);width:142px}.graph-chip svg{display:block;width:100%;height:48px}.graph-chip span{font:600 16px var(--hand);color:var(--pen)}
+  .idea-hand-note{position:absolute;right:8px;bottom:10px;font:700 21px var(--hand);color:var(--marker);transform:rotate(5deg);z-index:4}
+  .idea-spark{position:absolute;left:10px;top:35px;font-size:25px;color:var(--marker);opacity:.8;transform:rotate(15deg)}
+
   .hero-note{grid-area:stats;width:100%;max-width:none}
   .hero-meta{
     display:inline-flex;align-items:center;gap:12px;margin-bottom:30px;width:fit-content;
@@ -169,9 +172,7 @@
   @media(max-width:900px){
     .hero{grid-template-columns:minmax(0,1fr) minmax(260px,.8fr);column-gap:24px}
     .hero-art{min-height:400px}
-    .notebook{min-height:350px;padding:24px 24px 22px}
-    .float-note.one{right:-4px;top:22px}
-    .float-note.two{left:-16px;bottom:18px}
+    .idea-panel{padding:20px 21px 17px}.graph-chip{left:-10px}.math-chip{right:0}
   }
   @media(max-width:700px){
     .hero{grid-template-columns:1fr;grid-template-areas:"copy" "art" "stats";row-gap:10px}
@@ -183,16 +184,7 @@
   @media(max-width:560px){
     .hero{padding-top:104px;padding-bottom:44px}
     .hero-art{min-height:340px;margin-top:0}
-    .notebook{width:min(84%,340px);min-height:310px;padding:20px 20px 18px}
-    .notebook-top{margin-bottom:20px;font-size:8px}
-    .notebook-title{font-size:25px;margin-bottom:16px}
-    .notebook-example{font-size:11.5px;padding:12px}
-    .notebook-formula{font-size:22px;margin-top:12px;white-space:nowrap}
-    .notebook-foot{font-size:8px;margin-top:12px}
-    .notebook-foot b{font-size:18px}
-    .float-note{font-size:19px;padding:10px 13px}
-    .float-note.one{top:10px;right:0}
-    .float-note.two{bottom:6px;left:0}
+    .idea-panel{width:min(86%,340px);padding:17px 17px 15px}.idea-panel-label{margin-top:16px;font-size:8px}.idea-question{font-size:20px}.code-window{margin-top:15px}.code-lines{font-size:10px;padding:9px 10px}.idea-bottom{font-size:8px;margin-top:12px}.idea-bottom b{font-size:17px}.idea-chip{padding:9px 11px}.math-chip{top:15px;right:-2px}.math-chip b{font-size:18px}.math-chip span{font-size:8px}.graph-chip{width:119px;bottom:18px;left:-2px}.graph-chip svg{height:38px}.graph-chip span{font-size:14px}.idea-hand-note{font-size:17px;right:0;bottom:0}.idea-spark{top:18px;left:0}
     .hero-meta{font-size:10px;letter-spacing:.1em;padding:7px 12px;gap:9px;margin-bottom:24px}
     .hero-hand{display:block;margin:8px 0 0 2px;font-size:29px}
     .hero-sub{font-size:15px;line-height:1.72;margin-top:22px}
@@ -504,10 +496,10 @@
     <div class="hero">
       <div class="hero-copy">
         <div class="hero-meta"><i></i>репетиторство · онлайн · один на один</div>
-        <h1>Учимся <span class="hl">понимать</span>,<br>а не зубрить.
-          <span class="hero-hand">— шаг за шагом, без зубрёжки.</span>
+        <h1>Учиться —<br>это <span class="hl">исследовать.</span>
+          <span class="hero-hand">— задавать вопросы, пробовать, находить своё.</span>
         </h1>
-        <p class="hero-sub">Я Катерина Мищенко. Помогаю разобраться в сложных темах, закрыть пробелы и научиться решать самостоятельно. <b>Информатика, математика, физика и программирование</b> — онлайн, один на один.</p>
+        <p class="hero-sub">Помогаю разобраться в сложных темах, увидеть логику за формулами и кодом и научиться находить решения самостоятельно. На занятиях мы задаём вопросы, экспериментируем и проверяем идеи на практике. <b>Информатика, математика, физика и программирование</b> — онлайн, индивидуально.</p>
         <div class="hero-actions">
           <a class="btn btn-marker" href="#diagnosticChoice" data-open-diagnostic aria-haspopup="dialog">Начать с диагностики ✎</a>
           <a class="btn btn-ghost" href="#subjects">Выбрать направление ↓</a>
@@ -517,21 +509,28 @@
           <span class="hero-direction-arrow">↖</span>
         </div>
       </div>
-      <div class="hero-art" aria-label="Декоративная иллюстрация открытой рабочей тетради">
-        <div class="notebook">
-          <div class="notebook-top"><span>рабочая тетрадь · подход</span><span>заметки на полях</span></div>
-          <div class="notebook-title">Разбираем <em>по шагам.</em></div>
-          <div class="notebook-rule"></div>
-          <div class="notebook-example">
-            <strong>Не запоминаем вслепую.</strong>
-            Разбираемся, почему решение работает, и учимся применять знания самостоятельно.
+      <div class="hero-art" role="img" aria-label="Учебное пространство: код, математическая задача, график и заметки">
+        <div class="idea-orbit" aria-hidden="true"></div>
+        <div class="idea-panel">
+          <div class="idea-panel-head"><span><i></i><i></i><i></i></span><b>лаборатория идей</b><small>01 / 03</small></div>
+          <div class="idea-panel-label">ПРОБУЕМ · НАБЛЮДАЕМ · ПОНИМАЕМ</div>
+          <div class="idea-question">А что, если <em>попробовать иначе?</em></div>
+          <div class="code-window">
+            <div class="code-top"><span>experiment.py</span><span>↗</span></div>
+            <div class="code-lines">
+              <div><i>01</i><span><b>for</b> idea <b>in</b> attempts:</span></div>
+              <div><i>02</i><span class="indent"><b>if</b> idea.works():</span></div>
+              <div><i>03</i><span class="indent2">understand(idea)</span></div>
+              <div><i>04</i><span><em># ошибка — тоже данные</em></span></div>
+            </div>
+            <div class="code-result"><span>●</span> найдено решение <b>✓</b></div>
           </div>
-          <div class="notebook-formula">понять → решить</div>
-          <div class="notebook-foot"><span>теория · практика · обратная связь</span><b>разберём ✎</b></div>
+          <div class="idea-bottom"><span>вопрос → гипотеза → проверка</span><b>думай смелее ↗</b></div>
         </div>
-        <div class="float-note one">ошибка — подсказка</div>
-        <div class="float-note two">каждый шаг понятен ↗</div>
-        <div class="art-pencil" aria-hidden="true"></div>
+        <div class="idea-chip math-chip"><small>МАТЕМАТИКА</small><b>(a + b)²</b><span>= a² + 2ab + b²</span></div>
+        <div class="idea-chip graph-chip"><small>ФИЗИКА</small><svg viewBox="0 0 112 58" aria-hidden="true"><path d="M8 5V49H106" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".55"/><path d="M12 43C31 42 37 34 50 29S78 17 102 7" fill="none" stroke="#8ec9ff" stroke-width="2.5" stroke-linecap="round"/><path d="M12 43C31 42 37 34 50 29S78 17 102 7" fill="none" stroke="#8ec9ff" stroke-width="7" opacity=".1"/></svg><span>смотрим, как меняется</span></div>
+        <div class="idea-hand-note">не бойся проверить ✎</div>
+        <div class="idea-spark" aria-hidden="true">✳</div>
       </div>
       <div class="hero-note">
         <div class="hstat"><b>8<em>+</em></b><span>лет преподавания</span></div>
