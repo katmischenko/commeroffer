@@ -215,6 +215,7 @@ def main():
     print(f"Checked {len(files)} question banks.")
     print(f"Expected profile count: {len(expected)}.")
     if warnings:
+        fail(errors, f"cross-grade duplicate question stems found: {len(warnings)}")
         by_direction = Counter()
         for warning in warnings:
             match = re.match(r"([^:]+): repeated stem", warning)
