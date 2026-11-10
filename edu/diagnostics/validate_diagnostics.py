@@ -199,15 +199,12 @@ def main():
 
     frontend = HTML.read_text(encoding="utf-8") if HTML.exists() else ""
     required_guards = (
-        "experience=p.direction.experience?$('experience').value:''",
-        "$('experience').value='';",
         "$('question').textContent=q.question;",
         "Array.isArray(data.questions)",
-        "function selectedCurriculum()",
-        "curriculumId,curriculumName,curriculumDetail,curriculumLevel,curriculumYear",
+        "$('grade').addEventListener('change',checkReady);",
+        "const candidates=['diagnostics/question-bank-'+profileId+'.json'];",
+        "studentName:student,studentClass:String(grade),direction,experience:''",
         "telegramConsent:$('telegram-consent').checked",
-        "curriculum-year-wrap",
-        "curriculum-level-wrap",
         "async function saveAttempt(payload)",
         "CONSENT_VERSION",
         "REMOTE_SAVE_ENABLED",
@@ -215,6 +212,9 @@ def main():
     for guard in required_guards:
         if guard not in frontend:
             fail(errors, f"frontend regression guard missing: {guard}")
+    for obsolete in ("curriculum-wrap", "curriculum-year-wrap", "curriculum-level-wrap", "experience-wrap", "selectedCurriculum()"):
+        if obsolete in frontend:
+            fail(errors, f"simple diagnostic form must not contain: {obsolete}")
     if "Тест-диагностика по информатике" in frontend:
         fail(errors, "obsolete informatics-only diagnostic title remains")
 
