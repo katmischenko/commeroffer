@@ -46,6 +46,7 @@ function formatTelegram(p) {
     `Класс: ${p.studentClass}`,
     `Направление: ${p.direction}`,
     `Программа: ${p.curriculumName || "не указана"}`,
+    p.curriculumYear ? `Учебный год: ${p.curriculumYear}` : "",
     p.curriculumLevel ? `Уровень: ${p.curriculumLevel}` : "",
     p.curriculumDetail ? `Уточнение: ${p.curriculumDetail}` : "",
     p.experience ? `Опыт: ${p.experience}` : "",
@@ -94,6 +95,7 @@ export default {
       const curriculumName = clean(p.curriculumName, 160);
       const curriculumDetail = clean(p.curriculumDetail, 140);
       const curriculumLevel = clean(p.curriculumLevel, 20);
+      const curriculumYear = clean(p.curriculumYear, 12);
       const studentClass = clean(p.studentClass, 10);
       const direction = clean(p.direction, 60);
       const validDirections = ["Информатика", "Физика", "Математика", "Python", "HTML/CSS", "Figma"];
@@ -103,6 +105,9 @@ export default {
       }
       if (curriculumId === "other" && !curriculumDetail) {
         return json({ ok: false, error: "curriculum_detail_required" }, 400, origin);
+      }
+      if (["ru", "by"].includes(curriculumId) && !["2025/2026", "2026/2027", "other"].includes(curriculumYear)) {
+        return json({ ok: false, error: "curriculum_year_required" }, 400, origin);
       }
       if (["ru", "by"].includes(curriculumId) && Number(studentClass) >= 10 &&
           !["basic", "advanced", "unknown"].includes(curriculumLevel)) {
@@ -126,6 +131,7 @@ export default {
         curriculumName,
         curriculumDetail,
         curriculumLevel,
+        curriculumYear,
         consent: true,
         consentVersion: clean(p.consentVersion, 40),
         consentAt: clean(p.consentAt, 50),
@@ -151,11 +157,11 @@ export default {
       let inserted = false;
       try {
         const result = await env.DB.prepare(`INSERT OR IGNORE INTO diagnostic_attempts
-          (attempt_id, student_name, student_class, direction, experience, curriculum_id, curriculum_name, curriculum_detail, curriculum_level, consent_version, telegram_consent, score, max_score, percentage, completed_at, payload_json, telegram_status)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`)
+          (attempt_id, student_name, student_class, direction, experience, curriculum_id, curriculum_name, curriculum_detail, curriculum_level, curriculum_year, consent_version, telegram_consent, score, max_score, percentage, completed_at, payload_json, telegram_status)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`)
           .bind(payload.attemptId, payload.studentName, payload.studentClass, payload.direction,
             payload.experience, payload.curriculumId, payload.curriculumName, payload.curriculumDetail,
-            payload.curriculumLevel, payload.consentVersion, payload.telegramConsent ? 1 : 0, payload.score, payload.maxScore,
+            payload.curriculumLevel, payload.curriculumYear, payload.consentVersion, payload.telegramConsent ? 1 : 0, payload.score, payload.maxScore,
             payload.percentage, payload.completedAt, JSON.stringify(payload),
             payload.telegramConsent ? "pending" : "sent").run();
         inserted = Number(result?.meta?.changes || 0) > 0;
@@ -241,7 +247,7 @@ export default {
       if (!env.DB) return json({ ok: false, error: "database_not_configured" }, 503, origin);
       const limit = Math.min(100, Math.max(1, Number(url.searchParams.get("limit")) || 50));
       const rows = await env.DB.prepare(
-        "SELECT attempt_id, student_name, student_class, direction, experience, curriculum_id, curriculum_name, curriculum_detail, curriculum_level, telegram_consent, telegram_status, score, max_score, percentage, completed_at, payload_json FROM diagnostic_attempts ORDER BY completed_at DESC LIMIT ?"
+        "SELECT attempt_id, student_name, student_class, direction, experience, curriculum_id, curriculum_name, curriculum_detail, curriculum_level, curriculum_year, telegram_consent, telegram_status, score, max_score, percentage, completed_at, payload_json FROM diagnostic_attempts ORDER BY completed_at DESC LIMIT ?"
       ).bind(limit).all();
       return json({ ok: true, attempts: rows.results || [] }, 200, origin);
     }
