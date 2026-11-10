@@ -131,7 +131,9 @@ export default {
       }
       const belarusGradeEightPilot = curriculumId === "by" && Number(studentClass) === 8 &&
         ["Физика", "Математика"].includes(direction);
-      if (["ru", "by"].includes(curriculumId) && (Number(studentClass) >= 10 || belarusGradeEightPilot) &&
+      const belarusInformaticsAdvanced = curriculumId === "by" && direction === "Информатика" &&
+        [8, 9].includes(Number(studentClass));
+      if (["ru", "by"].includes(curriculumId) && (Number(studentClass) >= 10 || belarusGradeEightPilot || belarusInformaticsAdvanced) &&
           !["basic", "advanced", "unknown"].includes(curriculumLevel)) {
         return json({ ok: false, error: "curriculum_level_required" }, 400, origin);
       }
