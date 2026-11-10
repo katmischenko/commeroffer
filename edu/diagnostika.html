@@ -298,7 +298,7 @@ $('grade').addEventListener('change',checkReady);
 $('student').addEventListener('input',checkReady);
 $('experience').addEventListener('change',checkReady);
 $('start').addEventListener('click',async()=>{
- const p=profile();student=$('student').value.trim();direction=p.direction.name;grade=p.grade;experience=$('experience').value;
+ const p=profile();student=$('student').value.trim();direction=p.direction.name;grade=p.grade;experience=p.direction.experience?$('experience').value:'';
  $('start').disabled=true;$('start').textContent='Загружаю задания…';
  try{
   const profileId=p.direction.id+'-'+p.grade;
