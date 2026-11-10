@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
 <title>Тест-диагностика по информатике — Mischenko Edu</title>
-<meta name="description" content="Тест-диагностика по информатике от Mischenko Edu: 15 заданий, анализ результатов и рекомендации по темам.">
+<meta name="description" id="meta-description" content="Тест-диагностика по разным направлениям от Mischenko Edu: 15 заданий, анализ результатов и рекомендации по темам.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -146,10 +146,12 @@ function fillGrades(){
 }
 function checkReady(){
  const p=profile(),profileId=p.direction.id+'-'+p.grade;
- const available=['informatics-6','informatics-7','informatics-8','math-6','math-7','physics-7','physics-8'].includes(profileId);
+ const available=['informatics-6','informatics-7','informatics-8','informatics-9','informatics-10','informatics-11','math-6','math-7','math-8','math-9','physics-7','physics-8','physics-9','physics-10','physics-11'].includes(profileId);
  const title='Тест-диагностика по '+p.direction.name.toLowerCase();
  $('diagnostic-label').textContent=title+' · бесплатно';
  document.title=title+' — Mischenko Edu';
+ const description=title+' от Mischenko Edu: 15 заданий, анализ результатов и рекомендации по темам.';
+ const meta=$('meta-description'); if(meta) meta.setAttribute('content',description);
  $('profile-note').textContent=available
  ?(profileId==='informatics-6'?'Для этого профиля подготовлен пилотный набор из 15 заданий.':'Для этого профиля подготовлен черновой набор из 15 заданий; он требует педагогической проверки перед публикацией.')
  :'Набор для выбранного профиля ещё готовится. Выбери один из доступных профилей или напиши преподавателю.';
