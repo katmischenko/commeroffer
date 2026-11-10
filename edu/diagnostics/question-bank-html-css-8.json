@@ -1,0 +1,275 @@
+{
+  "version": "0.1.0",
+  "status": "teacher_review_draft",
+  "direction": "HTML/CSS",
+  "class": 8,
+  "profileId": "html-css-8",
+  "experienceVariants": {
+    "beginner": "базовая точка входа; задания требуют адаптации под реальный стартовый опыт",
+    "basics": "проверка основных навыков и самостоятельного применения",
+    "experienced": "углублённая проверка; текущая версия использует общий возрастной набор и требует отдельной экспертной ветки"
+  },
+  "sourceBasis": "Черновая тематическая матрица Mischenko Edu. Для цифровых направлений класс задаёт возрастной контекст; уровень опыта собирается отдельно, но индивидуальная адаптация набора по опыту пока не реализована. Педагогическая проверка обязательна.",
+  "distribution": {
+    "basic": 5,
+    "medium": 7,
+    "advanced": 3
+  },
+  "questions": [
+    {
+      "id": "htmlcss8-01",
+      "topic": "HTML",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какое объявление указывает браузеру на современный HTML5?",
+      "explanation": "DOCTYPE объявляет тип документа HTML5.",
+      "options": [
+        "<doctype html>",
+        "<!DOCTYPE html>",
+        "<html5>",
+        "<meta html='5'>"
+      ],
+      "correctIndex": 1,
+      "correctText": "<!DOCTYPE html>"
+    },
+    {
+      "id": "htmlcss8-02",
+      "topic": "HTML",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какой тег задаёт маркированный список?",
+      "explanation": "ul создаёт маркированный список.",
+      "options": [
+        "<ol>",
+        "<ul>",
+        "<li>",
+        "<list>"
+      ],
+      "correctIndex": 1,
+      "correctText": "<ul>"
+    },
+    {
+      "id": "htmlcss8-03",
+      "topic": "CSS",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Как выбрать элемент с id=\"menu\"?",
+      "explanation": "ID-селектор начинается с #.",
+      "options": [
+        ".menu",
+        "#menu",
+        "menu*",
+        "@menu"
+      ],
+      "correctIndex": 1,
+      "correctText": "#menu"
+    },
+    {
+      "id": "htmlcss8-04",
+      "topic": "CSS",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какое свойство управляет внешним отступом?",
+      "explanation": "margin задаёт внешний отступ вокруг элемента.",
+      "options": [
+        "padding",
+        "margin",
+        "border",
+        "line-height"
+      ],
+      "correctIndex": 1,
+      "correctText": "margin"
+    },
+    {
+      "id": "htmlcss8-05",
+      "topic": "HTML",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какой атрибут указывает адрес перехода ссылки?",
+      "explanation": "href содержит URL или адрес ресурса.",
+      "options": [
+        "src",
+        "href",
+        "alt",
+        "target"
+      ],
+      "correctIndex": 1,
+      "correctText": "href"
+    },
+    {
+      "id": "htmlcss8-06",
+      "topic": "Формы",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Как связать label с input?",
+      "explanation": "Значение for должно совпадать с id соответствующего поля.",
+      "options": [
+        "Совпадающие for у label и id у input",
+        "Через src",
+        "Через class обязательно",
+        "Вложить input в title"
+      ],
+      "correctIndex": 0,
+      "correctText": "Совпадающие for у label и id у input"
+    },
+    {
+      "id": "htmlcss8-07",
+      "topic": "CSS",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какое значение display включает гибкую раскладку?",
+      "explanation": "display:flex активирует Flexbox-контейнер.",
+      "options": [
+        "block",
+        "flex",
+        "inline",
+        "none"
+      ],
+      "correctIndex": 1,
+      "correctText": "flex"
+    },
+    {
+      "id": "htmlcss8-08",
+      "topic": "CSS",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какое свойство задаёт расстояние между элементами flex/grid?",
+      "explanation": "gap задаёт промежутки между элементами контейнера.",
+      "options": [
+        "gap",
+        "space",
+        "margin-auto",
+        "distance"
+      ],
+      "correctIndex": 0,
+      "correctText": "gap"
+    },
+    {
+      "id": "htmlcss8-09",
+      "topic": "CSS",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Что делает position: relative?",
+      "explanation": "relative сохраняет место элемента в потоке и задаёт базу для абсолютных потомков.",
+      "options": [
+        "Удаляет элемент из потока",
+        "Оставляет элемент в потоке и позволяет смещать его",
+        "Фиксирует элемент к окну",
+        "Скрывает элемент"
+      ],
+      "correctIndex": 1,
+      "correctText": "Оставляет элемент в потоке и позволяет смещать его"
+    },
+    {
+      "id": "htmlcss8-10",
+      "topic": "HTML",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Для чего используют атрибут required у поля формы?",
+      "explanation": "required включает встроенную проверку обязательного заполнения.",
+      "options": [
+        "Поле становится необязательным",
+        "Браузер требует заполнить поле перед отправкой",
+        "Поле скрывается",
+        "Вводится только число"
+      ],
+      "correctIndex": 1,
+      "correctText": "Браузер требует заполнить поле перед отправкой"
+    },
+    {
+      "id": "htmlcss8-11",
+      "topic": "CSS",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какое свойство меняет порядок наложения позиционированных элементов?",
+      "explanation": "z-index управляет порядком наложения в соответствующем контексте.",
+      "options": [
+        "opacity",
+        "z-index",
+        "overflow",
+        "transform"
+      ],
+      "correctIndex": 1,
+      "correctText": "z-index"
+    },
+    {
+      "id": "htmlcss8-12",
+      "topic": "Адаптивность",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Что обычно задают в viewport meta для корректной мобильной ширины?",
+      "explanation": "Эта настройка согласует ширину layout viewport с шириной устройства.",
+      "options": [
+        "width=device-width, initial-scale=1",
+        "height=100%",
+        "mobile=true",
+        "scale=0"
+      ],
+      "correctIndex": 0,
+      "correctText": "width=device-width, initial-scale=1"
+    },
+    {
+      "id": "htmlcss8-13",
+      "topic": "CSS",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "Что создаёт новый контекст наложения среди прочего при transform не равном none?",
+      "explanation": "Ненулевой transform создаёт stacking context.",
+      "options": [
+        "Stacking context",
+        "HTML-форму",
+        "Список",
+        "Сетевой запрос"
+      ],
+      "correctIndex": 0,
+      "correctText": "Stacking context"
+    },
+    {
+      "id": "htmlcss8-14",
+      "topic": "CSS",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "Какова основная идея CSS Grid?",
+      "explanation": "Grid предназначен для двумерного размещения элементов по строкам и столбцам.",
+      "options": [
+        "Одномерная раскладка",
+        "Двумерная система строк и столбцов",
+        "Только стили текста",
+        "Работа с изображениями"
+      ],
+      "correctIndex": 1,
+      "correctText": "Двумерная система строк и столбцов"
+    },
+    {
+      "id": "htmlcss8-15",
+      "topic": "Доступность",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "Какой подход лучше для интерактивного элемента, который должен работать с клавиатуры?",
+      "explanation": "Нативная кнопка поддерживает клавиатурное управление и семантику.",
+      "options": [
+        "Использовать кликабельный div без роли",
+        "Использовать button или корректную семантику и клавиатурное управление",
+        "Убрать outline у всех элементов",
+        "Сделать элемент фоновым изображением"
+      ],
+      "correctIndex": 1,
+      "correctText": "Использовать button или корректную семантику и клавиатурное управление"
+    }
+  ]
+}
