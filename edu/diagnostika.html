@@ -146,7 +146,7 @@ function fillGrades(){
 }
 function checkReady(){
  const p=profile(),profileId=p.direction.id+'-'+p.grade;
- const available=['informatics-6','informatics-7','math-6','physics-7'].includes(profileId);
+ const available=['informatics-6','informatics-7','informatics-8','math-6','math-7','physics-7','physics-8'].includes(profileId);
  const title='Тест-диагностика по '+p.direction.name.toLowerCase();
  $('diagnostic-label').textContent=title+' · бесплатно';
  document.title=title+' — Mischenko Edu';
