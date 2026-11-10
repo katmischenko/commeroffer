@@ -18,258 +18,258 @@
   "questions": [
     {
       "id": "htmlcss9-01",
-      "topic": "HTML",
-      "skill": "понимание",
+      "topic": "Семантический HTML",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какое объявление указывает браузеру на современный HTML5?",
-      "explanation": "DOCTYPE объявляет тип документа HTML5.",
+      "question": "Какой элемент объединяет подпись и несколько связанных полей формы?",
       "options": [
-        "<doctype html>",
-        "<!DOCTYPE html>",
-        "<html5>",
-        "<meta html='5'>"
+        "<fieldset>",
+        "<figure>",
+        "<summary>",
+        "<canvas>"
       ],
-      "correctIndex": 1,
-      "correctText": "<!DOCTYPE html>"
+      "correctIndex": 0,
+      "correctText": "<fieldset>",
+      "explanation": "fieldset группирует связанные элементы формы; legend может дать группе название."
     },
     {
       "id": "htmlcss9-02",
-      "topic": "HTML",
-      "skill": "понимание",
+      "topic": "HTML-формы",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какой тег задаёт маркированный список?",
-      "explanation": "ul создаёт маркированный список.",
+      "question": "Какой тип input подходит для выбора целого числа с помощью числового поля?",
       "options": [
-        "<ol>",
-        "<ul>",
-        "<li>",
-        "<list>"
+        "type=\"number\"",
+        "type=\"text-number\"",
+        "type=\"digit\"",
+        "type=\"range-text\""
       ],
-      "correctIndex": 1,
-      "correctText": "<ul>"
+      "correctIndex": 0,
+      "correctText": "type=\"number\"",
+      "explanation": "type=number создаёт поле для числового значения."
     },
     {
       "id": "htmlcss9-03",
-      "topic": "CSS",
-      "skill": "понимание",
+      "topic": "HTML-изображения",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Как выбрать элемент с id=\"menu\"?",
-      "explanation": "ID-селектор начинается с #.",
+      "question": "Какой атрибут у img задаёт альтернативный текст для скринридера?",
       "options": [
-        ".menu",
-        "#menu",
-        "menu*",
-        "@menu"
+        "alt",
+        "title",
+        "name",
+        "role"
       ],
-      "correctIndex": 1,
-      "correctText": "#menu"
+      "correctIndex": 0,
+      "correctText": "alt",
+      "explanation": "alt задаёт текстовую альтернативу изображения."
     },
     {
       "id": "htmlcss9-04",
-      "topic": "CSS",
-      "skill": "понимание",
+      "topic": "CSS-псевдоклассы",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какое свойство управляет внешним отступом?",
-      "explanation": "margin задаёт внешний отступ вокруг элемента.",
+      "question": "Какой псевдокласс выбирает элемент, если он не отключён?",
       "options": [
-        "padding",
-        "margin",
-        "border",
-        "line-height"
+        ":enabled",
+        ":active",
+        ":visited",
+        ":empty"
       ],
-      "correctIndex": 1,
-      "correctText": "margin"
+      "correctIndex": 0,
+      "correctText": ":enabled",
+      "explanation": ":enabled соответствует включённым элементам управления."
     },
     {
       "id": "htmlcss9-05",
-      "topic": "HTML",
-      "skill": "понимание",
+      "topic": "CSS-размеры",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какой атрибут указывает адрес перехода ссылки?",
-      "explanation": "href содержит URL или адрес ресурса.",
+      "question": "Какое свойство задаёт пропорциональное соотношение сторон блока?",
       "options": [
-        "src",
-        "href",
-        "alt",
-        "target"
+        "aspect-ratio",
+        "ratio-size",
+        "object-fit",
+        "scale"
       ],
-      "correctIndex": 1,
-      "correctText": "href"
+      "correctIndex": 0,
+      "correctText": "aspect-ratio",
+      "explanation": "aspect-ratio задаёт предпочтительное отношение ширины к высоте."
     },
     {
       "id": "htmlcss9-06",
-      "topic": "Формы",
-      "skill": "понимание и применение",
+      "topic": "Доступность",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Как связать label с input?",
-      "explanation": "Значение for должно совпадать с id соответствующего поля.",
+      "question": "Для чего используют aria-describedby у поля формы?",
       "options": [
-        "Совпадающие for у label и id у input",
-        "Через src",
-        "Через class обязательно",
-        "Вложить input в title"
+        "Чтобы связать поле с текстом дополнительного описания или ошибки",
+        "Чтобы задать цвет поля",
+        "Чтобы заменить атрибут type",
+        "Чтобы отправить форму"
       ],
       "correctIndex": 0,
-      "correctText": "Совпадающие for у label и id у input"
+      "correctText": "Чтобы связать поле с текстом дополнительного описания или ошибки",
+      "explanation": "aria-describedby связывает элемент с одним или несколькими элементами описания."
     },
     {
       "id": "htmlcss9-07",
-      "topic": "CSS",
-      "skill": "понимание и применение",
+      "topic": "Адаптивные изображения",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Какое значение display включает гибкую раскладку?",
-      "explanation": "display:flex активирует Flexbox-контейнер.",
+      "question": "Для чего используют loading=\"lazy\" у изображения?",
       "options": [
-        "block",
-        "flex",
-        "inline",
-        "none"
+        "Чтобы отложить загрузку до приближения к области просмотра",
+        "Чтобы сжать файл без потери качества",
+        "Чтобы сделать изображение фоном",
+        "Чтобы запретить кэширование"
       ],
-      "correctIndex": 1,
-      "correctText": "flex"
+      "correctIndex": 0,
+      "correctText": "Чтобы отложить загрузку до приближения к области просмотра",
+      "explanation": "lazy откладывает загрузку изображений, которые пока находятся вне видимой области."
     },
     {
       "id": "htmlcss9-08",
-      "topic": "CSS",
-      "skill": "понимание и применение",
+      "topic": "CSS-псевдоклассы",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Какое свойство задаёт расстояние между элементами flex/grid?",
-      "explanation": "gap задаёт промежутки между элементами контейнера.",
+      "question": "Когда обычно срабатывает :focus-visible?",
       "options": [
-        "gap",
-        "space",
-        "margin-auto",
-        "distance"
+        "Когда браузер определяет, что фокус следует явно показать, например при навигации клавиатурой",
+        "При наведении мыши",
+        "После прокрутки страницы",
+        "Только на мобильном устройстве"
       ],
       "correctIndex": 0,
-      "correctText": "gap"
+      "correctText": "Когда браузер определяет, что фокус следует явно показать, например при навигации клавиатурой",
+      "explanation": ":focus-visible помогает показывать индикатор фокуса в ситуациях, когда он особенно нужен пользователю."
     },
     {
       "id": "htmlcss9-09",
-      "topic": "CSS",
-      "skill": "понимание и применение",
+      "topic": "CSS Grid",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Что делает position: relative?",
-      "explanation": "relative сохраняет место элемента в потоке и задаёт базу для абсолютных потомков.",
+      "question": "Что означает repeat(auto-fit, minmax(220px, 1fr)) в сетке?",
       "options": [
-        "Удаляет элемент из потока",
-        "Оставляет элемент в потоке и позволяет смещать его",
-        "Фиксирует элемент к окну",
-        "Скрывает элемент"
+        "Создавать столько колонок минимальной ширины 220px, сколько помещается",
+        "Всегда создавать ровно две колонки",
+        "Запретить перенос элементов",
+        "Задать высоту каждой строки 220px"
       ],
-      "correctIndex": 1,
-      "correctText": "Оставляет элемент в потоке и позволяет смещать его"
+      "correctIndex": 0,
+      "correctText": "Создавать столько колонок минимальной ширины 220px, сколько помещается",
+      "explanation": "auto-fit размещает доступное число колонок, а minmax задаёт их минимальный и гибкий размер."
     },
     {
       "id": "htmlcss9-10",
-      "topic": "HTML",
-      "skill": "понимание и применение",
+      "topic": "CSS-анимация",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Для чего используют атрибут required у поля формы?",
-      "explanation": "required включает встроенную проверку обязательного заполнения.",
+      "question": "Какой медиазапрос учитывает настройку пользователя «уменьшить движение»?",
       "options": [
-        "Поле становится необязательным",
-        "Браузер требует заполнить поле перед отправкой",
-        "Поле скрывается",
-        "Вводится только число"
+        "@media (prefers-reduced-motion: reduce)",
+        "@media (motion: none)",
+        "@media (animation: off)",
+        "@supports (motion: reduce)"
       ],
-      "correctIndex": 1,
-      "correctText": "Браузер требует заполнить поле перед отправкой"
+      "correctIndex": 0,
+      "correctText": "@media (prefers-reduced-motion: reduce)",
+      "explanation": "prefers-reduced-motion позволяет адаптировать анимации под системную настройку пользователя."
     },
     {
       "id": "htmlcss9-11",
-      "topic": "CSS",
-      "skill": "понимание и применение",
+      "topic": "CSS-изображения",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Какое свойство меняет порядок наложения позиционированных элементов?",
-      "explanation": "z-index управляет порядком наложения в соответствующем контексте.",
+      "question": "Какое свойство управляет положением изображения внутри области object-fit?",
       "options": [
-        "opacity",
-        "z-index",
-        "overflow",
-        "transform"
+        "object-position",
+        "image-align",
+        "background-position",
+        "align-content"
       ],
-      "correctIndex": 1,
-      "correctText": "z-index"
+      "correctIndex": 0,
+      "correctText": "object-position",
+      "explanation": "object-position задаёт точку размещения содержимого replaced element."
     },
     {
       "id": "htmlcss9-12",
-      "topic": "Адаптивность",
-      "skill": "понимание и применение",
+      "topic": "HTML-скрипты",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Что обычно задают в viewport meta для корректной мобильной ширины?",
-      "explanation": "Эта настройка согласует ширину layout viewport с шириной устройства.",
+      "question": "Что делает атрибут defer у внешнего script?",
       "options": [
-        "width=device-width, initial-scale=1",
-        "height=100%",
-        "mobile=true",
-        "scale=0"
+        "Откладывает выполнение до разбора HTML и сохраняет порядок таких скриптов",
+        "Запускает скрипт до чтения HTML",
+        "Встраивает CSS",
+        "Запрещает загрузку файла"
       ],
       "correctIndex": 0,
-      "correctText": "width=device-width, initial-scale=1"
+      "correctText": "Откладывает выполнение до разбора HTML и сохраняет порядок таких скриптов",
+      "explanation": "defer загружает скрипт параллельно разбору HTML и выполняет после разбора документа."
     },
     {
       "id": "htmlcss9-13",
-      "topic": "CSS",
-      "skill": "понимание и применение",
+      "topic": "CSS-возможности браузера",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "advanced",
       "type": "choice",
-      "question": "Что создаёт новый контекст наложения среди прочего при transform не равном none?",
-      "explanation": "Ненулевой transform создаёт stacking context.",
+      "question": "Для чего используют @supports (display: grid)?",
       "options": [
-        "Stacking context",
-        "HTML-форму",
-        "Список",
-        "Сетевой запрос"
+        "Чтобы применить правила, если браузер поддерживает указанное свойство",
+        "Чтобы загрузить шрифт",
+        "Чтобы выбрать устройство",
+        "Чтобы создать HTML-форму"
       ],
       "correctIndex": 0,
-      "correctText": "Stacking context"
+      "correctText": "Чтобы применить правила, если браузер поддерживает указанное свойство",
+      "explanation": "@supports проверяет поддержку CSS-возможности перед применением блока правил."
     },
     {
       "id": "htmlcss9-14",
-      "topic": "CSS",
-      "skill": "понимание и применение",
+      "topic": "CSS-контейнерные запросы",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "advanced",
       "type": "choice",
-      "question": "Какова основная идея CSS Grid?",
-      "explanation": "Grid предназначен для двумерного размещения элементов по строкам и столбцам.",
+      "question": "Какое свойство включает возможность использовать container queries для элемента-контейнера?",
       "options": [
-        "Одномерная раскладка",
-        "Двумерная система строк и столбцов",
-        "Только стили текста",
-        "Работа с изображениями"
+        "container-type",
+        "container-query",
+        "query-size",
+        "display: container"
       ],
-      "correctIndex": 1,
-      "correctText": "Двумерная система строк и столбцов"
+      "correctIndex": 0,
+      "correctText": "container-type",
+      "explanation": "container-type задаёт тип контейнера, размер которого может использоваться в @container."
     },
     {
       "id": "htmlcss9-15",
-      "topic": "Доступность",
-      "skill": "понимание и применение",
+      "topic": "CSS-каскад",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "advanced",
       "type": "choice",
-      "question": "Какой подход лучше для интерактивного элемента, который должен работать с клавиатуры?",
-      "explanation": "Нативная кнопка поддерживает клавиатурное управление и семантику.",
+      "question": "Для чего предназначено правило @layer?",
       "options": [
-        "Использовать кликабельный div без роли",
-        "Использовать button или корректную семантику и клавиатурное управление",
-        "Убрать outline у всех элементов",
-        "Сделать элемент фоновым изображением"
+        "Для управления порядком слоёв каскада CSS",
+        "Для создания анимации",
+        "Для импорта HTML",
+        "Для задания сетки"
       ],
-      "correctIndex": 1,
-      "correctText": "Использовать button или корректную семантику и клавиатурное управление"
+      "correctIndex": 0,
+      "correctText": "Для управления порядком слоёв каскада CSS",
+      "explanation": "Каскадные слои позволяют явно организовать приоритет групп CSS-правил."
     }
   ]
 }
