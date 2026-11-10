@@ -1,6 +1,6 @@
 # Cloudflare Worker: диагностика Mischenko Edu
 
-Исходник: `worker.js`. Миграции D1: `schema.sql`, затем для существующей базы — `migrations/0002_telegram_outbox.sql`, `migrations/0003_curriculum_and_consent.sql` `migrations/0004_curriculum_level.sql` и `migrations/0005_curriculum_year.sql` (каждую ровно один раз).
+Исходник: `worker.js`. Миграции D1: `schema.sql`, затем для существующей базы — `migrations/0002_telegram_outbox.sql`, `migrations/0003_curriculum_and_consent.sql`, `migrations/0004_curriculum_level.sql` и `migrations/0005_curriculum_year.sql` (каждую ровно один раз).
 
 ## Текущее состояние
 Этот код подготовлен, но не развернут в Cloudflare автоматически. Для центрального архива необходимо подключить D1 и заменить код существующего Worker этим исходником.
@@ -8,7 +8,7 @@
 ## Настройка
 1. В Cloudflare Workers & Pages откройте Worker `mischenko-edu-diagnostics`.
 2. Создайте D1 database, например `mischenko-edu-diagnostics`.
-3. Для новой базы выполните актуальный SQL из `schema.sql`. Для уже существующей базы проверьте историю миграций и примените недостающие `0002_telegram_outbox.sql`, `0003_curriculum_and_consent.sql` `0004_curriculum_level.sql` и `0005_curriculum_year.sql` ровно по одному разу.
+3. Для новой базы выполните актуальный SQL из `schema.sql`. Для уже существующей базы проверьте историю миграций и примените недостающие `0002_telegram_outbox.sql`, `0003_curriculum_and_consent.sql`, `0004_curriculum_level.sql` и `0005_curriculum_year.sql` ровно по одному разу.
 4. В Worker → Settings → Bindings добавьте D1 binding с variable name `DB` и выберите созданную базу.
 5. В Variables and Secrets проверьте секреты `BOT_TOKEN` и `OWNER_CHAT_ID`. Не помещайте их в HTML или GitHub.
 6. Добавьте Secret `ADMIN_TOKEN` — длинный случайный пароль для просмотра архива.
