@@ -43,11 +43,11 @@
       "explanation": "Имя не начинается с цифры, не содержит дефис и не совпадает с ключевым словом.",
       "options": [
         "2name",
-        "my-name",
         "my_name",
+        "my-name",
         "class"
       ],
-      "correctIndex": 2,
+      "correctIndex": 1,
       "correctText": "my_name"
     },
     {
@@ -60,11 +60,11 @@
       "explanation": "Целое число относится к типу int.",
       "options": [
         "str",
-        "int",
         "list",
+        "int",
         "bool"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "correctText": "int"
     },
     {
@@ -77,11 +77,11 @@
       "explanation": "Оператор // выполняет целочисленное деление с округлением вниз.",
       "options": [
         "3.5",
-        "3",
         "4",
-        "1"
+        "1",
+        "3"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "correctText": "3"
     },
     {
@@ -123,12 +123,12 @@
       "question": "С какого индекса начинается нумерация элементов списка?",
       "explanation": "В Python индексация начинается с нуля.",
       "options": [
-        "0",
         "1",
+        "0",
         "−1",
         "Зависит от списка"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "correctText": "0"
     },
     {
@@ -141,11 +141,11 @@
       "explanation": "range(4) создаёт последовательность 0, 1, 2, 3 — четыре значения.",
       "options": [
         "3",
-        "4",
         "5",
+        "4",
         "Бесконечно"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "correctText": "4"
     },
     {
@@ -158,11 +158,11 @@
       "explanation": "Python поддерживает цепочки сравнений: 5 < x < 10.",
       "options": [
         "x > 5 or x < 10",
-        "5 < x < 10",
         "x = 5..10",
-        "x > 5 && x < 10"
+        "x > 5 && x < 10",
+        "5 < x < 10"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "correctText": "5 < x < 10"
     },
     {
@@ -187,12 +187,12 @@
       "question": "Какое ключевое слово возвращает результат из функции?",
       "explanation": "return завершает выполнение функции и возвращает значение.",
       "options": [
-        "print",
         "return",
+        "print",
         "break",
         "def"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "correctText": "return"
     },
     {
@@ -230,12 +230,12 @@
       "question": "Что произойдёт, если функция не содержит return?",
       "explanation": "Если return отсутствует, функция возвращает None.",
       "options": [
-        "Вернёт None",
         "Вернёт 0",
+        "Вернёт None",
         "Вызовет ошибку всегда",
         "Вернёт True"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "correctText": "Вернёт None"
     },
     {
