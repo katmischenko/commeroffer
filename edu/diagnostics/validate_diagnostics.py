@@ -176,6 +176,13 @@ def main():
         finally:
             Path(worker_temp).unlink(missing_ok=True)
 
+    schema_text = schema_path.read_text(encoding="utf-8") if schema_path.exists() else ""
+    if "telegram_consent INTEGER NOT NULL DEFAULT 0" not in schema_text:
+        fail(errors, "schema must default telegram_consent to false")
+    consent_migration = consent_migration_path.read_text(encoding="utf-8") if consent_migration_path.exists() else ""
+    if "telegram_consent = 0" not in consent_migration or "consent_version = 'legacy'" not in consent_migration:
+        fail(errors, "migration 0006 must clear implied Telegram consent on legacy rows")
+
     frontend = HTML.read_text(encoding="utf-8") if HTML.exists() else ""
     required_guards = (
         "experience=p.direction.experience?$('experience').value:''",
@@ -203,9 +210,11 @@ def main():
     migration_path = DIAG / "migrations" / "0003_curriculum_and_consent.sql"
     level_migration_path = DIAG / "migrations" / "0004_curriculum_level.sql"
     year_migration_path = DIAG / "migrations" / "0005_curriculum_year.sql"
+    consent_migration_path = DIAG / "migrations" / "0006_explicit_telegram_consent.sql"
+    schema_path = DIAG / "schema.sql"
     worker_test_path = DIAG / "worker.test.mjs"
     frontend_test_path = DIAG / "frontend.smoke.test.mjs"
-    for required in (worker_path, archive_path, privacy_path, migration_path, level_migration_path, year_migration_path, worker_test_path, frontend_test_path):
+    for required in (worker_path, archive_path, privacy_path, migration_path, level_migration_path, year_migration_path, consent_migration_path, schema_path, worker_test_path, frontend_test_path):
         if not required.exists():
             fail(errors, f"missing required diagnostics component: {required.relative_to(ROOT)}")
     if worker_path.exists():
