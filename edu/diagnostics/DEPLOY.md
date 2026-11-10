@@ -3,7 +3,7 @@
 Исходник: `worker.js`. Миграции D1: `schema.sql`, затем для существующей базы — `migrations/0002_telegram_outbox.sql`, `migrations/0003_curriculum_and_consent.sql`, `migrations/0004_curriculum_level.sql`, `migrations/0005_curriculum_year.sql` и `migrations/0006_explicit_telegram_consent.sql` (каждую ровно один раз).
 
 ## Текущее состояние
-Этот код подготовлен, но не развернут в Cloudflare автоматически. Для центрального архива необходимо подключить D1 и заменить код существующего Worker этим исходником.
+Публичный endpoint Worker доступен: контрольная проверка GitHub Actions 10.11.2026 вернула `{"ok":true,"service":"Mischenko Edu diagnostics","database":true}`. Это подтверждает, что Worker отвечает и D1 binding существует. Однако проверка не подтверждает актуальность развёрнутого исходника, применение всех миграций и полный цикл сохранения/просмотра/удаления записи. Перед включением удалённого сохранения сверьте код и миграции, затем выполните интеграционный тест. Развёртывание исходника из GitHub не происходит автоматически.
 
 ## Настройка
 1. В Cloudflare Workers & Pages откройте Worker `mischenko-edu-diagnostics`.
