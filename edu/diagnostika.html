@@ -89,8 +89,9 @@
           <select id="curriculum-year"><option value="">Выбери учебный год</option><option value="2026/2027">2026/2027</option><option value="2025/2026">2025/2026</option><option value="other">Другая редакция / не знаю</option></select>
         </div>
         <div class="diag-field full" id="curriculum-level-wrap" hidden>
-          <label for="curriculum-level">Уровень изучения</label>
+          <label for="curriculum-level" id="curriculum-level-label">Уровень изучения</label>
           <select id="curriculum-level"><option value="">Выбери уровень</option><option value="basic">Базовый</option><option value="advanced">Углублённый / повышенный</option><option value="unknown">Не знаю</option></select>
+          <p class="diag-hint" id="curriculum-level-hint" hidden>Повышенный уровень выбирай только в том случае, если школа участвует в экспериментальном проекте 2026/2027 учебного года.</p>
         </div>
         <div class="diag-field full" id="curriculum-detail-wrap" hidden>
           <label for="curriculum-detail">Название программы / курса</label>
@@ -183,6 +184,8 @@ function fillPrograms(){
  $('curriculum-year-wrap').hidden=true;
  $('curriculum-year').value='';
  $('curriculum-level-wrap').hidden=true;
+ $('curriculum-level-label').textContent='Уровень изучения';
+ $('curriculum-level-hint').hidden=true;
  $('curriculum-detail').value='';
  $('curriculum-level').value='';
 }
@@ -205,6 +208,9 @@ function updateCurriculumLevel(){
  const belarusGradeEightPilot=program==='by'&&grade===8&&['physics','math'].includes(d.id);
  const show=SCHOOL_DIRECTIONS.includes(d.id)&&['ru','by'].includes(program)&&(grade>=10||belarusGradeEightPilot);
  $('curriculum-level-wrap').hidden=!show;
+ const pilot=belarusGradeEightPilot;
+ $('curriculum-level-label').textContent=pilot?'Уровень программы (экспериментальный проект)':'Уровень изучения';
+ $('curriculum-level-hint').hidden=!pilot;
  if(!show)$('curriculum-level').value='';
 }
 function curriculumChanged(){
