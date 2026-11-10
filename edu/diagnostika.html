@@ -180,6 +180,7 @@ function renderQuestion(){
  const q=bank[index],a=current();
  $('counter').textContent='вопрос '+(index+1)+' из '+bank.length;
  $('bar').style.width=((index+1)/bank.length*100)+'%';
+ $('bar').parentElement.setAttribute('aria-valuenow',String(index+1));
  $('topic').textContent='Тема: '+q.topic;
  $('question').textContent=q.question;
  let html='';
