@@ -28,3 +28,5 @@ jobs:
           node-version: "20"
       - name: Validate banks and frontend syntax
         run: python edu/diagnostics/validate_diagnostics.py
+      - name: Test Worker API, consent, archive and retention
+        run: node --test edu/diagnostics/worker.test.mjs
