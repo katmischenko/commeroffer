@@ -41,12 +41,12 @@
       "type": "choice",
       "question": "Какой тип input подходит для выбора целого числа с помощью числового поля?",
       "options": [
-        "type=\"number\"",
         "type=\"text-number\"",
+        "type=\"number\"",
         "type=\"digit\"",
         "type=\"range-text\""
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "correctText": "type=\"number\"",
       "explanation": "type=number создаёт поле для числового значения."
     },
@@ -58,12 +58,12 @@
       "type": "choice",
       "question": "Какой атрибут у img задаёт альтернативный текст для скринридера?",
       "options": [
-        "alt",
         "title",
         "name",
+        "alt",
         "role"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "correctText": "alt",
       "explanation": "alt задаёт текстовую альтернативу изображения."
     },
@@ -75,12 +75,12 @@
       "type": "choice",
       "question": "Какой псевдокласс выбирает элемент, если он не отключён?",
       "options": [
-        ":enabled",
         ":active",
         ":visited",
-        ":empty"
+        ":empty",
+        ":enabled"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "correctText": ":enabled",
       "explanation": ":enabled соответствует включённым элементам управления."
     },
@@ -109,12 +109,12 @@
       "type": "choice",
       "question": "Для чего используют aria-describedby у поля формы?",
       "options": [
-        "Чтобы связать поле с текстом дополнительного описания или ошибки",
         "Чтобы задать цвет поля",
+        "Чтобы связать поле с текстом дополнительного описания или ошибки",
         "Чтобы заменить атрибут type",
         "Чтобы отправить форму"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "correctText": "Чтобы связать поле с текстом дополнительного описания или ошибки",
       "explanation": "aria-describedby связывает элемент с одним или несколькими элементами описания."
     },
@@ -126,12 +126,12 @@
       "type": "choice",
       "question": "Для чего используют loading=\"lazy\" у изображения?",
       "options": [
-        "Чтобы отложить загрузку до приближения к области просмотра",
         "Чтобы сжать файл без потери качества",
         "Чтобы сделать изображение фоном",
+        "Чтобы отложить загрузку до приближения к области просмотра",
         "Чтобы запретить кэширование"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "correctText": "Чтобы отложить загрузку до приближения к области просмотра",
       "explanation": "lazy откладывает загрузку изображений, которые пока находятся вне видимой области."
     },
@@ -143,12 +143,12 @@
       "type": "choice",
       "question": "Когда обычно срабатывает :focus-visible?",
       "options": [
-        "Когда браузер определяет, что фокус следует явно показать, например при навигации клавиатурой",
         "При наведении мыши",
         "После прокрутки страницы",
-        "Только на мобильном устройстве"
+        "Только на мобильном устройстве",
+        "Когда браузер определяет, что фокус следует явно показать, например при навигации клавиатурой"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "correctText": "Когда браузер определяет, что фокус следует явно показать, например при навигации клавиатурой",
       "explanation": ":focus-visible помогает показывать индикатор фокуса в ситуациях, когда он особенно нужен пользователю."
     },
@@ -177,12 +177,12 @@
       "type": "choice",
       "question": "Какой медиазапрос учитывает настройку пользователя «уменьшить движение»?",
       "options": [
-        "@media (prefers-reduced-motion: reduce)",
         "@media (motion: none)",
+        "@media (prefers-reduced-motion: reduce)",
         "@media (animation: off)",
         "@supports (motion: reduce)"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "correctText": "@media (prefers-reduced-motion: reduce)",
       "explanation": "prefers-reduced-motion позволяет адаптировать анимации под системную настройку пользователя."
     },
@@ -194,12 +194,12 @@
       "type": "choice",
       "question": "Какое свойство управляет положением изображения внутри области object-fit?",
       "options": [
-        "object-position",
         "image-align",
         "background-position",
+        "object-position",
         "align-content"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "correctText": "object-position",
       "explanation": "object-position задаёт точку размещения содержимого replaced element."
     },
@@ -211,12 +211,12 @@
       "type": "choice",
       "question": "Что делает атрибут defer у внешнего script?",
       "options": [
-        "Откладывает выполнение до разбора HTML и сохраняет порядок таких скриптов",
         "Запускает скрипт до чтения HTML",
         "Встраивает CSS",
-        "Запрещает загрузку файла"
+        "Запрещает загрузку файла",
+        "Откладывает выполнение до разбора HTML и сохраняет порядок таких скриптов"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "correctText": "Откладывает выполнение до разбора HTML и сохраняет порядок таких скриптов",
       "explanation": "defer загружает скрипт параллельно разбору HTML и выполняет после разбора документа."
     },
@@ -245,12 +245,12 @@
       "type": "choice",
       "question": "Какое свойство включает возможность использовать container queries для элемента-контейнера?",
       "options": [
-        "container-type",
         "container-query",
+        "container-type",
         "query-size",
         "display: container"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "correctText": "container-type",
       "explanation": "container-type задаёт тип контейнера, размер которого может использоваться в @container."
     },
@@ -262,12 +262,12 @@
       "type": "choice",
       "question": "Для чего предназначено правило @layer?",
       "options": [
-        "Для управления порядком слоёв каскада CSS",
         "Для создания анимации",
         "Для импорта HTML",
+        "Для управления порядком слоёв каскада CSS",
         "Для задания сетки"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "correctText": "Для управления порядком слоёв каскада CSS",
       "explanation": "Каскадные слои позволяют явно организовать приоритет групп CSS-правил."
     }
