@@ -93,22 +93,39 @@ export default {
       const curriculumId = clean(p.curriculumId, 20);
       const curriculumName = clean(p.curriculumName, 160);
       const curriculumDetail = clean(p.curriculumDetail, 140);
+      const curriculumLevel = clean(p.curriculumLevel, 20);
+      const studentClass = clean(p.studentClass, 10);
+      const direction = clean(p.direction, 60);
+      const validDirections = ["Информатика", "Физика", "Математика", "Python", "HTML/CSS", "Figma"];
+      if (!validDirections.includes(direction)) return json({ ok: false, error: "invalid_direction" }, 400, origin);
       if (!["ru", "by", "other", "self"].includes(curriculumId) || !curriculumName) {
         return json({ ok: false, error: "curriculum_required" }, 400, origin);
       }
       if (curriculumId === "other" && !curriculumDetail) {
         return json({ ok: false, error: "curriculum_detail_required" }, 400, origin);
       }
+      if (["ru", "by"].includes(curriculumId) && Number(studentClass) >= 10 &&
+          !["basic", "advanced", "unknown"].includes(curriculumLevel)) {
+        return json({ ok: false, error: "curriculum_level_required" }, 400, origin);
+      }
+      if (!clean(p.consentVersion, 40) || !clean(p.consentAt, 50)) {
+        return json({ ok: false, error: "consent_metadata_required" }, 400, origin);
+      }
+      if (!p.answers.every(a => a && typeof a === "object" &&
+          ["answered", "unknown", "skipped", "unanswered"].includes(clean(a.status, 20)) &&
+          clean(a.question, 700) && clean(a.correctText, 300))) {
+        return json({ ok: false, error: "invalid_answer_payload" }, 400, origin);
+      }
       const payload = {
         attemptId,
         studentName: clean(p.studentName, 100),
-        studentClass: clean(p.studentClass, 10),
-        direction: clean(p.direction, 60),
+        studentClass,
+        direction,
         experience: clean(p.experience, 60),
         curriculumId,
         curriculumName,
         curriculumDetail,
-        curriculumLevel: clean(p.curriculumLevel, 20),
+        curriculumLevel,
         consent: true,
         consentVersion: clean(p.consentVersion, 40),
         consentAt: clean(p.consentAt, 50),
