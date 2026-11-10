@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "status": "expanded_draft_review",
+  "status": "all_profiles_draft_review",
   "questionCountPerAttempt": 15,
   "difficultyDistribution": {
     "basic": 5,
@@ -184,128 +184,128 @@
       "profileId": "python-5",
       "direction": "python",
       "grade": 5,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "python-6",
       "direction": "python",
       "grade": 6,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "python-7",
       "direction": "python",
       "grade": 7,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "python-8",
       "direction": "python",
       "grade": 8,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "python-9",
       "direction": "python",
       "grade": 9,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "python-10",
       "direction": "python",
       "grade": 10,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "python-11",
       "direction": "python",
       "grade": 11,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "html-css-5",
       "direction": "html-css",
       "grade": 5,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "html-css-6",
       "direction": "html-css",
       "grade": 6,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "html-css-7",
       "direction": "html-css",
       "grade": 7,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "html-css-8",
       "direction": "html-css",
       "grade": 8,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "html-css-9",
       "direction": "html-css",
       "grade": 9,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "html-css-10",
       "direction": "html-css",
       "grade": 10,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "html-css-11",
       "direction": "html-css",
       "grade": 11,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "figma-5",
       "direction": "figma",
       "grade": 5,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "figma-6",
       "direction": "figma",
       "grade": 6,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "figma-7",
       "direction": "figma",
       "grade": 7,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "figma-8",
       "direction": "figma",
       "grade": 8,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "figma-9",
       "direction": "figma",
       "grade": 9,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "figma-10",
       "direction": "figma",
       "grade": 10,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "figma-11",
       "direction": "figma",
       "grade": 11,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     }
   ],
-  "note": "15 profiles have draft question banks: informatics-6/7/8/9/10/11, math-6/7/8/9, physics-7/8/9/10/11. All draft banks require teacher review before public use. Python, HTML/CSS and Figma profiles are not yet created."
+  "note": "Все 36 профилей имеют черновые банки по 15 заданий. Банки требуют педагогической вычитки; для Python, HTML/CSS и Figma уровень опыта собирается, но пока не меняет состав заданий."
 }
