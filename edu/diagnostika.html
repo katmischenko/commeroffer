@@ -152,7 +152,7 @@ const API='https://mischenko-edu-diagnostics.mks-ki.workers.dev/diagnostics';
 const CONSENT_VERSION='2026-11-10-v1';
 const SCHOOL_DIRECTIONS=['informatics','physics','math'];
 const $=id=>document.getElementById(id);
-let bank=[],index=0,answers=[],student='',direction='',grade='',experience='',curriculumId='',curriculumName='',curriculumDetail='',lastPayload=null;
+let bank=[],index=0,answers=[],student='',direction='',grade='',experience='',curriculumId='',curriculumName='',curriculumDetail='',lastPayload=null,bankProgramMatched=false;
 function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function normalize(v){return String(v??'').trim().toLowerCase().replace(/\s+/g,' ');}
 function profile(){
@@ -258,8 +258,8 @@ function buildPayload(score,percentage,title,weak,report){
  const statusLabels={answered:'Ответ дан',unknown:'Не знаю',skipped:'Пропущено',unanswered:'Нет ответа'};
  return {
   attemptId:makeId(),studentName:student,studentClass:String(grade),direction,experience,
-  curriculumId,curriculumName,curriculumDetail,consent:true,telegramConsent:$('telegram-consent').checked,
-  consentVersion:CONSENT_VERSION,score,maxScore:15,percentage,completedAt:new Date().toISOString(),
+  curriculumId,curriculumName,curriculumDetail,bankProgramMatched,consent:true,telegramConsent:$('telegram-consent').checked,
+  consentVersion:CONSENT_VERSION,consentAt:new Date().toISOString(),score,maxScore:15,percentage,completedAt:new Date().toISOString(),
   weakTopics:weak.map(([name,v])=>name+' — '+v.right+'/'+v.total),
   answers:report.map(({q,a,ok})=>({
    question:q.question,answerText:answerLabel(q,a),correctText:q.type==='short'?q.correctText:q.options[q.correctIndex],
@@ -274,7 +274,14 @@ async function saveAttempt(payload){
  try{
   const response=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
   const data=await response.json();
-  if(!response.ok||!data.ok)throw new Error(data.error||'Не удалось сохранить результат.');
+  if(!response.ok||!data.ok){
+   if(data.saved){
+    status.textContent='Результат уже сохранён в архиве, но дополнительное действие не выполнено ('+(data.error||'ошибка')+'). После настройки сервиса можно повторить.';
+    if(payload.telegramConsent){const retry=document.createElement('button');retry.className='btn btn-ghost';retry.textContent='Повторить уведомление';retry.addEventListener('click',()=>saveAttempt(payload));status.appendChild(document.createTextNode(' '));status.appendChild(retry);}
+    return;
+   }
+   throw new Error(data.error||'Не удалось сохранить результат.');
+  }
   status.textContent=data.telegramSent
    ?'Результат сохранён в архиве, уведомление преподавателю отправлено в Telegram.'
    :data.telegramNotRequested
@@ -321,6 +328,7 @@ function finish(){
   '<p>'+percent+'% правильных ответов. '+description+'</p></div>'+
   '<p class="diag-hint">Ученик: '+escapeHtml(student)+'</p>'+
   '<p class="diag-hint">Программа: '+escapeHtml(curriculumName)+(curriculumDetail?' · '+escapeHtml(curriculumDetail):'')+'</p>'+
+  '<p class="diag-hint">Банк заданий: '+(bankProgramMatched?'подобран под выбранную программу':'общий черновой банк; соответствие выбранной программе ещё не подтверждено')+'</p>'+
   (experience?'<p class="diag-hint">Опыт: '+({beginner:'только начинаю',basics:'знаю основы',experienced:'есть опыт'}[experience]||'не указан')+'</p>':'')+
   '<h3 class="diag-section-title">Что уже получается</h3>'+
   (strong.length?'<ul class="q-topics">'+strong.map(([t,v])=>'<li>'+escapeHtml(t)+' — '+v.right+' из '+v.total+'</li>').join('')+'</ul>':'<p class="diag-hint">Пока нет тем, где все задания выполнены верно. Это не приговор — просто ориентир для дальнейшей работы.</p>')+
@@ -404,7 +412,9 @@ $('start').addEventListener('click',async()=>{
  $('start').disabled=true;$('start').textContent='Загружаю задания…';
  try{
   const profileId=p.direction.id+'-'+p.grade;
-  const res=await fetch('diagnostics/question-bank-'+profileId+'.json',{cache:'no-store'});
+  let res=await fetch('diagnostics/question-bank-'+profileId+'-'+curriculumId+'.json',{cache:'no-store'});
+  bankProgramMatched=res.ok;
+  if(!res.ok)res=await fetch('diagnostics/question-bank-'+profileId+'.json',{cache:'no-store'});
   if(!res.ok)throw new Error('Не удалось загрузить задания.');
   const data=await res.json();
   if(!Array.isArray(data.questions)||data.questions.length!==15)throw new Error('В наборе должно быть 15 заданий.');
