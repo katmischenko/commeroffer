@@ -228,9 +228,9 @@
         "13",
         "16"
       ],
-      "correctIndex": 2,
-      "correctText": "13",
-      "explanation": "Число способов F(n)=F(n−1)+F(n−2), F(1)=1, F(2)=2; F(5)=8. Wait: the correct answer is 8."
+      "correctIndex": 1,
+      "correctText": "8",
+      "explanation": "Число способов F(n)=F(n−1)+F(n−2), F(1)=1, F(2)=2; F(5)=8."
     },
     {
       "id": "inf11ru-a-14",
