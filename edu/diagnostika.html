@@ -32,7 +32,7 @@
 .diag-detail{border-top:1px dashed rgba(234,231,223,.14);padding:15px 0}
 .diag-detail summary{cursor:pointer;font-weight:700;color:var(--ink)}
 .diag-detail p{font-size:14px;color:var(--muted);margin-top:10px}
-.diag-status{font-family:var(--hand);font-size:20px;color:var(--pen);margin:8px 0}
+.diag-status{font-family:var(--hand);font-size:20px;color:var(--pen);margin:8px 0}\n.back{display:block;width:fit-content;margin-bottom:34px}\n#unknown.is-selected{border-color:var(--pen);background:var(--pen-soft);color:var(--pen)}\n.diag-answer-note{font-size:13px;color:var(--muted);margin-top:10px}
 @media(max-width:640px){.diag-fields{grid-template-columns:1fr}.diag-field.full{grid-column:auto}}
 </style>
 </head>
@@ -94,9 +94,9 @@
       <div class="q-text" id="question"></div>
       <div class="diag-answer" id="answer-area"></div>
       <div class="diag-actions">
-        <button class="btn btn-ghost" id="back">← Назад</button>
-        <button class="btn btn-pen" id="next" disabled>Следующий вопрос →</button>
-        <button class="btn btn-ghost" id="skip">Пропустить</button>
+        <button type="button" class="btn btn-ghost" id="back">← Назад</button>
+        <button type="button" class="btn btn-pen" id="next" disabled>Следующий вопрос →</button>
+        <button type="button" class="btn btn-ghost" id="skip">Пропустить</button>
       </div>
       <p class="diag-hint">Правильный ответ и объяснение появятся после завершения всех заданий.</p>
     </section>
@@ -169,7 +169,7 @@ function renderQuestion(){
  }else{
   html='<div class="q-opts">'+q.options.map((o,n)=>'<button type="button" class="q-opt '+(a.answerText===String(n)?'selected':'')+'" data-option="'+n+'">'+escapeHtml(o)+'</button>').join('')+'</div>';
  }
- html+='<div class="diag-actions"><button type="button" class="btn btn-ghost" id="unknown">Не знаю</button></div>';
+ html+='<div class="diag-actions"><button type="button" class="btn btn-ghost '+(a.status===\'unknown\'?\'is-selected\':\'\')+'" id="unknown" aria-pressed="'+(a.status===\'unknown\')+'">Не знаю</button></div><p class="diag-answer-note" id="answer-note">'+(a.status===\'unknown\'?\'Отмечено: «Не знаю». Нажми «Следующий вопрос», когда будешь готов(а).\':\'«Не знаю» отметит ответ, но не переключит вопрос автоматически.\')+'</p>';
  $('answer-area').innerHTML=html;
  if(q.type==='short'){
   $('short-answer').addEventListener('input',e=>{saveAnswer(e.target.value,e.target.value.trim()?'answered':'unanswered');});
@@ -179,9 +179,9 @@ function renderQuestion(){
    $('answer-area').querySelectorAll('[data-option]').forEach(x=>x.classList.toggle('selected',x===b));
   }));
  }
- $('unknown').addEventListener('click',()=>saveAnswer('','unknown'));
+ $('unknown').addEventListener('click',e=>{e.preventDefault();e.stopPropagation();saveAnswer('','unknown');$('unknown').classList.add('is-selected');$('unknown').setAttribute('aria-pressed','true');$('answer-note').textContent='Отмечено: «Не знаю». Нажми «Следующий вопрос», когда будешь готов(а).';});
  $('back').disabled=index===0;
- $('skip').hidden=!!a.status&&a.status!=='unanswered';
+ $('skip').hidden=false;
  $('next').textContent=index===bank.length-1?'Завершить диагностику':'Следующий вопрос →';
  syncNext();
 }
