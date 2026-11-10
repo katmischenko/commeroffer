@@ -120,7 +120,7 @@ async function post(db, payload) {
   return { status: res.status, body: await res.json() };
 }
 
-test("saves an opted-in archive record without sending Telegram", async () => {
+test("saves an archive record without Telegram opt-in by default", async () => {
   const db = new FakeDB();
   const result = await post(db, validPayload());
   assert.equal(result.status, 200);
@@ -131,6 +131,8 @@ test("saves an opted-in archive record without sending Telegram", async () => {
   assert.equal(row.curriculum_id, "by");
   assert.equal(row.curriculum_year, "2026/2027");
   assert.equal(row.telegram_consent, 0);
+  assert.equal(row.telegram_status, "sent");
+  assert.notEqual(row.consent_version, "legacy");
 });
 
 test("sends only a concise Telegram notification after separate opt-in", async () => {
