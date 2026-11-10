@@ -20,12 +20,12 @@
       "question": "Вычисли: −7 + 12.",
       "explanation": "Числа имеют разные знаки: вычитаем 7 из 12 и берём знак большего по модулю числа. Получаем 5.",
       "options": [
+        "5",
         "−19",
         "−5",
-        "5",
         "19"
       ],
-      "correctIndex": 2,
+      "correctIndex": 0,
       "correctText": "5"
     },
     {
@@ -85,11 +85,11 @@
       "explanation": "Сумма внутренних углов любого треугольника равна 180°.",
       "options": [
         "90°",
-        "180°",
         "270°",
-        "360°"
+        "360°",
+        "180°"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "correctText": "180°"
     },
     {
@@ -145,11 +145,11 @@
       "explanation": "Складываем уравнения: 2x=8, x=4.",
       "options": [
         "2",
-        "3",
         "4",
+        "3",
         "5"
       ],
-      "correctIndex": 2,
+      "correctIndex": 1,
       "correctText": "4"
     },
     {
@@ -175,11 +175,11 @@
       "explanation": "По теореме Пифагора c=√(6²+8²)=√100=10.",
       "options": [
         "9",
-        "10",
         "12",
+        "10",
         "14"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "correctText": "10"
     },
     {
@@ -206,10 +206,10 @@
       "options": [
         "y=3x",
         "y=−2x",
-        "y=2x+4",
-        "y=x²"
+        "y=x²",
+        "y=2x+4"
       ],
-      "correctIndex": 2,
+      "correctIndex": 3,
       "correctText": "y=2x+4"
     },
     {
