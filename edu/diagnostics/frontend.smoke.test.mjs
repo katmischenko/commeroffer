@@ -138,6 +138,74 @@ test("digital direction requires an explicit experience level", async () => {
   await page.close();
 });
 
+test("teacher archive: renders attempts, filters and compares two runs", async () => {
+  const page = await browser.newPage();
+  const makeAttempt = (id, score, percentage, date) => ({
+    attempt_id: id,
+    student_name: "Тестовый ученик",
+    student_class: "7",
+    direction: "Математика",
+    curriculum_id: "ru",
+    curriculum_name: "Россия — ФРП",
+    curriculum_year: "2026/2027",
+    curriculum_level: "basic",
+    curriculum_detail: "",
+    experience: null,
+    score,
+    percentage,
+    completed_at: date,
+    telegram_consent: false,
+    telegram_status: "not_requested",
+    payload_json: JSON.stringify({
+      studentName: "Тестовый ученик",
+      studentClass: "7",
+      direction: "Математика",
+      score,
+      percentage,
+      bankProgramMatched: true,
+      bankId: "math-7-ru-2026-2027",
+      bankReviewStatus: "teacher_review_draft",
+      answers: [{
+        question: "Сократи дробь 6/8.",
+        answerText: score > 8 ? "3/4" : "6/8",
+        correctText: "3/4",
+        statusLabel: score > 8 ? "Верно" : "Неверно",
+        topic: "Дроби",
+        difficulty: "basic",
+        explanation: "Числитель и знаменатель делим на 2."
+      }]
+    })
+  });
+  await page.route("**/admin/attempts?limit=100", route => route.fulfill({
+    status: 200,
+    contentType: "application/json",
+    body: JSON.stringify({
+      ok: true,
+      attempts: [
+        makeAttempt("attempt-1", 8, 53, "2026-11-09T10:00:00.000Z"),
+        makeAttempt("attempt-2", 10, 67, "2026-11-10T10:00:00.000Z")
+      ]
+    })
+  }));
+  await page.goto(baseUrl + "/edu/diagnostics/archive.html", { waitUntil: "domcontentloaded" });
+  await page.locator("#token").fill("test-admin-token");
+  await page.locator("#load").click();
+  await page.waitForFunction(() => !document.querySelector("#archive").hidden);
+  assert.equal(await page.locator("#list .attempt").count(), 2);
+  assert.match(await page.locator("#list").textContent(), /отдельный черновик программы/);
+  await page.locator("#search").fill("нет такого ученика");
+  assert.equal(await page.locator("#list .attempt").count(), 0);
+  await page.locator("#search").fill("");
+  await page.locator('[data-compare="attempt-1"]').check();
+  await page.locator('[data-compare="attempt-2"]').check();
+  assert.equal(await page.locator("#compare").isEnabled(), true);
+  await page.locator("#compare").click();
+  assert.equal(await page.locator("#compare-view").isVisible(), true);
+  assert.match(await page.locator("#compare-view").textContent(), /Сравнение попыток/);
+  assert.match(await page.locator("#compare-view").textContent(), /Дроби/);
+  await page.close();
+});
+
 test("mobile: setup fits a narrow viewport without horizontal overflow", async () => {
   const page = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
   await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
