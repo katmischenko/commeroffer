@@ -195,6 +195,17 @@ test("requires a level for Russian senior-school physics", async () => {
   assert.equal(result.body.error, "curriculum_level_required");
 });
 
+test("requires a level for Belarus grade-eight physics pilot", async () => {
+  const db = new FakeDB();
+  const result = await post(db, validPayload({
+    direction: "Физика", studentClass: "8", curriculumId: "by",
+    curriculumName: "Беларусь — учебная программа Министерства образования",
+    curriculumYear: "2026/2027", curriculumLevel: ""
+  }));
+  assert.equal(result.status, 400);
+  assert.equal(result.body.error, "curriculum_level_required");
+});
+
 test("rejects a digital profile without experience selection", async () => {
   const db = new FakeDB();
   const result = await post(db, validPayload({
