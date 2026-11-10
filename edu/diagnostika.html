@@ -153,7 +153,7 @@ function checkReady(){
  const description=title+' от Mischenko Edu: 15 заданий, анализ результатов и рекомендации по темам.';
  const meta=$('meta-description'); if(meta) meta.setAttribute('content',description);
  $('profile-note').textContent=available
- ?(profileId==='informatics-6'?'Для этого профиля подготовлен пилотный набор из 15 заданий.':'Для этого профиля подготовлен черновой набор из 15 заданий; он требует педагогической проверки перед публикацией.')
+ ?(profileId==='informatics-6'?'Для этого профиля подготовлен пилотный набор из 15 заданий.':'Для этого профиля подготовлен черновой набор из 15 заданий; он требует педагогической проверки перед публикацией.')+(p.direction.experience?' Уровень опыта будет отмечен в результате, но пока не меняет состав заданий.':'')
  :'Набор для выбранного профиля ещё готовится. Выбери один из доступных профилей или напиши преподавателю.';
  $('start').disabled=!available||!$('student').value.trim()||(p.direction.experience&&!$('experience').value);
 }
@@ -231,6 +231,8 @@ function finish(){
   '<div class="q-result"><div class="big">'+score+' из '+bank.length+'</div>'+
   '<h2 class="sec-title">'+title+'</h2>'+
   '<p>'+percent+'% правильных ответов. '+description+'</p></div>'+
+  '<p class="diag-hint">Ученик: '+escapeHtml(student)+'</p>'+
+  (experience?'<p class="diag-hint">Опыт: '+({beginner:'только начинаю',basics:'знаю основы',experienced:'есть опыт'}[experience]||'не указан')+'</p>':'')+
   '<h3 class="diag-section-title">Что уже получается</h3>'+
   (strong.length?'<ul class="q-topics">'+strong.map(([t,v])=>'<li>'+escapeHtml(t)+' — '+v.right+' из '+v.total+'</li>').join('')+'</ul>':'<p class="diag-hint">Пока нет тем, где все задания выполнены верно. Это не приговор — просто ориентир для дальнейшей работы.</p>')+
   '<h3 class="diag-section-title">Что стоит повторить</h3>'+
