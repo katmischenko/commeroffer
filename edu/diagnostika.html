@@ -244,12 +244,12 @@ function finish(){
   '<div class="diag-actions"><button class="btn btn-pen" id="restart">Пройти ещё раз</button><a class="btn btn-ghost" id="discuss-result" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Обсудить результат</a></div>'+
  '<p class="diag-hint" id="discuss-note">При нажатии чат откроется, а полный отчёт скопируется. Вставь его в сообщение.</p>';
  const experienceLabel={beginner:'только начинаю',basics:'знаю основы',experienced:'есть опыт'}[experience]||'не указан';
- const topicLines=(items)=>items.length?items.map(([name,v])=>'- '+name+': '+v.right+'/'+v.total).join('\\n'):'- нет';
+ const topicLines=(items)=>items.length?items.map(([name,v])=>'- '+name+': '+v.right+'/'+v.total).join('\n'):'- нет';
  const detailLines=report.map(({q,a,ok},i)=>{
   const userAnswer=answerLabel(q,a)||'не указан';
   const correctAnswer=q.type==='short'?q.correctText:q.options[q.correctIndex];
   return (i+1)+'. '+q.topic+' — '+(ok?'верно':'ошибка/нет ответа')+'\\n   Ответ ученика: '+userAnswer+(ok?'':'\\n   Правильный ответ: '+correctAnswer);
- }).join('\\n');
+ }).join('\n');
  const message=[
   'Здравствуйте! Хочу обсудить результат диагностики Mischenko Edu.',
   'Ученик: '+(student||'не указано'),
@@ -268,7 +268,7 @@ function finish(){
   detailLines,
   '',
   'Прошу помочь разобрать результат и определить дальнейшие шаги.'
- ].filter(Boolean).join('\\n');
+ ].filter(Boolean).join('\n');
  const discuss=$('discuss-result');
  discuss.href='https://t.me/katerin_mischenko';
  discuss.addEventListener('click',()=>{
