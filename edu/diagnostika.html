@@ -160,6 +160,10 @@ function checkReady(){
  ?(profileId==='informatics-6'?'Для этого профиля подготовлен пилотный набор из 15 заданий.':'Для этого профиля подготовлен черновой набор из 15 заданий; он требует педагогической проверки перед публикацией.')
  :'Набор для выбранного профиля ещё готовится. Выбери один из доступных профилей или напиши преподавателю.';
  $('start').disabled=!available||!$('student').value.trim();
+ $('consent-panel').hidden=!REMOTE_SAVE_ENABLED;
+ $('archive-status').textContent=REMOTE_SAVE_ENABLED
+  ?'Сохранение результата в закрытом архиве доступно только с отдельного согласия. Без согласия результат останется в этом окне.'
+  :'Сейчас диагностика работает локально. Сохранение в архив и Telegram будут включены после обновления серверной части и проверки базы данных.';
  $('telegram-consent').disabled=!REMOTE_SAVE_ENABLED||!$('storage-consent').checked;
  if(!$('storage-consent').checked)$('telegram-consent').checked=false;
 }
