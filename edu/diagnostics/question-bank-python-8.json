@@ -25,12 +25,12 @@
       "question": "Какой тип данных хранит логическое значение?",
       "explanation": "Тип bool хранит True или False.",
       "options": [
+        "bool",
         "int",
         "str",
-        "bool",
         "float"
       ],
-      "correctIndex": 2,
+      "correctIndex": 0,
       "correctText": "bool"
     },
     {
@@ -42,12 +42,12 @@
       "question": "Что возвращает выражение 17 % 5?",
       "explanation": "Остаток от деления 17 на 5 равен 2.",
       "options": [
-        "2",
         "3",
+        "2",
         "3.4",
         "5"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "correctText": "2"
     },
     {
@@ -60,11 +60,11 @@
       "explanation": "Встроенная функция len() возвращает число элементов.",
       "options": [
         "size(s)",
-        "len(s)",
         "count(s)",
+        "len(s)",
         "s.length"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "correctText": "len(s)"
     },
     {
@@ -77,11 +77,11 @@
       "explanation": "Метод append добавляет элемент в конец списка.",
       "options": [
         "a.add(x)",
-        "a.append(x)",
         "append(a,x)",
-        "a.push(x)"
+        "a.push(x)",
+        "a.append(x)"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "correctText": "a.append(x)"
     },
     {
@@ -128,11 +128,11 @@
       "explanation": "К значению словаря обращаются по ключу в квадратных скобках.",
       "options": [
         "d.age",
-        "d['age']",
         "d(age)",
+        "d['age']",
         "d->age"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "correctText": "d['age']"
     },
     {
@@ -157,12 +157,12 @@
       "question": "Что такое параметр функции?",
       "explanation": "Параметр — переменная в определении функции, принимающая аргумент.",
       "options": [
-        "Значение, которое функция получает при вызове",
         "Имя файла",
         "Результат print",
-        "Тип цикла"
+        "Тип цикла",
+        "Значение, которое функция получает при вызове"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "correctText": "Значение, которое функция получает при вызове"
     },
     {
@@ -174,12 +174,12 @@
       "question": "Какой режим open() открывает файл для чтения?",
       "explanation": "Режим r предназначен для чтения.",
       "options": [
+        "'r'",
         "'w'",
         "'a'",
-        "'r'",
         "'x'"
       ],
-      "correctIndex": 2,
+      "correctIndex": 0,
       "correctText": "'r'"
     },
     {
@@ -221,12 +221,12 @@
       "question": "Что создаёт выражение [x*x for x in range(4)]?",
       "explanation": "Генератор списка возводит 0,1,2,3 в квадрат.",
       "options": [
-        "[0,1,4,9]",
         "[1,4,9,16]",
         "[0,2,4,6]",
+        "[0,1,4,9]",
         "[4,9,16]"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "correctText": "[0,1,4,9]"
     },
     {
@@ -240,10 +240,10 @@
       "options": [
         "O(1)",
         "O(log n)",
-        "O(n)",
-        "O(n²)"
+        "O(n²)",
+        "O(n)"
       ],
-      "correctIndex": 2,
+      "correctIndex": 3,
       "correctText": "O(n)"
     },
     {
