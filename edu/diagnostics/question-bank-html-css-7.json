@@ -41,12 +41,12 @@
       "type": "choice",
       "question": "Для чего чаще всего используют элемент footer?",
       "options": [
-        "Для нижней части страницы или раздела",
         "Для главного заголовка",
+        "Для нижней части страницы или раздела",
         "Для поля ввода",
         "Для изображения"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "correctText": "Для нижней части страницы или раздела",
       "explanation": "footer содержит завершающую информацию о странице или разделе."
     },
@@ -58,12 +58,12 @@
       "type": "choice",
       "question": "Какой элемент подходит для самостоятельной публикации, например новости или статьи?",
       "options": [
-        "<article>",
         "<span>",
         "<br>",
+        "<article>",
         "<input>"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "correctText": "<article>",
       "explanation": "article обозначает самостоятельный материал, который может использоваться отдельно."
     },
@@ -75,12 +75,12 @@
       "type": "choice",
       "question": "Какое свойство выбирает семейство шрифта?",
       "options": [
-        "font-family",
         "font-group",
         "text-family",
-        "typeface-name"
+        "typeface-name",
+        "font-family"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "correctText": "font-family",
       "explanation": "font-family задаёт список предпочтительных гарнитур."
     },
@@ -92,11 +92,11 @@
       "type": "choice",
       "question": "Как выбрать элемент, если у него атрибут data-state со значением active?",
       "options": [
-        "[data-state=\"active\"]",
         ".data-state-active",
+        "[data-state=\"active\"]",
         "#active"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "correctText": "[data-state=\"active\"]",
       "explanation": "Атрибутный селектор в квадратных скобках выбирает элемент по имени и значению атрибута."
     },
@@ -125,12 +125,12 @@
       "type": "choice",
       "question": "Что задаёт align-items в flex-контейнере?",
       "options": [
-        "Выравнивание элементов по поперечной оси",
         "Цвет текста",
         "Порядок HTML-узлов",
+        "Выравнивание элементов по поперечной оси",
         "Ширину окна"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "correctText": "Выравнивание элементов по поперечной оси",
       "explanation": "align-items отвечает за выравнивание элементов по поперечной оси."
     },
@@ -142,12 +142,12 @@
       "type": "choice",
       "question": "Какое свойство не позволяет блоку стать уже 280 пикселей?",
       "options": [
-        "min-width: 280px",
         "max-width: 280px",
         "width: auto",
-        "height: 280px"
+        "height: 280px",
+        "min-width: 280px"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "correctText": "min-width: 280px",
       "explanation": "min-width задаёт минимально допустимую ширину."
     },
@@ -176,12 +176,12 @@
       "type": "choice",
       "question": "Какое свойство задаёт промежуток между строками и столбцами CSS Grid?",
       "options": [
-        "gap",
         "padding",
+        "gap",
         "line-height",
         "outline"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "correctText": "gap",
       "explanation": "gap задаёт расстояния между дорожками сетки."
     },
@@ -193,12 +193,12 @@
       "type": "choice",
       "question": "Какой атрибут input задаёт подсказку внутри пустого поля?",
       "options": [
-        "placeholder",
         "required",
         "checked",
+        "placeholder",
         "action"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "correctText": "placeholder",
       "explanation": "placeholder показывает пример или подсказку до ввода значения."
     },
@@ -210,12 +210,12 @@
       "type": "choice",
       "question": "Какой медиазапрос применит стили при ширине окна от 700 пикселей?",
       "options": [
-        "@media (min-width: 700px)",
         "@media (max-height: 700px)",
         "@screen-width(700)",
-        "@media width > 700"
+        "@media width > 700",
+        "@media (min-width: 700px)"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "correctText": "@media (min-width: 700px)",
       "explanation": "min-width задаёт нижнюю границу ширины области просмотра."
     },
@@ -244,12 +244,12 @@
       "type": "choice",
       "question": "Что делает overflow: auto, если содержимое не помещается в блок?",
       "options": [
-        "Добавляет прокрутку при необходимости",
         "Всегда обрезает содержимое",
+        "Добавляет прокрутку при необходимости",
         "Растягивает шрифт",
         "Удаляет лишнее содержимое"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "correctText": "Добавляет прокрутку при необходимости",
       "explanation": "При переполнении браузер предоставляет прокрутку по соответствующей оси."
     },
@@ -261,12 +261,12 @@
       "type": "choice",
       "question": "Какой псевдоэлемент позволяет оформить первую строку текста?",
       "options": [
-        "::first-line",
         "::first-child",
         "::line-one",
+        "::first-line",
         "::text-start"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "correctText": "::first-line",
       "explanation": "::first-line применяет стили к первой форматируемой строке блока."
     }
