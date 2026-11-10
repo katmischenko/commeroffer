@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS diagnostic_attempts (
   curriculum_name TEXT NOT NULL DEFAULT '',
   curriculum_detail TEXT NOT NULL DEFAULT '',
   curriculum_level TEXT NOT NULL DEFAULT '',
+  curriculum_year TEXT NOT NULL DEFAULT '',
   consent_version TEXT NOT NULL DEFAULT '',
   telegram_consent INTEGER NOT NULL DEFAULT 1 CHECK (telegram_consent IN (0,1)),
   score INTEGER NOT NULL CHECK (score >= 0),
