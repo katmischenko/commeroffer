@@ -475,18 +475,19 @@ $('start').addEventListener('click',async()=>{
    candidates.push('diagnostics/question-bank-'+profileId+'-self.json');
   }
   candidates.push('diagnostics/question-bank-'+profileId+'.json');
-  let data=null;bankProgramMatched=false;
+  let data=null;bankProgramMatched=false;let bankPathUsed='';
   for(let n=0;n<candidates.length;n++){
    const res=await fetch(candidates[n],{cache:'no-store'});
    if(res.ok){
     data=await res.json();
+    bankPathUsed=candidates[n];
     bankProgramMatched=n<candidates.length-1;
     break;
    }
   }
   if(!data)throw new Error('Не удалось загрузить задания.');
   if(!Array.isArray(data.questions)||data.questions.length!==15)throw new Error('В наборе должно быть 15 заданий.');
-  bankMeta={id:data.bankId||candidates.find(x=>x.includes('-'+curriculumId+'-'))||('question-bank-'+profileId),reviewStatus:data.reviewStatus||'teacher_review_draft'};
+  bankMeta={id:data.bankId||bankPathUsed,reviewStatus:data.reviewStatus||'teacher_review_draft'};
   $('profile-note').textContent=bankProgramMatched
    ?'Загружен отдельный черновик для выбранной программы. Он всё ещё требует предметной и педагогической вычитки.'
    :'Используется общий черновик. Соответствие выбранной программе пока не подтверждено.';
