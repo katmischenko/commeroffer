@@ -75,12 +75,12 @@
       "type": "choice",
       "question": "Какой блок содержит код, который может вызвать исключение?",
       "options": [
-        "try",
         "except",
         "finally",
-        "raise"
+        "raise",
+        "try"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "correctText": "try",
       "explanation": "Внутри try размещают код, выполнение которого нужно контролировать."
     },
@@ -92,12 +92,12 @@
       "type": "choice",
       "question": "Какой режим open() предназначен для добавления текста в конец файла?",
       "options": [
+        "a",
         "r",
         "w",
-        "a",
         "x"
       ],
-      "correctIndex": 2,
+      "correctIndex": 0,
       "correctText": "a",
       "explanation": "Режим a открывает файл для добавления; существующее содержимое сохраняется."
     },
@@ -122,12 +122,12 @@
       "type": "choice",
       "question": "Для чего обычно используют enumerate(items)?",
       "options": [
-        "Чтобы получить пары индекс–элемент",
         "Чтобы отсортировать список",
+        "Чтобы получить пары индекс–элемент",
         "Чтобы удалить повторы",
         "Чтобы открыть файл"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "correctText": "Чтобы получить пары индекс–элемент",
       "explanation": "enumerate выдаёт индекс текущего элемента вместе с самим элементом."
     },
@@ -153,11 +153,11 @@
       "question": "Как отсортировать список словарей people по полю age?",
       "options": [
         "people.sort(age)",
-        "people.sort(key=lambda p: p['age'])",
         "sort(people.age)",
+        "people.sort(key=lambda p: p['age'])",
         "people.order('age')"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "correctText": "people.sort(key=lambda p: p['age'])",
       "explanation": "Параметр key задаёт функцию, по результату которой сравниваются элементы."
     },
@@ -183,11 +183,11 @@
       "question": "Какое исключение возникает при попытке преобразовать строку \"кот\" в int?",
       "options": [
         "TypeError",
-        "ValueError",
         "IndexError",
-        "KeyError"
+        "KeyError",
+        "ValueError"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "correctText": "ValueError",
       "explanation": "Строка существует, но не содержит корректной записи целого числа, поэтому возникает ValueError."
     },
@@ -230,11 +230,11 @@
       "question": "Какова временная сложность алгоритма, который для каждого из n элементов один раз просматривает весь список из n элементов?",
       "options": [
         "O(n)",
-        "O(log n)",
         "O(n²)",
+        "O(log n)",
         "O(1)"
       ],
-      "correctIndex": 2,
+      "correctIndex": 1,
       "correctText": "O(n²)",
       "explanation": "Вложенный полный проход даёт примерно n × n операций."
     },
