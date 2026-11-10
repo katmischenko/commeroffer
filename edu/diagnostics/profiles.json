@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "status": "internal_build_incomplete",
+  "status": "expanded_draft_review",
   "questionCountPerAttempt": 15,
   "difficultyDistribution": {
     "basic": 5,
@@ -100,7 +100,7 @@
       "profileId": "informatics-7",
       "direction": "informatics",
       "grade": 7,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "informatics-8",
@@ -130,7 +130,7 @@
       "profileId": "physics-7",
       "direction": "physics",
       "grade": 7,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "physics-8",
@@ -160,7 +160,7 @@
       "profileId": "math-6",
       "direction": "math",
       "grade": 6,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "math-7",
@@ -307,5 +307,5 @@
       "status": "not_created"
     }
   ],
-  "note": "Only informatics-6 has a draft question bank. Other profiles are intentionally disabled; do not publish as a complete diagnostic."
+  "note": "Four profiles have draft question banks (informatics-6, informatics-7, math-6, physics-7). Draft banks require teacher review before public use. Other profiles are not yet created."
 }
