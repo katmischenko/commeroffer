@@ -149,7 +149,7 @@ test("rejects Russian grade-six informatics as a federal-program profile", async
 test("requires a level for Russian senior-school mathematics", async () => {
   const db = new FakeDB();
   const result = await post(db, validPayload({
-    direction: "Математика", studentClass: "10", curriculumId: "ru",
+    direction: "Физика", studentClass: "10", curriculumId: "ru",
     curriculumName: "Россия — ФРП", curriculumYear: "2026/2027",
     curriculumLevel: ""
   }));
