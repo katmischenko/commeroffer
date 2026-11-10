@@ -102,10 +102,11 @@
           </select>
         </div>
       </div>
-      <div class="diag-consents">
+      <div class="diag-consents" id="consent-panel" hidden>
         <label class="diag-consent"><input type="checkbox" id="storage-consent"> <span>Подтверждаю, что я совершеннолетний ученик или родитель / законный представитель несовершеннолетнего, и даю согласие передать ответы преподавателю и сохранить результат в закрытом архиве Mischenko Edu для анализа и подготовки рекомендаций. <a href="diagnostics/privacy.html" target="_blank" rel="noopener">Как используются данные</a>.</span></label>
         <label class="diag-consent diag-consent-secondary"><input type="checkbox" id="telegram-consent" disabled> <span>Разрешаю дополнительно отправить преподавателю уведомление в Telegram о завершённой диагностике.</span></label>
       </div>
+      <p class="diag-hint" id="archive-status">Сейчас диагностика работает локально. Сохранение в архив и Telegram будут включены после обновления серверной части и проверки базы данных.</p>
       <p class="diag-hint" id="profile-note"></p>
       <div class="diag-actions">
         <button class="btn btn-pen" id="start" disabled>Начать диагностику →</button>
@@ -154,6 +155,7 @@ const directions=[
 ];
 const API='https://mischenko-edu-diagnostics.mks-ki.workers.dev/diagnostics';
 const CONSENT_VERSION='2026-11-10-v1';
+const REMOTE_SAVE_ENABLED=false; // включить только после миграций D1, Deploy Worker и интеграционного теста
 const SCHOOL_DIRECTIONS=['informatics','physics','math'];
 const $=id=>document.getElementById(id);
 let bank=[],index=0,answers=[],student='',direction='',grade='',experience='',curriculumId='',curriculumName='',curriculumDetail='',curriculumLevel='',lastPayload=null,bankProgramMatched=false;
@@ -217,7 +219,7 @@ function checkReady(){
  const detailRequired=cur.id==='other'&&!cur.detail;
  const levelRequired=SCHOOL_DIRECTIONS.includes(p.direction.id)&&['ru','by'].includes(cur.id)&&Number(p.grade)>=10&&!cur.level;
  $('start').disabled=!available||!$('student').value.trim()||!cur.id||detailRequired||levelRequired||(p.direction.experience&&!$('experience').value);
- $('telegram-consent').disabled=!$('storage-consent').checked;
+ $('telegram-consent').disabled=!REMOTE_SAVE_ENABLED||!$('storage-consent').checked;
  if(!$('storage-consent').checked)$('telegram-consent').checked=false;
 }
 function current(){return answers[index]||{answerText:'',status:'unanswered'};}
@@ -406,7 +408,9 @@ function finish(){
  const saveStatus=document.createElement('p');
  saveStatus.className='diag-hint';saveStatus.id='save-status';
  $('result').appendChild(saveStatus);
- if(!$('storage-consent').checked){
+ if(!REMOTE_SAVE_ENABLED){
+  saveStatus.textContent='Результат остался только в этом окне. Сохранение в архив и уведомления временно отключены до обновления и проверки серверной части.';
+ }else if(!$('storage-consent').checked){
   saveStatus.textContent='Результат остался только в этом окне. Ты не давал(а) согласие на сохранение в архиве и отправку данных.';
  }else{
   lastPayload=buildPayload(score,percent,title,weak,report);
