@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "status": "all_profiles_draft_review",
   "questionCountPerAttempt": 15,
   "difficultyDistribution": {
@@ -307,5 +307,62 @@
       "status": "teacher_review_draft"
     }
   ],
-  "note": "Все 36 профилей имеют черновые банки по 15 заданий. Банки требуют педагогической вычитки; для Python, HTML/CSS и Figma уровень опыта собирается, но пока не меняет состав заданий."
+  "note": "Все 36 профилей имеют черновые банки по 15 заданий. Для школьных направлений требуется отдельная адаптация по программам России и Беларуси. Для Python, HTML/CSS и Figma уровень опыта пока записывается, но не меняет состав заданий.",
+  "curricula": [
+    {
+      "id": "ru",
+      "name": "Россия — федеральная образовательная программа и федеральные рабочие программы",
+      "appliesTo": [
+        "informatics",
+        "physics",
+        "math"
+      ],
+      "bankSuffix": "ru",
+      "status": "curriculum_review_required"
+    },
+    {
+      "id": "by",
+      "name": "Беларусь — учебные программы Министерства образования",
+      "appliesTo": [
+        "informatics",
+        "physics",
+        "math"
+      ],
+      "bankSuffix": "by",
+      "status": "curriculum_review_required"
+    },
+    {
+      "id": "other",
+      "name": "Другая программа",
+      "appliesTo": [
+        "all"
+      ],
+      "requiresDetail": true,
+      "status": "individual_mapping_required"
+    },
+    {
+      "id": "self",
+      "name": "Собственная траектория / авторский курс",
+      "appliesTo": [
+        "python",
+        "html-css",
+        "figma"
+      ],
+      "status": "custom_track"
+    }
+  ],
+  "curriculumPolicy": {
+    "schoolDirections": [
+      "informatics",
+      "physics",
+      "math"
+    ],
+    "digitalDirections": [
+      "python",
+      "html-css",
+      "figma"
+    ],
+    "currentBankBehavior": "generic_draft_with_explicit_warning",
+    "rule": "Выбор программы сохраняется в каждой попытке. До появления и проверки отдельного банка конкретная программа не должна маркироваться как полностью соответствующая выбранной учебной программе."
+  }
 }
