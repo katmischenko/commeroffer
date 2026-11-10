@@ -91,6 +91,8 @@ def validate_bank(path: Path, errors: list[str], stems_by_direction):
                 fail(errors, f"{prefix}: choice question needs at least two options")
             elif not isinstance(index, int) or isinstance(index, bool) or not 0 <= index < len(options):
                 fail(errors, f"{prefix}: correctIndex is outside options")
+            elif q.get("correctText") != options[index]:
+                fail(errors, f"{prefix}: correctText does not match options[correctIndex]")
             if not isinstance(q.get("correctText"), str) or not q["correctText"].strip():
                 fail(errors, f"{prefix}: missing correctText")
         elif qtype == "short":
