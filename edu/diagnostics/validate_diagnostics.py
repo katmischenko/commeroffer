@@ -174,7 +174,6 @@ def main():
         "curriculumId,curriculumName,curriculumDetail,curriculumLevel",
         "telegramConsent:$('telegram-consent').checked",
         "curriculum-level-wrap",
-        "curriculumLevel: clean(p.curriculumLevel, 20)",
         "async function saveAttempt(payload)",
         "CONSENT_VERSION",
     )
@@ -194,7 +193,7 @@ def main():
             fail(errors, f"missing required diagnostics component: {required.relative_to(ROOT)}")
     if worker_path.exists():
         worker_text = worker_path.read_text(encoding="utf-8")
-        for required in ('curriculum_id', 'curriculum_name', 'telegramConsent', 'telegramNotRequested', 'DELETE', 'async scheduled'):
+        for required in ('curriculum_id', 'curriculum_name', 'curriculumLevel: clean(p.curriculumLevel, 20)', 'telegramConsent', 'telegramNotRequested', 'DELETE', 'async scheduled'):
             if required not in worker_text:
                 fail(errors, f"Worker missing required feature marker: {required}")
     if archive_path.exists():
