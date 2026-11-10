@@ -18,246 +18,238 @@
   "questions": [
     {
       "id": "python9-01",
-      "topic": "Типы данных",
-      "skill": "понимание",
+      "topic": "Кортежи",
+      "skill": "применение Python",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какой тип данных хранит логическое значение?",
-      "explanation": "Тип bool хранит True или False.",
+      "question": "Какое утверждение верно о кортеже tuple?",
       "options": [
-        "int",
-        "str",
-        "bool",
-        "float"
+        "Его элементы нельзя заменить после создания",
+        "Он хранит только числа",
+        "Его всегда можно изменять методом append",
+        "Он является файлом"
       ],
-      "correctIndex": 2,
-      "correctText": "bool"
+      "correctIndex": 0,
+      "correctText": "Его элементы нельзя заменить после создания",
+      "explanation": "Кортеж — неизменяемая последовательность."
     },
     {
       "id": "python9-02",
-      "topic": "Операторы",
-      "skill": "понимание",
+      "topic": "Множества",
+      "skill": "применение Python",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Что возвращает выражение 17 % 5?",
-      "explanation": "Остаток от деления 17 на 5 равен 2.",
+      "question": "Что делает множество set при добавлении уже существующего элемента?",
       "options": [
-        "2",
-        "3",
-        "3.4",
-        "5"
+        "Создаёт второй такой же элемент",
+        "Оставляет один экземпляр элемента",
+        "Удаляет всё множество",
+        "Превращает элемент в ключ словаря"
       ],
-      "correctIndex": 0,
-      "correctText": "2"
+      "correctIndex": 1,
+      "correctText": "Оставляет один экземпляр элемента",
+      "explanation": "Множество хранит только уникальные значения."
     },
     {
       "id": "python9-03",
-      "topic": "Строки",
-      "skill": "понимание",
+      "topic": "Словари",
+      "skill": "применение Python",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Как получить длину строки s?",
-      "explanation": "Встроенная функция len() возвращает число элементов.",
+      "question": "Как получить список ключей словаря data?",
       "options": [
-        "size(s)",
-        "len(s)",
-        "count(s)",
-        "s.length"
+        "data.values()",
+        "data.items()",
+        "data.keys()",
+        "data.list()"
       ],
-      "correctIndex": 1,
-      "correctText": "len(s)"
+      "correctIndex": 2,
+      "correctText": "data.keys()",
+      "explanation": "Метод keys() возвращает представление ключей словаря."
     },
     {
       "id": "python9-04",
-      "topic": "Списки",
-      "skill": "понимание",
-      "difficulty": "basic",
-      "type": "choice",
-      "question": "Как добавить элемент x в конец списка a?",
-      "explanation": "Метод append добавляет элемент в конец списка.",
-      "options": [
-        "a.add(x)",
-        "a.append(x)",
-        "append(a,x)",
-        "a.push(x)"
-      ],
-      "correctIndex": 1,
-      "correctText": "a.append(x)"
-    },
-    {
-      "id": "python9-05",
-      "topic": "Условия",
-      "skill": "понимание",
-      "difficulty": "basic",
-      "type": "choice",
-      "question": "Какой оператор означает логическое И?",
-      "explanation": "and истинно, если оба условия истинны.",
-      "options": [
-        "and",
-        "or",
-        "not",
-        "in"
-      ],
-      "correctIndex": 0,
-      "correctText": "and"
-    },
-    {
-      "id": "python9-06",
-      "topic": "Срезы",
-      "skill": "понимание и применение",
-      "difficulty": "medium",
-      "type": "choice",
-      "question": "Что вернёт [0,1,2,3,4][1:4]?",
-      "explanation": "Срез включает начальный индекс и не включает конечный.",
-      "options": [
-        "[0,1,2,3]",
-        "[1,2,3]",
-        "[1,2,3,4]",
-        "[2,3,4]"
-      ],
-      "correctIndex": 1,
-      "correctText": "[1,2,3]"
-    },
-    {
-      "id": "python9-07",
-      "topic": "Словари",
-      "skill": "понимание и применение",
-      "difficulty": "medium",
-      "type": "choice",
-      "question": "Как получить значение по ключу 'age' из словаря d?",
-      "explanation": "К значению словаря обращаются по ключу в квадратных скобках.",
-      "options": [
-        "d.age",
-        "d['age']",
-        "d(age)",
-        "d->age"
-      ],
-      "correctIndex": 1,
-      "correctText": "d['age']"
-    },
-    {
-      "id": "python9-08",
-      "topic": "Циклы",
-      "skill": "понимание и применение",
-      "difficulty": "medium",
-      "type": "short",
-      "question": "Сколько итераций выполнит while n < 5 при n=2 и увеличении n на 1 в конце цикла?",
-      "explanation": "Значения n на входе: 2, 3, 4. Затем n=5 и цикл завершается.",
-      "acceptedAnswers": [
-        "3"
-      ],
-      "correctText": "3"
-    },
-    {
-      "id": "python9-09",
-      "topic": "Функции",
-      "skill": "понимание и применение",
-      "difficulty": "medium",
-      "type": "choice",
-      "question": "Что такое параметр функции?",
-      "explanation": "Параметр — переменная в определении функции, принимающая аргумент.",
-      "options": [
-        "Значение, которое функция получает при вызове",
-        "Имя файла",
-        "Результат print",
-        "Тип цикла"
-      ],
-      "correctIndex": 0,
-      "correctText": "Значение, которое функция получает при вызове"
-    },
-    {
-      "id": "python9-10",
-      "topic": "Файлы",
-      "skill": "понимание и применение",
-      "difficulty": "medium",
-      "type": "choice",
-      "question": "Какой режим open() открывает файл для чтения?",
-      "explanation": "Режим r предназначен для чтения.",
-      "options": [
-        "'w'",
-        "'a'",
-        "'r'",
-        "'x'"
-      ],
-      "correctIndex": 2,
-      "correctText": "'r'"
-    },
-    {
-      "id": "python9-11",
       "topic": "Исключения",
-      "skill": "понимание и применение",
-      "difficulty": "medium",
+      "skill": "применение Python",
+      "difficulty": "basic",
       "type": "choice",
-      "question": "Какой блок перехватывает исключение?",
-      "explanation": "except задаёт обработчик исключения после блока try.",
+      "question": "Какой блок содержит код, который может вызвать исключение?",
       "options": [
         "try",
         "except",
         "finally",
         "raise"
       ],
+      "correctIndex": 0,
+      "correctText": "try",
+      "explanation": "Внутри try размещают код, выполнение которого нужно контролировать."
+    },
+    {
+      "id": "python9-05",
+      "topic": "Файлы",
+      "skill": "применение Python",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какой режим open() предназначен для добавления текста в конец файла?",
+      "options": [
+        "r",
+        "w",
+        "a",
+        "x"
+      ],
+      "correctIndex": 2,
+      "correctText": "a",
+      "explanation": "Режим a открывает файл для добавления; существующее содержимое сохраняется."
+    },
+    {
+      "id": "python9-06",
+      "topic": "Генераторы списков",
+      "skill": "вычисление и применение",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Что создаст [x + 1 for x in [2, 4, 6]]?",
+      "acceptedAnswers": [
+        "[3, 5, 7]"
+      ],
+      "correctText": "[3, 5, 7]",
+      "explanation": "К каждому элементу исходного списка прибавляется 1."
+    },
+    {
+      "id": "python9-07",
+      "topic": "Перебор коллекций",
+      "skill": "применение Python",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Для чего обычно используют enumerate(items)?",
+      "options": [
+        "Чтобы получить пары индекс–элемент",
+        "Чтобы отсортировать список",
+        "Чтобы удалить повторы",
+        "Чтобы открыть файл"
+      ],
+      "correctIndex": 0,
+      "correctText": "Чтобы получить пары индекс–элемент",
+      "explanation": "enumerate выдаёт индекс текущего элемента вместе с самим элементом."
+    },
+    {
+      "id": "python9-08",
+      "topic": "Объединение последовательностей",
+      "skill": "вычисление и применение",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Что образует list(zip([1, 2], [\"a\", \"b\"]))?",
+      "acceptedAnswers": [
+        "[(1, 'a'), (2, 'b')]"
+      ],
+      "correctText": "[(1, 'a'), (2, 'b')]",
+      "explanation": "zip объединяет элементы с одинаковыми позициями в пары."
+    },
+    {
+      "id": "python9-09",
+      "topic": "Сортировка",
+      "skill": "применение Python",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Как отсортировать список словарей people по полю age?",
+      "options": [
+        "people.sort(age)",
+        "people.sort(key=lambda p: p['age'])",
+        "sort(people.age)",
+        "people.order('age')"
+      ],
       "correctIndex": 1,
-      "correctText": "except"
+      "correctText": "people.sort(key=lambda p: p['age'])",
+      "explanation": "Параметр key задаёт функцию, по результату которой сравниваются элементы."
+    },
+    {
+      "id": "python9-10",
+      "topic": "Параметры функций",
+      "skill": "вычисление и применение",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Какое значение вернёт def add(a, b=2): return a+b при вызове add(5)?",
+      "acceptedAnswers": [
+        "7"
+      ],
+      "correctText": "7",
+      "explanation": "Если второй аргумент не передан, используется значение по умолчанию b=2."
+    },
+    {
+      "id": "python9-11",
+      "topic": "Исключения",
+      "skill": "применение Python",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какое исключение возникает при попытке преобразовать строку \"кот\" в int?",
+      "options": [
+        "TypeError",
+        "ValueError",
+        "IndexError",
+        "KeyError"
+      ],
+      "correctIndex": 1,
+      "correctText": "ValueError",
+      "explanation": "Строка существует, но не содержит корректной записи целого числа, поэтому возникает ValueError."
     },
     {
       "id": "python9-12",
-      "topic": "Алгоритмы",
-      "skill": "понимание и применение",
+      "topic": "Файлы",
+      "skill": "вычисление и применение",
       "difficulty": "medium",
       "type": "short",
-      "question": "Что выведет код: x=3; x*=4; print(x)?",
-      "explanation": "Сокращённая запись x*=4 означает x=x*4.",
+      "question": "Файл содержит строки A, B и C. Сколько элементов будет в списке list(f) после чтения файла построчно?",
       "acceptedAnswers": [
-        "12"
+        "3"
       ],
-      "correctText": "12"
+      "correctText": "3",
+      "explanation": "Каждая строка файла становится отдельным элементом списка."
     },
     {
       "id": "python9-13",
-      "topic": "Списки",
-      "skill": "понимание и применение",
+      "topic": "Рекурсия",
+      "skill": "применение Python",
       "difficulty": "advanced",
       "type": "choice",
-      "question": "Что создаёт выражение [x*x for x in range(4)]?",
-      "explanation": "Генератор списка возводит 0,1,2,3 в квадрат.",
+      "question": "Что обязательно должно быть предусмотрено в корректной рекурсивной функции?",
       "options": [
-        "[0,1,4,9]",
-        "[1,4,9,16]",
-        "[0,2,4,6]",
-        "[4,9,16]"
+        "Базовый случай остановки",
+        "Бесконечный цикл",
+        "Глобальная переменная",
+        "Команда print"
       ],
       "correctIndex": 0,
-      "correctText": "[0,1,4,9]"
+      "correctText": "Базовый случай остановки",
+      "explanation": "Базовый случай прекращает дальнейшие рекурсивные вызовы."
     },
     {
       "id": "python9-14",
       "topic": "Сложность алгоритмов",
-      "skill": "понимание и применение",
+      "skill": "применение Python",
       "difficulty": "advanced",
       "type": "choice",
-      "question": "Какова сложность одного прохода по списку из n элементов?",
-      "explanation": "Каждый элемент обрабатывается один раз, поэтому время линейно.",
+      "question": "Какова временная сложность алгоритма, который для каждого из n элементов один раз просматривает весь список из n элементов?",
       "options": [
-        "O(1)",
-        "O(log n)",
         "O(n)",
-        "O(n²)"
+        "O(log n)",
+        "O(n²)",
+        "O(1)"
       ],
       "correctIndex": 2,
-      "correctText": "O(n)"
+      "correctText": "O(n²)",
+      "explanation": "Вложенный полный проход даёт примерно n × n операций."
     },
     {
       "id": "python9-15",
-      "topic": "Функции",
-      "skill": "понимание и применение",
+      "topic": "Словари",
+      "skill": "вычисление и применение",
       "difficulty": "advanced",
       "type": "short",
-      "question": "Что вернёт функция f(x): return x+1 при вызове f(9)?",
-      "explanation": "Подставляем 9: 9+1=10.",
+      "question": "Сколько пар ключ–значение будет в d после d = {'a': 1}; d['b'] = 2; d['a'] = 5?",
       "acceptedAnswers": [
-        "10"
+        "2"
       ],
-      "correctText": "10"
+      "correctText": "2",
+      "explanation": "Запись по существующему ключу a заменяет значение, а не создаёт новую пару."
     }
   ]
 }
