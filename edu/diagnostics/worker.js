@@ -107,6 +107,7 @@ export default {
         curriculumId,
         curriculumName,
         curriculumDetail,
+        curriculumLevel: clean(p.curriculumLevel, 20),
         consent: true,
         consentVersion: clean(p.consentVersion, 40),
         consentAt: clean(p.consentAt, 50),
