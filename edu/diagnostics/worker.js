@@ -129,7 +129,9 @@ export default {
       if (["ru", "by"].includes(curriculumId) && !["2025/2026", "2026/2027", "other"].includes(curriculumYear)) {
         return json({ ok: false, error: "curriculum_year_required" }, 400, origin);
       }
-      if (["ru", "by"].includes(curriculumId) && Number(studentClass) >= 10 &&
+      const belarusGradeEightPilot = curriculumId === "by" && Number(studentClass) === 8 &&
+        ["Физика", "Математика"].includes(direction);
+      if (["ru", "by"].includes(curriculumId) && (Number(studentClass) >= 10 || belarusGradeEightPilot) &&
           !["basic", "advanced", "unknown"].includes(curriculumLevel)) {
         return json({ ok: false, error: "curriculum_level_required" }, 400, origin);
       }
