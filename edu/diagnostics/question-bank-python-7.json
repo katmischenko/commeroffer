@@ -1,0 +1,255 @@
+{
+  "version": "0.1.0",
+  "status": "teacher_review_draft",
+  "direction": "Python",
+  "class": 7,
+  "profileId": "python-7",
+  "experienceVariants": {
+    "beginner": "базовая точка входа; задания требуют адаптации под реальный стартовый опыт",
+    "basics": "проверка основных навыков и самостоятельного применения",
+    "experienced": "углублённая проверка; текущая версия использует общий возрастной набор и требует отдельной экспертной ветки"
+  },
+  "sourceBasis": "Черновая тематическая матрица Mischenko Edu. Для цифровых направлений класс задаёт возрастной контекст; уровень опыта собирается отдельно, но индивидуальная адаптация набора по опыту пока не реализована. Педагогическая проверка обязательна.",
+  "distribution": {
+    "basic": 5,
+    "medium": 7,
+    "advanced": 3
+  },
+  "questions": [
+    {
+      "id": "python7-01",
+      "topic": "Основы Python",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Как записать вывод текста Привет в консоль?",
+      "explanation": "Функция print() выводит значение на экран.",
+      "options": [
+        "print('Привет')",
+        "echo('Привет')",
+        "write 'Привет'",
+        "show('Привет')"
+      ],
+      "correctIndex": 0,
+      "correctText": "print('Привет')"
+    },
+    {
+      "id": "python7-02",
+      "topic": "Переменные",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какое имя переменной записано корректно?",
+      "explanation": "Имя не начинается с цифры, не содержит дефис и не совпадает с ключевым словом.",
+      "options": [
+        "2name",
+        "my-name",
+        "my_name",
+        "class"
+      ],
+      "correctIndex": 2,
+      "correctText": "my_name"
+    },
+    {
+      "id": "python7-03",
+      "topic": "Типы данных",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какой тип данных у значения 7?",
+      "explanation": "Целое число относится к типу int.",
+      "options": [
+        "str",
+        "int",
+        "list",
+        "bool"
+      ],
+      "correctIndex": 1,
+      "correctText": "int"
+    },
+    {
+      "id": "python7-04",
+      "topic": "Арифметика",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Чему равно 7 // 2 в Python?",
+      "explanation": "Оператор // выполняет целочисленное деление с округлением вниз.",
+      "options": [
+        "3.5",
+        "3",
+        "4",
+        "1"
+      ],
+      "correctIndex": 1,
+      "correctText": "3"
+    },
+    {
+      "id": "python7-05",
+      "topic": "Условия",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какое ключевое слово начинает ветвь «иначе»?",
+      "explanation": "Ветвь else выполняется, если предыдущие условия не сработали.",
+      "options": [
+        "else",
+        "elif",
+        "for",
+        "while"
+      ],
+      "correctIndex": 0,
+      "correctText": "else"
+    },
+    {
+      "id": "python7-06",
+      "topic": "Строки",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Чему равно len('кот')?",
+      "explanation": "В строке три символа, поэтому len возвращает 3.",
+      "acceptedAnswers": [
+        "3"
+      ],
+      "correctText": "3"
+    },
+    {
+      "id": "python7-07",
+      "topic": "Списки",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "С какого индекса начинается нумерация элементов списка?",
+      "explanation": "В Python индексация начинается с нуля.",
+      "options": [
+        "0",
+        "1",
+        "−1",
+        "Зависит от списка"
+      ],
+      "correctIndex": 0,
+      "correctText": "0"
+    },
+    {
+      "id": "python7-08",
+      "topic": "Циклы",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Сколько раз выполнится for i in range(4)?",
+      "explanation": "range(4) создаёт последовательность 0, 1, 2, 3 — четыре значения.",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "Бесконечно"
+      ],
+      "correctIndex": 1,
+      "correctText": "4"
+    },
+    {
+      "id": "python7-09",
+      "topic": "Условия",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Как записать проверку, что x больше 5 и меньше 10?",
+      "explanation": "Python поддерживает цепочки сравнений: 5 < x < 10.",
+      "options": [
+        "x > 5 or x < 10",
+        "5 < x < 10",
+        "x = 5..10",
+        "x > 5 && x < 10"
+      ],
+      "correctIndex": 1,
+      "correctText": "5 < x < 10"
+    },
+    {
+      "id": "python7-10",
+      "topic": "Списки",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Что вернёт [4, 8, 12][1]?",
+      "explanation": "Индекс 1 указывает на второй элемент списка.",
+      "acceptedAnswers": [
+        "8"
+      ],
+      "correctText": "8"
+    },
+    {
+      "id": "python7-11",
+      "topic": "Функции",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какое ключевое слово возвращает результат из функции?",
+      "explanation": "return завершает выполнение функции и возвращает значение.",
+      "options": [
+        "print",
+        "return",
+        "break",
+        "def"
+      ],
+      "correctIndex": 1,
+      "correctText": "return"
+    },
+    {
+      "id": "python7-12",
+      "topic": "Циклы",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Сколько раз напечатает число цикл for i in range(2, 7)?",
+      "explanation": "range(2,7) включает 2,3,4,5,6 — пять значений.",
+      "acceptedAnswers": [
+        "5"
+      ],
+      "correctText": "5"
+    },
+    {
+      "id": "python7-13",
+      "topic": "Алгоритмы",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "short",
+      "question": "Чему равна сумма: total=0; for n in [2,4,6]: total+=n?",
+      "explanation": "Суммируем элементы списка: 2+4+6=12.",
+      "acceptedAnswers": [
+        "12"
+      ],
+      "correctText": "12"
+    },
+    {
+      "id": "python7-14",
+      "topic": "Функции",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "Что произойдёт, если функция не содержит return?",
+      "explanation": "Если return отсутствует, функция возвращает None.",
+      "options": [
+        "Вернёт None",
+        "Вернёт 0",
+        "Вызовет ошибку всегда",
+        "Вернёт True"
+      ],
+      "correctIndex": 0,
+      "correctText": "Вернёт None"
+    },
+    {
+      "id": "python7-15",
+      "topic": "Списки",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "short",
+      "question": "После a=[1,2]; a.append(3); чему равна длина a?",
+      "explanation": "append добавляет один элемент в конец списка.",
+      "acceptedAnswers": [
+        "3"
+      ],
+      "correctText": "3"
+    }
+  ]
+}
