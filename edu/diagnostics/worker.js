@@ -46,6 +46,7 @@ function formatTelegram(p) {
     `Класс: ${p.studentClass}`,
     `Направление: ${p.direction}`,
     `Программа: ${p.curriculumName || "не указана"}`,
+    p.curriculumLevel ? `Уровень: ${p.curriculumLevel}` : "",
     p.curriculumDetail ? `Уточнение: ${p.curriculumDetail}` : "",
     p.experience ? `Опыт: ${p.experience}` : "",
     `Результат: ${p.score}/${p.maxScore} (${p.percentage}%)`,
