@@ -1,0 +1,275 @@
+{
+  "version": "0.1.0",
+  "status": "teacher_review_draft",
+  "direction": "HTML/CSS",
+  "class": 6,
+  "profileId": "html-css-6",
+  "experienceVariants": {
+    "beginner": "базовая точка входа; задания требуют адаптации под реальный стартовый опыт",
+    "basics": "проверка основных навыков и самостоятельного применения",
+    "experienced": "углублённая проверка; текущая версия использует общий возрастной набор и требует отдельной экспертной ветки"
+  },
+  "sourceBasis": "Черновая тематическая матрица Mischenko Edu. Для цифровых направлений класс задаёт возрастной контекст; уровень опыта собирается отдельно, но индивидуальная адаптация набора по опыту пока не реализована. Педагогическая проверка обязательна.",
+  "distribution": {
+    "basic": 5,
+    "medium": 7,
+    "advanced": 3
+  },
+  "questions": [
+    {
+      "id": "htmlcss6-01",
+      "topic": "HTML",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какой тег создаёт самый крупный заголовок первого уровня?",
+      "explanation": "Тег h1 обозначает заголовок первого уровня.",
+      "options": [
+        "<h1>",
+        "<p>",
+        "<title>",
+        "<head>"
+      ],
+      "correctIndex": 0,
+      "correctText": "<h1>"
+    },
+    {
+      "id": "htmlcss6-02",
+      "topic": "HTML",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какой тег создаёт абзац?",
+      "explanation": "Тег p используется для абзаца текста.",
+      "options": [
+        "<div>",
+        "<p>",
+        "<img>",
+        "<a>"
+      ],
+      "correctIndex": 1,
+      "correctText": "<p>"
+    },
+    {
+      "id": "htmlcss6-03",
+      "topic": "HTML",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какой атрибут img содержит путь к изображению?",
+      "explanation": "Атрибут src задаёт адрес файла изображения.",
+      "options": [
+        "href",
+        "src",
+        "alt",
+        "class"
+      ],
+      "correctIndex": 1,
+      "correctText": "src"
+    },
+    {
+      "id": "htmlcss6-04",
+      "topic": "HTML",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какой тег создаёт ссылку?",
+      "explanation": "Для гиперссылки используется тег a с атрибутом href.",
+      "options": [
+        "<a>",
+        "<link>",
+        "<url>",
+        "<href>"
+      ],
+      "correctIndex": 0,
+      "correctText": "<a>"
+    },
+    {
+      "id": "htmlcss6-05",
+      "topic": "CSS",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какой знак ставят перед именем класса в CSS-селекторе?",
+      "explanation": "Класс выбирают точкой, например .card.",
+      "options": [
+        "#",
+        ".",
+        "*",
+        "@"
+      ],
+      "correctIndex": 1,
+      "correctText": "."
+    },
+    {
+      "id": "htmlcss6-06",
+      "topic": "CSS",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какое свойство меняет цвет текста?",
+      "explanation": "Свойство color задаёт цвет текста.",
+      "options": [
+        "background-color",
+        "font-size",
+        "color",
+        "border"
+      ],
+      "correctIndex": 2,
+      "correctText": "color"
+    },
+    {
+      "id": "htmlcss6-07",
+      "topic": "CSS",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Как записать CSS, чтобы текст был размером 20 пикселей?",
+      "explanation": "Размер шрифта задаёт font-size.",
+      "options": [
+        "text-size:20px",
+        "font-size:20px",
+        "size:20px",
+        "font:20"
+      ],
+      "correctIndex": 1,
+      "correctText": "font-size:20px"
+    },
+    {
+      "id": "htmlcss6-08",
+      "topic": "HTML",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Для чего нужен атрибут alt у изображения?",
+      "explanation": "alt помогает при недоступности изображения и используется скринридерами.",
+      "options": [
+        "Задаёт ширину",
+        "Даёт текстовую альтернативу изображению",
+        "Создаёт ссылку",
+        "Меняет цвет"
+      ],
+      "correctIndex": 1,
+      "correctText": "Даёт текстовую альтернативу изображению"
+    },
+    {
+      "id": "htmlcss6-09",
+      "topic": "HTML",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какой элемент обычно содержит основное уникальное содержимое страницы?",
+      "explanation": "main обозначает основное содержимое документа.",
+      "options": [
+        "<main>",
+        "<footer>",
+        "<meta>",
+        "<title>"
+      ],
+      "correctIndex": 0,
+      "correctText": "<main>"
+    },
+    {
+      "id": "htmlcss6-10",
+      "topic": "CSS",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какое свойство задаёт внутренние отступы элемента?",
+      "explanation": "padding задаёт пространство между содержимым и границей.",
+      "options": [
+        "margin",
+        "padding",
+        "gap",
+        "outline"
+      ],
+      "correctIndex": 1,
+      "correctText": "padding"
+    },
+    {
+      "id": "htmlcss6-11",
+      "topic": "CSS",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Как сделать текст полужирным?",
+      "explanation": "Жирность текста задаёт font-weight.",
+      "options": [
+        "font-style:bold",
+        "font-weight:bold",
+        "text-weight:bold",
+        "bold:true"
+      ],
+      "correctIndex": 1,
+      "correctText": "font-weight:bold"
+    },
+    {
+      "id": "htmlcss6-12",
+      "topic": "HTML",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какой тег задаёт элемент списка с маркером?",
+      "explanation": "Каждый пункт списка размечается элементом li.",
+      "options": [
+        "<ol>",
+        "<li>",
+        "<ul>",
+        "<dl>"
+      ],
+      "correctIndex": 1,
+      "correctText": "<li>"
+    },
+    {
+      "id": "htmlcss6-13",
+      "topic": "CSS",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "Что означает box-sizing: border-box?",
+      "explanation": "При border-box заданные width и height включают содержимое, padding и border.",
+      "options": [
+        "Ширина включает padding и border",
+        "Ширина включает только текст",
+        "Границы не отображаются",
+        "Элемент становится блочным"
+      ],
+      "correctIndex": 0,
+      "correctText": "Ширина включает padding и border"
+    },
+    {
+      "id": "htmlcss6-14",
+      "topic": "CSS",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "Какой медиазапрос применяют для экранов шириной не более 600px?",
+      "explanation": "Условие max-width применяет правила при ширине не более 600px.",
+      "options": [
+        "@media (max-width: 600px)",
+        "@screen 600",
+        "@media-width <600",
+        "@mobile(600px)"
+      ],
+      "correctIndex": 0,
+      "correctText": "@media (max-width: 600px)"
+    },
+    {
+      "id": "htmlcss6-15",
+      "topic": "HTML",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "Почему семантические теги полезны?",
+      "explanation": "Семантика помогает браузерам, поисковым системам и вспомогательным технологиям.",
+      "options": [
+        "Они автоматически добавляют анимацию",
+        "Они описывают роль содержимого и улучшают доступность",
+        "Они заменяют CSS",
+        "Они ускоряют интернет"
+      ],
+      "correctIndex": 1,
+      "correctText": "Они описывают роль содержимого и улучшают доступность"
+    }
+  ]
+}
