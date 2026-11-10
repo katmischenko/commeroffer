@@ -28,6 +28,12 @@
 .answer{font-size:13px;color:var(--muted);padding:10px 0;border-bottom:1px solid var(--line)}
 .answer b{color:var(--ink)}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.compare-pick{display:inline-flex;align-items:center;gap:7px;color:var(--muted);font-size:13px;margin-top:14px}
+.compare-pick input{accent-color:var(--pen)}
+.compare-view{border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:18px;background:var(--paper)}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.compare-grid>div{padding:12px;border:1px solid var(--line);border-radius:10px}
+.compare-topic{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-top:1px solid var(--line);font-size:13px}
 .empty{padding:30px;color:var(--muted);text-align:center}
 @media(max-width:600px){.admin-panel{padding:18px}.admin-form{display:grid}.admin-form input{width:100%}}
 </style>
@@ -49,15 +55,18 @@
 </section>
 <section class="admin-panel" id="archive" hidden>
   <div class="admin-form">
-    <input class="filter" id="search" placeholder="Фильтр: имя, направление, класс">
+    <input class="filter" id="search" placeholder="Фильтр: имя, направление, класс, программа">
     <button class="action" id="refresh">Обновить</button>
+    <button class="action" id="compare" disabled>Сравнить две попытки</button>
   </div>
+  <div class="compare-view" id="compare-view" hidden></div>
   <div class="archive-list" id="list"></div>
 </section>
 </main>
 <script>
 const API = "https://mischenko-edu-diagnostics.mks-ki.workers.dev/admin/attempts";
 let attempts = [];
+let selectedForCompare = new Set();
 const $ = id => document.getElementById(id);
 function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function showStatus(t){$("status").textContent=t;}
@@ -70,6 +79,7 @@ async function loadArchive(){
   const data=await r.json();
   if(!r.ok||!data.ok) throw new Error(data.error==="unauthorized"?"Неверный ключ доступа.": "Не удалось загрузить архив.");
   attempts=(data.attempts||[]).map(x=>({...x,payload:JSON.parse(x.payload_json||"{}")}));
+  selectedForCompare.clear();
   $("archive").hidden=false;
   showStatus("Загружено попыток: "+attempts.length);
   render();
@@ -77,27 +87,62 @@ async function loadArchive(){
 }
 function render(){
  const term=$("search").value.trim().toLowerCase();
- const found=attempts.filter(a=>[a.student_name,a.student_class,a.direction,a.experience].join(" ").toLowerCase().includes(term));
+ const found=attempts.filter(a=>[a.student_name,a.student_class,a.direction,a.experience,a.curriculum_name,a.curriculum_detail].join(" ").toLowerCase().includes(term));
  $("list").innerHTML=found.length?found.map((a,i)=>{
   const p=a.payload||{};
   const when=new Date(a.completed_at).toLocaleString("ru-RU");
   const answers=(p.answers||[]).map((x,n)=>'<div class="answer"><b>'+ (n+1)+'. '+esc(x.question)+'</b><br>Ответ: '+esc(x.answerText||"Не отвечено")+' · Правильно: '+esc(x.correctText)+'<br>Статус: '+esc(x.statusLabel)+' · Тема: '+esc(x.topic)+' · Уверенность: '+esc(x.confidenceLabel||"—")+'<br>'+esc(x.explanation)+'</div>').join("");
   const json=esc(JSON.stringify(p,null,2));
-  return '<article class="attempt"><div class="attempt-head"><div><h3>'+esc(a.student_name)+' · '+esc(a.direction)+'</h3><div class="meta">'+esc(a.student_class)+' класс'+(a.experience?' · '+esc(a.experience):'')+' · '+esc(when)+'</div></div><div class="score">'+esc(a.score)+' / 15 · '+esc(a.percentage)+'%</div></div><details class="detail"><summary>Все ответы и разборы</summary>'+answers+'</details><div class="actions"><button class="action" data-print="'+i+'">Печать / PDF</button><button class="action" data-copy="'+i+'">Копировать JSON</button></div></article>';
+  const telegramState=a.telegram_consent?'уведомление разрешено':'без Telegram-уведомления';
+  return '<article class="attempt"><div class="attempt-head"><div><h3>'+esc(a.student_name)+' · '+esc(a.direction)+'</h3><div class="meta">'+esc(a.student_class)+' класс · '+esc(a.curriculum_name||'Программа не указана')+(a.curriculum_detail?' · '+esc(a.curriculum_detail):'')+(a.experience?' · опыт: '+esc(a.experience):'')+' · '+esc(when)+' · '+telegramState+'</div></div><div class="score">'+esc(a.score)+' / 15 · '+esc(a.percentage)+'%</div></div><label class="compare-pick"><input type="checkbox" data-compare="'+esc(a.attempt_id)+'" '+(selectedForCompare.has(a.attempt_id)?'checked':'')+'> Выбрать для сравнения</label><details class="detail"><summary>Все ответы и разборы</summary>'+answers+'</details><div class="actions"><button class="action" data-print="'+i+'">Печать / PDF</button><button class="action" data-copy="'+i+'">Копировать JSON</button><button class="action" data-delete="'+esc(a.attempt_id)+'">Удалить запись</button></div></article>';
  }).join(""):'<div class="empty">По этому запросу попыток нет.</div>';
  $("list").querySelectorAll("[data-print]").forEach(b=>b.addEventListener("click",()=>printAttempt(attempts[+b.dataset.print])));
- $("list").querySelectorAll("[data-copy]").forEach(b=>b.addEventListener("click",async()=>{await navigator.clipboard.writeText(JSON.stringify(attempts[+b.dataset.copy].payload,null,2));showStatus("Отчёт скопирован.");}));
+ $("list").querySelectorAll("[data-copy]").forEach(b=>b.addEventListener("click",async()=>{try{await navigator.clipboard.writeText(JSON.stringify(attempts[+b.dataset.copy].payload,null,2));showStatus("Отчёт скопирован.");}catch(e){showStatus("Не удалось скопировать. Проверь разрешение браузера.");}}));
+ $("list").querySelectorAll("[data-compare]").forEach(b=>b.addEventListener("change",()=>{
+  if(b.checked){if(selectedForCompare.size>=2){b.checked=false;showStatus("Можно выбрать только две попытки.");return;}selectedForCompare.add(b.dataset.compare);}
+  else selectedForCompare.delete(b.dataset.compare);
+  $("compare").disabled=selectedForCompare.size!==2;
+ }));
+ $("list").querySelectorAll("[data-delete]").forEach(b=>b.addEventListener("click",()=>deleteAttempt(b.dataset.delete)));
+ $("compare").disabled=selectedForCompare.size!==2;
+}
+async function deleteAttempt(id){
+ if(!confirm("Удалить эту попытку из архива без возможности восстановления?"))return;
+ const token=$("token").value.trim();
+ try{
+  const r=await fetch(API.replace("/admin/attempts","/admin/attempts/"+encodeURIComponent(id)),{method:"DELETE",headers:{Authorization:"Bearer "+token}});
+  const data=await r.json();
+  if(!r.ok||!data.ok)throw new Error(data.error||"Не удалось удалить запись.");
+  attempts=attempts.filter(a=>a.attempt_id!==id);selectedForCompare.delete(id);render();showStatus(data.deleted?"Запись удалена.":"Запись уже отсутствует.");
+ }catch(e){showStatus(e.message||"Ошибка удаления.");}
+}
+function compareAttempts(){
+ const ids=[...selectedForCompare], pair=ids.map(id=>attempts.find(a=>a.attempt_id===id)).filter(Boolean);
+ if(pair.length!==2)return;
+ const [a,b]=pair;
+ if(a.student_name!==b.student_name||a.direction!==b.direction||String(a.student_class)!==String(b.student_class)||a.curriculum_id!==b.curriculum_id){
+  $("compare-view").hidden=false;$("compare-view").textContent="Для корректного сравнения выбери две попытки одного ученика, направления, класса и учебной программы.";return;
+ }
+ const topics=attempt=>{
+  const stats={};(attempt.payload.answers||[]).forEach(x=>{const t=x.topic||"Без темы";if(!stats[t])stats[t]={right:0,total:0};stats[t].total++;if(x.statusLabel==="Верно")stats[t].right++;});
+  return stats;
+ };
+ const ta=topics(a),tb=topics(b),all=[...new Set([...Object.keys(ta),...Object.keys(tb)])].sort();
+ const date=x=>new Date(x.completed_at).toLocaleDateString("ru-RU");
+ $("compare-view").hidden=false;
+ $("compare-view").innerHTML='<h3>Сравнение попыток</h3><div class="compare-grid"><div><b>'+esc(date(a))+'</b><p>'+esc(a.score)+'/15 · '+esc(a.percentage)+'%</p></div><div><b>'+esc(date(b))+'</b><p>'+esc(b.score)+'/15 · '+esc(b.percentage)+'%</p></div></div><h4>Динамика по темам</h4>'+all.map(t=>'<div class="compare-topic"><span>'+esc(t)+'</span><b>'+((ta[t]?.right||0)+'/'+(ta[t]?.total||0))+' → '+((tb[t]?.right||0)+'/'+(tb[t]?.total||0))+'</b></div>').join("");
 }
 function printAttempt(a){
  const p=a.payload||{};
  const w=window.open("","_blank");
  if(!w){showStatus("Разреши всплывающие окна для печати.");return;}
  const answers=(p.answers||[]).map((x,i)=>'<article><h3>'+(i+1)+'. '+esc(x.question)+'</h3><p><b>Ответ:</b> '+esc(x.answerText||"Не отвечено")+'</p><p><b>Правильный ответ:</b> '+esc(x.correctText)+'</p><p><b>Статус:</b> '+esc(x.statusLabel)+' · <b>Тема:</b> '+esc(x.topic)+' · <b>Сложность:</b> '+esc(x.difficulty)+'</p><p>'+esc(x.explanation)+'</p></article>').join("");
- w.document.write('<!doctype html><html lang="ru"><meta charset="utf-8"><title>Диагностика — '+esc(p.studentName)+'</title><style>body{font:14px Arial;max-width:850px;margin:35px auto;color:#222;line-height:1.5}h1{font-size:24px}article{border-top:1px solid #ddd;padding:12px 0;break-inside:avoid}h3{font-size:15px}p{margin:5px 0}.muted{color:#666}@media print{button{display:none}}</style><h1>Диагностика Mischenko Edu</h1><p>'+esc(p.studentName)+' · '+esc(p.studentClass)+' класс · '+esc(p.direction)+'</p><h2>Результат: '+esc(p.score)+' / 15 ('+esc(p.percentage)+'%)</h2>'+answers+'<script>window.onload=()=>window.print()<\\/script></html>');
+ w.document.write('<!doctype html><html lang="ru"><meta charset="utf-8"><title>Диагностика — '+esc(p.studentName)+'</title><style>body{font:14px Arial;max-width:850px;margin:35px auto;color:#222;line-height:1.5}h1{font-size:24px}article{border-top:1px solid #ddd;padding:12px 0;break-inside:avoid}h3{font-size:15px}p{margin:5px 0}.muted{color:#666}@media print{button{display:none}}</style><h1>Диагностика Mischenko Edu</h1><p>'+esc(p.studentName)+' · '+esc(p.studentClass)+' класс · '+esc(p.direction)+' · '+esc(p.curriculumName||"Программа не указана")+(p.curriculumDetail?' · '+esc(p.curriculumDetail):'')+'</p><h2>Результат: '+esc(p.score)+' / 15 ('+esc(p.percentage)+'%)</h2>'+answers+'<script>window.onload=()=>window.print()<\\/script></html>');
  w.document.close();
 }
 $("load").addEventListener("click",loadArchive);
 $("refresh").addEventListener("click",loadArchive);
+$("compare").addEventListener("click",compareAttempts);
 $("search").addEventListener("input",render);
 $("token").addEventListener("keydown",e=>{if(e.key==="Enter")loadArchive();});
 </script>
