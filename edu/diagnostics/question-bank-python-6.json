@@ -24,12 +24,12 @@
       "type": "choice",
       "question": "Какой результат возвращает input() без дополнительного преобразования?",
       "options": [
-        "Целое число",
         "Строку",
+        "Целое число",
         "Логическое значение",
         "Список"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "correctText": "Строку",
       "explanation": "input() получает введённые символы и возвращает строку."
     },
@@ -42,11 +42,11 @@
       "question": "Какая строка присваивает переменной points значение 12?",
       "options": [
         "12 = points",
-        "points == 12",
         "points = 12",
+        "points == 12",
         "let points = 12"
       ],
-      "correctIndex": 2,
+      "correctIndex": 1,
       "correctText": "points = 12",
       "explanation": "В Python присваивание записывается как имя переменной, знак = и значение."
     },
@@ -59,11 +59,11 @@
       "question": "Чему равно выражение 5 + 2 * 3?",
       "options": [
         "21",
-        "11",
         "15",
+        "11",
         "13"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "correctText": "11",
       "explanation": "Умножение выполняется раньше сложения: 5 + 6 = 11."
     },
@@ -76,11 +76,11 @@
       "question": "Какой символ начинает однострочный комментарий в Python?",
       "options": [
         "//",
-        "#",
         "<!--",
-        ";"
+        ";",
+        "#"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "correctText": "#",
       "explanation": "Символ # обозначает комментарий до конца строки."
     },
@@ -92,12 +92,12 @@
       "type": "choice",
       "question": "Как превратить строку \"42\" в целое число?",
       "options": [
-        "str(\"42\")",
         "int(\"42\")",
+        "str(\"42\")",
         "float(\"42\")",
         "input(42)"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "correctText": "int(\"42\")",
       "explanation": "int() преобразует строку с записью целого числа в тип int."
     },
@@ -122,12 +122,12 @@
       "type": "choice",
       "question": "Что вернёт выражение [4, 7, 9][0]?",
       "options": [
-        "4",
         "7",
+        "4",
         "9",
         "0"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "correctText": "4",
       "explanation": "Индекс 0 указывает на первый элемент списка."
     },
@@ -152,12 +152,12 @@
       "type": "choice",
       "question": "Если score = 10, что будет при проверке score >= 10?",
       "options": [
-        "Условие истинно",
         "Условие ложно",
         "Возникнет ошибка",
+        "Условие истинно",
         "Переменная станет 10"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "correctText": "Условие истинно",
       "explanation": "Знак >= включает равенство, поэтому 10 >= 10 — True."
     },
@@ -184,10 +184,10 @@
       "options": [
         "2",
         "3",
-        "8",
-        "13"
+        "13",
+        "8"
       ],
-      "correctIndex": 2,
+      "correctIndex": 3,
       "correctText": "8",
       "explanation": "max() возвращает наибольший элемент последовательности."
     },
