@@ -146,7 +146,7 @@ test("rejects Russian grade-six informatics as a federal-program profile", async
   assert.equal(db.rows.size, 0);
 });
 
-test("requires a level for Russian senior-school mathematics", async () => {
+test("requires a level for Russian senior-school physics", async () => {
   const db = new FakeDB();
   const result = await post(db, validPayload({
     direction: "Физика", studentClass: "10", curriculumId: "ru",
