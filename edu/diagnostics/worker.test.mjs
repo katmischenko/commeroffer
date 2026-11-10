@@ -175,59 +175,41 @@ test("retry with same attemptId does not create a duplicate record", async () =>
   assert.equal([...db.rows.values()][0].student_name, "Тестовый ученик");
 });
 
-test("rejects Russian grade-six informatics as a federal-program profile", async () => {
+test("accepts the simple school diagnostic payload without curriculum metadata", async () => {
   const db = new FakeDB();
   const result = await post(db, validPayload({
-    direction: "Информатика", studentClass: "6", curriculumId: "ru",
-    curriculumName: "Россия — ФРП", curriculumYear: "2026/2027"
+    curriculumId: "", curriculumName: "", curriculumDetail: "",
+    curriculumLevel: "", curriculumYear: "", experience: ""
+  }));
+  assert.equal(result.status, 200);
+  assert.equal(result.body.saved, true);
+  const row = [...db.rows.values()][0];
+  assert.equal(row.curriculum_id, "unspecified");
+  assert.equal(row.curriculum_name, "");
+  assert.equal(row.curriculum_year, "");
+  assert.equal(row.experience, "");
+});
+
+test("accepts a digital diagnostic payload without experience selection", async () => {
+  const db = new FakeDB();
+  const result = await post(db, validPayload({
+    direction: "Python", studentClass: "5",
+    curriculumId: "", curriculumName: "", curriculumYear: "", experience: ""
+  }));
+  assert.equal(result.status, 200);
+  assert.equal(result.body.saved, true);
+  assert.equal([...db.rows.values()][0].experience, "");
+});
+
+test("validates optional curriculum and experience metadata when supplied", async () => {
+  const db = new FakeDB();
+  const result = await post(db, validPayload({
+    curriculumId: "by", curriculumName: "Беларусь",
+    curriculumYear: "2027/2028"
   }));
   assert.equal(result.status, 400);
-  assert.equal(result.body.error, "local_informatics_program_required");
+  assert.equal(result.body.error, "invalid_curriculum_year");
   assert.equal(db.rows.size, 0);
-});
-
-test("requires a level for Russian senior-school physics", async () => {
-  const db = new FakeDB();
-  const result = await post(db, validPayload({
-    direction: "Физика", studentClass: "10", curriculumId: "ru",
-    curriculumName: "Россия — ФРП", curriculumYear: "2026/2027",
-    curriculumLevel: ""
-  }));
-  assert.equal(result.status, 400);
-  assert.equal(result.body.error, "curriculum_level_required");
-});
-
-test("requires a level for Belarus grade-eight physics pilot", async () => {
-  const db = new FakeDB();
-  const result = await post(db, validPayload({
-    direction: "Физика", studentClass: "8", curriculumId: "by",
-    curriculumName: "Беларусь — учебная программа Министерства образования",
-    curriculumYear: "2026/2027", curriculumLevel: ""
-  }));
-  assert.equal(result.status, 400);
-  assert.equal(result.body.error, "curriculum_level_required");
-});
-
-test("requires a level for Belarus grade-nine informatics advanced track", async () => {
-  const db = new FakeDB();
-  const result = await post(db, validPayload({
-    direction: "Информатика", studentClass: "9", curriculumId: "by",
-    curriculumName: "Беларусь — учебная программа Министерства образования",
-    curriculumYear: "2026/2027", curriculumLevel: ""
-  }));
-  assert.equal(result.status, 400);
-  assert.equal(result.body.error, "curriculum_level_required");
-});
-
-test("rejects a digital profile without experience selection", async () => {
-  const db = new FakeDB();
-  const result = await post(db, validPayload({
-    direction: "Python", studentClass: "5", curriculumId: "self",
-    curriculumName: "Собственная образовательная траектория",
-    curriculumYear: "", experience: ""
-  }));
-  assert.equal(result.status, 400);
-  assert.equal(result.body.error, "experience_required");
 });
 
 test("admin can list and delete a stored attempt", async () => {
