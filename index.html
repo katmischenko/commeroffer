@@ -114,6 +114,13 @@
   .hero-sub{margin-top:28px;max-width:62ch;color:var(--muted);font-size:clamp(16px,1.55vw,18px);line-height:1.78}
   .hero-sub b{color:var(--ink)}
   .hero-actions{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;align-items:center}
+  .hero-direction{
+    display:flex;align-items:center;gap:8px;width:fit-content;
+    margin:13px 0 0 12px;color:var(--pen);
+    font-family:var(--hand);font-size:25px;font-weight:700;
+    transform:rotate(-3deg);opacity:.95;
+  }
+  .hero-direction-arrow{font-family:var(--body);font-size:25px;line-height:1;transform:translateY(-2px)}
   .btn{
     font-weight:800;font-size:15.5px;text-decoration:none;border-radius:100px;padding:16px 32px;
     display:inline-flex;align-items:center;gap:10px;cursor:pointer;border:0;
@@ -458,11 +465,10 @@
         <a class="btn btn-marker" href="#diagnosticChoice" data-open-diagnostic>Записаться на диагностику ✎</a>
         <a class="btn btn-ghost" href="#subjects">Полистать тетрадь ↓</a>
       </div>
-      <svg class="doodle-arrow" style="right:8%;top:26%" width="150" height="110" viewBox="0 0 150 110" fill="none">
-        <path d="M140 12 C 100 8, 60 30, 44 70" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="1 9"/>
-        <path d="M52 62 L 42 74 L 58 74" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <text x="66" y="26" fill="currentColor" font-family="Caveat" font-size="21" transform="rotate(-6 66 26)">начни отсюда</text>
-      </svg>
+      <div class="hero-direction" aria-hidden="true">
+        <span>начни отсюда</span>
+        <span class="hero-direction-arrow">↖</span>
+      </div>
       <div class="hero-note">
         <div class="hstat"><b>8<em>+</em></b><span>лет преподавания</span></div>
         <div class="hstat"><b>1<em>:</em>1</b><span>только индивидуально</span></div>
