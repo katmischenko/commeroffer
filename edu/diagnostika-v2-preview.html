@@ -1,78 +1,123 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
-<title>Диагностика v2 — Mischenko Edu (предпросмотр)</title>
+<title>Диагностика знаний — Mischenko Edu</title>
+<meta name="description" content="Диагностика знаний Mischenko Edu: 15 заданий, анализ результатов и рекомендации по темам.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="edu.css">
 <style>
-:root{--d-bg:#111318;--d-card:#1b1f27;--d-line:#343a46;--d-text:#f0eee9;--d-muted:#a6a9b1;--d-accent:#c7dce8;--d-warn:#d9a4a4}
-.diag{max-width:850px;margin:120px auto 70px;padding:24px;color:var(--d-text)}
-.diag-card{background:var(--d-card);border:1px solid var(--d-line);border-radius:18px;padding:clamp(20px,4vw,34px);margin:18px 0}
-.diag label{display:block;font-size:14px;color:var(--d-muted);margin:12px 0 6px}
-.diag input,.diag select{width:100%;background:#11151b;color:var(--d-text);border:1px solid var(--d-line);border-radius:10px;padding:13px;font:inherit}
-.diag button{font:inherit;cursor:pointer}
-.d-btn{border:0;border-radius:999px;background:var(--d-accent);color:#10151b;padding:12px 22px;font-weight:800}
-.d-btn.secondary{background:transparent;color:var(--d-text);border:1px solid var(--d-line)}
-.d-btn:disabled{opacity:.4;cursor:not-allowed}
-.d-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
-.d-note{color:var(--d-muted);font-size:13px;line-height:1.6}
-.d-progress{height:5px;background:#303640;border-radius:9px;overflow:hidden;margin:18px 0}
-.d-progress i{display:block;height:100%;background:var(--d-accent);width:0;transition:width .2s}
-.d-meta{display:flex;justify-content:space-between;gap:12px;color:var(--d-muted);font-size:13px}
-.d-question{font-size:clamp(19px,3vw,25px);line-height:1.45;margin:22px 0}
-.d-options{display:grid;gap:10px}
-.d-option{width:100%;text-align:left;border:1px solid var(--d-line);background:#151920;color:var(--d-text);border-radius:12px;padding:14px 16px}
-.d-option:hover{border-color:var(--d-accent)}
-.d-option.chosen{border-color:var(--d-accent);background:#222c35}
-.d-option.correct{border-color:#7eb99a}.d-option.wrong{border-color:#cf8585}
-.d-feedback{margin-top:16px;padding:15px;border-radius:12px;background:#242a32;line-height:1.6}
-.d-chip{display:inline-block;border:1px solid var(--d-line);border-radius:30px;padding:5px 10px;color:var(--d-muted);font-size:12px;margin-right:6px}
-.d-consent{display:flex!important;gap:10px;align-items:flex-start;color:var(--d-text)!important}
-.d-consent input{width:auto;margin-top:4px}
-.d-stat{font-size:34px;font-weight:800;margin:8px 0}
-.d-topic{display:flex;justify-content:space-between;border-bottom:1px solid var(--d-line);padding:10px 0;gap:15px}
-[hidden]{display:none!important}
-@media(max-width:600px){.diag{padding:15px;margin-top:95px}.diag-card{padding:18px}}
+/* Только компоновка новых полей. Цвета, типографика, карточки и кнопки — из edu.css. */
+.diag-fields{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:26px 0}
+.diag-field{display:flex;flex-direction:column;gap:8px}
+.diag-field.full{grid-column:1/-1}
+.diag-field label{font-size:14px;font-weight:700;color:var(--muted)}
+.diag-field select{font:inherit;font-size:16px;color:var(--ink);background:var(--paper);border:1px solid rgba(234,231,223,.2);border-radius:14px;padding:15px 18px;width:100%;outline:none}
+.diag-field select:focus{border-color:var(--pen)}
+.diag-hint{color:var(--muted);font-size:14px;margin-top:14px}
+.diag-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.diag-actions .btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.diag-answer{margin:22px 0}
+.diag-feedback{margin-top:20px}
+.diag-feedback .sim-log{margin-top:0}
+.diag-section-title{font-size:19px;font-weight:800;margin:30px 0 12px}
+.diag-topic-row{display:flex;justify-content:space-between;gap:15px;padding:11px 0;border-top:1px dashed rgba(234,231,223,.14);font-size:15px}
+.diag-topic-row span{color:var(--muted)}
+.diag-topic-row b{color:var(--ink);white-space:nowrap}
+.diag-detail{border-top:1px dashed rgba(234,231,223,.14);padding:15px 0}
+.diag-detail summary{cursor:pointer;font-weight:700;color:var(--ink)}
+.diag-detail p{font-size:14px;color:var(--muted);margin-top:10px}
+.diag-status{font-family:var(--hand);font-size:20px;color:var(--pen);margin:8px 0}
+@media(max-width:640px){.diag-fields{grid-template-columns:1fr}.diag-field.full{grid-column:auto}}
 </style>
 </head>
 <body>
-<header><nav class="nav"><a class="logo" href="index.html"><span class="hand">Mischenko Edu</span><small>диагностика · предпросмотр</small></a><div class="nav-right"><a class="nav-link" href="diagnostika.html">← текущая версия</a></div></nav></header>
-<main class="diag">
-<span class="sec-index">закрытый предпросмотр · v2</span>
-<h1>Диагностика <span class="hl">знаний</span></h1>
-<p class="hero-sub">15 заданий, разбор каждого ответа и отчёт по темам. Эта версия предназначена для внутренней проверки, а не для рассылки ученикам.</p>
-<section class="diag-card" id="setup">
-<h2>Начнём с исходных данных</h2>
-<label for="student">Имя ученика</label><input id="student" maxlength="100" autocomplete="name" placeholder="Как к тебе обращаться?">
-<label for="direction">Направление</label><select id="direction"></select>
-<label for="grade">Класс</label><select id="grade"></select>
-<div id="experience-wrap" hidden><label for="experience">Какой у тебя опыт в этом направлении?</label><select id="experience"><option value="">Выбери вариант</option><option>Только начинаю — раньше почти не изучал(а)</option><option>Знаю основы — уже изучал(а), выполнял(а) простые задания</option><option>Есть опыт — хочу проверить и углубить знания</option></select></div>
-<p class="d-note" id="profile-note" style="margin-top:15px"></p>
-<label class="d-consent"><input type="checkbox" id="consent"><span>Я (или мой родитель/законный представитель) согласен(на), чтобы ответы и результат диагностики были переданы преподавателю для анализа обучения и сохранены в закрытом архиве.</span></label>
-<p class="d-note">Перед публичным запуском необходимо утвердить срок хранения данных и окончательную формулировку согласия. Поэтому эта версия закрытая и не предназначена для реальных учеников.</p>
-<div class="d-actions"><button class="d-btn" id="start" disabled>Начать диагностику</button></div>
-</section>
-<section class="diag-card" id="quiz" hidden>
-<div class="d-meta"><span id="counter"></span><span id="difficulty"></span></div>
-<div class="d-progress"><i id="bar"></i></div>
-<div id="topic" class="d-chip"></div>
-<div id="question" class="d-question"></div>
-<div id="answer-area"></div>
-<div id="feedback" class="d-feedback" hidden></div>
-<div id="confidence" hidden>
-<p style="margin:16px 0 8px">Насколько ты уверен(а) в ответе?</p>
-<div class="d-actions"><button class="d-btn secondary" data-confidence="Уверен(а)">Уверен(а)</button><button class="d-btn secondary" data-confidence="Сомневаюсь">Сомневаюсь</button></div>
-</div>
-<div class="d-actions"><button class="d-btn secondary" id="back">← Назад</button><button class="d-btn" id="next" disabled>Дальше →</button><button class="d-btn secondary" id="skip">Пропустить</button></div>
-</section>
-<section class="diag-card" id="result" hidden></section>
+<header>
+  <nav class="nav">
+    <a class="logo" href="index.html"><span class="hand">Mischenko Edu</span><small>библиотека · пособий</small></a>
+    <div class="nav-right">
+      <a class="nav-link" href="index.html">← в библиотеку</a>
+      <a class="nav-cta" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Написать мне</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap page">
+    <a class="back" href="index.html">← назад к полкам</a>
+    <span class="sec-index">диагностика · бесплатно</span>
+    <h1>Проверим, что ты <span class="hl">уже знаешь</span></h1>
+    <p class="hero-sub">15 заданий помогут увидеть, какие темы ты освоил(а), а какие стоит повторить. Во время прохождения правильные ответы не показываются — сначала спокойно закончим работу, а затем разберём результат.</p>
+
+    <section class="quiz" id="setup">
+      <div class="sec-index">шаг 1 · знакомство</div>
+      <h2 class="sec-title">Выбери направление</h2>
+      <p class="sec-sub">Укажи класс и направление, по которым хочешь проверить знания.</p>
+      <div class="diag-fields">
+        <div class="diag-field full">
+          <label for="student">Как тебя зовут?</label>
+          <input class="q-input" id="student" maxlength="100" autocomplete="name" placeholder="Имя ученика">
+        </div>
+        <div class="diag-field">
+          <label for="direction">Направление</label>
+          <select id="direction"></select>
+        </div>
+        <div class="diag-field">
+          <label for="grade">Класс</label>
+          <select id="grade"></select>
+        </div>
+        <div class="diag-field full" id="experience-wrap" hidden>
+          <label for="experience">Какой у тебя опыт?</label>
+          <select id="experience">
+            <option value="">Выбери вариант</option>
+            <option value="beginner">Только начинаю — раньше почти не изучал(а)</option>
+            <option value="basics">Знаю основы — уже изучал(а), выполнял(а) простые задания</option>
+            <option value="experienced">Есть опыт — хочу проверить и углубить знания</option>
+          </select>
+        </div>
+      </div>
+      <p class="diag-hint" id="profile-note"></p>
+      <div class="diag-actions">
+        <button class="btn btn-pen" id="start" disabled>Начать диагностику →</button>
+      </div>
+    </section>
+
+    <section class="quiz" id="quiz" hidden>
+      <div class="q-progress"><i id="bar"></i></div>
+      <div class="q-count" id="counter"></div>
+      <div class="diag-status" id="topic"></div>
+      <div class="q-text" id="question"></div>
+      <div class="diag-answer" id="answer-area"></div>
+      <div class="diag-actions">
+        <button class="btn btn-ghost" id="back">← Назад</button>
+        <button class="btn btn-pen" id="next" disabled>Следующий вопрос →</button>
+        <button class="btn btn-ghost" id="skip">Пропустить</button>
+      </div>
+      <p class="diag-hint">Правильный ответ и объяснение появятся после завершения всех заданий.</p>
+    </section>
+
+    <section class="quiz" id="result" hidden></section>
+  </div>
 </main>
+
+<footer>
+  <div class="wrap foot">
+    <small>© 2026 Mischenko Edu</small>
+    <span class="hand">ошибка — это подсказка ✎</span>
+    <div class="foot-links">
+      <a href="../index.html">Сайт репетитора</a>
+      <a href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Telegram</a>
+    </div>
+  </div>
+</footer>
+
 <script>
 (function(){
 'use strict';
-// Preview mode: never posts student data to the live Worker or Telegram.
 const directions=[
  {id:'informatics',name:'Информатика',grades:[6,7,8,9,10,11]},
  {id:'physics',name:'Физика',grades:[7,8,9,10,11]},
@@ -83,67 +128,132 @@ const directions=[
 ];
 const $=id=>document.getElementById(id);
 let bank=[],index=0,answers=[],student='',direction='',grade='',experience='';
-function fillDirections(){ $('direction').innerHTML=directions.map(d=>'<option value="'+d.id+'">'+d.name+'</option>').join('');fillGrades(); }
-function fillGrades(){const d=directions.find(x=>x.id===$('direction').value);$('grade').innerHTML=d.grades.map(g=>'<option value="'+g+'">'+g+' класс</option>').join('');$('experience-wrap').hidden=!d.experience;checkReady();}
-function checkReady(){
- const d=directions.find(x=>x.id===$('direction').value);
- const ready=d.id==='informatics' && $('grade').value==='6';
- $('profile-note').textContent=ready?'Доступен пилотный набор: 15 вопросов по информатике, 6 класс.':'Банк для этого профиля ещё готовится. Выбери информатику, 6 класс, чтобы проверить механику. Остальные профили не запускаются с чужими заданиями.';
- $('start').disabled=!ready||!$('student').value.trim()||!$('consent').checked||(d.experience&&!$('experience').value);
-}
-function normalize(v){return String(v??'').trim().toLowerCase().replace(/\s+/g,' ');}
-function selectedAnswer(q){return answers[index]||{answerText:'',status:'unanswered',confidenceLabel:''};}
-function setAnswer(text,status){const old=selectedAnswer(bank[index]);answers[index]={...old,answerText:text,status};renderQuestion();}
-function isCorrect(q,a){if(!a||a.status==='skipped'||a.status==='unknown')return false;if(q.type==='short')return (q.acceptedAnswers||[]).some(x=>normalize(x)===normalize(a.answerText));return Number(a.answerText)===q.correctIndex;}
-function answerText(q,a){if(!a)return 'Не отвечено';if(a.status==='skipped')return 'Пропуск';if(a.status==='unknown')return 'Не знаю';if(q.type==='short')return a.answerText;return q.options[Number(a.answerText)]??a.answerText;}
-function renderQuestion(){
- const q=bank[index],a=selectedAnswer(q);$('counter').textContent='Вопрос '+(index+1)+' из '+bank.length;$('bar').style.width=((index+1)/bank.length*100)+'%';$('topic').textContent=q.topic;$('difficulty').textContent=({basic:'базовый',medium:'средний',advanced:'повышенный'})[q.difficulty]||q.difficulty;$('question').textContent=q.question;
- let html='';
- if(q.type==='short')html='<label for="short-answer">Твой ответ</label><input id="short-answer" value="'+escapeHtml(a.answerText)+'" placeholder="Введи ответ">';
- else html='<div class="d-options">'+q.options.map((o,n)=>'<button class="d-option '+(a.answerText===String(n)?'chosen':'')+'" data-option="'+n+'">'+escapeHtml(o)+'</button>').join('')+'</div>';
- html+='<div class="d-actions"><button class="d-btn secondary" id="unknown">Не знаю</button></div>';$('answer-area').innerHTML=html;
- if(q.type==='short'){$('short-answer').addEventListener('input',e=>{answers[index]={...selectedAnswer(q),answerText:e.target.value,status:'answered'};syncControls();});}
- $('answer-area').querySelectorAll('[data-option]').forEach(b=>b.addEventListener('click',()=>setAnswer(b.dataset.option,'answered')));
- $('unknown').addEventListener('click',()=>setAnswer('','unknown'));
- const done=!!a.status&&a.status!=='unanswered';
- $('feedback').hidden=!done;
- if(done){const ok=isCorrect(q,a);$('feedback').innerHTML='<b>'+(a.status==='unknown'?'Правильный ответ':ok?'Верно':'Разберём')+'</b><br>'+escapeHtml(q.type==='short'?q.correctText:q.options[q.correctIndex])+'<br><span class="d-note">'+escapeHtml(q.explanation)+'</span>';}
- $('confidence').hidden=!done||a.status==='unknown'||a.status==='skipped';
- $('confidence').querySelectorAll('[data-confidence]').forEach(b=>b.classList.toggle('chosen',a.confidenceLabel===b.dataset.confidence));
- $('back').disabled=index===0;$('skip').hidden=done;$('next').disabled=!done;$('next').textContent=index===bank.length-1?'К результату':'Дальше →';
-}
-function syncControls(){const a=selectedAnswer(bank[index]);$('next').disabled=!a.status||a.status==='unanswered';}
 function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function finish(){
- const score=bank.reduce((n,q,i)=>n+(isCorrect(q,answers[i])?1:0),0),weak={};
- const report=bank.map((q,i)=>{const a=answers[i]||{status:'skipped',answerText:''};const ok=isCorrect(q,a);if(!ok)weak[q.topic]=(weak[q.topic]||0)+1;return {question:q.question,answerText:answerText(q,a),correctText:q.type==='short'?q.correctText:q.options[q.correctIndex],status:ok?'correct':a.status==='unknown'?'unknown':a.status==='skipped'?'skipped':'incorrect',statusLabel:ok?'Верно':a.status==='unknown'?'Не знаю':a.status==='skipped'?'Пропуск':'Неверно',topic:q.topic,difficulty:q.difficulty,confidenceLabel:a.confidenceLabel||'',explanation:q.explanation};});
- const weakTopics=Object.keys(weak).sort((a,b)=>weak[b]-weak[a]);
- $('quiz').hidden=true;$('result').hidden=false;
- $('result').innerHTML='<span class="sec-index">предварительный результат</span><h2>'+escapeHtml(student)+', диагностика завершена</h2><div class="d-stat">'+score+' / 15</div><p class="d-note">'+Math.round(score/15*100)+'% правильных ответов · '+escapeHtml(direction)+' · '+grade+' класс</p><h3>Темы для внимания</h3>'+(weakTopics.length?weakTopics.map(t=>'<div class="d-topic"><span>'+escapeHtml(t)+'</span><b>'+weak[t]+'</b></div>').join(''):'<p>В этой попытке ошибок не обнаружено.</p>')+'<h3 style="margin-top:22px">Разбор заданий</h3>'+report.map((a,i)=>'<div class="d-topic" style="display:block"><b>'+(i+1)+'. '+escapeHtml(a.topic)+' · '+a.statusLabel+'</b><p class="d-note">Ответ: '+escapeHtml(a.answerText)+'<br>Правильно: '+escapeHtml(a.correctText)+'<br>'+escapeHtml(a.explanation)+'</p></div>').join('')+'<p class="d-note" style="margin-top:18px">Это локальный предпросмотр: данные не отправляются в базу и Telegram. Для проверки интеграции понадобится отдельная тестовая конфигурация.</p><div class="d-actions"><button class="d-btn" id="send">Скопировать тестовый отчёт</button></div><p id="send-status" class="d-note" role="status"></p>';
- $('send').addEventListener('click',()=>send(report,score,weakTopics));
+function normalize(v){return String(v??'').trim().toLowerCase().replace(/\s+/g,' ');}
+function profile(){
+ const d=directions.find(x=>x.id===$('direction').value);
+ return {direction:d,grade:$('grade').value};
 }
-async function send(report,score,weakTopics){
- const payload={attemptId:'preview-'+Date.now(),studentName:student,studentClass:grade,direction,experience,consent:true,score,maxScore:15,completedAt:new Date().toISOString(),weakTopics,answers:report};
- try{
-  await navigator.clipboard.writeText(JSON.stringify(payload,null,2));
-  $('send-status').textContent='Тестовый отчёт скопирован. Никакие данные не отправлялись в Worker, D1 или Telegram.';
-  $('send').textContent='Скопировано';
- }catch(e){
-  $('send-status').textContent='Браузер не разрешил копирование. Данные остались только на этой странице.';
+function fillGrades(){
+ const d=directions.find(x=>x.id===$('direction').value);
+ $('grade').innerHTML=d.grades.map(g=>'<option value="'+g+'">'+g+' класс</option>').join('');
+ $('experience-wrap').hidden=!d.experience;
+ checkReady();
+}
+function checkReady(){
+ const p=profile(),available=p.direction.id==='informatics'&&p.grade==='6';
+ $('profile-note').textContent=available
+ ?'Для этого профиля подготовлен пилотный набор из 15 заданий. Сейчас он открыт для внутренней проверки.'
+ :'Набор для выбранного профиля ещё готовится. Сейчас можно пройти только пилот по информатике за 6 класс.';
+ $('start').disabled=!available||!$('student').value.trim()||(p.direction.experience&&!$('experience').value);
+}
+function current(){return answers[index]||{answerText:'',status:'unanswered'};}
+function saveAnswer(text,status){
+ answers[index]={...current(),answerText:text,status};
+ syncNext();
+}
+function syncNext(){
+ const a=current();
+ $('next').disabled=!a.status||a.status==='unanswered';
+}
+function renderQuestion(){
+ const q=bank[index],a=current();
+ $('counter').textContent='вопрос '+(index+1)+' из '+bank.length;
+ $('bar').style.width=((index+1)/bank.length*100)+'%';
+ $('topic').textContent='Тема: '+q.topic;
+ $('question').innerHTML=q.question;
+ let html='';
+ if(q.type==='short'){
+  html='<input class="q-input" id="short-answer" autocomplete="off" placeholder="Введи ответ" value="'+escapeHtml(a.answerText)+'">';
+ }else{
+  html='<div class="q-opts">'+q.options.map((o,n)=>'<button type="button" class="q-opt '+(a.answerText===String(n)?'selected':'')+'" data-option="'+n+'">'+escapeHtml(o)+'</button>').join('')+'</div>';
  }
+ html+='<div class="diag-actions"><button type="button" class="btn btn-ghost" id="unknown">Не знаю</button></div>';
+ $('answer-area').innerHTML=html;
+ if(q.type==='short'){
+  $('short-answer').addEventListener('input',e=>{saveAnswer(e.target.value,e.target.value.trim()?'answered':'unanswered');});
+ }else{
+  $('answer-area').querySelectorAll('[data-option]').forEach(b=>b.addEventListener('click',()=>{
+   saveAnswer(b.dataset.option,'answered');
+   $('answer-area').querySelectorAll('[data-option]').forEach(x=>x.classList.toggle('selected',x===b));
+  }));
+ }
+ $('unknown').addEventListener('click',()=>saveAnswer('','unknown'));
+ $('back').disabled=index===0;
+ $('skip').hidden=!!a.status&&a.status!=='unanswered';
+ $('next').textContent=index===bank.length-1?'Завершить диагностику':'Следующий вопрос →';
+ syncNext();
 }
-$('direction').addEventListener('change',fillGrades);$('grade').addEventListener('change',checkReady);$('student').addEventListener('input',checkReady);$('consent').addEventListener('change',checkReady);$('experience').addEventListener('change',checkReady);
+function isCorrect(q,a){
+ if(!a||a.status==='skipped'||a.status==='unknown'||a.status==='unanswered')return false;
+ if(q.type==='short')return (q.acceptedAnswers||[]).some(x=>normalize(x)===normalize(a.answerText));
+ return Number(a.answerText)===q.correctIndex;
+}
+function answerLabel(q,a){
+ if(!a||a.status==='unanswered'||a.status==='skipped')return 'Нет ответа';
+ if(a.status==='unknown')return 'Не знаю';
+ return q.type==='short'?a.answerText:(q.options[Number(a.answerText)]??a.answerText);
+}
+function finish(){
+ const score=bank.reduce((n,q,i)=>n+(isCorrect(q,answers[i])?1:0),0);
+ const topicStats={};
+ const report=bank.map((q,i)=>{
+  const a=answers[i]||{status:'skipped',answerText:''},ok=isCorrect(q,a);
+  if(!topicStats[q.topic])topicStats[q.topic]={right:0,total:0};
+  topicStats[q.topic].total++;if(ok)topicStats[q.topic].right++;
+  return {q,a,ok};
+ });
+ const percent=Math.round(score/bank.length*100);
+ const level=score>=12
+  ?'Хорошая база':'';
+ const description=score>=12
+  ?'Основные понятия и способы решения в целом освоены. Можно переходить к более сложным заданиям и точечно закрепить отдельные темы.'
+  :score>=8
+  ?'Часть тем уже получается, но знания пока неравномерные. Лучше повторить темы, в которых были ошибки, и закрепить их на практике.'
+  :'Сейчас важнее спокойно восстановить основу. Начни с базовых понятий и простых примеров, затем постепенно переходи к заданиям сложнее.';
+ const title=score>=12?'Уверенная база':score>=8?'Есть основа, но нужны повторение и практика':'Начинаем укреплять основу';
+ const topicRows=Object.entries(topicStats).sort((a,b)=>(a[1].right/a[1].total)-(b[1].right/b[1].total));
+ const weak=topicRows.filter(([,v])=>v.right<v.total);
+ const strong=topicRows.filter(([,v])=>v.right===v.total);
+ $('quiz').hidden=true;$('result').hidden=false;
+ $('result').innerHTML=
+  '<div class="sec-index">шаг 2 · твой результат</div>'+
+  '<div class="q-result"><div class="big">'+score+' из '+bank.length+'</div>'+
+  '<h2 class="sec-title">'+title+'</h2>'+
+  '<p>'+percent+'% правильных ответов. '+description+'</p></div>'+
+  '<h3 class="diag-section-title">Что уже получается</h3>'+
+  (strong.length?'<ul class="q-topics">'+strong.map(([t,v])=>'<li>'+escapeHtml(t)+' — '+v.right+' из '+v.total+'</li>').join('')+'</ul>':'<p class="diag-hint">Пока нет тем, где все задания выполнены верно. Это не приговор — просто ориентир для дальнейшей работы.</p>')+
+  '<h3 class="diag-section-title">Что стоит повторить</h3>'+
+  (weak.length?'<div>'+weak.map(([t,v])=>'<div class="diag-topic-row"><span>'+escapeHtml(t)+'</span><b>'+v.right+' из '+v.total+'</b></div>').join('')+'</div>':'<p class="diag-hint">Ошибок по проверенным темам нет. Отличная отправная точка для более сложной практики.</p>')+
+  '<h3 class="diag-section-title">Подробный разбор заданий</h3>'+
+  report.map(({q,a,ok},i)=>'<details class="diag-detail"><summary>'+(i+1)+'. '+escapeHtml(q.topic)+' — '+(ok?'верно':'нужно разобрать')+'</summary><p><b>Задание:</b> '+escapeHtml(q.question.replace(/<[^>]*>/g,' '))+'</p><p><b>Твой ответ:</b> '+escapeHtml(answerLabel(q,a))+'</p><p><b>Правильный ответ:</b> '+escapeHtml(q.type==='short'?q.correctText:q.options[q.correctIndex])+'</p><p><b>Объяснение:</b> '+escapeHtml(q.explanation)+'</p></details>').join('')+
+  '<p class="diag-hint">Это предварительная диагностика по одному набору заданий, а не итоговая оценка знаний. Результат поможет выбрать темы для дальнейшей работы.</p>'+
+  '<div class="diag-actions"><button class="btn btn-pen" id="restart">Пройти ещё раз</button><a class="btn btn-ghost" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Обсудить результат</a></div>';
+ $('restart').addEventListener('click',()=>{index=0;answers=[];$('result').hidden=true;$('setup').hidden=false;checkReady();});
+}
+$('direction').addEventListener('change',fillGrades);
+$('grade').addEventListener('change',checkReady);
+$('student').addEventListener('input',checkReady);
+$('experience').addEventListener('change',checkReady);
 $('start').addEventListener('click',async()=>{
- student=$('student').value.trim();const d=directions.find(x=>x.id===$('direction').value);direction=d.name;grade=$('grade').value;experience=$('experience').value;
+ const p=profile();student=$('student').value.trim();direction=p.direction.name;grade=p.grade;experience=$('experience').value;
  $('start').disabled=true;$('start').textContent='Загружаю задания…';
- try{const res=await fetch('diagnostics/question-bank-informatics-6.json',{cache:'no-store'});if(!res.ok)throw new Error('Не удалось загрузить банк');const data=await res.json();if(data.questions.length!==15)throw new Error('В банке должно быть 15 заданий');bank=data.questions;answers=Array(bank.length).fill(null);index=0;$('setup').hidden=true;$('quiz').hidden=false;renderQuestion();}
- catch(e){$('profile-note').textContent=e.message;$('start').disabled=false;$('start').textContent='Начать диагностику';}
+ try{
+  const res=await fetch('diagnostics/question-bank-informatics-6.json',{cache:'no-store'});
+  if(!res.ok)throw new Error('Не удалось загрузить задания.');
+  const data=await res.json();
+  if(data.questions.length!==15)throw new Error('В наборе должно быть 15 заданий.');
+  bank=data.questions;answers=Array(bank.length).fill(null);index=0;
+  $('setup').hidden=true;$('quiz').hidden=false;renderQuestion();
+ }catch(e){
+  $('profile-note').textContent=e.message;$('start').disabled=false;$('start').textContent='Начать диагностику →';
+ }
 });
 $('back').addEventListener('click',()=>{if(index>0){index--;renderQuestion();}});
-$('skip').addEventListener('click',()=>{answers[index]={answerText:'',status:'skipped',confidenceLabel:''};if(index<bank.length-1){index++;renderQuestion();}else finish();});
+$('skip').addEventListener('click',()=>{answers[index]={answerText:'',status:'skipped'};if(index<bank.length-1){index++;renderQuestion();}else finish();});
 $('next').addEventListener('click',()=>{if(index<bank.length-1){index++;renderQuestion();}else finish();});
-$('confidence').addEventListener('click',e=>{const b=e.target.closest('[data-confidence]');if(!b)return;answers[index]={...selectedAnswer(bank[index]),confidenceLabel:b.dataset.confidence};renderQuestion();});
-fillDirections();
+$('direction').innerHTML=directions.map(d=>'<option value="'+d.id+'">'+d.name+'</option>').join('');
+fillGrades();
 })();
 </script>
 </body>
