@@ -1,0 +1,242 @@
+{
+  "version": "0.1.0",
+  "status": "teacher_review_draft",
+  "direction": "Математика",
+  "class": 8,
+  "profileId": "math-8",
+  "sourceBasis": "Черновая тематическая матрица Mischenko Edu. Содержание требует педагогической сверки с программой и учебником соответствующего класса до публикации.",
+  "distribution": {
+    "basic": 5,
+    "medium": 7,
+    "advanced": 3
+  },
+  "questions": [
+    {
+      "id": "math8-01",
+      "topic": "Рациональные числа",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Вычисли: −7 + 12.",
+      "explanation": "Числа имеют разные знаки: вычитаем 7 из 12 и берём знак большего по модулю числа. Получаем 5.",
+      "options": [
+        "−19",
+        "−5",
+        "5",
+        "19"
+      ],
+      "correctIndex": 2,
+      "correctText": "5"
+    },
+    {
+      "id": "math8-02",
+      "topic": "Степени",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Чему равно 2³?",
+      "explanation": "2³ = 2×2×2 = 8.",
+      "options": [
+        "6",
+        "8",
+        "9",
+        "16"
+      ],
+      "correctIndex": 1,
+      "correctText": "8"
+    },
+    {
+      "id": "math8-03",
+      "topic": "Линейные уравнения",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "short",
+      "question": "Реши уравнение 3x = 21.",
+      "explanation": "Делим обе части уравнения на 3: x=7.",
+      "acceptedAnswers": [
+        "7"
+      ],
+      "correctText": "7"
+    },
+    {
+      "id": "math8-04",
+      "topic": "Проценты",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Найди 15% от 200.",
+      "explanation": "10% от 200 — 20, 5% — 10; вместе 30.",
+      "options": [
+        "15",
+        "20",
+        "30",
+        "40"
+      ],
+      "correctIndex": 2,
+      "correctText": "30"
+    },
+    {
+      "id": "math8-05",
+      "topic": "Геометрия",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Сумма углов треугольника равна:",
+      "explanation": "Сумма внутренних углов любого треугольника равна 180°.",
+      "options": [
+        "90°",
+        "180°",
+        "270°",
+        "360°"
+      ],
+      "correctIndex": 1,
+      "correctText": "180°"
+    },
+    {
+      "id": "math8-06",
+      "topic": "Рациональные выражения",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Вычисли: 3/4 − 1/4.",
+      "explanation": "Знаменатели одинаковые: (3−1)/4=2/4=1/2.",
+      "acceptedAnswers": [
+        "1/2"
+      ],
+      "correctText": "1/2"
+    },
+    {
+      "id": "math8-07",
+      "topic": "Степени",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Упрости: a³·a².",
+      "explanation": "При умножении степеней с одинаковым основанием показатели складываются.",
+      "options": [
+        "a⁵",
+        "a⁶",
+        "a",
+        "a⁹"
+      ],
+      "correctIndex": 0,
+      "correctText": "a⁵"
+    },
+    {
+      "id": "math8-08",
+      "topic": "Функции",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Найди y при x=3, если y=2x−5.",
+      "explanation": "Подставляем x=3: y=2×3−5=1.",
+      "acceptedAnswers": [
+        "1"
+      ],
+      "correctText": "1"
+    },
+    {
+      "id": "math8-09",
+      "topic": "Системы уравнений",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какое значение x удовлетворяет системе x+y=7, x−y=1?",
+      "explanation": "Складываем уравнения: 2x=8, x=4.",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correctIndex": 2,
+      "correctText": "4"
+    },
+    {
+      "id": "math8-10",
+      "topic": "Квадратные корни",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Вычисли √144.",
+      "explanation": "12²=144, поэтому √144=12.",
+      "acceptedAnswers": [
+        "12"
+      ],
+      "correctText": "12"
+    },
+    {
+      "id": "math8-11",
+      "topic": "Геометрия",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Катеты прямоугольного треугольника равны 6 и 8. Чему равна гипотенуза?",
+      "explanation": "По теореме Пифагора c=√(6²+8²)=√100=10.",
+      "options": [
+        "9",
+        "10",
+        "12",
+        "14"
+      ],
+      "correctIndex": 1,
+      "correctText": "10"
+    },
+    {
+      "id": "math8-12",
+      "topic": "Статистика",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Найди среднее арифметическое чисел 4, 6 и 8.",
+      "explanation": "(4+6+8)/3=18/3=6.",
+      "acceptedAnswers": [
+        "6"
+      ],
+      "correctText": "6"
+    },
+    {
+      "id": "math8-13",
+      "topic": "Функции",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "График какой функции является прямой, не проходящей через начало координат?",
+      "explanation": "Линейная функция y=kx+b при b≠0 не проходит через начало координат.",
+      "options": [
+        "y=3x",
+        "y=−2x",
+        "y=2x+4",
+        "y=x²"
+      ],
+      "correctIndex": 2,
+      "correctText": "y=2x+4"
+    },
+    {
+      "id": "math8-14",
+      "topic": "Вероятность",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "short",
+      "question": "В коробке 3 красных и 5 синих шаров. Какова вероятность достать красный шар? Запиши дробью.",
+      "explanation": "Всего 8 шаров, благоприятных исходов 3; вероятность 3/8.",
+      "acceptedAnswers": [
+        "3/8"
+      ],
+      "correctText": "3/8"
+    },
+    {
+      "id": "math8-15",
+      "topic": "Геометрия",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "short",
+      "question": "Площадь квадрата равна 81 см². Найди его периметр.",
+      "explanation": "Сторона равна √81=9 см; периметр 4×9=36 см.",
+      "acceptedAnswers": [
+        "36"
+      ],
+      "correctText": "36 см"
+    }
+  ]
+}
