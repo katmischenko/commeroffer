@@ -1,0 +1,311 @@
+{
+  "version": "0.1.0",
+  "status": "internal_build_incomplete",
+  "questionCountPerAttempt": 15,
+  "difficultyDistribution": {
+    "basic": 5,
+    "medium": 7,
+    "advanced": 3
+  },
+  "experienceRequiredFor": [
+    "python",
+    "html-css",
+    "figma"
+  ],
+  "directions": [
+    {
+      "id": "informatics",
+      "name": "Информатика",
+      "grades": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "id": "physics",
+      "name": "Физика",
+      "grades": [
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "id": "math",
+      "name": "Математика",
+      "grades": [
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "id": "python",
+      "name": "Python",
+      "grades": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "experienceRequired": true
+    },
+    {
+      "id": "html-css",
+      "name": "HTML/CSS",
+      "grades": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "experienceRequired": true
+    },
+    {
+      "id": "figma",
+      "name": "Figma",
+      "grades": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "experienceRequired": true
+    }
+  ],
+  "profiles": [
+    {
+      "profileId": "informatics-6",
+      "direction": "informatics",
+      "grade": 6,
+      "status": "pilot_draft"
+    },
+    {
+      "profileId": "informatics-7",
+      "direction": "informatics",
+      "grade": 7,
+      "status": "not_created"
+    },
+    {
+      "profileId": "informatics-8",
+      "direction": "informatics",
+      "grade": 8,
+      "status": "not_created"
+    },
+    {
+      "profileId": "informatics-9",
+      "direction": "informatics",
+      "grade": 9,
+      "status": "not_created"
+    },
+    {
+      "profileId": "informatics-10",
+      "direction": "informatics",
+      "grade": 10,
+      "status": "not_created"
+    },
+    {
+      "profileId": "informatics-11",
+      "direction": "informatics",
+      "grade": 11,
+      "status": "not_created"
+    },
+    {
+      "profileId": "physics-7",
+      "direction": "physics",
+      "grade": 7,
+      "status": "not_created"
+    },
+    {
+      "profileId": "physics-8",
+      "direction": "physics",
+      "grade": 8,
+      "status": "not_created"
+    },
+    {
+      "profileId": "physics-9",
+      "direction": "physics",
+      "grade": 9,
+      "status": "not_created"
+    },
+    {
+      "profileId": "physics-10",
+      "direction": "physics",
+      "grade": 10,
+      "status": "not_created"
+    },
+    {
+      "profileId": "physics-11",
+      "direction": "physics",
+      "grade": 11,
+      "status": "not_created"
+    },
+    {
+      "profileId": "math-6",
+      "direction": "math",
+      "grade": 6,
+      "status": "not_created"
+    },
+    {
+      "profileId": "math-7",
+      "direction": "math",
+      "grade": 7,
+      "status": "not_created"
+    },
+    {
+      "profileId": "math-8",
+      "direction": "math",
+      "grade": 8,
+      "status": "not_created"
+    },
+    {
+      "profileId": "math-9",
+      "direction": "math",
+      "grade": 9,
+      "status": "not_created"
+    },
+    {
+      "profileId": "python-5",
+      "direction": "python",
+      "grade": 5,
+      "status": "not_created"
+    },
+    {
+      "profileId": "python-6",
+      "direction": "python",
+      "grade": 6,
+      "status": "not_created"
+    },
+    {
+      "profileId": "python-7",
+      "direction": "python",
+      "grade": 7,
+      "status": "not_created"
+    },
+    {
+      "profileId": "python-8",
+      "direction": "python",
+      "grade": 8,
+      "status": "not_created"
+    },
+    {
+      "profileId": "python-9",
+      "direction": "python",
+      "grade": 9,
+      "status": "not_created"
+    },
+    {
+      "profileId": "python-10",
+      "direction": "python",
+      "grade": 10,
+      "status": "not_created"
+    },
+    {
+      "profileId": "python-11",
+      "direction": "python",
+      "grade": 11,
+      "status": "not_created"
+    },
+    {
+      "profileId": "html-css-5",
+      "direction": "html-css",
+      "grade": 5,
+      "status": "not_created"
+    },
+    {
+      "profileId": "html-css-6",
+      "direction": "html-css",
+      "grade": 6,
+      "status": "not_created"
+    },
+    {
+      "profileId": "html-css-7",
+      "direction": "html-css",
+      "grade": 7,
+      "status": "not_created"
+    },
+    {
+      "profileId": "html-css-8",
+      "direction": "html-css",
+      "grade": 8,
+      "status": "not_created"
+    },
+    {
+      "profileId": "html-css-9",
+      "direction": "html-css",
+      "grade": 9,
+      "status": "not_created"
+    },
+    {
+      "profileId": "html-css-10",
+      "direction": "html-css",
+      "grade": 10,
+      "status": "not_created"
+    },
+    {
+      "profileId": "html-css-11",
+      "direction": "html-css",
+      "grade": 11,
+      "status": "not_created"
+    },
+    {
+      "profileId": "figma-5",
+      "direction": "figma",
+      "grade": 5,
+      "status": "not_created"
+    },
+    {
+      "profileId": "figma-6",
+      "direction": "figma",
+      "grade": 6,
+      "status": "not_created"
+    },
+    {
+      "profileId": "figma-7",
+      "direction": "figma",
+      "grade": 7,
+      "status": "not_created"
+    },
+    {
+      "profileId": "figma-8",
+      "direction": "figma",
+      "grade": 8,
+      "status": "not_created"
+    },
+    {
+      "profileId": "figma-9",
+      "direction": "figma",
+      "grade": 9,
+      "status": "not_created"
+    },
+    {
+      "profileId": "figma-10",
+      "direction": "figma",
+      "grade": 10,
+      "status": "not_created"
+    },
+    {
+      "profileId": "figma-11",
+      "direction": "figma",
+      "grade": 11,
+      "status": "not_created"
+    }
+  ],
+  "note": "Only informatics-6 has a draft question bank. Other profiles are intentionally disabled; do not publish as a complete diagnostic."
+}
