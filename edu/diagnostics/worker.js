@@ -40,6 +40,8 @@ async function sendTelegram(env, text) {
   if (!response.ok || !data.ok) throw new Error("Telegram delivery failed");
 }
 function formatTelegram(p) {
+  const experienceLabels = { beginner: "только начинает", basics: "знает основы", experienced: "есть опыт" };
+  const levelLabels = { basic: "базовый", advanced: "углублённый / повышенный", unknown: "не знает" };
   return [
     "🧭 НОВАЯ ДИАГНОСТИКА MISCHENKO EDU",
     `Ученик: ${p.studentName}`,
@@ -47,9 +49,9 @@ function formatTelegram(p) {
     `Направление: ${p.direction}`,
     `Программа: ${p.curriculumName || "не указана"}`,
     p.curriculumYear ? `Учебный год: ${p.curriculumYear}` : "",
-    p.curriculumLevel ? `Уровень: ${p.curriculumLevel}` : "",
+    p.curriculumLevel ? `Уровень: ${levelLabels[p.curriculumLevel] || p.curriculumLevel}` : "",
     p.curriculumDetail ? `Уточнение: ${p.curriculumDetail}` : "",
-    p.experience ? `Опыт: ${p.experience}` : "",
+    p.experience ? `Опыт: ${experienceLabels[p.experience] || p.experience}` : "",
     `Результат: ${p.score}/${p.maxScore} (${p.percentage}%)`,
     `Дата: ${p.completedAt}`,
     `ID попытки: ${p.attemptId}`,
