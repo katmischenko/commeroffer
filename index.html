@@ -442,15 +442,31 @@
     position:relative;border-radius:24px;overflow:hidden;
     border:1px dashed rgba(255,157,69,.4);
     background:
-      linear-gradient(rgba(234,231,223,.04) 1px, transparent 1px) 0 0/100% 30px,
+      linear-gradient(rgba(234,231,223,.045) 1px, transparent 1px) 0 0/100% 30px,
+      linear-gradient(90deg,rgba(234,231,223,.035) 1px, transparent 1px) 0 0/30px 100%,
       var(--paper-2);
     padding:clamp(36px,6vw,68px);
   }
+  .edu-head{max-width:760px;margin-bottom:34px}
   .edu .hand-title{font-family:var(--hand);font-weight:700;font-size:clamp(34px,5vw,56px);color:var(--marker);transform:rotate(-1.4deg);display:inline-block}
-  .edu p{color:var(--muted);margin-top:18px;max-width:52ch}
-  .edu .pills{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 34px}
-  .edu .pill{font-size:13px;font-weight:700;border:1px solid rgba(234,231,223,.2);border-radius:100px;padding:8px 18px}
-  .edu .soon{font-family:var(--hand);font-size:22px;color:var(--pen);margin-top:16px;transform:rotate(-1deg);display:inline-block}
+  .edu h2{font-size:clamp(27px,3.6vw,42px);line-height:1.12;margin:18px 0 14px;max-width:17ch}
+  .edu .edu-intro{color:var(--muted);margin:0;max-width:65ch;font-size:clamp(15px,1.5vw,17px);line-height:1.75}
+  .edu-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:0 0 30px}
+  .edu-item{position:relative;padding:20px 22px 22px;border:1px solid rgba(234,231,223,.16);border-radius:16px;background:rgba(12,10,15,.22);min-height:118px}
+  .edu-item .edu-num{font-family:var(--hand);font-size:22px;color:var(--marker);display:block;margin-bottom:8px}
+  .edu-item h3{font-size:17px;margin:0 0 7px}
+  .edu-item p{color:var(--muted);font-size:14px;line-height:1.6;margin:0}
+  .edu-bottom{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:24px;border-top:1px solid rgba(234,231,223,.16)}
+  .edu-bottom strong{display:block;font-size:17px;margin-bottom:5px}
+  .edu-bottom p{margin:0;color:var(--muted);font-size:14px;line-height:1.6;max-width:52ch}
+  .edu-action{flex:none;text-align:center}
+  .edu-action .soon{font-family:var(--hand);font-size:20px;color:var(--pen);margin-top:12px;transform:rotate(-1deg);display:block}
+  @media(max-width:700px){
+    .edu-grid{grid-template-columns:1fr}
+    .edu-bottom{align-items:flex-start;flex-direction:column}
+    .edu-action{width:100%}
+    .edu-action .btn{width:100%;text-align:center}
+  }
 
   /* ---------- FAQ ---------- */
   .faq{max-width:760px;margin:0 auto}
@@ -895,17 +911,43 @@
   <section>
     <div class="wrap">
       <div class="edu reveal">
-        <span class="hand-title">Mischenko Edu ✎</span>
-        <p>Мои авторские пособия: структурированная теория, практика с разборами, диагностика и чек-листы. Ученики готовятся по ним между занятиями — и сдают увереннее.</p>
-        <div class="pills">
-          <span class="pill">теория</span>
-          <span class="pill">практика и разборы</span>
-          <span class="pill">диагностика</span>
-          <span class="pill">чек-листы</span>
-          <span class="pill">тренажёры</span>
+        <div class="edu-head">
+          <span class="hand-title">Mischenko Edu ✎</span>
+          <h2>Учиться. Разбираться. Создавать.</h2>
+          <p class="edu-intro">Здесь собраны материалы, которые помогают не просто повторить тему, а действительно разобраться в ней. Я создаю их сама — с продуманной теорией, практикой и заданиями для самостоятельной работы.</p>
         </div>
-        <a class="btn btn-marker" href="edu/index.html">Открыть библиотеку пособий →</a>
-        <span class="soon">↳ это уже работает — загляни!</span>
+        <div class="edu-grid">
+          <article class="edu-item">
+            <span class="edu-num">01</span>
+            <h3>Конспекты и теория</h3>
+            <p>Понятные объяснения, основные правила и важные детали.</p>
+          </article>
+          <article class="edu-item">
+            <span class="edu-num">02</span>
+            <h3>Практика и сборники</h3>
+            <p>Задания для закрепления материала и подготовки.</p>
+          </article>
+          <article class="edu-item">
+            <span class="edu-num">03</span>
+            <h3>Тренажёры</h3>
+            <p>Интерактивная практика и возможность проверить свои знания.</p>
+          </article>
+          <article class="edu-item">
+            <span class="edu-num">04</span>
+            <h3>Дополнительные материалы</h3>
+            <p>Чек-листы, диагностики и полезные памятки.</p>
+          </article>
+        </div>
+        <div class="edu-bottom">
+          <div>
+            <strong>Бесплатные и платные материалы</strong>
+            <p>Можно начать с бесплатных материалов, а для более глубокой работы выбрать полноценные пособия и тренажёры.</p>
+          </div>
+          <div class="edu-action">
+            <a class="btn btn-marker" href="edu/index.html">Открыть библиотеку пособий →</a>
+            <span class="soon">↳ загляни и выбери своё</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
