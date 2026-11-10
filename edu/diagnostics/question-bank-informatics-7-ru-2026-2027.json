@@ -211,7 +211,7 @@
       "id": "inf7ru-13",
       "topic": "Кодирование",
       "skill": "применение информатики",
-      "difficulty": "medium",
+      "difficulty": "advanced",
       "type": "choice",
       "question": "Сколько различных символов можно закодировать двоичным кодом длиной 4 бита?",
       "options": [
