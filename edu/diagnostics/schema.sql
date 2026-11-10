@@ -10,6 +10,8 @@ CREATE TABLE IF NOT EXISTS diagnostic_attempts (
   percentage INTEGER NOT NULL CHECK (percentage BETWEEN 0 AND 100),
   completed_at TEXT NOT NULL,
   payload_json TEXT NOT NULL,
+  telegram_status TEXT NOT NULL DEFAULT 'pending' CHECK (telegram_status IN ('pending','sending','sent')),
+  telegram_claimed_at TEXT,
   created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now'))
 );
 
