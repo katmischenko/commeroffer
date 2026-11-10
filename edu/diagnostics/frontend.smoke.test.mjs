@@ -35,29 +35,26 @@ after(async () => {
   if (server) await new Promise(resolveClose => server.close(resolveClose));
 });
 
-test("desktop: curriculum selection, unknown answer, back navigation and local-only result", async () => {
+test("simple setup, unknown answer, navigation and local-only result", async () => {
   const page = await browser.newPage({ viewport: { width: 1365, height: 900 } });
   const pageErrors = [];
   const postRequests = [];
   page.on("pageerror", error => pageErrors.push(error.message));
-  page.on("request", request => {
-    if (request.method() === "POST") postRequests.push(request.url());
-  });
-
+  page.on("request", request => { if (request.method() === "POST") postRequests.push(request.url()); });
   await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
   assert.match(await page.title(), /Диагностика/);
+  assert.equal(await page.locator("#student").isVisible(), true);
+  assert.equal(await page.locator("#direction").isVisible(), true);
+  assert.equal(await page.locator("#grade").isVisible(), true);
+  for (const obsolete of ["#curriculum", "#curriculum-year", "#curriculum-level", "#experience"]) {
+    assert.equal(await page.locator(obsolete).count(), 0, obsolete + " must not be part of the simple setup");
+  }
   await page.locator("#student").fill("Тестовый ученик");
   await page.locator("#direction").selectOption("informatics");
   await page.locator("#grade").selectOption("6");
-  const programOptions = await page.locator("#curriculum option").evaluateAll(nodes => nodes.map(n => n.value));
-  assert.ok(!programOptions.includes("ru"), "Russian grade-six informatics must use a local school program");
-  await page.locator("#curriculum").selectOption("other");
-  await page.locator("#curriculum-detail").fill("Тестовая школьная программа");
   assert.equal(await page.locator("#start").isEnabled(), true);
-
   await page.locator("#start").click();
   await page.waitForFunction(() => document.querySelector("#counter")?.textContent.trim() === "вопрос 1 из 15");
-  assert.equal((await page.locator("#counter").textContent()).trim(), "вопрос 1 из 15");
   await page.locator("#unknown").click();
   assert.equal((await page.locator("#counter").textContent()).trim(), "вопрос 1 из 15");
   await page.locator("#next").click();
@@ -67,7 +64,6 @@ test("desktop: curriculum selection, unknown answer, back navigation and local-o
   assert.equal(await page.locator("#unknown").getAttribute("aria-pressed"), "true");
   await page.locator("#skip").click();
   assert.equal((await page.locator("#counter").textContent()).trim(), "вопрос 2 из 15");
-
   for (let i = 0; i < 13; i++) await page.locator("#skip").click();
   assert.equal((await page.locator("#counter").textContent()).trim(), "вопрос 15 из 15");
   await page.locator("#skip").click();
@@ -79,102 +75,30 @@ test("desktop: curriculum selection, unknown answer, back navigation and local-o
   await page.close();
 });
 
-test("program year and senior level are required for grades 10–11", async () => {
-  const page = await browser.newPage();
-  await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
-  await page.locator("#student").fill("Тест");
-  await page.locator("#direction").selectOption("physics");
-  await page.locator("#grade").selectOption("10");
-  await page.locator("#curriculum").selectOption("ru");
-  assert.equal(await page.locator("#curriculum-year-wrap").isVisible(), true);
-  assert.equal(await page.locator("#curriculum-level-wrap").isVisible(), true);
-  assert.equal(await page.locator("#start").isEnabled(), false);
-  await page.locator("#curriculum-level").selectOption("basic");
-  assert.equal(await page.locator("#start").isEnabled(), true);
-  await page.close();
-});
-
-test("Belarus grade-eight physics pilot asks for the study level", async () => {
-  const page = await browser.newPage();
-  await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
-  await page.locator("#student").fill("Тест");
-  await page.locator("#direction").selectOption("physics");
-  await page.locator("#grade").selectOption("8");
-  await page.locator("#curriculum").selectOption("by");
-  assert.equal(await page.locator("#curriculum-year-wrap").isVisible(), true);
-  assert.equal(await page.locator("#curriculum-level-wrap").isVisible(), true);
-  assert.equal(await page.locator("#start").isEnabled(), false);
-  await page.locator("#curriculum-level").selectOption("advanced");
-  assert.equal(await page.locator("#start").isEnabled(), true);
-  await page.close();
-});
-
-test("Belarus grade-nine informatics allows an explicit advanced track", async () => {
-  const page = await browser.newPage();
-  await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
-  await page.locator("#student").fill("Тест");
-  await page.locator("#direction").selectOption("informatics");
-  await page.locator("#grade").selectOption("9");
-  await page.locator("#curriculum").selectOption("by");
-  assert.equal(await page.locator("#curriculum-level-wrap").isVisible(), true);
-  assert.match(await page.locator("#curriculum-level-hint").textContent(), /дополнительными учебными часами/);
-  assert.equal(await page.locator("#start").isEnabled(), false);
-  await page.locator("#curriculum-level").selectOption("advanced");
-  assert.equal(await page.locator("#start").isEnabled(), true);
-  await page.close();
-});
-
-test("Belarus advanced informatics profile requests the matching level-specific bank", async () => {
-  const page = await browser.newPage();
-  const requested = [];
-  const mockBank = {
-    bankId: "informatics-9-by-2026-2027-advanced",
-    reviewStatus: "teacher_review_draft",
-    questions: Array.from({ length: 15 }, (_, i) => ({
-      id: "mock-" + (i + 1),
-      topic: "Проверка",
-      skill: "Проверка",
-      difficulty: i < 5 ? "basic" : i < 12 ? "medium" : "advanced",
-      type: "choice",
-      question: "Тестовый вопрос " + (i + 1),
-      options: ["Вариант A", "Вариант B"],
-      correctIndex: 0,
-      correctText: "Вариант A",
-      explanation: "Тестовое объяснение."
-    }))
+test("all 36 direction-and-grade profiles load a 15-question bank", async () => {
+  const profiles = {
+    informatics: [6, 7, 8, 9, 10, 11],
+    physics: [7, 8, 9, 10, 11],
+    math: [6, 7, 8, 9],
+    python: [5, 6, 7, 8, 9, 10, 11],
+    "html-css": [5, 6, 7, 8, 9, 10, 11],
+    figma: [5, 6, 7, 8, 9, 10, 11]
   };
-  page.on("request", request => {
-    if (request.url().includes("question-bank-informatics-9-by-2026-2027-advanced.json")) requested.push(request.url());
-  });
-  await page.route("**/question-bank-informatics-9-by-2026-2027-advanced.json", route => route.fulfill({
-    status: 200,
-    contentType: "application/json",
-    body: JSON.stringify(mockBank)
-  }));
-  await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
-  await page.locator("#student").fill("Тест");
-  await page.locator("#direction").selectOption("informatics");
-  await page.locator("#grade").selectOption("9");
-  await page.locator("#curriculum").selectOption("by");
-  await page.locator("#curriculum-level").selectOption("advanced");
-  await page.locator("#start").click();
-  await page.waitForFunction(() => document.querySelector("#question")?.textContent.includes("Тестовый вопрос 1"));
-  assert.equal(requested.length, 1);
-  assert.match(await page.locator("#profile-note").textContent(), /отдельный черновик/);
-  await page.close();
-});
-
-test("digital direction requires an explicit experience level", async () => {
   const page = await browser.newPage();
   await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
-  await page.locator("#student").fill("Тест");
-  await page.locator("#direction").selectOption("python");
-  await page.locator("#grade").selectOption("5");
-  await page.locator("#curriculum").selectOption("self");
-  assert.equal(await page.locator("#experience-wrap").isVisible(), true);
-  assert.equal(await page.locator("#start").isEnabled(), false);
-  await page.locator("#experience").selectOption("beginner");
-  assert.equal(await page.locator("#start").isEnabled(), true);
+  await page.locator("#student").fill("Проверка банка");
+  for (const [direction, grades] of Object.entries(profiles)) {
+    await page.locator("#direction").selectOption(direction);
+    for (const grade of grades) {
+      await page.locator("#grade").selectOption(String(grade));
+      await page.locator("#start").click();
+      await page.waitForFunction(() => document.querySelector("#counter")?.textContent.trim() === "вопрос 1 из 15");
+      assert.equal(await page.locator("#question").textContent().then(x => x.trim().length > 0), true, direction + " " + grade);
+      await page.locator("#restart").click();
+      await page.locator("#direction").selectOption(direction);
+      await page.locator("#grade").selectOption(String(grade));
+    }
+  }
   await page.close();
 });
 
