@@ -1004,81 +1004,6 @@
 
   <hr class="divider">
 
-  <!-- ANKETA -->
-  <section id="anketa">
-    <div class="wrap">
-      <div class="sec-head reveal" style="text-align:center">
-        <div class="sec-index">стр. 06 — знакомство</div>
-        <h2 class="sec-title">Давай <span class="u">познакомимся</span></h2>
-        <p class="sec-sub" style="margin-inline:auto">Анкету может заполнить сам ученик, студент или взрослый — либо родитель. Расскажи немного о себе и своей цели: так я смогу подготовиться к первому разговору.</p>
-      </div>
-      <form class="anketa reveal" id="anketaForm" novalidate>
-        <span class="hand-title">несколько вопросов ✎</span>
-        <p class="sub">пара минут — и мы поймём, с чего лучше начать</p>
-        <div class="f-grid">
-          <div class="f-field">
-            <label for="f-student">имя ученика — если анкету заполняют за него</label>
-            <input id="f-student" name="student" type="text" placeholder="можно оставить пустым, если занимаетесь сами">
-          </div>
-          <div class="f-field">
-            <label for="f-grade">возраст / класс / курс</label>
-            <input id="f-grade" name="grade" type="text" placeholder="например, 14 лет, 8 класс или 2 курс" required>
-          </div>
-          <div class="f-field">
-            <label for="f-subject">что будем изучать?</label>
-            <select id="f-subject" name="subject" required>
-              <option value="" selected disabled>выбери направление</option>
-              <option>информатика</option>
-              <option>информатика — подготовка к ОГЭ</option>
-              <option>информатика — подготовка к ЕГЭ</option>
-              <option>математика</option>
-              <option>физика</option>
-              <option>программирование — Python</option>
-              <option>программирование — Scratch</option>
-              <option>веб-разработка — HTML / CSS</option>
-              <option>Figma</option>
-              <option>несколько направлений</option>
-              <option>другое / пока не определились</option>
-            </select>
-          </div>
-          <div class="f-field">
-            <label for="f-goal">какая у вас цель?</label>
-            <input id="f-goal" name="goal" type="text" placeholder="например, подготовиться к экзамену или освоить Python">
-          </div>
-          <div class="f-field full">
-            <label for="f-difficulty">что сейчас вызывает трудности?</label>
-            <textarea id="f-difficulty" name="difficulty" placeholder="темы, задания, пробелы в знаниях — или напишите, если пока сложно сформулировать"></textarea>
-          </div>
-          <div class="f-field">
-            <label for="f-contact-name">как обращаться к вам?</label>
-            <input id="f-contact-name" name="contactName" type="text" placeholder="имя ученика или родителя" required>
-          </div>
-          <div class="f-field">
-            <label for="f-contact">Telegram или телефон</label>
-            <input id="f-contact" name="contact" type="text" placeholder="@username или номер телефона" required>
-          </div>
-          <div class="f-field">
-            <label for="f-schedule">когда удобно заниматься?</label>
-            <input id="f-schedule" name="schedule" type="text" placeholder="дни, время, часовой пояс — если знаете">
-          </div>
-          <div class="f-field">
-            <label for="f-comment">что ещё мне важно знать?</label>
-            <input id="f-comment" name="comment" type="text" placeholder="по желанию">
-          </div>
-        </div>
-        <div class="f-consent">
-          <input id="f-consent" name="consent" type="checkbox" required>
-          <label for="f-consent">Согласен(на) передать указанные данные преподавателю через Telegram для связи по поводу занятий.</label>
-        </div>
-        <button class="f-submit" type="submit">Подготовить сообщение в Telegram ✈</button>
-        <div class="f-status" id="formStatus" role="status" aria-live="polite"></div>
-        <p class="f-hint">Сайт не отправляет анкету автоматически и не сохраняет введённые ответы. Откроется Telegram с подготовленным сообщением — проверь его и нажми «Отправить».</p>
-      </form>
-    </div>
-  </section>
-
-  <hr class="divider">
-
   <!-- CTA -->
   <div class="wrap">
     <div class="cta-final reveal">
@@ -1173,58 +1098,7 @@
   // ====== АНКЕТА → TELEGRAM ======
   // Данные не отправляются автоматически и не хранятся на сайте.
   // Пользователь проверяет подготовленное сообщение и сам подтверждает отправку в Telegram.
-  var anketaForm = document.getElementById('anketaForm');
-  var formStatus = document.getElementById('formStatus');
-
-  anketaForm.addEventListener('submit', function(e){
-    e.preventDefault();
-    formStatus.className = 'f-status';
-
-    var data = {
-      student: anketaForm.elements.student.value.trim(),
-      grade: anketaForm.elements.grade.value.trim(),
-      subject: anketaForm.elements.subject.value,
-      goal: anketaForm.elements.goal.value.trim(),
-      difficulty: anketaForm.elements.difficulty.value.trim(),
-      contactName: anketaForm.elements.contactName.value.trim(),
-      contact: anketaForm.elements.contact.value.trim(),
-      schedule: anketaForm.elements.schedule.value.trim(),
-      comment: anketaForm.elements.comment.value.trim()
-    };
-
-    if(!data.grade || !data.subject || !data.contactName || !data.contact || !document.getElementById('f-consent').checked){
-      formStatus.textContent = 'заполни обязательные поля и подтверди согласие ✎';
-      formStatus.classList.add('err');
-      return;
-    }
-
-    var lines = [
-      '📋 Анкета с сайта Катерины Мищенко',
-      '━━━━━━━━━━━━━',
-      '🎓 Возраст / класс / курс: ' + data.grade,
-      '📚 Направление: ' + data.subject
-    ];
-    if(data.student) lines.push('👤 Имя ученика: ' + data.student);
-    if(data.goal) lines.push('🎯 Цель: ' + data.goal);
-    if(data.difficulty) lines.push('🧩 Что вызывает трудности: ' + data.difficulty);
-    lines.push('🤝 Как обращаться: ' + data.contactName);
-    lines.push('📩 Контакт: ' + data.contact);
-    if(data.schedule) lines.push('🕒 Удобное время: ' + data.schedule);
-    if(data.comment) lines.push('💬 Дополнительно: ' + data.comment);
-
-    var message = lines.join('\n');
-    var telegramUrl = 'https://t.me/katerin_mischenko?text=' + encodeURIComponent(message);
-    var telegramWindow = window.open(telegramUrl, '_blank');
-
-    if(telegramWindow){
-      telegramWindow.opener = null;
-      formStatus.textContent = 'Открылся Telegram с подготовленным текстом. Проверь анкету и нажми «Отправить» ✎';
-      formStatus.classList.add('ok');
-    } else {
-      formStatus.textContent = 'Браузер заблокировал новое окно. Разреши всплывающие окна для сайта и попробуй ещё раз.';
-      formStatus.classList.add('err');
-    }
-  });
+  // Форма анкеты удалена: первичное обращение — напрямую в Telegram.
 
 
   // Reveal on scroll — с безопасным fallback для браузеров без IntersectionObserver.
