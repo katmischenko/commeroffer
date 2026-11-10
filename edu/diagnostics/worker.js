@@ -5,7 +5,7 @@ function cors(origin) {
   const allowed = origin === ALLOWED_ORIGIN ? origin : ALLOWED_ORIGIN;
   return {
     "Access-Control-Allow-Origin": allowed,
-    "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+    "Access-Control-Allow-Methods": "GET,POST,DELETE,OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type, Authorization",
     "Access-Control-Max-Age": "86400",
     "Vary": "Origin"
@@ -45,6 +45,8 @@ function formatTelegram(p) {
     `Ученик: ${p.studentName}`,
     `Класс: ${p.studentClass}`,
     `Направление: ${p.direction}`,
+    `Программа: ${p.curriculumName || "не указана"}`,
+    p.curriculumDetail ? `Уточнение: ${p.curriculumDetail}` : "",
     p.experience ? `Опыт: ${p.experience}` : "",
     `Результат: ${p.score}/${p.maxScore} (${p.percentage}%)`,
     `Дата: ${p.completedAt}`,
@@ -94,9 +96,7 @@ export default {
       if (!Array.isArray(p.answers) || p.answers.length !== 15) {
         return json({ ok: false, error: "exactly_15_answers_required" }, 400, origin);
       }
-      if (!env.BOT_TOKEN || !env.OWNER_CHAT_ID || !env.DB) {
-        return json({ ok: false, error: "service_not_configured" }, 503, origin);
-      }
+      if (!env.DB) return json({ ok: false, error: "database_not_configured" }, 503, origin);
       const attemptId = clean(p.attemptId, 80);
       if (!/^[a-zA-Z0-9_-]{12,80}$/.test(attemptId)) return json({ ok: false, error: "invalid_attempt_id" }, 400, origin);
       const score = Number(p.score);
@@ -104,12 +104,27 @@ export default {
       if (!Number.isInteger(score) || !Number.isInteger(maxScore) || maxScore !== 15 || score < 0 || score > maxScore) {
         return json({ ok: false, error: "invalid_score" }, 400, origin);
       }
+      const curriculumId = clean(p.curriculumId, 20);
+      const curriculumName = clean(p.curriculumName, 160);
+      const curriculumDetail = clean(p.curriculumDetail, 140);
+      if (!["ru", "by", "other", "self"].includes(curriculumId) || !curriculumName) {
+        return json({ ok: false, error: "curriculum_required" }, 400, origin);
+      }
+      if (curriculumId === "other" && !curriculumDetail) {
+        return json({ ok: false, error: "curriculum_detail_required" }, 400, origin);
+      }
       const payload = {
         attemptId,
         studentName: clean(p.studentName, 100),
         studentClass: clean(p.studentClass, 10),
         direction: clean(p.direction, 60),
         experience: clean(p.experience, 60),
+        curriculumId,
+        curriculumName,
+        curriculumDetail,
+        consent: true,
+        consentVersion: clean(p.consentVersion, 40),
+        telegramConsent: p.telegramConsent === true,
         score,
         maxScore,
         percentage: Math.round(score / maxScore * 100),
@@ -130,19 +145,31 @@ export default {
       let inserted = false;
       try {
         const result = await env.DB.prepare(`INSERT OR IGNORE INTO diagnostic_attempts
-          (attempt_id, student_name, student_class, direction, experience, score, max_score, percentage, completed_at, payload_json)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`)
+          (attempt_id, student_name, student_class, direction, experience, curriculum_id, curriculum_name, curriculum_detail, consent_version, telegram_consent, score, max_score, percentage, completed_at, payload_json, telegram_status)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`)
           .bind(payload.attemptId, payload.studentName, payload.studentClass, payload.direction,
-            payload.experience, payload.score, payload.maxScore, payload.percentage,
-            payload.completedAt, JSON.stringify(payload)).run();
+            payload.experience, payload.curriculumId, payload.curriculumName, payload.curriculumDetail,
+            payload.consentVersion, payload.telegramConsent ? 1 : 0, payload.score, payload.maxScore,
+            payload.percentage, payload.completedAt, JSON.stringify(payload),
+            payload.telegramConsent ? "pending" : "sent").run();
         inserted = Number(result?.meta?.changes || 0) > 0;
-        const row = await env.DB.prepare("SELECT attempt_id, payload_json, telegram_status, telegram_claimed_at FROM diagnostic_attempts WHERE attempt_id = ?")
+        const row = await env.DB.prepare("SELECT attempt_id, payload_json, telegram_status, telegram_claimed_at, telegram_consent FROM diagnostic_attempts WHERE attempt_id = ?")
           .bind(attemptId).first();
         if (!row) throw new Error("Database save failed");
         // On a retry, always use the immutable payload already stored for this attempt.
         if (!inserted) Object.assign(payload, JSON.parse(row.payload_json || "{}"));
       } catch (e) {
         return json({ ok: false, error: "database_save_failed" }, 500, origin);
+      }
+      const shouldNotify = payload.telegramConsent === true;
+      if (!shouldNotify) {
+        return json({
+          ok: true, saved: true, duplicate: !inserted,
+          telegramSent: false, telegramNotRequested: true, notificationPending: false, attemptId
+        }, 200, origin);
+      }
+      if (!env.BOT_TOKEN || !env.OWNER_CHAT_ID) {
+        return json({ ok: false, error: "telegram_not_configured", saved: true, attemptId }, 503, origin);
       }
       // Claim notification delivery atomically. A retry can reclaim a stale sending lease,
       // while successful deliveries are never sent again for the same attemptId.
@@ -187,6 +214,20 @@ export default {
         telegramSent, notificationPending: !telegramSent, attemptId
       }, 200, origin);
     }
+    if (request.method === "DELETE" && url.pathname.startsWith("/admin/attempts/")) {
+      const auth = request.headers.get("Authorization") || "";
+      const token = auth.startsWith("Bearer ") ? auth.slice(7) : "";
+      if (!safeEqual(token, env.ADMIN_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401, origin);
+      if (!env.DB) return json({ ok: false, error: "database_not_configured" }, 503, origin);
+      const attemptId = clean(decodeURIComponent(url.pathname.slice("/admin/attempts/".length)), 80);
+      if (!/^[a-zA-Z0-9_-]{12,80}$/.test(attemptId)) return json({ ok: false, error: "invalid_attempt_id" }, 400, origin);
+      try {
+        const result = await env.DB.prepare("DELETE FROM diagnostic_attempts WHERE attempt_id = ?").bind(attemptId).run();
+        return json({ ok: true, deleted: Number(result?.meta?.changes || 0) > 0 }, 200, origin);
+      } catch (e) {
+        return json({ ok: false, error: "delete_failed" }, 500, origin);
+      }
+    }
     if (request.method === "GET" && url.pathname === "/admin/attempts") {
       const auth = request.headers.get("Authorization") || "";
       const token = auth.startsWith("Bearer ") ? auth.slice(7) : "";
@@ -194,10 +235,19 @@ export default {
       if (!env.DB) return json({ ok: false, error: "database_not_configured" }, 503, origin);
       const limit = Math.min(100, Math.max(1, Number(url.searchParams.get("limit")) || 50));
       const rows = await env.DB.prepare(
-        "SELECT attempt_id, student_name, student_class, direction, experience, score, max_score, percentage, completed_at, payload_json FROM diagnostic_attempts ORDER BY completed_at DESC LIMIT ?"
+        "SELECT attempt_id, student_name, student_class, direction, experience, curriculum_id, curriculum_name, curriculum_detail, telegram_consent, telegram_status, score, max_score, percentage, completed_at, payload_json FROM diagnostic_attempts ORDER BY completed_at DESC LIMIT ?"
       ).bind(limit).all();
       return json({ ok: true, attempts: rows.results || [] }, 200, origin);
     }
     return json({ ok: false, error: "not_found" }, 404, origin);
+  },
+  async scheduled(event, env, ctx) {
+    if (!env.DB) return;
+    const configured = Number(env.DATA_RETENTION_DAYS);
+    const retentionDays = Number.isFinite(configured) && configured >= 30 && configured <= 365
+      ? Math.floor(configured)
+      : 180;
+    const cutoff = new Date(Date.now() - retentionDays * 24 * 60 * 60 * 1000).toISOString();
+    await env.DB.prepare("DELETE FROM diagnostic_attempts WHERE completed_at < ?").bind(cutoff).run();
   }
 };
