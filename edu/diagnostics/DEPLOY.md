@@ -1,6 +1,6 @@
 # Cloudflare Worker: диагностика Mischenko Edu
 
-Исходник: `worker.js`. Миграции D1: `schema.sql`, затем для существующей базы — `migrations/0002_telegram_outbox.sql` и `migrations/0003_curriculum_and_consent.sql` (каждую ровно один раз).
+Исходник: `worker.js`. Миграции D1: `schema.sql`, затем для существующей базы — `migrations/0002_telegram_outbox.sql` и `migrations/0003_curriculum_and_consent.sql` и `migrations/0004_curriculum_level.sql` (каждую ровно один раз).
 
 ## Текущее состояние
 Этот код подготовлен, но не развернут в Cloudflare автоматически. Для центрального архива необходимо подключить D1 и заменить код существующего Worker этим исходником.
@@ -8,7 +8,7 @@
 ## Настройка
 1. В Cloudflare Workers & Pages откройте Worker `mischenko-edu-diagnostics`.
 2. Создайте D1 database, например `mischenko-edu-diagnostics`.
-3. Для новой базы выполните актуальный SQL из `schema.sql`. Для уже существующей базы проверьте историю миграций и примените недостающие `0002_telegram_outbox.sql` и `0003_curriculum_and_consent.sql` ровно по одному разу.
+3. Для новой базы выполните актуальный SQL из `schema.sql`. Для уже существующей базы проверьте историю миграций и примените недостающие `0002_telegram_outbox.sql`, `0003_curriculum_and_consent.sql` и `0004_curriculum_level.sql` ровно по одному разу.
 4. В Worker → Settings → Bindings добавьте D1 binding с variable name `DB` и выберите созданную базу.
 5. В Variables and Secrets проверьте секреты `BOT_TOKEN` и `OWNER_CHAT_ID`. Не помещайте их в HTML или GitHub.
 6. Добавьте Secret `ADMIN_TOKEN` — длинный случайный пароль для просмотра архива.
@@ -21,7 +21,7 @@
 - `GET /admin/attempts?limit=50` — возвращает архив только при заголовке `Authorization: Bearer ADMIN_TOKEN`.
 - `DELETE /admin/attempts/{attemptId}` — удаляет одну попытку только при заголовке `Authorization: Bearer ADMIN_TOKEN`.
 
-Telegram — необязательное уведомление, D1 — постоянный архив. Выбор программы, её название и уточнение сохраняются отдельно для каждой попытки. Повторная отправка с тем же `attemptId` не создаёт вторую запись. Состояние Telegram-хука хранится в D1: при временной ошибке статус возвращается в `pending`, и клиент может повторить POST с тем же `attemptId`. Успешно отправленное уведомление повторно не отправляется; зависший статус `sending` можно перехватить после двух минут.
+Telegram — необязательное уведомление, D1 — постоянный архив. Выбор программы, её уровень, название и уточнение сохраняются отдельно для каждой попытки. Повторная отправка с тем же `attemptId` не создаёт вторую запись. Состояние Telegram-хука хранится в D1: при временной ошибке статус возвращается в `pending`, и клиент может повторить POST с тем же `attemptId`. Успешно отправленное уведомление повторно не отправляется; зависший статус `sending` можно перехватить после двух минут.
 
 ## Важно
 - В этой версии endpoint архива — технический API, а не готовая публичная админ-панель.
