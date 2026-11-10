@@ -142,6 +142,7 @@ function fillGrades(){
  const d=directions.find(x=>x.id===$('direction').value);
  $('grade').innerHTML=d.grades.map(g=>'<option value="'+g+'">'+g+' класс</option>').join('');
  $('experience-wrap').hidden=!d.experience;
+ $('experience').value='';
  checkReady();
 }
 function checkReady(){
@@ -171,7 +172,7 @@ function renderQuestion(){
  $('counter').textContent='вопрос '+(index+1)+' из '+bank.length;
  $('bar').style.width=((index+1)/bank.length*100)+'%';
  $('topic').textContent='Тема: '+q.topic;
- $('question').innerHTML=q.question;
+ $('question').textContent=q.question;
  let html='';
  if(q.type==='short'){
   html='<input class="q-input" id="short-answer" autocomplete="off" placeholder="Введи ответ" value="'+escapeHtml(a.answerText)+'">';
@@ -304,7 +305,7 @@ $('start').addEventListener('click',async()=>{
   const res=await fetch('diagnostics/question-bank-'+profileId+'.json',{cache:'no-store'});
   if(!res.ok)throw new Error('Не удалось загрузить задания.');
   const data=await res.json();
-  if(data.questions.length!==15)throw new Error('В наборе должно быть 15 заданий.');
+  if(!Array.isArray(data.questions)||data.questions.length!==15)throw new Error('В наборе должно быть 15 заданий.');
   bank=data.questions;answers=Array(bank.length).fill(null);index=0;
   $('setup').hidden=true;$('quiz').hidden=false;renderQuestion();
  }catch(e){
