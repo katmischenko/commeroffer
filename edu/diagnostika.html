@@ -19,6 +19,12 @@
 .diag-field label{font-size:14px;font-weight:700;color:var(--muted)}
 .diag-field select{font:inherit;font-size:16px;color:var(--ink);background:var(--paper);border:1px solid rgba(234,231,223,.2);border-radius:14px;padding:15px 18px;width:100%;outline:none}
 .diag-field select:focus{border-color:var(--pen)}
+.diag-field input.q-input{width:100%;box-sizing:border-box}
+.diag-consents{display:grid;gap:12px;margin:20px 0 8px}
+.diag-consent{display:flex;align-items:flex-start;gap:10px;color:var(--muted);font-size:13px;line-height:1.55}
+.diag-consent input{margin-top:3px;accent-color:var(--pen);flex:0 0 auto}
+.diag-consent a{color:var(--pen);text-decoration:underline;text-underline-offset:3px}
+.diag-consent-secondary{padding-left:27px}
 .diag-hint{color:var(--muted);font-size:14px;margin-top:14px}
 .diag-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
 .diag-actions .btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
@@ -74,6 +80,14 @@
           <label for="grade">Класс</label>
           <select id="grade"></select>
         </div>
+        <div class="diag-field full" id="curriculum-wrap">
+          <label for="curriculum" id="curriculum-label">Учебная программа</label>
+          <select id="curriculum"><option value="">Сначала выбери программу</option></select>
+        </div>
+        <div class="diag-field full" id="curriculum-detail-wrap" hidden>
+          <label for="curriculum-detail">Название программы / курса</label>
+          <input class="q-input" id="curriculum-detail" maxlength="140" placeholder="Укажи название программы или курса">
+        </div>
         <div class="diag-field full" id="experience-wrap" hidden>
           <label for="experience">Какой у тебя опыт?</label>
           <select id="experience">
@@ -83,6 +97,10 @@
             <option value="experienced">Есть опыт — хочу проверить и углубить знания</option>
           </select>
         </div>
+      </div>
+      <div class="diag-consents">
+        <label class="diag-consent"><input type="checkbox" id="storage-consent"> <span>Я согласен(на) передать ответы преподавателю и сохранить результат в закрытом архиве Mischenko Edu для анализа и подготовки рекомендаций. <a href="diagnostics/privacy.html" target="_blank" rel="noopener">Как используются данные</a>. Если ученику нет 18 лет, согласие подтверждает родитель или законный представитель.</span></label>
+        <label class="diag-consent diag-consent-secondary"><input type="checkbox" id="telegram-consent" disabled> <span>Разрешаю дополнительно отправить преподавателю уведомление в Telegram о завершённой диагностике.</span></label>
       </div>
       <p class="diag-hint" id="profile-note"></p>
       <div class="diag-actions">
@@ -130,19 +148,45 @@ const directions=[
  {id:'html-css',name:'HTML/CSS',grades:[5,6,7,8,9,10,11],experience:true},
  {id:'figma',name:'Figma',grades:[5,6,7,8,9,10,11],experience:true}
 ];
+const API='https://mischenko-edu-diagnostics.mks-ki.workers.dev/diagnostics';
+const CONSENT_VERSION='2026-11-10-v1';
+const SCHOOL_DIRECTIONS=['informatics','physics','math'];
 const $=id=>document.getElementById(id);
-let bank=[],index=0,answers=[],student='',direction='',grade='',experience='';
+let bank=[],index=0,answers=[],student='',direction='',grade='',experience='',curriculumId='',curriculumName='',curriculumDetail='',lastPayload=null;
 function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function normalize(v){return String(v??'').trim().toLowerCase().replace(/\s+/g,' ');}
 function profile(){
  const d=directions.find(x=>x.id===$('direction').value);
  return {direction:d,grade:$('grade').value};
 }
+function fillPrograms(){
+ const d=directions.find(x=>x.id===$('direction').value);
+ const school=SCHOOL_DIRECTIONS.includes(d.id);
+ $('curriculum-label').textContent=school?'Учебная программа':'Образовательная траектория';
+ const options=school
+  ?[['ru','Россия — федеральная образовательная программа / ФРП'],['by','Беларусь — учебная программа Минобразования'],['other','Другая программа']]
+  :[['self','Собственная траектория / авторский курс'],['other','Другая программа или курс']];
+ $('curriculum').innerHTML='<option value="">Выбери вариант</option>'+options.map(([id,name])=>'<option value="'+id+'">'+name+'</option>').join('');
+ $('curriculum-detail-wrap').hidden=true;
+ $('curriculum-detail').value='';
+}
 function fillGrades(){
  const d=directions.find(x=>x.id===$('direction').value);
  $('grade').innerHTML=d.grades.map(g=>'<option value="'+g+'">'+g+' класс</option>').join('');
  $('experience-wrap').hidden=!d.experience;
  $('experience').value='';
+ fillPrograms();
+ checkReady();
+}
+function selectedCurriculum(){
+ const id=$('curriculum').value;
+ const labels={ru:'Россия — федеральная образовательная программа / федеральные рабочие программы',by:'Беларусь — учебная программа Министерства образования',self:'Собственная образовательная траектория / авторский курс',other:$('curriculum-detail').value.trim()};
+ return {id,name:labels[id]||'',detail:$('curriculum-detail').value.trim()};
+}
+function curriculumChanged(){
+ const id=$('curriculum').value;
+ $('curriculum-detail-wrap').hidden=id!=='other';
+ if(id!=='other')$('curriculum-detail').value='';
  checkReady();
 }
 function checkReady(){
@@ -153,10 +197,14 @@ function checkReady(){
  document.title=title+' — Mischenko Edu';
  const description=title+' от Mischenko Edu: 15 заданий, анализ результатов и рекомендации по темам.';
  const meta=$('meta-description'); if(meta) meta.setAttribute('content',description);
+ const cur=selectedCurriculum();
  $('profile-note').textContent=available
- ?(profileId==='informatics-6'?'Для этого профиля подготовлен пилотный набор из 15 заданий.':'Для этого профиля подготовлен черновой набор из 15 заданий; он требует педагогической проверки перед публикацией.')+(p.direction.experience?' Уровень опыта будет отмечен в результате, но пока не меняет состав заданий.':'')
+ ?(profileId==='informatics-6'?'Для этого профиля подготовлен пилотный набор из 15 заданий.':'Для этого профиля подготовлен черновой набор из 15 заданий; он требует педагогической проверки перед публикацией.')+(p.direction.experience?' Уровень опыта будет отмечен в результате, но пока не меняет состав заданий.':'')+' Важно: текущий банк общий и пока не адаптирован отдельно под выбранную программу. Программа будет записана в отчёт; соответствие темам проверяется перед финальным запуском.'
  :'Набор для выбранного профиля ещё готовится. Выбери один из доступных профилей или напиши преподавателю.';
- $('start').disabled=!available||!$('student').value.trim()||(p.direction.experience&&!$('experience').value);
+ const detailRequired=cur.id==='other'&&!cur.detail;
+ $('start').disabled=!available||!$('student').value.trim()||!cur.id||detailRequired||(p.direction.experience&&!$('experience').value);
+ $('telegram-consent').disabled=!$('storage-consent').checked;
+ if(!$('storage-consent').checked)$('telegram-consent').checked=false;
 }
 function current(){return answers[index]||{answerText:'',status:'unanswered'};}
 function saveAnswer(text,status){
@@ -205,6 +253,45 @@ function answerLabel(q,a){
  if(a.status==='unknown')return 'Не знаю';
  return q.type==='short'?a.answerText:(q.options[Number(a.answerText)]??a.answerText);
 }
+function buildPayload(score,percentage,title,weak,report){
+ const makeId=()=>window.crypto&&crypto.randomUUID?crypto.randomUUID().replace(/-/g,''):('attempt_'+Date.now()+'_'+Math.random().toString(36).slice(2));
+ const statusLabels={answered:'Ответ дан',unknown:'Не знаю',skipped:'Пропущено',unanswered:'Нет ответа'};
+ return {
+  attemptId:makeId(),studentName:student,studentClass:String(grade),direction,experience,
+  curriculumId,curriculumName,curriculumDetail,consent:true,telegramConsent:$('telegram-consent').checked,
+  consentVersion:CONSENT_VERSION,score,maxScore:15,percentage,completedAt:new Date().toISOString(),
+  weakTopics:weak.map(([name,v])=>name+' — '+v.right+'/'+v.total),
+  answers:report.map(({q,a,ok})=>({
+   question:q.question,answerText:answerLabel(q,a),correctText:q.type==='short'?q.correctText:q.options[q.correctIndex],
+   status:a.status||'unanswered',statusLabel:ok?'Верно':statusLabels[a.status]||'Неверно',
+   topic:q.topic,difficulty:q.difficulty,explanation:q.explanation
+  }))
+ };
+}
+async function saveAttempt(payload){
+ const status=$('save-status');
+ status.textContent='Сохраняю результат в защищённый архив…';
+ try{
+  const response=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+  const data=await response.json();
+  if(!response.ok||!data.ok)throw new Error(data.error||'Не удалось сохранить результат.');
+  status.textContent=data.telegramSent
+   ?'Результат сохранён в архиве, уведомление преподавателю отправлено в Telegram.'
+   :data.telegramNotRequested
+    ?'Результат сохранён в архиве. Уведомление в Telegram не отправлялось — такого согласия нет.'
+    :data.notificationPending
+     ?'Результат сохранён в архиве, но уведомление не доставлено. Можно повторить отправку.'
+     :'Результат сохранён в архиве.';
+  if(data.notificationPending&&payload.telegramConsent){
+   const retry=document.createElement('button');retry.className='btn btn-ghost';retry.textContent='Повторить отправку уведомления';
+   retry.addEventListener('click',()=>saveAttempt(payload));status.appendChild(document.createTextNode(' '));status.appendChild(retry);
+  }
+ }catch(error){
+  status.textContent='Не удалось сохранить результат: '+(error.message||'ошибка соединения')+'. Нажми, чтобы повторить.';
+  const retry=document.createElement('button');retry.className='btn btn-ghost';retry.textContent='Повторить сохранение';
+  retry.addEventListener('click',()=>saveAttempt(payload));status.appendChild(document.createTextNode(' '));status.appendChild(retry);
+ }
+}
 function finish(){
  const score=bank.reduce((n,q,i)=>n+(isCorrect(q,answers[i])?1:0),0);
  const topicStats={};
@@ -233,6 +320,7 @@ function finish(){
   '<h2 class="sec-title">'+title+'</h2>'+
   '<p>'+percent+'% правильных ответов. '+description+'</p></div>'+
   '<p class="diag-hint">Ученик: '+escapeHtml(student)+'</p>'+
+  '<p class="diag-hint">Программа: '+escapeHtml(curriculumName)+(curriculumDetail?' · '+escapeHtml(curriculumDetail):'')+'</p>'+
   (experience?'<p class="diag-hint">Опыт: '+({beginner:'только начинаю',basics:'знаю основы',experienced:'есть опыт'}[experience]||'не указан')+'</p>':'')+
   '<h3 class="diag-section-title">Что уже получается</h3>'+
   (strong.length?'<ul class="q-topics">'+strong.map(([t,v])=>'<li>'+escapeHtml(t)+' — '+v.right+' из '+v.total+'</li>').join('')+'</ul>':'<p class="diag-hint">Пока нет тем, где все задания выполнены верно. Это не приговор — просто ориентир для дальнейшей работы.</p>')+
@@ -254,6 +342,7 @@ function finish(){
   'Здравствуйте! Хочу обсудить результат диагностики Mischenko Edu.',
   'Ученик: '+(student||'не указано'),
   'Предмет: '+direction+', класс: '+grade,
+  'Программа: '+curriculumName+(curriculumDetail?' · '+curriculumDetail:''),
   experience?'Опыт: '+experienceLabel:'',
   'Результат: '+score+' из '+bank.length+' ('+percent+'%).',
   'Уровень: '+title+'.',
@@ -291,14 +380,27 @@ function finish(){
     .catch(fallbackCopy);
   }else fallbackCopy();
  });
- $('restart').addEventListener('click',()=>{index=0;answers=[];$('result').hidden=true;$('setup').hidden=false;checkReady();});
+ $('restart').addEventListener('click',()=>{index=0;answers=[];lastPayload=null;$('result').hidden=true;$('setup').hidden=false;checkReady();});
+ const saveStatus=document.createElement('p');
+ saveStatus.className='diag-hint';saveStatus.id='save-status';
+ $('result').appendChild(saveStatus);
+ if(!$('storage-consent').checked){
+  saveStatus.textContent='Результат остался только в этом окне. Ты не давал(а) согласие на сохранение в архиве и отправку данных.';
+ }else{
+  lastPayload=buildPayload(score,percent,title,weak,report);
+  saveAttempt(lastPayload);
+ }
 }
 $('direction').addEventListener('change',fillGrades);
 $('grade').addEventListener('change',checkReady);
 $('student').addEventListener('input',checkReady);
 $('experience').addEventListener('change',checkReady);
+$('curriculum').addEventListener('change',curriculumChanged);
+$('curriculum-detail').addEventListener('input',checkReady);
+$('storage-consent').addEventListener('change',checkReady);
+$('telegram-consent').addEventListener('change',checkReady);
 $('start').addEventListener('click',async()=>{
- const p=profile();student=$('student').value.trim();direction=p.direction.name;grade=p.grade;experience=p.direction.experience?$('experience').value:'';
+ const p=profile(),cur=selectedCurriculum();student=$('student').value.trim();direction=p.direction.name;grade=p.grade;experience=p.direction.experience?$('experience').value:'';curriculumId=cur.id;curriculumName=cur.name;curriculumDetail=cur.detail;
  $('start').disabled=true;$('start').textContent='Загружаю задания…';
  try{
   const profileId=p.direction.id+'-'+p.grade;
