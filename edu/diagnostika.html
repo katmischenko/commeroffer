@@ -93,10 +93,10 @@
     </section>
 
     <section class="quiz" id="quiz" hidden>
-      <div class="q-progress"><i id="bar"></i></div>
-      <div class="q-count" id="counter"></div>
+      <div class="q-progress" role="progressbar" aria-label="Прогресс диагностики" aria-valuemin="0" aria-valuemax="15" aria-valuenow="0"><i id="bar"></i></div>
+      <div class="q-count" id="counter" aria-live="polite" aria-atomic="true"></div>
       <div class="diag-status" id="topic"></div>
-      <div class="q-text" id="question"></div>
+      <div class="q-text" id="question" aria-live="polite" aria-atomic="true"></div>
       <div class="diag-answer" id="answer-area"></div>
       <div class="diag-actions">
         <button type="button" class="btn btn-ghost" id="back">← Назад</button>
@@ -180,7 +180,7 @@ function renderQuestion(){
  $('question').textContent=q.question;
  let html='';
  if(q.type==='short'){
-  html='<input class="q-input" id="short-answer" autocomplete="off" placeholder="Введи ответ" value="'+escapeHtml(a.answerText)+'">';
+  html='<input class="q-input" id="short-answer" autocomplete="off" placeholder="Введи ответ" aria-label="Твой ответ" value="'+escapeHtml(a.answerText)+'">';
  }else{
   html='<div class="q-opts">'+q.options.map((o,n)=>'<button type="button" class="q-opt '+(a.answerText===String(n)?'selected':'')+'" data-option="'+n+'">'+escapeHtml(o)+'</button>').join('')+'</div>';
  }
