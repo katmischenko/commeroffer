@@ -163,7 +163,7 @@ const CONSENT_VERSION='2026-11-10-v1';
 const REMOTE_SAVE_ENABLED=false; // включить только после миграций D1, Deploy Worker и интеграционного теста
 const SCHOOL_DIRECTIONS=['informatics','physics','math'];
 const $=id=>document.getElementById(id);
-let bank=[],index=0,answers=[],student='',direction='',grade='',experience='',curriculumId='',curriculumName='',curriculumDetail='',curriculumLevel='',curriculumYear='',lastPayload=null,bankProgramMatched=false;
+let bank=[],index=0,answers=[],student='',direction='',grade='',experience='',curriculumId='',curriculumName='',curriculumDetail='',curriculumLevel='',curriculumYear='',lastPayload=null,bankProgramMatched=false,bankMeta={id:'',reviewStatus:'teacher_review_draft'};
 function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function normalize(v){return String(v??'').trim().toLowerCase().replace(/\s+/g,' ');}
 function profile(){
@@ -300,7 +300,7 @@ function buildPayload(score,percentage,title,weak,report){
  const statusLabels={answered:'Ответ дан',unknown:'Не знаю',skipped:'Пропущено',unanswered:'Нет ответа'};
  return {
   attemptId:makeId(),studentName:student,studentClass:String(grade),direction,experience,
-  curriculumId,curriculumName,curriculumDetail,curriculumLevel,curriculumYear,bankProgramMatched,consent:true,telegramConsent:$('telegram-consent').checked,
+  curriculumId,curriculumName,curriculumDetail,curriculumLevel,curriculumYear,bankProgramMatched,bankId:bankMeta.id,bankReviewStatus:bankMeta.reviewStatus,consent:true,telegramConsent:$('telegram-consent').checked,
   consentVersion:CONSENT_VERSION,consentAt:new Date().toISOString(),score,maxScore:15,percentage,completedAt:new Date().toISOString(),
   weakTopics:weak.map(([name,v])=>name+' — '+v.right+'/'+v.total),
   answers:report.map(({q,a,ok})=>({
@@ -486,6 +486,7 @@ $('start').addEventListener('click',async()=>{
   }
   if(!data)throw new Error('Не удалось загрузить задания.');
   if(!Array.isArray(data.questions)||data.questions.length!==15)throw new Error('В наборе должно быть 15 заданий.');
+  bankMeta={id:data.bankId||candidates.find(x=>x.includes('-'+curriculumId+'-'))||('question-bank-'+profileId),reviewStatus:data.reviewStatus||'teacher_review_draft'};
   $('profile-note').textContent=bankProgramMatched
    ?'Загружен отдельный черновик для выбранной программы. Он всё ещё требует предметной и педагогической вычитки.'
    :'Используется общий черновик. Соответствие выбранной программе пока не подтверждено.';
