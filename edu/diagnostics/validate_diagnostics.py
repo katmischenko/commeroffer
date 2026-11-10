@@ -177,6 +177,7 @@ def main():
         "curriculum-level-wrap",
         "async function saveAttempt(payload)",
         "CONSENT_VERSION",
+        "REMOTE_SAVE_ENABLED",
     )
     for guard in required_guards:
         if guard not in frontend:
@@ -190,7 +191,8 @@ def main():
     migration_path = DIAG / "migrations" / "0003_curriculum_and_consent.sql"
     level_migration_path = DIAG / "migrations" / "0004_curriculum_level.sql"
     year_migration_path = DIAG / "migrations" / "0005_curriculum_year.sql"
-    for required in (worker_path, archive_path, privacy_path, migration_path, level_migration_path, year_migration_path):
+    worker_test_path = DIAG / "worker.test.mjs"
+    for required in (worker_path, archive_path, privacy_path, migration_path, level_migration_path, year_migration_path, worker_test_path):
         if not required.exists():
             fail(errors, f"missing required diagnostics component: {required.relative_to(ROOT)}")
     if worker_path.exists():
