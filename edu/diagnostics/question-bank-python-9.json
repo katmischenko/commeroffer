@@ -1,0 +1,263 @@
+{
+  "version": "0.1.0",
+  "status": "teacher_review_draft",
+  "direction": "Python",
+  "class": 9,
+  "profileId": "python-9",
+  "experienceVariants": {
+    "beginner": "базовая точка входа; задания требуют адаптации под реальный стартовый опыт",
+    "basics": "проверка основных навыков и самостоятельного применения",
+    "experienced": "углублённая проверка; текущая версия использует общий возрастной набор и требует отдельной экспертной ветки"
+  },
+  "sourceBasis": "Черновая тематическая матрица Mischenko Edu. Для цифровых направлений класс задаёт возрастной контекст; уровень опыта собирается отдельно, но индивидуальная адаптация набора по опыту пока не реализована. Педагогическая проверка обязательна.",
+  "distribution": {
+    "basic": 5,
+    "medium": 7,
+    "advanced": 3
+  },
+  "questions": [
+    {
+      "id": "python9-01",
+      "topic": "Типы данных",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какой тип данных хранит логическое значение?",
+      "explanation": "Тип bool хранит True или False.",
+      "options": [
+        "int",
+        "str",
+        "bool",
+        "float"
+      ],
+      "correctIndex": 2,
+      "correctText": "bool"
+    },
+    {
+      "id": "python9-02",
+      "topic": "Операторы",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Что возвращает выражение 17 % 5?",
+      "explanation": "Остаток от деления 17 на 5 равен 2.",
+      "options": [
+        "2",
+        "3",
+        "3.4",
+        "5"
+      ],
+      "correctIndex": 0,
+      "correctText": "2"
+    },
+    {
+      "id": "python9-03",
+      "topic": "Строки",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Как получить длину строки s?",
+      "explanation": "Встроенная функция len() возвращает число элементов.",
+      "options": [
+        "size(s)",
+        "len(s)",
+        "count(s)",
+        "s.length"
+      ],
+      "correctIndex": 1,
+      "correctText": "len(s)"
+    },
+    {
+      "id": "python9-04",
+      "topic": "Списки",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Как добавить элемент x в конец списка a?",
+      "explanation": "Метод append добавляет элемент в конец списка.",
+      "options": [
+        "a.add(x)",
+        "a.append(x)",
+        "append(a,x)",
+        "a.push(x)"
+      ],
+      "correctIndex": 1,
+      "correctText": "a.append(x)"
+    },
+    {
+      "id": "python9-05",
+      "topic": "Условия",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какой оператор означает логическое И?",
+      "explanation": "and истинно, если оба условия истинны.",
+      "options": [
+        "and",
+        "or",
+        "not",
+        "in"
+      ],
+      "correctIndex": 0,
+      "correctText": "and"
+    },
+    {
+      "id": "python9-06",
+      "topic": "Срезы",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Что вернёт [0,1,2,3,4][1:4]?",
+      "explanation": "Срез включает начальный индекс и не включает конечный.",
+      "options": [
+        "[0,1,2,3]",
+        "[1,2,3]",
+        "[1,2,3,4]",
+        "[2,3,4]"
+      ],
+      "correctIndex": 1,
+      "correctText": "[1,2,3]"
+    },
+    {
+      "id": "python9-07",
+      "topic": "Словари",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Как получить значение по ключу 'age' из словаря d?",
+      "explanation": "К значению словаря обращаются по ключу в квадратных скобках.",
+      "options": [
+        "d.age",
+        "d['age']",
+        "d(age)",
+        "d->age"
+      ],
+      "correctIndex": 1,
+      "correctText": "d['age']"
+    },
+    {
+      "id": "python9-08",
+      "topic": "Циклы",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Сколько итераций выполнит while n < 5 при n=2 и увеличении n на 1 в конце цикла?",
+      "explanation": "Значения n на входе: 2, 3, 4. Затем n=5 и цикл завершается.",
+      "acceptedAnswers": [
+        "3"
+      ],
+      "correctText": "3"
+    },
+    {
+      "id": "python9-09",
+      "topic": "Функции",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Что такое параметр функции?",
+      "explanation": "Параметр — переменная в определении функции, принимающая аргумент.",
+      "options": [
+        "Значение, которое функция получает при вызове",
+        "Имя файла",
+        "Результат print",
+        "Тип цикла"
+      ],
+      "correctIndex": 0,
+      "correctText": "Значение, которое функция получает при вызове"
+    },
+    {
+      "id": "python9-10",
+      "topic": "Файлы",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какой режим open() открывает файл для чтения?",
+      "explanation": "Режим r предназначен для чтения.",
+      "options": [
+        "'w'",
+        "'a'",
+        "'r'",
+        "'x'"
+      ],
+      "correctIndex": 2,
+      "correctText": "'r'"
+    },
+    {
+      "id": "python9-11",
+      "topic": "Исключения",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какой блок перехватывает исключение?",
+      "explanation": "except задаёт обработчик исключения после блока try.",
+      "options": [
+        "try",
+        "except",
+        "finally",
+        "raise"
+      ],
+      "correctIndex": 1,
+      "correctText": "except"
+    },
+    {
+      "id": "python9-12",
+      "topic": "Алгоритмы",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Что выведет код: x=3; x*=4; print(x)?",
+      "explanation": "Сокращённая запись x*=4 означает x=x*4.",
+      "acceptedAnswers": [
+        "12"
+      ],
+      "correctText": "12"
+    },
+    {
+      "id": "python9-13",
+      "topic": "Списки",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "Что создаёт выражение [x*x for x in range(4)]?",
+      "explanation": "Генератор списка возводит 0,1,2,3 в квадрат.",
+      "options": [
+        "[0,1,4,9]",
+        "[1,4,9,16]",
+        "[0,2,4,6]",
+        "[4,9,16]"
+      ],
+      "correctIndex": 0,
+      "correctText": "[0,1,4,9]"
+    },
+    {
+      "id": "python9-14",
+      "topic": "Сложность алгоритмов",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "Какова сложность одного прохода по списку из n элементов?",
+      "explanation": "Каждый элемент обрабатывается один раз, поэтому время линейно.",
+      "options": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n²)"
+      ],
+      "correctIndex": 2,
+      "correctText": "O(n)"
+    },
+    {
+      "id": "python9-15",
+      "topic": "Функции",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "short",
+      "question": "Что вернёт функция f(x): return x+1 при вызове f(9)?",
+      "explanation": "Подставляем 9: 9+1=10.",
+      "acceptedAnswers": [
+        "10"
+      ],
+      "correctText": "10"
+    }
+  ]
+}
