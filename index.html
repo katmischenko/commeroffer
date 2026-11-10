@@ -383,6 +383,20 @@
   .note .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
   .note .tag{font-size:12px;font-weight:700;border-radius:100px;padding:5px 13px;border:1px solid rgba(234,231,223,.18);color:var(--ink)}
 
+  .route-note{
+    position:relative;display:flex;align-items:center;justify-content:space-between;gap:28px;
+    margin-top:38px;padding:30px 34px;
+    background:linear-gradient(115deg,rgba(255,157,69,.09),rgba(142,201,255,.055));
+    border:1px dashed rgba(255,157,69,.38);border-radius:18px 5px 18px 5px;
+  }
+  .route-note .idx{font-family:var(--hand);font-size:23px;font-weight:700;color:var(--marker)}
+  .route-note h3{font-size:clamp(21px,2.5vw,28px);font-weight:800;margin:4px 0 8px}
+  .route-note p{max-width:72ch;color:var(--muted);font-size:15px;line-height:1.75}
+  .route-note .route-mark{
+    flex:none;font-family:var(--hand);font-size:24px;font-weight:700;color:var(--pen);
+    transform:rotate(-4deg);text-align:center;white-space:nowrap;
+  }
+
   /* ---------- чек-лист этапов ---------- */
   .checklist{max-width:760px}
   .check{
@@ -689,54 +703,65 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div class="sec-index">стр. 02 — направления</div>
-        <h2 class="sec-title">Чему учимся — <span class="hl">4 стикера</span></h2>
-        <p class="sec-sub">Внутри каждого направления — конкретные задачи, с которыми можно прийти. Нашёл свою? Жми «написать мне».</p>
+        <h2 class="sec-title">Выбираем направление — <span class="hl">или создаём своё</span></h2>
+        <p class="sec-sub">Четыре основных направления и разные задачи внутри каждого. Можно начать с одного предмета, а можно выстроить обучение сразу по нескольким.</p>
       </div>
       <div class="notes">
         <div class="note n-1 reveal">
           <div class="idx">заметка №1</div>
           <h3>Информатика</h3>
-          <p>От школьной программы до уверенной сдачи экзаменов.</p>
+          <p>От школьной программы до уверенной подготовки к экзаменам.</p>
           <ul>
-            <li>школьная программа и пробелы</li>
-            <li>ОГЭ — по темам и типам заданий</li>
-            <li>ЕГЭ — системная подготовка</li>
+            <li>Разбираем школьные темы и закрываем пробелы.</li>
+            <li>Готовимся к ОГЭ: теория, типы заданий, практика.</li>
+            <li>Готовимся к ЕГЭ: от отдельных тем до полного варианта.</li>
           </ul>
           <div class="tags"><span class="tag">школа</span><span class="tag">ОГЭ</span><span class="tag">ЕГЭ</span></div>
         </div>
         <div class="note n-2 reveal">
           <div class="idx">заметка №2</div>
           <h3>Математика</h3>
-          <p>Спокойно, с опорой на понимание — от «не понимаю» до «сам решу».</p>
+          <p>От первых шагов в математике до уверенного решения задач.</p>
           <ul>
-            <li>начальные и средние классы</li>
-            <li>разбор сложных тем простым языком</li>
-            <li>отработка навыков и ошибок</li>
+            <li>Начальная школа и средние классы.</li>
+            <li>Объяснение сложных тем простым языком.</li>
+            <li>Вычислительные навыки, логика и решение задач.</li>
+            <li>Работа над ошибками и закрепление.</li>
           </ul>
           <div class="tags"><span class="tag">начальная школа</span><span class="tag">средняя школа</span></div>
         </div>
         <div class="note n-3 reveal">
           <div class="idx">заметка №3</div>
           <h3>Физика</h3>
-          <p>Формулы перестают быть страшными, когда видишь, как они работают.</p>
+          <p>Не заучиваем формулы наугад — разбираемся, как устроен мир и почему всё работает именно так.</p>
           <ul>
-            <li>теория и явления простыми словами</li>
-            <li>задачи и много практики</li>
-            <li>подготовка к ОГЭ — по запросу</li>
+            <li>Теория и физические явления простыми словами.</li>
+            <li>Задачи с подробным разбором.</li>
+            <li>Подготовка к школьным контрольным и ОГЭ.</li>
           </ul>
-          <div class="tags"><span class="tag">школа</span></div>
+          <div class="tags"><span class="tag">школьная программа</span><span class="tag">ОГЭ</span></div>
         </div>
         <div class="note n-4 reveal">
           <div class="idx">заметка №4</div>
           <h3>Программирование</h3>
-          <p>От первых шагов до своих проектов и университетских лабораторных.</p>
+          <p>От первых строк кода до собственных проектов.</p>
           <ul>
-            <li>Python — с нуля до уверенного кода</li>
-            <li>Scratch — первый шаг для ребят</li>
-            <li>Figma и HTML — основы веба</li>
+            <li>Python — основы, алгоритмы и практические задачи.</li>
+            <li>Scratch — знакомство с программированием через проекты.</li>
+            <li>HTML и CSS — создание веб-страниц.</li>
+            <li>Figma — основы интерфейсов и визуального проектирования.</li>
+            <li>Помощь с учебными и университетскими заданиями.</li>
           </ul>
-          <div class="tags"><span class="tag">код</span><span class="tag">проекты</span><span class="tag">практика</span></div>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Scratch</span><span class="tag">HTML/CSS</span><span class="tag">Figma</span></div>
         </div>
+      </div>
+      <div class="route-note reveal">
+        <div>
+          <div class="idx">индивидуальный маршрут ✎</div>
+          <h3>Необязательно выбирать только одно направление</h3>
+          <p>Отталкиваемся от твоей цели, текущего уровня и задач. Учебный маршрут может объединять несколько предметов и навыков — с понятной последовательностью, нужным темпом и без лишнего.</p>
+        </div>
+        <div class="route-mark">собираем<br>под тебя ↗</div>
       </div>
     </div>
   </section>
