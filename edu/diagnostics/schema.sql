@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS diagnostic_attempts (
   curriculum_level TEXT NOT NULL DEFAULT '',
   curriculum_year TEXT NOT NULL DEFAULT '',
   consent_version TEXT NOT NULL DEFAULT '',
-  telegram_consent INTEGER NOT NULL DEFAULT 1 CHECK (telegram_consent IN (0,1)),
+  telegram_consent INTEGER NOT NULL DEFAULT 0 CHECK (telegram_consent IN (0,1)),
   score INTEGER NOT NULL CHECK (score >= 0),
   max_score INTEGER NOT NULL CHECK (max_score = 15),
   percentage INTEGER NOT NULL CHECK (percentage BETWEEN 0 AND 100),
