@@ -80,32 +80,6 @@
           <label for="grade">Класс</label>
           <select id="grade"></select>
         </div>
-        <div class="diag-field full" id="curriculum-wrap">
-          <label for="curriculum" id="curriculum-label">Учебная программа</label>
-          <select id="curriculum"><option value="">Сначала выбери программу</option></select>
-        </div>
-        <div class="diag-field full" id="curriculum-year-wrap" hidden>
-          <label for="curriculum-year">Учебный год программы</label>
-          <select id="curriculum-year"><option value="">Выбери учебный год</option><option value="2026/2027">2026/2027</option><option value="2025/2026">2025/2026</option><option value="other">Другая редакция / не знаю</option></select>
-        </div>
-        <div class="diag-field full" id="curriculum-level-wrap" hidden>
-          <label for="curriculum-level" id="curriculum-level-label">Уровень изучения</label>
-          <select id="curriculum-level"><option value="">Выбери уровень</option><option value="basic">Базовый</option><option value="advanced">Углублённый / повышенный</option><option value="unknown">Не знаю</option></select>
-          <p class="diag-hint" id="curriculum-level-hint" hidden>Повышенный уровень выбирай только в том случае, если школа участвует в экспериментальном проекте 2026/2027 учебного года.</p>
-        </div>
-        <div class="diag-field full" id="curriculum-detail-wrap" hidden>
-          <label for="curriculum-detail">Название программы / курса</label>
-          <input class="q-input" id="curriculum-detail" maxlength="140" placeholder="Укажи название программы или курса">
-        </div>
-        <div class="diag-field full" id="experience-wrap" hidden>
-          <label for="experience">Какой у тебя опыт?</label>
-          <select id="experience">
-            <option value="">Выбери вариант</option>
-            <option value="beginner">Только начинаю — раньше почти не изучал(а)</option>
-            <option value="basics">Знаю основы — уже изучал(а), выполнял(а) простые задания</option>
-            <option value="experienced">Есть опыт — хочу проверить и углубить знания</option>
-          </select>
-        </div>
       </div>
       <div class="diag-consents" id="consent-panel" hidden>
         <label class="diag-consent"><input type="checkbox" id="storage-consent"> <span>Подтверждаю, что я совершеннолетний ученик или родитель / законный представитель несовершеннолетнего, и даю согласие передать ответы преподавателю и сохранить результат в закрытом архиве Mischenko Edu для анализа и подготовки рекомендаций. <a href="diagnostics/privacy.html" target="_blank" rel="noopener">Как используются данные</a>.</span></label>
@@ -161,70 +135,17 @@ const directions=[
 const API='https://mischenko-edu-diagnostics.mks-ki.workers.dev/diagnostics';
 const CONSENT_VERSION='2026-11-10-v1';
 const REMOTE_SAVE_ENABLED=false; // включить только после миграций D1, Deploy Worker и интеграционного теста
-const SCHOOL_DIRECTIONS=['informatics','physics','math'];
 const $=id=>document.getElementById(id);
-let bank=[],index=0,answers=[],student='',direction='',grade='',experience='',curriculumId='',curriculumName='',curriculumDetail='',curriculumLevel='',curriculumYear='',lastPayload=null,bankProgramMatched=false,bankMeta={id:'',reviewStatus:'teacher_review_draft'};
+let bank=[],index=0,answers=[],student='',direction='',grade='',lastPayload=null,bankMeta={id:'',reviewStatus:'teacher_review_draft'};
 function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function normalize(v){return String(v??'').trim().toLowerCase().replace(/\s+/g,' ');}
 function profile(){
  const d=directions.find(x=>x.id===$('direction').value);
  return {direction:d,grade:$('grade').value};
 }
-function fillPrograms(){
- const d=directions.find(x=>x.id===$('direction').value);
- const school=SCHOOL_DIRECTIONS.includes(d.id);
- $('curriculum-label').textContent=school?'Учебная программа':'Образовательная траектория';
- const options=school
-  ?(d.id==='informatics'&&Number($('grade').value)===6
-    ?[['by','Беларусь — учебная программа Минобразования'],['other','Другая программа (например, школьная программа России)']]
-    :[['ru','Россия — федеральная образовательная программа / ФРП'],['by','Беларусь — учебная программа Минобразования'],['other','Другая программа']])
-  :[['self','Собственная траектория / авторский курс'],['other','Другая программа или курс']];
- $('curriculum').innerHTML='<option value="">Выбери вариант</option>'+options.map(([id,name])=>'<option value="'+id+'">'+name+'</option>').join('');
- $('curriculum-detail-wrap').hidden=true;
- $('curriculum-year-wrap').hidden=true;
- $('curriculum-year').value='';
- $('curriculum-level-wrap').hidden=true;
- $('curriculum-level-label').textContent='Уровень изучения';
- $('curriculum-level-hint').hidden=true;
- $('curriculum-detail').value='';
- $('curriculum-level').value='';
-}
 function fillGrades(){
  const d=directions.find(x=>x.id===$('direction').value);
  $('grade').innerHTML=d.grades.map(g=>'<option value="'+g+'">'+g+' класс</option>').join('');
- $('experience-wrap').hidden=!d.experience;
- $('experience').value='';
- fillPrograms();
- checkReady();
-}
-function selectedCurriculum(){
- const id=$('curriculum').value;
- const labels={ru:'Россия — федеральная образовательная программа / федеральные рабочие программы',by:'Беларусь — учебная программа Министерства образования',self:'Собственная образовательная траектория / авторский курс',other:$('curriculum-detail').value.trim()};
- return {id,name:labels[id]||'',detail:$('curriculum-detail').value.trim(),level:$('curriculum-level').value,year:$('curriculum-year').value};
-}
-function updateCurriculumLevel(){
- const d=directions.find(x=>x.id===$('direction').value);
- const grade=Number($('grade').value),program=$('curriculum').value;
- const belarusGradeEightPilot=program==='by'&&grade===8&&['physics','math'].includes(d.id);
- const belarusInformaticsAdvanced=program==='by'&&d.id==='informatics'&&[8,9].includes(grade);
- const show=SCHOOL_DIRECTIONS.includes(d.id)&&['ru','by'].includes(program)&&(grade>=10||belarusGradeEightPilot||belarusInformaticsAdvanced);
- $('curriculum-level-wrap').hidden=!show;
- $('curriculum-level-label').textContent=belarusGradeEightPilot?'Уровень программы (экспериментальный проект)':belarusInformaticsAdvanced?'Уровень изучения (базовый / повышенный)':'Уровень изучения';
- $('curriculum-level-hint').hidden=!(belarusGradeEightPilot||belarusInformaticsAdvanced);
- $('curriculum-level-hint').textContent=belarusGradeEightPilot
-  ?'Повышенный уровень выбирай только в том случае, если школа участвует в экспериментальном проекте 2026/2027 учебного года.'
-  :'Повышенный уровень выбирай только если в школе информатика изучается на повышенном уровне (с дополнительными учебными часами).';
- if(!show)$('curriculum-level').value='';
-}
-function curriculumChanged(){
- const id=$('curriculum').value;
- $('curriculum-detail-wrap').hidden=id!=='other';
- if(id!=='other')$('curriculum-detail').value='';
- const hasSchoolProgram=['ru','by'].includes(id);
- $('curriculum-year-wrap').hidden=!hasSchoolProgram;
- if(hasSchoolProgram&&!$('curriculum-year').value)$('curriculum-year').value='2026/2027';
- if(!hasSchoolProgram)$('curriculum-year').value='';
- updateCurriculumLevel();
  checkReady();
 }
 function checkReady(){
@@ -235,16 +156,10 @@ function checkReady(){
  document.title=title+' — Mischenko Edu';
  const description=title+' от Mischenko Edu: 15 заданий, анализ результатов и рекомендации по темам.';
  const meta=$('meta-description'); if(meta) meta.setAttribute('content',description);
- const cur=selectedCurriculum();
  $('profile-note').textContent=available
- ?(profileId==='informatics-6'?'Для этого профиля подготовлен пилотный набор из 15 заданий.':'Для этого профиля подготовлен черновой набор из 15 заданий; он требует педагогической проверки перед публикацией.')+(p.direction.experience?' Уровень опыта будет отмечен в результате, но пока не меняет состав заданий.':'')+' Важно: текущий банк общий и пока не адаптирован отдельно под выбранную программу. Программа будет записана в отчёт; соответствие темам проверяется перед финальным запуском.'
+ ?(profileId==='informatics-6'?'Для этого профиля подготовлен пилотный набор из 15 заданий.':'Для этого профиля подготовлен черновой набор из 15 заданий; он требует педагогической проверки перед публикацией.')
  :'Набор для выбранного профиля ещё готовится. Выбери один из доступных профилей или напиши преподавателю.';
- const detailRequired=cur.id==='other'&&!cur.detail;
- const yearRequired=['ru','by'].includes(cur.id)&&!cur.year;
- const belarusGradeEightPilot=cur.id==='by'&&Number(p.grade)===8&&['physics','math'].includes(p.direction.id);
- const belarusInformaticsAdvanced=cur.id==='by'&&p.direction.id==='informatics'&&[8,9].includes(Number(p.grade));
- const levelRequired=SCHOOL_DIRECTIONS.includes(p.direction.id)&&['ru','by'].includes(cur.id)&&(Number(p.grade)>=10||belarusGradeEightPilot||belarusInformaticsAdvanced)&&!cur.level;
- $('start').disabled=!available||!$('student').value.trim()||!cur.id||detailRequired||yearRequired||levelRequired||(p.direction.experience&&!$('experience').value);
+ $('start').disabled=!available||!$('student').value.trim();
  $('telegram-consent').disabled=!REMOTE_SAVE_ENABLED||!$('storage-consent').checked;
  if(!$('storage-consent').checked)$('telegram-consent').checked=false;
 }
@@ -299,8 +214,8 @@ function buildPayload(score,percentage,title,weak,report){
  const makeId=()=>window.crypto&&crypto.randomUUID?crypto.randomUUID().replace(/-/g,''):('attempt_'+Date.now()+'_'+Math.random().toString(36).slice(2));
  const statusLabels={answered:'Ответ дан',unknown:'Не знаю',skipped:'Пропущено',unanswered:'Нет ответа'};
  return {
-  attemptId:makeId(),studentName:student,studentClass:String(grade),direction,experience,
-  curriculumId,curriculumName,curriculumDetail,curriculumLevel,curriculumYear,bankProgramMatched,bankId:bankMeta.id,bankReviewStatus:bankMeta.reviewStatus,consent:true,telegramConsent:$('telegram-consent').checked,
+  attemptId:makeId(),studentName:student,studentClass:String(grade),direction,experience:'',
+  curriculumId:'',curriculumName:'',curriculumDetail:'',curriculumLevel:'',curriculumYear:'',bankProgramMatched:false,bankId:bankMeta.id,bankReviewStatus:bankMeta.reviewStatus,consent:true,telegramConsent:$('telegram-consent').checked,
   consentVersion:CONSENT_VERSION,consentAt:new Date().toISOString(),score,maxScore:15,percentage,completedAt:new Date().toISOString(),
   weakTopics:weak.map(([name,v])=>name+' — '+v.right+'/'+v.total),
   answers:report.map(({q,a,ok})=>({
@@ -369,9 +284,8 @@ function finish(){
   '<h2 class="sec-title">'+title+'</h2>'+
   '<p>'+percent+'% правильных ответов. '+description+'</p></div>'+
   '<p class="diag-hint">Ученик: '+escapeHtml(student)+'</p>'+
-  '<p class="diag-hint">Программа: '+escapeHtml(curriculumName)+(curriculumYear?' · '+curriculumYear:'')+(curriculumLevel?' · '+({basic:'базовый уровень',advanced:'углублённый / повышенный уровень',unknown:'уровень не указан'}[curriculumLevel]):'')+(curriculumDetail?' · '+escapeHtml(curriculumDetail):'')+'</p>'+
-  '<p class="diag-hint">Банк заданий: '+(bankProgramMatched?'отдельный черновик для выбранной программы; педагогическая вычитка ещё не завершена':'общий черновой банк; соответствие выбранной программе ещё не подтверждено')+'</p>'+
-  (experience?'<p class="diag-hint">Опыт: '+({beginner:'только начинаю',basics:'знаю основы',experienced:'есть опыт'}[experience]||'не указан')+'</p>':'')+
+  '<p class="diag-hint">Направление: '+escapeHtml(direction)+', класс: '+escapeHtml(grade)+'</p>'+
+  '<p class="diag-hint">Использован общий набор заданий для выбранного направления и класса. Набор проходит педагогическую проверку.</p>'+
   '<h3 class="diag-section-title">Что уже получается</h3>'+
   (strong.length?'<ul class="q-topics">'+strong.map(([t,v])=>'<li>'+escapeHtml(t)+' — '+v.right+' из '+v.total+'</li>').join('')+'</ul>':'<p class="diag-hint">Пока нет тем, где все задания выполнены верно. Это не приговор — просто ориентир для дальнейшей работы.</p>')+
   '<h3 class="diag-section-title">Что стоит повторить</h3>'+
@@ -381,7 +295,6 @@ function finish(){
   '<p class="diag-hint">Это предварительная диагностика по одному набору заданий, а не итоговая оценка знаний. Результат поможет выбрать темы для дальнейшей работы.</p>'+
   '<div class="diag-actions"><button class="btn btn-pen" id="restart">Пройти ещё раз</button><a class="btn btn-ghost" id="discuss-result" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Обсудить результат</a></div>'+
  '<p class="diag-hint" id="discuss-note">При нажатии чат откроется, а полный отчёт скопируется. Вставь его в сообщение.</p>';
- const experienceLabel={beginner:'только начинаю',basics:'знаю основы',experienced:'есть опыт'}[experience]||'не указан';
  const topicLines=(items)=>items.length?items.map(([name,v])=>'- '+name+': '+v.right+'/'+v.total).join('\n'):'- нет';
  const detailLines=report.map(({q,a,ok},i)=>{
   const userAnswer=answerLabel(q,a)||'не указан';
@@ -392,8 +305,6 @@ function finish(){
   'Здравствуйте! Хочу обсудить результат диагностики Mischenko Edu.',
   'Ученик: '+(student||'не указано'),
   'Предмет: '+direction+', класс: '+grade,
-  'Программа: '+curriculumName+(curriculumYear?' · '+curriculumYear:'')+(curriculumLevel?' · '+({basic:'базовый уровень',advanced:'углублённый / повышенный уровень',unknown:'уровень не указан'}[curriculumLevel]):'')+(curriculumDetail?' · '+curriculumDetail:''),
-  experience?'Опыт: '+experienceLabel:'',
   'Результат: '+score+' из '+bank.length+' ('+percent+'%).',
   'Уровень: '+title+'.',
   '',
@@ -444,57 +355,25 @@ function finish(){
  }
 }
 $('direction').addEventListener('change',fillGrades);
-$('grade').addEventListener('change',()=>{updateCurriculumLevel();checkReady();});
+$('grade').addEventListener('change',checkReady);
 $('student').addEventListener('input',checkReady);
-$('experience').addEventListener('change',checkReady);
-$('curriculum').addEventListener('change',curriculumChanged);
-$('curriculum-detail').addEventListener('input',checkReady);
-$('curriculum-year').addEventListener('change',checkReady);
-$('curriculum-level').addEventListener('change',checkReady);
 $('storage-consent').addEventListener('change',checkReady);
 $('telegram-consent').addEventListener('change',checkReady);
 $('start').addEventListener('click',async()=>{
- const p=profile(),cur=selectedCurriculum();student=$('student').value.trim();direction=p.direction.name;grade=p.grade;experience=p.direction.experience?$('experience').value:'';curriculumId=cur.id;curriculumName=cur.name;curriculumDetail=cur.detail;curriculumLevel=cur.level;curriculumYear=cur.year;
+ const p=profile();student=$('student').value.trim();direction=p.direction.name;grade=p.grade;
  $('start').disabled=true;$('start').textContent='Загружаю задания…';
  try{
   const profileId=p.direction.id+'-'+p.grade;
-  const candidates=[];
-  if(['ru','by'].includes(curriculumId)&&curriculumYear&&curriculumYear!=='other'){
-   const yearKey=curriculumYear.replace('/','-');
-   const gradeNumber=Number(p.grade);
-   const belarusGradeEightPilot=curriculumId==='by'&&gradeNumber===8&&['physics','math'].includes(p.direction.id);
-   const belarusInformaticsAdvanced=curriculumId==='by'&&p.direction.id==='informatics'&&[8,9].includes(gradeNumber);
-   const levelSpecific=gradeNumber>=10||belarusGradeEightPilot||belarusInformaticsAdvanced;
-   if(levelSpecific){
-    if(curriculumLevel&&curriculumLevel!=='unknown'){
-     candidates.push('diagnostics/question-bank-'+profileId+'-'+curriculumId+'-'+yearKey+'-'+curriculumLevel+'.json');
-     candidates.push('diagnostics/question-bank-'+profileId+'-'+curriculumId+'-'+curriculumLevel+'.json');
-    }
-   }else{
-    candidates.push('diagnostics/question-bank-'+profileId+'-'+curriculumId+'-'+yearKey+'.json');
-    candidates.push('diagnostics/question-bank-'+profileId+'-'+curriculumId+'.json');
-   }
-  }else if(curriculumId==='self'&&p.direction.experience){
-   candidates.push('diagnostics/question-bank-'+profileId+'-self-'+$('experience').value+'.json');
-   candidates.push('diagnostics/question-bank-'+profileId+'-self.json');
-  }
-  candidates.push('diagnostics/question-bank-'+profileId+'.json');
-  let data=null;bankProgramMatched=false;let bankPathUsed='';
-  for(let n=0;n<candidates.length;n++){
-   const res=await fetch(candidates[n],{cache:'no-store'});
-   if(res.ok){
-    data=await res.json();
-    bankPathUsed=candidates[n];
-    bankProgramMatched=n<candidates.length-1;
-    break;
-   }
+  const candidates=['diagnostics/question-bank-'+profileId+'.json'];
+  let data=null;let bankPathUsed='';
+  for(const candidate of candidates){
+   const res=await fetch(candidate,{cache:'no-store'});
+   if(res.ok){data=await res.json();bankPathUsed=candidate;break;}
   }
   if(!data)throw new Error('Не удалось загрузить задания.');
   if(!Array.isArray(data.questions)||data.questions.length!==15)throw new Error('В наборе должно быть 15 заданий.');
   bankMeta={id:data.bankId||bankPathUsed,reviewStatus:data.reviewStatus||'teacher_review_draft'};
-  $('profile-note').textContent=bankProgramMatched
-   ?'Загружен отдельный черновик для выбранной программы. Он всё ещё требует предметной и педагогической вычитки.'
-   :'Используется общий черновик. Соответствие выбранной программе пока не подтверждено.';
+  $('profile-note').textContent='Загружен общий набор заданий для выбранного направления и класса. Он проходит педагогическую проверку.';
   bank=data.questions;answers=Array(bank.length).fill(null);index=0;
   $('setup').hidden=true;$('quiz').hidden=false;renderQuestion();
  }catch(e){
