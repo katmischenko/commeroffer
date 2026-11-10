@@ -55,7 +55,7 @@ function formatTelegram(p) {
     `ID попытки: ${p.attemptId}`,
     "",
     "Полный разбор сохранён в закрытом архиве Mischenko Edu."
-  ].filter(Boolean).join("\\n").slice(0, 3900);
+  ].filter(Boolean).join("\n").slice(0, 3900);
 }
 export default {
   async fetch(request, env) {
