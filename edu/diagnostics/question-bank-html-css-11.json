@@ -18,258 +18,258 @@
   "questions": [
     {
       "id": "htmlcss11-01",
-      "topic": "HTML",
-      "skill": "понимание",
+      "topic": "HTML-диалоги",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какой элемент содержит метаданные документа?",
-      "explanation": "head содержит метаданные, ссылки на стили и другие служебные элементы.",
+      "question": "Какой встроенный HTML-элемент предназначен для диалогового окна?",
       "options": [
-        "<body>",
-        "<head>",
-        "<main>",
-        "<footer>"
+        "<dialog>",
+        "<popup>",
+        "<modal>",
+        "<window>"
       ],
-      "correctIndex": 1,
-      "correctText": "<head>"
+      "correctIndex": 0,
+      "correctText": "<dialog>",
+      "explanation": "dialog — нативный элемент для диалоговых окон."
     },
     {
       "id": "htmlcss11-02",
-      "topic": "HTML",
-      "skill": "понимание",
+      "topic": "HTML-скрипты",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Как подключить внешний CSS-файл?",
-      "explanation": "Внешнюю таблицу стилей подключают элементом link.",
+      "question": "Что означает атрибут type=\"module\" у script?",
       "options": [
-        "<style src='style.css'>",
-        "<link rel='stylesheet' href='style.css'>",
-        "<css href='style.css'>",
-        "<script src='style.css'>"
+        "Скрипт выполняется как JavaScript-модуль",
+        "Скрипт становится CSS-файлом",
+        "Скрипт запускается только при клике",
+        "Скрипт отключает строгий режим"
       ],
-      "correctIndex": 1,
-      "correctText": "<link rel='stylesheet' href='style.css'>"
+      "correctIndex": 0,
+      "correctText": "Скрипт выполняется как JavaScript-модуль",
+      "explanation": "Модульный скрипт поддерживает import/export и имеет модульную область видимости."
     },
     {
       "id": "htmlcss11-03",
-      "topic": "CSS",
-      "skill": "понимание",
+      "topic": "Адаптивные изображения",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Что означает единица rem?",
-      "explanation": "rem рассчитывается относительно font-size корневого элемента html.",
+      "question": "Какой элемент позволяет выбрать разные источники изображения для разных условий?",
       "options": [
-        "Процент от ширины окна",
-        "Размер относительно корневого размера шрифта",
-        "Пиксель устройства",
-        "Размер относительно родителя"
+        "<picture>",
+        "<image-set>",
+        "<source-list>",
+        "<responsive>"
       ],
-      "correctIndex": 1,
-      "correctText": "Размер относительно корневого размера шрифта"
+      "correctIndex": 0,
+      "correctText": "<picture>",
+      "explanation": "picture содержит source и img для выбора подходящего изображения."
     },
     {
       "id": "htmlcss11-04",
-      "topic": "CSS",
-      "skill": "понимание",
+      "topic": "HTML-доступность",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какой селектор имеет более высокую специфичность: .card или #card?",
-      "explanation": "Селектор ID специфичнее селектора класса.",
+      "question": "Какой атрибут временно исключает элемент и его потомков из взаимодействия и дерева доступности?",
       "options": [
-        ".card",
-        "#card",
-        "Одинаковую",
-        "Зависит от порядка всегда"
+        "inert",
+        "hidden-focus",
+        "disabled-all",
+        "aria-off"
       ],
-      "correctIndex": 1,
-      "correctText": "#card"
+      "correctIndex": 0,
+      "correctText": "inert",
+      "explanation": "inert делает поддерево неинтерактивным и недоступным для фокуса."
     },
     {
       "id": "htmlcss11-05",
-      "topic": "HTML",
-      "skill": "понимание",
+      "topic": "CSS-селекторы",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Как указать язык документа на русском?",
-      "explanation": "Атрибут lang у html задаёт основной язык документа.",
+      "question": "Что выбирает псевдокласс :is(.card, .panel)?",
       "options": [
-        "<html lang='ru'>",
-        "<body language='ru'>",
-        "<meta charset='ru'>",
-        "<head lang='ru'>"
+        "Элементы, соответствующие одному из перечисленных селекторов",
+        "Только элементы с обоими классами",
+        "Все соседние элементы",
+        "Только первый элемент"
       ],
       "correctIndex": 0,
-      "correctText": "<html lang='ru'>"
+      "correctText": "Элементы, соответствующие одному из перечисленных селекторов",
+      "explanation": ":is() группирует альтернативные селекторы."
     },
     {
       "id": "htmlcss11-06",
-      "topic": "CSS",
-      "skill": "понимание и применение",
+      "topic": "CSS-производительность",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Что делает flex: 1 у flex-элемента в типичном случае?",
-      "explanation": "Сокращённое свойство задаёт гибкость элемента и позволяет ему расти.",
+      "question": "Что делает content-visibility: auto?",
       "options": [
-        "Запрещает растягивание",
-        "Позволяет элементу занять доступное пространство",
-        "Скрывает элемент",
-        "Меняет порядок"
+        "Позволяет браузеру пропускать часть рендеринга вне видимой области до необходимости",
+        "Удаляет содержимое из DOM",
+        "Скрывает текст навсегда",
+        "Отключает JavaScript"
       ],
-      "correctIndex": 1,
-      "correctText": "Позволяет элементу занять доступное пространство"
+      "correctIndex": 0,
+      "correctText": "Позволяет браузеру пропускать часть рендеринга вне видимой области до необходимости",
+      "explanation": "content-visibility может отложить рендеринг содержимого, которое пока не требуется отображать."
     },
     {
       "id": "htmlcss11-07",
-      "topic": "CSS",
-      "skill": "понимание и применение",
+      "topic": "CSS-селекторы",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Какое свойство ограничивает максимальную ширину элемента?",
-      "explanation": "max-width устанавливает верхнюю границу ширины.",
+      "question": "Что позволяет выбрать карточку, внутри которой есть элемент .warning?",
       "options": [
-        "width-max",
-        "max-width",
-        "limit-width",
-        "size-max"
+        ":has(.warning)",
+        ":contains(.warning)",
+        ":inside(.warning)",
+        ":parent(.warning)"
       ],
-      "correctIndex": 1,
-      "correctText": "max-width"
+      "correctIndex": 0,
+      "correctText": ":has(.warning)",
+      "explanation": ":has() позволяет выбрать элемент по наличию подходящего потомка или относительного элемента."
     },
     {
       "id": "htmlcss11-08",
-      "topic": "HTML",
-      "skill": "понимание и применение",
+      "topic": "CSS-каскад",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Какой атрибут input задаёт тип проверки электронной почты?",
-      "explanation": "type=email включает подходящую клавиатуру и базовую браузерную проверку.",
+      "question": "Что определяет порядок применения слоёв, объявленных через @layer?",
       "options": [
-        "type='mail'",
-        "type='email'",
-        "format='email'",
-        "validate='email'"
+        "Порядок объявления слоёв в каскаде",
+        "Алфавитное имя класса",
+        "Размер файла CSS",
+        "Порядок HTML-элементов"
       ],
-      "correctIndex": 1,
-      "correctText": "type='email'"
+      "correctIndex": 0,
+      "correctText": "Порядок объявления слоёв в каскаде",
+      "explanation": "Порядок слоёв задаёт приоритет правил между слоями."
     },
     {
       "id": "htmlcss11-09",
-      "topic": "CSS",
-      "skill": "понимание и применение",
+      "topic": "CSS-контейнеры",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Что делает object-fit: cover для изображения?",
-      "explanation": "cover сохраняет пропорции, заполняя контейнер; лишние части обрезаются.",
+      "question": "Какое значение container-type включает запросы по inline-размеру контейнера?",
       "options": [
-        "Растягивает без сохранения пропорций",
-        "Заполняет контейнер с возможной обрезкой",
-        "Уменьшает прозрачность",
-        "Повторяет изображение"
+        "inline-size",
+        "block-size-only",
+        "viewport",
+        "flex"
       ],
-      "correctIndex": 1,
-      "correctText": "Заполняет контейнер с возможной обрезкой"
+      "correctIndex": 0,
+      "correctText": "inline-size",
+      "explanation": "inline-size позволяет запрашивать размер контейнера по его inline-оси."
     },
     {
       "id": "htmlcss11-10",
-      "topic": "Адаптивность",
-      "skill": "понимание и применение",
+      "topic": "HTML-доступность",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Что лучше использовать для адаптивных размеров текста относительно окна просмотра?",
-      "explanation": "clamp ограничивает предпочтительное значение минимальным и максимальным.",
+      "question": "Для чего используют aria-live=\"polite\"?",
       "options": [
-        "vw без ограничений",
-        "clamp() с min, preferred и max",
-        "Только фиксированные px",
-        "position:absolute"
+        "Чтобы вспомогательная технология объявляла обновление без прерывания текущей речи",
+        "Чтобы автоматически отправить форму",
+        "Чтобы скрыть сообщение",
+        "Чтобы изменить порядок tab"
       ],
-      "correctIndex": 1,
-      "correctText": "clamp() с min, preferred и max"
+      "correctIndex": 0,
+      "correctText": "Чтобы вспомогательная технология объявляла обновление без прерывания текущей речи",
+      "explanation": "aria-live polite сообщает об обновлении в подходящий момент, не прерывая текущую речь."
     },
     {
       "id": "htmlcss11-11",
-      "topic": "CSS",
-      "skill": "понимание и применение",
+      "topic": "CSS Grid",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Какое свойство задаёт плавный переход между значениями стилей?",
-      "explanation": "transition описывает переход при изменении CSS-свойства.",
+      "question": "Что позволяет свойство grid-template-areas?",
       "options": [
-        "animation-delay",
-        "transition",
-        "transform-origin",
-        "filter"
+        "Задавать именованные области сетки",
+        "Изменять цвет сетки",
+        "Создавать HTML-таблицу",
+        "Автоматически сортировать элементы"
       ],
-      "correctIndex": 1,
-      "correctText": "transition"
+      "correctIndex": 0,
+      "correctText": "Задавать именованные области сетки",
+      "explanation": "grid-template-areas задаёт именованную схему размещения областей."
     },
     {
       "id": "htmlcss11-12",
-      "topic": "Доступность",
-      "skill": "понимание и применение",
+      "topic": "HTML-формы",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Для чего нужен aria-label?",
-      "explanation": "aria-label задаёт accessible name элементу.",
+      "question": "Какой атрибут у кнопки формы позволяет не отправлять форму при нажатии?",
       "options": [
-        "Для изменения цвета",
-        "Для доступного имени элемента, если видимой подписи недостаточно",
-        "Для SEO-ключевых слов",
-        "Для загрузки шрифта"
+        "type=\"button\"",
+        "type=\"submit\"",
+        "action=\"none\"",
+        "form=\"false\""
       ],
-      "correctIndex": 1,
-      "correctText": "Для доступного имени элемента, если видимой подписи недостаточно"
+      "correctIndex": 0,
+      "correctText": "type=\"button\"",
+      "explanation": "Кнопка с type=button не выполняет отправку формы по умолчанию."
     },
     {
       "id": "htmlcss11-13",
-      "topic": "CSS",
-      "skill": "понимание и применение",
+      "topic": "CSS-контейнерные запросы",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "advanced",
       "type": "choice",
-      "question": "Что такое CSS custom property?",
-      "explanation": "Пользовательские свойства CSS объявляют с префиксом -- и используют через var().",
+      "question": "В чём главное отличие container query от media query?",
       "options": [
-        "Переменная, объявляемая через --name",
-        "HTML-атрибут",
-        "Класс JavaScript",
-        "Системный цвет браузера"
+        "Container query зависит от размера контейнера, а media query — от характеристик области просмотра или устройства",
+        "Они полностью одинаковы",
+        "Media query зависит от шрифта, container query — от цвета",
+        "Container query работает только с HTML-таблицами"
       ],
       "correctIndex": 0,
-      "correctText": "Переменная, объявляемая через --name"
+      "correctText": "Container query зависит от размера контейнера, а media query — от характеристик области просмотра или устройства",
+      "explanation": "Контейнерный запрос позволяет компоненту реагировать на доступный размер собственного контейнера."
     },
     {
       "id": "htmlcss11-14",
-      "topic": "CSS",
-      "skill": "понимание и применение",
+      "topic": "HTML-доступность",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "advanced",
       "type": "choice",
-      "question": "Какой принцип помогает избежать конфликтов стилей в крупном проекте?",
-      "explanation": "Согласованная структура классов и локализация стилей уменьшают конфликты.",
+      "question": "Что важно сделать при открытии модального dialog, чтобы клавиатурный пользователь не потерял контекст?",
       "options": [
-        "Глобальные селекторы на все элементы",
-        "Продуманная методология именования и ограничение области стилей",
-        "Случайные !important",
-        "Дублирование всех правил"
+        "Управлять фокусом внутри диалога и возвращать его к открывшему элементу при закрытии",
+        "Удалить все ссылки страницы",
+        "Скрыть outline у кнопок",
+        "Перевести все поля в disabled"
       ],
-      "correctIndex": 1,
-      "correctText": "Продуманная методология именования и ограничение области стилей"
+      "correctIndex": 0,
+      "correctText": "Управлять фокусом внутри диалога и возвращать его к открывшему элементу при закрытии",
+      "explanation": "Корректное управление фокусом поддерживает последовательную клавиатурную навигацию."
     },
     {
       "id": "htmlcss11-15",
-      "topic": "HTML",
-      "skill": "понимание и применение",
+      "topic": "CSS-архитектура",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "advanced",
       "type": "choice",
-      "question": "Что важно учитывать при открытии ссылки в новой вкладке через target='_blank'?",
-      "explanation": "noopener предотвращает доступ новой страницы к window.opener.",
+      "question": "Какое преимущество даёт разделение CSS на слои reset, base, components и utilities?",
       "options": [
-        "Добавлять rel='noopener'",
-        "Удалять href",
-        "Убирать текст ссылки",
-        "Заменять a на span"
+        "Явный порядок каскада и более предсказуемое управление приоритетами",
+        "Автоматическое сжатие изображений",
+        "Ускорение сетевого соединения",
+        "Отказ от селекторов"
       ],
       "correctIndex": 0,
-      "correctText": "Добавлять rel='noopener'"
+      "correctText": "Явный порядок каскада и более предсказуемое управление приоритетами",
+      "explanation": "Слои помогают организовать стили и контролировать приоритеты между группами правил."
     }
   ]
 }
