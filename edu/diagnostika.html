@@ -240,7 +240,34 @@ function finish(){
   '<h3 class="diag-section-title">Подробный разбор заданий</h3>'+
   report.map(({q,a,ok},i)=>'<details class="diag-detail"><summary>'+(i+1)+'. '+escapeHtml(q.topic)+' — '+(ok?'верно':'нужно разобрать')+'</summary><p><b>Задание:</b> '+escapeHtml(q.question.replace(/<[^>]*>/g,' '))+'</p><p><b>Твой ответ:</b> '+escapeHtml(answerLabel(q,a))+'</p><p><b>Правильный ответ:</b> '+escapeHtml(q.type==='short'?q.correctText:q.options[q.correctIndex])+'</p><p><b>Объяснение:</b> '+escapeHtml(q.explanation)+'</p></details>').join('')+
   '<p class="diag-hint">Это предварительная диагностика по одному набору заданий, а не итоговая оценка знаний. Результат поможет выбрать темы для дальнейшей работы.</p>'+
-  '<div class="diag-actions"><button class="btn btn-pen" id="restart">Пройти ещё раз</button><a class="btn btn-ghost" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Обсудить результат</a></div>';
+  '<div class="diag-actions"><button class="btn btn-pen" id="restart">Пройти ещё раз</button><a class="btn btn-ghost" id="discuss-result" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Обсудить результат</a></div>';
+ const experienceLabel={beginner:'только начинаю',basics:'знаю основы',experienced:'есть опыт'}[experience]||'не указан';
+ const topicLines=(items)=>items.length?items.map(([name,v])=>'- '+name+': '+v.right+'/'+v.total).join('\\n'):'- нет';
+ const detailLines=report.map(({q,a,ok},i)=>{
+  const userAnswer=answerLabel(q,a)||'не указан';
+  const correctAnswer=q.type==='short'?q.correctText:q.options[q.correctIndex];
+  return (i+1)+'. '+q.topic+' — '+(ok?'верно':'ошибка/нет ответа')+'\\n   Ответ ученика: '+userAnswer+(ok?'':'\\n   Правильный ответ: '+correctAnswer);
+ }).join('\\n');
+ const message=[
+  'Здравствуйте! Хочу обсудить результат диагностики Mischenko Edu.',
+  'Ученик: '+(student||'не указано'),
+  'Предмет: '+direction+', класс: '+grade,
+  experience?'Опыт: '+experienceLabel:'',
+  'Результат: '+score+' из '+bank.length+' ('+percent+'%).',
+  'Уровень: '+title+'.',
+  '',
+  'Сильные темы:',
+  topicLines(strong),
+  '',
+  'Темы для повторения:',
+  topicLines(weak),
+  '',
+  'Ответы по заданиям:',
+  detailLines,
+  '',
+  'Прошу помочь разобрать результат и определить дальнейшие шаги.'
+ ].filter(Boolean).join('\\n');
+ $('discuss-result').href='https://t.me/katerin_mischenko?text='+encodeURIComponent(message);
  $('restart').addEventListener('click',()=>{index=0;answers=[];$('result').hidden=true;$('setup').hidden=false;checkReady();});
 }
 $('direction').addEventListener('change',fillGrades);
