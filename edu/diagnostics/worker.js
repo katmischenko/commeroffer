@@ -136,24 +136,56 @@ export default {
             payload.experience, payload.score, payload.maxScore, payload.percentage,
             payload.completedAt, JSON.stringify(payload)).run();
         inserted = Number(result?.meta?.changes || 0) > 0;
-        const row = await env.DB.prepare("SELECT attempt_id FROM diagnostic_attempts WHERE attempt_id = ?")
+        const row = await env.DB.prepare("SELECT attempt_id, payload_json, telegram_status, telegram_claimed_at FROM diagnostic_attempts WHERE attempt_id = ?")
           .bind(attemptId).first();
         if (!row) throw new Error("Database save failed");
+        // On a retry, always use the immutable payload already stored for this attempt.
+        if (!inserted) Object.assign(payload, JSON.parse(row.payload_json || "{}"));
       } catch (e) {
         return json({ ok: false, error: "database_save_failed" }, 500, origin);
       }
-      // Repeated POSTs with the same attemptId must never create duplicate Telegram alerts.
-      if (!inserted) {
-        return json({ ok: true, saved: true, duplicate: true, telegramSent: false, attemptId }, 200, origin);
+      // Claim notification delivery atomically. A retry can reclaim a stale sending lease,
+      // while successful deliveries are never sent again for the same attemptId.
+      const now = new Date();
+      const nowIso = now.toISOString();
+      const staleBefore = new Date(now.getTime() - 2 * 60 * 1000).toISOString();
+      let claim;
+      try {
+        claim = await env.DB.prepare(`UPDATE diagnostic_attempts
+          SET telegram_status = 'sending', telegram_claimed_at = ?
+          WHERE attempt_id = ? AND (
+            telegram_status = 'pending'
+            OR (telegram_status = 'sending' AND telegram_claimed_at < ?)
+          )`).bind(nowIso, attemptId, staleBefore).run();
+      } catch (e) {
+        return json({ ok: false, error: "notification_state_unavailable", saved: true, attemptId }, 503, origin);
+      }
+      const claimed = Number(claim?.meta?.changes || 0) > 0;
+      if (!claimed) {
+        const state = await env.DB.prepare("SELECT telegram_status FROM diagnostic_attempts WHERE attempt_id = ?")
+          .bind(attemptId).first();
+        return json({
+          ok: true, saved: true, duplicate: !inserted,
+          telegramSent: state?.telegram_status === "sent",
+          notificationPending: state?.telegram_status !== "sent",
+          attemptId
+        }, 200, origin);
       }
       let telegramSent = false;
       try {
         await sendTelegram(env, formatTelegram(payload));
         telegramSent = true;
+        await env.DB.prepare("UPDATE diagnostic_attempts SET telegram_status = 'sent', telegram_claimed_at = NULL WHERE attempt_id = ?")
+          .bind(attemptId).run();
       } catch (e) {
-        // The attempt remains safely stored in D1 even if Telegram is temporarily unavailable.
+        // Reset to pending so a client retry with the same attemptId can safely try again.
+        await env.DB.prepare("UPDATE diagnostic_attempts SET telegram_status = 'pending', telegram_claimed_at = NULL WHERE attempt_id = ?")
+          .bind(attemptId).run();
       }
-      return json({ ok: true, saved: true, duplicate: false, telegramSent, attemptId }, 200, origin);
+      return json({
+        ok: true, saved: true, duplicate: !inserted,
+        telegramSent, notificationPending: !telegramSent, attemptId
+      }, 200, origin);
     }
     if (request.method === "GET" && url.pathname === "/admin/attempts") {
       const auth = request.headers.get("Authorization") || "";
