@@ -40,7 +40,7 @@ async function sendTelegram(env, text) {
   if (!response.ok || !data.ok) throw new Error("Telegram delivery failed");
 }
 function formatTelegram(p) {
-  const lines = [
+  return [
     "🧭 НОВАЯ ДИАГНОСТИКА MISCHENKO EDU",
     `Ученик: ${p.studentName}`,
     `Класс: ${p.studentClass}`,
@@ -50,25 +50,10 @@ function formatTelegram(p) {
     p.experience ? `Опыт: ${p.experience}` : "",
     `Результат: ${p.score}/${p.maxScore} (${p.percentage}%)`,
     `Дата: ${p.completedAt}`,
+    `ID попытки: ${p.attemptId}`,
     "",
-    "ТЕМЫ ДЛЯ ВНИМАНИЯ:",
-    ...(p.weakTopics.length ? p.weakTopics.map(x => "• " + x) : ["Нет отмеченных слабых тем"]),
-    "",
-    "ПОЛНЫЙ ОТЧЁТ:"
-  ];
-  for (const [index, a] of p.answers.entries()) {
-    lines.push(
-      `${index + 1}. ${a.question}`,
-      `Ответ: ${a.answerText || "Не отвечено"}`,
-      `Правильный ответ: ${a.correctText}`,
-      `Статус: ${a.statusLabel}`,
-      `Тема: ${a.topic} | Сложность: ${a.difficulty}`,
-      `Уверенность: ${a.confidenceLabel || "не указана"}`,
-      `Разбор: ${a.explanation}`,
-      ""
-    );
-  }
-  return lines.filter(Boolean).join("\n").slice(0, 3900);
+    "Полный разбор сохранён в закрытом архиве Mischenko Edu."
+  ].filter(Boolean).join("\\n").slice(0, 3900);
 }
 export default {
   async fetch(request, env) {
