@@ -201,7 +201,9 @@ function selectedCurriculum(){
 }
 function updateCurriculumLevel(){
  const d=directions.find(x=>x.id===$('direction').value);
- const show=SCHOOL_DIRECTIONS.includes(d.id)&&['ru','by'].includes($('curriculum').value)&&Number($('grade').value)>=10;
+ const grade=Number($('grade').value),program=$('curriculum').value;
+ const belarusGradeEightPilot=program==='by'&&grade===8&&['physics','math'].includes(d.id);
+ const show=SCHOOL_DIRECTIONS.includes(d.id)&&['ru','by'].includes(program)&&(grade>=10||belarusGradeEightPilot);
  $('curriculum-level-wrap').hidden=!show;
  if(!show)$('curriculum-level').value='';
 }
@@ -230,7 +232,8 @@ function checkReady(){
  :'Набор для выбранного профиля ещё готовится. Выбери один из доступных профилей или напиши преподавателю.';
  const detailRequired=cur.id==='other'&&!cur.detail;
  const yearRequired=['ru','by'].includes(cur.id)&&!cur.year;
- const levelRequired=SCHOOL_DIRECTIONS.includes(p.direction.id)&&['ru','by'].includes(cur.id)&&Number(p.grade)>=10&&!cur.level;
+ const belarusGradeEightPilot=cur.id==='by'&&Number(p.grade)===8&&['physics','math'].includes(p.direction.id);
+ const levelRequired=SCHOOL_DIRECTIONS.includes(p.direction.id)&&['ru','by'].includes(cur.id)&&(Number(p.grade)>=10||belarusGradeEightPilot)&&!cur.level;
  $('start').disabled=!available||!$('student').value.trim()||!cur.id||detailRequired||yearRequired||levelRequired||(p.direction.experience&&!$('experience').value);
  $('telegram-consent').disabled=!REMOTE_SAVE_ENABLED||!$('storage-consent').checked;
  if(!$('storage-consent').checked)$('telegram-consent').checked=false;
