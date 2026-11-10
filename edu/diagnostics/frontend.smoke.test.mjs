@@ -55,6 +55,8 @@ test("simple setup, unknown answer, navigation and local-only result", async () 
   assert.equal(await page.locator("#start").isEnabled(), true);
   await page.locator("#start").click();
   await page.waitForFunction(() => document.querySelector("#counter")?.textContent.trim() === "вопрос 1 из 15");
+  assert.equal(await page.locator("[role=progressbar]").getAttribute("aria-valuenow"), "1");
+  assert.equal(await page.locator("#question").getAttribute("aria-live"), "polite");
   await page.locator("#unknown").click();
   assert.equal((await page.locator("#counter").textContent()).trim(), "вопрос 1 из 15");
   await page.locator("#next").click();
@@ -96,6 +98,21 @@ test("all 36 direction-and-grade profiles load a 15-question bank", async () => 
       assert.equal(await page.locator("#question").textContent().then(x => x.trim().length > 0), true, direction + " " + grade);
     }
   }
+  await page.close();
+});
+
+test("result preserves literal HTML tags in question text", async () => {
+  const page = await browser.newPage();
+  await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
+  await page.locator("#student").fill("Проверка HTML");
+  await page.locator("#direction").selectOption("html-css");
+  await page.locator("#grade").selectOption("5");
+  await page.locator("#start").click();
+  await page.waitForFunction(() => document.querySelector("#counter")?.textContent.trim() === "вопрос 1 из 15");
+  for (let i = 0; i < 15; i++) await page.locator("#skip").click();
+  const report = await page.locator("#result").textContent();
+  assert.match(report, /<h1>/);
+  assert.match(report, /Правильный ответ:\\s*<h1>/);
   await page.close();
 });
 
