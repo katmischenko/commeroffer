@@ -109,6 +109,21 @@ test("Belarus grade-eight physics pilot asks for the study level", async () => {
   await page.close();
 });
 
+test("Belarus grade-nine informatics allows an explicit advanced track", async () => {
+  const page = await browser.newPage();
+  await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
+  await page.locator("#student").fill("Тест");
+  await page.locator("#direction").selectOption("informatics");
+  await page.locator("#grade").selectOption("9");
+  await page.locator("#curriculum").selectOption("by");
+  assert.equal(await page.locator("#curriculum-level-wrap").isVisible(), true);
+  assert.match(await page.locator("#curriculum-level-hint").textContent(), /дополнительными учебными часами/);
+  assert.equal(await page.locator("#start").isEnabled(), false);
+  await page.locator("#curriculum-level").selectOption("advanced");
+  assert.equal(await page.locator("#start").isEnabled(), true);
+  await page.close();
+});
+
 test("digital direction requires an explicit experience level", async () => {
   const page = await browser.newPage();
   await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
