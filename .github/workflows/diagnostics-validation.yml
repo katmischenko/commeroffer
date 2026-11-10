@@ -36,3 +36,8 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Browser smoke tests
         run: node --test edu/diagnostics/frontend.smoke.test.mjs
+      - name: Check deployed Worker health (non-blocking)
+        continue-on-error: true
+        run: |
+          echo "Checking the public Worker health endpoint..."
+          curl --fail --silent --show-error --max-time 10 https://mischenko-edu-diagnostics.mks-ki.workers.dev/ || echo "Worker endpoint is not reachable from CI; deploy or verify it manually."
