@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
-<title>Тест-диагностика по информатике — Mischenko Edu</title>
-<meta name="description" id="meta-description" content="Тест-диагностика по разным направлениям от Mischenko Edu: 15 заданий, анализ результатов и рекомендации по темам.">
+<title>Диагностика — Mischenko Edu</title>
+<meta name="description" id="meta-description" content="Диагностика знаний от Mischenko Edu по информатике, математике, физике и цифровым направлениям: 15 заданий, анализ результатов и рекомендации по темам.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -147,7 +147,7 @@ function fillGrades(){
 function checkReady(){
  const p=profile(),profileId=p.direction.id+'-'+p.grade;
  const available=['informatics-6','informatics-7','informatics-8','informatics-9','informatics-10','informatics-11','physics-7','physics-8','physics-9','physics-10','physics-11','math-6','math-7','math-8','math-9','python-5','python-6','python-7','python-8','python-9','python-10','python-11','html-css-5','html-css-6','html-css-7','html-css-8','html-css-9','html-css-10','html-css-11','figma-5','figma-6','figma-7','figma-8','figma-9','figma-10','figma-11'].includes(profileId);
- const title='Тест-диагностика по '+p.direction.name.toLowerCase();
+ const title='Диагностика — '+p.direction.name;
  $('diagnostic-label').textContent=title+' · бесплатно';
  document.title=title+' — Mischenko Edu';
  const description=title+' от Mischenko Edu: 15 заданий, анализ результатов и рекомендации по темам.';
