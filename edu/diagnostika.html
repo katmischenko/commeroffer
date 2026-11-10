@@ -444,11 +444,27 @@ $('start').addEventListener('click',async()=>{
  $('start').disabled=true;$('start').textContent='Загружаю задания…';
  try{
   const profileId=p.direction.id+'-'+p.grade;
-  let res=await fetch('diagnostics/question-bank-'+profileId+'-'+curriculumId+'.json',{cache:'no-store'});
-  bankProgramMatched=res.ok;
-  if(!res.ok)res=await fetch('diagnostics/question-bank-'+profileId+'.json',{cache:'no-store'});
-  if(!res.ok)throw new Error('Не удалось загрузить задания.');
-  const data=await res.json();
+  const candidates=[];
+  if(['ru','by'].includes(curriculumId)&&curriculumYear&&curriculumYear!=='other'){
+   const yearKey=curriculumYear.replace('/','-');
+   if(curriculumLevel)candidates.push('diagnostics/question-bank-'+profileId+'-'+curriculumId+'-'+yearKey+'-'+curriculumLevel+'.json');
+   candidates.push('diagnostics/question-bank-'+profileId+'-'+curriculumId+'-'+yearKey+'.json');
+   candidates.push('diagnostics/question-bank-'+profileId+'-'+curriculumId+'.json');
+  }else if(curriculumId==='self'&&p.direction.experience){
+   candidates.push('diagnostics/question-bank-'+profileId+'-self-'+$('experience').value+'.json');
+   candidates.push('diagnostics/question-bank-'+profileId+'-self.json');
+  }
+  candidates.push('diagnostics/question-bank-'+profileId+'.json');
+  let data=null;bankProgramMatched=false;
+  for(let n=0;n<candidates.length;n++){
+   const res=await fetch(candidates[n],{cache:'no-store'});
+   if(res.ok){
+    data=await res.json();
+    bankProgramMatched=n<candidates.length-1;
+    break;
+   }
+  }
+  if(!data)throw new Error('Не удалось загрузить задания.');
   if(!Array.isArray(data.questions)||data.questions.length!==15)throw new Error('В наборе должно быть 15 заданий.');
   bank=data.questions;answers=Array(bank.length).fill(null);index=0;
   $('setup').hidden=true;$('quiz').hidden=false;renderQuestion();
