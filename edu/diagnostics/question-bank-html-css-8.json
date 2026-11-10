@@ -25,12 +25,12 @@
       "question": "Какое объявление указывает браузеру на современный HTML5?",
       "explanation": "DOCTYPE объявляет тип документа HTML5.",
       "options": [
-        "<doctype html>",
         "<!DOCTYPE html>",
+        "<doctype html>",
         "<html5>",
         "<meta html='5'>"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "correctText": "<!DOCTYPE html>"
     },
     {
@@ -60,11 +60,11 @@
       "explanation": "ID-селектор начинается с #.",
       "options": [
         ".menu",
-        "#menu",
         "menu*",
+        "#menu",
         "@menu"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "correctText": "#menu"
     },
     {
@@ -77,11 +77,11 @@
       "explanation": "margin задаёт внешний отступ вокруг элемента.",
       "options": [
         "padding",
-        "margin",
         "border",
-        "line-height"
+        "line-height",
+        "margin"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "correctText": "margin"
     },
     {
@@ -93,12 +93,12 @@
       "question": "Какой атрибут указывает адрес перехода ссылки?",
       "explanation": "href содержит URL или адрес ресурса.",
       "options": [
-        "src",
         "href",
+        "src",
         "alt",
         "target"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "correctText": "href"
     },
     {
@@ -110,12 +110,12 @@
       "question": "Как связать label с input?",
       "explanation": "Значение for должно совпадать с id соответствующего поля.",
       "options": [
-        "Совпадающие for у label и id у input",
         "Через src",
+        "Совпадающие for у label и id у input",
         "Через class обязательно",
         "Вложить input в title"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "correctText": "Совпадающие for у label и id у input"
     },
     {
@@ -128,11 +128,11 @@
       "explanation": "display:flex активирует Flexbox-контейнер.",
       "options": [
         "block",
-        "flex",
         "inline",
+        "flex",
         "none"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "correctText": "flex"
     },
     {
@@ -144,12 +144,12 @@
       "question": "Какое свойство задаёт расстояние между элементами flex/grid?",
       "explanation": "gap задаёт промежутки между элементами контейнера.",
       "options": [
-        "gap",
         "space",
         "margin-auto",
-        "distance"
+        "distance",
+        "gap"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "correctText": "gap"
     },
     {
@@ -161,12 +161,12 @@
       "question": "Что делает position: relative?",
       "explanation": "relative сохраняет место элемента в потоке и задаёт базу для абсолютных потомков.",
       "options": [
-        "Удаляет элемент из потока",
         "Оставляет элемент в потоке и позволяет смещать его",
+        "Удаляет элемент из потока",
         "Фиксирует элемент к окну",
         "Скрывает элемент"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "correctText": "Оставляет элемент в потоке и позволяет смещать его"
     },
     {
@@ -196,11 +196,11 @@
       "explanation": "z-index управляет порядком наложения в соответствующем контексте.",
       "options": [
         "opacity",
-        "z-index",
         "overflow",
+        "z-index",
         "transform"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "correctText": "z-index"
     },
     {
@@ -212,12 +212,12 @@
       "question": "Что обычно задают в viewport meta для корректной мобильной ширины?",
       "explanation": "Эта настройка согласует ширину layout viewport с шириной устройства.",
       "options": [
-        "width=device-width, initial-scale=1",
         "height=100%",
         "mobile=true",
-        "scale=0"
+        "scale=0",
+        "width=device-width, initial-scale=1"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "correctText": "width=device-width, initial-scale=1"
     },
     {
@@ -264,11 +264,11 @@
       "explanation": "Нативная кнопка поддерживает клавиатурное управление и семантику.",
       "options": [
         "Использовать кликабельный div без роли",
-        "Использовать button или корректную семантику и клавиатурное управление",
         "Убрать outline у всех элементов",
+        "Использовать button или корректную семантику и клавиатурное управление",
         "Сделать элемент фоновым изображением"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "correctText": "Использовать button или корректную семантику и клавиатурное управление"
     }
   ]
