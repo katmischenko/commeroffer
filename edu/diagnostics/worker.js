@@ -93,7 +93,7 @@ export default {
       if (!Number.isInteger(score) || !Number.isInteger(maxScore) || maxScore !== 15 || score < 0 || score > maxScore) {
         return json({ ok: false, error: "invalid_score" }, 400, origin);
       }
-      const curriculumId = clean(p.curriculumId, 20);
+      const curriculumId = clean(p.curriculumId, 20) || "unspecified";
       const curriculumName = clean(p.curriculumName, 160);
       const curriculumDetail = clean(p.curriculumDetail, 140);
       const curriculumLevel = clean(p.curriculumLevel, 20);
@@ -110,32 +110,22 @@ export default {
       };
       const rule = directionRules[direction];
       if (!rule || !rule.grades.includes(Number(studentClass))) return json({ ok: false, error: "invalid_direction_or_grade" }, 400, origin);
-      if (rule.school && !["ru", "by", "other"].includes(curriculumId)) return json({ ok: false, error: "school_curriculum_required" }, 400, origin);
-      if (!rule.school && !["self", "other"].includes(curriculumId)) return json({ ok: false, error: "digital_curriculum_required" }, 400, origin);
-      if (direction === "Информатика" && Number(studentClass) === 6 && curriculumId === "ru") {
-        return json({ ok: false, error: "local_informatics_program_required" }, 400, origin);
-      }
       const experience = clean(p.experience, 20);
       if (rule.school && experience) return json({ ok: false, error: "unexpected_experience" }, 400, origin);
-      if (!rule.school && !["beginner", "basics", "experienced"].includes(experience)) {
-        return json({ ok: false, error: "experience_required" }, 400, origin);
+      if (experience && !["beginner", "basics", "experienced"].includes(experience)) {
+        return json({ ok: false, error: "invalid_experience" }, 400, origin);
       }
-      if (!["ru", "by", "other", "self"].includes(curriculumId) || !curriculumName) {
-        return json({ ok: false, error: "curriculum_required" }, 400, origin);
+      if (!["ru", "by", "other", "self", "unspecified"].includes(curriculumId)) {
+        return json({ ok: false, error: "invalid_curriculum" }, 400, origin);
       }
       if (curriculumId === "other" && !curriculumDetail) {
         return json({ ok: false, error: "curriculum_detail_required" }, 400, origin);
       }
-      if (["ru", "by"].includes(curriculumId) && !["2025/2026", "2026/2027", "other"].includes(curriculumYear)) {
-        return json({ ok: false, error: "curriculum_year_required" }, 400, origin);
+      if (curriculumYear && !["2025/2026", "2026/2027", "other"].includes(curriculumYear)) {
+        return json({ ok: false, error: "invalid_curriculum_year" }, 400, origin);
       }
-      const belarusGradeEightPilot = curriculumId === "by" && Number(studentClass) === 8 &&
-        ["Физика", "Математика"].includes(direction);
-      const belarusInformaticsAdvanced = curriculumId === "by" && direction === "Информатика" &&
-        [8, 9].includes(Number(studentClass));
-      if (["ru", "by"].includes(curriculumId) && (Number(studentClass) >= 10 || belarusGradeEightPilot || belarusInformaticsAdvanced) &&
-          !["basic", "advanced", "unknown"].includes(curriculumLevel)) {
-        return json({ ok: false, error: "curriculum_level_required" }, 400, origin);
+      if (curriculumLevel && !["basic", "advanced", "unknown"].includes(curriculumLevel)) {
+        return json({ ok: false, error: "invalid_curriculum_level" }, 400, origin);
       }
       if (!clean(p.consentVersion, 40) || !clean(p.consentAt, 50)) {
         return json({ ok: false, error: "consent_metadata_required" }, 400, origin);
