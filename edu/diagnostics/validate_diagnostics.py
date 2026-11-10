@@ -171,8 +171,9 @@ def main():
         "$('question').textContent=q.question;",
         "Array.isArray(data.questions)",
         "function selectedCurriculum()",
-        "curriculumId,curriculumName,curriculumDetail,curriculumLevel",
+        "curriculumId,curriculumName,curriculumDetail,curriculumLevel,curriculumYear",
         "telegramConsent:$('telegram-consent').checked",
+        "curriculum-year-wrap",
         "curriculum-level-wrap",
         "async function saveAttempt(payload)",
         "CONSENT_VERSION",
@@ -188,12 +189,13 @@ def main():
     privacy_path = DIAG / "privacy.html"
     migration_path = DIAG / "migrations" / "0003_curriculum_and_consent.sql"
     level_migration_path = DIAG / "migrations" / "0004_curriculum_level.sql"
-    for required in (worker_path, archive_path, privacy_path, migration_path, level_migration_path):
+    year_migration_path = DIAG / "migrations" / "0005_curriculum_year.sql"
+    for required in (worker_path, archive_path, privacy_path, migration_path, level_migration_path, year_migration_path):
         if not required.exists():
             fail(errors, f"missing required diagnostics component: {required.relative_to(ROOT)}")
     if worker_path.exists():
         worker_text = worker_path.read_text(encoding="utf-8")
-        for required in ('curriculum_id', 'curriculum_name', 'const curriculumLevel = clean(p.curriculumLevel, 20)', 'telegramConsent', 'telegramNotRequested', 'DELETE', 'async scheduled'):
+        for required in ('curriculum_id', 'curriculum_name', 'curriculum_year', 'const curriculumLevel = clean(p.curriculumLevel, 20)', 'telegramConsent', 'telegramNotRequested', 'DELETE', 'async scheduled'):
             if required not in worker_text:
                 fail(errors, f"Worker missing required feature marker: {required}")
     if archive_path.exists():
