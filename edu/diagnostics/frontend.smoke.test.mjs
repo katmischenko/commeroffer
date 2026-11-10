@@ -94,6 +94,20 @@ test("program year and senior level are required for grades 10–11", async () =
   await page.close();
 });
 
+test("digital direction requires an explicit experience level", async () => {
+  const page = await browser.newPage();
+  await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
+  await page.locator("#student").fill("Тест");
+  await page.locator("#direction").selectOption("python");
+  await page.locator("#grade").selectOption("5");
+  await page.locator("#curriculum").selectOption("self");
+  assert.equal(await page.locator("#experience-wrap").isVisible(), true);
+  assert.equal(await page.locator("#start").isEnabled(), false);
+  await page.locator("#experience").selectOption("beginner");
+  assert.equal(await page.locator("#start").isEnabled(), true);
+  await page.close();
+});
+
 test("mobile: setup fits a narrow viewport without horizontal overflow", async () => {
   const page = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
   await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
