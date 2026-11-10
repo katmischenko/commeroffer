@@ -64,18 +64,14 @@
     background:rgba(20,20,22,.78);
     border-bottom:1px solid var(--line);
   }
-  .nav{display:flex;align-items:center;justify-content:space-between;height:66px;max-width:1120px;margin:0 auto;padding:0 24px}
-  .logo{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:var(--ink)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;height:66px;max-width:1120px;margin:0 auto;padding:0 24px}
+  .logo{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:var(--ink);flex:none;white-space:nowrap}
   .logo .hand{font-size:26px;color:var(--marker)}
   .logo small{font-size:11px;letter-spacing:.18em;color:var(--faint);text-transform:uppercase}
-  .nav-links{display:flex;gap:26px;list-style:none}
-  .nav-links a{color:var(--muted);text-decoration:none;font-size:14.5px;font-weight:600;transition:color .2s}
+  .nav-links{display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.35vw,17px);list-style:none;flex:1;min-width:0;margin:0;padding:0}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:clamp(12px,.98vw,13.5px);font-weight:600;white-space:nowrap;transition:color .2s}
   .nav-links a:hover{color:var(--marker)}
-  .nav-cta{
-    font-weight:800;font-size:14px;text-decoration:none;
-    background:var(--marker);color:#1d1305;border-radius:100px;padding:10px 20px;
-    transition:transform .25s,box-shadow .25s;
-  }
+  .nav-cta{flex:none;font-weight:800;font-size:13px;text-decoration:none;background:var(--marker);color:#1d1305;border-radius:100px;padding:10px 17px;white-space:nowrap;transition:transform .25s,box-shadow .25s}
   .nav-cta:hover{transform:translateY(-2px) rotate(-1deg);box-shadow:0 10px 30px rgba(255,157,69,.3)}
   .mobile-menu{display:none;position:relative;flex:none}
   .mobile-menu summary{list-style:none;width:42px;height:42px;padding:10px;display:flex;flex-direction:column;justify-content:center;gap:5px;border:1px solid rgba(234,231,223,.22);border-radius:50%;cursor:pointer}
@@ -84,17 +80,18 @@
   .mobile-menu[open] summary span:first-child{transform:translateY(7px) rotate(45deg)}
   .mobile-menu[open] summary span:nth-child(2){opacity:0}
   .mobile-menu[open] summary span:last-child{transform:translateY(-7px) rotate(-45deg)}
-  .mobile-menu-links{position:absolute;top:calc(100% + 12px);right:0;display:none;grid-template-columns:1fr;gap:0;width:min(270px,calc(100vw - 40px));padding:9px;background:var(--paper-2);border:1px solid rgba(234,231,223,.14);border-radius:16px;box-shadow:0 18px 48px rgba(0,0,0,.45);list-style:none}
+  .mobile-menu-links{position:absolute;top:calc(100% + 12px);right:0;display:none;grid-template-columns:1fr;gap:0;width:min(290px,calc(100vw - 32px));padding:9px;background:var(--paper-2);border:1px solid rgba(234,231,223,.14);border-radius:16px;box-shadow:0 18px 48px rgba(0,0,0,.45);list-style:none;margin:0;z-index:60}
   .mobile-menu[open] .mobile-menu-links{display:grid}
   .mobile-menu-links a{display:block;padding:11px 13px;border-radius:9px;color:var(--muted);text-decoration:none;font-size:14px;font-weight:700}
   .mobile-menu-links a:hover{background:rgba(255,157,69,.08);color:var(--marker)}
-  @media(max-width:860px){.nav-links{display:none}.mobile-menu{display:block}}
+  .mobile-menu-links .menu-contact{margin-top:6px;padding-top:10px;border-top:1px solid var(--line)}
+  .mobile-menu-links .menu-contact a{background:var(--marker);color:#1d1305;text-align:center}
+  @media(max-width:1080px){.nav-links{display:none}.mobile-menu{display:block}}
   @media(max-width:560px){
-    .nav{padding:0 18px;gap:10px}
+    .nav{padding:0 18px;gap:12px}
     .logo{gap:0}
     .logo .hand{font-size:23px}
-    .logo small{display:none}
-    .nav-cta{font-size:12px;padding:9px 12px}
+    .logo small,.nav-cta{display:none}
     .mobile-menu summary{width:38px;height:38px;padding:9px}
   }
 
@@ -440,6 +437,7 @@
         <li><a href="#results">Результаты</a></li>
         <li><a href="#faq">Вопросы</a></li>
         <li><a href="#anketa">Анкета ученика</a></li>
+        <li class="menu-contact"><a href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Написать мне</a></li>
       </ul>
     </details>
     <a class="nav-cta" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Написать мне</a>
