@@ -241,6 +241,55 @@
     .hero-sub{font-size:14px}
     .hero-actions .btn{padding:12px 16px;font-size:13px}
   }
+  /* ---------- first-screen fit: keep both CTA buttons visible ---------- */
+  @media(min-width:701px){
+    .hero{
+      min-height:100svh;
+      grid-template-columns:minmax(0,1.12fr) minmax(280px,.88fr);
+      grid-template-areas:"copy art";
+      grid-template-rows:minmax(0,1fr);
+      align-content:center;
+      padding:76px 0 12px;
+      column-gap:clamp(20px,3vw,42px);
+    }
+    .hero-copy{align-self:center;max-width:620px}
+    .hero-meta{margin-bottom:13px}
+    h1{font-size:clamp(36px,4.1vw,58px);line-height:1.01}
+    .hero-hand{font-size:clamp(21px,2.1vw,28px);margin-left:6px}
+    .hero-sub{margin-top:13px;font-size:14px;line-height:1.48;max-width:60ch}
+    .hero-actions{margin-top:17px;gap:10px}
+    .hero-actions .btn{font-size:13px;padding:12px 19px}
+    .hero-direction{margin-top:3px;font-size:18px}
+    .hero-art{height:min(46svh,390px);min-height:0}
+    .idea-panel{width:min(100%,370px);padding:17px 19px 14px}
+    .idea-panel-label{margin:13px 0 7px}
+    .code-window{margin-top:12px}
+    .idea-bottom{margin-top:10px}
+    .math-chip{top:4%}
+    .graph-chip{bottom:4%}
+  }
+  @media(min-width:701px) and (max-height:760px){
+    .hero{padding-top:70px;padding-bottom:8px}
+    .hero-meta{margin-bottom:9px;font-size:10px}
+    h1{font-size:clamp(34px,3.8vw,49px);line-height:1}
+    .hero-hand{font-size:21px}
+    .hero-sub{font-size:13px;line-height:1.4;margin-top:10px}
+    .hero-actions{margin-top:13px}
+    .hero-actions .btn{padding:10px 16px;font-size:12px}
+    .hero-direction{display:none}
+    .hero-art{height:min(41svh,310px)}
+    .idea-panel{padding:14px 16px 12px}
+    .idea-panel-label{margin:10px 0 6px}
+    .code-window{margin-top:9px}
+    .idea-bottom{margin-top:8px}
+  }
+  @media(min-width:701px) and (max-width:900px){
+    .hero{grid-template-columns:minmax(0,1.08fr) minmax(250px,.92fr);column-gap:18px}
+    h1{font-size:clamp(34px,4.2vw,48px)}
+    .hero-sub{font-size:13px}
+    .hero-art{height:min(42svh,340px)}
+    .hero-actions .btn{padding:11px 14px;font-size:12px}
+  }
   .doodle-arrow{position:absolute;pointer-events:none;color:var(--pen);opacity:.85}
   @media(max-width:700px){.doodle-arrow{display:none}}
 
