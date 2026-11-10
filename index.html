@@ -814,7 +814,7 @@
     <p>Можно проверить знания самостоятельно или сначала обсудить всё со мной. Оба варианта бесплатные.</p>
     <a class="diag-choice primary" href="edu/diagnostika.html">
       <strong>Пройти тест самостоятельно →</strong>
-      <span>15 заданий по выбранному направлению, результат и разбор после завершения</span>
+      <span>15 заданий по информатике, результат и разбор после завершения</span>
     </a>
     <a class="diag-choice" href="https://t.me/katerin_mischenko?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%B4%D0%B8%D0%B0%D0%B3%D0%BD%D0%BE%D1%81%D1%82%D0%B8%D0%BA%D1%83%20%D0%BF%D0%BE%20%D0%BE%D0%B4%D0%BD%D0%BE%D0%BC%D1%83%20%D0%B8%D0%B7%20%D0%BD%D0%B0%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9.%20%D0%9F%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D0%B6%D0%B8%D1%82%D0%B5%2C%20%D0%BF%D0%BE%D0%B6%D0%B0%D0%BB%D1%83%D0%B9%D1%81%D1%82%D0%B0%2C%20%D0%BA%D0%B0%D0%BA%20%D0%B4%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D1%82%D1%8C%D1%81%D1%8F%20%D0%BE%20%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%B8%20%D0%B8%20%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82%D0%B5%3F" target="_blank" rel="noopener">
       <strong>Написать преподавателю →</strong>
@@ -861,19 +861,26 @@
     });
   });
 
-  // FAQ
-  document.querySelectorAll('.faq-q').forEach(function(btn){
+  // FAQ — доступный аккордеон с состоянием для скринридеров.
+  document.querySelectorAll('.faq-q').forEach(function(btn,index){
+    var panel = btn.nextElementSibling;
+    var panelId = 'faq-answer-' + (index + 1);
+    panel.id = panelId;
+    btn.setAttribute('aria-controls',panelId);
+    btn.setAttribute('aria-expanded','false');
+
     btn.addEventListener('click', function(){
       var item = btn.closest('.faq-item');
       var open = item.getAttribute('data-open') === 'true';
       document.querySelectorAll('.faq-item').forEach(function(i){
         i.setAttribute('data-open','false');
+        i.querySelector('.faq-q').setAttribute('aria-expanded','false');
         i.querySelector('.faq-a').style.maxHeight = null;
       });
       if(!open){
         item.setAttribute('data-open','true');
-        var a = item.querySelector('.faq-a');
-        a.style.maxHeight = a.scrollHeight + 'px';
+        btn.setAttribute('aria-expanded','true');
+        panel.style.maxHeight = panel.scrollHeight + 'px';
       }
     });
   });
@@ -929,13 +936,17 @@
     }
   });
 
-  // Reveal on scroll
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, {threshold:.12});
-  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  // Reveal on scroll — с безопасным fallback для браузеров без IntersectionObserver.
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
 </script>
 </body>
 </html>
