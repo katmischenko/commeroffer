@@ -349,6 +349,18 @@
         "basic",
         "advanced",
         "unknown"
+      ],
+      "pilotLevels": [
+        {
+          "grade": 8,
+          "directions": [
+            "physics",
+            "math"
+          ],
+          "level": "advanced",
+          "academicYear": "2026/2027",
+          "note": "Только учреждения, участвующие в экспериментальном проекте"
+        }
       ]
     },
     {
@@ -385,6 +397,15 @@
     "currentBankBehavior": "generic_draft_with_explicit_warning",
     "rule": "Выбор программы сохраняется в каждой попытке. До появления и проверки отдельного банка конкретная программа не должна маркироваться как полностью соответствующая выбранной учебной программе.",
     "yearIsStoredPerAttempt": true,
-    "seniorLevelIsStoredPerAttempt": true
+    "seniorLevelIsStoredPerAttempt": true,
+    "belarusGradeEightPilot": {
+      "academicYear": "2026/2027",
+      "directions": [
+        "physics",
+        "math"
+      ],
+      "grade": 8,
+      "advancedOnlyInParticipatingSchools": true
+    }
   }
 }
