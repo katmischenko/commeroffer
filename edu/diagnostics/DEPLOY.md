@@ -1,6 +1,6 @@
 # Cloudflare Worker: диагностика Mischenko Edu
 
-Исходник: `worker.js`. Миграции D1: `schema.sql`, затем для существующей базы — `migrations/0002_telegram_outbox.sql` и `migrations/0003_curriculum_and_consent.sql` и `migrations/0004_curriculum_level.sql` (каждую ровно один раз).
+Исходник: `worker.js`. Миграции D1: `schema.sql`, затем для существующей базы — `migrations/0002_telegram_outbox.sql`, `migrations/0003_curriculum_and_consent.sql` и `migrations/0004_curriculum_level.sql` (каждую ровно один раз).
 
 ## Текущее состояние
 Этот код подготовлен, но не развернут в Cloudflare автоматически. Для центрального архива необходимо подключить D1 и заменить код существующего Worker этим исходником.
@@ -15,6 +15,8 @@
 7. Замените код Worker содержимым `worker.js` и Deploy.
 8. В Worker → Settings → Triggers добавьте Cron Trigger `0 3 * * *` (ежедневно в 03:00 UTC) для очистки записей старше срока хранения. Переменная `DATA_RETENTION_DAYS` необязательна; допустимо 30–365, по умолчанию 180.
 9. Проверьте GET `/`: ответ должен содержать `"database":true`.
+10. Проведите интеграционный тест на синтетической записи с `telegramConsent: false`, проверьте её появление в архиве и удаление через кнопку архива. Не используйте реальные данные ученика и не отправляйте тестовое сообщение в рабочий Telegram.
+11. Только после успешной проверки откройте `edu/diagnostika.html`: установите `REMOTE_SAVE_ENABLED=true` и уберите `hidden` у `#consent-panel`. Затем запустите CI и проверьте сценарий на тестовой записи.
 
 ## API
 - `POST /diagnostics` — проверяет согласие на архив, имя, класс, направление, учебную программу и ровно 15 ответов; сохраняет попытку в D1. Telegram отправляется только при отдельном `telegramConsent: true`.
