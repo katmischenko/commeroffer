@@ -25,12 +25,12 @@
       "question": "Какой элемент содержит метаданные документа?",
       "explanation": "head содержит метаданные, ссылки на стили и другие служебные элементы.",
       "options": [
-        "<body>",
         "<head>",
+        "<body>",
         "<main>",
         "<footer>"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "correctText": "<head>"
     },
     {
@@ -60,11 +60,11 @@
       "explanation": "rem рассчитывается относительно font-size корневого элемента html.",
       "options": [
         "Процент от ширины окна",
-        "Размер относительно корневого размера шрифта",
         "Пиксель устройства",
+        "Размер относительно корневого размера шрифта",
         "Размер относительно родителя"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "correctText": "Размер относительно корневого размера шрифта"
     },
     {
@@ -77,11 +77,11 @@
       "explanation": "Селектор ID специфичнее селектора класса.",
       "options": [
         ".card",
-        "#card",
         "Одинаковую",
-        "Зависит от порядка всегда"
+        "Зависит от порядка всегда",
+        "#card"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "correctText": "#card"
     },
     {
@@ -128,11 +128,11 @@
       "explanation": "max-width устанавливает верхнюю границу ширины.",
       "options": [
         "width-max",
-        "max-width",
         "limit-width",
+        "max-width",
         "size-max"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "correctText": "max-width"
     },
     {
@@ -145,11 +145,11 @@
       "explanation": "type=email включает подходящую клавиатуру и базовую браузерную проверку.",
       "options": [
         "type='mail'",
-        "type='email'",
         "format='email'",
-        "validate='email'"
+        "validate='email'",
+        "type='email'"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "correctText": "type='email'"
     },
     {
@@ -161,12 +161,12 @@
       "question": "Что делает object-fit: cover для изображения?",
       "explanation": "cover сохраняет пропорции, заполняя контейнер; лишние части обрезаются.",
       "options": [
-        "Растягивает без сохранения пропорций",
         "Заполняет контейнер с возможной обрезкой",
+        "Растягивает без сохранения пропорций",
         "Уменьшает прозрачность",
         "Повторяет изображение"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "correctText": "Заполняет контейнер с возможной обрезкой"
     },
     {
@@ -196,11 +196,11 @@
       "explanation": "transition описывает переход при изменении CSS-свойства.",
       "options": [
         "animation-delay",
-        "transition",
         "transform-origin",
+        "transition",
         "filter"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "correctText": "transition"
     },
     {
@@ -213,11 +213,11 @@
       "explanation": "aria-label задаёт accessible name элементу.",
       "options": [
         "Для изменения цвета",
-        "Для доступного имени элемента, если видимой подписи недостаточно",
         "Для SEO-ключевых слов",
-        "Для загрузки шрифта"
+        "Для загрузки шрифта",
+        "Для доступного имени элемента, если видимой подписи недостаточно"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "correctText": "Для доступного имени элемента, если видимой подписи недостаточно"
     },
     {
@@ -263,12 +263,12 @@
       "question": "Что важно учитывать при открытии ссылки в новой вкладке через target='_blank'?",
       "explanation": "noopener предотвращает доступ новой страницы к window.opener.",
       "options": [
-        "Добавлять rel='noopener'",
         "Удалять href",
         "Убирать текст ссылки",
+        "Добавлять rel='noopener'",
         "Заменять a на span"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "correctText": "Добавлять rel='noopener'"
     }
   ]
