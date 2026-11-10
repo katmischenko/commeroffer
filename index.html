@@ -350,6 +350,19 @@
   .pin.reveal.in:nth-child(1){transform:rotate(-1.1deg)}
   .pin.reveal.in:nth-child(2){transform:rotate(.9deg)}
   .pin.reveal.in:nth-child(3){transform:rotate(-.7deg)}
+  /* ---------- выбор формата диагностики ---------- */
+  .diag-modal{width:min(560px,calc(100% - 32px));margin:auto;padding:0;border:1px solid rgba(255,157,69,.38);border-radius:22px;background:var(--paper-2);color:var(--ink);box-shadow:0 28px 90px rgba(0,0,0,.65)}
+  .diag-modal::backdrop{background:rgba(0,0,0,.72);backdrop-filter:blur(5px)}
+  .diag-modal-inner{padding:clamp(26px,5vw,42px);position:relative}
+  .diag-modal-close{position:absolute;top:16px;right:18px;border:0;background:none;color:var(--muted);font:inherit;font-size:26px;cursor:pointer;line-height:1}
+  .diag-modal .hand-title{font-family:var(--hand);font-size:27px;color:var(--pen);display:block;margin-bottom:8px}
+  .diag-modal h2{font-size:clamp(25px,4vw,34px);line-height:1.15;margin:0 30px 12px 0}
+  .diag-modal p{color:var(--muted);font-size:14.5px;margin-bottom:24px}
+  .diag-choice{display:flex;flex-direction:column;gap:8px;text-decoration:none;color:var(--ink);padding:18px 20px;border:1px solid rgba(234,231,223,.16);border-radius:14px;margin-top:12px;transition:border-color .2s,transform .2s,background .2s}
+  .diag-choice:hover{border-color:var(--marker);background:rgba(255,157,69,.06);transform:translateY(-2px)}
+  .diag-choice strong{font-size:16px}
+  .diag-choice span{font-size:13px;color:var(--muted)}
+  .diag-choice.primary{border-color:rgba(255,157,69,.45)}
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
 </head>
@@ -381,7 +394,7 @@
       </h1>
       <p class="hero-sub">Привет! Я Катерина 👋 Репетитор по <b>информатике, математике, физике и&nbsp;программированию</b>. Объясняю сложное простыми словами и веду к цели — будь то пятёрка, ОГЭ или первый свой проект. А это моя открытая тетрадь: всё по полочкам, с пометками и без воды. Загляни!</p>
       <div class="hero-actions">
-        <a class="btn btn-marker" href="https://t.me/" target="_blank" rel="noopener">Записаться на диагностику ✎</a>
+        <a class="btn btn-marker" href="#diagnosticChoice" data-open-diagnostic>Записаться на диагностику ✎</a>
         <a class="btn btn-ghost" href="#subjects">Полистать тетрадь ↓</a>
       </div>
       <svg class="doodle-arrow" style="right:8%;top:26%" width="150" height="110" viewBox="0 0 150 110" fill="none">
@@ -726,12 +739,29 @@
     <div class="cta-final reveal">
       <span class="hand-top">последняя страница — самая важная ↓</span>
       <h2>Начнём с <span class="hl">диагностики?</span></h2>
-      <p>Напиши мне в Telegram: расскажи о цели, а я предложу план и отвечу на вопросы. Без обязательств — просто познакомимся и посмотрим, как вам будет полезнее.</p>
-      <a class="btn btn-marker" href="https://t.me/" target="_blank" rel="noopener">Написать в Telegram ✎</a>
+      <p>Можно пройти тест самостоятельно или сначала написать мне — вместе выберем удобный формат и разберёмся, с чего начать.</p>
+      <a class="btn btn-marker" href="#diagnosticChoice" data-open-diagnostic>Выбрать формат диагностики ✎</a>
     </div>
   </div>
 
 </main>
+
+<dialog class="diag-modal" id="diagnosticChoice" aria-labelledby="diagnosticChoiceTitle">
+  <div class="diag-modal-inner">
+    <button class="diag-modal-close" type="button" aria-label="Закрыть окно" data-close-diagnostic>×</button>
+    <span class="hand-title">с чего начнём? ✎</span>
+    <h2 id="diagnosticChoiceTitle">Выбери удобный формат диагностики</h2>
+    <p>Можно проверить знания самостоятельно или сначала обсудить всё со мной. Оба варианта бесплатные.</p>
+    <a class="diag-choice primary" href="edu/diagnostika.html">
+      <strong>Пройти тест самостоятельно →</strong>
+      <span>15 заданий по информатике, результат и разбор после завершения</span>
+    </a>
+    <a class="diag-choice" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">
+      <strong>Написать преподавателю →</strong>
+      <span>Договоримся о диагностике и подберём удобный формат</span>
+    </a>
+  </div>
+</dialog>
 
 <footer>
   <div class="wrap foot">
@@ -746,6 +776,23 @@
 </footer>
 
 <script>
+  // Выбор формата диагностики
+  var diagnosticChoice = document.getElementById('diagnosticChoice');
+  document.querySelectorAll('[data-open-diagnostic]').forEach(function(link){
+    link.addEventListener('click',function(e){
+      e.preventDefault();
+      if(diagnosticChoice && typeof diagnosticChoice.showModal === 'function') diagnosticChoice.showModal();
+    });
+  });
+  document.querySelectorAll('[data-close-diagnostic]').forEach(function(button){
+    button.addEventListener('click',function(){ diagnosticChoice.close(); });
+  });
+  if(diagnosticChoice){
+    diagnosticChoice.addEventListener('click',function(e){
+      if(e.target === diagnosticChoice) diagnosticChoice.close();
+    });
+  }
+
   // FAQ
   document.querySelectorAll('.faq-q').forEach(function(btn){
     btn.addEventListener('click', function(){
