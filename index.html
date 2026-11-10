@@ -559,7 +559,24 @@
   .pricing-bottom{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:28px;padding:22px 25px;border-left:2px solid var(--pen);background:rgba(142,201,255,.035)}
   .pricing-bottom-note p{max-width:620px;color:var(--muted);font-size:13px;line-height:1.65;margin-top:5px}
   @media(max-width:760px){.pricing-controls{grid-template-columns:1fr 1fr}.pricing-field:nth-child(2){grid-column:1/-1}.pricing-result{grid-template-columns:1fr}}
-  @media(max-width:560px){.pricing-topline{align-items:flex-start}.pricing-mark{font-size:16px}.pricing-controls{grid-template-columns:1fr}.pricing-field:nth-child(2){grid-column:auto}.package-heading{align-items:flex-start;flex-direction:column;gap:5px}.package-heading p{text-align:left}.package-grid{grid-template-columns:1fr}.package-option.featured{transform:none}.pricing-bottom{align-items:stretch;flex-direction:column}.pricing-bottom .btn{justify-content:center}.single-price,.trial-price{padding:18px 20px}}
+  @media(max-width:700px){
+    .wrap{padding-left:18px;padding-right:18px}
+    section{padding:68px 0}
+    .pricing-panel{padding:22px 16px}
+    .pricing-topline{align-items:flex-start;flex-wrap:wrap}
+    .pricing-controls{grid-template-columns:minmax(0,1fr)}
+    .pricing-field:nth-child(2){grid-column:auto}
+    .pricing-result{grid-template-columns:minmax(0,1fr)}
+    .package-heading{align-items:flex-start;flex-direction:column;gap:5px}
+    .package-heading p{text-align:left}
+    .package-grid{grid-template-columns:minmax(0,1fr)}
+    .package-option.featured{transform:none}
+    .pricing-bottom{align-items:stretch;flex-direction:column}
+    .pricing-bottom .btn{width:100%;justify-content:center}
+    .single-price,.trial-price{padding:18px 20px}
+    .foot{align-items:flex-start}
+    .foot-links{flex-wrap:wrap;gap:14px}
+  }
  
   /* ---------- анкета ---------- */
   .anketa{
@@ -601,7 +618,8 @@
   .f-hint{margin-top:14px;text-align:center;font-size:12.5px;color:var(--faint)}
 
   /* ---------- reveal ---------- */
-  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+  .reveal{opacity:1;transform:none;transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+  html.reveal-ready .reveal{opacity:0;transform:translateY(26px)}
   .reveal.in{opacity:1;transform:none}
   .note.reveal.in{transform:rotate(-1.2deg)} /* сохраняем наклоны стикеров */
   .n-2.reveal.in{transform:rotate(1deg)}
@@ -623,7 +641,7 @@
   .diag-choice strong{font-size:16px}
   .diag-choice span{font-size:13px;color:var(--muted)}
   .diag-choice.primary{border-color:rgba(255,157,69,.45)}
-  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+  @media(prefers-reduced-motion:reduce){html.reveal-ready .reveal{opacity:1;transform:none;transition:none}}
 
   a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
     outline:2px solid var(--pen);outline-offset:4px;
@@ -869,7 +887,7 @@
         <p class="sec-sub">Стоимость зависит от направления, продолжительности занятия и региона. Выбери параметры — калькулятор покажет цену разового занятия и абонементов.</p>
       </div>
 
-      <div class="pricing-panel reveal">
+      <div class="pricing-panel">
         <div class="pricing-topline">
           <span class="hand-idx">собираем твой формат</span>
           <span class="pricing-mark">✎ индивидуально</span>
@@ -951,7 +969,7 @@
         <p class="pricing-footnote">Абонементы можно использовать для регулярных занятий по выбранному направлению. Стоимость фиксируется при оплате пакета.</p>
       </div>
 
-      <div class="pricing-bottom reveal">
+      <div class="pricing-bottom">
         <div class="pricing-bottom-note">
           <span class="hand-idx">не уверены, что выбрать?</span>
           <p>Напиши мне — обсудим задачу, подберём направление и продолжительность занятий. Помогу понять, какой формат подойдёт лучше.</p>
@@ -1269,11 +1287,12 @@
 
   // Reveal on scroll — с безопасным fallback для браузеров без IntersectionObserver.
   if('IntersectionObserver' in window){
+    document.documentElement.classList.add('reveal-ready');
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
         if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
       });
-    }, {threshold:.12});
+    }, {threshold:0,rootMargin:'0px 0px -24px 0px'});
     document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
   } else {
     document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
