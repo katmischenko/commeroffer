@@ -64,11 +64,13 @@
     background:rgba(20,20,22,.78);
     border-bottom:1px solid var(--line);
   }
-  .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;height:66px;max-width:1120px;margin:0 auto;padding:0 24px}
-  .logo{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:var(--ink);flex:none;white-space:nowrap}
+  .nav{display:flex;align-items:center;gap:clamp(18px,2.4vw,34px);height:66px;max-width:1120px;margin:0 auto;padding:0 24px}
+  .nav-identity{display:flex;align-items:center;gap:clamp(28px,3.8vw,54px);flex:none;white-space:nowrap}
+  .logo{display:flex;align-items:baseline;text-decoration:none;color:var(--ink);flex:none;white-space:nowrap}
   .logo .hand{font-size:26px;color:var(--marker)}
-  .logo small{font-size:11px;letter-spacing:.18em;color:var(--faint);text-transform:uppercase}
-  .nav-links{display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.35vw,17px);list-style:none;flex:1;min-width:0;margin:0;padding:0}
+  .nav-note{font-size:11px;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;white-space:nowrap}
+  .nav-note i{font-style:normal;color:var(--marker);padding:0 3px}
+  .nav-links{display:flex;align-items:center;justify-content:flex-end;gap:clamp(12px,1.35vw,19px);list-style:none;flex:0 1 auto;min-width:0;margin:0 0 0 auto;padding:0}
   .nav-links a{color:var(--muted);text-decoration:none;font-size:clamp(12px,.98vw,13.5px);font-weight:600;white-space:nowrap;transition:color .2s}
   .nav-links a:hover{color:var(--marker)}
   .nav-cta{flex:none;font-weight:800;font-size:13px;text-decoration:none;background:var(--marker);color:#1d1305;border-radius:100px;padding:10px 17px;white-space:nowrap;transition:transform .25s,box-shadow .25s}
@@ -89,9 +91,9 @@
   @media(max-width:1080px){.nav-links{display:none}.mobile-menu{display:block}}
   @media(max-width:560px){
     .nav{padding:0 18px;gap:12px}
-    .logo{gap:0}
+    .nav-identity{gap:0}
     .logo .hand{font-size:23px}
-    .logo small,.nav-cta{display:none}
+    .nav-note,.nav-cta{display:none}
     .mobile-menu summary{width:38px;height:38px;padding:9px}
   }
 
@@ -558,7 +560,10 @@
 
 <header>
   <nav class="nav">
-    <a class="logo" href="#top"><span class="hand">Катерина Мищенко</span><small>тетрадь · репетитора</small></a>
+    <div class="nav-identity">
+      <a class="logo" href="#top"><span class="hand">Катерина Мищенко</span></a>
+      <span class="nav-note">тетрадь <i>·</i> репетитора</span>
+    </div>
     <ul class="nav-links">
       <li><a href="#about">Обо мне</a></li>
       <li><a href="#subjects">Направления</a></li>
