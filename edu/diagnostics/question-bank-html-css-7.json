@@ -18,258 +18,257 @@
   "questions": [
     {
       "id": "htmlcss7-01",
-      "topic": "HTML",
-      "skill": "понимание",
+      "topic": "Семантический HTML",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какой тег создаёт самый крупный заголовок первого уровня?",
-      "explanation": "Тег h1 обозначает заголовок первого уровня.",
+      "question": "Какой элемент обычно содержит основную навигацию сайта?",
       "options": [
-        "<h1>",
-        "<p>",
-        "<title>",
-        "<head>"
+        "<nav>",
+        "<aside>",
+        "<figure>",
+        "<mark>"
       ],
       "correctIndex": 0,
-      "correctText": "<h1>"
+      "correctText": "<nav>",
+      "explanation": "nav обозначает блок навигационных ссылок."
     },
     {
       "id": "htmlcss7-02",
-      "topic": "HTML",
-      "skill": "понимание",
+      "topic": "Семантический HTML",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какой тег создаёт абзац?",
-      "explanation": "Тег p используется для абзаца текста.",
+      "question": "Для чего чаще всего используют элемент footer?",
       "options": [
-        "<div>",
-        "<p>",
-        "<img>",
-        "<a>"
+        "Для нижней части страницы или раздела",
+        "Для главного заголовка",
+        "Для поля ввода",
+        "Для изображения"
       ],
-      "correctIndex": 1,
-      "correctText": "<p>"
+      "correctIndex": 0,
+      "correctText": "Для нижней части страницы или раздела",
+      "explanation": "footer содержит завершающую информацию о странице или разделе."
     },
     {
       "id": "htmlcss7-03",
-      "topic": "HTML",
-      "skill": "понимание",
+      "topic": "Семантический HTML",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какой атрибут img содержит путь к изображению?",
-      "explanation": "Атрибут src задаёт адрес файла изображения.",
+      "question": "Какой элемент подходит для самостоятельной публикации, например новости или статьи?",
       "options": [
-        "href",
-        "src",
-        "alt",
-        "class"
+        "<article>",
+        "<span>",
+        "<br>",
+        "<input>"
       ],
-      "correctIndex": 1,
-      "correctText": "src"
+      "correctIndex": 0,
+      "correctText": "<article>",
+      "explanation": "article обозначает самостоятельный материал, который может использоваться отдельно."
     },
     {
       "id": "htmlcss7-04",
-      "topic": "HTML",
-      "skill": "понимание",
+      "topic": "CSS-шрифты",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какой тег создаёт ссылку?",
-      "explanation": "Для гиперссылки используется тег a с атрибутом href.",
+      "question": "Какое свойство выбирает семейство шрифта?",
       "options": [
-        "<a>",
-        "<link>",
-        "<url>",
-        "<href>"
+        "font-family",
+        "font-group",
+        "text-family",
+        "typeface-name"
       ],
       "correctIndex": 0,
-      "correctText": "<a>"
+      "correctText": "font-family",
+      "explanation": "font-family задаёт список предпочтительных гарнитур."
     },
     {
       "id": "htmlcss7-05",
-      "topic": "CSS",
-      "skill": "понимание",
+      "topic": "CSS-селекторы",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какой знак ставят перед именем класса в CSS-селекторе?",
-      "explanation": "Класс выбирают точкой, например .card.",
+      "question": "Как выбрать элемент, если у него атрибут data-state со значением active?",
       "options": [
-        "#",
-        ".",
-        "*",
-        "@"
+        "[data-state=\"active\"]",
+        ".data-state-active",
+        "#active"
       ],
-      "correctIndex": 1,
-      "correctText": "."
+      "correctIndex": 0,
+      "correctText": "[data-state=\"active\"]",
+      "explanation": "Атрибутный селектор в квадратных скобках выбирает элемент по имени и значению атрибута."
     },
     {
       "id": "htmlcss7-06",
-      "topic": "CSS",
-      "skill": "понимание и применение",
+      "topic": "Flexbox",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Какое свойство меняет цвет текста?",
-      "explanation": "Свойство color задаёт цвет текста.",
+      "question": "Какое свойство Flexbox распределяет элементы вдоль главной оси?",
       "options": [
-        "background-color",
-        "font-size",
-        "color",
-        "border"
+        "align-items",
+        "justify-content",
+        "font-weight",
+        "z-index"
       ],
-      "correctIndex": 2,
-      "correctText": "color"
+      "correctIndex": 1,
+      "correctText": "justify-content",
+      "explanation": "justify-content распределяет свободное пространство вдоль главной оси flex-контейнера."
     },
     {
       "id": "htmlcss7-07",
-      "topic": "CSS",
-      "skill": "понимание и применение",
+      "topic": "Flexbox",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Как записать CSS, чтобы текст был размером 20 пикселей?",
-      "explanation": "Размер шрифта задаёт font-size.",
+      "question": "Что задаёт align-items в flex-контейнере?",
       "options": [
-        "text-size:20px",
-        "font-size:20px",
-        "size:20px",
-        "font:20"
+        "Выравнивание элементов по поперечной оси",
+        "Цвет текста",
+        "Порядок HTML-узлов",
+        "Ширину окна"
       ],
-      "correctIndex": 1,
-      "correctText": "font-size:20px"
+      "correctIndex": 0,
+      "correctText": "Выравнивание элементов по поперечной оси",
+      "explanation": "align-items отвечает за выравнивание элементов по поперечной оси."
     },
     {
       "id": "htmlcss7-08",
-      "topic": "HTML",
-      "skill": "понимание и применение",
+      "topic": "CSS-размеры",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Для чего нужен атрибут alt у изображения?",
-      "explanation": "alt помогает при недоступности изображения и используется скринридерами.",
+      "question": "Какое свойство не позволяет блоку стать уже 280 пикселей?",
       "options": [
-        "Задаёт ширину",
-        "Даёт текстовую альтернативу изображению",
-        "Создаёт ссылку",
-        "Меняет цвет"
+        "min-width: 280px",
+        "max-width: 280px",
+        "width: auto",
+        "height: 280px"
       ],
-      "correctIndex": 1,
-      "correctText": "Даёт текстовую альтернативу изображению"
+      "correctIndex": 0,
+      "correctText": "min-width: 280px",
+      "explanation": "min-width задаёт минимально допустимую ширину."
     },
     {
       "id": "htmlcss7-09",
-      "topic": "HTML",
-      "skill": "понимание и применение",
+      "topic": "CSS-псевдоклассы",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Какой элемент обычно содержит основное уникальное содержимое страницы?",
-      "explanation": "main обозначает основное содержимое документа.",
+      "question": "Для чего используют :focus?",
       "options": [
-        "<main>",
-        "<footer>",
-        "<meta>",
-        "<title>"
+        "Для оформления элемента, который получил фокус",
+        "Для скрытия элемента",
+        "Для выбора последнего ребёнка",
+        "Для изменения HTML-текста"
       ],
       "correctIndex": 0,
-      "correctText": "<main>"
+      "correctText": "Для оформления элемента, который получил фокус",
+      "explanation": ":focus применяется к элементу, который находится в фокусе ввода."
     },
     {
       "id": "htmlcss7-10",
-      "topic": "CSS",
-      "skill": "понимание и применение",
+      "topic": "CSS-раскладка",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Какое свойство задаёт внутренние отступы элемента?",
-      "explanation": "padding задаёт пространство между содержимым и границей.",
+      "question": "Какое свойство задаёт промежуток между строками и столбцами CSS Grid?",
       "options": [
-        "margin",
-        "padding",
         "gap",
+        "padding",
+        "line-height",
         "outline"
       ],
-      "correctIndex": 1,
-      "correctText": "padding"
+      "correctIndex": 0,
+      "correctText": "gap",
+      "explanation": "gap задаёт расстояния между дорожками сетки."
     },
     {
       "id": "htmlcss7-11",
-      "topic": "CSS",
-      "skill": "понимание и применение",
+      "topic": "HTML-формы",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Как сделать текст полужирным?",
-      "explanation": "Жирность текста задаёт font-weight.",
+      "question": "Какой атрибут input задаёт подсказку внутри пустого поля?",
       "options": [
-        "font-style:bold",
-        "font-weight:bold",
-        "text-weight:bold",
-        "bold:true"
+        "placeholder",
+        "required",
+        "checked",
+        "action"
       ],
-      "correctIndex": 1,
-      "correctText": "font-weight:bold"
+      "correctIndex": 0,
+      "correctText": "placeholder",
+      "explanation": "placeholder показывает пример или подсказку до ввода значения."
     },
     {
       "id": "htmlcss7-12",
-      "topic": "HTML",
-      "skill": "понимание и применение",
+      "topic": "Адаптивность",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Какой тег задаёт элемент списка с маркером?",
-      "explanation": "Каждый пункт списка размечается элементом li.",
+      "question": "Какой медиазапрос применит стили при ширине окна от 700 пикселей?",
       "options": [
-        "<ol>",
-        "<li>",
-        "<ul>",
-        "<dl>"
+        "@media (min-width: 700px)",
+        "@media (max-height: 700px)",
+        "@screen-width(700)",
+        "@media width > 700"
       ],
-      "correctIndex": 1,
-      "correctText": "<li>"
+      "correctIndex": 0,
+      "correctText": "@media (min-width: 700px)",
+      "explanation": "min-width задаёт нижнюю границу ширины области просмотра."
     },
     {
       "id": "htmlcss7-13",
-      "topic": "CSS",
-      "skill": "понимание и применение",
+      "topic": "Позиционирование",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "advanced",
       "type": "choice",
-      "question": "Что означает box-sizing: border-box?",
-      "explanation": "При border-box заданные width и height включают содержимое, padding и border.",
+      "question": "Относительно какого предка обычно позиционируется absolute-элемент?",
       "options": [
-        "Ширина включает padding и border",
-        "Ширина включает только текст",
-        "Границы не отображаются",
-        "Элемент становится блочным"
+        "Ближайшего предка с position, отличным от static",
+        "Всегда окна браузера",
+        "Только элемента body",
+        "Предка с display:flex"
       ],
       "correctIndex": 0,
-      "correctText": "Ширина включает padding и border"
+      "correctText": "Ближайшего предка с position, отличным от static",
+      "explanation": "Абсолютно позиционированный элемент ищет ближайший позиционированный containing block."
     },
     {
       "id": "htmlcss7-14",
-      "topic": "CSS",
-      "skill": "понимание и применение",
+      "topic": "CSS-переполнение",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "advanced",
       "type": "choice",
-      "question": "Какой медиазапрос применяют для экранов шириной не более 600px?",
-      "explanation": "Условие max-width применяет правила при ширине не более 600px.",
+      "question": "Что делает overflow: auto, если содержимое не помещается в блок?",
       "options": [
-        "@media (max-width: 600px)",
-        "@screen 600",
-        "@media-width <600",
-        "@mobile(600px)"
+        "Добавляет прокрутку при необходимости",
+        "Всегда обрезает содержимое",
+        "Растягивает шрифт",
+        "Удаляет лишнее содержимое"
       ],
       "correctIndex": 0,
-      "correctText": "@media (max-width: 600px)"
+      "correctText": "Добавляет прокрутку при необходимости",
+      "explanation": "При переполнении браузер предоставляет прокрутку по соответствующей оси."
     },
     {
       "id": "htmlcss7-15",
-      "topic": "HTML",
-      "skill": "понимание и применение",
+      "topic": "CSS-псевдоэлементы",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "advanced",
       "type": "choice",
-      "question": "Почему семантические теги полезны?",
-      "explanation": "Семантика помогает браузерам, поисковым системам и вспомогательным технологиям.",
+      "question": "Какой псевдоэлемент позволяет оформить первую строку текста?",
       "options": [
-        "Они автоматически добавляют анимацию",
-        "Они описывают роль содержимого и улучшают доступность",
-        "Они заменяют CSS",
-        "Они ускоряют интернет"
+        "::first-line",
+        "::first-child",
+        "::line-one",
+        "::text-start"
       ],
-      "correctIndex": 1,
-      "correctText": "Они описывают роль содержимого и улучшают доступность"
+      "correctIndex": 0,
+      "correctText": "::first-line",
+      "explanation": "::first-line применяет стили к первой форматируемой строке блока."
     }
   ]
 }
