@@ -120,7 +120,7 @@ function compareAttempts(){
  const ids=[...selectedForCompare], pair=ids.map(id=>attempts.find(a=>a.attempt_id===id)).filter(Boolean);
  if(pair.length!==2)return;
  const [a,b]=pair;
- if(a.student_name!==b.student_name||a.direction!==b.direction||String(a.student_class)!==String(b.student_class)||a.curriculum_id!==b.curriculum_id){
+ if(a.student_name!==b.student_name||a.direction!==b.direction||String(a.student_class)!==String(b.student_class)||a.curriculum_id!==b.curriculum_id||a.curriculum_level!==b.curriculum_level){
   $("compare-view").hidden=false;$("compare-view").textContent="Для корректного сравнения выбери две попытки одного ученика, направления, класса и учебной программы.";return;
  }
  const topics=attempt=>{
