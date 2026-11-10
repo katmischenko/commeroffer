@@ -361,6 +361,26 @@
           "academicYear": "2026/2027",
           "note": "Только учреждения, участвующие в экспериментальном проекте"
         }
+      ],
+      "advancedLevels": [
+        {
+          "grade": 8,
+          "directions": [
+            "informatics"
+          ],
+          "level": "advanced",
+          "academicYear": "2025/2026",
+          "note": "Повышенный уровень с дополнительными учебными часами"
+        },
+        {
+          "grade": 9,
+          "directions": [
+            "informatics"
+          ],
+          "level": "advanced",
+          "academicYear": "2025/2026",
+          "note": "Повышенный уровень с дополнительными учебными часами"
+        }
       ]
     },
     {
@@ -406,6 +426,15 @@
       ],
       "grade": 8,
       "advancedOnlyInParticipatingSchools": true
+    },
+    "belarusInformaticsAdvanced": {
+      "grades": [
+        8,
+        9
+      ],
+      "level": "advanced",
+      "requiresSchoolConfirmation": true,
+      "source": "adu.by"
     }
   }
 }
