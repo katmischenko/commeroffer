@@ -215,7 +215,14 @@ def main():
     print(f"Checked {len(files)} question banks.")
     print(f"Expected profile count: {len(expected)}.")
     if warnings:
-        print(f"Warnings ({len(warnings)}):")
+        by_direction = Counter()
+        for warning in warnings:
+            match = re.match(r"([^:]+): repeated stem", warning)
+            if match:
+                by_direction[match.group(1)] += 1
+        print(f"Cross-grade duplicate stems: {len(warnings)}")
+        print("By direction: " + ", ".join(f"{name}={count}" for name, count in sorted(by_direction.items())))
+        print(f"Warnings (first {min(100, len(warnings))}):")
         for warning in warnings[:100]:
             print(" - " + warning)
     if errors:
