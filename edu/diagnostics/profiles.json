@@ -318,7 +318,17 @@
         "math"
       ],
       "bankSuffix": "ru",
-      "status": "curriculum_review_required"
+      "status": "curriculum_review_required",
+      "yearSelection": [
+        "2026/2027",
+        "2025/2026",
+        "other"
+      ],
+      "seniorLevels": [
+        "basic",
+        "advanced",
+        "unknown"
+      ]
     },
     {
       "id": "by",
@@ -329,7 +339,17 @@
         "math"
       ],
       "bankSuffix": "by",
-      "status": "curriculum_review_required"
+      "status": "curriculum_review_required",
+      "yearSelection": [
+        "2026/2027",
+        "2025/2026",
+        "other"
+      ],
+      "seniorLevels": [
+        "basic",
+        "advanced",
+        "unknown"
+      ]
     },
     {
       "id": "other",
@@ -363,6 +383,8 @@
       "figma"
     ],
     "currentBankBehavior": "generic_draft_with_explicit_warning",
-    "rule": "Выбор программы сохраняется в каждой попытке. До появления и проверки отдельного банка конкретная программа не должна маркироваться как полностью соответствующая выбранной учебной программе."
+    "rule": "Выбор программы сохраняется в каждой попытке. До появления и проверки отдельного банка конкретная программа не должна маркироваться как полностью соответствующая выбранной учебной программе.",
+    "yearIsStoredPerAttempt": true,
+    "seniorLevelIsStoredPerAttempt": true
   }
 }
