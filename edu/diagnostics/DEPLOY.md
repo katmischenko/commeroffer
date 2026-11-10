@@ -1,6 +1,6 @@
 # Cloudflare Worker: диагностика Mischenko Edu
 
-Исходник: `worker.js`. Миграции D1: `schema.sql`, затем для существующей базы — `migrations/0002_telegram_outbox.sql`, `migrations/0003_curriculum_and_consent.sql`, `migrations/0004_curriculum_level.sql` и `migrations/0005_curriculum_year.sql` (каждую ровно один раз).
+Исходник: `worker.js`. Миграции D1: `schema.sql`, затем для существующей базы — `migrations/0002_telegram_outbox.sql`, `migrations/0003_curriculum_and_consent.sql`, `migrations/0004_curriculum_level.sql`, `migrations/0005_curriculum_year.sql` и `migrations/0006_explicit_telegram_consent.sql` (каждую ровно один раз).
 
 ## Текущее состояние
 Этот код подготовлен, но не развернут в Cloudflare автоматически. Для центрального архива необходимо подключить D1 и заменить код существующего Worker этим исходником.
