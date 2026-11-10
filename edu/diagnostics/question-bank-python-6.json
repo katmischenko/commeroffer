@@ -18,238 +18,230 @@
   "questions": [
     {
       "id": "python6-01",
-      "topic": "Основы Python",
-      "skill": "понимание",
+      "topic": "Ввод данных",
+      "skill": "применение Python",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Как записать вывод текста Привет в консоль?",
-      "explanation": "Функция print() выводит значение на экран.",
+      "question": "Какой результат возвращает input() без дополнительного преобразования?",
       "options": [
-        "print('Привет')",
-        "echo('Привет')",
-        "write 'Привет'",
-        "show('Привет')"
+        "Целое число",
+        "Строку",
+        "Логическое значение",
+        "Список"
       ],
-      "correctIndex": 0,
-      "correctText": "print('Привет')"
+      "correctIndex": 1,
+      "correctText": "Строку",
+      "explanation": "input() получает введённые символы и возвращает строку."
     },
     {
       "id": "python6-02",
       "topic": "Переменные",
-      "skill": "понимание",
+      "skill": "применение Python",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какое имя переменной записано корректно?",
-      "explanation": "Имя не начинается с цифры, не содержит дефис и не совпадает с ключевым словом.",
+      "question": "Какая строка присваивает переменной points значение 12?",
       "options": [
-        "2name",
-        "my-name",
-        "my_name",
-        "class"
+        "12 = points",
+        "points == 12",
+        "points = 12",
+        "let points = 12"
       ],
       "correctIndex": 2,
-      "correctText": "my_name"
+      "correctText": "points = 12",
+      "explanation": "В Python присваивание записывается как имя переменной, знак = и значение."
     },
     {
       "id": "python6-03",
-      "topic": "Типы данных",
-      "skill": "понимание",
+      "topic": "Арифметика",
+      "skill": "применение Python",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какой тип данных у значения 7?",
-      "explanation": "Целое число относится к типу int.",
+      "question": "Чему равно выражение 5 + 2 * 3?",
       "options": [
-        "str",
-        "int",
-        "list",
-        "bool"
+        "21",
+        "11",
+        "15",
+        "13"
       ],
       "correctIndex": 1,
-      "correctText": "int"
+      "correctText": "11",
+      "explanation": "Умножение выполняется раньше сложения: 5 + 6 = 11."
     },
     {
       "id": "python6-04",
-      "topic": "Арифметика",
-      "skill": "понимание",
+      "topic": "Комментарии",
+      "skill": "применение Python",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Чему равно 7 // 2 в Python?",
-      "explanation": "Оператор // выполняет целочисленное деление с округлением вниз.",
+      "question": "Какой символ начинает однострочный комментарий в Python?",
       "options": [
-        "3.5",
-        "3",
-        "4",
-        "1"
+        "//",
+        "#",
+        "<!--",
+        ";"
       ],
       "correctIndex": 1,
-      "correctText": "3"
+      "correctText": "#",
+      "explanation": "Символ # обозначает комментарий до конца строки."
     },
     {
       "id": "python6-05",
-      "topic": "Условия",
-      "skill": "понимание",
+      "topic": "Преобразование типов",
+      "skill": "применение Python",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какое ключевое слово начинает ветвь «иначе»?",
-      "explanation": "Ветвь else выполняется, если предыдущие условия не сработали.",
+      "question": "Как превратить строку \"42\" в целое число?",
       "options": [
-        "else",
-        "elif",
-        "for",
-        "while"
+        "str(\"42\")",
+        "int(\"42\")",
+        "float(\"42\")",
+        "input(42)"
       ],
-      "correctIndex": 0,
-      "correctText": "else"
+      "correctIndex": 1,
+      "correctText": "int(\"42\")",
+      "explanation": "int() преобразует строку с записью целого числа в тип int."
     },
     {
       "id": "python6-06",
       "topic": "Строки",
-      "skill": "понимание и применение",
+      "skill": "вычисление и применение",
       "difficulty": "medium",
       "type": "short",
-      "question": "Чему равно len('кот')?",
-      "explanation": "В строке три символа, поэтому len возвращает 3.",
+      "question": "Чему равно len(\"robot\")? Введи число.",
       "acceptedAnswers": [
-        "3"
+        "5"
       ],
-      "correctText": "3"
+      "correctText": "5",
+      "explanation": "В слове robot пять символов."
     },
     {
       "id": "python6-07",
       "topic": "Списки",
-      "skill": "понимание и применение",
+      "skill": "применение Python",
       "difficulty": "medium",
       "type": "choice",
-      "question": "С какого индекса начинается нумерация элементов списка?",
-      "explanation": "В Python индексация начинается с нуля.",
+      "question": "Что вернёт выражение [4, 7, 9][0]?",
       "options": [
-        "0",
-        "1",
-        "−1",
-        "Зависит от списка"
+        "4",
+        "7",
+        "9",
+        "0"
       ],
       "correctIndex": 0,
-      "correctText": "0"
+      "correctText": "4",
+      "explanation": "Индекс 0 указывает на первый элемент списка."
     },
     {
       "id": "python6-08",
       "topic": "Циклы",
-      "skill": "понимание и применение",
+      "skill": "вычисление и применение",
       "difficulty": "medium",
-      "type": "choice",
-      "question": "Сколько раз выполнится for i in range(4)?",
-      "explanation": "range(4) создаёт последовательность 0, 1, 2, 3 — четыре значения.",
-      "options": [
-        "3",
-        "4",
-        "5",
-        "Бесконечно"
+      "type": "short",
+      "question": "Сколько значений перебирает range(2, 5)?",
+      "acceptedAnswers": [
+        "3"
       ],
-      "correctIndex": 1,
-      "correctText": "4"
+      "correctText": "3",
+      "explanation": "Последовательность содержит 2, 3 и 4."
     },
     {
       "id": "python6-09",
       "topic": "Условия",
-      "skill": "понимание и применение",
+      "skill": "применение Python",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Как записать проверку, что x больше 5 и меньше 10?",
-      "explanation": "Python поддерживает цепочки сравнений: 5 < x < 10.",
+      "question": "Если score = 10, что будет при проверке score >= 10?",
       "options": [
-        "x > 5 or x < 10",
-        "5 < x < 10",
-        "x = 5..10",
-        "x > 5 && x < 10"
+        "Условие истинно",
+        "Условие ложно",
+        "Возникнет ошибка",
+        "Переменная станет 10"
       ],
-      "correctIndex": 1,
-      "correctText": "5 < x < 10"
+      "correctIndex": 0,
+      "correctText": "Условие истинно",
+      "explanation": "Знак >= включает равенство, поэтому 10 >= 10 — True."
     },
     {
       "id": "python6-10",
-      "topic": "Списки",
-      "skill": "понимание и применение",
+      "topic": "Строки",
+      "skill": "вычисление и применение",
       "difficulty": "medium",
       "type": "short",
-      "question": "Что вернёт [4, 8, 12][1]?",
-      "explanation": "Индекс 1 указывает на второй элемент списка.",
+      "question": "Что выведет выражение print(\"py\" * 3)?",
       "acceptedAnswers": [
-        "8"
+        "pypypy"
       ],
-      "correctText": "8"
+      "correctText": "pypypy",
+      "explanation": "Умножение строки на 3 повторяет её три раза."
     },
     {
       "id": "python6-11",
-      "topic": "Функции",
-      "skill": "понимание и применение",
+      "topic": "Встроенные функции",
+      "skill": "применение Python",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Какое ключевое слово возвращает результат из функции?",
-      "explanation": "return завершает выполнение функции и возвращает значение.",
+      "question": "Что вернёт max([3, 8, 2])?",
       "options": [
-        "print",
-        "return",
-        "break",
-        "def"
+        "2",
+        "3",
+        "8",
+        "13"
       ],
-      "correctIndex": 1,
-      "correctText": "return"
+      "correctIndex": 2,
+      "correctText": "8",
+      "explanation": "max() возвращает наибольший элемент последовательности."
     },
     {
       "id": "python6-12",
-      "topic": "Циклы",
-      "skill": "понимание и применение",
+      "topic": "Составные операторы",
+      "skill": "вычисление и применение",
       "difficulty": "medium",
       "type": "short",
-      "question": "Сколько раз напечатает число цикл for i in range(2, 7)?",
-      "explanation": "range(2,7) включает 2,3,4,5,6 — пять значений.",
-      "acceptedAnswers": [
-        "5"
-      ],
-      "correctText": "5"
-    },
-    {
-      "id": "python6-13",
-      "topic": "Алгоритмы",
-      "skill": "понимание и применение",
-      "difficulty": "advanced",
-      "type": "short",
-      "question": "Чему равна сумма: total=0; for n in [2,4,6]: total+=n?",
-      "explanation": "Суммируем элементы списка: 2+4+6=12.",
+      "question": "После x = 6; x -= 2; x *= 3 чему равно x?",
       "acceptedAnswers": [
         "12"
       ],
-      "correctText": "12"
+      "correctText": "12",
+      "explanation": "Сначала 6 − 2 = 4, затем 4 × 3 = 12."
+    },
+    {
+      "id": "python6-13",
+      "topic": "Изменение списка",
+      "skill": "вычисление и применение",
+      "difficulty": "advanced",
+      "type": "short",
+      "question": "После nums = [2, 4]; nums.append(6) чему равно nums[2]?",
+      "acceptedAnswers": [
+        "6"
+      ],
+      "correctText": "6",
+      "explanation": "append добавляет 6 в конец списка; индекс 2 указывает на третий элемент."
     },
     {
       "id": "python6-14",
-      "topic": "Функции",
-      "skill": "понимание и применение",
+      "topic": "Списки и функции",
+      "skill": "вычисление и применение",
       "difficulty": "advanced",
-      "type": "choice",
-      "question": "Что произойдёт, если функция не содержит return?",
-      "explanation": "Если return отсутствует, функция возвращает None.",
-      "options": [
-        "Вернёт None",
-        "Вернёт 0",
-        "Вызовет ошибку всегда",
-        "Вернёт True"
+      "type": "short",
+      "question": "Чему равно sum([1, 2, 3]) + len([5, 5])?",
+      "acceptedAnswers": [
+        "8"
       ],
-      "correctIndex": 0,
-      "correctText": "Вернёт None"
+      "correctText": "8",
+      "explanation": "Сумма первого списка равна 6, длина второго — 2; всего 8."
     },
     {
       "id": "python6-15",
-      "topic": "Списки",
-      "skill": "понимание и применение",
+      "topic": "Циклы",
+      "skill": "вычисление и применение",
       "difficulty": "advanced",
       "type": "short",
-      "question": "После a=[1,2]; a.append(3); чему равна длина a?",
-      "explanation": "append добавляет один элемент в конец списка.",
+      "question": "Какое число получится: total = 0; for i in range(3): total += i?",
       "acceptedAnswers": [
         "3"
       ],
-      "correctText": "3"
+      "correctText": "3",
+      "explanation": "Цикл прибавляет 0, затем 1 и 2: итог 3."
     }
   ]
 }
