@@ -206,11 +206,14 @@ function updateCurriculumLevel(){
  const d=directions.find(x=>x.id===$('direction').value);
  const grade=Number($('grade').value),program=$('curriculum').value;
  const belarusGradeEightPilot=program==='by'&&grade===8&&['physics','math'].includes(d.id);
- const show=SCHOOL_DIRECTIONS.includes(d.id)&&['ru','by'].includes(program)&&(grade>=10||belarusGradeEightPilot);
+ const belarusInformaticsAdvanced=program==='by'&&d.id==='informatics'&&[8,9].includes(grade);
+ const show=SCHOOL_DIRECTIONS.includes(d.id)&&['ru','by'].includes(program)&&(grade>=10||belarusGradeEightPilot||belarusInformaticsAdvanced);
  $('curriculum-level-wrap').hidden=!show;
- const pilot=belarusGradeEightPilot;
- $('curriculum-level-label').textContent=pilot?'Уровень программы (экспериментальный проект)':'Уровень изучения';
- $('curriculum-level-hint').hidden=!pilot;
+ $('curriculum-level-label').textContent=belarusGradeEightPilot?'Уровень программы (экспериментальный проект)':belarusInformaticsAdvanced?'Уровень изучения (базовый / повышенный)':'Уровень изучения';
+ $('curriculum-level-hint').hidden=!(belarusGradeEightPilot||belarusInformaticsAdvanced);
+ $('curriculum-level-hint').textContent=belarusGradeEightPilot
+  ?'Повышенный уровень выбирай только в том случае, если школа участвует в экспериментальном проекте 2026/2027 учебного года.'
+  :'Повышенный уровень выбирай только если в школе информатика изучается на повышенном уровне (с дополнительными учебными часами).';
  if(!show)$('curriculum-level').value='';
 }
 function curriculumChanged(){
@@ -239,7 +242,8 @@ function checkReady(){
  const detailRequired=cur.id==='other'&&!cur.detail;
  const yearRequired=['ru','by'].includes(cur.id)&&!cur.year;
  const belarusGradeEightPilot=cur.id==='by'&&Number(p.grade)===8&&['physics','math'].includes(p.direction.id);
- const levelRequired=SCHOOL_DIRECTIONS.includes(p.direction.id)&&['ru','by'].includes(cur.id)&&(Number(p.grade)>=10||belarusGradeEightPilot)&&!cur.level;
+ const belarusInformaticsAdvanced=cur.id==='by'&&p.direction.id==='informatics'&&[8,9].includes(Number(p.grade));
+ const levelRequired=SCHOOL_DIRECTIONS.includes(p.direction.id)&&['ru','by'].includes(cur.id)&&(Number(p.grade)>=10||belarusGradeEightPilot||belarusInformaticsAdvanced)&&!cur.level;
  $('start').disabled=!available||!$('student').value.trim()||!cur.id||detailRequired||yearRequired||levelRequired||(p.direction.experience&&!$('experience').value);
  $('telegram-consent').disabled=!REMOTE_SAVE_ENABLED||!$('storage-consent').checked;
  if(!$('storage-consent').checked)$('telegram-consent').checked=false;
