@@ -60,11 +60,11 @@
       "explanation": "Атрибут src задаёт адрес файла изображения.",
       "options": [
         "href",
-        "src",
         "alt",
+        "src",
         "class"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "correctText": "src"
     },
     {
@@ -76,12 +76,12 @@
       "question": "Какой тег создаёт ссылку?",
       "explanation": "Для гиперссылки используется тег a с атрибутом href.",
       "options": [
-        "<a>",
         "<link>",
         "<url>",
-        "<href>"
+        "<href>",
+        "<a>"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "correctText": "<a>"
     },
     {
@@ -93,12 +93,12 @@
       "question": "Какой знак ставят перед именем класса в CSS-селекторе?",
       "explanation": "Класс выбирают точкой, например .card.",
       "options": [
-        "#",
         ".",
+        "#",
         "*",
         "@"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "correctText": "."
     },
     {
@@ -111,11 +111,11 @@
       "explanation": "Свойство color задаёт цвет текста.",
       "options": [
         "background-color",
-        "font-size",
         "color",
+        "font-size",
         "border"
       ],
-      "correctIndex": 2,
+      "correctIndex": 1,
       "correctText": "color"
     },
     {
@@ -128,11 +128,11 @@
       "explanation": "Размер шрифта задаёт font-size.",
       "options": [
         "text-size:20px",
-        "font-size:20px",
         "size:20px",
+        "font-size:20px",
         "font:20"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "correctText": "font-size:20px"
     },
     {
@@ -145,11 +145,11 @@
       "explanation": "alt помогает при недоступности изображения и используется скринридерами.",
       "options": [
         "Задаёт ширину",
-        "Даёт текстовую альтернативу изображению",
         "Создаёт ссылку",
-        "Меняет цвет"
+        "Меняет цвет",
+        "Даёт текстовую альтернативу изображению"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "correctText": "Даёт текстовую альтернативу изображению"
     },
     {
@@ -196,11 +196,11 @@
       "explanation": "Жирность текста задаёт font-weight.",
       "options": [
         "font-style:bold",
-        "font-weight:bold",
         "text-weight:bold",
+        "font-weight:bold",
         "bold:true"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "correctText": "font-weight:bold"
     },
     {
@@ -213,11 +213,11 @@
       "explanation": "Каждый пункт списка размечается элементом li.",
       "options": [
         "<ol>",
-        "<li>",
         "<ul>",
-        "<dl>"
+        "<dl>",
+        "<li>"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "correctText": "<li>"
     },
     {
@@ -246,12 +246,12 @@
       "question": "Какой медиазапрос применяют для экранов шириной не более 600px?",
       "explanation": "Условие max-width применяет правила при ширине не более 600px.",
       "options": [
-        "@media (max-width: 600px)",
         "@screen 600",
+        "@media (max-width: 600px)",
         "@media-width <600",
         "@mobile(600px)"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "correctText": "@media (max-width: 600px)"
     },
     {
@@ -264,11 +264,11 @@
       "explanation": "Семантика помогает браузерам, поисковым системам и вспомогательным технологиям.",
       "options": [
         "Они автоматически добавляют анимацию",
-        "Они описывают роль содержимого и улучшают доступность",
         "Они заменяют CSS",
+        "Они описывают роль содержимого и улучшают доступность",
         "Они ускоряют интернет"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "correctText": "Они описывают роль содержимого и улучшают доступность"
     }
   ]
