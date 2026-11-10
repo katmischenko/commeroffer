@@ -170,12 +170,39 @@ def main():
         "$('experience').value='';",
         "$('question').textContent=q.question;",
         "Array.isArray(data.questions)",
+        "function selectedCurriculum()",
+        "curriculumId,curriculumName,curriculumDetail",
+        "telegramConsent:$('telegram-consent').checked",
+        "async function saveAttempt(payload)",
+        "CONSENT_VERSION",
     )
     for guard in required_guards:
         if guard not in frontend:
             fail(errors, f"frontend regression guard missing: {guard}")
     if "Тест-диагностика по информатике" in frontend:
         fail(errors, "obsolete informatics-only diagnostic title remains")
+
+    worker_path = DIAG / "worker.js"
+    archive_path = DIAG / "archive.html"
+    privacy_path = DIAG / "privacy.html"
+    migration_path = DIAG / "migrations" / "0003_curriculum_and_consent.sql"
+    for required in (worker_path, archive_path, privacy_path, migration_path):
+        if not required.exists():
+            fail(errors, f"missing required diagnostics component: {required.relative_to(ROOT)}")
+    if worker_path.exists():
+        worker_text = worker_path.read_text(encoding="utf-8")
+        for required in ('curriculum_id', 'curriculum_name', 'telegramConsent', 'telegramNotRequested', 'DELETE', 'async scheduled'):
+            if required not in worker_text:
+                fail(errors, f"Worker missing required feature marker: {required}")
+    if archive_path.exists():
+        archive_text = archive_path.read_text(encoding="utf-8")
+        for required in ('data-compare', 'data-delete', 'compareAttempts', 'curriculum_name'):
+            if required not in archive_text:
+                fail(errors, f"archive missing required feature marker: {required}")
+    if privacy_path.exists():
+        privacy_text = privacy_path.read_text(encoding="utf-8")
+        if '180 дней' not in privacy_text or '@katerin_mischenko' not in privacy_text:
+            fail(errors, "privacy notice is missing retention or contact information")
 
     print(f"Checked {len(files)} question banks.")
     print(f"Expected profile count: {len(expected)}.")
