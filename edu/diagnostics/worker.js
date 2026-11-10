@@ -133,15 +133,15 @@ export default {
       let inserted = false;
       try {
         const result = await env.DB.prepare(`INSERT OR IGNORE INTO diagnostic_attempts
-          (attempt_id, student_name, student_class, direction, experience, curriculum_id, curriculum_name, curriculum_detail, consent_version, telegram_consent, score, max_score, percentage, completed_at, payload_json, telegram_status)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`)
+          (attempt_id, student_name, student_class, direction, experience, curriculum_id, curriculum_name, curriculum_detail, curriculum_level, consent_version, telegram_consent, score, max_score, percentage, completed_at, payload_json, telegram_status)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`)
           .bind(payload.attemptId, payload.studentName, payload.studentClass, payload.direction,
             payload.experience, payload.curriculumId, payload.curriculumName, payload.curriculumDetail,
-            payload.consentVersion, payload.telegramConsent ? 1 : 0, payload.score, payload.maxScore,
+            payload.curriculumLevel, payload.consentVersion, payload.telegramConsent ? 1 : 0, payload.score, payload.maxScore,
             payload.percentage, payload.completedAt, JSON.stringify(payload),
             payload.telegramConsent ? "pending" : "sent").run();
         inserted = Number(result?.meta?.changes || 0) > 0;
-        const row = await env.DB.prepare("SELECT attempt_id, payload_json, telegram_status, telegram_claimed_at, telegram_consent FROM diagnostic_attempts WHERE attempt_id = ?")
+        const row = await env.DB.prepare("SELECT attempt_id, payload_json, telegram_status, telegram_claimed_at, telegram_consent, curriculum_level FROM diagnostic_attempts WHERE attempt_id = ?")
           .bind(attemptId).first();
         if (!row) throw new Error("Database save failed");
         // On a retry, always use the immutable payload already stored for this attempt.
@@ -223,7 +223,7 @@ export default {
       if (!env.DB) return json({ ok: false, error: "database_not_configured" }, 503, origin);
       const limit = Math.min(100, Math.max(1, Number(url.searchParams.get("limit")) || 50));
       const rows = await env.DB.prepare(
-        "SELECT attempt_id, student_name, student_class, direction, experience, curriculum_id, curriculum_name, curriculum_detail, telegram_consent, telegram_status, score, max_score, percentage, completed_at, payload_json FROM diagnostic_attempts ORDER BY completed_at DESC LIMIT ?"
+        "SELECT attempt_id, student_name, student_class, direction, experience, curriculum_id, curriculum_name, curriculum_detail, curriculum_level, telegram_consent, telegram_status, score, max_score, percentage, completed_at, payload_json FROM diagnostic_attempts ORDER BY completed_at DESC LIMIT ?"
       ).bind(limit).all();
       return json({ ok: true, attempts: rows.results || [] }, 200, origin);
     }
