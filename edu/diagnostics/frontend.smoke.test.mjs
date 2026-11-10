@@ -112,7 +112,7 @@ test("result preserves literal HTML tags in question text", async () => {
   for (let i = 0; i < 15; i++) await page.locator("#skip").click();
   const report = await page.locator("#result").textContent();
   assert.match(report, /<h1>/);
-  assert.match(report, /Правильный ответ:\\s*<h1>/);
+  assert.match(report, /Правильный ответ:\s*<h1>/);
   await page.close();
 });
 
