@@ -124,6 +124,46 @@ test("Belarus grade-nine informatics allows an explicit advanced track", async (
   await page.close();
 });
 
+test("Belarus advanced informatics profile requests the matching level-specific bank", async () => {
+  const page = await browser.newPage();
+  const requested = [];
+  const mockBank = {
+    bankId: "informatics-9-by-2026-2027-advanced",
+    reviewStatus: "teacher_review_draft",
+    questions: Array.from({ length: 15 }, (_, i) => ({
+      id: "mock-" + (i + 1),
+      topic: "Проверка",
+      skill: "Проверка",
+      difficulty: i < 5 ? "basic" : i < 12 ? "medium" : "advanced",
+      type: "choice",
+      question: "Тестовый вопрос " + (i + 1),
+      options: ["Вариант A", "Вариант B"],
+      correctIndex: 0,
+      correctText: "Вариант A",
+      explanation: "Тестовое объяснение."
+    }))
+  };
+  page.on("request", request => {
+    if (request.url().includes("question-bank-informatics-9-by-2026-2027-advanced.json")) requested.push(request.url());
+  });
+  await page.route("**/question-bank-informatics-9-by-2026-2027-advanced.json", route => route.fulfill({
+    status: 200,
+    contentType: "application/json",
+    body: JSON.stringify(mockBank)
+  }));
+  await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
+  await page.locator("#student").fill("Тест");
+  await page.locator("#direction").selectOption("informatics");
+  await page.locator("#grade").selectOption("9");
+  await page.locator("#curriculum").selectOption("by");
+  await page.locator("#curriculum-level").selectOption("advanced");
+  await page.locator("#start").click();
+  await page.waitForFunction(() => document.querySelector("#question")?.textContent.includes("Тестовый вопрос 1"));
+  assert.equal(requested.length, 1);
+  assert.match(await page.locator("#profile-note").textContent(), /отдельный черновик/);
+  await page.close();
+});
+
 test("digital direction requires an explicit experience level", async () => {
   const page = await browser.newPage();
   await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
