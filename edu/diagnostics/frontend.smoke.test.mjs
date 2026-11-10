@@ -56,7 +56,7 @@ test("desktop: curriculum selection, unknown answer, back navigation and local-o
   assert.equal(await page.locator("#start").isEnabled(), true);
 
   await page.locator("#start").click();
-  await page.locator("#counter").waitFor();
+  await page.waitForFunction(() => document.querySelector("#counter")?.textContent.trim() === "вопрос 1 из 15");
   assert.equal((await page.locator("#counter").textContent()).trim(), "вопрос 1 из 15");
   await page.locator("#unknown").click();
   assert.equal((await page.locator("#counter").textContent()).trim(), "вопрос 1 из 15");
