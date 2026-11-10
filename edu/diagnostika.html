@@ -370,7 +370,7 @@ function finish(){
   '<p>'+percent+'% правильных ответов. '+description+'</p></div>'+
   '<p class="diag-hint">Ученик: '+escapeHtml(student)+'</p>'+
   '<p class="diag-hint">Программа: '+escapeHtml(curriculumName)+(curriculumYear?' · '+curriculumYear:'')+(curriculumLevel?' · '+({basic:'базовый уровень',advanced:'углублённый / повышенный уровень',unknown:'уровень не указан'}[curriculumLevel]):'')+(curriculumDetail?' · '+escapeHtml(curriculumDetail):'')+'</p>'+
-  '<p class="diag-hint">Банк заданий: '+(bankProgramMatched?'подобран под выбранную программу':'общий черновой банк; соответствие выбранной программе ещё не подтверждено')+'</p>'+
+  '<p class="diag-hint">Банк заданий: '+(bankProgramMatched?'отдельный черновик для выбранной программы; педагогическая вычитка ещё не завершена':'общий черновой банк; соответствие выбранной программе ещё не подтверждено')+'</p>'+
   (experience?'<p class="diag-hint">Опыт: '+({beginner:'только начинаю',basics:'знаю основы',experienced:'есть опыт'}[experience]||'не указан')+'</p>':'')+
   '<h3 class="diag-section-title">Что уже получается</h3>'+
   (strong.length?'<ul class="q-topics">'+strong.map(([t,v])=>'<li>'+escapeHtml(t)+' — '+v.right+' из '+v.total+'</li>').join('')+'</ul>':'<p class="diag-hint">Пока нет тем, где все задания выполнены верно. Это не приговор — просто ориентир для дальнейшей работы.</p>')+
@@ -486,6 +486,9 @@ $('start').addEventListener('click',async()=>{
   }
   if(!data)throw new Error('Не удалось загрузить задания.');
   if(!Array.isArray(data.questions)||data.questions.length!==15)throw new Error('В наборе должно быть 15 заданий.');
+  $('profile-note').textContent=bankProgramMatched
+   ?'Загружен отдельный черновик для выбранной программы. Он всё ещё требует предметной и педагогической вычитки.'
+   :'Используется общий черновик. Соответствие выбранной программе пока не подтверждено.';
   bank=data.questions;answers=Array(bank.length).fill(null);index=0;
   $('setup').hidden=true;$('quiz').hidden=false;renderQuestion();
  }catch(e){
