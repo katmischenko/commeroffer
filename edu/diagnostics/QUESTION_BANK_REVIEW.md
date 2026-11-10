@@ -52,3 +52,14 @@
 - Проверка архива, PDF, повторных попыток и удаления данных.
 - Утверждение срока хранения, согласия и окончательного уведомления о данных.
 - Браузерное и мобильное тестирование.
+
+
+## Follow-up review: cross-grade duplicates and answer keys
+
+- Initial cross-grade scan found 136 repeated question stems, concentrated in Python, HTML/CSS and Figma, plus one duplicate in informatics.
+- Rewritten banks: Python 6, 7, 9, 11; HTML/CSS 6, 7, 9, 11; Figma 6, 7, 9, 11. Each of these 12 banks now has its own grade-specific question set and the 5/7/3 difficulty distribution.
+- Replaced the repeated informatics 9 logic question with a De Morgan law task.
+- Added a strict rule that for choice questions, correctText must exactly equal options[correctIndex]. This found and fixed one mismatch in informatics 6.
+- CI now fails if exact question stems recur across grades within a direction.
+- Latest successful run: https://github.com/katmischenko/commeroffer/actions/runs/42825640423.
+- The changes remove exact repeats and structural answer-key mismatches. They do not prove that all explanations, distractors, subject facts or curriculum placement are pedagogically correct.
