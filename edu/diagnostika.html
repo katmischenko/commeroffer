@@ -240,7 +240,8 @@ function finish(){
   '<h3 class="diag-section-title">Подробный разбор заданий</h3>'+
   report.map(({q,a,ok},i)=>'<details class="diag-detail"><summary>'+(i+1)+'. '+escapeHtml(q.topic)+' — '+(ok?'верно':'нужно разобрать')+'</summary><p><b>Задание:</b> '+escapeHtml(q.question.replace(/<[^>]*>/g,' '))+'</p><p><b>Твой ответ:</b> '+escapeHtml(answerLabel(q,a))+'</p><p><b>Правильный ответ:</b> '+escapeHtml(q.type==='short'?q.correctText:q.options[q.correctIndex])+'</p><p><b>Объяснение:</b> '+escapeHtml(q.explanation)+'</p></details>').join('')+
   '<p class="diag-hint">Это предварительная диагностика по одному набору заданий, а не итоговая оценка знаний. Результат поможет выбрать темы для дальнейшей работы.</p>'+
-  '<div class="diag-actions"><button class="btn btn-pen" id="restart">Пройти ещё раз</button><a class="btn btn-ghost" id="discuss-result" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Обсудить результат</a></div>';
+  '<div class="diag-actions"><button class="btn btn-pen" id="restart">Пройти ещё раз</button><a class="btn btn-ghost" id="discuss-result" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Обсудить результат</a></div>'+
+ '<p class="diag-hint" id="discuss-note">При нажатии чат откроется, а полный отчёт скопируется. Вставь его в сообщение.</p>';
  const experienceLabel={beginner:'только начинаю',basics:'знаю основы',experienced:'есть опыт'}[experience]||'не указан';
  const topicLines=(items)=>items.length?items.map(([name,v])=>'- '+name+': '+v.right+'/'+v.total).join('\\n'):'- нет';
  const detailLines=report.map(({q,a,ok},i)=>{
@@ -267,7 +268,28 @@ function finish(){
   '',
   'Прошу помочь разобрать результат и определить дальнейшие шаги.'
  ].filter(Boolean).join('\\n');
- $('discuss-result').href='https://t.me/katerin_mischenko?text='+encodeURIComponent(message);
+ const discuss=$('discuss-result');
+ discuss.href='https://t.me/katerin_mischenko';
+ discuss.addEventListener('click',()=>{
+  const note=$('discuss-note');
+  const fallbackCopy=()=>{
+   const field=document.createElement('textarea');
+   field.value=message;field.setAttribute('readonly','');
+   field.style.position='fixed';field.style.opacity='0';
+   document.body.appendChild(field);field.select();
+   let copied=false;
+   try{copied=document.execCommand('copy');}catch(error){}
+   field.remove();
+   note.textContent=copied
+    ?'Отчёт скопирован. В открывшемся чате вставь его в поле сообщения.'
+    :'Чат открыт. Скопируй отчёт вручную из блока «Подробный разбор заданий» на этой странице.';
+  };
+  if(navigator.clipboard&&window.isSecureContext){
+   navigator.clipboard.writeText(message)
+    .then(()=>{note.textContent='Отчёт скопирован. В открывшемся чате вставь его в поле сообщения.';})
+    .catch(fallbackCopy);
+  }else fallbackCopy();
+ });
  $('restart').addEventListener('click',()=>{index=0;answers=[];$('result').hidden=true;$('setup').hidden=false;checkReady();});
 }
 $('direction').addEventListener('change',fillGrades);
