@@ -461,7 +461,11 @@ $('start').addEventListener('click',async()=>{
   const candidates=[];
   if(['ru','by'].includes(curriculumId)&&curriculumYear&&curriculumYear!=='other'){
    const yearKey=curriculumYear.replace('/','-');
-   if(Number(p.grade)>=10){
+   const gradeNumber=Number(p.grade);
+   const belarusGradeEightPilot=curriculumId==='by'&&gradeNumber===8&&['physics','math'].includes(p.direction.id);
+   const belarusInformaticsAdvanced=curriculumId==='by'&&p.direction.id==='informatics'&&[8,9].includes(gradeNumber);
+   const levelSpecific=gradeNumber>=10||belarusGradeEightPilot||belarusInformaticsAdvanced;
+   if(levelSpecific){
     if(curriculumLevel&&curriculumLevel!=='unknown'){
      candidates.push('diagnostics/question-bank-'+profileId+'-'+curriculumId+'-'+yearKey+'-'+curriculumLevel+'.json');
      candidates.push('diagnostics/question-bank-'+profileId+'-'+curriculumId+'-'+curriculumLevel+'.json');
