@@ -172,7 +172,7 @@ function renderQuestion(){
  }else{
   html='<div class="q-opts">'+q.options.map((o,n)=>'<button type="button" class="q-opt '+(a.answerText===String(n)?'selected':'')+'" data-option="'+n+'">'+escapeHtml(o)+'</button>').join('')+'</div>';
  }
- html+='<div class="diag-actions"><button type="button" class="btn btn-ghost '+(a.status===\'unknown\'?\'is-selected\':\'\')+'" id="unknown" aria-pressed="'+(a.status===\'unknown\')+'">Не знаю</button></div><p class="diag-answer-note" id="answer-note">'+(a.status===\'unknown\'?\'Отмечено: «Не знаю». Нажми «Следующий вопрос», когда будешь готов(а).\':\'«Не знаю» отметит ответ, но не переключит вопрос автоматически.\')+'</p>';
+ html+='<div class="diag-actions"><button type="button" class="btn btn-ghost '+(a.status==="unknown"?"is-selected":"")+'" id="unknown" aria-pressed="'+(a.status==="unknown")+'">Не знаю</button></div><p class="diag-answer-note" id="answer-note">'+(a.status==="unknown"?'Отмечено: «Не знаю». Нажми «Следующий вопрос», когда будешь готов(а).':'«Не знаю» отметит ответ, но не переключит вопрос автоматически.')+'</p>';
  $('answer-area').innerHTML=html;
  if(q.type==='short'){
   $('short-answer').addEventListener('input',e=>{saveAnswer(e.target.value,e.target.value.trim()?'answered':'unanswered');});
