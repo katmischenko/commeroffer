@@ -414,7 +414,7 @@
   .check p{color:var(--muted);font-size:15px;line-height:1.75;margin-top:8px;max-width:70ch}
 
   /* ---------- отзывы-записочки ---------- */
-  .pins{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .pins{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px}
   @media(max-width:900px){.pins{grid-template-columns:1fr}}
   .pin{
     background:var(--paper-2);border:1px solid var(--line);border-radius:4px 18px 4px 18px;
@@ -864,8 +864,8 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div class="sec-index">стр. 04 — результаты</div>
-        <h2 class="sec-title">Записочки <span class="hl">от учеников</span></h2>
-        <p class="sec-sub">Для меня результат — не только оценка, а момент, когда ученик начинает справляться сам. Вот так это выглядит:</p>
+        <h2 class="sec-title">Маленькие шаги. <span class="hl">Большие изменения.</span></h2>
+        <p class="sec-sub">У каждого своя отправная точка и свой путь. Для кого-то результат — новая оценка, для кого-то — самостоятельно решённая задача или интерес к предмету, которого раньше не было.</p>
       </div>
       <div class="pins">
         <div class="pin reveal">
@@ -879,6 +879,10 @@
         <div class="pin reveal">
           <p class="q">«Разбираем лабораторные по Python, доводим до результата и сдаём на <b>4</b> в московском вузе.»</p>
           <div class="who">Иван<small>Python · университет</small></div>
+        </div>
+        <div class="pin reveal">
+          <p class="q">«Раньше я часто просто запоминал, как решать задачи. Но если условие немного менялось — терялся. Теперь понимаю, <b>почему</b> выбираю именно этот способ, и могу попробовать решить сам. Оказалось, предмет не такой сложный, как я думал».</p>
+          <div class="who">Собирательная обратная связь<small>пример того, что может измениться в обучении · не дословный отзыв</small></div>
         </div>
       </div>
     </div>
