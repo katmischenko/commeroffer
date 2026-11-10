@@ -18,238 +18,234 @@
   "questions": [
     {
       "id": "python7-01",
-      "topic": "Основы Python",
-      "skill": "понимание",
+      "topic": "Сравнения",
+      "skill": "применение Python",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Как записать вывод текста Привет в консоль?",
-      "explanation": "Функция print() выводит значение на экран.",
+      "question": "Какой оператор проверяет равенство двух значений?",
       "options": [
-        "print('Привет')",
-        "echo('Привет')",
-        "write 'Привет'",
-        "show('Привет')"
+        "=",
+        "==",
+        ":=",
+        "!="
       ],
-      "correctIndex": 0,
-      "correctText": "print('Привет')"
+      "correctIndex": 1,
+      "correctText": "==",
+      "explanation": "Оператор == сравнивает значения; одиночный = выполняет присваивание."
     },
     {
       "id": "python7-02",
-      "topic": "Переменные",
-      "skill": "понимание",
+      "topic": "Логика",
+      "skill": "применение Python",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какое имя переменной записано корректно?",
-      "explanation": "Имя не начинается с цифры, не содержит дефис и не совпадает с ключевым словом.",
+      "question": "Какой оператор Python меняет True на False и наоборот?",
       "options": [
-        "2name",
-        "my-name",
-        "my_name",
-        "class"
+        "and",
+        "or",
+        "not",
+        "in"
       ],
       "correctIndex": 2,
-      "correctText": "my_name"
+      "correctText": "not",
+      "explanation": "not выполняет логическое отрицание."
     },
     {
       "id": "python7-03",
-      "topic": "Типы данных",
-      "skill": "понимание",
+      "topic": "Преобразование типов",
+      "skill": "применение Python",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какой тип данных у значения 7?",
-      "explanation": "Целое число относится к типу int.",
+      "question": "Какой результат даст float(\"3.5\")?",
       "options": [
-        "str",
-        "int",
-        "list",
-        "bool"
+        "Строку \"3.5\"",
+        "Число 3.5 типа float",
+        "Целое 3",
+        "Ошибка при любом запуске"
       ],
       "correctIndex": 1,
-      "correctText": "int"
+      "correctText": "Число 3.5 типа float",
+      "explanation": "float() преобразует числовую строку в вещественное число."
     },
     {
       "id": "python7-04",
-      "topic": "Арифметика",
-      "skill": "понимание",
+      "topic": "Циклы",
+      "skill": "применение Python",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Чему равно 7 // 2 в Python?",
-      "explanation": "Оператор // выполняет целочисленное деление с округлением вниз.",
+      "question": "Какое ключевое слово досрочно завершает ближайший цикл?",
       "options": [
-        "3.5",
-        "3",
-        "4",
-        "1"
+        "continue",
+        "break",
+        "return",
+        "pass"
       ],
       "correctIndex": 1,
-      "correctText": "3"
+      "correctText": "break",
+      "explanation": "break немедленно прекращает выполнение ближайшего цикла."
     },
     {
       "id": "python7-05",
-      "topic": "Условия",
-      "skill": "понимание",
+      "topic": "Ветвление",
+      "skill": "применение Python",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какое ключевое слово начинает ветвь «иначе»?",
-      "explanation": "Ветвь else выполняется, если предыдущие условия не сработали.",
+      "question": "Какое слово добавляет ещё одну проверку после if?",
       "options": [
         "else",
         "elif",
-        "for",
-        "while"
-      ],
-      "correctIndex": 0,
-      "correctText": "else"
-    },
-    {
-      "id": "python7-06",
-      "topic": "Строки",
-      "skill": "понимание и применение",
-      "difficulty": "medium",
-      "type": "short",
-      "question": "Чему равно len('кот')?",
-      "explanation": "В строке три символа, поэтому len возвращает 3.",
-      "acceptedAnswers": [
-        "3"
-      ],
-      "correctText": "3"
-    },
-    {
-      "id": "python7-07",
-      "topic": "Списки",
-      "skill": "понимание и применение",
-      "difficulty": "medium",
-      "type": "choice",
-      "question": "С какого индекса начинается нумерация элементов списка?",
-      "explanation": "В Python индексация начинается с нуля.",
-      "options": [
-        "0",
-        "1",
-        "−1",
-        "Зависит от списка"
-      ],
-      "correctIndex": 0,
-      "correctText": "0"
-    },
-    {
-      "id": "python7-08",
-      "topic": "Циклы",
-      "skill": "понимание и применение",
-      "difficulty": "medium",
-      "type": "choice",
-      "question": "Сколько раз выполнится for i in range(4)?",
-      "explanation": "range(4) создаёт последовательность 0, 1, 2, 3 — четыре значения.",
-      "options": [
-        "3",
-        "4",
-        "5",
-        "Бесконечно"
-      ],
-      "correctIndex": 1,
-      "correctText": "4"
-    },
-    {
-      "id": "python7-09",
-      "topic": "Условия",
-      "skill": "понимание и применение",
-      "difficulty": "medium",
-      "type": "choice",
-      "question": "Как записать проверку, что x больше 5 и меньше 10?",
-      "explanation": "Python поддерживает цепочки сравнений: 5 < x < 10.",
-      "options": [
-        "x > 5 or x < 10",
-        "5 < x < 10",
-        "x = 5..10",
-        "x > 5 && x < 10"
-      ],
-      "correctIndex": 1,
-      "correctText": "5 < x < 10"
-    },
-    {
-      "id": "python7-10",
-      "topic": "Списки",
-      "skill": "понимание и применение",
-      "difficulty": "medium",
-      "type": "short",
-      "question": "Что вернёт [4, 8, 12][1]?",
-      "explanation": "Индекс 1 указывает на второй элемент списка.",
-      "acceptedAnswers": [
-        "8"
-      ],
-      "correctText": "8"
-    },
-    {
-      "id": "python7-11",
-      "topic": "Функции",
-      "skill": "понимание и применение",
-      "difficulty": "medium",
-      "type": "choice",
-      "question": "Какое ключевое слово возвращает результат из функции?",
-      "explanation": "return завершает выполнение функции и возвращает значение.",
-      "options": [
-        "print",
-        "return",
-        "break",
+        "while",
         "def"
       ],
       "correctIndex": 1,
-      "correctText": "return"
+      "correctText": "elif",
+      "explanation": "elif позволяет проверить дополнительное условие, если предыдущие не выполнились."
     },
     {
-      "id": "python7-12",
-      "topic": "Циклы",
-      "skill": "понимание и применение",
+      "id": "python7-06",
+      "topic": "Циклы и накопление",
+      "skill": "вычисление и применение",
       "difficulty": "medium",
       "type": "short",
-      "question": "Сколько раз напечатает число цикл for i in range(2, 7)?",
-      "explanation": "range(2,7) включает 2,3,4,5,6 — пять значений.",
+      "question": "Чему равна сумма после выполнения s = 0; for n in [1, 3, 5]: s += n?",
       "acceptedAnswers": [
-        "5"
+        "9"
       ],
-      "correctText": "5"
+      "correctText": "9",
+      "explanation": "К накопителю прибавляются 1, 3 и 5; сумма равна 9."
     },
     {
-      "id": "python7-13",
-      "topic": "Алгоритмы",
-      "skill": "понимание и применение",
-      "difficulty": "advanced",
+      "id": "python7-07",
+      "topic": "Функция range",
+      "skill": "вычисление и применение",
+      "difficulty": "medium",
       "type": "short",
-      "question": "Чему равна сумма: total=0; for n in [2,4,6]: total+=n?",
-      "explanation": "Суммируем элементы списка: 2+4+6=12.",
-      "acceptedAnswers": [
-        "12"
-      ],
-      "correctText": "12"
-    },
-    {
-      "id": "python7-14",
-      "topic": "Функции",
-      "skill": "понимание и применение",
-      "difficulty": "advanced",
-      "type": "choice",
-      "question": "Что произойдёт, если функция не содержит return?",
-      "explanation": "Если return отсутствует, функция возвращает None.",
-      "options": [
-        "Вернёт None",
-        "Вернёт 0",
-        "Вызовет ошибку всегда",
-        "Вернёт True"
-      ],
-      "correctIndex": 0,
-      "correctText": "Вернёт None"
-    },
-    {
-      "id": "python7-15",
-      "topic": "Списки",
-      "skill": "понимание и применение",
-      "difficulty": "advanced",
-      "type": "short",
-      "question": "После a=[1,2]; a.append(3); чему равна длина a?",
-      "explanation": "append добавляет один элемент в конец списка.",
+      "question": "Сколько чисел перебирает range(2, 9, 3)?",
       "acceptedAnswers": [
         "3"
       ],
-      "correctText": "3"
+      "correctText": "3",
+      "explanation": "Последовательность: 2, 5, 8."
+    },
+    {
+      "id": "python7-08",
+      "topic": "Строки",
+      "skill": "вычисление и применение",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Что вернёт выражение \"python\"[-1]?",
+      "acceptedAnswers": [
+        "n"
+      ],
+      "correctText": "n",
+      "explanation": "Отрицательный индекс -1 указывает на последний символ строки."
+    },
+    {
+      "id": "python7-09",
+      "topic": "Словари",
+      "skill": "применение Python",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Что вернёт d.get(\"age\", 0), если ключа age в словаре нет?",
+      "options": [
+        "None",
+        "0",
+        "\"age\"",
+        "Ошибка KeyError"
+      ],
+      "correctIndex": 1,
+      "correctText": "0",
+      "explanation": "get возвращает запасное значение 0, если ключ отсутствует."
+    },
+    {
+      "id": "python7-10",
+      "topic": "Функции",
+      "skill": "вычисление и применение",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Что вернёт square(4), если функция определена как def square(x): return x * x?",
+      "acceptedAnswers": [
+        "16"
+      ],
+      "correctText": "16",
+      "explanation": "Функция умножает аргумент на самого себя: 4 × 4 = 16."
+    },
+    {
+      "id": "python7-11",
+      "topic": "Условия",
+      "skill": "применение Python",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Как проверить, что n — чётное число?",
+      "options": [
+        "n / 2 == 0",
+        "n % 2 == 0",
+        "n // 2 == 1",
+        "n == 2"
+      ],
+      "correctIndex": 1,
+      "correctText": "n % 2 == 0",
+      "explanation": "У чётного числа остаток от деления на 2 равен нулю."
+    },
+    {
+      "id": "python7-12",
+      "topic": "Сортировка",
+      "skill": "применение Python",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Что вернёт sorted([3, 1, 2])?",
+      "options": [
+        "[3, 2, 1]",
+        "[1, 2, 3]",
+        "None",
+        "[1, 3, 2]"
+      ],
+      "correctIndex": 1,
+      "correctText": "[1, 2, 3]",
+      "explanation": "sorted создаёт новый список, отсортированный по возрастанию."
+    },
+    {
+      "id": "python7-13",
+      "topic": "Вложенные циклы",
+      "skill": "вычисление и применение",
+      "difficulty": "advanced",
+      "type": "short",
+      "question": "Сколько раз выполнится print, если внешний цикл повторяется 2 раза, а внутренний — 3 раза для каждого внешнего прохода?",
+      "acceptedAnswers": [
+        "6"
+      ],
+      "correctText": "6",
+      "explanation": "Общее число выполнений равно 2 × 3 = 6."
+    },
+    {
+      "id": "python7-14",
+      "topic": "Генераторы списков",
+      "skill": "применение Python",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "Что создаёт [n for n in range(6) if n % 2 == 0]?",
+      "options": [
+        "[1, 3, 5]",
+        "[0, 2, 4]",
+        "[0, 1, 2, 3, 4, 5]",
+        "[2, 4, 6]"
+      ],
+      "correctIndex": 1,
+      "correctText": "[0, 2, 4]",
+      "explanation": "В список попадают значения от 0 до 5, у которых остаток от деления на 2 равен нулю."
+    },
+    {
+      "id": "python7-15",
+      "topic": "Алгоритмы",
+      "skill": "вычисление и применение",
+      "difficulty": "advanced",
+      "type": "short",
+      "question": "Сколько элементов останется после фильтрации [2, 5, 8, 11, 14] условием x > 7?",
+      "acceptedAnswers": [
+        "3"
+      ],
+      "correctText": "3",
+      "explanation": "Условию соответствуют 8, 11 и 14."
     }
   ]
 }
