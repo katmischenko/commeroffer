@@ -85,18 +85,15 @@ test("all 36 direction-and-grade profiles load a 15-question bank", async () => 
     figma: [5, 6, 7, 8, 9, 10, 11]
   };
   const page = await browser.newPage();
-  await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
-  await page.locator("#student").fill("Проверка банка");
   for (const [direction, grades] of Object.entries(profiles)) {
-    await page.locator("#direction").selectOption(direction);
     for (const grade of grades) {
+      await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
+      await page.locator("#student").fill("Проверка банка");
+      await page.locator("#direction").selectOption(direction);
       await page.locator("#grade").selectOption(String(grade));
       await page.locator("#start").click();
       await page.waitForFunction(() => document.querySelector("#counter")?.textContent.trim() === "вопрос 1 из 15");
       assert.equal(await page.locator("#question").textContent().then(x => x.trim().length > 0), true, direction + " " + grade);
-      await page.locator("#restart").click();
-      await page.locator("#direction").selectOption(direction);
-      await page.locator("#grade").selectOption(String(grade));
     }
   }
   await page.close();
