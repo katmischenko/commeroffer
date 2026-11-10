@@ -30,3 +30,9 @@ jobs:
         run: python edu/diagnostics/validate_diagnostics.py
       - name: Test Worker API, consent, archive and retention
         run: node --test edu/diagnostics/worker.test.mjs
+      - name: Install Playwright
+        run: npm install --no-save playwright
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Browser smoke tests
+        run: node --test edu/diagnostics/frontend.smoke.test.mjs
