@@ -140,6 +140,20 @@ def main():
                 filenames = sorted({filename for _, filename in entries})
                 warnings.append(f"{direction}: repeated stem across grades {', '.join(grades)} in {', '.join(filenames)} — {stem[:100]}")
 
+    worker_path = DIAG / "worker.js"
+    archive_path = DIAG / "archive.html"
+    privacy_path = DIAG / "privacy.html"
+    migration_path = DIAG / "migrations" / "0003_curriculum_and_consent.sql"
+    level_migration_path = DIAG / "migrations" / "0004_curriculum_level.sql"
+    year_migration_path = DIAG / "migrations" / "0005_curriculum_year.sql"
+    consent_migration_path = DIAG / "migrations" / "0006_explicit_telegram_consent.sql"
+    schema_path = DIAG / "schema.sql"
+    worker_test_path = DIAG / "worker.test.mjs"
+    frontend_test_path = DIAG / "frontend.smoke.test.mjs"
+    for required in (worker_path, archive_path, privacy_path, migration_path, level_migration_path, year_migration_path, consent_migration_path, schema_path, worker_test_path, frontend_test_path):
+        if not required.exists():
+            fail(errors, f"missing required diagnostics file: {required.relative_to(ROOT)}")
+
     for html_path in (HTML, DIAG / "archive.html"):
         if not html_path.exists():
             fail(errors, f"missing {html_path.relative_to(ROOT)}")
