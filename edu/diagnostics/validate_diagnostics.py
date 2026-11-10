@@ -171,8 +171,10 @@ def main():
         "$('question').textContent=q.question;",
         "Array.isArray(data.questions)",
         "function selectedCurriculum()",
-        "curriculumId,curriculumName,curriculumDetail",
+        "curriculumId,curriculumName,curriculumDetail,curriculumLevel",
         "telegramConsent:$('telegram-consent').checked",
+        "curriculum-level-wrap",
+        "curriculumLevel: clean(p.curriculumLevel, 20)",
         "async function saveAttempt(payload)",
         "CONSENT_VERSION",
     )
@@ -186,7 +188,8 @@ def main():
     archive_path = DIAG / "archive.html"
     privacy_path = DIAG / "privacy.html"
     migration_path = DIAG / "migrations" / "0003_curriculum_and_consent.sql"
-    for required in (worker_path, archive_path, privacy_path, migration_path):
+    level_migration_path = DIAG / "migrations" / "0004_curriculum_level.sql"
+    for required in (worker_path, archive_path, privacy_path, migration_path, level_migration_path):
         if not required.exists():
             fail(errors, f"missing required diagnostics component: {required.relative_to(ROOT)}")
     if worker_path.exists():
