@@ -89,6 +89,14 @@
   .mobile-menu-links a{display:block;padding:11px 13px;border-radius:9px;color:var(--muted);text-decoration:none;font-size:14px;font-weight:700}
   .mobile-menu-links a:hover{background:rgba(255,157,69,.08);color:var(--marker)}
   @media(max-width:860px){.nav-links{display:none}.mobile-menu{display:block}}
+  @media(max-width:560px){
+    .nav{padding:0 18px;gap:10px}
+    .logo{gap:0}
+    .logo .hand{font-size:23px}
+    .logo small{display:none}
+    .nav-cta{font-size:12px;padding:9px 12px}
+    .mobile-menu summary{width:38px;height:38px;padding:9px}
+  }
 
   /* ---------- hero ---------- */
   .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:clamp(112px,15vh,148px) 0 66px;position:relative}
@@ -845,6 +853,14 @@
     });
   }
 
+  // Закрываем мобильное меню после перехода к разделу.
+  document.querySelectorAll('.mobile-menu-links a').forEach(function(link){
+    link.addEventListener('click',function(){
+      var menu = link.closest('.mobile-menu');
+      if(menu) menu.open = false;
+    });
+  });
+
   // FAQ
   document.querySelectorAll('.faq-q').forEach(function(btn){
     btn.addEventListener('click', function(){
@@ -888,14 +904,14 @@
       return;
     }
 
-    var message = '📋 Анкета с сайта Катерины Мищенко\\n'
-      + '━━━━━━━━━━━━━\\n'
-      + '👦 Ученик: ' + data.student + '\\n'
-      + '🎂 Возраст/класс: ' + data.grade + '\\n'
-      + '📚 Направление: ' + data.subject + '\\n'
-      + '🎯 Цель: ' + (data.goal || '—') + '\\n'
-      + '👤 Родитель: ' + data.parent + '\\n'
-      + '📞 Контакт: ' + data.contact + '\\n'
+    var message = '📋 Анкета с сайта Катерины Мищенко\n'
+      + '━━━━━━━━━━━━━\n'
+      + '👦 Ученик: ' + data.student + '\n'
+      + '🎂 Возраст/класс: ' + data.grade + '\n'
+      + '📚 Направление: ' + data.subject + '\n'
+      + '🎯 Цель: ' + (data.goal || '—') + '\n'
+      + '👤 Родитель: ' + data.parent + '\n'
+      + '📞 Контакт: ' + data.contact + '\n'
       + '💬 Комментарий: ' + (data.comment || '—');
 
     var shareUrl = 'https://t.me/share/url?url='
