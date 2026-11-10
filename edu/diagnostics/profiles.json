@@ -527,6 +527,42 @@
       "curriculumLevel": "basic",
       "bankId": "informatics-9-ru-2026-2027-basic",
       "reviewStatus": "teacher_review_draft"
+    },
+    {
+      "direction": "physics",
+      "grade": 10,
+      "curriculumId": "ru",
+      "curriculumYear": "2026/2027",
+      "curriculumLevel": "basic",
+      "bankId": "physics-10-ru-2026-2027-basic",
+      "reviewStatus": "teacher_review_draft"
+    },
+    {
+      "direction": "physics",
+      "grade": 10,
+      "curriculumId": "ru",
+      "curriculumYear": "2026/2027",
+      "curriculumLevel": "advanced",
+      "bankId": "physics-10-ru-2026-2027-advanced",
+      "reviewStatus": "teacher_review_draft"
+    },
+    {
+      "direction": "physics",
+      "grade": 11,
+      "curriculumId": "ru",
+      "curriculumYear": "2026/2027",
+      "curriculumLevel": "basic",
+      "bankId": "physics-11-ru-2026-2027-basic",
+      "reviewStatus": "teacher_review_draft"
+    },
+    {
+      "direction": "physics",
+      "grade": 11,
+      "curriculumId": "ru",
+      "curriculumYear": "2026/2027",
+      "curriculumLevel": "advanced",
+      "bankId": "physics-11-ru-2026-2027-advanced",
+      "reviewStatus": "teacher_review_draft"
     }
   ]
 }
