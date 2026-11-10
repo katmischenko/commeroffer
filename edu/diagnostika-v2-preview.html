@@ -72,7 +72,7 @@
 <script>
 (function(){
 'use strict';
-const API='https://mischenko-edu-diagnostics.mks-ki.workers.dev/diagnostics';
+// Preview mode: never posts student data to the live Worker or Telegram.
 const directions=[
  {id:'informatics',name:'Информатика',grades:[6,7,8,9,10,11]},
  {id:'physics',name:'Физика',grades:[7,8,9,10,11]},
@@ -119,15 +119,18 @@ function finish(){
  const report=bank.map((q,i)=>{const a=answers[i]||{status:'skipped',answerText:''};const ok=isCorrect(q,a);if(!ok)weak[q.topic]=(weak[q.topic]||0)+1;return {question:q.question,answerText:answerText(q,a),correctText:q.type==='short'?q.correctText:q.options[q.correctIndex],status:ok?'correct':a.status==='unknown'?'unknown':a.status==='skipped'?'skipped':'incorrect',statusLabel:ok?'Верно':a.status==='unknown'?'Не знаю':a.status==='skipped'?'Пропуск':'Неверно',topic:q.topic,difficulty:q.difficulty,confidenceLabel:a.confidenceLabel||'',explanation:q.explanation};});
  const weakTopics=Object.keys(weak).sort((a,b)=>weak[b]-weak[a]);
  $('quiz').hidden=true;$('result').hidden=false;
- $('result').innerHTML='<span class="sec-index">предварительный результат</span><h2>'+escapeHtml(student)+', диагностика завершена</h2><div class="d-stat">'+score+' / 15</div><p class="d-note">'+Math.round(score/15*100)+'% правильных ответов · '+escapeHtml(direction)+' · '+grade+' класс</p><h3>Темы для внимания</h3>'+(weakTopics.length?weakTopics.map(t=>'<div class="d-topic"><span>'+escapeHtml(t)+'</span><b>'+weak[t]+'</b></div>').join(''):'<p>В этой попытке ошибок не обнаружено.</p>')+'<h3 style="margin-top:22px">Разбор заданий</h3>'+report.map((a,i)=>'<div class="d-topic" style="display:block"><b>'+(i+1)+'. '+escapeHtml(a.topic)+' · '+a.statusLabel+'</b><p class="d-note">Ответ: '+escapeHtml(a.answerText)+'<br>Правильно: '+escapeHtml(a.correctText)+'<br>'+escapeHtml(a.explanation)+'</p></div>').join('')+'<p class="d-note" style="margin-top:18px">Отчёт будет сохранён в закрытом архиве и отправлен преподавателю только после отправки формы. Не закрывай страницу до подтверждения сервера.</p><div class="d-actions"><button class="d-btn" id="send">Отправить преподавателю</button></div><p id="send-status" class="d-note" role="status"></p>';
+ $('result').innerHTML='<span class="sec-index">предварительный результат</span><h2>'+escapeHtml(student)+', диагностика завершена</h2><div class="d-stat">'+score+' / 15</div><p class="d-note">'+Math.round(score/15*100)+'% правильных ответов · '+escapeHtml(direction)+' · '+grade+' класс</p><h3>Темы для внимания</h3>'+(weakTopics.length?weakTopics.map(t=>'<div class="d-topic"><span>'+escapeHtml(t)+'</span><b>'+weak[t]+'</b></div>').join(''):'<p>В этой попытке ошибок не обнаружено.</p>')+'<h3 style="margin-top:22px">Разбор заданий</h3>'+report.map((a,i)=>'<div class="d-topic" style="display:block"><b>'+(i+1)+'. '+escapeHtml(a.topic)+' · '+a.statusLabel+'</b><p class="d-note">Ответ: '+escapeHtml(a.answerText)+'<br>Правильно: '+escapeHtml(a.correctText)+'<br>'+escapeHtml(a.explanation)+'</p></div>').join('')+'<p class="d-note" style="margin-top:18px">Это локальный предпросмотр: данные не отправляются в базу и Telegram. Для проверки интеграции понадобится отдельная тестовая конфигурация.</p><div class="d-actions"><button class="d-btn" id="send">Скопировать тестовый отчёт</button></div><p id="send-status" class="d-note" role="status"></p>';
  $('send').addEventListener('click',()=>send(report,score,weakTopics));
 }
 async function send(report,score,weakTopics){
- const btn=$('send');btn.disabled=true;btn.textContent='Отправляем…';
- const attemptId=(crypto.randomUUID?crypto.randomUUID():Date.now()+'-'+Math.random().toString(36).slice(2)).replace(/[^a-zA-Z0-9_-]/g,'');
- const payload={attemptId,studentName:student,studentClass:grade,direction,experience,consent:true,score,maxScore:15,completedAt:new Date().toISOString(),weakTopics,answers:report};
- try{const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});const data=await r.json();if(!r.ok||!data.ok)throw new Error(data.error||'Ошибка сохранения');$('send-status').textContent=data.duplicate?'Эта попытка уже сохранена.':data.saved?'Результат сохранён. Уведомление преподавателю '+(data.telegramSent?'отправлено.':'пока не доставлено; запись сохранена.'):'Не удалось сохранить.';btn.textContent='Отправлено';}
- catch(e){$('send-status').textContent='Не удалось отправить: '+e.message+'. Проверь соединение и повтори попытку.';btn.disabled=false;btn.textContent='Повторить отправку';}
+ const payload={attemptId:'preview-'+Date.now(),studentName:student,studentClass:grade,direction,experience,consent:true,score,maxScore:15,completedAt:new Date().toISOString(),weakTopics,answers:report};
+ try{
+  await navigator.clipboard.writeText(JSON.stringify(payload,null,2));
+  $('send-status').textContent='Тестовый отчёт скопирован. Никакие данные не отправлялись в Worker, D1 или Telegram.';
+  $('send').textContent='Скопировано';
+ }catch(e){
+  $('send-status').textContent='Браузер не разрешил копирование. Данные остались только на этой странице.';
+ }
 }
 $('direction').addEventListener('change',fillGrades);$('grade').addEventListener('change',checkReady);$('student').addEventListener('input',checkReady);$('consent').addEventListener('change',checkReady);$('experience').addEventListener('change',checkReady);
 $('start').addEventListener('click',async()=>{
