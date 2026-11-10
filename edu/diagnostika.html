@@ -174,7 +174,9 @@ function fillPrograms(){
  const school=SCHOOL_DIRECTIONS.includes(d.id);
  $('curriculum-label').textContent=school?'Учебная программа':'Образовательная траектория';
  const options=school
-  ?[['ru','Россия — федеральная образовательная программа / ФРП'],['by','Беларусь — учебная программа Минобразования'],['other','Другая программа']]
+  ?(d.id==='informatics'&&Number($('grade').value)===6
+    ?[['by','Беларусь — учебная программа Минобразования'],['other','Другая программа (например, школьная программа России)']]
+    :[['ru','Россия — федеральная образовательная программа / ФРП'],['by','Беларусь — учебная программа Минобразования'],['other','Другая программа']])
   :[['self','Собственная траектория / авторский курс'],['other','Другая программа или курс']];
  $('curriculum').innerHTML='<option value="">Выбери вариант</option>'+options.map(([id,name])=>'<option value="'+id+'">'+name+'</option>').join('');
  $('curriculum-detail-wrap').hidden=true;
