@@ -106,7 +106,7 @@
       "profileId": "informatics-8",
       "direction": "informatics",
       "grade": 8,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "informatics-9",
@@ -136,7 +136,7 @@
       "profileId": "physics-8",
       "direction": "physics",
       "grade": 8,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "physics-9",
@@ -166,7 +166,7 @@
       "profileId": "math-7",
       "direction": "math",
       "grade": 7,
-      "status": "not_created"
+      "status": "teacher_review_draft"
     },
     {
       "profileId": "math-8",
@@ -307,5 +307,5 @@
       "status": "not_created"
     }
   ],
-  "note": "Four profiles have draft question banks (informatics-6, informatics-7, math-6, physics-7). Draft banks require teacher review before public use. Other profiles are not yet created."
+  "note": "Seven profiles have question-bank drafts: informatics-6/7/8, math-6/7, physics-7/8. Draft banks require teacher review before public use. Remaining profiles are not yet created."
 }
