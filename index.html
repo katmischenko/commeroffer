@@ -1017,8 +1017,8 @@
         <p class="sub">пара минут — и мы поймём, с чего лучше начать</p>
         <div class="f-grid">
           <div class="f-field">
-            <label for="f-student">имя ученика</label>
-            <input id="f-student" name="student" type="text" placeholder="как к вам обращаться" required>
+            <label for="f-student">имя ученика — если анкету заполняют за него</label>
+            <input id="f-student" name="student" type="text" placeholder="можно оставить пустым, если занимаетесь сами">
           </div>
           <div class="f-field">
             <label for="f-grade">возраст / класс / курс</label>
@@ -1192,7 +1192,7 @@
       comment: anketaForm.elements.comment.value.trim()
     };
 
-    if(!data.student || !data.grade || !data.subject || !data.contactName || !data.contact || !document.getElementById('f-consent').checked){
+    if(!data.grade || !data.subject || !data.contactName || !data.contact || !document.getElementById('f-consent').checked){
       formStatus.textContent = 'заполни обязательные поля и подтверди согласие ✎';
       formStatus.classList.add('err');
       return;
@@ -1201,10 +1201,10 @@
     var lines = [
       '📋 Анкета с сайта Катерины Мищенко',
       '━━━━━━━━━━━━━',
-      '👤 Ученик: ' + data.student,
       '🎓 Возраст / класс / курс: ' + data.grade,
       '📚 Направление: ' + data.subject
     ];
+    if(data.student) lines.push('👤 Имя ученика: ' + data.student);
     if(data.goal) lines.push('🎯 Цель: ' + data.goal);
     if(data.difficulty) lines.push('🧩 Что вызывает трудности: ' + data.difficulty);
     lines.push('🤝 Как обращаться: ' + data.contactName);
