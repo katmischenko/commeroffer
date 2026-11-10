@@ -473,6 +473,33 @@
       "curriculumLevel": "basic",
       "bankId": "math-9-ru-2026-2027-basic",
       "reviewStatus": "teacher_review_draft"
+    },
+    {
+      "direction": "physics",
+      "grade": 7,
+      "curriculumId": "ru",
+      "curriculumYear": "2026/2027",
+      "curriculumLevel": "basic",
+      "bankId": "physics-7-ru-2026-2027-basic",
+      "reviewStatus": "teacher_review_draft"
+    },
+    {
+      "direction": "physics",
+      "grade": 8,
+      "curriculumId": "ru",
+      "curriculumYear": "2026/2027",
+      "curriculumLevel": "basic",
+      "bankId": "physics-8-ru-2026-2027-basic",
+      "reviewStatus": "teacher_review_draft"
+    },
+    {
+      "direction": "physics",
+      "grade": 9,
+      "curriculumId": "ru",
+      "curriculumYear": "2026/2027",
+      "curriculumLevel": "basic",
+      "bankId": "physics-9-ru-2026-2027-basic",
+      "reviewStatus": "teacher_review_draft"
     }
   ]
 }
