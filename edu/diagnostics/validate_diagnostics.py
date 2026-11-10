@@ -45,6 +45,12 @@ def fail(errors, message):
 
 
 def validate_bank(path: Path, errors: list[str], stems_by_direction):
+    filename_match = re.match(r"question-bank-(informatics|physics|math|python|html-css|figma)-(\\d+)(.*)\\.json$", path.name)
+    if not filename_match:
+        fail(errors, f"{path.name}: unrecognized bank filename")
+        return None
+    direction, grade, suffix = filename_match.groups()
+    is_variant = bool(suffix)
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
     except Exception as exc:
@@ -62,8 +68,11 @@ def validate_bank(path: Path, errors: list[str], stems_by_direction):
     if dict(counts) != EXPECTED_DISTRIBUTION:
         fail(errors, f"{path.name}: difficulty distribution is {dict(counts)}")
 
+    if is_variant:
+        for field in ("bankId", "curriculumId", "curriculumYear", "reviewStatus"):
+            if not isinstance(data.get(field), str) or not data[field].strip():
+                fail(errors, f"{path.name}: curriculum variant missing {field}")
     seen_ids, seen_stems = set(), set()
-    direction = data.get("direction", path.name.split("-")[2])
     for number, q in enumerate(questions, 1):
         prefix = f"{path.name} Q{number}"
         if not isinstance(q, dict):
@@ -81,7 +90,7 @@ def validate_bank(path: Path, errors: list[str], stems_by_direction):
         if stem in seen_stems:
             fail(errors, f"{prefix}: duplicate question inside bank")
         seen_stems.add(stem)
-        stems_by_direction[direction][stem].append(path.name)
+        stems_by_direction[direction][stem].append((grade, path.name))
 
         qtype = q.get("type")
         if qtype in ("choice", "analysis"):
@@ -114,21 +123,22 @@ def main():
     profiles = json.loads(profile_path.read_text(encoding="utf-8"))
     expected = {p["profileId"] for p in profiles.get("profiles", [])}
     files = sorted(DIAG.glob("question-bank-*.json"))
-    found = {p.stem.removeprefix("question-bank-") for p in files}
+    general_pattern = re.compile(r"question-bank-(informatics|physics|math|python|html-css|figma)-\\d+\\.json$")
+    general_files = [p for p in files if general_pattern.fullmatch(p.name)]
+    found = {p.stem.removeprefix("question-bank-") for p in general_files}
     if found != expected:
         fail(errors, f"profile/file mismatch: missing={sorted(expected-found)}, extra={sorted(found-expected)}")
 
     for path in files:
         validate_bank(path, errors, stems_by_direction)
 
-    # Cross-grade duplicates are warnings, not failures: some foundational skills
-    # legitimately recur, but the author should verify that the task itself changes.
     warnings = []
     for direction, stems in stems_by_direction.items():
-        for stem, filenames in stems.items():
-            unique_files = sorted(set(filenames))
-            if len(unique_files) > 1:
-                warnings.append(f"{direction}: repeated stem in {', '.join(unique_files)} — {stem[:100]}")
+        for stem, entries in stems.items():
+            grades = sorted({grade for grade, _ in entries})
+            if len(grades) > 1:
+                filenames = sorted({filename for _, filename in entries})
+                warnings.append(f"{direction}: repeated stem across grades {', '.join(grades)} in {', '.join(filenames)} — {stem[:100]}")
 
     for html_path in (HTML, DIAG / "archive.html"):
         if not html_path.exists():
