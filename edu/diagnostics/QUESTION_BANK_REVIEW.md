@@ -63,3 +63,15 @@
 - CI now fails if exact question stems recur across grades within a direction.
 - Latest successful run: https://github.com/katmischenko/commeroffer/actions/runs/42825640423.
 - The changes remove exact repeats and structural answer-key mismatches. They do not prove that all explanations, distractors, subject facts or curriculum placement are pedagogically correct.
+
+
+## Первые банки под российскую ФРП
+
+Созданы 10 отдельных черновиков на 150 заданий:
+- математика 6–9 классов — базовый уровень;
+- физика 7–9 классов — базовый уровень;
+- информатика 7–9 классов — базовый уровень.
+
+Каждый вариант содержит метаданные программы, года, класса, источника и статуса teacher_review_draft. Эти файлы загружаются только при выборе соответствующей российской программы и учебного года 2026/2027. Они не имеют статуса reviewed/ready: необходима независимая предметная проверка, проверка уровня сложности, правильности всех ключей и полноты покрытия ФРП.
+
+Для информатики 6 класса российская федеральная программа не предлагается: требуется локальная программа школы или конкретный учебник. Российские банки физики и информатики 10–11 классов с разделением базового/углублённого уровня ещё не созданы.
