@@ -436,5 +436,43 @@
       "requiresSchoolConfirmation": true,
       "source": "adu.by"
     }
-  }
+  },
+  "curriculumVariants": [
+    {
+      "direction": "math",
+      "grade": 6,
+      "curriculumId": "ru",
+      "curriculumYear": "2026/2027",
+      "curriculumLevel": "basic",
+      "bankId": "math-6-ru-2026-2027-basic",
+      "reviewStatus": "teacher_review_draft"
+    },
+    {
+      "direction": "math",
+      "grade": 7,
+      "curriculumId": "ru",
+      "curriculumYear": "2026/2027",
+      "curriculumLevel": "basic",
+      "bankId": "math-7-ru-2026-2027-basic",
+      "reviewStatus": "teacher_review_draft"
+    },
+    {
+      "direction": "math",
+      "grade": 8,
+      "curriculumId": "ru",
+      "curriculumYear": "2026/2027",
+      "curriculumLevel": "basic",
+      "bankId": "math-8-ru-2026-2027-basic",
+      "reviewStatus": "teacher_review_draft"
+    },
+    {
+      "direction": "math",
+      "grade": 9,
+      "curriculumId": "ru",
+      "curriculumYear": "2026/2027",
+      "curriculumLevel": "basic",
+      "bankId": "math-9-ru-2026-2027-basic",
+      "reviewStatus": "teacher_review_draft"
+    }
+  ]
 }
