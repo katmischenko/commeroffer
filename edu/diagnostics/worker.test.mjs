@@ -45,6 +45,14 @@ class FakeStatement {
       }
       return { meta: { changes: 0 } };
     }
+    if (s.includes("UPDATE diagnostic_attempts") && s.includes("telegram_status = 'sent'")) {
+      const row = this.db.rows.get(v[0]);
+      if (row) { row.telegram_status = "sent"; row.telegram_claimed_at = null; return { meta: { changes: 1 } }; }
+    }
+    if (s.includes("UPDATE diagnostic_attempts") && s.includes("telegram_status = 'pending'")) {
+      const row = this.db.rows.get(v[0]);
+      if (row) { row.telegram_status = "pending"; row.telegram_claimed_at = null; return { meta: { changes: 1 } }; }
+    }
     return { meta: { changes: 0 } };
   }
   async first() {
@@ -123,6 +131,36 @@ test("saves an opted-in archive record without sending Telegram", async () => {
   assert.equal(row.curriculum_id, "by");
   assert.equal(row.curriculum_year, "2026/2027");
   assert.equal(row.telegram_consent, 0);
+});
+
+test("sends only a concise Telegram notification after separate opt-in", async () => {
+  const db = new FakeDB();
+  const originalFetch = globalThis.fetch;
+  let telegramBody = null;
+  globalThis.fetch = async (_url, options) => {
+    telegramBody = JSON.parse(options.body);
+    return new Response(JSON.stringify({ ok: true }), { status: 200 });
+  };
+  try {
+    const payload = validPayload({ telegramConsent: true });
+    const request = new Request("https://worker.test/diagnostics", {
+      method: "POST",
+      headers: { Origin: "https://katmischenko.github.io", "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    const response = await worker.fetch(request, {
+      DB: db, BOT_TOKEN: "mock-token", OWNER_CHAT_ID: "mock-chat"
+    });
+    const body = await response.json();
+    assert.equal(response.status, 200);
+    assert.equal(body.telegramSent, true);
+    assert.equal(telegramBody.chat_id, "mock-chat");
+    assert.match(telegramBody.text, /НОВАЯ ДИАГНОСТИКА/);
+    assert.doesNotMatch(telegramBody.text, /Правильный ответ|Ответ ученика/);
+    assert.equal([...db.rows.values()][0].telegram_status, "sent");
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
 });
 
 test("retry with same attemptId does not create a duplicate record", async () => {
