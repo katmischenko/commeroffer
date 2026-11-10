@@ -53,7 +53,7 @@
 <main>
   <div class="wrap page">
     <a class="back" href="index.html">← назад к полкам</a>
-    <span class="sec-index">тест-диагностика по информатике · бесплатно</span>
+    <span class="sec-index" id="diagnostic-label">тест-диагностика · бесплатно</span>
     <h1>Проверим, что ты <span class="hl">уже знаешь</span></h1>
     <p class="hero-sub">15 заданий помогут увидеть, какие темы ты освоил(а), а какие стоит повторить. Во время прохождения правильные ответы не показываются — сначала спокойно закончим работу, а затем разберём результат.</p>
 
@@ -145,10 +145,14 @@ function fillGrades(){
  checkReady();
 }
 function checkReady(){
- const p=profile(),available=p.direction.id==='informatics'&&p.grade==='6';
+ const p=profile(),profileId=p.direction.id+'-'+p.grade;
+ const available=['informatics-6','informatics-7','math-6','physics-7'].includes(profileId);
+ const title='Тест-диагностика по '+p.direction.name.toLowerCase();
+ $('diagnostic-label').textContent=title+' · бесплатно';
+ document.title=title+' — Mischenko Edu';
  $('profile-note').textContent=available
- ?'Для этого профиля подготовлен пилотный набор из 15 заданий. Сейчас он открыт для внутренней проверки.'
- :'Набор для выбранного профиля ещё готовится. Сейчас можно пройти только пилот по информатике за 6 класс.';
+ ?(profileId==='informatics-6'?'Для этого профиля подготовлен пилотный набор из 15 заданий.':'Для этого профиля подготовлен черновой набор из 15 заданий; он требует педагогической проверки перед публикацией.')
+ :'Набор для выбранного профиля ещё готовится. Выбери один из доступных профилей или напиши преподавателю.';
  $('start').disabled=!available||!$('student').value.trim()||(p.direction.experience&&!$('experience').value);
 }
 function current(){return answers[index]||{answerText:'',status:'unanswered'};}
@@ -243,7 +247,8 @@ $('start').addEventListener('click',async()=>{
  const p=profile();student=$('student').value.trim();direction=p.direction.name;grade=p.grade;experience=$('experience').value;
  $('start').disabled=true;$('start').textContent='Загружаю задания…';
  try{
-  const res=await fetch('diagnostics/question-bank-informatics-6.json',{cache:'no-store'});
+  const profileId=p.direction.id+'-'+p.grade;
+  const res=await fetch('diagnostics/question-bank-'+profileId+'.json',{cache:'no-store'});
   if(!res.ok)throw new Error('Не удалось загрузить задания.');
   const data=await res.json();
   if(data.questions.length!==15)throw new Error('В наборе должно быть 15 заданий.');
