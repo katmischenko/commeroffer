@@ -1,0 +1,254 @@
+{
+  "version": "0.1.0",
+  "status": "teacher_review_draft",
+  "direction": "Информатика",
+  "class": 10,
+  "profileId": "informatics-10",
+  "sourceBasis": "Черновая тематическая матрица Mischenko Edu. Содержание требует педагогической сверки с программой и учебником соответствующего класса до публикации.",
+  "distribution": {
+    "basic": 5,
+    "medium": 7,
+    "advanced": 3
+  },
+  "questions": [
+    {
+      "id": "informatics10-01",
+      "topic": "Системы счисления",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какое число в десятичной системе соответствует 1111₂?",
+      "explanation": "1111₂ = 8 + 4 + 2 + 1 = 15.",
+      "options": [
+        "13",
+        "14",
+        "15",
+        "16"
+      ],
+      "correctIndex": 2,
+      "correctText": "15"
+    },
+    {
+      "id": "informatics10-02",
+      "topic": "Информация",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Сколько байт в 2 КиБ?",
+      "explanation": "В школьной информатике 1 КиБ = 1024 байта; 2 КиБ = 2048 байт.",
+      "options": [
+        "1000",
+        "1024",
+        "2048",
+        "2000"
+      ],
+      "correctIndex": 2,
+      "correctText": "2048"
+    },
+    {
+      "id": "informatics10-03",
+      "topic": "Алгоритмы",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какой тип алгоритма содержит условие и выбор одной из ветвей?",
+      "explanation": "Ветвление выбирает дальнейшие действия в зависимости от условия.",
+      "options": [
+        "Линейный",
+        "Разветвляющийся",
+        "Циклический",
+        "Параллельный"
+      ],
+      "correctIndex": 1,
+      "correctText": "Разветвляющийся"
+    },
+    {
+      "id": "informatics10-04",
+      "topic": "Логика",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Чему равно 1 ИЛИ 0?",
+      "explanation": "Дизъюнкция истинна, если хотя бы один операнд равен 1.",
+      "options": [
+        "0",
+        "1",
+        "Не определено",
+        "Зависит от A"
+      ],
+      "correctIndex": 1,
+      "correctText": "1"
+    },
+    {
+      "id": "informatics10-05",
+      "topic": "Таблицы",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какой знак обычно начинает формулу в электронной таблице?",
+      "explanation": "Формулы в электронных таблицах начинаются со знака равенства.",
+      "options": [
+        "#",
+        "=",
+        "@",
+        "$"
+      ],
+      "correctIndex": 1,
+      "correctText": "="
+    },
+    {
+      "id": "informatics10-06",
+      "topic": "Системы счисления",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Переведи 2F₁₆ в десятичную систему.",
+      "explanation": "2F₁₆ = 2×16 + 15 = 47.",
+      "acceptedAnswers": [
+        "47"
+      ],
+      "correctText": "47"
+    },
+    {
+      "id": "informatics10-07",
+      "topic": "Кодирование",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Для кодирования 32 различных символов минимально нужно:",
+      "explanation": "2⁵ = 32, поэтому достаточно 5 бит.",
+      "options": [
+        "4 бита",
+        "5 бит",
+        "6 бит",
+        "8 бит"
+      ],
+      "correctIndex": 1,
+      "correctText": "5 бит"
+    },
+    {
+      "id": "informatics10-08",
+      "topic": "Логика",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Чему равно выражение (A И B) ИЛИ НЕ A при A=0, B=1?",
+      "explanation": "A И B = 0; НЕ A = 1; 0 ИЛИ 1 = 1.",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "Нельзя определить"
+      ],
+      "correctIndex": 1,
+      "correctText": "1"
+    },
+    {
+      "id": "informatics10-09",
+      "topic": "Алгоритмы",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Цикл выполняется 6 раз. В каждой итерации команда увеличивает x на 3. На сколько увеличится x?",
+      "explanation": "За 6 итераций прибавится 6×3 = 18.",
+      "acceptedAnswers": [
+        "18"
+      ],
+      "correctText": "18"
+    },
+    {
+      "id": "informatics10-10",
+      "topic": "Таблицы",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Что делает абсолютная ссылка $A$1 при копировании формулы?",
+      "explanation": "Знаки $ фиксируют и столбец A, и строку 1.",
+      "options": [
+        "Меняет столбец и строку",
+        "Фиксирует столбец и строку",
+        "Фиксирует только строку",
+        "Удаляет ссылку"
+      ],
+      "correctIndex": 1,
+      "correctText": "Фиксирует столбец и строку"
+    },
+    {
+      "id": "informatics10-11",
+      "topic": "Базы данных",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какой SQL-оператор выбирает строки из таблицы?",
+      "explanation": "SELECT извлекает данные из таблицы.",
+      "options": [
+        "SELECT",
+        "UPDATE",
+        "DELETE",
+        "INSERT"
+      ],
+      "correctIndex": 0,
+      "correctText": "SELECT"
+    },
+    {
+      "id": "informatics10-12",
+      "topic": "Сети",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какое утверждение об IP-адресе верно?",
+      "explanation": "IP-адрес используется для адресации узла в сети.",
+      "options": [
+        "Это имя сайта",
+        "Это адрес устройства в сети",
+        "Это пароль Wi-Fi",
+        "Это формат изображения"
+      ],
+      "correctIndex": 1,
+      "correctText": "Это адрес устройства в сети"
+    },
+    {
+      "id": "informatics10-13",
+      "topic": "Алгоритмы",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "short",
+      "question": "Найди итог: a=2; b=5; a=a+b; b=a-b; a=a-b. Чему равно a?",
+      "explanation": "После обмена значениями a становится равным исходному b, то есть 5.",
+      "acceptedAnswers": [
+        "5"
+      ],
+      "correctText": "5"
+    },
+    {
+      "id": "informatics10-14",
+      "topic": "Логика",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "Какое выражение истинно только при разных значениях A и B?",
+      "explanation": "Исключающее ИЛИ истинно, когда операнды различаются.",
+      "options": [
+        "A И B",
+        "A ИЛИ B",
+        "A XOR B",
+        "A эквивалентно B"
+      ],
+      "correctIndex": 2,
+      "correctText": "A XOR B"
+    },
+    {
+      "id": "informatics10-15",
+      "topic": "Информация",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "short",
+      "question": "Изображение 100×80 пикселей использует 256 цветов. Сколько байт занимает несжатый файл без заголовка?",
+      "explanation": "256 цветов требуют 8 бит на пиксель. 100×80×8 бит = 80000 бит = 10000 байт.",
+      "acceptedAnswers": [
+        "8000"
+      ],
+      "correctText": "8000"
+    }
+  ]
+}
