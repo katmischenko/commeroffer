@@ -1,0 +1,254 @@
+{
+  "version": "0.1.0",
+  "status": "teacher_review_draft",
+  "direction": "Информатика",
+  "class": 9,
+  "profileId": "informatics-9",
+  "sourceBasis": "Черновая тематическая матрица Mischenko Edu. Содержание требует педагогической сверки с программой и учебником соответствующего класса до публикации.",
+  "distribution": {
+    "basic": 5,
+    "medium": 7,
+    "advanced": 3
+  },
+  "questions": [
+    {
+      "id": "informatics9-01",
+      "topic": "Системы счисления",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Как записывается число 13 в двоичной системе? ",
+      "explanation": "13 = 8 + 4 + 1, поэтому двоичная запись — 1101.",
+      "options": [
+        "1011",
+        "1101",
+        "1110",
+        "1001"
+      ],
+      "correctIndex": 1,
+      "correctText": "1101"
+    },
+    {
+      "id": "informatics9-02",
+      "topic": "Информация",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Сколько бит содержат 3 байта?",
+      "explanation": "В одном байте 8 бит: 3 × 8 = 24.",
+      "options": [
+        "8",
+        "16",
+        "24",
+        "32"
+      ],
+      "correctIndex": 2,
+      "correctText": "24"
+    },
+    {
+      "id": "informatics9-03",
+      "topic": "Алгоритмы",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Как называется алгоритм, в котором команды выполняются одна за другой?",
+      "explanation": "В линейном алгоритме команды выполняются последовательно.",
+      "options": [
+        "Циклический",
+        "Разветвляющийся",
+        "Линейный",
+        "Рекурсивный"
+      ],
+      "correctIndex": 2,
+      "correctText": "Линейный"
+    },
+    {
+      "id": "informatics9-04",
+      "topic": "Логика",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Чему равно A И НЕ A при любом значении A?",
+      "explanation": "Одновременно A и НЕ A истинными быть не могут.",
+      "options": [
+        "0",
+        "1",
+        "A",
+        "НЕ A"
+      ],
+      "correctIndex": 0,
+      "correctText": "0"
+    },
+    {
+      "id": "informatics9-05",
+      "topic": "Электронные таблицы",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какое обозначение имеет ячейка на пересечении столбца C и строки 5?",
+      "explanation": "Адрес ячейки записывают: буква столбца, затем номер строки.",
+      "options": [
+        "5C",
+        "C5",
+        "C:5",
+        "Столбец C"
+      ],
+      "correctIndex": 1,
+      "correctText": "C5"
+    },
+    {
+      "id": "informatics9-06",
+      "topic": "Системы счисления",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Переведи число 10110₂ в десятичную систему.",
+      "explanation": "10110₂ = 16 + 4 + 2 = 22.",
+      "acceptedAnswers": [
+        "22"
+      ],
+      "correctText": "22"
+    },
+    {
+      "id": "informatics9-07",
+      "topic": "Кодирование",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Алфавит содержит 16 символов. Сколько бит достаточно для кодирования одного символа?",
+      "explanation": "2⁴ = 16, значит достаточно 4 бит.",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "8"
+      ],
+      "correctIndex": 2,
+      "correctText": "4"
+    },
+    {
+      "id": "informatics9-08",
+      "topic": "Логика",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какое выражение эквивалентно НЕ (A И B)?",
+      "explanation": "По закону де Моргана отрицание конъюнкции равно дизъюнкции отрицаний.",
+      "options": [
+        "НЕ A И НЕ B",
+        "НЕ A ИЛИ НЕ B",
+        "A ИЛИ B",
+        "A И НЕ B"
+      ],
+      "correctIndex": 1,
+      "correctText": "НЕ A ИЛИ НЕ B"
+    },
+    {
+      "id": "informatics9-09",
+      "topic": "Алгоритмы",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Сколько раз выполнится тело цикла: для i от 1 до 8 включительно?",
+      "explanation": "Обе границы включены: значения 1, 2, …, 8 — всего 8 повторений.",
+      "acceptedAnswers": [
+        "8"
+      ],
+      "correctText": "8"
+    },
+    {
+      "id": "informatics9-10",
+      "topic": "Таблицы",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какая формула вычислит среднее значение диапазона B2:B6?",
+      "explanation": "AVERAGE вычисляет среднее арифметическое значений диапазона.",
+      "options": [
+        "=SUM(B2:B6)",
+        "=AVERAGE(B2:B6)",
+        "=MAX(B2:B6)",
+        "=COUNT(B2:B6)"
+      ],
+      "correctIndex": 1,
+      "correctText": "=AVERAGE(B2:B6)"
+    },
+    {
+      "id": "informatics9-11",
+      "topic": "Базы данных",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какое поле таблицы обычно используют для однозначной идентификации записи?",
+      "explanation": "Первичный ключ уникально идентифицирует каждую запись.",
+      "options": [
+        "Поле комментария",
+        "Первичный ключ",
+        "Любое текстовое поле",
+        "Поле даты"
+      ],
+      "correctIndex": 1,
+      "correctText": "Первичный ключ"
+    },
+    {
+      "id": "informatics9-12",
+      "topic": "Сети",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Для чего используется DNS?",
+      "explanation": "DNS сопоставляет доменные имена IP-адресам.",
+      "options": [
+        "Для сжатия файлов",
+        "Для преобразования доменных имён в IP-адреса",
+        "Для защиты от вирусов",
+        "Для хранения паролей"
+      ],
+      "correctIndex": 1,
+      "correctText": "Для преобразования доменных имён в IP-адреса"
+    },
+    {
+      "id": "informatics9-13",
+      "topic": "Алгоритмы",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "short",
+      "question": "Каково значение x после выполнения: x=3; x=x*2+1; x=x-4?",
+      "explanation": "Сначала x = 3×2+1 = 7, затем x = 7−4 = 3.",
+      "acceptedAnswers": [
+        "3"
+      ],
+      "correctText": "3"
+    },
+    {
+      "id": "informatics9-14",
+      "topic": "Логика",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "При каких значениях A и B выражение A ИЛИ B ложно?",
+      "explanation": "Дизъюнкция ложна только тогда, когда оба операнда ложны.",
+      "options": [
+        "Только A=0, B=1",
+        "Только A=1, B=0",
+        "A=0 и B=0",
+        "A=1 и B=1"
+      ],
+      "correctIndex": 2,
+      "correctText": "A=0 и B=0"
+    },
+    {
+      "id": "informatics9-15",
+      "topic": "Кодирование",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "short",
+      "question": "Сообщение содержит 120 символов. На символ отводится 1 байт. Каков объём сообщения в байтах?",
+      "explanation": "120 символов × 1 байт = 120 байт.",
+      "acceptedAnswers": [
+        "120"
+      ],
+      "correctText": "120"
+    }
+  ]
+}
