@@ -386,7 +386,7 @@ function finish(){
  const detailLines=report.map(({q,a,ok},i)=>{
   const userAnswer=answerLabel(q,a)||'не указан';
   const correctAnswer=q.type==='short'?q.correctText:q.options[q.correctIndex];
-  return (i+1)+'. '+q.topic+' — '+(ok?'верно':'ошибка/нет ответа')+'\\n   Ответ ученика: '+userAnswer+(ok?'':'\\n   Правильный ответ: '+correctAnswer);
+  return (i+1)+'. '+q.topic+' — '+(ok?'верно':'ошибка/нет ответа')+'\n   Ответ ученика: '+userAnswer+(ok?'':'\n   Правильный ответ: '+correctAnswer);
  }).join('\n');
  const message=[
   'Здравствуйте! Хочу обсудить результат диагностики Mischenko Edu.',
