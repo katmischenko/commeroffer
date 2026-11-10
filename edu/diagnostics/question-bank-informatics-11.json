@@ -20,12 +20,12 @@
       "question": "Чему равно 10000₂ в десятичной системе?",
       "explanation": "10000₂ = 2⁴ = 16.",
       "options": [
-        "8",
         "16",
+        "8",
         "32",
         "64"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "correctText": "16"
     },
     {
@@ -55,11 +55,11 @@
       "explanation": "Рекурсивный алгоритм содержит обращение к самому себе.",
       "options": [
         "Итеративный",
-        "Рекурсивный",
         "Линейный",
+        "Рекурсивный",
         "Случайный"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "correctText": "Рекурсивный"
     },
     {
@@ -72,11 +72,11 @@
       "explanation": "Отрицание меняет 0 на 1, а 1 на 0.",
       "options": [
         "0",
-        "1",
         "2",
-        "Не определено"
+        "Не определено",
+        "1"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "correctText": "1"
     },
     {
@@ -88,12 +88,12 @@
       "question": "Какая функция возвращает наибольшее значение диапазона?",
       "explanation": "MAX находит максимальное значение.",
       "options": [
-        "MIN",
         "MAX",
+        "MIN",
         "COUNT",
         "SUM"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "correctText": "MAX"
     },
     {
@@ -119,11 +119,11 @@
       "explanation": "2⁶ = 64 недостаточно; 2⁷ = 128 достаточно, значит ответ 7 бит.",
       "options": [
         "6",
-        "7",
         "8",
+        "7",
         "10"
       ],
-      "correctIndex": 2,
+      "correctIndex": 1,
       "correctText": "8"
     },
     {
@@ -135,12 +135,12 @@
       "question": "Какое выражение эквивалентно A ИЛИ (A И B)?",
       "explanation": "По закону поглощения A ИЛИ (A И B) = A.",
       "options": [
-        "A",
         "B",
         "A И B",
+        "A",
         "НЕ A"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "correctText": "A"
     },
     {
@@ -165,12 +165,12 @@
       "question": "Какое условие SQL оставит записи, где возраст больше 15?",
       "explanation": "WHERE задаёт условие отбора строк.",
       "options": [
-        "WHERE age > 15",
         "ORDER BY age",
         "GROUP BY age",
-        "SELECT age"
+        "SELECT age",
+        "WHERE age > 15"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "correctText": "WHERE age > 15"
     },
     {
@@ -182,12 +182,12 @@
       "question": "Какой протокол обычно используется для защищённой передачи веб-страниц?",
       "explanation": "HTTPS использует шифрование соединения TLS.",
       "options": [
-        "HTTP",
         "HTTPS",
+        "HTTP",
         "FTP",
         "SMTP"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "correctText": "HTTPS"
     },
     {
@@ -200,11 +200,11 @@
       "explanation": "В худшем случае приходится проверить все n элементов.",
       "options": [
         "O(1)",
-        "O(log n)",
         "O(n)",
+        "O(log n)",
         "O(n²)"
       ],
-      "correctIndex": 2,
+      "correctIndex": 1,
       "correctText": "O(n)"
     },
     {
@@ -230,11 +230,11 @@
       "explanation": "Для любого значения A либо A истинно, либо НЕ A истинно.",
       "options": [
         "A И НЕ A",
-        "A ИЛИ НЕ A",
         "A И B",
+        "A ИЛИ НЕ A",
         "A ИЛИ B"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "correctText": "A ИЛИ НЕ A"
     },
     {
