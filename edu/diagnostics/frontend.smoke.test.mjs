@@ -243,6 +243,18 @@ test("teacher archive: renders attempts, filters and compares two runs", async (
   assert.equal(await page.locator("#compare-view").isVisible(), true);
   assert.match(await page.locator("#compare-view").textContent(), /Сравнение попыток/);
   assert.match(await page.locator("#compare-view").textContent(), /Дроби/);
+  await page.evaluate(() => {
+    window.__printedHtml = "";
+    window.open = () => ({
+      document: {
+        write: html => { window.__printedHtml = html; },
+        close: () => {}
+      }
+    });
+  });
+  await page.locator('[data-print="0"]').click();
+  assert.match(await page.evaluate(() => window.__printedHtml), /Диагностика Mischenko Edu/);
+  assert.match(await page.evaluate(() => window.__printedHtml), /Сократи дробь 6\/8/);
   await page.close();
 });
 
