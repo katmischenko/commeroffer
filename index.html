@@ -378,6 +378,9 @@
   }
   .f-status.ok{color:#7ed1a0}
   .f-status.err{color:#ff8a7a}
+  .f-consent{display:flex;align-items:flex-start;gap:11px;margin-top:20px;color:var(--muted);font-size:13px;line-height:1.55}
+  .f-consent input{width:16px;height:16px;flex:none;margin-top:3px;accent-color:var(--marker);cursor:pointer}
+  .f-consent label{cursor:pointer}
   .f-hint{margin-top:14px;text-align:center;font-size:12.5px;color:var(--faint)}
 
   /* ---------- reveal ---------- */
@@ -785,6 +788,10 @@
             <textarea id="f-comment" name="comment" placeholder="что сейчас сложно, что уже пробовали, пожелания по расписанию…"></textarea>
           </div>
         </div>
+        <div class="f-consent">
+          <input id="f-consent" name="consent" type="checkbox" required>
+          <label for="f-consent">Подтверждаю, что согласен(на) передать указанные данные преподавателю через Telegram для связи по поводу занятий.</label>
+        </div>
         <button class="f-submit" type="submit">Подготовить сообщение в Telegram ✈</button>
         <div class="f-status" id="formStatus"></div>
         <p class="f-hint">Перед отправкой проверьте подготовленный текст. Сообщение уйдёт мне только после вашего подтверждения в Telegram.</p>
@@ -905,8 +912,8 @@
       comment: anketaForm.comment.value.trim()
     };
 
-    if(!data.student || !data.grade || !data.subject || !data.parent || !data.contact){
-      formStatus.textContent = 'заполни, пожалуйста, все обязательные поля ✎';
+    if(!data.student || !data.grade || !data.subject || !data.parent || !data.contact || !document.getElementById('f-consent').checked){
+      formStatus.textContent = 'заполни обязательные поля и подтверди передачу данных ✎';
       formStatus.classList.add('err');
       return;
     }
