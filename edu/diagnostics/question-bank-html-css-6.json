@@ -18,258 +18,258 @@
   "questions": [
     {
       "id": "htmlcss6-01",
-      "topic": "HTML",
-      "skill": "понимание",
+      "topic": "HTML-документ",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какой тег создаёт самый крупный заголовок первого уровня?",
-      "explanation": "Тег h1 обозначает заголовок первого уровня.",
+      "question": "Какой элемент задаёт название страницы, которое обычно видно на вкладке браузера?",
       "options": [
-        "<h1>",
-        "<p>",
         "<title>",
-        "<head>"
+        "<header>",
+        "<caption>",
+        "<label>"
       ],
       "correctIndex": 0,
-      "correctText": "<h1>"
+      "correctText": "<title>",
+      "explanation": "Элемент title внутри head задаёт название документа во вкладке."
     },
     {
       "id": "htmlcss6-02",
-      "topic": "HTML",
-      "skill": "понимание",
+      "topic": "HTML-атрибуты",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какой тег создаёт абзац?",
-      "explanation": "Тег p используется для абзаца текста.",
+      "question": "Какой атрибут позволяет связать элемент с уникальным идентификатором?",
       "options": [
-        "<div>",
-        "<p>",
-        "<img>",
-        "<a>"
+        "class",
+        "id",
+        "style",
+        "name"
       ],
       "correctIndex": 1,
-      "correctText": "<p>"
+      "correctText": "id",
+      "explanation": "Атрибут id задаёт уникальный идентификатор элемента в документе."
     },
     {
       "id": "htmlcss6-03",
-      "topic": "HTML",
-      "skill": "понимание",
+      "topic": "CSS-цвета",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какой атрибут img содержит путь к изображению?",
-      "explanation": "Атрибут src задаёт адрес файла изображения.",
+      "question": "Какое свойство задаёт цвет фона элемента?",
       "options": [
-        "href",
-        "src",
-        "alt",
-        "class"
+        "color",
+        "background-color",
+        "font-color",
+        "fill-text"
       ],
       "correctIndex": 1,
-      "correctText": "src"
+      "correctText": "background-color",
+      "explanation": "background-color задаёт цвет фона, а color — цвет текста."
     },
     {
       "id": "htmlcss6-04",
-      "topic": "HTML",
-      "skill": "понимание",
+      "topic": "HTML-таблицы",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какой тег создаёт ссылку?",
-      "explanation": "Для гиперссылки используется тег a с атрибутом href.",
+      "question": "Какой тег создаёт строку таблицы?",
       "options": [
-        "<a>",
-        "<link>",
-        "<url>",
-        "<href>"
+        "<td>",
+        "<th>",
+        "<tr>",
+        "<table-row>"
       ],
-      "correctIndex": 0,
-      "correctText": "<a>"
+      "correctIndex": 2,
+      "correctText": "<tr>",
+      "explanation": "Элемент tr задаёт строку таблицы; td и th создают ячейки."
     },
     {
       "id": "htmlcss6-05",
-      "topic": "CSS",
-      "skill": "понимание",
+      "topic": "CSS-размеры",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какой знак ставят перед именем класса в CSS-селекторе?",
-      "explanation": "Класс выбирают точкой, например .card.",
+      "question": "Какое свойство задаёт высоту элемента?",
       "options": [
-        "#",
-        ".",
-        "*",
-        "@"
+        "height",
+        "weight",
+        "size-y",
+        "vertical"
       ],
-      "correctIndex": 1,
-      "correctText": "."
+      "correctIndex": 0,
+      "correctText": "height",
+      "explanation": "Свойство height задаёт высоту элемента."
     },
     {
       "id": "htmlcss6-06",
-      "topic": "CSS",
-      "skill": "понимание и применение",
+      "topic": "HTML-ссылки",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Какое свойство меняет цвет текста?",
-      "explanation": "Свойство color задаёт цвет текста.",
+      "question": "Какой атрибут ссылки открывает страницу в новой вкладке?",
       "options": [
-        "background-color",
-        "font-size",
-        "color",
-        "border"
+        "target=\"_blank\"",
+        "src=\"new\"",
+        "rel=\"tab\"",
+        "href=\"_blank\""
       ],
-      "correctIndex": 2,
-      "correctText": "color"
+      "correctIndex": 0,
+      "correctText": "target=\"_blank\"",
+      "explanation": "target=\"_blank\" просит браузер открыть ссылку в новом контексте, обычно во вкладке."
     },
     {
       "id": "htmlcss6-07",
-      "topic": "CSS",
-      "skill": "понимание и применение",
+      "topic": "HTML-формы",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Как записать CSS, чтобы текст был размером 20 пикселей?",
-      "explanation": "Размер шрифта задаёт font-size.",
+      "question": "Для чего нужен элемент label рядом с полем ввода?",
       "options": [
-        "text-size:20px",
-        "font-size:20px",
-        "size:20px",
-        "font:20"
+        "Для подписи поля и связи с ним",
+        "Для отправки файла на сервер",
+        "Для изменения цвета поля",
+        "Для скрытия поля"
       ],
-      "correctIndex": 1,
-      "correctText": "font-size:20px"
+      "correctIndex": 0,
+      "correctText": "Для подписи поля и связи с ним",
+      "explanation": "label даёт понятную подпись; связь задают через for и id или вложением input."
     },
     {
       "id": "htmlcss6-08",
-      "topic": "HTML",
-      "skill": "понимание и применение",
+      "topic": "CSS-отображение",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Для чего нужен атрибут alt у изображения?",
-      "explanation": "alt помогает при недоступности изображения и используется скринридерами.",
+      "question": "Что происходит с элементом при display: none?",
       "options": [
-        "Задаёт ширину",
-        "Даёт текстовую альтернативу изображению",
-        "Создаёт ссылку",
-        "Меняет цвет"
+        "Он остаётся в потоке прозрачным",
+        "Он не отображается и не занимает место в раскладке",
+        "Он становится фиксированным",
+        "Он перемещается в конец страницы"
       ],
       "correctIndex": 1,
-      "correctText": "Даёт текстовую альтернативу изображению"
+      "correctText": "Он не отображается и не занимает место в раскладке",
+      "explanation": "display:none исключает элемент из раскладки и визуального отображения."
     },
     {
       "id": "htmlcss6-09",
-      "topic": "HTML",
-      "skill": "понимание и применение",
+      "topic": "CSS-оформление",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Какой элемент обычно содержит основное уникальное содержимое страницы?",
-      "explanation": "main обозначает основное содержимое документа.",
+      "question": "Какое свойство скругляет углы блока?",
       "options": [
-        "<main>",
-        "<footer>",
-        "<meta>",
-        "<title>"
+        "border-radius",
+        "corner-style",
+        "rounding",
+        "border-curve"
       ],
       "correctIndex": 0,
-      "correctText": "<main>"
+      "correctText": "border-radius",
+      "explanation": "border-radius задаёт радиус скругления углов."
     },
     {
       "id": "htmlcss6-10",
-      "topic": "CSS",
-      "skill": "понимание и применение",
+      "topic": "CSS-псевдоклассы",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Какое свойство задаёт внутренние отступы элемента?",
-      "explanation": "padding задаёт пространство между содержимым и границей.",
+      "question": "Что описывает селектор a:hover?",
       "options": [
-        "margin",
-        "padding",
-        "gap",
-        "outline"
+        "Ссылку, на которую наведён указатель",
+        "Посещённую ссылку",
+        "Первую ссылку в документе",
+        "Ссылку без адреса"
       ],
-      "correctIndex": 1,
-      "correctText": "padding"
+      "correctIndex": 0,
+      "correctText": "Ссылку, на которую наведён указатель",
+      "explanation": ":hover применяется, когда указатель находится над элементом."
     },
     {
       "id": "htmlcss6-11",
-      "topic": "CSS",
-      "skill": "понимание и применение",
+      "topic": "CSS-селекторы",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Как сделать текст полужирным?",
-      "explanation": "Жирность текста задаёт font-weight.",
+      "question": "Что выберет селектор p.note?",
       "options": [
-        "font-style:bold",
-        "font-weight:bold",
-        "text-weight:bold",
-        "bold:true"
+        "Все элементы с id note",
+        "Абзацы, у которых есть класс note",
+        "Все элементы note внутри p",
+        "Только первый абзац"
       ],
       "correctIndex": 1,
-      "correctText": "font-weight:bold"
+      "correctText": "Абзацы, у которых есть класс note",
+      "explanation": "Составной селектор p.note выбирает элементы p с классом note."
     },
     {
       "id": "htmlcss6-12",
-      "topic": "HTML",
-      "skill": "понимание и применение",
+      "topic": "HTML-списки",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Какой тег задаёт элемент списка с маркером?",
-      "explanation": "Каждый пункт списка размечается элементом li.",
+      "question": "Какой элемент создаёт нумерованный список?",
       "options": [
+        "<ul>",
         "<ol>",
         "<li>",
-        "<ul>",
         "<dl>"
       ],
       "correctIndex": 1,
-      "correctText": "<li>"
+      "correctText": "<ol>",
+      "explanation": "ol создаёт упорядоченный список с нумерацией."
     },
     {
       "id": "htmlcss6-13",
-      "topic": "CSS",
-      "skill": "понимание и применение",
+      "topic": "CSS-специфичность",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "advanced",
       "type": "choice",
-      "question": "Что означает box-sizing: border-box?",
-      "explanation": "При border-box заданные width и height включают содержимое, padding и border.",
+      "question": "Какое правило обычно имеет больший приоритет при сравнении обычных селекторов без !important?",
       "options": [
-        "Ширина включает padding и border",
-        "Ширина включает только текст",
-        "Границы не отображаются",
-        "Элемент становится блочным"
+        "Селектор элемента p",
+        "Селектор класса .note",
+        "Селектор идентификатора #note",
+        "У всех одинаковый приоритет"
       ],
-      "correctIndex": 0,
-      "correctText": "Ширина включает padding и border"
+      "correctIndex": 2,
+      "correctText": "Селектор идентификатора #note",
+      "explanation": "ID-селектор имеет большую специфичность, чем класс и селектор элемента."
     },
     {
       "id": "htmlcss6-14",
-      "topic": "CSS",
-      "skill": "понимание и применение",
+      "topic": "CSS-поток документа",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "advanced",
       "type": "choice",
-      "question": "Какой медиазапрос применяют для экранов шириной не более 600px?",
-      "explanation": "Условие max-width применяет правила при ширине не более 600px.",
+      "question": "Какое значение position оставляет элемент в обычном потоке, но позволяет смещать его относительно исходного места?",
       "options": [
-        "@media (max-width: 600px)",
-        "@screen 600",
-        "@media-width <600",
-        "@mobile(600px)"
+        "static",
+        "relative",
+        "fixed",
+        "absolute"
       ],
-      "correctIndex": 0,
-      "correctText": "@media (max-width: 600px)"
+      "correctIndex": 1,
+      "correctText": "relative",
+      "explanation": "relative сохраняет место элемента в потоке и позволяет задать смещение."
     },
     {
       "id": "htmlcss6-15",
-      "topic": "HTML",
-      "skill": "понимание и применение",
+      "topic": "Пути к ресурсам",
+      "skill": "понимание и применение HTML/CSS",
       "difficulty": "advanced",
       "type": "choice",
-      "question": "Почему семантические теги полезны?",
-      "explanation": "Семантика помогает браузерам, поисковым системам и вспомогательным технологиям.",
+      "question": "Страница находится в папке pages, а изображение — в соседней папке images. Какой относительный путь ведёт к photo.png?",
       "options": [
-        "Они автоматически добавляют анимацию",
-        "Они описывают роль содержимого и улучшают доступность",
-        "Они заменяют CSS",
-        "Они ускоряют интернет"
+        "images/photo.png",
+        "../images/photo.png",
+        "/pages/images/photo.png",
+        "photo/images.png"
       ],
       "correctIndex": 1,
-      "correctText": "Они описывают роль содержимого и улучшают доступность"
+      "correctText": "../images/photo.png",
+      "explanation": "Из pages нужно подняться на уровень выше и перейти в images."
     }
   ]
 }
