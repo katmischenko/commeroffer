@@ -398,20 +398,20 @@
   }
 
   /* ---------- чек-лист этапов ---------- */
-  .checklist{max-width:760px}
+  .checklist{max-width:900px}
   .check{
-    display:flex;gap:22px;align-items:flex-start;
-    padding:26px 6px;border-bottom:1px solid var(--line);
+    display:flex;gap:24px;align-items:flex-start;
+    padding:28px 8px;border-bottom:1px solid var(--line);
   }
   .box{
-    flex:none;width:34px;height:34px;border:2px solid rgba(234,231,223,.3);border-radius:9px;
+    flex:none;width:42px;height:42px;border:1px solid rgba(255,157,69,.42);border-radius:12px;
     display:grid;place-items:center;margin-top:2px;
-    font-family:var(--hand);font-weight:700;font-size:26px;color:var(--marker);
-    transform:rotate(-2deg);
+    font-family:var(--hand);font-weight:700;font-size:22px;color:var(--marker);
+    background:rgba(255,157,69,.07);transform:rotate(-2deg);
   }
-  .check h4{font-size:clamp(18px,2vw,21px);font-weight:800}
+  .check h4{font-size:clamp(18px,2vw,21px);font-weight:800;line-height:1.4}
   .check h4 .hand{color:var(--pen);font-size:22px;font-weight:600;margin-left:10px}
-  .check p{color:var(--muted);font-size:15px;margin-top:6px;max-width:56ch}
+  .check p{color:var(--muted);font-size:15px;line-height:1.75;margin-top:8px;max-width:70ch}
 
   /* ---------- отзывы-записочки ---------- */
   .pins{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
@@ -773,36 +773,36 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div class="sec-index">стр. 03 — как занимаемся</div>
-        <h2 class="sec-title">План занятий — <span class="u">чек-лист</span></h2>
-        <p class="sec-sub">Каждое занятие — часть общей системы, а не случайный набор задач. Вот как мы идём к цели:</p>
+        <h2 class="sec-title">Не по шаблону — <span class="u">а под тебя</span></h2>
+        <p class="sec-sub">У каждого свой темп, свои вопросы и свои сложные места. Поэтому я не веду всех по одной дорожке: сначала разбираюсь, что нужно именно тебе, а дальше выстраиваю обучение и меняю его по ходу дела.</p>
       </div>
       <div class="checklist">
         <div class="check reveal">
-          <div class="box">✓</div>
+          <div class="box">01</div>
           <div>
-            <h4>01. Диагностика<span class="hand">← начинаем здесь</span></h4>
-            <p>Определяем уровень, сильные стороны, пробелы и цель. Честно смотрим, где мы сейчас.</p>
+            <h4>Сначала знакомимся и разбираемся<span class="hand">← точка старта</span></h4>
+            <p>Выясняем, к чему ты хочешь прийти и что уже умеешь. Смотрим, какие темы понятны, где появились пробелы и как ты обычно подходишь к задачам. Мне важно увидеть не только результат, но и ход твоих мыслей.</p>
           </div>
         </div>
         <div class="check reveal">
-          <div class="box">✓</div>
+          <div class="box">02</div>
           <div>
-            <h4>02. Личный план</h4>
-            <p>Составляем последовательность тем и практики конкретно под тебя — никаких шаблонов «для всех».</p>
+            <h4>Собираем твой маршрут</h4>
+            <p>Определяем, что изучать сначала, что можно проходить быстрее, а чему стоит уделить больше времени. Подбираю задания и материалы под цель и уровень — чтобы двигаться последовательно, а не хвататься за всё сразу.</p>
           </div>
         </div>
         <div class="check reveal">
-          <div class="box">✓</div>
+          <div class="box">03</div>
           <div>
-            <h4>03. Решаем и разбираем</h4>
-            <p>Объясняю, решаем вместе, разбираем ошибки и возвращаемся к сложным местам столько раз, сколько нужно.</p>
+            <h4>Пробуем, задаём вопросы, ищем решение</h4>
+            <p>Я объясняю тему понятным языком, мы решаем задачи и проверяем разные способы. Если что-то не получается — не прячем ошибку под ковёр: разбираемся, почему она возникла, и пробуем ещё раз. Именно так постепенно появляется самостоятельность.</p>
           </div>
         </div>
         <div class="check reveal">
-          <div class="box">✓</div>
+          <div class="box">04</div>
           <div>
-            <h4>04. Закрепляем результат</h4>
-            <p>Проверяем, что ты реально можешь применить знания сам. Вот это и есть результат.</p>
+            <h4>Смотрим, что уже получается</h4>
+            <p>Проверяем не только, запомнил ли ты правило, а можешь ли применить его без подсказки и объяснить ход решения. Если тема ещё держится неуверенно — возвращаемся к ней. Если всё получается — идём дальше и обновляем маршрут.</p>
           </div>
         </div>
       </div>
