@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Рабочие тетради-комиксы — Mischenko Edu</title>
+<meta name="description" content="Учебный материал в формате сюжетного комикса: герои, история и домашнее задание в конце каждой темы.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="edu.css">
+<style>
+  .comic{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}
+  @media(max-width:640px){.comic{grid-template-columns:1fr}}
+  .frame{
+    border:2px solid rgba(234,231,223,.25);border-radius:14px;padding:22px;
+    background:var(--paper-2);min-height:150px;position:relative;
+    display:flex;flex-direction:column;justify-content:flex-end;gap:8px;
+  }
+  .frame:nth-child(1){transform:rotate(-.6deg)}
+  .frame:nth-child(2){transform:rotate(.5deg)}
+  .frame:nth-child(3){transform:rotate(.4deg)}
+  .frame:nth-child(4){transform:rotate(-.5deg)}
+  .frame .bubble{
+    background:var(--paper);border:1.5px solid rgba(234,231,223,.3);border-radius:16px 16px 16px 4px;
+    padding:12px 16px;font-size:14.5px;color:var(--ink);max-width:90%;
+  }
+  .frame .bubble.hero-b{align-self:flex-end;border-radius:16px 16px 4px 16px;border-color:rgba(255,157,69,.5)}
+  .frame .who{font-family:var(--hand);font-weight:700;font-size:19px;color:var(--pen)}
+  .frame .scene{font-family:var(--hand);font-weight:600;font-size:17px;color:var(--faint)}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a class="logo" href="index.html"><span class="hand">Mischenko Edu</span><small>библиотека · пособий</small></a>
+    <div class="nav-right">
+      <a class="nav-link" href="index.html">← в библиотеку</a>
+      <a class="nav-cta" href="https://t.me/" target="_blank" rel="noopener">Написать мне</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap page">
+    <a class="back" href="index.html">← назад к полкам</a>
+    <span class="sec-index">тетради-комиксы · статус: в работе</span>
+    <h1>Учебные темы, которые <span class="hl">читаются</span> как комикс</h1>
+    <p class="hero-sub">Рабочая тетрадь, где теория рассказана сюжетом: герои попадают в истории, а информатика помогает из них выбираться. В конце каждой темы — домашнее задание на закрепление. Учишься — и не замечаешь, как дошёл до конца.</p>
+
+    <div class="note-box reveal">
+      <h3>Как устроена каждая тема</h3>
+      <ul>
+        <li>сюжет: герои и история, в которую вплетена тема</li>
+        <li>теория простым языком — прямо в диалогах героев</li>
+        <li>разбор типичной ошибки («вот тут герой чуть не попал в ловушку»)</li>
+        <li>домашнее задание на закрепление + ответы в конце тетради</li>
+      </ul>
+    </div>
+
+    <p class="sec-sub reveal" style="margin-top:34px">А вот как это будет выглядеть — первый кадр из тетради «Системы счисления»:</p>
+    <div class="comic">
+      <div class="frame reveal">
+        <span class="scene">кадр 1 · школьный коридор</span>
+        <span class="who">Мия:</span>
+        <div class="bubble">Тим, смотри: на двери кабинета код 1011. Это вообще число или пароль?</div>
+      </div>
+      <div class="frame reveal">
+        <span class="scene">кадр 2</span>
+        <span class="who">Тим:</span>
+        <div class="bubble hero-b">И то, и другое! Это двоичная запись. Компьютеры только так и считают.</div>
+      </div>
+      <div class="frame reveal">
+        <span class="scene">кадр 3</span>
+        <span class="who">Мия:</span>
+        <div class="bubble">А сколько это по-нашему?</div>
+      </div>
+      <div class="frame reveal">
+        <span class="scene">кадр 4</span>
+        <span class="who">Тим:</span>
+        <div class="bubble hero-b">1·8 + 0·4 + 1·2 + 1 = 11. Кстати, вспомни escape room в библиотеке — там такой же замок 😉</div>
+      </div>
+    </div>
+
+    <div class="note-box reveal" style="margin-top:34px">
+      <h3>Статус и как получить первый выпуск</h3>
+      <p>Первая тетрадь — «Системы счисления» — сейчас в работе. Напиши мне слово «КОМИКС» — сообщу, как только выпуск будет готов, и расскажу про доступ для учеников.</p>
+      <div style="margin-top:18px"><a class="btn btn-pen" href="https://t.me/" target="_blank" rel="noopener">Написать «КОМИКС» ✈</a></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <small>© 2026 Mischenko Edu</small>
+    <span class="hand">учёба как приключение ✎</span>
+    <div class="foot-links">
+      <a href="../index.html">Сайт репетитора</a>
+      <a href="https://t.me/" target="_blank" rel="noopener">Telegram</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+</body>
+</html>

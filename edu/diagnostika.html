@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тест-диагностика по информатике — Mischenko Edu</title>
+<meta name="description" content="Бесплатная диагностика по информатике: 8 вопросов, разбор пробелов и план, что подтянуть.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="edu.css">
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a class="logo" href="index.html"><span class="hand">Mischenko Edu</span><small>библиотека · пособий</small></a>
+    <div class="nav-right">
+      <a class="nav-link" href="index.html">← в библиотеку</a>
+      <a class="nav-cta" href="https://t.me/" target="_blank" rel="noopener">Написать мне</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap page">
+    <a class="back" href="index.html">← назад к полкам</a>
+    <span class="sec-index">тренажёр · бесплатно</span>
+    <h1>Тест-диагностика по <span class="hl">информатике</span></h1>
+    <p class="hero-sub">8 вопросов по ключевым темам школьной программы. В конце — честный результат, список тем, которые хромают, и мой совет, с чего начать. Отвечай как знаешь: ошибаться тут не страшно, страшно — не знать, где пробел 😉</p>
+
+    <div class="quiz" id="quiz">
+      <div class="q-progress"><i id="qbar"></i></div>
+      <div id="qbody"></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <small>© 2026 Mischenko Edu</small>
+    <span class="hand">ошибка — это подсказка ✎</span>
+    <div class="foot-links">
+      <a href="../index.html">Сайт репетитора</a>
+      <a href="https://t.me/" target="_blank" rel="noopener">Telegram</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var QUESTIONS = [
+    {topic:'Системы счисления', q:'Переведи число <code>101101</code> из двоичной системы в десятичную.',
+     opts:['43','45','46','51'], right:1, why:'1·32 + 0·16 + 1·8 + 1·4 + 0·2 + 1 = 45'},
+    {topic:'Логика', q:'Для какого значения X выражение <code>(X > 5) И (X < 10)</code> будет истинным?',
+     opts:['3','5','7','10'], right:2, why:'Только 7 больше 5 И меньше 10 одновременно'},
+    {topic:'Алгоритмы', q:'Что выведет программа?<br><code>s = 0<br>for i in range(1, 5):<br>&nbsp;&nbsp;s = s + i<br>print(s)</code>',
+     opts:['4','10','15','24'], right:1, why:'1 + 2 + 3 + 4 = 10'},
+    {topic:'Информация и память', q:'Сколько байт в <code>2 Кбайт</code>?',
+     opts:['200','1000','1024','2048'], right:3, why:'1 Кбайт = 1024 байта, значит 2 Кбайт = 2048'},
+    {topic:'Системы счисления', q:'Как записывается число <code>10</code> (десятичное) в шестнадцатеричной системе?',
+     opts:['A','B','10','F'], right:0, why:'В шестнадцатеричной: 10 = A, 11 = B, … 15 = F'},
+    {topic:'Логика', q:'Выражение <code>НЕ (А ИЛИ Б)</code> равносильно…',
+     opts:['НЕ А ИЛИ НЕ Б','НЕ А И НЕ Б','А И Б','НЕ А И Б'], right:1, why:'Закон де Моргана: НЕ(А ИЛИ Б) = НЕ А И НЕ Б'},
+    {topic:'Алгоритмы', q:'Исполнителю дан алгоритм: <code>повтори 3 раза: сдвинься на 2 вправо</code>. На сколько клеток он сдвинется?',
+     opts:['5','6','9','3'], right:1, why:'3 × 2 = 6 клеток'},
+    {topic:'Информация и память', q:'Изображение 100×100 пикселей, каждый пиксель — 1 байт. Сколько памяти оно займёт?',
+     opts:['100 байт','1 Кбайт','10 000 байт','1 Мбайт'], right:2, why:'100 × 100 × 1 = 10 000 байт'}
+  ];
+
+  var i = 0, score = 0, weak = [];
+  var qbar = document.getElementById('qbar');
+  var qbody = document.getElementById('qbody');
+
+  function renderQ(){
+    var q = QUESTIONS[i];
+    qbar.style.width = (i / QUESTIONS.length * 100) + '%';
+    var html = '<div class="q-count">вопрос ' + (i+1) + ' из ' + QUESTIONS.length + ' · тема: ' + q.topic + '</div>' +
+               '<div class="q-text">' + q.q + '</div>' +
+               '<div class="q-opts">';
+    q.opts.forEach(function(opt, idx){
+      html += '<button class="q-opt" data-i="' + idx + '">' + opt + '</button>';
+    });
+    html += '</div><div class="sim-log" id="why" style="display:none"></div>';
+    qbody.innerHTML = html;
+
+    qbody.querySelectorAll('.q-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var chosen = +btn.dataset.i;
+        var ok = chosen === q.right;
+        if(ok) score++; else weak.push(q.topic);
+        qbody.querySelectorAll('.q-opt').forEach(function(b, bi){
+          b.disabled = true;
+          if(bi === q.right) b.classList.add('right');
+          else if(bi === chosen) b.classList.add('wrong');
+        });
+        var why = document.getElementById('why');
+        why.style.display = 'block';
+        why.innerHTML = (ok ? '<b>Верно!</b> ' : '<b>Разбор:</b> ') + q.why +
+          '<div style="margin-top:14px"><button class="btn btn-pen" id="next" style="padding:10px 24px;font-size:14px">' +
+          (i + 1 < QUESTIONS.length ? 'Дальше →' : 'К результату →') + '</button></div>';
+        document.getElementById('next').addEventListener('click', function(){
+          i++;
+          if(i < QUESTIONS.length) renderQ(); else renderResult();
+        });
+      });
+    });
+  }
+
+  function renderResult(){
+    qbar.style.width = '100%';
+    var uniq = [];
+    weak.forEach(function(t){ if(uniq.indexOf(t) === -1) uniq.push(t); });
+    var msg, emoji;
+    if(score >= 7){ msg = 'Отличная база! Осталось отточить детали — и можно целиться в высокий балл.'; emoji = '🏆'; }
+    else if(score >= 5){ msg = 'Хорошая основа, но есть дырки. Их видно — значит, их можно закрыть.'; emoji = '💪'; }
+    else if(score >= 3){ msg = 'База есть, но темы путаются. Это нормально — главное, теперь мы знаем, что чинить.'; emoji = '🌱'; }
+    else { msg = 'Пока сложно — но это просто точка старта. Система работает: идём от этих тем вверх.'; emoji = '🚀'; }
+
+    var html = '<div class="q-result">' +
+      '<div class="big">' + emoji + ' ' + score + ' из ' + QUESTIONS.length + '</div>' +
+      '<p>' + msg + '</p>';
+    if(uniq.length){
+      html += '<ul class="q-topics">' + '<div class="q-count" style="text-align:left">стоит подтянуть:</div>';
+      uniq.forEach(function(t){ html += '<li>' + t + '</li>'; });
+      html += '</ul>';
+    } else {
+      html += '<p class="hand" style="color:var(--pen);font-size:24px">ни одного пробела — так держать!</p>';
+    }
+    html += '<p>Хочешь разобрать эти темы со мной? Напиши — пришлю план под твой результат.</p>' +
+      '<div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">' +
+      '<a class="btn btn-marker" href="https://t.me/" target="_blank" rel="noopener">Отправить результат Катерине ✈</a>' +
+      '<button class="btn btn-ghost" onclick="location.reload()">Пройти ещё раз</button>' +
+      '</div></div>';
+    qbody.innerHTML = html;
+  }
+
+  renderQ();
+</script>
+</body>
+</html>

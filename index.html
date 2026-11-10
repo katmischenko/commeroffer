@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Катерина Мищенко — репетитор. Учимся понимать, а не зубрить</title>
+<meta name="description" content="Информатика, математика, физика и программирование онлайн, 1:1. Открытая тетрадь репетитора: система, практика и результат без зубрёжки.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#141416;
+    --paper-2:#1a1a1e;
+    --line:rgba(234,231,223,.08);
+    --ink:#eae7df;
+    --muted:#a3a099;
+    --faint:#6f6d66;
+    --marker:#ff9d45;              /* оранжевый маркер — как в конспекте */
+    --marker-soft:rgba(255,157,69,.14);
+    --pen:#8ec9ff;                 /* синяя ручка */
+    --hand:'Caveat',cursive;
+    --body:'Manrope',sans-serif;
+    --r:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:17px;line-height:1.65;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    /* тетрадь в клеточку */
+    background-image:
+      linear-gradient(rgba(234,231,223,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(234,231,223,.045) 1px, transparent 1px);
+    background-size:34px 34px;
+  }
+  ::selection{background:var(--marker);color:#141416}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;position:relative}
+
+  /* ---------- рукописные элементы ---------- */
+  .hand{font-family:var(--hand);font-weight:600}
+  .hl{ /* маркерное выделение */
+    background:linear-gradient(100deg, transparent 0%, var(--marker-soft) 4%, var(--marker-soft) 96%, transparent 100%);
+    box-shadow:0 0 0 4px var(--marker-soft);
+    border-radius:4px;
+    color:var(--marker);
+    padding:0 2px;
+  }
+  .u{ /* подчёркивание ручкой */
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='8' viewBox='0 0 60 8'%3E%3Cpath d='M2 5 Q 16 2 30 5 T 58 4' fill='none' stroke='%238ec9ff' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") bottom left repeat-x;
+    background-size:auto 8px;
+    padding-bottom:6px;
+  }
+
+  /* ---------- header ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    background:rgba(20,20,22,.78);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px;max-width:1120px;margin:0 auto;padding:0 24px}
+  .logo{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:var(--ink)}
+  .logo .hand{font-size:26px;color:var(--marker)}
+  .logo small{font-size:11px;letter-spacing:.18em;color:var(--faint);text-transform:uppercase}
+  .nav-links{display:flex;gap:26px;list-style:none}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:14.5px;font-weight:600;transition:color .2s}
+  .nav-links a:hover{color:var(--marker)}
+  .nav-cta{
+    font-weight:800;font-size:14px;text-decoration:none;
+    background:var(--marker);color:#1d1305;border-radius:100px;padding:10px 20px;
+    transition:transform .25s,box-shadow .25s;
+  }
+  .nav-cta:hover{transform:translateY(-2px) rotate(-1deg);box-shadow:0 10px 30px rgba(255,157,69,.3)}
+  @media(max-width:860px){.nav-links{display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:120px 0 70px;position:relative}
+  .hero-meta{
+    display:inline-flex;align-items:center;gap:12px;margin-bottom:30px;width:fit-content;
+    font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+    border:1px dashed rgba(234,231,223,.25);border-radius:100px;padding:8px 18px;
+  }
+  .hero-meta i{width:7px;height:7px;border-radius:50%;background:var(--marker);animation:pulse 2.2s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,157,69,.5)}55%{box-shadow:0 0 0 9px rgba(255,157,69,0)}}
+  h1{
+    font-weight:800;font-size:clamp(38px,7vw,84px);line-height:1.04;letter-spacing:-.02em;max-width:15ch;
+  }
+  .hero-hand{
+    font-family:var(--hand);font-weight:600;color:var(--pen);
+    font-size:clamp(24px,3.4vw,40px);transform:rotate(-2deg);display:inline-block;margin-left:14px;
+  }
+  .hero-sub{margin-top:30px;max-width:54ch;color:var(--muted);font-size:clamp(16px,1.7vw,19px)}
+  .hero-sub b{color:var(--ink)}
+  .hero-actions{display:flex;gap:16px;margin-top:44px;flex-wrap:wrap;align-items:center}
+  .btn{
+    font-weight:800;font-size:15.5px;text-decoration:none;border-radius:100px;padding:16px 32px;
+    display:inline-flex;align-items:center;gap:10px;cursor:pointer;border:0;
+    transition:transform .25s,box-shadow .25s,border-color .25s;
+  }
+  .btn-marker{background:var(--marker);color:#1d1305}
+  .btn-marker:hover{transform:translateY(-3px) rotate(-1.2deg);box-shadow:0 14px 40px rgba(255,157,69,.32)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid rgba(234,231,223,.25)}
+  .btn-ghost:hover{border-color:var(--ink);transform:translateY(-3px)}
+  .hero-note{
+    margin-top:56px;display:flex;gap:clamp(20px,4vw,60px);flex-wrap:wrap;
+  }
+  .hstat b{font-size:clamp(26px,3vw,36px);font-weight:800;display:block}
+  .hstat b em{color:var(--marker);font-style:normal}
+  .hstat span{font-size:13px;color:var(--faint)}
+  .doodle-arrow{position:absolute;pointer-events:none;color:var(--pen);opacity:.85}
+  @media(max-width:700px){.doodle-arrow{display:none}}
+
+  /* ---------- разделитель-линовка ---------- */
+  .divider{border:0;border-top:1px solid var(--line);margin:0}
+
+  /* ---------- sections ---------- */
+  section{padding:96px 0}
+  .sec-head{margin-bottom:52px}
+  .sec-index{
+    font-family:var(--hand);font-weight:600;font-size:clamp(20px,2.4vw,26px);
+    color:var(--pen);transform:rotate(-1.5deg);display:inline-block;margin-bottom:6px;
+  }
+  .sec-title{font-weight:800;font-size:clamp(30px,4.6vw,54px);line-height:1.08;letter-spacing:-.015em}
+  .sec-sub{margin-top:16px;color:var(--muted);max-width:52ch}
+
+  /* ---------- about ---------- */
+  .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:start}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr}}
+  .about-text .lead{color:var(--ink);font-size:clamp(19px,2vw,23px);font-weight:600;line-height:1.5;margin-bottom:26px}
+  .about-text p{color:var(--muted);margin-bottom:18px}
+  .about-text p b{color:var(--ink)}
+  .margin-note{
+    font-family:var(--hand);font-weight:600;color:var(--pen);font-size:22px;
+    transform:rotate(-1.5deg);display:inline-block;margin:8px 0 20px;
+  }
+  .photo-frame{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:var(--r);
+    padding:18px 18px 22px;transform:rotate(1.6deg);position:relative;
+    box-shadow:0 24px 60px rgba(0,0,0,.35);
+  }
+  .photo-frame::before{ /* кусочек скотча */
+    content:"";position:absolute;top:-14px;left:50%;transform:translateX(-50%) rotate(-3deg);
+    width:110px;height:30px;background:rgba(234,231,223,.16);border-radius:2px;
+    backdrop-filter:blur(2px);
+  }
+  .photo-img{
+    width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top;
+    border-radius:10px;display:block;
+  }
+  .photo-cap{text-align:center;margin-top:14px;font-family:var(--hand);font-size:22px;color:var(--muted)}
+
+  /* ---------- стикеры-направления ---------- */
+  .notes{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+  @media(max-width:760px){.notes{grid-template-columns:1fr}}
+  .note{
+    position:relative;border-radius:6px 22px 6px 22px;
+    padding:34px 32px 30px;
+    transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;
+  }
+  .note:hover{transform:translateY(-6px) rotate(0deg) scale(1.01)!important;box-shadow:0 30px 60px rgba(0,0,0,.45);z-index:2}
+  .note::before{ /* скотч */
+    content:"";position:absolute;top:-13px;left:34px;width:90px;height:26px;
+    background:rgba(234,231,223,.15);border-radius:2px;transform:rotate(-4deg);
+  }
+  .n-1{background:#1d1a15;transform:rotate(-1.2deg);border:1px solid rgba(255,157,69,.3)}
+  .n-2{background:#161b1f;transform:rotate(1deg);border:1px solid rgba(142,201,255,.28)}
+  .n-3{background:#1c171f;transform:rotate(.8deg);border:1px solid rgba(196,158,255,.26)}
+  .n-4{background:#141d17;transform:rotate(-.9deg);border:1px solid rgba(126,217,160,.26)}
+  .note .idx{font-family:var(--hand);font-weight:700;font-size:24px;color:var(--muted)}
+  .note h3{font-size:clamp(21px,2.4vw,26px);font-weight:800;margin:10px 0 10px}
+  .note>p{color:var(--muted);font-size:15px}
+  .note ul{list-style:none;margin-top:18px}
+  .note li{
+    padding:8px 0;font-size:14.5px;color:var(--muted);
+    display:flex;gap:12px;align-items:flex-start;
+    border-top:1px dashed rgba(234,231,223,.12);
+  }
+  .note li::before{
+    content:"✓";font-family:var(--hand);font-weight:700;font-size:19px;line-height:1.1;color:var(--marker);flex:none;
+  }
+  .n-2 li::before{color:var(--pen)}
+  .n-3 li::before{color:#c49eff}
+  .n-4 li::before{color:#7ed1a0}
+  .note .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+  .note .tag{font-size:12px;font-weight:700;border-radius:100px;padding:5px 13px;border:1px solid rgba(234,231,223,.18);color:var(--ink)}
+
+  /* ---------- чек-лист этапов ---------- */
+  .checklist{max-width:760px}
+  .check{
+    display:flex;gap:22px;align-items:flex-start;
+    padding:26px 6px;border-bottom:1px solid var(--line);
+  }
+  .box{
+    flex:none;width:34px;height:34px;border:2px solid rgba(234,231,223,.3);border-radius:9px;
+    display:grid;place-items:center;margin-top:2px;
+    font-family:var(--hand);font-weight:700;font-size:26px;color:var(--marker);
+    transform:rotate(-2deg);
+  }
+  .check h4{font-size:clamp(18px,2vw,21px);font-weight:800}
+  .check h4 .hand{color:var(--pen);font-size:22px;font-weight:600;margin-left:10px}
+  .check p{color:var(--muted);font-size:15px;margin-top:6px;max-width:56ch}
+
+  /* ---------- отзывы-записочки ---------- */
+  .pins{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  @media(max-width:900px){.pins{grid-template-columns:1fr}}
+  .pin{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:4px 18px 4px 18px;
+    padding:28px;position:relative;
+    box-shadow:0 18px 44px rgba(0,0,0,.35);
+    transition:transform .3s;
+  }
+  .pin:nth-child(1){transform:rotate(-1.1deg)}
+  .pin:nth-child(2){transform:rotate(.9deg)}
+  .pin:nth-child(3){transform:rotate(-.7deg)}
+  .pin:hover{transform:rotate(0) translateY(-5px)}
+  .pin::after{ /* кнопка-канцелярия */
+    content:"";position:absolute;top:-9px;left:50%;transform:translateX(-50%);
+    width:16px;height:16px;border-radius:50%;
+    background:radial-gradient(circle at 35% 35%, #ffd9ae, var(--marker) 60%);
+    box-shadow:0 3px 6px rgba(0,0,0,.5);
+  }
+  .pin .q{font-size:15.5px;line-height:1.7}
+  .pin .q b{color:var(--marker);font-weight:700}
+  .pin .who{margin-top:20px;font-family:var(--hand);font-weight:600;font-size:21px;color:var(--pen)}
+  .pin .who small{display:block;font-family:var(--body);font-size:12.5px;color:var(--faint);margin-top:2px}
+
+  /* ---------- edu-разворот ---------- */
+  .edu{
+    position:relative;border-radius:24px;overflow:hidden;
+    border:1px dashed rgba(255,157,69,.4);
+    background:
+      linear-gradient(rgba(234,231,223,.04) 1px, transparent 1px) 0 0/100% 30px,
+      var(--paper-2);
+    padding:clamp(36px,6vw,68px);
+  }
+  .edu .hand-title{font-family:var(--hand);font-weight:700;font-size:clamp(34px,5vw,56px);color:var(--marker);transform:rotate(-1.4deg);display:inline-block}
+  .edu p{color:var(--muted);margin-top:18px;max-width:52ch}
+  .edu .pills{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 34px}
+  .edu .pill{font-size:13px;font-weight:700;border:1px solid rgba(234,231,223,.2);border-radius:100px;padding:8px 18px}
+  .edu .soon{font-family:var(--hand);font-size:22px;color:var(--pen);margin-top:16px;transform:rotate(-1deg);display:inline-block}
+
+  /* ---------- FAQ ---------- */
+  .faq{max-width:760px;margin:0 auto}
+  .faq-item{border-bottom:1px solid var(--line)}
+  .faq-q{
+    width:100%;background:none;border:0;color:var(--ink);cursor:pointer;
+    display:flex;justify-content:space-between;align-items:center;gap:20px;
+    padding:24px 4px;text-align:left;font-family:var(--body);
+    font-size:clamp(16px,1.9vw,19px);font-weight:700;transition:color .2s;
+  }
+  .faq-q:hover{color:var(--marker)}
+  .faq-q .pm{
+    flex:none;font-family:var(--hand);font-weight:700;font-size:30px;color:var(--marker);
+    transition:transform .3s;line-height:1;
+  }
+  .faq-item[data-open="true"] .pm{transform:rotate(45deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.2,.8,.2,1)}
+  .faq-a p{padding:0 4px 24px;color:var(--muted);max-width:62ch}
+  .faq-a p::before{content:"— ";color:var(--pen)}
+
+  /* ---------- финальный CTA ---------- */
+  .cta-final{text-align:center;padding:120px 0;position:relative}
+  .cta-final .hand-top{font-family:var(--hand);font-weight:600;font-size:clamp(24px,3vw,32px);color:var(--pen);transform:rotate(-2deg);display:inline-block;margin-bottom:14px}
+  .cta-final h2{font-weight:800;font-size:clamp(32px,5.6vw,66px);line-height:1.06;letter-spacing:-.015em}
+  .cta-final p{color:var(--muted);margin:22px auto 42px;max-width:46ch}
+
+  footer{border-top:1px solid var(--line);padding:40px 0}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+  .foot small{color:var(--faint);font-size:13px}
+  .foot .hand{font-size:20px;color:var(--muted)}
+  .foot-links{display:flex;gap:22px}
+  .foot-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600}
+  .foot-links a:hover{color:var(--marker)}
+
+  /* ---------- прайс-стикеры ---------- */
+  .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  @media(max-width:900px){.prices{grid-template-columns:1fr}}
+  .price{
+    position:relative;border-radius:6px 22px 6px 22px;padding:34px 30px 30px;
+    background:var(--paper-2);border:1px solid var(--line);
+    box-shadow:0 18px 44px rgba(0,0,0,.3);
+    transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s;
+  }
+  .price:hover{transform:rotate(0) translateY(-6px)!important;border-color:rgba(255,157,69,.4)}
+  .price::before{content:"";position:absolute;top:-13px;right:34px;width:80px;height:26px;background:rgba(234,231,223,.15);border-radius:2px;transform:rotate(5deg)}
+  .p-1{transform:rotate(-1deg)}
+  .p-2{transform:rotate(.8deg);border-color:rgba(255,157,69,.35)}
+  .p-3{transform:rotate(-.8deg)}
+  .price .hand-idx{font-family:var(--hand);font-weight:700;font-size:22px;color:var(--pen)}
+  .price h3{font-size:21px;font-weight:800;margin:12px 0 8px}
+  .price .main{font-family:var(--hand);font-weight:700;font-size:30px;color:var(--marker);line-height:1.15;margin:10px 0 14px}
+  .price ul{list-style:none;margin-top:6px}
+  .price li{padding:7px 0;font-size:14.5px;color:var(--muted);display:flex;gap:12px;border-top:1px dashed rgba(234,231,223,.12)}
+  .price li::before{content:"✓";font-family:var(--hand);font-weight:700;font-size:18px;line-height:1.2;color:var(--marker);flex:none}
+  .price-note{
+    margin-top:30px;text-align:center;
+    font-family:var(--hand);font-weight:600;font-size:23px;color:var(--pen);
+    transform:rotate(-1.2deg);
+  }
+
+  /* ---------- анкета ---------- */
+  .anketa{
+    max-width:720px;margin:0 auto;
+    background:var(--paper-2);border:1px dashed rgba(255,157,69,.4);border-radius:24px;
+    padding:clamp(28px,4vw,48px);position:relative;
+  }
+  .anketa::before{content:"";position:absolute;top:-14px;left:50%;transform:translateX(-50%) rotate(-2deg);width:130px;height:30px;background:rgba(234,231,223,.16);border-radius:2px}
+  .anketa .hand-title{font-family:var(--hand);font-weight:700;font-size:clamp(26px,3.4vw,34px);color:var(--marker);display:block;text-align:center}
+  .anketa .sub{text-align:center;color:var(--muted);font-size:14.5px;margin:10px 0 30px}
+  .f-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:640px){.f-grid{grid-template-columns:1fr}}
+  .f-field{display:flex;flex-direction:column;gap:7px}
+  .f-field.full{grid-column:1/-1}
+  .f-field label{font-family:var(--hand);font-weight:600;font-size:20px;color:var(--pen)}
+  .f-field input,.f-field select,.f-field textarea{
+    font-family:var(--body);font-size:15px;color:var(--ink);
+    background:var(--paper);border:1px solid rgba(234,231,223,.18);border-radius:12px;
+    padding:13px 16px;outline:none;transition:border-color .25s;
+  }
+  .f-field input:focus,.f-field select:focus,.f-field textarea:focus{border-color:var(--marker)}
+  .f-field textarea{resize:vertical;min-height:80px}
+  .f-submit{
+    margin-top:26px;width:100%;
+    font-weight:800;font-size:16px;border:0;border-radius:100px;cursor:pointer;
+    background:var(--marker);color:#1d1305;padding:17px;
+    transition:transform .25s,box-shadow .25s;
+  }
+  .f-submit:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(255,157,69,.3)}
+  .f-status{
+    margin-top:18px;text-align:center;font-family:var(--hand);font-weight:600;font-size:21px;
+    min-height:26px;color:var(--pen);
+  }
+  .f-status.ok{color:#7ed1a0}
+  .f-status.err{color:#ff8a7a}
+  .f-hint{margin-top:14px;text-align:center;font-size:12.5px;color:var(--faint)}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .note.reveal.in{transform:rotate(-1.2deg)} /* сохраняем наклоны стикеров */
+  .n-2.reveal.in{transform:rotate(1deg)}
+  .n-3.reveal.in{transform:rotate(.8deg)}
+  .n-4.reveal.in{transform:rotate(-.9deg)}
+  .pin.reveal.in:nth-child(1){transform:rotate(-1.1deg)}
+  .pin.reveal.in:nth-child(2){transform:rotate(.9deg)}
+  .pin.reveal.in:nth-child(3){transform:rotate(-.7deg)}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a class="logo" href="#top"><span class="hand">Катерина Мищенко</span><small>тетрадь · репетитора</small></a>
+    <ul class="nav-links">
+      <li><a href="#about">Обо мне</a></li>
+      <li><a href="#subjects">Направления</a></li>
+      <li><a href="#format">Как занимаемся</a></li>
+      <li><a href="#pricing">Стоимость</a></li>
+      <li><a href="#results">Результаты</a></li>
+      <li><a href="#faq">Вопросы</a></li>
+    </ul>
+    <a class="nav-cta" href="https://t.me/" target="_blank" rel="noopener">Написать мне</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <div class="wrap">
+    <div class="hero">
+      <div class="hero-meta"><i></i>репетиторство · онлайн · один на один</div>
+      <h1>Учимся <span class="hl">понимать</span>,<br>а не зубрить.
+        <span class="hero-hand">— и это работает!</span>
+      </h1>
+      <p class="hero-sub">Привет! Я Катерина 👋 Репетитор по <b>информатике, математике, физике и&nbsp;программированию</b>. Объясняю сложное простыми словами и веду к цели — будь то пятёрка, ОГЭ или первый свой проект. А это моя открытая тетрадь: всё по полочкам, с пометками и без воды. Загляни!</p>
+      <div class="hero-actions">
+        <a class="btn btn-marker" href="https://t.me/" target="_blank" rel="noopener">Записаться на диагностику ✎</a>
+        <a class="btn btn-ghost" href="#subjects">Полистать тетрадь ↓</a>
+      </div>
+      <svg class="doodle-arrow" style="right:8%;top:26%" width="150" height="110" viewBox="0 0 150 110" fill="none">
+        <path d="M140 12 C 100 8, 60 30, 44 70" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="1 9"/>
+        <path d="M52 62 L 42 74 L 58 74" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <text x="66" y="26" fill="currentColor" font-family="Caveat" font-size="21" transform="rotate(-6 66 26)">начни отсюда</text>
+      </svg>
+      <div class="hero-note">
+        <div class="hstat"><b>8<em>+</em></b><span>лет преподавания</span></div>
+        <div class="hstat"><b>1<em>:</em>1</b><span>только индивидуально</span></div>
+        <div class="hstat"><b>570<em>+</em></b><span>учеников за всё время</span></div>
+        <div class="hstat"><b>0</b><span>зубрёжки — только смысл</span></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-index">стр. 01 — обо мне</div>
+        <h2 class="sec-title">Преподавание <span class="u">с системой</span></h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p class="lead">Моя задача — не прочитать тему вслух, а найти то самое место, где «не заходит», и закрыть его так, чтобы дальше ты справлялся сам.</p>
+          <p>Меня зовут <b>Екатерина Мищенко</b>. Работаю индивидуально и онлайн, подстраиваю обучение под возраст, уровень и цель ученика — от начальной школы до ЕГЭ и университетских лабораторных.</p>
+          <p>На занятиях соединяем понятную теорию, практику, разбор ошибок и регулярное закрепление. К экзаменам готовим <b>по темам и типам заданий</b> — без паники и ночной зубрёжки.</p>
+          <p class="margin-note">↳ зубрёжка забывается, понимание — нет</p>
+          <p>А ещё я пишу авторские пособия <b>Mischenko Edu</b> — чек-листы, тренажёры и конспекты, по которым мои ученики повторяют материал между занятиями.</p>
+          <p class="margin-note">↳ диплом о высшем образовании: Мозырский государственный педагогический университет им. И. П. Шамякина, 2017 год</p>
+          <p class="margin-note">↳ за это время — больше 570 учеников. каждый — со своей историей :)</p>
+        </div>
+        <aside class="photo-frame reveal">
+          <img class="photo-img" src="avatar.jpg" alt="Екатерина Мищенко — репетитор">
+          <div class="photo-cap">это я — Катерина :)</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- SUBJECTS -->
+  <section id="subjects">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-index">стр. 02 — направления</div>
+        <h2 class="sec-title">Чему учимся — <span class="hl">4 стикера</span></h2>
+        <p class="sec-sub">Внутри каждого направления — конкретные задачи, с которыми можно прийти. Нашёл свою? Жми «написать мне».</p>
+      </div>
+      <div class="notes">
+        <div class="note n-1 reveal">
+          <div class="idx">заметка №1</div>
+          <h3>Информатика</h3>
+          <p>От школьной программы до уверенной сдачи экзаменов.</p>
+          <ul>
+            <li>школьная программа и пробелы</li>
+            <li>ОГЭ — по темам и типам заданий</li>
+            <li>ЕГЭ — системная подготовка</li>
+          </ul>
+          <div class="tags"><span class="tag">школа</span><span class="tag">ОГЭ</span><span class="tag">ЕГЭ</span></div>
+        </div>
+        <div class="note n-2 reveal">
+          <div class="idx">заметка №2</div>
+          <h3>Математика</h3>
+          <p>Спокойно, с опорой на понимание — от «не понимаю» до «сам решу».</p>
+          <ul>
+            <li>начальные и средние классы</li>
+            <li>разбор сложных тем простым языком</li>
+            <li>отработка навыков и ошибок</li>
+          </ul>
+          <div class="tags"><span class="tag">начальная школа</span><span class="tag">средняя школа</span></div>
+        </div>
+        <div class="note n-3 reveal">
+          <div class="idx">заметка №3</div>
+          <h3>Физика</h3>
+          <p>Формулы перестают быть страшными, когда видишь, как они работают.</p>
+          <ul>
+            <li>теория и явления простыми словами</li>
+            <li>задачи и много практики</li>
+            <li>подготовка к ОГЭ — по запросу</li>
+          </ul>
+          <div class="tags"><span class="tag">школа</span></div>
+        </div>
+        <div class="note n-4 reveal">
+          <div class="idx">заметка №4</div>
+          <h3>Программирование</h3>
+          <p>От первых шагов до своих проектов и университетских лабораторных.</p>
+          <ul>
+            <li>Python — с нуля до уверенного кода</li>
+            <li>Scratch — первый шаг для ребят</li>
+            <li>Figma и HTML — основы веба</li>
+          </ul>
+          <div class="tags"><span class="tag">код</span><span class="tag">проекты</span><span class="tag">практика</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- FORMAT -->
+  <section id="format">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-index">стр. 03 — как занимаемся</div>
+        <h2 class="sec-title">План занятий — <span class="u">чек-лист</span></h2>
+        <p class="sec-sub">Каждое занятие — часть общей системы, а не случайный набор задач. Вот как мы идём к цели:</p>
+      </div>
+      <div class="checklist">
+        <div class="check reveal">
+          <div class="box">✓</div>
+          <div>
+            <h4>01. Диагностика<span class="hand">← начинаем здесь</span></h4>
+            <p>Определяем уровень, сильные стороны, пробелы и цель. Честно смотрим, где мы сейчас.</p>
+          </div>
+        </div>
+        <div class="check reveal">
+          <div class="box">✓</div>
+          <div>
+            <h4>02. Личный план</h4>
+            <p>Составляем последовательность тем и практики конкретно под тебя — никаких шаблонов «для всех».</p>
+          </div>
+        </div>
+        <div class="check reveal">
+          <div class="box">✓</div>
+          <div>
+            <h4>03. Решаем и разбираем</h4>
+            <p>Объясняю, решаем вместе, разбираем ошибки и возвращаемся к сложным местам столько раз, сколько нужно.</p>
+          </div>
+        </div>
+        <div class="check reveal">
+          <div class="box">✓</div>
+          <div>
+            <h4>04. Закрепляем результат</h4>
+            <p>Проверяем, что ты реально можешь применить знания сам. Вот это и есть результат.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-index">закладка ✦ прайс</div>
+        <h2 class="sec-title">Формат и <span class="hl">стоимость</span></h2>
+        <p class="sec-sub">Занятие длится 45 или 60 минут — на выбор родителя. Стоимость зависит от курса: напиши мне, и я сразу посчитаю под вашу задачу.</p>
+      </div>
+      <div class="prices">
+        <div class="price p-1 reveal">
+          <div class="hand-idx">вариант 1</div>
+          <h3>Пробное занятие</h3>
+          <div class="main">дешевле, чем<br>занятие по курсу</div>
+          <ul>
+            <li>знакомимся и смотрим уровень</li>
+            <li>мини-диагностика пробелов</li>
+            <li>честный план: что и как дальше</li>
+          </ul>
+        </div>
+        <div class="price p-2 reveal">
+          <div class="hand-idx">вариант 2</div>
+          <h3>Занятие по курсу</h3>
+          <div class="main">45 или 60 минут —<br>как удобно вам</div>
+          <ul>
+            <li>индивидуально, онлайн, 1:1</li>
+            <li>стоимость зависит от курса</li>
+            <li>материалы и пособия включены</li>
+          </ul>
+        </div>
+        <div class="price p-3 reveal">
+          <div class="hand-idx">вариант 3 — выгодный</div>
+          <h3>Пакет занятий</h3>
+          <div class="main">от 8 до 24 занятий<br>со скидкой</div>
+          <ul>
+            <li>чем больше пакет, тем выше скидка</li>
+            <li>фиксируем расписание вперёд</li>
+            <li>удобно при подготовке к ОГЭ/ЕГЭ</li>
+          </ul>
+        </div>
+      </div>
+      <p class="price-note reveal">↳ точную стоимость под твой курс посчитаю в Telegram — это ни к чему не обязывает :)</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- RESULTS -->
+  <section id="results">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-index">стр. 04 — результаты</div>
+        <h2 class="sec-title">Записочки <span class="hl">от учеников</span></h2>
+        <p class="sec-sub">Для меня результат — не только оценка, а момент, когда ученик начинает справляться сам. Вот так это выглядит:</p>
+      </div>
+      <div class="pins">
+        <div class="pin reveal">
+          <p class="q">«Пришла с оценками <b>6–7</b>. Закрыли пробелы, выстроили понимание тем — сейчас выходим на <b>9</b>.»</p>
+          <div class="who">Василиса<small>школьная информатика</small></div>
+        </div>
+        <div class="pin reveal">
+          <p class="q">«Интереса к физике не было совсем. За месяц он появился, а задачи для ОГЭ ученик уже решает <b>сам</b>.»</p>
+          <div class="who">Илья<small>физика · подготовка к ОГЭ</small></div>
+        </div>
+        <div class="pin reveal">
+          <p class="q">«Разбираем лабораторные по Python, доводим до результата и сдаём на <b>4</b> в московском вузе.»</p>
+          <div class="who">Иван<small>Python · университет</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- EDU -->
+  <section>
+    <div class="wrap">
+      <div class="edu reveal">
+        <span class="hand-title">Mischenko Edu ✎</span>
+        <p>Мои авторские пособия: структурированная теория, практика с разборами, диагностика и чек-листы. Ученики готовятся по ним между занятиями — и сдают увереннее.</p>
+        <div class="pills">
+          <span class="pill">теория</span>
+          <span class="pill">практика и разборы</span>
+          <span class="pill">диагностика</span>
+          <span class="pill">чек-листы</span>
+          <span class="pill">тренажёры</span>
+        </div>
+        <a class="btn btn-marker" href="edu/index.html">Открыть библиотеку пособий →</a>
+        <span class="soon">↳ это уже работает — загляни!</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head reveal" style="text-align:center">
+        <div class="sec-index">стр. 05 — вопросы</div>
+        <h2 class="sec-title">Спрашивают <span class="u">часто</span></h2>
+      </div>
+      <div class="faq reveal">
+        <div class="faq-item" data-open="false">
+          <button class="faq-q">Занятия проходят онлайн?<span class="pm">+</span></button>
+          <div class="faq-a"><p>Да, все занятия — индивидуальные и онлайн. Материал, темп и количество практики подбираю под ученика, никаких записей «для всех».</p></div>
+        </div>
+        <div class="faq-item" data-open="false">
+          <button class="faq-q">Можно начать с диагностики?<span class="pm">+</span></button>
+          <div class="faq-a"><p>Конечно — я и сама советую начать именно с неё. Увидим уровень, найдём пробелы, и ты получишь личный план, с чего начать.</p></div>
+        </div>
+        <div class="faq-item" data-open="false">
+          <button class="faq-q">Готовишь к ОГЭ и ЕГЭ?<span class="pm">+</span></button>
+          <div class="faq-a"><p>Да, по информатике готовлю к ОГЭ и ЕГЭ: идём по темам и типам заданий, разбираем ошибки и тренируемся в экзаменационном формате.</p></div>
+        </div>
+        <div class="faq-item" data-open="false">
+          <button class="faq-q">С какого возраста можно заниматься?<span class="pm">+</span></button>
+          <div class="faq-a"><p>Математика — с начальных классов, информатика и программирование — по уровню и задаче, физика — со школьного курса. Напиши мне — подскажу под вашу ситуацию.</p></div>
+        </div>
+        <div class="faq-item" data-open="false">
+          <button class="faq-q">А если уже есть пробелы?<span class="pm">+</span></button>
+          <div class="faq-a"><p>Это как раз моя любимая часть работы 🙂 Находим конкретные пробелы, спокойно закрываем и возвращаемся к программе.</p></div>
+        </div>
+        <div class="faq-item" data-open="false">
+          <button class="faq-q">Программирование — только Python?<span class="pm">+</span></button>
+          <div class="faq-a"><p>Нет: работаем с Python, Scratch, Figma и HTML. Младшим часто начинаем со Scratch, а Python подключаем, когда появляется уверенность.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ANKETA -->
+  <section id="anketa">
+    <div class="wrap">
+      <div class="sec-head reveal" style="text-align:center">
+        <div class="sec-index">стр. 06 — анкета ученика</div>
+        <h2 class="sec-title">Заполни анкету — <span class="u">начнём</span></h2>
+        <p class="sec-sub" style="margin-inline:auto">Её обычно заполняют родители перед первым занятием. Ответы прилетают мне в Telegram, и я возвращаюсь с планом в течение дня.</p>
+      </div>
+      <form class="anketa reveal" id="anketaForm" novalidate>
+        <span class="hand-title">анкета ученика ✎</span>
+        <p class="sub">пара минут — и я буду знать, с чего нам начать</p>
+        <div class="f-grid">
+          <div class="f-field">
+            <label for="f-student">имя ученика</label>
+            <input id="f-student" name="student" type="text" placeholder="как зовут" required>
+          </div>
+          <div class="f-field">
+            <label for="f-grade">возраст / класс</label>
+            <input id="f-grade" name="grade" type="text" placeholder="например, 14 лет, 8 класс" required>
+          </div>
+          <div class="f-field">
+            <label for="f-subject">направление</label>
+            <select id="f-subject" name="subject" required>
+              <option value="" selected disabled>выбери направление</option>
+              <option>информатика</option>
+              <option>информатика — подготовка к ОГЭ</option>
+              <option>информатика — подготовка к ЕГЭ</option>
+              <option>математика</option>
+              <option>физика</option>
+              <option>программирование — Python</option>
+              <option>программирование — Scratch</option>
+              <option>другое / пока не знаю</option>
+            </select>
+          </div>
+          <div class="f-field">
+            <label for="f-goal">цель обучения</label>
+            <input id="f-goal" name="goal" type="text" placeholder="например, подтянуть оценки / сдать ОГЭ на 5">
+          </div>
+          <div class="f-field">
+            <label for="f-parent">имя родителя</label>
+            <input id="f-parent" name="parent" type="text" placeholder="как к вам обращаться" required>
+          </div>
+          <div class="f-field">
+            <label for="f-contact">телефон или Telegram</label>
+            <input id="f-contact" name="contact" type="text" placeholder="куда мне написать" required>
+          </div>
+          <div class="f-field full">
+            <label for="f-comment">комментарий — по желанию</label>
+            <textarea id="f-comment" name="comment" placeholder="что сейчас сложно, что уже пробовали, пожелания по расписанию…"></textarea>
+          </div>
+        </div>
+        <button class="f-submit" type="submit">Отправить анкету в Telegram ✈</button>
+        <div class="f-status" id="formStatus"></div>
+        <p class="f-hint">нажимая «отправить», вы соглашаетесь, что я напишу вам в указанный канал связи</p>
+      </form>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- CTA -->
+  <div class="wrap">
+    <div class="cta-final reveal">
+      <span class="hand-top">последняя страница — самая важная ↓</span>
+      <h2>Начнём с <span class="hl">диагностики?</span></h2>
+      <p>Напиши мне в Telegram: расскажи о цели, а я предложу план и отвечу на вопросы. Без обязательств — просто познакомимся и посмотрим, как вам будет полезнее.</p>
+      <a class="btn btn-marker" href="https://t.me/" target="_blank" rel="noopener">Написать в Telegram ✎</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <small>© 2026 Катерина Мищенко · репетиторство онлайн</small>
+    <span class="hand">до встречи на занятии! ✎</span>
+    <div class="foot-links">
+      <a href="https://t.me/" target="_blank" rel="noopener">Telegram</a>
+      <a href="edu/index.html">Пособия</a>
+      <a href="#top">Наверх ↑</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // FAQ
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.faq-item');
+      var open = item.getAttribute('data-open') === 'true';
+      document.querySelectorAll('.faq-item').forEach(function(i){
+        i.setAttribute('data-open','false');
+        i.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!open){
+        item.setAttribute('data-open','true');
+        var a = item.querySelector('.faq-a');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // ====== АНКЕТА → TELEGRAM ======
+  // Чтобы форма заработала, нужно 2 значения (инструкция — в файле README):
+  const TG_BOT_TOKEN = 'ВСТАВЬ_ТОКЕН_БОТА';   // токен от @BotFather
+  const TG_CHAT_ID   = 'ВСТАВЬ_CHAT_ID';      // ваш id от @userinfobot
+
+  var anketaForm = document.getElementById('anketaForm');
+  var formStatus = document.getElementById('formStatus');
+
+  anketaForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    formStatus.className = 'f-status';
+
+    var data = {
+      student: anketaForm.student.value.trim(),
+      grade:   anketaForm.grade.value.trim(),
+      subject: anketaForm.subject.value,
+      goal:    anketaForm.goal.value.trim(),
+      parent:  anketaForm.parent.value.trim(),
+      contact: anketaForm.contact.value.trim(),
+      comment: anketaForm.comment.value.trim()
+    };
+
+    if(!data.student || !data.grade || !data.subject || !data.parent || !data.contact){
+      formStatus.textContent = 'заполни, пожалуйста, все поля, кроме комментария ✎';
+      formStatus.classList.add('err');
+      return;
+    }
+
+    // если токен ещё не вставлен — отправляем в Telegram напрямую
+    if(TG_BOT_TOKEN.indexOf('ВСТАВЬ') === 0 || TG_CHAT_ID.indexOf('ВСТАВЬ') === 0){
+      formStatus.textContent = 'форма скоро заработает — а пока напиши мне в Telegram, я всё запишу :)';
+      window.open('https://t.me/', '_blank');
+      return;
+    }
+
+    var text = '📋 Новая анкета с сайта\n'
+      + '━━━━━━━━━━━━━\n'
+      + '👦 Ученик: ' + data.student + '\n'
+      + '🎂 Возраст/класс: ' + data.grade + '\n'
+      + '📚 Направление: ' + data.subject + '\n'
+      + '🎯 Цель: ' + (data.goal || '—') + '\n'
+      + '👤 Родитель: ' + data.parent + '\n'
+      + '📞 Контакт: ' + data.contact + '\n'
+      + '💬 Комментарий: ' + (data.comment || '—');
+
+    formStatus.textContent = 'отправляю… ✈';
+    fetch('https://api.telegram.org/bot' + TG_BOT_TOKEN + '/sendMessage', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({chat_id: TG_CHAT_ID, text: text})
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      if(res.ok){
+        formStatus.textContent = 'анкета у меня! отвечу в течение дня ✓';
+        formStatus.classList.add('ok');
+        anketaForm.reset();
+      } else {
+        throw new Error('tg error');
+      }
+    })
+    .catch(function(){
+      formStatus.textContent = 'не получилось отправить :( напиши мне в Telegram, пожалуйста';
+      formStatus.classList.add('err');
+    });
+  });
+
+  // Reveal on scroll
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+</body>
+</html>

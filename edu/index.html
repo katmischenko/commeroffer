@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mischenko Edu — библиотека пособий</title>
+<meta name="description" content="Авторские пособия Екатерины Мищенко: тест-диагностика, тренажёры, flash-карточки, escape room и интерактивные пособия по информатике, математике, физике и программированию.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="edu.css">
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a class="logo" href="index.html"><span class="hand">Mischenko Edu</span><small>библиотека · пособий</small></a>
+    <div class="nav-right">
+      <a class="nav-link" href="../index.html">← сайт репетитора</a>
+      <a class="nav-cta" href="https://t.me/" target="_blank" rel="noopener">Написать мне</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="hero">
+      <span class="sec-index">закладка ✦ мои материалы</span>
+      <h1>Библиотека, где <span class="hl">оживают</span> темы</h1>
+      <p class="hero-sub">Привет! Здесь живут мои авторские пособия и тренажёры: <b>тест-диагностика, flash-карточки, симуляторы и квесты</b> — по информатике, математике, физике и программированию. Что-то бесплатно и работает прямо в браузере, что-то — авторские материалы курса. Выбирай и пробуй!</p>
+    </div>
+  </div>
+
+  <!-- ОПИСАНИЕ -->
+  <section>
+    <div class="wrap">
+      <div class="note-box reveal">
+        <h3>Для кого эта библиотека и как ей пользоваться</h3>
+        <ul>
+          <li><b>Ученикам</b> — тренируйтесь самостоятельно: карточки, тесты и квесты работают прямо здесь, без регистрации</li>
+          <li><b>Родителям</b> — пройдите с ребёнком тест-диагностику: увидите пробелы и поймёте, с чего начать</li>
+          <li><b>Моим ученикам</b> — здесь материалы к занятиям: повторяйте между уроками, так результат закрепляется быстрее</li>
+          <li><b>Как пользоваться</b> — выбери направление в фильтре, открой пособие и проходи в своём темпе. Вопросы? Напиши мне в Telegram</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- БИБЛИОТЕКА -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-index">полки библиотеки ↓</div>
+        <h2 class="sec-title">Все пособия и <span class="hl-o">тренажёры</span></h2>
+      </div>
+
+      <div class="filters reveal">
+        <div class="f-group">
+          <span class="f-label">направление</span>
+          <div class="chips" id="subjChips">
+            <button class="chip on" data-subj="all">все</button>
+            <button class="chip" data-subj="inf">информатика</button>
+            <button class="chip" data-subj="math">математика</button>
+            <button class="chip" data-subj="phys">физика</button>
+            <button class="chip" data-subj="prog">программирование</button>
+          </div>
+        </div>
+        <div class="f-group">
+          <span class="f-label">статус</span>
+          <div class="chips" id="stChips">
+            <button class="chip on-st on" data-st="all">все</button>
+            <button class="chip" data-st="ok">уже доступно</button>
+            <button class="chip" data-st="soon">скоро</button>
+            <button class="chip" data-st="work">в работе</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib" id="lib"></div>
+      <div class="empty" id="empty">тут пока пусто — попробуй другой фильтр ✎</div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding-top:0">
+    <div class="wrap" style="text-align:center">
+      <p class="sec-sub reveal" style="margin:0 auto 28px">Не нашёл нужную тему? Напиши мне — расскажу, что есть в работе, и подскажу, чем помочь прямо сейчас.</p>
+      <a class="btn btn-pen reveal" href="https://t.me/" target="_blank" rel="noopener">Написать в Telegram ✎</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <small>© 2026 Mischenko Edu · авторские пособия</small>
+    <span class="hand">учись в своём темпе! ✎</span>
+    <div class="foot-links">
+      <a href="../index.html">Сайт репетитора</a>
+      <a href="https://t.me/" target="_blank" rel="noopener">Telegram</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var ITEMS = [
+    {kind:'тренажёр · тест', title:'Тест-диагностика по информатике', desc:'8 вопросов — и видно, какие темы хромают. В конце — честный разбор и план, что подтянуть.', subj:'inf', subjName:'информатика', st:'ok', stName:'уже доступно', stClass:'st-ok', free:true, href:'diagnostika.html'},
+    {kind:'flash-карточки', title:'Формулы физики — карточки', desc:'Принцип «знаю / не знаю»: листаешь, переворачиваешь, честно отмечаешь. Незнакомые возвращаются снова.', subj:'phys', subjName:'физика', st:'ok', stName:'уже доступно', stClass:'st-ok', free:true, href:'flashcards.html'},
+    {kind:'игра-тренажёр', title:'Симулятор «Один день из жизни разработчика»', desc:'Принимай решения, пиши мини-код и смотри, как твои решения меняют проект. 4 дня — 4 сюжета.', subj:'prog', subjName:'программирование', st:'ok', stName:'уже доступно', stClass:'st-ok', free:true, href:'simulator.html'},
+    {kind:'квест', title:'Escape room «Побег из лаборатории»', desc:'Цифровая комната: выбраться можно, только решив цепочку задач по информатике и математике.', subj:'math', subjName:'математика + информатика', st:'ok', stName:'уже доступно', stClass:'st-ok', free:true, href:'escape-room.html'},
+    {kind:'шпаргалки', title:'Cheat sheets для ОГЭ по информатике', desc:'Сжатые стильные PDF-карты: формулы, команды, типы заданий. Распечатал — повесил — повторяешь.', subj:'inf', subjName:'информатика · ОГЭ', st:'soon', stName:'скоро', stClass:'st-soon', free:true, href:'cheatsheets.html'},
+    {kind:'тетради-комиксы', title:'Рабочие тетради-комиксы', desc:'Учебный материал как сюжетный комикс с героями, а в конце темы — задание на закрепление.', subj:'inf', subjName:'информатика', st:'work', stName:'в работе', stClass:'st-work', free:false, href:'workbooks.html'},
+    {kind:'пособие', title:'Интерактивный Python с нуля', desc:'Сюжетные проекты, закрепление каждой темы и проверка кода прямо в пособии. Итог — свой проект.', subj:'prog', subjName:'программирование', st:'work', stName:'в работе', stClass:'st-work', free:false, href:'posobiya.html'},
+    {kind:'пособие', title:'Интерактивная подготовка к ОГЭ/ЕГЭ', desc:'Вся теория по типам заданий + тренажёр + проверка решений. Полный маршрут до экзамена.', subj:'inf', subjName:'информатика · ОГЭ/ЕГЭ', st:'work', stName:'в работе', stClass:'st-work', free:false, href:'posobiya.html'},
+    {kind:'чек-листы', title:'Математика: сложные темы простыми словами', desc:'Короткие конспекты-чеклисты по темам, на которых спотыкаются чаще всего.', subj:'math', subjName:'математика', st:'soon', stName:'скоро', stClass:'st-soon', free:true, href:'cheatsheets.html'}
+  ];
+
+  var lib = document.getElementById('lib');
+  var empty = document.getElementById('empty');
+  var curSubj = 'all', curSt = 'all';
+
+  function render(){
+    var shown = 0;
+    lib.innerHTML = '';
+    ITEMS.forEach(function(it){
+      var matchSubj = (curSubj === 'all') || (it.subj === curSubj);
+      var matchSt = (curSt === 'all') || (it.st === curSt);
+      if(!matchSubj || !matchSt) return;
+      shown++;
+      var a = document.createElement('a');
+      a.className = 'item';
+      a.href = it.href;
+      a.innerHTML =
+        '<span class="st ' + it.stClass + '">' + it.stName + '</span>' +
+        '<span class="kind">' + it.kind + '</span>' +
+        '<h3>' + it.title + '</h3>' +
+        '<p>' + it.desc + '</p>' +
+        '<div class="meta">' +
+          '<span class="tag tag-subj">' + it.subjName + '</span>' +
+          (it.free ? '<span class="tag tag-free">бесплатно</span>' : '<span class="tag tag-paid">курс</span>') +
+        '</div>';
+      lib.appendChild(a);
+    });
+    empty.style.display = shown ? 'none' : 'block';
+  }
+
+  function bindChips(id, key){
+    document.querySelectorAll('#' + id + ' .chip').forEach(function(chip){
+      chip.addEventListener('click', function(){
+        document.querySelectorAll('#' + id + ' .chip').forEach(function(c){ c.classList.remove('on'); });
+        chip.classList.add('on');
+        if(key === 'subj') curSubj = chip.dataset.subj; else curSt = chip.dataset.st;
+        render();
+      });
+    });
+  }
+  bindChips('subjChips', 'subj');
+  bindChips('stChips', 'st');
+  render();
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+</body>
+</html>

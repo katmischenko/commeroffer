@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Интерактивные пособия — Mischenko Edu</title>
+<meta name="description" content="Интерактивные пособия для самостоятельного изучения: Python с нуля и подготовка к ОГЭ/ЕГЭ по информатике. Сюжетные проекты, закрепление тем, проверка кода.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="edu.css">
+<style>
+  .path{display:flex;flex-direction:column;gap:0;margin-top:26px;max-width:640px}
+  .p-step{display:flex;gap:20px;padding:20px 0;border-bottom:1px dashed rgba(234,231,223,.14)}
+  .p-num{
+    flex:none;width:46px;height:46px;border-radius:50%;
+    border:2px solid var(--pen);color:var(--pen);
+    font-family:var(--hand);font-weight:700;font-size:24px;
+    display:grid;place-items:center;transform:rotate(-3deg);
+  }
+  .p-step h4{font-weight:800;font-size:17px;margin-bottom:4px}
+  .p-step p{color:var(--muted);font-size:14.5px}
+  .tracks{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:26px}
+  @media(max-width:700px){.tracks{grid-template-columns:1fr}}
+  .track{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:6px 20px 6px 20px;
+    padding:28px;position:relative;
+  }
+  .track:nth-child(1){transform:rotate(-.5deg)}
+  .track:nth-child(2){transform:rotate(.5deg)}
+  .track h4{font-weight:800;font-size:19px;margin:10px 0 8px}
+  .track p{color:var(--muted);font-size:14.5px}
+  .track .kind{font-family:var(--hand);font-weight:600;font-size:20px;color:var(--pen)}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a class="logo" href="index.html"><span class="hand">Mischenko Edu</span><small>библиотека · пособий</small></a>
+    <div class="nav-right">
+      <a class="nav-link" href="index.html">← в библиотеку</a>
+      <a class="nav-cta" href="https://t.me/" target="_blank" rel="noopener">Написать мне</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap page">
+    <a class="back" href="index.html">← назад к полкам</a>
+    <span class="sec-index">интерактивные пособия · статус: в работе</span>
+    <h1>Пособия, которые <span class="hl">проверяют</span> твой код</h1>
+    <p class="hero-sub">Это не PDF «прочитал и забыл». Каждое пособие — полностью интерактивное: сюжетные проекты, закрепление каждой темы, автоматическая проверка кода и итоговый проект в конце. Для самостоятельного изучения или в паре с занятиями.</p>
+
+    <div class="sec-head reveal" style="margin:44px 0 0">
+      <div class="sec-index">маршрут внутри пособия</div>
+      <h2 class="sec-title" style="font-size:clamp(22px,3vw,32px)">Как устроена каждая тема</h2>
+    </div>
+    <div class="path">
+      <div class="p-step reveal"><div class="p-num">1</div><div><h4>Теория живьём</h4><p>короткое объяснение на примерах, без «воды» и канцелярита</p></div></div>
+      <div class="p-step reveal"><div class="p-num">2</div><div><h4>Сюжетный проект</h4><p>тема сразу применяется в истории: игра, бот, полезная программа</p></div></div>
+      <div class="p-step reveal"><div class="p-num">3</div><div><h4>Закрепление</h4><p>задания от простого к сложному — пока тема не станет «своей»</p></div></div>
+      <div class="p-step reveal"><div class="p-num">4</div><div><h4>Проверка кода</h4><p>пособие само проверяет решение и подсказывает, где ошибка</p></div></div>
+      <div class="p-step reveal" style="border-bottom:0"><div class="p-num">5</div><div><h4>Итоговый проект</h4><p>в конце пособия — большой проект, который не стыдно показать</p></div></div>
+    </div>
+
+    <div class="tracks">
+      <div class="track reveal">
+        <span class="kind">трек 1</span>
+        <h4>Python с нуля</h4>
+        <p>От первой строчки до своих проектов: переменные, циклы, функции, списки — через игры и мини-ботов.</p>
+        <span class="st st-work" style="position:static;display:inline-block;margin-top:16px">в работе</span>
+      </div>
+      <div class="track reveal">
+        <span class="kind">трек 2</span>
+        <h4>Подготовка к ОГЭ/ЕГЭ</h4>
+        <p>Вся теория по типам заданий + тренажёр + проверка решений. Полный маршрут до экзамена.</p>
+        <span class="st st-work" style="position:static;display:inline-block;margin-top:16px">в работе</span>
+      </div>
+    </div>
+
+    <div class="note-box reveal" style="margin-top:34px">
+      <h3>Ранний доступ</h3>
+      <p>Пособия собираются прямо сейчас. Напиши мне слово «ПОСОБИЕ» — сообщу о запуске первым и расскажу про условия для своих учеников.</p>
+      <div style="margin-top:18px"><a class="btn btn-pen" href="https://t.me/" target="_blank" rel="noopener">Написать «ПОСОБИЕ» ✈</a></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <small>© 2026 Mischenko Edu</small>
+    <span class="hand">учись делая ✎</span>
+    <div class="foot-links">
+      <a href="../index.html">Сайт репетитора</a>
+      <a href="https://t.me/" target="_blank" rel="noopener">Telegram</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+</body>
+</html>
