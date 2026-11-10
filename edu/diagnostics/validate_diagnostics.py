@@ -73,6 +73,8 @@ def validate_bank(path: Path, errors: list[str], stems_by_direction):
             if not isinstance(data.get(field), str) or not data[field].strip():
                 fail(errors, f"{path.name}: curriculum variant missing {field}")
     seen_ids, seen_stems = set(), set()
+    choice_positions = Counter()
+    choice_option_lengths = set()
     for number, q in enumerate(questions, 1):
         prefix = f"{path.name} Q{number}"
         if not isinstance(q, dict):
@@ -102,6 +104,9 @@ def validate_bank(path: Path, errors: list[str], stems_by_direction):
                 fail(errors, f"{prefix}: correctIndex is outside options")
             elif q.get("correctText") != options[index]:
                 fail(errors, f"{prefix}: correctText does not match options[correctIndex]")
+            if isinstance(options, list) and isinstance(index, int) and not isinstance(index, bool) and 0 <= index < len(options):
+                choice_positions[index] += 1
+                choice_option_lengths.add(len(options))
             if not isinstance(q.get("correctText"), str) or not q["correctText"].strip():
                 fail(errors, f"{prefix}: missing correctText")
         elif qtype == "short":
@@ -112,6 +117,11 @@ def validate_bank(path: Path, errors: list[str], stems_by_direction):
                 fail(errors, f"{prefix}: missing correctText")
         else:
             fail(errors, f"{prefix}: unsupported question type {qtype!r}")
+
+    if not is_variant and len(choice_positions) >= 8 and choice_option_lengths == {4}:
+        position_counts = [choice_positions.get(i, 0) for i in range(4)]
+        if min(position_counts) == 0 or max(position_counts) - min(position_counts) > 1:
+            fail(errors, f"{path.name}: correct answer positions are unbalanced: {position_counts}")
 
     return data
 
