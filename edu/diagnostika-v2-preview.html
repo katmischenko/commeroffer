@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Диагностика v2 — Mischenko Edu (предпросмотр)</title>
+<link rel="stylesheet" href="edu.css">
+<style>
+:root{--d-bg:#111318;--d-card:#1b1f27;--d-line:#343a46;--d-text:#f0eee9;--d-muted:#a6a9b1;--d-accent:#c7dce8;--d-warn:#d9a4a4}
+.diag{max-width:850px;margin:120px auto 70px;padding:24px;color:var(--d-text)}
+.diag-card{background:var(--d-card);border:1px solid var(--d-line);border-radius:18px;padding:clamp(20px,4vw,34px);margin:18px 0}
+.diag label{display:block;font-size:14px;color:var(--d-muted);margin:12px 0 6px}
+.diag input,.diag select{width:100%;background:#11151b;color:var(--d-text);border:1px solid var(--d-line);border-radius:10px;padding:13px;font:inherit}
+.diag button{font:inherit;cursor:pointer}
+.d-btn{border:0;border-radius:999px;background:var(--d-accent);color:#10151b;padding:12px 22px;font-weight:800}
+.d-btn.secondary{background:transparent;color:var(--d-text);border:1px solid var(--d-line)}
+.d-btn:disabled{opacity:.4;cursor:not-allowed}
+.d-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.d-note{color:var(--d-muted);font-size:13px;line-height:1.6}
+.d-progress{height:5px;background:#303640;border-radius:9px;overflow:hidden;margin:18px 0}
+.d-progress i{display:block;height:100%;background:var(--d-accent);width:0;transition:width .2s}
+.d-meta{display:flex;justify-content:space-between;gap:12px;color:var(--d-muted);font-size:13px}
+.d-question{font-size:clamp(19px,3vw,25px);line-height:1.45;margin:22px 0}
+.d-options{display:grid;gap:10px}
+.d-option{width:100%;text-align:left;border:1px solid var(--d-line);background:#151920;color:var(--d-text);border-radius:12px;padding:14px 16px}
+.d-option:hover{border-color:var(--d-accent)}
+.d-option.chosen{border-color:var(--d-accent);background:#222c35}
+.d-option.correct{border-color:#7eb99a}.d-option.wrong{border-color:#cf8585}
+.d-feedback{margin-top:16px;padding:15px;border-radius:12px;background:#242a32;line-height:1.6}
+.d-chip{display:inline-block;border:1px solid var(--d-line);border-radius:30px;padding:5px 10px;color:var(--d-muted);font-size:12px;margin-right:6px}
+.d-consent{display:flex!important;gap:10px;align-items:flex-start;color:var(--d-text)!important}
+.d-consent input{width:auto;margin-top:4px}
+.d-stat{font-size:34px;font-weight:800;margin:8px 0}
+.d-topic{display:flex;justify-content:space-between;border-bottom:1px solid var(--d-line);padding:10px 0;gap:15px}
+[hidden]{display:none!important}
+@media(max-width:600px){.diag{padding:15px;margin-top:95px}.diag-card{padding:18px}}
+</style>
+</head>
+<body>
+<header><nav class="nav"><a class="logo" href="index.html"><span class="hand">Mischenko Edu</span><small>диагностика · предпросмотр</small></a><div class="nav-right"><a class="nav-link" href="diagnostika.html">← текущая версия</a></div></nav></header>
+<main class="diag">
+<span class="sec-index">закрытый предпросмотр · v2</span>
+<h1>Диагностика <span class="hl">знаний</span></h1>
+<p class="hero-sub">15 заданий, разбор каждого ответа и отчёт по темам. Эта версия предназначена для внутренней проверки, а не для рассылки ученикам.</p>
+<section class="diag-card" id="setup">
+<h2>Начнём с исходных данных</h2>
+<label for="student">Имя ученика</label><input id="student" maxlength="100" autocomplete="name" placeholder="Как к тебе обращаться?">
+<label for="direction">Направление</label><select id="direction"></select>
+<label for="grade">Класс</label><select id="grade"></select>
+<div id="experience-wrap" hidden><label for="experience">Какой у тебя опыт в этом направлении?</label><select id="experience"><option value="">Выбери вариант</option><option>Только начинаю — раньше почти не изучал(а)</option><option>Знаю основы — уже изучал(а), выполнял(а) простые задания</option><option>Есть опыт — хочу проверить и углубить знания</option></select></div>
+<p class="d-note" id="profile-note" style="margin-top:15px"></p>
+<label class="d-consent"><input type="checkbox" id="consent"><span>Я (или мой родитель/законный представитель) согласен(на), чтобы ответы и результат диагностики были переданы преподавателю для анализа обучения и сохранены в закрытом архиве.</span></label>
+<p class="d-note">Перед публичным запуском необходимо утвердить срок хранения данных и окончательную формулировку согласия. Поэтому эта версия закрытая и не предназначена для реальных учеников.</p>
+<div class="d-actions"><button class="d-btn" id="start" disabled>Начать диагностику</button></div>
+</section>
+<section class="diag-card" id="quiz" hidden>
+<div class="d-meta"><span id="counter"></span><span id="difficulty"></span></div>
+<div class="d-progress"><i id="bar"></i></div>
+<div id="topic" class="d-chip"></div>
+<div id="question" class="d-question"></div>
+<div id="answer-area"></div>
+<div id="feedback" class="d-feedback" hidden></div>
+<div id="confidence" hidden>
+<p style="margin:16px 0 8px">Насколько ты уверен(а) в ответе?</p>
+<div class="d-actions"><button class="d-btn secondary" data-confidence="Уверен(а)">Уверен(а)</button><button class="d-btn secondary" data-confidence="Сомневаюсь">Сомневаюсь</button></div>
+</div>
+<div class="d-actions"><button class="d-btn secondary" id="back">← Назад</button><button class="d-btn" id="next" disabled>Дальше →</button><button class="d-btn secondary" id="skip">Пропустить</button></div>
+</section>
+<section class="diag-card" id="result" hidden></section>
+</main>
+<script>
+(function(){
+'use strict';
+const API='https://mischenko-edu-diagnostics.mks-ki.workers.dev/diagnostics';
+const directions=[
+ {id:'informatics',name:'Информатика',grades:[6,7,8,9,10,11]},
+ {id:'physics',name:'Физика',grades:[7,8,9,10,11]},
+ {id:'math',name:'Математика',grades:[6,7,8,9]},
+ {id:'python',name:'Python',grades:[5,6,7,8,9,10,11],experience:true},
+ {id:'html-css',name:'HTML/CSS',grades:[5,6,7,8,9,10,11],experience:true},
+ {id:'figma',name:'Figma',grades:[5,6,7,8,9,10,11],experience:true}
+];
+const $=id=>document.getElementById(id);
+let bank=[],index=0,answers=[],student='',direction='',grade='',experience='';
+function fillDirections(){ $('direction').innerHTML=directions.map(d=>'<option value="'+d.id+'">'+d.name+'</option>').join('');fillGrades(); }
+function fillGrades(){const d=directions.find(x=>x.id===$('direction').value);$('grade').innerHTML=d.grades.map(g=>'<option value="'+g+'">'+g+' класс</option>').join('');$('experience-wrap').hidden=!d.experience;checkReady();}
+function checkReady(){
+ const d=directions.find(x=>x.id===$('direction').value);
+ const ready=d.id==='informatics' && $('grade').value==='6';
+ $('profile-note').textContent=ready?'Доступен пилотный набор: 15 вопросов по информатике, 6 класс.':'Банк для этого профиля ещё готовится. Выбери информатику, 6 класс, чтобы проверить механику. Остальные профили не запускаются с чужими заданиями.';
+ $('start').disabled=!ready||!$('student').value.trim()||!$('consent').checked||(d.experience&&!$('experience').value);
+}
+function normalize(v){return String(v??'').trim().toLowerCase().replace(/\s+/g,' ');}
+function selectedAnswer(q){return answers[index]||{answerText:'',status:'unanswered',confidenceLabel:''};}
+function setAnswer(text,status){const old=selectedAnswer(bank[index]);answers[index]={...old,answerText:text,status};renderQuestion();}
+function isCorrect(q,a){if(!a||a.status==='skipped'||a.status==='unknown')return false;if(q.type==='short')return (q.acceptedAnswers||[]).some(x=>normalize(x)===normalize(a.answerText));return Number(a.answerText)===q.correctIndex;}
+function answerText(q,a){if(!a)return 'Не отвечено';if(a.status==='skipped')return 'Пропуск';if(a.status==='unknown')return 'Не знаю';if(q.type==='short')return a.answerText;return q.options[Number(a.answerText)]??a.answerText;}
+function renderQuestion(){
+ const q=bank[index],a=selectedAnswer(q);$('counter').textContent='Вопрос '+(index+1)+' из '+bank.length;$('bar').style.width=((index+1)/bank.length*100)+'%';$('topic').textContent=q.topic;$('difficulty').textContent=({basic:'базовый',medium:'средний',advanced:'повышенный'})[q.difficulty]||q.difficulty;$('question').textContent=q.question;
+ let html='';
+ if(q.type==='short')html='<label for="short-answer">Твой ответ</label><input id="short-answer" value="'+escapeHtml(a.answerText)+'" placeholder="Введи ответ">';
+ else html='<div class="d-options">'+q.options.map((o,n)=>'<button class="d-option '+(a.answerText===String(n)?'chosen':'')+'" data-option="'+n+'">'+escapeHtml(o)+'</button>').join('')+'</div>';
+ html+='<div class="d-actions"><button class="d-btn secondary" id="unknown">Не знаю</button></div>';$('answer-area').innerHTML=html;
+ if(q.type==='short'){$('short-answer').addEventListener('input',e=>{answers[index]={...selectedAnswer(q),answerText:e.target.value,status:'answered'};syncControls();});}
+ $('answer-area').querySelectorAll('[data-option]').forEach(b=>b.addEventListener('click',()=>setAnswer(b.dataset.option,'answered')));
+ $('unknown').addEventListener('click',()=>setAnswer('','unknown'));
+ const done=!!a.status&&a.status!=='unanswered';
+ $('feedback').hidden=!done;
+ if(done){const ok=isCorrect(q,a);$('feedback').innerHTML='<b>'+(a.status==='unknown'?'Правильный ответ':ok?'Верно':'Разберём')+'</b><br>'+escapeHtml(q.type==='short'?q.correctText:q.options[q.correctIndex])+'<br><span class="d-note">'+escapeHtml(q.explanation)+'</span>';}
+ $('confidence').hidden=!done||a.status==='unknown'||a.status==='skipped';
+ $('confidence').querySelectorAll('[data-confidence]').forEach(b=>b.classList.toggle('chosen',a.confidenceLabel===b.dataset.confidence));
+ $('back').disabled=index===0;$('skip').hidden=done;$('next').disabled=!done;$('next').textContent=index===bank.length-1?'К результату':'Дальше →';
+}
+function syncControls(){const a=selectedAnswer(bank[index]);$('next').disabled=!a.status||a.status==='unanswered';}
+function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function finish(){
+ const score=bank.reduce((n,q,i)=>n+(isCorrect(q,answers[i])?1:0),0),weak={};
+ const report=bank.map((q,i)=>{const a=answers[i]||{status:'skipped',answerText:''};const ok=isCorrect(q,a);if(!ok)weak[q.topic]=(weak[q.topic]||0)+1;return {question:q.question,answerText:answerText(q,a),correctText:q.type==='short'?q.correctText:q.options[q.correctIndex],status:ok?'correct':a.status==='unknown'?'unknown':a.status==='skipped'?'skipped':'incorrect',statusLabel:ok?'Верно':a.status==='unknown'?'Не знаю':a.status==='skipped'?'Пропуск':'Неверно',topic:q.topic,difficulty:q.difficulty,confidenceLabel:a.confidenceLabel||'',explanation:q.explanation};});
+ const weakTopics=Object.keys(weak).sort((a,b)=>weak[b]-weak[a]);
+ $('quiz').hidden=true;$('result').hidden=false;
+ $('result').innerHTML='<span class="sec-index">предварительный результат</span><h2>'+escapeHtml(student)+', диагностика завершена</h2><div class="d-stat">'+score+' / 15</div><p class="d-note">'+Math.round(score/15*100)+'% правильных ответов · '+escapeHtml(direction)+' · '+grade+' класс</p><h3>Темы для внимания</h3>'+(weakTopics.length?weakTopics.map(t=>'<div class="d-topic"><span>'+escapeHtml(t)+'</span><b>'+weak[t]+'</b></div>').join(''):'<p>В этой попытке ошибок не обнаружено.</p>')+'<h3 style="margin-top:22px">Разбор заданий</h3>'+report.map((a,i)=>'<div class="d-topic" style="display:block"><b>'+(i+1)+'. '+escapeHtml(a.topic)+' · '+a.statusLabel+'</b><p class="d-note">Ответ: '+escapeHtml(a.answerText)+'<br>Правильно: '+escapeHtml(a.correctText)+'<br>'+escapeHtml(a.explanation)+'</p></div>').join('')+'<p class="d-note" style="margin-top:18px">Отчёт будет сохранён в закрытом архиве и отправлен преподавателю только после отправки формы. Не закрывай страницу до подтверждения сервера.</p><div class="d-actions"><button class="d-btn" id="send">Отправить преподавателю</button></div><p id="send-status" class="d-note" role="status"></p>';
+ $('send').addEventListener('click',()=>send(report,score,weakTopics));
+}
+async function send(report,score,weakTopics){
+ const btn=$('send');btn.disabled=true;btn.textContent='Отправляем…';
+ const attemptId=(crypto.randomUUID?crypto.randomUUID():Date.now()+'-'+Math.random().toString(36).slice(2)).replace(/[^a-zA-Z0-9_-]/g,'');
+ const payload={attemptId,studentName:student,studentClass:grade,direction,experience,consent:true,score,maxScore:15,completedAt:new Date().toISOString(),weakTopics,answers:report};
+ try{const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});const data=await r.json();if(!r.ok||!data.ok)throw new Error(data.error||'Ошибка сохранения');$('send-status').textContent=data.duplicate?'Эта попытка уже сохранена.':data.saved?'Результат сохранён. Уведомление преподавателю '+(data.telegramSent?'отправлено.':'пока не доставлено; запись сохранена.'):'Не удалось сохранить.';btn.textContent='Отправлено';}
+ catch(e){$('send-status').textContent='Не удалось отправить: '+e.message+'. Проверь соединение и повтори попытку.';btn.disabled=false;btn.textContent='Повторить отправку';}
+}
+$('direction').addEventListener('change',fillGrades);$('grade').addEventListener('change',checkReady);$('student').addEventListener('input',checkReady);$('consent').addEventListener('change',checkReady);$('experience').addEventListener('change',checkReady);
+$('start').addEventListener('click',async()=>{
+ student=$('student').value.trim();const d=directions.find(x=>x.id===$('direction').value);direction=d.name;grade=$('grade').value;experience=$('experience').value;
+ $('start').disabled=true;$('start').textContent='Загружаю задания…';
+ try{const res=await fetch('diagnostics/question-bank-informatics-6.json',{cache:'no-store'});if(!res.ok)throw new Error('Не удалось загрузить банк');const data=await res.json();if(data.questions.length!==15)throw new Error('В банке должно быть 15 заданий');bank=data.questions;answers=Array(bank.length).fill(null);index=0;$('setup').hidden=true;$('quiz').hidden=false;renderQuestion();}
+ catch(e){$('profile-note').textContent=e.message;$('start').disabled=false;$('start').textContent='Начать диагностику';}
+});
+$('back').addEventListener('click',()=>{if(index>0){index--;renderQuestion();}});
+$('skip').addEventListener('click',()=>{answers[index]={answerText:'',status:'skipped',confidenceLabel:''};if(index<bank.length-1){index++;renderQuestion();}else finish();});
+$('next').addEventListener('click',()=>{if(index<bank.length-1){index++;renderQuestion();}else finish();});
+$('confidence').addEventListener('click',e=>{const b=e.target.closest('[data-confidence]');if(!b)return;answers[index]={...selectedAnswer(bank[index]),confidenceLabel:b.dataset.confidence};renderQuestion();});
+fillDirections();
+})();
+</script>
+</body>
+</html>
