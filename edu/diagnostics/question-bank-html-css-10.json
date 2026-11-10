@@ -1,0 +1,275 @@
+{
+  "version": "0.1.0",
+  "status": "teacher_review_draft",
+  "direction": "HTML/CSS",
+  "class": 10,
+  "profileId": "html-css-10",
+  "experienceVariants": {
+    "beginner": "базовая точка входа; задания требуют адаптации под реальный стартовый опыт",
+    "basics": "проверка основных навыков и самостоятельного применения",
+    "experienced": "углублённая проверка; текущая версия использует общий возрастной набор и требует отдельной экспертной ветки"
+  },
+  "sourceBasis": "Черновая тематическая матрица Mischenko Edu. Для цифровых направлений класс задаёт возрастной контекст; уровень опыта собирается отдельно, но индивидуальная адаптация набора по опыту пока не реализована. Педагогическая проверка обязательна.",
+  "distribution": {
+    "basic": 5,
+    "medium": 7,
+    "advanced": 3
+  },
+  "questions": [
+    {
+      "id": "htmlcss10-01",
+      "topic": "HTML",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какой элемент содержит метаданные документа?",
+      "explanation": "head содержит метаданные, ссылки на стили и другие служебные элементы.",
+      "options": [
+        "<body>",
+        "<head>",
+        "<main>",
+        "<footer>"
+      ],
+      "correctIndex": 1,
+      "correctText": "<head>"
+    },
+    {
+      "id": "htmlcss10-02",
+      "topic": "HTML",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Как подключить внешний CSS-файл?",
+      "explanation": "Внешнюю таблицу стилей подключают элементом link.",
+      "options": [
+        "<style src='style.css'>",
+        "<link rel='stylesheet' href='style.css'>",
+        "<css href='style.css'>",
+        "<script src='style.css'>"
+      ],
+      "correctIndex": 1,
+      "correctText": "<link rel='stylesheet' href='style.css'>"
+    },
+    {
+      "id": "htmlcss10-03",
+      "topic": "CSS",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Что означает единица rem?",
+      "explanation": "rem рассчитывается относительно font-size корневого элемента html.",
+      "options": [
+        "Процент от ширины окна",
+        "Размер относительно корневого размера шрифта",
+        "Пиксель устройства",
+        "Размер относительно родителя"
+      ],
+      "correctIndex": 1,
+      "correctText": "Размер относительно корневого размера шрифта"
+    },
+    {
+      "id": "htmlcss10-04",
+      "topic": "CSS",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какой селектор имеет более высокую специфичность: .card или #card?",
+      "explanation": "Селектор ID специфичнее селектора класса.",
+      "options": [
+        ".card",
+        "#card",
+        "Одинаковую",
+        "Зависит от порядка всегда"
+      ],
+      "correctIndex": 1,
+      "correctText": "#card"
+    },
+    {
+      "id": "htmlcss10-05",
+      "topic": "HTML",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Как указать язык документа на русском?",
+      "explanation": "Атрибут lang у html задаёт основной язык документа.",
+      "options": [
+        "<html lang='ru'>",
+        "<body language='ru'>",
+        "<meta charset='ru'>",
+        "<head lang='ru'>"
+      ],
+      "correctIndex": 0,
+      "correctText": "<html lang='ru'>"
+    },
+    {
+      "id": "htmlcss10-06",
+      "topic": "CSS",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Что делает flex: 1 у flex-элемента в типичном случае?",
+      "explanation": "Сокращённое свойство задаёт гибкость элемента и позволяет ему расти.",
+      "options": [
+        "Запрещает растягивание",
+        "Позволяет элементу занять доступное пространство",
+        "Скрывает элемент",
+        "Меняет порядок"
+      ],
+      "correctIndex": 1,
+      "correctText": "Позволяет элементу занять доступное пространство"
+    },
+    {
+      "id": "htmlcss10-07",
+      "topic": "CSS",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какое свойство ограничивает максимальную ширину элемента?",
+      "explanation": "max-width устанавливает верхнюю границу ширины.",
+      "options": [
+        "width-max",
+        "max-width",
+        "limit-width",
+        "size-max"
+      ],
+      "correctIndex": 1,
+      "correctText": "max-width"
+    },
+    {
+      "id": "htmlcss10-08",
+      "topic": "HTML",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какой атрибут input задаёт тип проверки электронной почты?",
+      "explanation": "type=email включает подходящую клавиатуру и базовую браузерную проверку.",
+      "options": [
+        "type='mail'",
+        "type='email'",
+        "format='email'",
+        "validate='email'"
+      ],
+      "correctIndex": 1,
+      "correctText": "type='email'"
+    },
+    {
+      "id": "htmlcss10-09",
+      "topic": "CSS",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Что делает object-fit: cover для изображения?",
+      "explanation": "cover сохраняет пропорции, заполняя контейнер; лишние части обрезаются.",
+      "options": [
+        "Растягивает без сохранения пропорций",
+        "Заполняет контейнер с возможной обрезкой",
+        "Уменьшает прозрачность",
+        "Повторяет изображение"
+      ],
+      "correctIndex": 1,
+      "correctText": "Заполняет контейнер с возможной обрезкой"
+    },
+    {
+      "id": "htmlcss10-10",
+      "topic": "Адаптивность",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Что лучше использовать для адаптивных размеров текста относительно окна просмотра?",
+      "explanation": "clamp ограничивает предпочтительное значение минимальным и максимальным.",
+      "options": [
+        "vw без ограничений",
+        "clamp() с min, preferred и max",
+        "Только фиксированные px",
+        "position:absolute"
+      ],
+      "correctIndex": 1,
+      "correctText": "clamp() с min, preferred и max"
+    },
+    {
+      "id": "htmlcss10-11",
+      "topic": "CSS",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какое свойство задаёт плавный переход между значениями стилей?",
+      "explanation": "transition описывает переход при изменении CSS-свойства.",
+      "options": [
+        "animation-delay",
+        "transition",
+        "transform-origin",
+        "filter"
+      ],
+      "correctIndex": 1,
+      "correctText": "transition"
+    },
+    {
+      "id": "htmlcss10-12",
+      "topic": "Доступность",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Для чего нужен aria-label?",
+      "explanation": "aria-label задаёт accessible name элементу.",
+      "options": [
+        "Для изменения цвета",
+        "Для доступного имени элемента, если видимой подписи недостаточно",
+        "Для SEO-ключевых слов",
+        "Для загрузки шрифта"
+      ],
+      "correctIndex": 1,
+      "correctText": "Для доступного имени элемента, если видимой подписи недостаточно"
+    },
+    {
+      "id": "htmlcss10-13",
+      "topic": "CSS",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "Что такое CSS custom property?",
+      "explanation": "Пользовательские свойства CSS объявляют с префиксом -- и используют через var().",
+      "options": [
+        "Переменная, объявляемая через --name",
+        "HTML-атрибут",
+        "Класс JavaScript",
+        "Системный цвет браузера"
+      ],
+      "correctIndex": 0,
+      "correctText": "Переменная, объявляемая через --name"
+    },
+    {
+      "id": "htmlcss10-14",
+      "topic": "CSS",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "Какой принцип помогает избежать конфликтов стилей в крупном проекте?",
+      "explanation": "Согласованная структура классов и локализация стилей уменьшают конфликты.",
+      "options": [
+        "Глобальные селекторы на все элементы",
+        "Продуманная методология именования и ограничение области стилей",
+        "Случайные !important",
+        "Дублирование всех правил"
+      ],
+      "correctIndex": 1,
+      "correctText": "Продуманная методология именования и ограничение области стилей"
+    },
+    {
+      "id": "htmlcss10-15",
+      "topic": "HTML",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "Что важно учитывать при открытии ссылки в новой вкладке через target='_blank'?",
+      "explanation": "noopener предотвращает доступ новой страницы к window.opener.",
+      "options": [
+        "Добавлять rel='noopener'",
+        "Удалять href",
+        "Убирать текст ссылки",
+        "Заменять a на span"
+      ],
+      "correctIndex": 0,
+      "correctText": "Добавлять rel='noopener'"
+    }
+  ]
+}
