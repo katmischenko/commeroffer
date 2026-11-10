@@ -1,0 +1,254 @@
+{
+  "version": "0.1.0",
+  "status": "teacher_review_draft",
+  "direction": "Математика",
+  "class": 7,
+  "profileId": "math-7",
+  "sourceBasis": "Тематическая матрица: рациональные числа, выражения, линейные уравнения, координатная плоскость, функции, геометрия, статистика и вероятность.",
+  "distribution": {
+    "basic": 5,
+    "medium": 7,
+    "advanced": 3
+  },
+  "questions": [
+    {
+      "id": "m7-01",
+      "topic": "Рациональные числа",
+      "skill": "понимание и применение",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какое из чисел является наибольшим?",
+      "options": [
+        "−3",
+        "−1",
+        "0",
+        "−2"
+      ],
+      "correctIndex": 2,
+      "correctText": "0",
+      "explanation": "Ноль больше любого отрицательного числа."
+    },
+    {
+      "id": "m7-02",
+      "topic": "Рациональные числа",
+      "skill": "понимание и применение",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Чему равно −6 + 9?",
+      "options": [
+        "−15",
+        "−3",
+        "3",
+        "15"
+      ],
+      "correctIndex": 2,
+      "correctText": "3",
+      "explanation": "При сложении чисел с разными знаками вычитаем модули: 9 − 6 = 3. Берём знак большего модуля."
+    },
+    {
+      "id": "m7-03",
+      "topic": "Выражения",
+      "skill": "понимание и применение",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Чему равно 3a при a = 4?",
+      "options": [
+        "7",
+        "12",
+        "34",
+        "64"
+      ],
+      "correctIndex": 1,
+      "correctText": "12",
+      "explanation": "Подставляем a = 4: 3 × 4 = 12."
+    },
+    {
+      "id": "m7-04",
+      "topic": "Углы",
+      "skill": "понимание и применение",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Чему равна сумма смежных углов?",
+      "options": [
+        "90°",
+        "120°",
+        "180°",
+        "360°"
+      ],
+      "correctIndex": 2,
+      "correctText": "180°",
+      "explanation": "Смежные углы образуют развёрнутый угол, поэтому их сумма равна 180°."
+    },
+    {
+      "id": "m7-05",
+      "topic": "Координатная плоскость",
+      "skill": "понимание и применение",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "В какой четверти находится точка (−2; 5)?",
+      "options": [
+        "I",
+        "II",
+        "III",
+        "IV"
+      ],
+      "correctIndex": 1,
+      "correctText": "II",
+      "explanation": "Вторая четверть: x отрицательный, y положительный."
+    },
+    {
+      "id": "m7-06",
+      "topic": "Линейные уравнения",
+      "skill": "вычисление и применение",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Реши уравнение 5x − 7 = 18. Введи x.",
+      "acceptedAnswers": [
+        "5"
+      ],
+      "correctText": "5",
+      "explanation": "5x = 18 + 7 = 25, значит x = 5."
+    },
+    {
+      "id": "m7-07",
+      "topic": "Рациональные числа",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Вычисли: (−3) × (−4) − 5.",
+      "options": [
+        "−17",
+        "−7",
+        "7",
+        "17"
+      ],
+      "correctIndex": 2,
+      "correctText": "7",
+      "explanation": "Произведение двух отрицательных чисел положительно: 12 − 5 = 7."
+    },
+    {
+      "id": "m7-08",
+      "topic": "Преобразование выражений",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Раскрой скобки: 2(x + 3).",
+      "options": [
+        "2x + 3",
+        "2x + 6",
+        "x + 6",
+        "2x + 5"
+      ],
+      "correctIndex": 1,
+      "correctText": "2x + 6",
+      "explanation": "Множитель 2 умножаем на каждое слагаемое: 2x + 6."
+    },
+    {
+      "id": "m7-09",
+      "topic": "Пропорции",
+      "skill": "вычисление и применение",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Реши пропорцию x/6 = 4/3.",
+      "acceptedAnswers": [
+        "8"
+      ],
+      "correctText": "8",
+      "explanation": "x = 6 × 4/3 = 8."
+    },
+    {
+      "id": "m7-10",
+      "topic": "Функции",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какая точка принадлежит графику y = 2x − 1?",
+      "options": [
+        "(0; 1)",
+        "(1; 1)",
+        "(2; 2)",
+        "(3; 4)"
+      ],
+      "correctIndex": 1,
+      "correctText": "(1; 1)",
+      "explanation": "При x = 1 получаем y = 2 × 1 − 1 = 1."
+    },
+    {
+      "id": "m7-11",
+      "topic": "Геометрия треугольника",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Два угла треугольника равны 50° и 60°. Чему равен третий угол?",
+      "options": [
+        "60°",
+        "70°",
+        "80°",
+        "90°"
+      ],
+      "correctIndex": 1,
+      "correctText": "70°",
+      "explanation": "Сумма углов треугольника 180°: 180 − 50 − 60 = 70°."
+    },
+    {
+      "id": "m7-12",
+      "topic": "Статистика",
+      "skill": "вычисление и применение",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Найди среднее арифметическое чисел 4, 6, 8 и 10.",
+      "acceptedAnswers": [
+        "7"
+      ],
+      "correctText": "7",
+      "explanation": "Сумма чисел 28. Делим на количество чисел: 28 : 4 = 7."
+    },
+    {
+      "id": "m7-13",
+      "topic": "Линейные уравнения",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "После увеличения числа на 20% получили 72. Какое число было первоначально?",
+      "options": [
+        "50",
+        "56",
+        "60",
+        "62"
+      ],
+      "correctIndex": 2,
+      "correctText": "60",
+      "explanation": "Пусть исходное число x. Тогда 1,2x = 72, откуда x = 60."
+    },
+    {
+      "id": "m7-14",
+      "topic": "Координатная плоскость",
+      "skill": "вычисление и применение",
+      "difficulty": "advanced",
+      "type": "short",
+      "question": "Найди значение y = −3x + 2 при x = −4.",
+      "acceptedAnswers": [
+        "14"
+      ],
+      "correctText": "14",
+      "explanation": "Подставляем: y = −3 × (−4) + 2 = 12 + 2 = 14."
+    },
+    {
+      "id": "m7-15",
+      "topic": "Вероятность",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "В коробке 3 красных, 2 синих и 5 зелёных шаров. Какова вероятность достать синий шар?",
+      "options": [
+        "1/10",
+        "1/5",
+        "1/2",
+        "2/5"
+      ],
+      "correctIndex": 1,
+      "correctText": "1/5",
+      "explanation": "Всего 10 шаров, синих 2. Вероятность равна 2/10 = 1/5."
+    }
+  ]
+}
