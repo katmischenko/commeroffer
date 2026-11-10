@@ -127,27 +127,33 @@ export default {
           explanation: clean(a.explanation, 500)
         }))
       };
+      let inserted = false;
       try {
-        await env.DB.prepare(`INSERT OR IGNORE INTO diagnostic_attempts
+        const result = await env.DB.prepare(`INSERT OR IGNORE INTO diagnostic_attempts
           (attempt_id, student_name, student_class, direction, experience, score, max_score, percentage, completed_at, payload_json)
           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`)
           .bind(payload.attemptId, payload.studentName, payload.studentClass, payload.direction,
             payload.experience, payload.score, payload.maxScore, payload.percentage,
             payload.completedAt, JSON.stringify(payload)).run();
+        inserted = Number(result?.meta?.changes || 0) > 0;
         const row = await env.DB.prepare("SELECT attempt_id FROM diagnostic_attempts WHERE attempt_id = ?")
           .bind(attemptId).first();
         if (!row) throw new Error("Database save failed");
       } catch (e) {
         return json({ ok: false, error: "database_save_failed" }, 500, origin);
       }
+      // Repeated POSTs with the same attemptId must never create duplicate Telegram alerts.
+      if (!inserted) {
+        return json({ ok: true, saved: true, duplicate: true, telegramSent: false, attemptId }, 200, origin);
+      }
       let telegramSent = false;
       try {
         await sendTelegram(env, formatTelegram(payload));
         telegramSent = true;
       } catch (e) {
-        // The attempt is already safely stored; it can be retried from the admin archive.
+        // The attempt remains safely stored in D1 even if Telegram is temporarily unavailable.
       }
-      return json({ ok: true, saved: true, telegramSent, attemptId }, 200, origin);
+      return json({ ok: true, saved: true, duplicate: false, telegramSent, attemptId }, 200, origin);
     }
     if (request.method === "GET" && url.pathname === "/admin/attempts") {
       const auth = request.headers.get("Authorization") || "";
