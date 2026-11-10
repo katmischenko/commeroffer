@@ -5,6 +5,11 @@ CREATE TABLE IF NOT EXISTS diagnostic_attempts (
   student_class TEXT NOT NULL,
   direction TEXT NOT NULL,
   experience TEXT NOT NULL DEFAULT '',
+  curriculum_id TEXT NOT NULL DEFAULT 'unspecified',
+  curriculum_name TEXT NOT NULL DEFAULT '',
+  curriculum_detail TEXT NOT NULL DEFAULT '',
+  consent_version TEXT NOT NULL DEFAULT '',
+  telegram_consent INTEGER NOT NULL DEFAULT 1 CHECK (telegram_consent IN (0,1)),
   score INTEGER NOT NULL CHECK (score >= 0),
   max_score INTEGER NOT NULL CHECK (max_score = 15),
   percentage INTEGER NOT NULL CHECK (percentage BETWEEN 0 AND 100),
@@ -23,3 +28,6 @@ CREATE INDEX IF NOT EXISTS idx_diagnostic_attempts_student
 
 CREATE INDEX IF NOT EXISTS idx_diagnostic_attempts_direction
   ON diagnostic_attempts (direction, student_class);
+
+CREATE INDEX IF NOT EXISTS idx_diagnostic_attempts_curriculum
+  ON diagnostic_attempts (curriculum_id, direction, student_class);
