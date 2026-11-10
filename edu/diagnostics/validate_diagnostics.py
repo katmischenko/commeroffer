@@ -45,7 +45,7 @@ def fail(errors, message):
 
 
 def validate_bank(path: Path, errors: list[str], stems_by_direction):
-    filename_match = re.match(r"question-bank-(informatics|physics|math|python|html-css|figma)-(\\d+)(.*)\\.json$", path.name)
+    filename_match = re.match(r"question-bank-(informatics|physics|math|python|html-css|figma)-(\d+)(.*)\.json$", path.name)
     if not filename_match:
         fail(errors, f"{path.name}: unrecognized bank filename")
         return None
@@ -123,7 +123,7 @@ def main():
     profiles = json.loads(profile_path.read_text(encoding="utf-8"))
     expected = {p["profileId"] for p in profiles.get("profiles", [])}
     files = sorted(DIAG.glob("question-bank-*.json"))
-    general_pattern = re.compile(r"question-bank-(informatics|physics|math|python|html-css|figma)-\\d+\\.json$")
+    general_pattern = re.compile(r"question-bank-(informatics|physics|math|python|html-css|figma)-\d+\.json$")
     general_files = [p for p in files if general_pattern.fullmatch(p.name)]
     found = {p.stem.removeprefix("question-bank-") for p in general_files}
     if found != expected:
