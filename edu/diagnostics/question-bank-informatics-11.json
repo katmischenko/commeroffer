@@ -1,0 +1,254 @@
+{
+  "version": "0.1.0",
+  "status": "teacher_review_draft",
+  "direction": "Информатика",
+  "class": 11,
+  "profileId": "informatics-11",
+  "sourceBasis": "Черновая тематическая матрица Mischenko Edu. Содержание требует педагогической сверки с программой и учебником соответствующего класса до публикации.",
+  "distribution": {
+    "basic": 5,
+    "medium": 7,
+    "advanced": 3
+  },
+  "questions": [
+    {
+      "id": "informatics11-01",
+      "topic": "Системы счисления",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Чему равно 10000₂ в десятичной системе?",
+      "explanation": "10000₂ = 2⁴ = 16.",
+      "options": [
+        "8",
+        "16",
+        "32",
+        "64"
+      ],
+      "correctIndex": 1,
+      "correctText": "16"
+    },
+    {
+      "id": "informatics11-02",
+      "topic": "Информация",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Сколько бит содержит 1 байт?",
+      "explanation": "Один байт состоит из восьми бит.",
+      "options": [
+        "4",
+        "8",
+        "16",
+        "32"
+      ],
+      "correctIndex": 1,
+      "correctText": "8"
+    },
+    {
+      "id": "informatics11-03",
+      "topic": "Алгоритмы",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Как называется алгоритм, который вызывает сам себя?",
+      "explanation": "Рекурсивный алгоритм содержит обращение к самому себе.",
+      "options": [
+        "Итеративный",
+        "Рекурсивный",
+        "Линейный",
+        "Случайный"
+      ],
+      "correctIndex": 1,
+      "correctText": "Рекурсивный"
+    },
+    {
+      "id": "informatics11-04",
+      "topic": "Логика",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Чему равно НЕ 0 в двоичной логике?",
+      "explanation": "Отрицание меняет 0 на 1, а 1 на 0.",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "Не определено"
+      ],
+      "correctIndex": 1,
+      "correctText": "1"
+    },
+    {
+      "id": "informatics11-05",
+      "topic": "Таблицы",
+      "skill": "понимание",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какая функция возвращает наибольшее значение диапазона?",
+      "explanation": "MAX находит максимальное значение.",
+      "options": [
+        "MIN",
+        "MAX",
+        "COUNT",
+        "SUM"
+      ],
+      "correctIndex": 1,
+      "correctText": "MAX"
+    },
+    {
+      "id": "informatics11-06",
+      "topic": "Системы счисления",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Переведи 101101₂ в десятичную систему.",
+      "explanation": "101101₂ = 32 + 8 + 4 + 1 = 45.",
+      "acceptedAnswers": [
+        "45"
+      ],
+      "correctText": "45"
+    },
+    {
+      "id": "informatics11-07",
+      "topic": "Кодирование",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Сколько бит требуется для кодирования 100 различных символов фиксированным кодом?",
+      "explanation": "2⁶ = 64 недостаточно; 2⁷ = 128 достаточно, значит ответ 7 бит.",
+      "options": [
+        "6",
+        "7",
+        "8",
+        "10"
+      ],
+      "correctIndex": 2,
+      "correctText": "8"
+    },
+    {
+      "id": "informatics11-08",
+      "topic": "Логика",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какое выражение эквивалентно A ИЛИ (A И B)?",
+      "explanation": "По закону поглощения A ИЛИ (A И B) = A.",
+      "options": [
+        "A",
+        "B",
+        "A И B",
+        "НЕ A"
+      ],
+      "correctIndex": 0,
+      "correctText": "A"
+    },
+    {
+      "id": "informatics11-09",
+      "topic": "Алгоритмы",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Функция возвращает n+2. Чему равен результат вызова функции для n=9?",
+      "explanation": "Подставляем n=9: 9+2=11.",
+      "acceptedAnswers": [
+        "11"
+      ],
+      "correctText": "11"
+    },
+    {
+      "id": "informatics11-10",
+      "topic": "Базы данных",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какое условие SQL оставит записи, где возраст больше 15?",
+      "explanation": "WHERE задаёт условие отбора строк.",
+      "options": [
+        "WHERE age > 15",
+        "ORDER BY age",
+        "GROUP BY age",
+        "SELECT age"
+      ],
+      "correctIndex": 0,
+      "correctText": "WHERE age > 15"
+    },
+    {
+      "id": "informatics11-11",
+      "topic": "Сети",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какой протокол обычно используется для защищённой передачи веб-страниц?",
+      "explanation": "HTTPS использует шифрование соединения TLS.",
+      "options": [
+        "HTTP",
+        "HTTPS",
+        "FTP",
+        "SMTP"
+      ],
+      "correctIndex": 1,
+      "correctText": "HTTPS"
+    },
+    {
+      "id": "informatics11-12",
+      "topic": "Алгоритмы",
+      "skill": "понимание и применение",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какова временная сложность линейного поиска в худшем случае для n элементов?",
+      "explanation": "В худшем случае приходится проверить все n элементов.",
+      "options": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n²)"
+      ],
+      "correctIndex": 2,
+      "correctText": "O(n)"
+    },
+    {
+      "id": "informatics11-13",
+      "topic": "Алгоритмы",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "short",
+      "question": "Сколько раз выполнится внутреннее действие в двух вложенных циклах по 4 итерации каждый?",
+      "explanation": "Для каждой из 4 внешних итераций внутренний цикл выполняется 4 раза: 4×4=16.",
+      "acceptedAnswers": [
+        "16"
+      ],
+      "correctText": "16"
+    },
+    {
+      "id": "informatics11-14",
+      "topic": "Логика",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "Какое выражение является тавтологией?",
+      "explanation": "Для любого значения A либо A истинно, либо НЕ A истинно.",
+      "options": [
+        "A И НЕ A",
+        "A ИЛИ НЕ A",
+        "A И B",
+        "A ИЛИ B"
+      ],
+      "correctIndex": 1,
+      "correctText": "A ИЛИ НЕ A"
+    },
+    {
+      "id": "informatics11-15",
+      "topic": "Информация",
+      "skill": "понимание и применение",
+      "difficulty": "advanced",
+      "type": "short",
+      "question": "Файл 3 МиБ. Сколько КиБ в этом файле?",
+      "explanation": "1 МиБ = 1024 КиБ; 3×1024 = 3072 КиБ.",
+      "acceptedAnswers": [
+        "3072"
+      ],
+      "correctText": "3072"
+    }
+  ]
+}
