@@ -161,6 +161,8 @@ export default {
         consentAt: clean(p.consentAt, 50),
         telegramConsent: p.telegramConsent === true,
         bankProgramMatched: p.bankProgramMatched === true,
+        bankId: clean(p.bankId, 180),
+        bankReviewStatus: clean(p.bankReviewStatus, 40) || "teacher_review_draft",
         score,
         maxScore,
         percentage: Math.round(score / maxScore * 100),
