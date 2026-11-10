@@ -128,26 +128,54 @@ def main():
             if len(unique_files) > 1:
                 warnings.append(f"{direction}: repeated stem in {', '.join(unique_files)} — {stem[:100]}")
 
-    if not HTML.exists():
-        fail(errors, "missing edu/diagnostika.html")
-    else:
+    for html_path in (HTML, DIAG / "archive.html"):
+        if not html_path.exists():
+            fail(errors, f"missing {html_path.relative_to(ROOT)}")
+            continue
         parser = ScriptExtractor()
-        parser.feed(HTML.read_text(encoding="utf-8"))
-        js = "\n".join(parser.parts)
+        parser.feed(html_path.read_text(encoding="utf-8"))
+        js = "\\n".join(parser.parts)
         if not js.strip():
-            fail(errors, "no inline JavaScript found in diagnostika.html")
-        else:
-            with tempfile.NamedTemporaryFile("w", suffix=".js", encoding="utf-8", delete=False) as tmp:
-                tmp.write(js)
-                temp_name = tmp.name
-            try:
-                check = subprocess.run(["node", "--check", temp_name], capture_output=True, text=True)
-                if check.returncode:
-                    fail(errors, "JavaScript syntax check failed: " + (check.stderr.strip() or check.stdout.strip()))
-            except FileNotFoundError:
-                warnings.append("Node.js is unavailable; skipped JavaScript syntax check")
-            finally:
-                Path(temp_name).unlink(missing_ok=True)
+            fail(errors, f"no inline JavaScript found in {html_path.relative_to(ROOT)}")
+            continue
+        with tempfile.NamedTemporaryFile("w", suffix=".js", encoding="utf-8", delete=False) as tmp:
+            tmp.write(js)
+            temp_name = tmp.name
+        try:
+            check = subprocess.run(["node", "--check", temp_name], capture_output=True, text=True)
+            if check.returncode:
+                fail(errors, f"JavaScript syntax check failed in {html_path.name}: " + (check.stderr.strip() or check.stdout.strip()))
+        except FileNotFoundError:
+            warnings.append("Node.js is unavailable; skipped JavaScript syntax checks")
+        finally:
+            Path(temp_name).unlink(missing_ok=True)
+
+    worker = DIAG / "worker.js"
+    if worker.exists():
+        with tempfile.NamedTemporaryFile("w", suffix=".mjs", encoding="utf-8", delete=False) as tmp:
+            tmp.write(worker.read_text(encoding="utf-8"))
+            worker_temp = tmp.name
+        try:
+            check = subprocess.run(["node", "--check", worker_temp], capture_output=True, text=True)
+            if check.returncode:
+                fail(errors, "Worker JavaScript syntax check failed: " + (check.stderr.strip() or check.stdout.strip()))
+        except FileNotFoundError:
+            warnings.append("Node.js is unavailable; skipped Worker syntax check")
+        finally:
+            Path(worker_temp).unlink(missing_ok=True)
+
+    frontend = HTML.read_text(encoding="utf-8") if HTML.exists() else ""
+    required_guards = (
+        "experience=p.direction.experience?$('experience').value:''",
+        "$('experience').value='';",
+        "$('question').textContent=q.question;",
+        "Array.isArray(data.questions)",
+    )
+    for guard in required_guards:
+        if guard not in frontend:
+            fail(errors, f"frontend regression guard missing: {guard}")
+    if "Тест-диагностика по информатике" in frontend:
+        fail(errors, "obsolete informatics-only diagnostic title remains")
 
     print(f"Checked {len(files)} question banks.")
     print(f"Expected profile count: {len(expected)}.")
