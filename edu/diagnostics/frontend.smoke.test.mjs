@@ -94,6 +94,21 @@ test("program year and senior level are required for grades 10–11", async () =
   await page.close();
 });
 
+test("Belarus grade-eight physics pilot asks for the study level", async () => {
+  const page = await browser.newPage();
+  await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
+  await page.locator("#student").fill("Тест");
+  await page.locator("#direction").selectOption("physics");
+  await page.locator("#grade").selectOption("8");
+  await page.locator("#curriculum").selectOption("by");
+  assert.equal(await page.locator("#curriculum-year-wrap").isVisible(), true);
+  assert.equal(await page.locator("#curriculum-level-wrap").isVisible(), true);
+  assert.equal(await page.locator("#start").isEnabled(), false);
+  await page.locator("#curriculum-level").selectOption("advanced");
+  assert.equal(await page.locator("#start").isEnabled(), true);
+  await page.close();
+});
+
 test("digital direction requires an explicit experience level", async () => {
   const page = await browser.newPage();
   await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
