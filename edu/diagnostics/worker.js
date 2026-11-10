@@ -98,8 +98,26 @@ export default {
       const curriculumYear = clean(p.curriculumYear, 12);
       const studentClass = clean(p.studentClass, 10);
       const direction = clean(p.direction, 60);
-      const validDirections = ["Информатика", "Физика", "Математика", "Python", "HTML/CSS", "Figma"];
-      if (!validDirections.includes(direction)) return json({ ok: false, error: "invalid_direction" }, 400, origin);
+      const directionRules = {
+        "Информатика": { grades: [6, 7, 8, 9, 10, 11], school: true },
+        "Физика": { grades: [7, 8, 9, 10, 11], school: true },
+        "Математика": { grades: [6, 7, 8, 9], school: true },
+        "Python": { grades: [5, 6, 7, 8, 9, 10, 11], school: false },
+        "HTML/CSS": { grades: [5, 6, 7, 8, 9, 10, 11], school: false },
+        "Figma": { grades: [5, 6, 7, 8, 9, 10, 11], school: false }
+      };
+      const rule = directionRules[direction];
+      if (!rule || !rule.grades.includes(Number(studentClass))) return json({ ok: false, error: "invalid_direction_or_grade" }, 400, origin);
+      if (rule.school && !["ru", "by", "other"].includes(curriculumId)) return json({ ok: false, error: "school_curriculum_required" }, 400, origin);
+      if (!rule.school && !["self", "other"].includes(curriculumId)) return json({ ok: false, error: "digital_curriculum_required" }, 400, origin);
+      if (direction === "Информатика" && Number(studentClass) === 6 && curriculumId === "ru") {
+        return json({ ok: false, error: "local_informatics_program_required" }, 400, origin);
+      }
+      const experience = clean(p.experience, 20);
+      if (rule.school && experience) return json({ ok: false, error: "unexpected_experience" }, 400, origin);
+      if (!rule.school && !["beginner", "basics", "experienced"].includes(experience)) {
+        return json({ ok: false, error: "experience_required" }, 400, origin);
+      }
       if (!["ru", "by", "other", "self"].includes(curriculumId) || !curriculumName) {
         return json({ ok: false, error: "curriculum_required" }, 400, origin);
       }
@@ -126,7 +144,7 @@ export default {
         studentName: clean(p.studentName, 100),
         studentClass,
         direction,
-        experience: clean(p.experience, 60),
+        experience: rule.school ? "" : experience,
         curriculumId,
         curriculumName,
         curriculumDetail,
