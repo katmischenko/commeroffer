@@ -59,11 +59,11 @@
       "question": "Какое свойство задаёт цвет фона элемента?",
       "options": [
         "color",
-        "background-color",
         "font-color",
+        "background-color",
         "fill-text"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "correctText": "background-color",
       "explanation": "background-color задаёт цвет фона, а color — цвет текста."
     },
@@ -77,10 +77,10 @@
       "options": [
         "<td>",
         "<th>",
-        "<tr>",
-        "<table-row>"
+        "<table-row>",
+        "<tr>"
       ],
-      "correctIndex": 2,
+      "correctIndex": 3,
       "correctText": "<tr>",
       "explanation": "Элемент tr задаёт строку таблицы; td и th создают ячейки."
     },
@@ -109,12 +109,12 @@
       "type": "choice",
       "question": "Какой атрибут ссылки открывает страницу в новой вкладке?",
       "options": [
-        "target=\"_blank\"",
         "src=\"new\"",
+        "target=\"_blank\"",
         "rel=\"tab\"",
         "href=\"_blank\""
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "correctText": "target=\"_blank\"",
       "explanation": "target=\"_blank\" просит браузер открыть ссылку в новом контексте, обычно во вкладке."
     },
@@ -126,12 +126,12 @@
       "type": "choice",
       "question": "Для чего нужен элемент label рядом с полем ввода?",
       "options": [
-        "Для подписи поля и связи с ним",
         "Для отправки файла на сервер",
         "Для изменения цвета поля",
+        "Для подписи поля и связи с ним",
         "Для скрытия поля"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "correctText": "Для подписи поля и связи с ним",
       "explanation": "label даёт понятную подпись; связь задают через for и id или вложением input."
     },
@@ -144,11 +144,11 @@
       "question": "Что происходит с элементом при display: none?",
       "options": [
         "Он остаётся в потоке прозрачным",
-        "Он не отображается и не занимает место в раскладке",
         "Он становится фиксированным",
-        "Он перемещается в конец страницы"
+        "Он перемещается в конец страницы",
+        "Он не отображается и не занимает место в раскладке"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "correctText": "Он не отображается и не занимает место в раскладке",
       "explanation": "display:none исключает элемент из раскладки и визуального отображения."
     },
@@ -177,12 +177,12 @@
       "type": "choice",
       "question": "Что описывает селектор a:hover?",
       "options": [
-        "Ссылку, на которую наведён указатель",
         "Посещённую ссылку",
+        "Ссылку, на которую наведён указатель",
         "Первую ссылку в документе",
         "Ссылку без адреса"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "correctText": "Ссылку, на которую наведён указатель",
       "explanation": ":hover применяется, когда указатель находится над элементом."
     },
@@ -195,11 +195,11 @@
       "question": "Что выберет селектор p.note?",
       "options": [
         "Все элементы с id note",
-        "Абзацы, у которых есть класс note",
         "Все элементы note внутри p",
+        "Абзацы, у которых есть класс note",
         "Только первый абзац"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "correctText": "Абзацы, у которых есть класс note",
       "explanation": "Составной селектор p.note выбирает элементы p с классом note."
     },
@@ -212,11 +212,11 @@
       "question": "Какой элемент создаёт нумерованный список?",
       "options": [
         "<ul>",
-        "<ol>",
         "<li>",
-        "<dl>"
+        "<dl>",
+        "<ol>"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "correctText": "<ol>",
       "explanation": "ol создаёт упорядоченный список с нумерацией."
     },
@@ -228,12 +228,12 @@
       "type": "choice",
       "question": "Какое правило обычно имеет больший приоритет при сравнении обычных селекторов без !important?",
       "options": [
+        "Селектор идентификатора #note",
         "Селектор элемента p",
         "Селектор класса .note",
-        "Селектор идентификатора #note",
         "У всех одинаковый приоритет"
       ],
-      "correctIndex": 2,
+      "correctIndex": 0,
       "correctText": "Селектор идентификатора #note",
       "explanation": "ID-селектор имеет большую специфичность, чем класс и селектор элемента."
     },
@@ -263,11 +263,11 @@
       "question": "Страница находится в папке pages, а изображение — в соседней папке images. Какой относительный путь ведёт к photo.png?",
       "options": [
         "images/photo.png",
-        "../images/photo.png",
         "/pages/images/photo.png",
+        "../images/photo.png",
         "photo/images.png"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "correctText": "../images/photo.png",
       "explanation": "Из pages нужно подняться на уровень выше и перейти в images."
     }
