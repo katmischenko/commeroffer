@@ -1,0 +1,28 @@
+# Cloudflare Worker: диагностика Mischenko Edu
+
+Исходник: `worker.js`. Миграция D1: `schema.sql`.
+
+## Текущее состояние
+Этот код подготовлен, но не развернут в Cloudflare автоматически. Для центрального архива необходимо подключить D1 и заменить код существующего Worker этим исходником.
+
+## Настройка
+1. В Cloudflare Workers & Pages откройте Worker `mischenko-edu-diagnostics`.
+2. Создайте D1 database, например `mischenko-edu-diagnostics`.
+3. В D1 Console выполните SQL из `schema.sql`.
+4. В Worker → Settings → Bindings добавьте D1 binding с variable name `DB` и выберите созданную базу.
+5. В Variables and Secrets проверьте секреты `BOT_TOKEN` и `OWNER_CHAT_ID`. Не помещайте их в HTML или GitHub.
+6. Добавьте Secret `ADMIN_TOKEN` — длинный случайный пароль для просмотра архива.
+7. Замените код Worker содержимым `worker.js` и Deploy.
+8. Проверьте GET /: ответ должен содержать `"database":true`.
+
+## API
+- `POST /diagnostics` — проверяет согласие, имя, класс, направление и ровно 15 ответов; сохраняет попытку в D1, затем отправляет Telegram-уведомление.
+- `GET /admin/attempts?limit=50` — возвращает архив только при заголовке `Authorization: Bearer ADMIN_TOKEN`.
+
+Telegram — уведомление, D1 — постоянный архив. Повторная отправка с тем же `attemptId` не создаёт вторую запись.
+
+## Важно
+- В этой версии endpoint архива — технический API, а не готовая публичная админ-панель.
+- Не добавляйте ADMIN_TOKEN в публичный HTML, репозиторий или клиентский JavaScript.
+- Перед публичным запуском утвердите срок хранения, порядок удаления данных, текст согласия и политику конфиденциальности.
+- Worker возвращает `saved:true` отдельно от `telegramSent`: сохранение в базе и доставка уведомления — разные операции.
