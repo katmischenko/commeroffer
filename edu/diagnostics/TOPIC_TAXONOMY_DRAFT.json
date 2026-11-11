@@ -51,6 +51,12 @@
       ],
       "rules": [
         {
+          "groupId": "numbers",
+          "containsAny": [
+            "Координатная прямая"
+          ]
+        },
+        {
           "groupId": "trigonometry",
           "containsAny": [
             "Тригонометр"
@@ -264,6 +270,11 @@
           "Информация, её объём, представление, кодирование и системы счисления."
         ],
         [
+          "models",
+          "Информационные модели и моделирование",
+          "Построение и анализ информационных моделей."
+        ],
+        [
           "logic",
           "Логика и логические модели",
           "Логические высказывания, операции, выражения и таблицы истинности."
@@ -305,6 +316,12 @@
         ]
       ],
       "rules": [
+        {
+          "groupId": "models",
+          "containsAny": [
+            "Моделирован"
+          ]
+        },
         {
           "groupId": "logic",
           "containsAny": [
@@ -449,6 +466,12 @@
           "groupId": "errors",
           "containsAny": [
             "Исключен"
+          ]
+        },
+        {
+          "groupId": "collections",
+          "containsAny": [
+            "Генератор"
           ]
         },
         {
@@ -668,6 +691,12 @@
         ]
       ],
       "rules": [
+        {
+          "groupId": "design_systems",
+          "containsAny": [
+            "Variables"
+          ]
+        },
         {
           "groupId": "ux_quality",
           "containsAny": [
