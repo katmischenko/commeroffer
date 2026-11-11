@@ -956,9 +956,8 @@
   .edu-kicker i{font-style:normal;color:var(--pen);font-size:17px}
   .edu-edition{margin-top:30px;font-size:clamp(19px,2.2vw,27px);font-weight:800;line-height:1.13;letter-spacing:-.035em}
   .edu-edition span{display:block;margin-top:10px;color:var(--faint);font-size:10px;letter-spacing:.16em;font-weight:700}
-  .edu-stamp{margin-top:auto;width:116px;height:116px;border:1px solid rgba(142,201,255,.4);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;color:var(--pen);font-size:9px;font-weight:800;letter-spacing:.16em;transform:rotate(-11deg);position:relative}
-  .edu-stamp::before{content:"";position:absolute;inset:7px;border:1px dashed rgba(142,201,255,.32);border-radius:50%}
-  .edu-stamp b{font:700 28px var(--hand);color:var(--marker);line-height:1.1}
+  .edu-index{margin-top:auto;padding-top:13px;border-top:1px solid rgba(234,231,223,.16);display:flex;align-items:baseline;gap:12px;color:var(--faint);font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+  .edu-index strong{font:700 52px/.9 var(--hand);color:rgba(234,231,223,.16);letter-spacing:-.06em}
   .edu-main{min-width:0}
   .edu-head{max-width:760px;margin:0 0 23px}
   .edu-overline{display:block;color:var(--faint);font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
@@ -987,9 +986,8 @@
     .edu-edition{margin:6px 0 0;font-size:13px;grid-column:1;letter-spacing:.02em}
     .edu-edition br{display:none}
     .edu-edition span{display:inline;margin-left:7px;font-size:9px}
-    .edu-stamp{width:72px;height:72px;grid-column:2;grid-row:1/3;font-size:6px}
-    .edu-stamp::before{inset:5px}
-    .edu-stamp b{font-size:20px}
+    .edu-index{grid-column:2;grid-row:1/3;align-self:end;margin:0 0 2px;padding-top:7px;gap:6px;font-size:7px;white-space:nowrap}
+    .edu-index strong{font-size:32px}
     .edu-head{margin-bottom:17px}
     .edu h2{font-size:clamp(28px,7vw,38px);margin:7px 0 9px}
     .edu .edu-intro{font-size:13px}
@@ -1370,7 +1368,7 @@
         <div class="edu-aside">
           <span class="edu-kicker">Mischenko Edu <i>✳</i></span>
           <div class="edu-edition">МЕТОДИЧЕСКАЯ<br>БИБЛИОТЕКА <span>№ 01</span></div>
-          <div class="edu-stamp" aria-hidden="true"><span>ЗНАНИЯ</span><b>↗</b><span>В ПРАКТИКУ</span></div>
+          <div class="edu-index" aria-hidden="true"><strong>01</strong><span>Каталог учебных материалов</span></div>
         </div>
         <div class="edu-main">
           <div class="edu-head">
