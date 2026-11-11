@@ -234,3 +234,45 @@ footer{border-top:1px solid var(--line);padding:40px 0;margin-top:40px}
 html.reveal-ready .reveal{opacity:0;transform:translateY(24px)}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){html.reveal-ready .reveal{opacity:1;transform:none;transition:none}}
+
+
+/* Unified Mischenko Edu dark-burgundy visual system */
+:root{
+  --paper:#0c0a0f;--paper-2:#17141b;
+  --line:rgba(216,208,210,.12);--ink:#e8e0e2;
+  --muted:#b4a8ae;--faint:#81747c;
+  --marker:#9b465f;--marker-soft:rgba(155,70,95,.16);
+  --pen:#c7b6bc;--pen-soft:rgba(199,182,188,.12);
+}
+body{
+  background-color:var(--paper);
+  background-image:radial-gradient(ellipse at 15% 0%,rgba(91,35,55,.13),transparent 38%),radial-gradient(ellipse at 90% 38%,rgba(58,32,43,.10),transparent 34%);
+}
+::selection{background:#6f2d43;color:#fff}
+header{background:rgba(12,10,15,.84);border-bottom-color:rgba(216,208,210,.1)}
+.logo .hand,.nav-link:hover,.back,.sec-index,.f-group .f-label{color:var(--pen)}
+.nav-cta,.btn-pen{background:linear-gradient(135deg,#9b465f,#6e293f);color:#fff;box-shadow:0 8px 24px rgba(92,35,55,.18)}
+.nav-cta:hover,.btn-pen:hover{box-shadow:0 14px 34px rgba(120,43,68,.3)}
+.btn-marker{background:linear-gradient(135deg,#9b465f,#6e293f);color:#fff}
+.hl,.hl-o{background:linear-gradient(100deg,transparent,#6e293f2b,transparent);box-shadow:0 0 0 4px rgba(110,41,63,.12);color:#c77b91}
+.chip.on{background:#8e3b55;border-color:#8e3b55;color:#fff}
+.chip.on-st{background:#3a202b;border-color:#8d455c;color:#eadde1}
+.item,.note-box,.quiz,.task,.sim-log,.q-result,.fc-card,.result-card,.comic .frame,.workbook-card{
+  background:linear-gradient(145deg,rgba(34,27,34,.97),rgba(20,16,22,.99));
+  border:1px solid rgba(216,208,210,.12);border-radius:22px;
+  box-shadow:0 16px 42px rgba(0,0,0,.18);
+}
+.item{padding:26px 25px 23px;border-radius:20px}
+.item:hover{border-color:rgba(155,70,95,.55);box-shadow:0 22px 48px rgba(0,0,0,.32)}
+.item .kind,.back{color:#c7b6bc}
+.st-soon{color:#bd7187}
+.st-ok,.tag-free{color:#a9c5b1}
+.tag-paid{color:#bd7187}
+.note-box::before{background:rgba(155,70,95,.24)}
+.note-box li::before{color:#c7b6bc}
+.quiz,.task{padding:clamp(22px,4vw,34px)}
+.q-opt,.chip,.fc-actions button{border-radius:14px}
+.q-opt{background:#211820;border-color:rgba(216,208,210,.16);color:var(--ink)}
+.q-opt:hover{border-color:#9b465f}
+footer{border-color:rgba(216,208,210,.1)}
+@media(max-width:640px){.item{padding:23px 21px}}
