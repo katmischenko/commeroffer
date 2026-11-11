@@ -19,7 +19,7 @@
     {
       "id": "htmlcss9-01",
       "topic": "Семантический HTML",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Группировка связанных полей формы элементом fieldset",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой элемент объединяет подпись и несколько связанных полей формы?",
@@ -36,7 +36,7 @@
     {
       "id": "htmlcss9-02",
       "topic": "HTML-формы",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Выбор типа input для числового значения",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой тип input предназначен для ввода числового значения?",
@@ -53,7 +53,7 @@
     {
       "id": "htmlcss9-03",
       "topic": "HTML-изображения",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Определение назначения атрибута alt для доступности",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой атрибут у img задаёт альтернативный текст для скринридера?",
@@ -70,7 +70,7 @@
     {
       "id": "htmlcss9-04",
       "topic": "CSS-псевдоклассы",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Выбор включённого элемента формы через :enabled",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой псевдокласс выбирает включённый элемент управления формы?",
@@ -87,7 +87,7 @@
     {
       "id": "htmlcss9-05",
       "topic": "CSS-размеры",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Настройка пропорций блока через aspect-ratio",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какое свойство задаёт пропорциональное соотношение сторон блока?",
@@ -104,7 +104,7 @@
     {
       "id": "htmlcss9-06",
       "topic": "Доступность",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Связывание поля с описанием или сообщением об ошибке через aria-describedby",
       "difficulty": "medium",
       "type": "choice",
       "question": "Для чего используют aria-describedby у поля формы?",
@@ -121,7 +121,7 @@
     {
       "id": "htmlcss9-07",
       "topic": "Адаптивные изображения",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Отложенная загрузка изображения через loading=lazy",
       "difficulty": "medium",
       "type": "choice",
       "question": "Для чего используют loading=\"lazy\" у изображения?",
@@ -138,7 +138,7 @@
     {
       "id": "htmlcss9-08",
       "topic": "CSS-псевдоклассы",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Определение условий отображения индикатора :focus-visible",
       "difficulty": "medium",
       "type": "choice",
       "question": "Когда обычно срабатывает :focus-visible?",
@@ -155,7 +155,7 @@
     {
       "id": "htmlcss9-09",
       "topic": "CSS Grid",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Построение адаптивных колонок через repeat, auto-fit и minmax",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что означает repeat(auto-fit, minmax(220px, 1fr)) в сетке?",
@@ -172,7 +172,7 @@
     {
       "id": "htmlcss9-10",
       "topic": "CSS-анимация",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Учет системной настройки prefers-reduced-motion",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какой медиазапрос учитывает настройку пользователя «уменьшить движение»?",
@@ -189,7 +189,7 @@
     {
       "id": "htmlcss9-11",
       "topic": "CSS-изображения",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Настройка положения изображения через object-position",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какое свойство управляет положением изображения внутри области object-fit?",
@@ -206,7 +206,7 @@
     {
       "id": "htmlcss9-12",
       "topic": "HTML-скрипты",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Определение порядка выполнения внешнего script с defer",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что делает атрибут defer у внешнего script?",
@@ -223,7 +223,7 @@
     {
       "id": "htmlcss9-13",
       "topic": "CSS-возможности браузера",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Проверка поддержки CSS-возможности через @supports",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Для чего используют @supports (display: grid)?",
@@ -240,7 +240,7 @@
     {
       "id": "htmlcss9-14",
       "topic": "CSS-контейнерные запросы",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Включение контейнерных запросов через container-type",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Какое свойство включает возможность использовать container queries для элемента-контейнера?",
@@ -257,7 +257,7 @@
     {
       "id": "htmlcss9-15",
       "topic": "CSS-каскад",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Управление приоритетом CSS-правил через @layer",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Для чего предназначено правило @layer?",
@@ -271,5 +271,7 @@
       "correctText": "Для управления порядком слоёв каскада CSS",
       "explanation": "Каскадные слои позволяют явно организовать приоритет групп CSS-правил."
     }
-  ]
+  ],
+  "skillGranularity": "question_action",
+  "skillReviewStatus": "teacher_review_draft"
 }
