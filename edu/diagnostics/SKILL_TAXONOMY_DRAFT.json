@@ -337,15 +337,15 @@
       ],
       "rules": [
         {
-          "groupId": "integrated_generic",
-          "containsAny": [
-            "понимание и применение"
-          ]
-        },
-        {
           "groupId": "digital_tool_use",
           "containsAny": [
             "применение html/css"
+          ]
+        },
+        {
+          "groupId": "integrated_generic",
+          "containsAny": [
+            "понимание и применение"
           ]
         },
         {
@@ -384,15 +384,15 @@
       ],
       "rules": [
         {
-          "groupId": "integrated_generic",
-          "containsAny": [
-            "понимание и применение"
-          ]
-        },
-        {
           "groupId": "digital_tool_use",
           "containsAny": [
             "применение figma"
+          ]
+        },
+        {
+          "groupId": "integrated_generic",
+          "containsAny": [
+            "понимание и применение"
           ]
         },
         {
