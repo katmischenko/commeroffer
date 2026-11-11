@@ -19,7 +19,7 @@
     {
       "id": "htmlcss7-01",
       "topic": "Семантический HTML",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Выбор семантического элемента навигации",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой элемент обычно содержит основную навигацию сайта?",
@@ -36,7 +36,7 @@
     {
       "id": "htmlcss7-02",
       "topic": "Семантический HTML",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Определение назначения семантического элемента footer",
       "difficulty": "basic",
       "type": "choice",
       "question": "Для чего чаще всего используют элемент footer?",
@@ -53,7 +53,7 @@
     {
       "id": "htmlcss7-03",
       "topic": "Семантический HTML",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Выбор элемента article для самостоятельной публикации",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой элемент подходит для самостоятельной публикации, например новости или статьи?",
@@ -70,7 +70,7 @@
     {
       "id": "htmlcss7-04",
       "topic": "CSS-шрифты",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Выбор CSS-свойства семейства шрифтов",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какое свойство выбирает семейство шрифта?",
@@ -87,7 +87,7 @@
     {
       "id": "htmlcss7-05",
       "topic": "CSS-селекторы",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Запись атрибутного CSS-селектора по имени и значению",
       "difficulty": "basic",
       "type": "choice",
       "question": "Как выбрать элемент, если у него атрибут data-state со значением active?",
@@ -104,7 +104,7 @@
     {
       "id": "htmlcss7-06",
       "topic": "Flexbox",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Распределение flex-элементов вдоль главной оси",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какое свойство Flexbox распределяет элементы вдоль главной оси?",
@@ -121,7 +121,7 @@
     {
       "id": "htmlcss7-07",
       "topic": "Flexbox",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Выравнивание flex-элементов по поперечной оси",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что задаёт align-items в flex-контейнере?",
@@ -138,7 +138,7 @@
     {
       "id": "htmlcss7-08",
       "topic": "CSS-размеры",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Установка минимальной ширины элемента",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какое свойство не позволяет блоку стать уже 280 пикселей?",
@@ -155,7 +155,7 @@
     {
       "id": "htmlcss7-09",
       "topic": "CSS-псевдоклассы",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Оформление элемента в состоянии фокуса",
       "difficulty": "medium",
       "type": "choice",
       "question": "Для чего используют :focus?",
@@ -172,7 +172,7 @@
     {
       "id": "htmlcss7-10",
       "topic": "CSS-раскладка",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Настройка промежутков между дорожками CSS Grid",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какое свойство задаёт промежуток между строками и столбцами CSS Grid?",
@@ -189,7 +189,7 @@
     {
       "id": "htmlcss7-11",
       "topic": "HTML-формы",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Использование placeholder для подсказки поля ввода",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какой атрибут input задаёт подсказку внутри пустого поля?",
@@ -206,7 +206,7 @@
     {
       "id": "htmlcss7-12",
       "topic": "Адаптивность",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Настройка медиазапроса по минимальной ширине окна",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какой медиазапрос применит стили при ширине окна от 700 пикселей?",
@@ -223,7 +223,7 @@
     {
       "id": "htmlcss7-13",
       "topic": "Позиционирование",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Определение containing block для absolute-позиционирования",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Относительно какого предка обычно позиционируется absolute-элемент?",
@@ -240,7 +240,7 @@
     {
       "id": "htmlcss7-14",
       "topic": "CSS-переполнение",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Определение поведения overflow: auto при переполнении",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Что делает overflow: auto, если содержимое не помещается в блок?",
@@ -257,7 +257,7 @@
     {
       "id": "htmlcss7-15",
       "topic": "CSS-псевдоэлементы",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Использование псевдоэлемента ::first-line",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Какой псевдоэлемент позволяет оформить первую строку текста?",
@@ -271,5 +271,7 @@
       "correctText": "::first-line",
       "explanation": "::first-line применяет стили к первой форматируемой строке блока."
     }
-  ]
+  ],
+  "skillGranularity": "question_action",
+  "skillReviewStatus": "teacher_review_draft"
 }
