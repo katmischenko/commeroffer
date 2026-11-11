@@ -417,32 +417,55 @@ body{
 @media(max-width:600px){.brand-name{font-size:17px}}
 
 
-/* TYPOGRAPHY & BRAND REFINEMENT — Mischenko Edu */
-:root{--hand:'Dancing Script',cursive;--display:'Cormorant Garamond',Georgia,serif;--subtitle:'Manrope','Inter',sans-serif}
-.brand{gap:8px}
-.brand-mark{width:27px;height:27px;position:relative;border:0!important;border-radius:0!important;background:transparent!important;color:transparent!important;font-size:0!important}
-.brand-mark:before{content:"";position:absolute;inset:4px;background:var(--wine);clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)}
-.brand-mark:after{content:"";position:absolute;width:4px;height:4px;border-radius:50%;background:var(--paper);left:50%;top:50%;transform:translate(-50%,-50%)}
-.brand-mark i{display:none}
-.brand-name{font:600 16px/1 'Dancing Script',cursive!important;letter-spacing:0!important;text-transform:lowercase!important;color:var(--ink)}
-.hero h1,.section-heading,.final-cta h2{font-family:var(--display);font-weight:600;letter-spacing:-.035em}
-.hero h1{font-size:clamp(4.2rem,7.4vw,8rem);line-height:.9}
-.section-heading{font-size:clamp(2.8rem,5.6vw,5.5rem);line-height:.98}
-.hero h1 em,.section-heading em,.final-cta h2 em{font-family:var(--display);font-style:italic;font-weight:600}
-.hero-lead,.section-intro,.about-main p,.faq-intro .section-intro{font-family:var(--subtitle);font-weight:400}
-.hero-lead{font-size:clamp(14px,1.15vw,16px);line-height:1.85}
-.section-intro{font-size:14px;line-height:1.85}
-.hero-kicker{display:inline-flex;align-items:center;gap:7px;border:0;padding:0;background:none;color:var(--wine);font:500 21px/1.1 var(--hand);letter-spacing:0;text-transform:none}
-.hero-kicker b{display:none}
-.hero-kicker span{font:400 14px var(--sans);opacity:.55}
-.about-mantra{position:relative;display:inline-flex;flex-direction:column;align-items:flex-start;gap:0;margin:30px 0 0;padding:0 0 10px;color:var(--wine);font:500 30px/.95 var(--hand);transform:rotate(-2deg)}
-.about-mantra strong{font:600 36px/.95 var(--hand)}
-.about-mantra:after{content:"";position:absolute;left:0;right:-12px;bottom:2px;height:2px;background:var(--wine);opacity:.5;transform:rotate(-2deg)}
-.about-credential{align-items:flex-start}
-.about-credential .credential-copy{font-family:var(--subtitle);font-size:12px;line-height:1.65}
-.about-credential .credential-copy em{font:600 21px/1.15 var(--display);color:var(--ink)}
-.additional-credential{margin-top:13px}
-.review-meta strong{font:600 23px/1 var(--hand);color:var(--wine);font-weight:600}
-.library-side h3{font-family:var(--display);font-weight:600}
-.library-actions .btn{min-width:210px}
-@media(max-width:600px){.brand-name{font-size:15px!important}.hero h1{font-size:clamp(3.8rem,16vw,5.2rem)}.about-mantra{font-size:27px}.about-mantra strong{font-size:32px}}
+/* TYPOGRAPHY — font families only; preserve the established layout */
+:root{
+  --hand:'Dancing Script',cursive;
+  --display:'Cormorant Garamond',Georgia,serif;
+  --subtitle:'Manrope','Inter',sans-serif;
+}
+.brand-name{
+  font-family:'Dancing Script',cursive;
+  font-weight:600;
+  letter-spacing:0;
+  text-transform:lowercase;
+}
+.hero h1,.section-heading,.final-cta h2,.library-side h3{
+  font-family:var(--display);
+}
+.hero h1 em,.section-heading em,.final-cta h2 em{
+  font-family:var(--display);
+  font-style:italic;
+}
+.hero-lead,.section-intro,.about-main p,.faq-intro .section-intro,
+.about-credential .credential-copy{
+  font-family:var(--subtitle);
+}
+.hero-kicker,.about-mantra,.about-mantra strong,.review-meta strong{
+  font-family:var(--hand);
+}
+.about-mantra{
+  position:relative;
+  display:inline-flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:0;
+  margin:30px 0 0;
+  padding:0 0 10px;
+  color:var(--wine);
+  transform:rotate(-2deg);
+}
+.about-mantra:after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:-12px;
+  bottom:2px;
+  height:2px;
+  background:var(--wine);
+  opacity:.5;
+  transform:rotate(-2deg);
+}
+.about-credential .credential-copy em{
+  font-family:var(--display);
+  font-style:italic;
+}
