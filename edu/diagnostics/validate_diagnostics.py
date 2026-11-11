@@ -53,7 +53,7 @@ def topic_group_for(taxonomy, direction: str, topic: str):
     return None
 
 
-def validate_bank(path: Path, errors: list[str], stems_by_direction, taxonomy):
+def validate_bank(path: Path, errors: list[str], stems_by_direction, taxonomy, taxonomy_coverage):
     filename_match = re.match(r"question-bank-(informatics|physics|math|python|html-css|figma)-(\d+)(.*)\.json$", path.name)
     if not filename_match:
         fail(errors, f"{path.name}: unrecognized bank filename")
@@ -109,6 +109,8 @@ def validate_bank(path: Path, errors: list[str], stems_by_direction, taxonomy):
             }
             if group_id not in allowed_groups:
                 fail(errors, f"{prefix}: topic rule points to unknown group {group_id!r}")
+            else:
+                taxonomy_coverage[direction][group_id] += 1
 
         stem = re.sub(r"\\s+", " ", str(q.get("question", "")).strip().lower())
         if stem in seen_stems:
@@ -173,7 +175,7 @@ def main():
 
     bank_data_by_id = {}
     for path in files:
-        data = validate_bank(path, errors, stems_by_direction, taxonomy)
+        data = validate_bank(path, errors, stems_by_direction, taxonomy, taxonomy_coverage)
         if isinstance(data, dict) and data.get("bankId"):
             bank_data_by_id[data["bankId"]] = path.name
 
@@ -306,6 +308,15 @@ def main():
     print(f"Checked {len(files)} question banks.")
     print(f"Expected profile count: {len(expected)}.")
     print("Topic taxonomy coverage: every question topic label must map to a declared group.")
+    for direction, counts in sorted(taxonomy_coverage.items()):
+        labels = {
+            group[0]: group[1]
+            for group in taxonomy.get("directions", {}).get(direction, {}).get("groups", [])
+        }
+        print(f"  {direction}: " + ", ".join(
+            f"{labels.get(group_id, group_id)}={count}"
+            for group_id, count in sorted(counts.items())
+        ))
     if warnings:
         fail(errors, f"cross-grade duplicate question stems found: {len(warnings)}")
         by_direction = Counter()
