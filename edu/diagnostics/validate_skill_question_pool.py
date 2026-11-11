@@ -143,6 +143,14 @@ def main():
         "function_return": 2,
         "operator_precedence": 2,
         "set_operations": 2,
+        "cascade_layers": 2,
+        "css_architecture": 2,
+        "focus_management": 2,
+        "html_metadata": 2,
+        "interaction_states": 2,
+        "component_system": 2,
+        "component_documentation": 2,
+        "export_handoff": 2,
     }
     if len(questions) != sum(expected_groups.values()):
         errors.append(f"expected {sum(expected_groups.values())} draft questions, got {len(questions)}")
