@@ -129,9 +129,10 @@
       var matchPrice = (curPrice === 'all') || (curPrice === 'free' && it.free) || (curPrice === 'paid' && !it.free);
       if(!matchSubj || !matchPrice) return;
       shown++;
-      var a = document.createElement(it.st === 'soon' ? 'div' : 'a');
+      var canOpen = it.st === 'ok' || !it.free;
+      var a = document.createElement(canOpen ? 'a' : 'div');
       a.className = 'item';
-      if(it.st !== 'soon') a.href = it.href;
+      if(canOpen) a.href = it.href;
       else a.setAttribute('aria-disabled', 'true');
       a.innerHTML =
         '<span class="st ' + it.stClass + '">' + it.stName + '</span>' +
