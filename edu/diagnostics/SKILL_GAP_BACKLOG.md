@@ -250,3 +250,8 @@
 ## Статус восьмого пополнения — 11.11.2026
 
 В пул добавлены 20 заданий для десяти одиночных групп HTML/CSS и Figma: поведение Flexbox, CSS transitions, custom properties, HTML dialog, адаптивные Grid-сетки, выравнивание и группировка объектов, кадрирование изображений, экспорт SVG и организация страниц Figma. Всего в пуле 130 заданий по 65 группам; статус — `teacher_review_draft`.
+
+
+## Статус девятого пополнения — 11.11.2026
+
+Добавлены 20 черновых заданий для групп: prefers-reduced-motion, @supports, rel=noopener, JavaScript modules, content-visibility, grid-template-areas, визуальная иерархия, Layout grid, дублирование объектов и контекстные комментарии Figma. Общий объём — 150 заданий по 75 группам; статус `teacher_review_draft`.
