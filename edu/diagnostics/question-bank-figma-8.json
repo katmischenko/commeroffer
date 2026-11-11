@@ -19,7 +19,7 @@
     {
       "id": "figma8-01",
       "topic": "Компоненты",
-      "skill": "понимание",
+      "skill": "Распознавание главного компонента как источника экземпляров",
       "difficulty": "basic",
       "type": "choice",
       "question": "Что является главным компонентом?",
@@ -36,7 +36,7 @@
     {
       "id": "figma8-02",
       "topic": "Auto Layout",
-      "skill": "понимание",
+      "skill": "Применение Auto Layout для автоматической компоновки",
       "difficulty": "basic",
       "type": "choice",
       "question": "Для чего используют Auto Layout?",
@@ -53,7 +53,7 @@
     {
       "id": "figma8-03",
       "topic": "Стили",
-      "skill": "понимание",
+      "skill": "Повторное использование цветовых стилей и переменных",
       "difficulty": "basic",
       "type": "choice",
       "question": "Зачем сохранять Color Styles или Variables?",
@@ -70,7 +70,7 @@
     {
       "id": "figma8-04",
       "topic": "Прототип",
-      "skill": "понимание",
+      "skill": "Настройка стартовой точки Flow в прототипе",
       "difficulty": "basic",
       "type": "choice",
       "question": "Что такое стартовый Flow в прототипе?",
@@ -87,7 +87,7 @@
     {
       "id": "figma8-05",
       "topic": "Сетка",
-      "skill": "понимание",
+      "skill": "Использование колонной сетки для композиции",
       "difficulty": "basic",
       "type": "choice",
       "question": "Что обычно задаёт колонная сетка?",
@@ -104,7 +104,7 @@
     {
       "id": "figma8-06",
       "topic": "Auto Layout",
-      "skill": "понимание и применение",
+      "skill": "Настройка Gap between items в Auto Layout",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какое свойство задаёт расстояние между элементами в Auto Layout?",
@@ -121,7 +121,7 @@
     {
       "id": "figma8-07",
       "topic": "Компоненты",
-      "skill": "понимание и применение",
+      "skill": "Объединение состояний компонента через Variants",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что позволяет Variant объединить?",
@@ -138,7 +138,7 @@
     {
       "id": "figma8-08",
       "topic": "Адаптивность",
-      "skill": "понимание и применение",
+      "skill": "Настройка Constraints для адаптации к родительскому фрейму",
       "difficulty": "medium",
       "type": "choice",
       "question": "Для чего задают Constraints?",
@@ -155,7 +155,7 @@
     {
       "id": "figma8-09",
       "topic": "Прототип",
-      "skill": "понимание и применение",
+      "skill": "Использование Smart Animate для переходов",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что обозначает Smart Animate?",
@@ -172,7 +172,7 @@
     {
       "id": "figma8-10",
       "topic": "Компоненты",
-      "skill": "понимание и применение",
+      "skill": "Понимание распространения изменений главного компонента на экземпляры",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что обычно происходит при изменении главного компонента?",
@@ -189,7 +189,7 @@
     {
       "id": "figma8-11",
       "topic": "Дизайн-система",
-      "skill": "понимание и применение",
+      "skill": "Определение состава дизайн-системы",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что лучше хранить в дизайн-системе?",
@@ -206,7 +206,7 @@
     {
       "id": "figma8-12",
       "topic": "Передача в разработку",
-      "skill": "понимание и применение",
+      "skill": "Подготовка макета и ресурсов к передаче разработчику",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что полезно проверить перед передачей макета разработчику?",
@@ -223,7 +223,7 @@
     {
       "id": "figma8-13",
       "topic": "Компоненты",
-      "skill": "понимание и применение",
+      "skill": "Моделирование состояний кнопки через Variants",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Какой подход лучше для кнопки с состояниями default, hover и disabled?",
@@ -240,7 +240,7 @@
     {
       "id": "figma8-14",
       "topic": "Auto Layout",
-      "skill": "понимание и применение",
+      "skill": "Анализ перестроения Auto Layout при добавлении элемента",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Что произойдёт с вертикальным Auto Layout при добавлении нового дочернего элемента?",
@@ -257,7 +257,7 @@
     {
       "id": "figma8-15",
       "topic": "Прототип",
-      "skill": "понимание и применение",
+      "skill": "Проектирование состояний формы в интерактивном прототипе",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Что важно при проектировании прототипа формы?",
@@ -271,5 +271,7 @@
       "correctIndex": 2,
       "correctText": "Продумать состояния ошибок, успешной отправки и недоступности"
     }
-  ]
+  ],
+  "skillGranularity": "question_action",
+  "skillReviewStatus": "teacher_review_draft"
 }
