@@ -103,8 +103,9 @@ def validate_bank(path: Path, errors: list[str], stems_by_direction, taxonomy):
             fail(errors, f"{prefix}: topic label is not mapped in TOPIC_TAXONOMY_DRAFT.json: {topic!r}")
         else:
             allowed_groups = {
-                group.get("id")
+                group.get("id") if isinstance(group, dict) else group[0]
                 for group in taxonomy.get("directions", {}).get(direction, {}).get("groups", [])
+                if (isinstance(group, dict) and group.get("id")) or (isinstance(group, list) and group)
             }
             if group_id not in allowed_groups:
                 fail(errors, f"{prefix}: topic rule points to unknown group {group_id!r}")
