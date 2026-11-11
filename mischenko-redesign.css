@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&family=Dancing+Script:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap');500;600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Dancing+Script:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Dancing+Script:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
 
 :root{
   --paper:#f4f2ee;
@@ -163,7 +163,12 @@ img{display:block;max-width:100%}
 .package-count{font-size:9px;color:rgba(244,242,238,.65)}
 .package-option strong{font:500 21px var(--serif);white-space:nowrap}
 .package-option span:last-child{font-size:9px;color:rgba(244,242,238,.65)}
-.pricing-footnote{margin:18px 0 0;color:rgba(244,242,238,.58);font-size:9px;position:relative;z-index:1}\n.pricing-hint{font-size:10px;margin:20px 0 0;color:var(--muted)}\n.trial-sub{color:rgba(244,242,238,.55)}\n.pricing-contact{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-top:28px}\n.pricing-contact p{margin:0}\n.library-note{font-size:10px;color:rgba(244,242,238,.58)}
+.pricing-footnote{margin:18px 0 0;color:rgba(244,242,238,.58);font-size:9px;position:relative;z-index:1}
+.pricing-hint{font-size:10px;margin:20px 0 0;color:var(--muted)}
+.trial-sub{color:rgba(244,242,238,.55)}
+.pricing-contact{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-top:28px}
+.pricing-contact p{margin:0}
+.library-note{font-size:10px;color:rgba(244,242,238,.58)}
 /* Library */
 .library{background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
 .library:before,.library:after{content:"";position:absolute;border:1px solid rgba(244,242,238,.10);border-radius:50%;pointer-events:none}
@@ -387,7 +392,7 @@ body{
 
 /* AUTHOR'S HANDWRITTEN LAYER — a little less polish, a little more Katya */
 
-:root{--hand:'Caveat',cursive}
+:root{--hand:'Dancing Script',cursive}
 .section-heading{font-weight:400;letter-spacing:-.035em}
 .hero h1{font-weight:400}
 .hero-note,.about-stamp,.note,.about-credential>span,.subject-route strong{
@@ -413,7 +418,7 @@ body{
 
 
 /* TYPOGRAPHY & BRAND REFINEMENT — Mischenko Edu */
-:root{--hand:'Caveat',cursive;--display:'Cormorant Garamond',Georgia,serif;--subtitle:'Manrope','Inter',sans-serif}
+:root{--hand:'Dancing Script',cursive;--display:'Cormorant Garamond',Georgia,serif;--subtitle:'Manrope','Inter',sans-serif}
 .brand{gap:8px}
 .brand-mark{width:27px;height:27px;position:relative;border:0!important;border-radius:0!important;background:transparent!important;color:transparent!important;font-size:0!important}
 .brand-mark:before{content:"";position:absolute;inset:4px;background:var(--wine);clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)}
