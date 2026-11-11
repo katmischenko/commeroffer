@@ -19,7 +19,7 @@
     {
       "id": "htmlcss5-01",
       "topic": "HTML",
-      "skill": "понимание",
+      "skill": "Выбор семантического тега заголовка первого уровня",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой тег задаёт заголовок первого уровня?",
@@ -36,7 +36,7 @@
     {
       "id": "htmlcss5-02",
       "topic": "HTML",
-      "skill": "понимание",
+      "skill": "Выбор HTML-тега абзаца",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой тег создаёт абзац?",
@@ -53,7 +53,7 @@
     {
       "id": "htmlcss5-03",
       "topic": "HTML",
-      "skill": "понимание",
+      "skill": "Определение назначения атрибута src",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой атрибут img содержит путь к изображению?",
@@ -70,7 +70,7 @@
     {
       "id": "htmlcss5-04",
       "topic": "HTML",
-      "skill": "понимание",
+      "skill": "Выбор HTML-элемента гиперссылки",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой тег создаёт ссылку?",
@@ -87,7 +87,7 @@
     {
       "id": "htmlcss5-05",
       "topic": "CSS",
-      "skill": "понимание",
+      "skill": "Распознавание CSS-селектора класса",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой знак ставят перед именем класса в CSS-селекторе?",
@@ -104,7 +104,7 @@
     {
       "id": "htmlcss5-06",
       "topic": "CSS",
-      "skill": "понимание и применение",
+      "skill": "Выбор CSS-свойства цвета текста",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какое свойство меняет цвет текста?",
@@ -121,7 +121,7 @@
     {
       "id": "htmlcss5-07",
       "topic": "CSS",
-      "skill": "понимание и применение",
+      "skill": "Запись CSS-правила размера шрифта",
       "difficulty": "medium",
       "type": "choice",
       "question": "Как записать CSS, чтобы текст был размером 20 пикселей?",
@@ -138,7 +138,7 @@
     {
       "id": "htmlcss5-08",
       "topic": "HTML",
-      "skill": "понимание и применение",
+      "skill": "Объяснение роли альтернативного текста изображения",
       "difficulty": "medium",
       "type": "choice",
       "question": "Для чего нужен атрибут alt у изображения?",
@@ -155,7 +155,7 @@
     {
       "id": "htmlcss5-09",
       "topic": "HTML",
-      "skill": "понимание и применение",
+      "skill": "Выбор семантического элемента основного содержимого",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какой элемент обычно содержит основное уникальное содержимое страницы?",
@@ -172,7 +172,7 @@
     {
       "id": "htmlcss5-10",
       "topic": "CSS",
-      "skill": "понимание и применение",
+      "skill": "Выбор CSS-свойства внутренних отступов",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какое свойство задаёт внутренние отступы элемента?",
@@ -189,7 +189,7 @@
     {
       "id": "htmlcss5-11",
       "topic": "CSS",
-      "skill": "понимание и применение",
+      "skill": "Запись CSS-свойства жирности шрифта",
       "difficulty": "medium",
       "type": "choice",
       "question": "Как сделать текст полужирным?",
@@ -206,7 +206,7 @@
     {
       "id": "htmlcss5-12",
       "topic": "HTML",
-      "skill": "понимание и применение",
+      "skill": "Выбор HTML-тега пункта списка",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какой тег задаёт элемент списка с маркером?",
@@ -223,7 +223,7 @@
     {
       "id": "htmlcss5-13",
       "topic": "CSS",
-      "skill": "понимание и применение",
+      "skill": "Интерпретация модели размеров box-sizing",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Что означает box-sizing: border-box?",
@@ -240,7 +240,7 @@
     {
       "id": "htmlcss5-14",
       "topic": "CSS",
-      "skill": "понимание и применение",
+      "skill": "Выбор медиазапроса по максимальной ширине экрана",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Какой медиазапрос применяют для экранов шириной не более 600px?",
@@ -257,7 +257,7 @@
     {
       "id": "htmlcss5-15",
       "topic": "HTML",
-      "skill": "понимание и применение",
+      "skill": "Объяснение роли семантической разметки и доступности",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Почему семантические теги полезны?",
@@ -271,5 +271,7 @@
       "correctIndex": 2,
       "correctText": "Они описывают роль содержимого и улучшают доступность"
     }
-  ]
+  ],
+  "skillGranularity": "question_action",
+  "skillReviewStatus": "teacher_review_draft"
 }
