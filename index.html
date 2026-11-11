@@ -816,6 +816,83 @@
     #faq .faq-q { padding:7px 4px; }
     .edu { padding:15px 18px; }
   }
+  /* ---------- точная композиция ключевых разворотов ---------- */
+  @media (min-width:861px) {
+    #subjects .route-note { margin:0 0 16px;padding:16px 22px;min-height:0;border-style:solid;border-color:rgba(255,157,69,.42);background:linear-gradient(105deg,rgba(255,157,69,.12),rgba(142,201,255,.045)); }
+    #subjects .route-note .idx { font-size:19px; }
+    #subjects .route-note h3 { margin:2px 0 4px;font-size:23px; }
+    #subjects .route-note p { max-width:78ch;line-height:1.45; }
+    #subjects .route-note .route-mark { font-size:21px; }
+    #subjects .notes { grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:stretch; }
+    #subjects .note { min-width:0;padding:15px 15px 13px;transform:none!important;border-radius:5px 16px 5px 16px; }
+    #subjects .note::before { width:58px;height:17px;top:-9px;left:20px; }
+    #subjects .note .idx { font-size:18px; }
+    #subjects .note h3 { font-size:20px;line-height:1.2; }
+    #subjects .note>p { font-size:13px;line-height:1.45; }
+    #subjects .note ul { margin-top:8px; }
+    #subjects .note li { font-size:12px;line-height:1.35;padding:5px 0;gap:7px; }
+    #subjects .note .tags { gap:5px;margin-top:9px; }
+    #subjects .note .tag { font-size:10px;padding:4px 8px; }
+    #subjects .note:hover { transform:translateY(-3px)!important; }
+    #about .about-grid { grid-template-columns:1.08fr .92fr;gap:48px; }
+    #about .photo-frame { width:min(100%,410px);max-width:410px;padding:16px 16px 18px; }
+    #about .photo-img { max-height:440px; }
+    #about .about-text .lead { font-size:clamp(21px,2vw,25px);line-height:1.42; }
+    #about .about-text p:not(.lead):not(.margin-note) { font-size:16px;line-height:1.52;margin-bottom:9px; }
+    #about .margin-note { font-size:18px;line-height:1.25;margin:5px 0 7px; }
+    #format .checklist { max-width:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 22px; }
+    #format .check { min-width:0;align-items:flex-start;padding:14px 16px;border:1px solid var(--line);border-radius:12px 4px 12px 4px;background:rgba(255,255,255,.018);gap:14px; }
+    #format .check p { max-width:none;font-size:14px;line-height:1.48; }
+    #format .check h4 { font-size:18px; }
+    #pricing .sec-head { margin-bottom:12px; }
+    #pricing .pricing-panel { padding:15px 18px; }
+    #pricing .pricing-topline { margin-bottom:9px; }
+    #pricing .pricing-controls { grid-template-columns:1fr 1.45fr 1fr;gap:10px; }
+    #pricing .pricing-field { gap:5px; }
+    #pricing .pricing-field select,#pricing .duration-switch { min-height:40px; }
+    #pricing .pricing-field select { padding:8px 32px 8px 10px; }
+    #pricing .pricing-result { margin-top:10px;gap:10px; }
+    #pricing .single-price,#pricing .trial-price { padding:9px 14px;gap:3px; }
+    #pricing .single-price strong,#pricing .trial-price strong { font-size:29px;margin:1px 0; }
+    #pricing .package-heading { margin:10px 0 6px; }
+    #pricing .package-heading h3 { font-size:19px; }
+    #pricing .package-grid { gap:9px; }
+    #pricing .package-option { padding:7px 11px;gap:3px; }
+    #pricing .package-option strong { font-size:23px; }
+    #pricing .pricing-footnote { margin-top:5px;line-height:1.35; }
+    #pricing .pricing-bottom { margin-top:8px;padding:8px 13px; }
+    #pricing .pricing-bottom-note p { font-size:12px;line-height:1.4; }
+    main > section:has(.edu) { padding-top:78px;padding-bottom:22px; }
+    .edu { padding:18px 24px; }
+    .edu-head { max-width:850px;margin-bottom:12px; }
+    .edu .hand-title { font-size:36px; }
+    .edu h2 { font-size:30px;margin:5px 0 7px; }
+    .edu .edu-intro { font-size:14px;line-height:1.48; }
+    .edu-grid { grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-bottom:10px; }
+    .edu-item { min-height:0;padding:10px 12px; }
+    .edu-item .edu-num { font-size:18px;margin-bottom:3px; }
+    .edu-item h3 { font-size:15px;margin-bottom:4px; }
+    .edu-item p { font-size:12px;line-height:1.4; }
+    .edu-bottom { padding-top:10px;gap:14px; }
+    .edu-bottom strong { font-size:15px;margin-bottom:3px; }
+    .edu-bottom p { font-size:12px;line-height:1.4; }
+    .edu-action .soon { font-size:16px;margin-top:5px; }
+  }
+  @media (min-width:861px) and (max-height:780px) {
+    #subjects .note { padding:11px 12px 10px; }
+    #subjects .note li { padding:3px 0; }
+    #about .photo-frame { max-width:360px; }
+    #about .photo-img { max-height:370px; }
+    #format .check { padding:10px 12px; }
+    #pricing .pricing-panel { padding:11px 15px; }
+    #pricing .pricing-bottom { padding:6px 11px; }
+    .edu { padding:14px 19px; }
+  }
+  @media (min-width:861px) and (max-width:1100px) {
+    #subjects .notes { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    #subjects .note { padding:13px 15px; }
+    #subjects .note li { font-size:12.5px; }
+  }
 </style>
 </head>
 <body>
@@ -913,13 +990,13 @@
       </div>
       <div class="about-grid">
         <div class="about-text reveal">
-          <p class="lead">Помогаю не просто разобраться в теме, а научиться самостоятельно находить решения.</p>
-          <p>Меня зовут <b>Катерина Мищенко</b>. Преподаю информатику, математику, физику и программирование. Работаю индивидуально и онлайн — со школьниками и теми, кто изучает код.</p>
-          <p>На занятиях мы разбираемся, почему работает именно так: пробуем способы решения, находим и исправляем ошибки. Важно не только получить правильный ответ, но и понимать каждый шаг.</p>
-          <p>К экзаменам готовимся последовательно: изучаем темы, отрабатываем типы заданий и возвращаемся к сложным моментам — без бессмысленной зубрёжки.</p>
-          <p>Создаю авторские материалы <b>Mischenko Edu</b>: конспекты, тренажёры и чек-листы для самостоятельной практики.</p>
+          <p class="lead">Помогаю понять предмет, научиться рассуждать и самостоятельно находить решения.</p>
+          <p>Я — <b>Катерина Мищенко</b>, преподаватель информатики, математики, физики и программирования. Работаю индивидуально и онлайн со школьниками и взрослыми, которые изучают код.</p>
+          <p>На занятиях важен не только ответ. Мы разбираем ход мысли, ищем ошибки, сравниваем способы решения и учимся понимать, почему метод работает.</p>
+          <p>К экзаменам готовимся системно: изучаем темы, тренируемся на заданиях и возвращаемся к тому, что пока вызывает трудности.</p>
+          <p>Разрабатываю материалы <b>Mischenko Edu</b> — конспекты, тренажёры и практику для самостоятельной работы.</p>
           <p class="margin-note">↳ Мозырский государственный педагогический университет им. И. П. Шамякина · 2017</p>
-          <p class="margin-note">↳ Более 570 учеников — и индивидуальный маршрут для каждого.</p>
+          <p class="margin-note">↳ Более 570 учеников за время преподавания</p>
         </div>
         <aside class="photo-frame reveal">
           <img class="photo-img" src="avatar.jpg" alt="Катерина Мищенко — репетитор">
@@ -939,6 +1016,15 @@
         <h2 class="sec-title">Выбираем направление — <span class="hl">или создаём своё</span></h2>
         <p class="sec-sub">Четыре предметных направления и индивидуальный маршрут под твою цель.</p>
       </div>
+      <div class="route-note reveal">
+        <div>
+          <div class="idx">направление №1 — индивидуальное обучение</div>
+          <h3>Обучение под конкретную цель</h3>
+          <p>Составляем маршрут от твоего уровня и задачи. При необходимости объединяем несколько предметов, определяем последовательность и темп — без лишнего и перегруза.</p>
+        </div>
+        <div class="route-mark">твой маршрут<br>к своей цели ↗</div>
+      </div>
+ 
       <div class="notes">
         <div class="note n-1 reveal">
           <div class="idx">заметка №1</div>
@@ -985,15 +1071,7 @@
           <div class="tags"><span class="tag">Python</span><span class="tag">Scratch</span><span class="tag">HTML/CSS</span><span class="tag">Figma</span></div>
         </div>
       </div>
-      <div class="route-note reveal">
-        <div>
-          <div class="idx">направление №5 — индивидуальное обучение</div>
-          <h3>Обучение под конкретную цель</h3>
-          <p>Учитываем цель и текущий уровень, объединяем нужные предметы и навыки. Определяем последовательность и темп — без лишнего, по понятному плану.</p>
-        </div>
-        <div class="route-mark">твой маршрут<br>к своей цели ↗</div>
-      </div>
-    </div>
+   </div>
   </section>
 
   <hr class="divider">
