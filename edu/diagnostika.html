@@ -321,22 +321,32 @@ function finish(){
  const topicStats={};
  const report=bank.map((q,i)=>{
   const a=answers[i]||{status:'skipped',answerText:''},ok=isCorrect(q,a);
-  if(!topicStats[q.topic])topicStats[q.topic]={right:0,total:0};
-  topicStats[q.topic].total++;if(ok)topicStats[q.topic].right++;
+  if(!topicStats[q.topic])topicStats[q.topic]={right:0,total:0,items:[]};
+  topicStats[q.topic].total++;
+  topicStats[q.topic].items.push(i+1);
+  if(ok)topicStats[q.topic].right++;
   return {q,a,ok};
  });
  const percent=Math.round(score/bank.length*100);
- const level=score>=12
-  ?'Хорошая база':'';
  const description=score>=12
-  ?'Основные понятия и способы решения в целом освоены. Можно переходить к более сложным заданиям и точечно закрепить отдельные темы.'
+  ?'В этом наборе верно решено большинство заданий. Это хороший результат по проверенным вопросам; устойчивость знаний стоит проверить на новых задачах.'
   :score>=8
-  ?'Часть тем уже получается, но знания пока неравномерные. Лучше повторить темы, в которых были ошибки, и закрепить их на практике.'
-  :'Сейчас важнее спокойно восстановить основу. Начни с базовых понятий и простых примеров, затем постепенно переходи к заданиям сложнее.';
- const title=score>=12?'Уверенная база':score>=8?'Есть основа, но нужны повторение и практика':'Начинаем укреплять основу';
+  ?'Часть заданий этого набора решена верно. Для следующего шага выбери темы с ошибками и закрепи их на похожих примерах.'
+  :'В этом наборе много заданий, которые стоит разобрать. Начни с объяснений к ошибочным ответам и восстанови базовые способы решения.';
+ const title=score>=12?'Сильный результат в этом наборе':score>=8?'Есть основа, но нужны повторение и практика':'Нужно укрепить основу';
  const topicRows=Object.entries(topicStats).sort((a,b)=>(a[1].right/a[1].total)-(b[1].right/b[1].total));
  const weak=topicRows.filter(([,v])=>v.right<v.total);
  const strong=topicRows.filter(([,v])=>v.right===v.total);
+ const topicList=(items)=>items.length
+  ?'<ul class="q-topics">'+items.map(([t,v])=>'<li>'+escapeHtml(t)+' — '+v.right+' из '+v.total+'; задания №'+v.items.join(', ')+'</li>').join('')+'</ul>'
+  :'<p class="diag-hint">В этом наборе таких тем нет.</p>';
+ const nextSteps=weak.length
+  ?'<ol class="q-topics">'+
+   '<li>Начни с тем, перечисленных выше. Сначала открой разборы заданий №'+[...new Set(weak.flatMap(([,v])=>v.items))].sort((a,b)=>a-b).join(', ')+' и прочитай объяснения.</li>'+
+   '<li>По каждой теме реши ещё 2–3 похожих задания без подсказки. Важно не просто запомнить ответ, а самостоятельно выбрать способ решения.</li>'+
+   '<li>На следующем занятии проверь эти темы на новых примерах. Если ошибка повторится, разбери отдельно шаг, на котором возникло затруднение.</li>'+
+   '</ol>'
+  :'<ol class="q-topics"><li>Ошибок в проверенных заданиях нет — это хороший знак, но не доказательство полного освоения тем.</li><li>Проверь устойчивость знаний на нескольких новых задачах и попробуй задания повышенной сложности.</li><li>Если диагностика проходилась давно или с подсказками, повтори её в спокойных условиях.</li></ol>';
  $('quiz').hidden=true;$('result').hidden=false;
  $('result').innerHTML=
   '<div class="sec-index">шаг 2 · твой результат</div>'+
@@ -346,13 +356,15 @@ function finish(){
   '<p class="diag-hint">Ученик: '+escapeHtml(student)+'</p>'+
   '<p class="diag-hint">Направление: '+escapeHtml(direction)+', класс: '+escapeHtml(grade)+'</p>'+
   '<p class="diag-hint">'+(bankMeta.bankProgramMatched?'Использован отдельный банк программы: '+escapeHtml(bankMeta.curriculumName)+'. Банк требует педагогической проверки.':bankMeta.curriculumId?'Выбран профиль «'+escapeHtml(bankMeta.curriculumName)+'», но отдельного банка пока нет. Использован общий набор; соответствие программе не подтверждено.':'Использован общий набор заданий для выбранного направления и класса. Набор проходит педагогическую проверку.')+'</p>'+
-  '<h3 class="diag-section-title">Темы без ошибок в этом наборе</h3>'+
-  (strong.length?'<ul class="q-topics">'+strong.map(([t,v])=>'<li>'+escapeHtml(t)+' — '+v.right+' из '+v.total+'</li>').join('')+'</ul>':'<p class="diag-hint">Пока нет тем, где все задания выполнены верно. Это не приговор — просто ориентир для дальнейшей работы.</p>')+
-  '<h3 class="diag-section-title">Темы, где встретились ошибки</h3>'+
-  (weak.length?'<div>'+weak.map(([t,v])=>'<div class="diag-topic-row"><span>'+escapeHtml(t)+'</span><b>'+v.right+' из '+v.total+'</b></div>').join('')+'</div>':'<p class="diag-hint">Ошибок по проверенным темам нет. Отличная отправная точка для более сложной практики.</p>')+
+  '<h3 class="diag-section-title">Темы, где все задания этого набора выполнены верно</h3>'+
+  topicList(strong)+
+  '<h3 class="diag-section-title">Темы, где стоит разобрать ошибки</h3>'+
+  topicList(weak)+
+  '<p class="diag-hint">Число рядом с темой показывает результат только по заданиям с этой меткой в текущем наборе. Если тема встретилась один раз, результат 1 из 1 или 0 из 1 — это сигнал для обсуждения, а не надёжный вывод об освоении всей темы.</p>'+
+  '<h3 class="diag-section-title">Что делать дальше</h3>'+nextSteps+
   '<h3 class="diag-section-title">Подробный разбор заданий</h3>'+
   report.map(({q,a,ok},i)=>'<details class="diag-detail"><summary>'+(i+1)+'. '+escapeHtml(q.topic)+' — '+(ok?'верно':'нужно разобрать')+'</summary><p><b>Задание:</b> '+escapeHtml(q.question)+'</p><p><b>Твой ответ:</b> '+escapeHtml(answerLabel(q,a))+'</p><p><b>Правильный ответ:</b> '+escapeHtml(q.type==='short'?q.correctText:q.options[q.correctIndex])+'</p><p><b>Объяснение:</b> '+escapeHtml(q.explanation)+'</p></details>').join('')+
-  '<p class="diag-hint">Это предварительная диагностика по 15 заданиям, а не школьная отметка и не итоговая оценка знаний. По каждой теме вывод ограничен количеством заданий в этом наборе.</p>'+
+  '<p class="diag-hint">Это предварительная диагностика по 15 заданиям, а не школьная отметка и не итоговая оценка знаний. Выводы ограничены темами и навыками, которые представлены в этом наборе.</p>'+
   '<div class="diag-actions"><button class="btn btn-pen" id="restart">Пройти ещё раз</button><a class="btn btn-ghost" id="discuss-result" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Обсудить результат</a></div>'+
  '<p class="diag-hint" id="discuss-note">При нажатии чат откроется, а полный отчёт скопируется. Вставь его в сообщение.</p>';
  const topicLines=(items)=>items.length?items.map(([name,v])=>'- '+name+': '+v.right+'/'+v.total).join('\n'):'- нет';
