@@ -105,10 +105,21 @@ def main():
             errors.append(f"{prefix}: unsupported type {qtype!r}")
         group_counts[q.get("groupId", "unknown")] = group_counts.get(q.get("groupId", "unknown"), 0) + 1
 
-    if len(questions) != 14:
-        errors.append(f"expected 14 draft questions, got {len(questions)}")
-    if len(group_counts) != 7 or any(count != 2 for count in group_counts.values()):
-        errors.append(f"expected exactly 2 questions in each of 7 groups, got {group_counts}")
+    expected_groups = {
+        "decimal_notation": 2,
+        "fraction_equivalence": 2,
+        "fluid_pressure_buoyancy": 2,
+        "electric_field": 2,
+        "gas_laws": 2,
+        "relativity": 2,
+        "transformers": 2,
+        "percent_calculation": 2,
+        "optical_phenomena": 2,
+    }
+    if len(questions) != sum(expected_groups.values()):
+        errors.append(f"expected {sum(expected_groups.values())} draft questions, got {len(questions)}")
+    if group_counts != expected_groups:
+        errors.append(f"expected group counts {expected_groups}, got {group_counts}")
 
     if errors:
         print(f"FAILED ({len(errors)} errors):")
