@@ -663,9 +663,147 @@
         [
           "integrated_generic",
           "Общая метка: понимание и применение"
+        ],
+        [
+          "output",
+          "Вывод данных"
+        ],
+        [
+          "variable_naming",
+          "Правила именования переменных"
+        ],
+        [
+          "data_types",
+          "Определение типов данных"
+        ],
+        [
+          "arithmetic_operators",
+          "Арифметические операторы"
+        ],
+        [
+          "conditional_logic",
+          "Условная логика"
+        ],
+        [
+          "string_operations",
+          "Операции со строками"
+        ],
+        [
+          "sequence_indexing",
+          "Индексация последовательностей"
+        ],
+        [
+          "loop_tracing",
+          "Трассировка циклов"
+        ],
+        [
+          "comparison_logic",
+          "Логические сравнения"
+        ],
+        [
+          "function_return",
+          "Возврат значений функций"
+        ],
+        [
+          "accumulator_algorithm",
+          "Алгоритм накопления результата"
+        ],
+        [
+          "list_mutation",
+          "Изменение списков"
         ]
       ],
       "rules": [
+        {
+          "groupId": "list_mutation",
+          "containsAny": [
+            "Анализ изменения списка после append()"
+          ]
+        },
+        {
+          "groupId": "function_return",
+          "containsAny": [
+            "Определение неявного возвращаемого значения функции"
+          ]
+        },
+        {
+          "groupId": "accumulator_algorithm",
+          "containsAny": [
+            "Трассировка накопления суммы в цикле"
+          ]
+        },
+        {
+          "groupId": "loop_tracing",
+          "containsAny": [
+            "Подсчёт значений в диапазоне range()"
+          ]
+        },
+        {
+          "groupId": "function_return",
+          "containsAny": [
+            "Выбор return для возврата значения функции"
+          ]
+        },
+        {
+          "groupId": "sequence_indexing",
+          "containsAny": [
+            "Получение элемента списка по индексу"
+          ]
+        },
+        {
+          "groupId": "comparison_logic",
+          "containsAny": [
+            "Запись цепочки сравнений в Python"
+          ]
+        },
+        {
+          "groupId": "loop_tracing",
+          "containsAny": [
+            "Подсчёт итераций цикла range()"
+          ]
+        },
+        {
+          "groupId": "sequence_indexing",
+          "containsAny": [
+            "Определение начального индекса элементов списка"
+          ]
+        },
+        {
+          "groupId": "string_operations",
+          "containsAny": [
+            "Определение длины строки с помощью len()"
+          ]
+        },
+        {
+          "groupId": "conditional_logic",
+          "containsAny": [
+            "Выбор ветви else в условной конструкции"
+          ]
+        },
+        {
+          "groupId": "arithmetic_operators",
+          "containsAny": [
+            "Вычисление результата целочисленного деления"
+          ]
+        },
+        {
+          "groupId": "data_types",
+          "containsAny": [
+            "Определение типа целочисленного значения"
+          ]
+        },
+        {
+          "groupId": "variable_naming",
+          "containsAny": [
+            "Проверка допустимых имён переменных"
+          ]
+        },
+        {
+          "groupId": "output",
+          "containsAny": [
+            "Использование print() для вывода данных"
+          ]
+        },
         {
           "groupId": "integrated_generic",
           "containsAny": [
@@ -724,9 +862,135 @@
         [
           "integrated_generic",
           "Общая метка: понимание и применение"
+        ],
+        [
+          "semantic_markup",
+          "Семантическая HTML-разметка"
+        ],
+        [
+          "html_elements",
+          "Назначение HTML-элементов"
+        ],
+        [
+          "html_attributes",
+          "Назначение HTML-атрибутов"
+        ],
+        [
+          "css_selectors",
+          "CSS-селекторы"
+        ],
+        [
+          "css_typography",
+          "Оформление текста средствами CSS"
+        ],
+        [
+          "accessibility",
+          "Доступность веб-содержимого"
+        ],
+        [
+          "css_spacing",
+          "Отступы и расстояния в CSS"
+        ],
+        [
+          "box_model",
+          "Модель размеров CSS-блока"
+        ],
+        [
+          "responsive_design",
+          "Адаптивные медиазапросы"
         ]
       ],
       "rules": [
+        {
+          "groupId": "accessibility",
+          "containsAny": [
+            "Объяснение роли семантической разметки и доступности"
+          ]
+        },
+        {
+          "groupId": "responsive_design",
+          "containsAny": [
+            "Выбор медиазапроса по максимальной ширине экрана"
+          ]
+        },
+        {
+          "groupId": "box_model",
+          "containsAny": [
+            "Интерпретация модели размеров box-sizing"
+          ]
+        },
+        {
+          "groupId": "html_elements",
+          "containsAny": [
+            "Выбор HTML-тега пункта списка"
+          ]
+        },
+        {
+          "groupId": "css_typography",
+          "containsAny": [
+            "Запись CSS-свойства жирности шрифта"
+          ]
+        },
+        {
+          "groupId": "css_spacing",
+          "containsAny": [
+            "Выбор CSS-свойства внутренних отступов"
+          ]
+        },
+        {
+          "groupId": "semantic_markup",
+          "containsAny": [
+            "Выбор семантического элемента основного содержимого"
+          ]
+        },
+        {
+          "groupId": "accessibility",
+          "containsAny": [
+            "Объяснение роли альтернативного текста изображения"
+          ]
+        },
+        {
+          "groupId": "css_typography",
+          "containsAny": [
+            "Запись CSS-правила размера шрифта"
+          ]
+        },
+        {
+          "groupId": "css_typography",
+          "containsAny": [
+            "Выбор CSS-свойства цвета текста"
+          ]
+        },
+        {
+          "groupId": "css_selectors",
+          "containsAny": [
+            "Распознавание CSS-селектора класса"
+          ]
+        },
+        {
+          "groupId": "html_elements",
+          "containsAny": [
+            "Выбор HTML-элемента гиперссылки"
+          ]
+        },
+        {
+          "groupId": "html_attributes",
+          "containsAny": [
+            "Определение назначения атрибута src"
+          ]
+        },
+        {
+          "groupId": "html_elements",
+          "containsAny": [
+            "Выбор HTML-тега абзаца"
+          ]
+        },
+        {
+          "groupId": "html_elements",
+          "containsAny": [
+            "Выбор семантического тега заголовка первого уровня"
+          ]
+        },
         {
           "groupId": "digital_tool_use",
           "containsAny": [
@@ -771,9 +1035,155 @@
         [
           "integrated_generic",
           "Общая метка: понимание и применение"
+        ],
+        [
+          "object_navigation",
+          "Выбор и перемещение объектов"
+        ],
+        [
+          "frame_structure",
+          "Структура фреймов"
+        ],
+        [
+          "shape_tools",
+          "Создание фигур"
+        ],
+        [
+          "text_tool",
+          "Добавление текста"
+        ],
+        [
+          "layer_management",
+          "Организация слоёв"
+        ],
+        [
+          "fill_properties",
+          "Настройка заливки"
+        ],
+        [
+          "alignment",
+          "Выравнивание объектов"
+        ],
+        [
+          "grouping",
+          "Группировка объектов"
+        ],
+        [
+          "component_system",
+          "Компоненты и экземпляры"
+        ],
+        [
+          "prototyping",
+          "Прототипирование взаимодействий"
+        ],
+        [
+          "image_cropping",
+          "Кадрирование изображений"
+        ],
+        [
+          "export_formats",
+          "Форматы экспорта"
+        ],
+        [
+          "visual_hierarchy",
+          "Визуальная иерархия"
+        ],
+        [
+          "layout_grid",
+          "Сетки и композиционная структура"
         ]
       ],
       "rules": [
+        {
+          "groupId": "layout_grid",
+          "containsAny": [
+            "Применение layout grid для структуры и выравнивания"
+          ]
+        },
+        {
+          "groupId": "component_system",
+          "containsAny": [
+            "Распознавание экземпляра главного компонента"
+          ]
+        },
+        {
+          "groupId": "visual_hierarchy",
+          "containsAny": [
+            "Анализ роли визуальной иерархии в композиции"
+          ]
+        },
+        {
+          "groupId": "export_formats",
+          "containsAny": [
+            "Выбор формата SVG для векторного экспорта"
+          ]
+        },
+        {
+          "groupId": "image_cropping",
+          "containsAny": [
+            "Управление кадрированием изображения режимами Fill и Crop"
+          ]
+        },
+        {
+          "groupId": "prototyping",
+          "containsAny": [
+            "Настройка переходов и взаимодействий прототипа"
+          ]
+        },
+        {
+          "groupId": "component_system",
+          "containsAny": [
+            "Понимание повторного использования компонентов"
+          ]
+        },
+        {
+          "groupId": "grouping",
+          "containsAny": [
+            "Понимание группировки объектов"
+          ]
+        },
+        {
+          "groupId": "alignment",
+          "containsAny": [
+            "Выравнивание объектов командами Align"
+          ]
+        },
+        {
+          "groupId": "fill_properties",
+          "containsAny": [
+            "Определение содержимого параметра Fill"
+          ]
+        },
+        {
+          "groupId": "layer_management",
+          "containsAny": [
+            "Поиск панели Layers в интерфейсе"
+          ]
+        },
+        {
+          "groupId": "text_tool",
+          "containsAny": [
+            "Добавление текстового объекта инструментом Text"
+          ]
+        },
+        {
+          "groupId": "shape_tools",
+          "containsAny": [
+            "Выбор инструмента Rectangle для создания фигуры"
+          ]
+        },
+        {
+          "groupId": "frame_structure",
+          "containsAny": [
+            "Понимание назначения Frame как контейнера"
+          ]
+        },
+        {
+          "groupId": "object_navigation",
+          "containsAny": [
+            "Использование Move для выбора и перемещения объектов"
+          ]
+        },
         {
           "groupId": "digital_tool_use",
           "containsAny": [
