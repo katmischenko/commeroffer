@@ -171,6 +171,16 @@ def main():
         "image_cropping": 2,
         "export_formats": 2,
         "file_organization": 2,
+        "motion_preferences": 2,
+        "feature_queries": 2,
+        "link_security": 2,
+        "js_modules": 2,
+        "rendering_performance": 2,
+        "grid_areas": 2,
+        "visual_hierarchy": 2,
+        "layout_grid": 2,
+        "object_editing": 2,
+        "collaboration": 2,
     }
     if len(questions) != sum(expected_groups.values()):
         errors.append(f"expected {sum(expected_groups.values())} draft questions, got {len(questions)}")
