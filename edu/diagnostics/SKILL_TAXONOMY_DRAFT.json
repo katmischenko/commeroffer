@@ -111,6 +111,36 @@
       ],
       "rules": [
         {
+          "groupId": "algebraic_transformations",
+          "containsAny": [
+            "Сокращение рационального выражения с учётом ограничения на переменную"
+          ]
+        },
+        {
+          "groupId": "equations_inequalities",
+          "containsAny": [
+            "Решение квадратного уравнения разложением на множители"
+          ]
+        },
+        {
+          "groupId": "algebraic_transformations",
+          "containsAny": [
+            "Разложение разности квадратов на множители"
+          ]
+        },
+        {
+          "groupId": "number_operations",
+          "containsAny": [
+            "Нахождение наименьшего общего кратного двух чисел"
+          ]
+        },
+        {
+          "groupId": "number_operations",
+          "containsAny": [
+            "Проверка делимости натурального числа на 3"
+          ]
+        },
+        {
           "groupId": "trigonometry",
           "containsAny": [
             "Вычисление синуса угла по отношению катета к гипотенузе"
