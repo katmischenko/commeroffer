@@ -1076,6 +1076,173 @@
     .resources-copy h2{font-size:27px}
     .resources-details{gap:10px}
   }
+
+  /* ===== Pricing redesign: editorial rate layout ===== */
+  #pricing{padding:100px 0!important}
+  #pricing .sec-head{margin-bottom:42px!important}
+  #pricing .sec-index{color:#b58b91}
+  #pricing .sec-title .hl{color:#d5a4aa;background:linear-gradient(100deg,transparent,rgba(117,35,52,.25),transparent);box-shadow:0 0 0 4px rgba(117,35,52,.16)}
+  #pricing .sec-sub{max-width:58ch;font-size:14px;line-height:1.8}
+  #pricing .pricing-builder{
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:18px;align-items:stretch
+  }
+  #pricing .pricing-settings{
+    position:relative;padding:28px 30px 24px;
+    background:#19181c;border:1px solid rgba(234,231,223,.1);
+    border-top:2px solid #713440;min-width:0
+  }
+  #pricing .builder-kicker{
+    display:flex;align-items:center;gap:12px;margin-bottom:27px;
+    color:#eae7df;font-size:14px;font-weight:800;letter-spacing:.01em
+  }
+  #pricing .builder-kicker span{
+    color:#c28e98;font:600 23px var(--hand);transform:rotate(-5deg)
+  }
+  #pricing .pricing-controls{display:grid;grid-template-columns:1fr 1fr;gap:19px 15px;padding:0;border:0}
+  #pricing .pricing-field{gap:9px}
+  #pricing .pricing-field label{
+    color:#a39ba0;font-size:10px;letter-spacing:.13em;text-transform:uppercase;font-weight:800
+  }
+  #pricing .pricing-field select{
+    height:49px;padding:0 38px 0 14px;border-radius:2px;
+    background:#111114;border:1px solid rgba(234,231,223,.17);
+    color:#eee9e4;font:600 12px var(--body)
+  }
+  #pricing .pricing-field select:focus{border-color:#a66a76;background:#141216}
+  #pricing .pricing-duration-field{grid-column:1/-1}
+  #pricing .duration-switch{
+    height:49px;padding:4px;gap:4px;border-radius:2px;
+    background:#111114;border:1px solid rgba(234,231,223,.15)
+  }
+  #pricing .duration-btn{border-radius:1px;font-size:12px;letter-spacing:.02em}
+  #pricing .duration-btn.active{background:#713440;color:#fff4f2}
+  #pricing .settings-note{margin-top:22px;padding-top:15px;border-top:1px solid rgba(234,231,223,.09);color:#827b80;font-size:11px;line-height:1.6}
+  #pricing .pricing-summary{
+    position:relative;display:flex;flex-direction:column;justify-content:space-between;
+    min-width:0;padding:25px 29px 20px;overflow:hidden;
+    background:linear-gradient(135deg,#342027 0%,#21191e 52%,#171619 100%);
+    border:1px solid rgba(184,119,132,.22)
+  }
+  #pricing .pricing-summary:after{
+    content:"";position:absolute;width:240px;height:240px;right:-110px;top:-125px;
+    border:1px solid rgba(205,151,160,.15);border-radius:50%;
+    box-shadow:0 0 0 24px rgba(205,151,160,.025),0 0 0 48px rgba(205,151,160,.02);
+    pointer-events:none
+  }
+  #pricing .summary-caption{
+    position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;
+    color:#d6b9bd;font-size:10px;font-weight:800;letter-spacing:.17em;text-transform:uppercase
+  }
+  #pricing .summary-caption span{color:#c28e98;font-size:17px}
+  #pricing .pricing-result{
+    position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;
+    gap:20px;align-items:center;padding:32px 0 25px
+  }
+  #pricing .single-price{gap:9px}
+  #pricing .pricing-eyebrow{color:#c5aeb2;font-size:9px;letter-spacing:.16em}
+  #pricing .single-price strong{
+    color:#f0dfe0;font:700 clamp(37px,4.2vw,55px)/1.02 var(--body);
+    letter-spacing:-.055em;margin:5px 0 2px;white-space:nowrap
+  }
+  #pricing .single-price>span:last-child{color:#c3b5b7;font-size:10px;line-height:1.5}
+  #pricing .trial-price{
+    min-width:0;padding:5px 0 5px 19px;border:0;border-left:1px solid rgba(220,178,185,.25);
+    gap:9px
+  }
+  #pricing .trial-price strong{
+    color:#fff0ed;font:700 clamp(25px,2.7vw,34px)/1.1 var(--body);
+    letter-spacing:-.04em;margin:4px 0;white-space:nowrap
+  }
+  #pricing .trial-price>span:last-child{color:#c3b5b7;font-size:10px;line-height:1.5}
+  #pricing .summary-foot{
+    position:relative;z-index:1;padding-top:13px;border-top:1px solid rgba(220,178,185,.16);
+    color:#a88e94;font-size:9px;letter-spacing:.06em
+  }
+  #pricing .package-section{margin-top:52px}
+  #pricing .package-heading{
+    display:flex;align-items:flex-end;justify-content:space-between;gap:18px;
+    margin:0 0 17px;padding:0;border:0
+  }
+  #pricing .package-heading .hand-idx{color:#b58b91;font-size:17px}
+  #pricing .package-heading h3{margin-top:3px;color:#eee9e4;font-size:27px;letter-spacing:-.03em}
+  #pricing .package-heading p{max-width:260px;color:#928b8d;font-size:11px;text-align:right}
+  #pricing .package-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid rgba(234,231,223,.18);border-bottom:1px solid rgba(234,231,223,.18)}
+  #pricing .package-option{
+    position:relative;min-width:0;display:flex;flex-direction:column;gap:9px;
+    padding:22px 24px 20px;background:transparent;border:0;border-right:1px solid rgba(234,231,223,.12);
+    border-radius:0;transition:background .2s
+  }
+  #pricing .package-option:last-child{border-right:0}
+  #pricing .package-option:hover{transform:none;border-color:rgba(234,231,223,.12);background:rgba(255,255,255,.025)}
+  #pricing .package-option.featured{
+    background:linear-gradient(180deg,rgba(113,52,64,.2),rgba(113,52,64,.035));
+    box-shadow:inset 0 2px #8e4c5a
+  }
+  #pricing .package-count{color:#a69a9d;font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+  #pricing .package-option strong{
+    color:#eee9e4;font:700 clamp(25px,2.5vw,34px)/1.1 var(--body);
+    letter-spacing:-.045em;white-space:nowrap
+  }
+  #pricing .package-option.featured strong{color:#d6a7af}
+  #pricing .package-option>span:last-child{color:#a9a0a2;font-size:11px}
+  #pricing .package-option.featured:after{
+    content:"часто выбирают";position:absolute;right:15px;top:22px;
+    color:#d6a7af;font-size:8px;letter-spacing:.08em;text-transform:uppercase
+  }
+  #pricing .pricing-footnote{margin:13px 0 0;color:#817b7d;font-size:10px;line-height:1.65}
+  #pricing .pricing-bottom{
+    margin-top:28px;padding:19px 22px;border:0;border-left:2px solid #713440;
+    border-radius:0;background:#19181c
+  }
+  #pricing .pricing-bottom .hand-idx{color:#c28e98}
+  #pricing .pricing-bottom-note p{font-size:11px}
+  #pricing .pricing-bottom .btn{
+    background:#713440;color:#fff4f2;border-radius:2px;
+    font-size:11px;letter-spacing:.03em;padding:13px 20px
+  }
+  #pricing .pricing-bottom .btn:hover{background:#8b4655;box-shadow:0 10px 28px rgba(113,52,64,.2)}
+  @media(max-width:760px){
+    #pricing{padding:76px 0!important}
+    #pricing .pricing-builder{grid-template-columns:1fr;gap:12px}
+    #pricing .pricing-settings{padding:24px 22px 20px}
+    #pricing .pricing-summary{min-height:245px;padding:22px}
+    #pricing .pricing-result{padding:28px 0 22px}
+    #pricing .package-section{margin-top:36px}
+    #pricing .package-option{padding:18px 16px}
+    #pricing .package-option strong{font-size:clamp(22px,4vw,30px)}
+  }
+  @media(max-width:560px){
+    #pricing{padding:62px 0!important}
+    #pricing .sec-head{margin-bottom:27px!important}
+    #pricing .pricing-settings{padding:21px 17px 18px}
+    #pricing .builder-kicker{margin-bottom:20px}
+    #pricing .pricing-controls{grid-template-columns:1fr;gap:14px}
+    #pricing .pricing-duration-field{grid-column:auto}
+    #pricing .pricing-field select,#pricing .duration-switch{height:46px}
+    #pricing .settings-note{margin-top:16px}
+    #pricing .pricing-summary{min-height:0;padding:20px 18px 17px}
+    #pricing .pricing-result{grid-template-columns:1fr;gap:17px;padding:22px 0 18px}
+    #pricing .single-price strong{font-size:42px}
+    #pricing .trial-price{padding:14px 0 0;border:0;border-top:1px solid rgba(220,178,185,.25)}
+    #pricing .trial-price strong{font-size:29px}
+    #pricing .package-section{margin-top:31px}
+    #pricing .package-heading{align-items:flex-start;flex-direction:column;gap:5px}
+    #pricing .package-heading h3{font-size:24px}
+    #pricing .package-heading p{text-align:left}
+    #pricing .package-grid{grid-template-columns:1fr}
+    #pricing .package-option{
+      display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;
+      gap:5px 12px;padding:16px 14px;border-right:0;border-bottom:1px solid rgba(234,231,223,.1)
+    }
+    #pricing .package-option:last-child{border-bottom:0}
+    #pricing .package-option strong{grid-column:2;grid-row:1/3;text-align:right;font-size:25px}
+    #pricing .package-option>span:last-child{grid-column:1}
+    #pricing .package-option.featured:after{position:static;grid-column:1;grid-row:3;margin-top:2px}
+    #pricing .pricing-bottom{align-items:stretch;flex-direction:column;gap:13px;padding:17px}
+    #pricing .pricing-bottom .btn{width:100%;justify-content:center}
+  }
+
 </style>
 </head>
 <body>
@@ -1311,81 +1478,86 @@
         <p class="sec-sub">Выбери направление, регион оплаты и длительность. Калькулятор покажет стоимость занятия и абонементов.</p>
       </div>
 
-      <div class="pricing-panel">
-        <div class="pricing-topline">
-          <span class="hand-idx">01 / настрой параметры</span>
-          <span class="pricing-mark">✎ стоимость без сюрпризов</span>
-        </div>
-
-        <div class="pricing-controls">
-          <div class="pricing-field">
-            <label for="pricingRegion">Валюта оплаты</label>
-            <select id="pricingRegion">
-              <option value="ru">Россия · ₽</option>
-              <option value="by">Беларусь · BYN</option>
-              <option value="intl">Другие страны · €</option>
-            </select>
-          </div>
-          <div class="pricing-field">
-            <label for="pricingService">Что будем изучать</label>
-            <select id="pricingService">
-              <option value="math">Математика · 6–9 классы</option>
-              <option value="physicsSchool">Физика · школьная программа</option>
-              <option value="physicsOge">Физика · подготовка к ОГЭ</option>
-              <option value="infoSchool">Информатика · школьная программа</option>
-              <option value="infoOge">Информатика · подготовка к ОГЭ</option>
-              <option value="infoEge">Информатика · подготовка к ЕГЭ</option>
-              <option value="scratch">Scratch</option>
-              <option value="pythonBasic">Python · основы</option>
-              <option value="pythonProjects">Python · алгоритмы и проекты</option>
-              <option value="pythonExam">Python · подготовка к экзаменам</option>
-              <option value="htmlCss">HTML/CSS</option>
-              <option value="figma">Figma</option>
-              <option value="individual">Индивидуальное обучение · направление №5</option>
-            </select>
-          </div>
-          <div class="pricing-field">
-            <label>Длительность</label>
-            <div class="duration-switch" role="group" aria-label="Продолжительность занятия">
-              <button type="button" class="duration-btn active" data-duration="45" aria-pressed="true">45 минут</button>
-              <button type="button" class="duration-btn" data-duration="60" aria-pressed="false">60 минут</button>
+      <div class="pricing-builder">
+        <div class="pricing-settings">
+          <div class="builder-kicker"><span>01</span> Настройте занятие</div>
+          <div class="pricing-controls">
+            <div class="pricing-field">
+              <label for="pricingService">Направление</label>
+              <select id="pricingService">
+                <option value="math">Математика · 6–9 классы</option>
+                <option value="physicsSchool">Физика · школьная программа</option>
+                <option value="physicsOge">Физика · подготовка к ОГЭ</option>
+                <option value="infoSchool">Информатика · школьная программа</option>
+                <option value="infoOge">Информатика · подготовка к ОГЭ</option>
+                <option value="infoEge">Информатика · подготовка к ЕГЭ</option>
+                <option value="scratch">Scratch</option>
+                <option value="pythonBasic">Python · основы</option>
+                <option value="pythonProjects">Python · алгоритмы и проекты</option>
+                <option value="pythonExam">Python · подготовка к экзаменам</option>
+                <option value="htmlCss">HTML/CSS</option>
+                <option value="figma">Figma</option>
+                <option value="individual">Индивидуальное обучение · направление №5</option>
+              </select>
+            </div>
+            <div class="pricing-field">
+              <label for="pricingRegion">Страна оплаты</label>
+              <select id="pricingRegion">
+                <option value="ru">Россия · ₽</option>
+                <option value="by">Беларусь · BYN</option>
+                <option value="intl">Другие страны · €</option>
+              </select>
+            </div>
+            <div class="pricing-field pricing-duration-field">
+              <label>Длительность занятия</label>
+              <div class="duration-switch" role="group" aria-label="Продолжительность занятия">
+                <button type="button" class="duration-btn active" data-duration="45" aria-pressed="true">45 минут</button>
+                <button type="button" class="duration-btn" data-duration="60" aria-pressed="false">60 минут</button>
+              </div>
             </div>
           </div>
+          <p class="settings-note">Выберите параметры — стоимость обновится автоматически.</p>
         </div>
 
-        <div class="pricing-result">
-          <div class="single-price">
-            <span class="pricing-eyebrow">Одно занятие</span>
-            <strong id="singleLessonPrice">1 300 ₽</strong>
-            <span id="singleLessonDescription">Математика · 6–9 классы · 45 минут</span>
+        <div class="pricing-summary">
+          <div class="summary-caption">Ваша стоимость <span>✦</span></div>
+          <div class="pricing-result">
+            <div class="single-price">
+              <span class="pricing-eyebrow">Одно занятие</span>
+              <strong id="singleLessonPrice">1 300 ₽</strong>
+              <span id="singleLessonDescription">Математика · 6–9 классы · 45 минут</span>
+            </div>
+            <div class="trial-price">
+              <span class="pricing-eyebrow">Пробное занятие</span>
+              <strong id="trialLessonPrice">1 200 ₽</strong>
+              <span>Знакомство и определение учебной задачи</span>
+            </div>
           </div>
-          <div class="trial-price">
-            <span class="pricing-eyebrow">Пробное занятие</span>
-            <strong id="trialLessonPrice">1 200 ₽</strong>
-            <span>Знакомство и определение учебной задачи · для любого направления</span>
-          </div>
+          <span class="summary-foot">Без скрытых доплат и обязательств</span>
         </div>
+      </div>
 
+      <div class="package-section">
         <div class="package-heading">
           <div>
-            <span class="hand-idx">02 / если занимаемся регулярно</span>
+            <span class="hand-idx">02 / регулярные занятия</span>
             <h3>Абонементы</h3>
           </div>
-          <p>Чем больше занятий в пакете, тем выше скидка.</p>
+          <p>Больше занятий — заметнее экономия.</p>
         </div>
         <div class="package-grid" id="packageGrid" aria-live="polite">
           <article class="package-option">
-            <span class="package-count">8 занятий · скидка 5%</span>
+            <span class="package-count">08 занятий · −5%</span>
             <strong>9 880 ₽</strong>
             <span>1 235 ₽ за занятие</span>
           </article>
           <article class="package-option featured">
-            <span class="package-count">12 занятий · скидка 10%</span>
+            <span class="package-count">12 занятий · −10%</span>
             <strong>14 040 ₽</strong>
             <span>1 170 ₽ за занятие</span>
           </article>
           <article class="package-option">
-            <span class="package-count">24 занятия · скидка 15%</span>
+            <span class="package-count">24 занятия · −15%</span>
             <strong>26 520 ₽</strong>
             <span>1 105 ₽ за занятие</span>
           </article>
