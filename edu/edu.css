@@ -120,3 +120,37 @@ body.editorial-library:after{content:"";position:fixed;inset:0;z-index:-1;pointe
 @media(max-width:600px){
   .editorial-library .item:after{left:20px;right:20px}
 }
+
+
+/* AUTHOR'S NOTEBOOK — less school portal, more personal studio */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
+:root{--hand:"Caveat",cursive}
+.editorial-library h1{font-weight:400;letter-spacing:-.045em}
+.editorial-library .sec-title{font-weight:400;letter-spacing:-.035em}
+.editorial-library .hero-sub{font-size:14px;line-height:1.85;color:rgba(244,241,236,.76)}
+.editorial-library .sec-index{font-family:var(--hand);font-size:18px;font-weight:500;letter-spacing:.015em;text-transform:none;color:#d9a1a4}
+.editorial-library .sec-index:before{width:22px;transform:rotate(-3deg)}
+.editorial-library .note-kicker{font:500 19px var(--hand);letter-spacing:0;text-transform:none}
+.editorial-library .note-box h3{font-weight:400;line-height:1.08}
+.editorial-library .note-box li{font-size:12px;line-height:1.9}
+.editorial-library .f-label{font:500 17px var(--hand);letter-spacing:0;text-transform:none}
+.editorial-library .chip{font-size:11px;font-weight:500;border-radius:2px}
+.editorial-library .item{border-radius:3px;min-height:260px;padding:27px 25px 23px}
+.editorial-library .item:after{content:"";position:absolute;left:24px;top:17px;width:38px;border-top:1px solid rgba(217,161,164,.5);transform:rotate(-3deg)}
+.editorial-library .item .kind{font:500 16px var(--hand);letter-spacing:0;text-transform:none}
+.editorial-library .item h3{font-weight:400;line-height:1.12}
+.editorial-library .item p{font-size:11px;line-height:1.9;color:rgba(244,241,236,.72)}
+.editorial-library .tag{font:500 10px var(--sans);letter-spacing:0;border-radius:2px}
+.editorial-library .st{font:500 16px var(--hand);letter-spacing:0;text-transform:none}
+.editorial-library .sec-sub{font:500 27px/1.2 var(--hand);color:#e1c5c9}
+.editorial-library .btn{border-radius:2px;text-transform:none;letter-spacing:.04em;font-size:11px;font-weight:600}
+.editorial-library .foot-note{font:500 18px var(--hand);letter-spacing:0}
+.editorial-library .note-box:before{content:"заметки на полях";position:absolute;right:5%;top:12px;font:500 18px var(--hand);color:rgba(124,52,73,.65);transform:rotate(-5deg)}
+.editorial-library .hero:before{content:"меньше зубрить — больше понимать";position:absolute;left:var(--gutter);bottom:12%;font:500 24px var(--hand);color:#d9a1a4;transform:rotate(-5deg)}
+.editorial-library .filters{border-top-style:dashed}
+.editorial-library .item:hover{transform:translateY(-5px) rotate(-.25deg)}
+@media(max-width:600px){
+ .editorial-library .hero:before{position:relative;left:auto;bottom:auto;display:block;margin-top:25px;font-size:21px}
+ .editorial-library .note-box:before{right:18px;top:7px}
+ .editorial-library .item{min-height:225px}
+}
