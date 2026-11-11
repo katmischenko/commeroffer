@@ -2617,9 +2617,327 @@
         [
           "layout_grid",
           "Сетки и композиционная структура"
+        ],
+        [
+          "file_organization",
+          "Организация файлов и страниц"
+        ],
+        [
+          "object_editing",
+          "Редактирование объектов"
+        ],
+        [
+          "collaboration",
+          "Совместная работа и обратная связь"
+        ],
+        [
+          "frame_constraints",
+          "Фреймы и ограничения"
+        ],
+        [
+          "auto_layout",
+          "Автоматическая компоновка"
+        ],
+        [
+          "component_variants",
+          "Компоненты и варианты"
+        ],
+        [
+          "vector_operations",
+          "Операции с векторными фигурами"
+        ],
+        [
+          "export_handoff",
+          "Экспорт и передача в разработку"
+        ],
+        [
+          "variables_design_system",
+          "Переменные и дизайн-система"
+        ],
+        [
+          "version_control",
+          "История и версии"
+        ],
+        [
+          "responsive_constraints",
+          "Адаптивное поведение элементов"
+        ],
+        [
+          "masks_cropping",
+          "Маски и видимая область"
         ]
       ],
       "rules": [
+        {
+          "groupId": "prototyping",
+          "containsAny": [
+            "Проектирование состояний формы в интерактивном прототипе"
+          ]
+        },
+        {
+          "groupId": "auto_layout",
+          "containsAny": [
+            "Анализ перестроения Auto Layout при добавлении элемента"
+          ]
+        },
+        {
+          "groupId": "component_variants",
+          "containsAny": [
+            "Моделирование состояний кнопки через Variants"
+          ]
+        },
+        {
+          "groupId": "export_handoff",
+          "containsAny": [
+            "Подготовка макета и ресурсов к передаче разработчику"
+          ]
+        },
+        {
+          "groupId": "variables_design_system",
+          "containsAny": [
+            "Определение состава дизайн-системы"
+          ]
+        },
+        {
+          "groupId": "component_variants",
+          "containsAny": [
+            "Понимание распространения изменений главного компонента на экземпляры"
+          ]
+        },
+        {
+          "groupId": "prototyping",
+          "containsAny": [
+            "Использование Smart Animate для переходов"
+          ]
+        },
+        {
+          "groupId": "responsive_constraints",
+          "containsAny": [
+            "Настройка Constraints для адаптации к родительскому фрейму"
+          ]
+        },
+        {
+          "groupId": "component_variants",
+          "containsAny": [
+            "Объединение состояний компонента через Variants"
+          ]
+        },
+        {
+          "groupId": "auto_layout",
+          "containsAny": [
+            "Настройка Gap between items в Auto Layout"
+          ]
+        },
+        {
+          "groupId": "auto_layout",
+          "containsAny": [
+            "Использование колонной сетки для композиции"
+          ]
+        },
+        {
+          "groupId": "prototyping",
+          "containsAny": [
+            "Настройка стартовой точки Flow в прототипе"
+          ]
+        },
+        {
+          "groupId": "variables_design_system",
+          "containsAny": [
+            "Повторное использование цветовых стилей и переменных"
+          ]
+        },
+        {
+          "groupId": "auto_layout",
+          "containsAny": [
+            "Применение Auto Layout для автоматической компоновки"
+          ]
+        },
+        {
+          "groupId": "component_variants",
+          "containsAny": [
+            "Распознавание главного компонента как источника экземпляров"
+          ]
+        },
+        {
+          "groupId": "variables_design_system",
+          "containsAny": [
+            "Именование переменных по семантическому назначению"
+          ]
+        },
+        {
+          "groupId": "prototyping",
+          "containsAny": [
+            "Настройка переходов между состояниями интерактивного компонента"
+          ]
+        },
+        {
+          "groupId": "auto_layout",
+          "containsAny": [
+            "Построение вложенной структуры Auto Layout"
+          ]
+        },
+        {
+          "groupId": "component_variants",
+          "containsAny": [
+            "Сохранение связи экземпляра с главным компонентом"
+          ]
+        },
+        {
+          "groupId": "version_control",
+          "containsAny": [
+            "Просмотр и восстановление версий файла"
+          ]
+        },
+        {
+          "groupId": "variables_design_system",
+          "containsAny": [
+            "Организация связанных значений в коллекции Variables"
+          ]
+        },
+        {
+          "groupId": "prototyping",
+          "containsAny": [
+            "Использование Open overlay для показа поверх текущего экрана"
+          ]
+        },
+        {
+          "groupId": "prototyping",
+          "containsAny": [
+            "Настройка триггера After delay в прототипе"
+          ]
+        },
+        {
+          "groupId": "responsive_constraints",
+          "containsAny": [
+            "Настройка привязки Right к краю фрейма"
+          ]
+        },
+        {
+          "groupId": "auto_layout",
+          "containsAny": [
+            "Выбор Fill container для заполнения доступной ширины"
+          ]
+        },
+        {
+          "groupId": "vector_operations",
+          "containsAny": [
+            "Применение операции Subtract к векторным фигурам"
+          ]
+        },
+        {
+          "groupId": "component_variants",
+          "containsAny": [
+            "Настройка Boolean property для переключения видимости"
+          ]
+        },
+        {
+          "groupId": "component_variants",
+          "containsAny": [
+            "Создание экземпляра с наследованием свойств главного компонента"
+          ]
+        },
+        {
+          "groupId": "auto_layout",
+          "containsAny": [
+            "Использование layout grid для выравнивания элементов"
+          ]
+        },
+        {
+          "groupId": "auto_layout",
+          "containsAny": [
+            "Включение Auto Layout сочетанием Shift + A"
+          ]
+        },
+        {
+          "groupId": "layer_management",
+          "containsAny": [
+            "Организация слоёв с помощью осмысленных названий"
+          ]
+        },
+        {
+          "groupId": "responsive_constraints",
+          "containsAny": [
+            "Настройка привязок Left and right"
+          ]
+        },
+        {
+          "groupId": "component_variants",
+          "containsAny": [
+            "Выбор набора вариантов для состояний компонента"
+          ]
+        },
+        {
+          "groupId": "masks_cropping",
+          "containsAny": [
+            "Использование маски для ограничения видимой области"
+          ]
+        },
+        {
+          "groupId": "export_handoff",
+          "containsAny": [
+            "Выбор формата PNG в панели Export"
+          ]
+        },
+        {
+          "groupId": "prototyping",
+          "containsAny": [
+            "Настройка перехода между фреймами в прототипе"
+          ]
+        },
+        {
+          "groupId": "component_variants",
+          "containsAny": [
+            "Распознавание Variant как состояния компонента"
+          ]
+        },
+        {
+          "groupId": "auto_layout",
+          "containsAny": [
+            "Настройка размера Hug contents"
+          ]
+        },
+        {
+          "groupId": "auto_layout",
+          "containsAny": [
+            "Применение Auto Layout для автоматического размещения"
+          ]
+        },
+        {
+          "groupId": "responsive_constraints",
+          "containsAny": [
+            "Настройка Constraints для изменения размера фрейма"
+          ]
+        },
+        {
+          "groupId": "frame_constraints",
+          "containsAny": [
+            "Ограничение содержимого границами фрейма"
+          ]
+        },
+        {
+          "groupId": "collaboration",
+          "containsAny": [
+            "Использование комментариев для контекстной обратной связи"
+          ]
+        },
+        {
+          "groupId": "object_editing",
+          "containsAny": [
+            "Дублирование объекта сочетанием клавиш"
+          ]
+        },
+        {
+          "groupId": "layer_management",
+          "containsAny": [
+            "Блокировка слоя от случайного редактирования"
+          ]
+        },
+        {
+          "groupId": "file_organization",
+          "containsAny": [
+            "Организация частей проекта на отдельных страницах Figma"
+          ]
+        },
         {
           "groupId": "layout_grid",
           "containsAny": [
