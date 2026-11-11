@@ -374,6 +374,170 @@
       ],
       "correctText": "Преломление света",
       "explanation": "Свет от монеты меняет направление при переходе из воды в воздух. Глаз продолжает лучи по прямой и видит мнимое изображение монеты ближе к поверхности. Это проявление преломления света."
+    },
+    {
+      "id": "pool-math6-percent-prop-001",
+      "directionId": "math",
+      "direction": "Математика",
+      "class": 6,
+      "curriculumId": "ru",
+      "topic": "Проценты",
+      "skill": "Вычисление процента от числа",
+      "groupId": "percent_proportional",
+      "difficulty": "basic",
+      "type": "short",
+      "question": "В школьной выставке участвуют 120 работ. 25% работ выполнены акварелью. Сколько акварельных работ представлено?",
+      "acceptedAnswers": [
+        "30"
+      ],
+      "correctText": "30",
+      "explanation": "25% — это четверть числа. 120 : 4 = 30 работ."
+    },
+    {
+      "id": "pool-math8-percent-prop-002",
+      "directionId": "math",
+      "direction": "Математика",
+      "class": 8,
+      "curriculumId": "ru",
+      "topic": "Проценты",
+      "skill": "Вычисление процента от числа",
+      "groupId": "percent_proportional",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Стоимость товара 1 600 рублей. Во время акции цена снизилась на 15%. На сколько рублей уменьшилась стоимость?",
+      "options": [
+        "160 рублей",
+        "200 рублей",
+        "240 рублей",
+        "320 рублей"
+      ],
+      "correctIndex": 2,
+      "correctText": "240 рублей",
+      "explanation": "Находим 15% от 1 600: 1 600 × 0,15 = 240 рублей. Это величина снижения цены, а не новая цена."
+    },
+    {
+      "id": "pool-math7-linear-eq-001",
+      "directionId": "math",
+      "direction": "Математика",
+      "class": 7,
+      "curriculumId": "ru",
+      "topic": "Линейные уравнения",
+      "skill": "Решение линейного уравнения",
+      "groupId": "equations_inequalities",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какое значение x является корнем уравнения 4x + 9 = 29?",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "8"
+      ],
+      "correctIndex": 1,
+      "correctText": "5",
+      "explanation": "Вычтем 9 из обеих частей: 4x = 20. Разделим на 4: x = 5."
+    },
+    {
+      "id": "pool-math9-linear-eq-002",
+      "directionId": "math",
+      "direction": "Математика",
+      "class": 9,
+      "curriculumId": "ru",
+      "topic": "Линейные уравнения",
+      "skill": "Решение линейного уравнения",
+      "groupId": "equations_inequalities",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Реши уравнение: 7 − 3x = −8. Запиши значение x.",
+      "acceptedAnswers": [
+        "5"
+      ],
+      "correctText": "5",
+      "explanation": "Вычтем 7: −3x = −15. Разделим обе части на −3: x = 5."
+    },
+    {
+      "id": "pool-physics8-ohm-r-001",
+      "directionId": "physics",
+      "direction": "Физика",
+      "class": 8,
+      "curriculumId": "ru",
+      "topic": "Электрическое сопротивление",
+      "skill": "Расчёт сопротивления по напряжению и силе тока",
+      "groupId": "ohm_law",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "На участке цепи напряжение равно 12 В, а сила тока — 2 А. Чему равно сопротивление участка?",
+      "options": [
+        "4 Ом",
+        "6 Ом",
+        "10 Ом",
+        "24 Ом"
+      ],
+      "correctIndex": 1,
+      "correctText": "6 Ом",
+      "explanation": "По закону Ома R = U / I = 12 / 2 = 6 Ом."
+    },
+    {
+      "id": "pool-physics8-ohm-r-002",
+      "directionId": "physics",
+      "direction": "Физика",
+      "class": 8,
+      "curriculumId": "ru",
+      "topic": "Электрическое сопротивление",
+      "skill": "Расчёт сопротивления по напряжению и силе тока",
+      "groupId": "ohm_law",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "При напряжении 4,5 В через проводник проходит ток 0,15 А. Определи сопротивление проводника.",
+      "acceptedAnswers": [
+        "30",
+        "30 Ом",
+        "30ом"
+      ],
+      "correctText": "30 Ом",
+      "explanation": "Используем закон Ома: R = U / I = 4,5 / 0,15 = 30 Ом."
+    },
+    {
+      "id": "pool-physics10-wave-speed-001",
+      "directionId": "physics",
+      "direction": "Физика",
+      "class": 10,
+      "curriculumId": "ru",
+      "topic": "Волны",
+      "skill": "Расчёт скорости распространения волны",
+      "groupId": "oscillations_waves",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Длина волны равна 0,8 м, а частота колебаний источника — 25 Гц. Какова скорость распространения волны?",
+      "options": [
+        "20 м/с",
+        "25 м/с",
+        "31,25 м/с",
+        "0,032 м/с"
+      ],
+      "correctIndex": 0,
+      "correctText": "20 м/с",
+      "explanation": "Скорость волны v = λν. Подставим значения: 0,8 × 25 = 20 м/с."
+    },
+    {
+      "id": "pool-physics11-wave-speed-002",
+      "directionId": "physics",
+      "direction": "Физика",
+      "class": 11,
+      "curriculumId": "ru",
+      "topic": "Волны",
+      "skill": "Расчёт скорости распространения волны",
+      "groupId": "oscillations_waves",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "За 0,02 с волна совершает одно колебание. Длина волны составляет 3 м. Найди скорость её распространения.",
+      "acceptedAnswers": [
+        "150",
+        "150 м/с",
+        "150м/с"
+      ],
+      "correctText": "150 м/с",
+      "explanation": "Частота ν = 1 / T = 1 / 0,02 = 50 Гц. Скорость v = λν = 3 × 50 = 150 м/с."
     }
   ]
 }
