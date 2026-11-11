@@ -62,7 +62,7 @@ def skill_group_for(taxonomy, direction: str, skill: str):
     return None
 
 
-def validate_bank(path: Path, errors: list[str], stems_by_direction, taxonomy, taxonomy_coverage, skill_taxonomy, skill_coverage):
+def validate_bank(path: Path, errors: list[str], stems_by_direction, taxonomy, taxonomy_coverage, skill_taxonomy, skill_coverage, skill_coverage_by_grade, skill_difficulty_coverage):
     filename_match = re.match(r"question-bank-(informatics|physics|math|python|html-css|figma)-(\d+)(.*)\.json$", path.name)
     if not filename_match:
         fail(errors, f"{path.name}: unrecognized bank filename")
@@ -129,6 +129,8 @@ def validate_bank(path: Path, errors: list[str], stems_by_direction, taxonomy, t
                 fail(errors, f"{prefix}: skill rule points to unknown group {skill_group_id!r}")
             else:
                 skill_coverage[direction][skill_group_id] += 1
+                skill_coverage_by_grade[direction][grade][skill_group_id] += 1
+                skill_difficulty_coverage[direction][skill_group_id][q.get("difficulty", "unknown")] += 1
 
         topic = str(q.get("topic", "")).strip()
         group_id = topic_group_for(taxonomy, direction, topic)
@@ -188,6 +190,8 @@ def main():
     stems_by_direction = defaultdict(lambda: defaultdict(list))
     taxonomy_coverage = defaultdict(Counter)
     skill_coverage = defaultdict(Counter)
+    skill_coverage_by_grade = defaultdict(lambda: defaultdict(Counter))
+    skill_difficulty_coverage = defaultdict(lambda: defaultdict(Counter))
     profile_path = DIAG / "profiles.json"
     taxonomy_path = DIAG / "TOPIC_TAXONOMY_DRAFT.json"
     skill_taxonomy_path = DIAG / "SKILL_TAXONOMY_DRAFT.json"
@@ -216,7 +220,7 @@ def main():
 
     bank_data_by_id = {}
     for path in files:
-        data = validate_bank(path, errors, stems_by_direction, taxonomy, taxonomy_coverage, skill_taxonomy, skill_coverage)
+        data = validate_bank(path, errors, stems_by_direction, taxonomy, taxonomy_coverage, skill_taxonomy, skill_coverage, skill_coverage_by_grade, skill_difficulty_coverage)
         if isinstance(data, dict) and data.get("bankId"):
             bank_data_by_id[data["bankId"]] = path.name
 
@@ -368,6 +372,28 @@ def main():
             f"{labels.get(group_id, group_id)}={count}"
             for group_id, count in sorted(counts.items())
         ))
+    print("Skill coverage by grade:")
+    for direction, grades in sorted(skill_coverage_by_grade.items()):
+        labels = {
+            group[0]: group[1]
+            for group in skill_taxonomy.get("directions", {}).get(direction, {}).get("groups", [])
+        }
+        for grade, counts in sorted(grades.items(), key=lambda item: int(item[0])):
+            print(f"  skill/{direction}/{grade}: " + ", ".join(
+                f"{labels.get(group_id, group_id)}={count}"
+                for group_id, count in sorted(counts.items())
+            ))
+    print("Skill coverage by difficulty:")
+    for direction, groups in sorted(skill_difficulty_coverage.items()):
+        labels = {
+            group[0]: group[1]
+            for group in skill_taxonomy.get("directions", {}).get(direction, {}).get("groups", [])
+        }
+        for group_id, counts in sorted(groups.items()):
+            print(f"  skill/{direction}/{labels.get(group_id, group_id)}: " + ", ".join(
+                f"{difficulty}={count}"
+                for difficulty, count in sorted(counts.items())
+            ))
     if warnings:
         fail(errors, f"cross-grade duplicate question stems found: {len(warnings)}")
         by_direction = Counter()
