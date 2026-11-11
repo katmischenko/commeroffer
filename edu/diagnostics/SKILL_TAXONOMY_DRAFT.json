@@ -550,9 +550,327 @@
         [
           "multi_step_modeling",
           "Многошаговое решение физических задач"
+        ],
+        [
+          "thermal_processes",
+          "Тепловые процессы и теплопередача"
+        ],
+        [
+          "phase_transitions",
+          "Фазовые переходы"
+        ],
+        [
+          "electric_circuits",
+          "Условия и схемы электрических цепей"
+        ],
+        [
+          "electrical_measurements",
+          "Электрические величины и единицы"
+        ],
+        [
+          "optical_phenomena",
+          "Световые и оптические явления"
+        ],
+        [
+          "thermal_calculations",
+          "Расчёты количества теплоты"
+        ],
+        [
+          "ohm_law",
+          "Расчёты по закону Ома"
+        ],
+        [
+          "circuit_calculations",
+          "Расчёты электрических цепей"
+        ],
+        [
+          "electric_power",
+          "Расчёт электрической мощности"
+        ],
+        [
+          "magnetic_effects",
+          "Магнитное действие тока"
+        ],
+        [
+          "kinematics",
+          "Кинематические величины и расчёты"
+        ],
+        [
+          "dynamics",
+          "Законы динамики и ускорение"
+        ],
+        [
+          "momentum",
+          "Импульс и его сохранение"
+        ],
+        [
+          "energy",
+          "Механическая энергия и работа"
+        ],
+        [
+          "oscillations_waves",
+          "Колебания и механические волны"
         ]
       ],
       "rules": [
+        {
+          "groupId": "electric_power",
+          "containsAny": [
+            "Расчёт электрической мощности по напряжению и силе тока"
+          ]
+        },
+        {
+          "groupId": "energy",
+          "containsAny": [
+            "Расчёт скорости тела при свободном падении по закону сохранения энергии"
+          ]
+        },
+        {
+          "groupId": "optical_phenomena",
+          "containsAny": [
+            "Определение свойств изображения в плоском зеркале"
+          ]
+        },
+        {
+          "groupId": "electric_circuits",
+          "containsAny": [
+            "Определение общей силы тока при последовательном соединении"
+          ]
+        },
+        {
+          "groupId": "oscillations_waves",
+          "containsAny": [
+            "Расчёт скорости распространения волны"
+          ]
+        },
+        {
+          "groupId": "oscillations_waves",
+          "containsAny": [
+            "Расчёт частоты колебаний по числу колебаний и времени"
+          ]
+        },
+        {
+          "groupId": "momentum",
+          "containsAny": [
+            "Применение теоремы об импульсе силы"
+          ]
+        },
+        {
+          "groupId": "kinematics",
+          "containsAny": [
+            "Расчёт конечной скорости при равноускоренном движении"
+          ]
+        },
+        {
+          "groupId": "electrical_measurements",
+          "containsAny": [
+            "Распознавание единицы электрического сопротивления"
+          ]
+        },
+        {
+          "groupId": "oscillations_waves",
+          "containsAny": [
+            "Определение переноса энергии механической волной"
+          ]
+        },
+        {
+          "groupId": "oscillations_waves",
+          "containsAny": [
+            "Определение периода колебаний"
+          ]
+        },
+        {
+          "groupId": "momentum",
+          "containsAny": [
+            "Распознавание единицы измерения импульса"
+          ]
+        },
+        {
+          "groupId": "kinematics",
+          "containsAny": [
+            "Определение направления вектора ускорения"
+          ]
+        },
+        {
+          "groupId": "circuit_calculations",
+          "containsAny": [
+            "Расчёт эквивалентного сопротивления параллельной цепи"
+          ]
+        },
+        {
+          "groupId": "energy",
+          "containsAny": [
+            "Расчёт изменения потенциальной энергии"
+          ]
+        },
+        {
+          "groupId": "momentum",
+          "containsAny": [
+            "Применение закона сохранения импульса при сцеплении тел"
+          ]
+        },
+        {
+          "groupId": "thermal_processes",
+          "containsAny": [
+            "Определение теплопроводности"
+          ]
+        },
+        {
+          "groupId": "thermal_processes",
+          "containsAny": [
+            "Анализ изменения давления газа при нагревании"
+          ]
+        },
+        {
+          "groupId": "energy",
+          "containsAny": [
+            "Расчёт мощности по работе и времени"
+          ]
+        },
+        {
+          "groupId": "energy",
+          "containsAny": [
+            "Анализ зависимости кинетической энергии от скорости"
+          ]
+        },
+        {
+          "groupId": "momentum",
+          "containsAny": [
+            "Расчёт импульса тела по массе и скорости"
+          ]
+        },
+        {
+          "groupId": "dynamics",
+          "containsAny": [
+            "Расчёт ускорения по второму закону Ньютона"
+          ]
+        },
+        {
+          "groupId": "kinematics",
+          "containsAny": [
+            "Расчёт ускорения по изменению скорости"
+          ]
+        },
+        {
+          "groupId": "energy",
+          "containsAny": [
+            "Распознавание единицы измерения энергии"
+          ]
+        },
+        {
+          "groupId": "momentum",
+          "containsAny": [
+            "Запись формулы импульса тела"
+          ]
+        },
+        {
+          "groupId": "dynamics",
+          "containsAny": [
+            "Применение первого закона Ньютона"
+          ]
+        },
+        {
+          "groupId": "dynamics",
+          "containsAny": [
+            "Распознавание единицы измерения силы"
+          ]
+        },
+        {
+          "groupId": "kinematics",
+          "containsAny": [
+            "Определение средней путевой скорости"
+          ]
+        },
+        {
+          "groupId": "circuit_calculations",
+          "containsAny": [
+            "Расчёт напряжения на резисторе последовательной цепи"
+          ]
+        },
+        {
+          "groupId": "thermal_calculations",
+          "containsAny": [
+            "Расчёт количества теплоты при нагревании алюминия"
+          ]
+        },
+        {
+          "groupId": "circuit_calculations",
+          "containsAny": [
+            "Расчёт тока в смешанной электрической цепи"
+          ]
+        },
+        {
+          "groupId": "magnetic_effects",
+          "containsAny": [
+            "Объяснение магнитного действия электрического тока"
+          ]
+        },
+        {
+          "groupId": "electric_power",
+          "containsAny": [
+            "Расчёт электрической мощности"
+          ]
+        },
+        {
+          "groupId": "phase_transitions",
+          "containsAny": [
+            "Объяснение постоянства температуры при плавлении"
+          ]
+        },
+        {
+          "groupId": "circuit_calculations",
+          "containsAny": [
+            "Расчёт общего сопротивления последовательной цепи"
+          ]
+        },
+        {
+          "groupId": "ohm_law",
+          "containsAny": [
+            "Расчёт сопротивления по напряжению и силе тока"
+          ]
+        },
+        {
+          "groupId": "ohm_law",
+          "containsAny": [
+            "Расчёт напряжения по закону Ома"
+          ]
+        },
+        {
+          "groupId": "thermal_calculations",
+          "containsAny": [
+            "Расчёт количества теплоты при нагревании"
+          ]
+        },
+        {
+          "groupId": "optical_phenomena",
+          "containsAny": [
+            "Определение преломления света"
+          ]
+        },
+        {
+          "groupId": "electrical_measurements",
+          "containsAny": [
+            "Распознавание единицы измерения силы тока"
+          ]
+        },
+        {
+          "groupId": "electric_circuits",
+          "containsAny": [
+            "Определение условий существования постоянного тока"
+          ]
+        },
+        {
+          "groupId": "phase_transitions",
+          "containsAny": [
+            "Различение испарения и других фазовых переходов"
+          ]
+        },
+        {
+          "groupId": "thermal_processes",
+          "containsAny": [
+            "Определение теплопередачи"
+          ]
+        },
         {
           "groupId": "physical_calculation",
           "containsAny": [
