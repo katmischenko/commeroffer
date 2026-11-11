@@ -132,6 +132,10 @@ def main():
     profile_path = DIAG / "profiles.json"
     profiles = json.loads(profile_path.read_text(encoding="utf-8"))
     expected = {p["profileId"] for p in profiles.get("profiles", [])}
+    if profiles.get("experienceSelectionImplemented") is not False:
+        fail(errors, "experience selection must not be marked implemented until the form supports it")
+    if "experienceRequiredFor" in profiles or any(d.get("experienceRequired") for d in profiles.get("directions", [])):
+        fail(errors, "profiles.json must not claim experience is required while the form does not collect it")
     files = sorted(DIAG.glob("question-bank-*.json"))
     general_pattern = re.compile(r"question-bank-(informatics|physics|math|python|html-css|figma)-\d+\.json$")
     general_files = [p for p in files if general_pattern.fullmatch(p.name)]
@@ -139,8 +143,21 @@ def main():
     if found != expected:
         fail(errors, f"profile/file mismatch: missing={sorted(expected-found)}, extra={sorted(found-expected)}")
 
+    bank_data_by_id = {}
     for path in files:
-        validate_bank(path, errors, stems_by_direction)
+        data = validate_bank(path, errors, stems_by_direction)
+        if isinstance(data, dict) and data.get("bankId"):
+            bank_data_by_id[data["bankId"]] = path.name
+
+    expected_variants = {
+        item.get("bankId") for item in profiles.get("curriculumVariants", [])
+        if isinstance(item, dict) and item.get("bankId")
+    }
+    missing_variants = sorted(expected_variants - set(bank_data_by_id))
+    if missing_variants:
+        fail(errors, "curriculum variants missing bank files: " + ", ".join(missing_variants))
+    if len(expected_variants) != len(profiles.get("curriculumVariants", [])):
+        fail(errors, "curriculumVariants contains an entry without bankId")
 
     warnings = []
     for direction, stems in stems_by_direction.items():
