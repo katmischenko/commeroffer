@@ -7,7 +7,7 @@
   --pen:#6b0f18;--pen-soft:rgba(107,15,24,.08);
   --serif:'Inter',Arial,sans-serif;--sans:'Inter',Arial,sans-serif;
   --mono:'SF Mono','Fira Code',ui-monospace,monospace;
-  --hand:'Caveat',cursive;--gutter:4%;
+  --hand:'Dancing Script',cursive;--gutter:4%;
   --ease:cubic-bezier(.2,.75,.25,1);
 }
 html{scroll-behavior:smooth;scroll-padding-top:100px}
@@ -76,7 +76,7 @@ h1{
   max-width:900px;margin:18px 0 22px;color:var(--ink);
   font:400 clamp(2.8rem,6vw,5.8rem)/1.02 var(--sans);letter-spacing:-.055em;
 }
-h1 em{color:var(--wine);font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600}h1 .hl,h1 .marker-highlight{color:var(--wine);font-style:normal}
+h1 em{color:var(--wine);font-family:'Inter',Arial,sans-serif;font-style:italic;font-weight:600}h1 .hl,h1 .marker-highlight{color:var(--wine);font-style:normal}
 .hero-sub{
   max-width:720px;margin:0 0 34px;color:#625c59;
   font:400 clamp(14px,1.25vw,17px)/1.85 var(--sans);
@@ -117,7 +117,7 @@ footer{
   max-width:900px;color:var(--ink);font:400 clamp(3.2rem,7vw,7rem)/.98 var(--sans);
   letter-spacing:-.06em;
 }
-.editorial-library h1 em,.editorial-library .sec-title em{color:var(--wine);font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600}
+.editorial-library h1 em,.editorial-library .sec-title em{color:var(--wine);font-family:'Inter',Arial,sans-serif;font-style:italic;font-weight:600}
 .editorial-library .marker-highlight:before{
   background:linear-gradient(100deg,rgba(107,15,24,.14),rgba(138,39,48,.25));
 }
@@ -322,7 +322,7 @@ footer{
 
 
 /* SHARED BRAND, TYPE AND COMING-SOON PAGES */
-:root{--display:'Cormorant Garamond',Georgia,serif;--subtitle:'Manrope','Inter',sans-serif}
+:root{--display:'Inter',Arial,sans-serif;--subtitle:'Inter',Arial,sans-serif}
 .logo{gap:8px}
 .logo .brand-mark{width:27px;height:27px;position:relative;flex:none;border:0;border-radius:0;background:transparent;color:transparent;font-size:0}
 .logo .brand-mark:before{content:"";position:absolute;inset:4px;background:var(--wine);clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)}
@@ -358,38 +358,19 @@ h1,.editorial-library h1,.editorial-library .sec-title{font-family:var(--display
 @media(max-width:700px){.coming-grid{grid-template-columns:1fr}.coming-page h1{font-size:clamp(3rem,14vw,4.7rem)}.logo .brand-name,.logo .hand{font-size:15px}}
 
 
-/* Shared typography: one handwritten face across navigation and handwritten accents */
-:root{--hand:'Dancing Script',cursive;--display:'Cormorant Garamond',Georgia,serif;--subtitle:'Manrope','Inter',sans-serif}
-.logo .brand-name,.logo .hand,.editorial-library .brand-name,
-.brand-name,.library-signature,.coming-signature,.coming-tag,
-.editorial-library .note-kicker,.editorial-library .f-label,
-.editorial-library .item .kind,.editorial-library .st,
-.editorial-library .sec-index,.editorial-library .foot-note,.hand{
-  font-family:'Dancing Script',cursive!important;
-  letter-spacing:0!important;
-  text-transform:none!important;
-}
-.logo .brand-name,.logo .hand,.editorial-library .brand-name,.brand-name{
-  font-size:16px!important;font-weight:600!important;line-height:1.1!important;
-}
-.logo .brand-mark,.editorial-library .brand-mark{
-  width:34px;height:34px;position:relative;flex:none;
-  border:0!important;border-radius:0!important;background:transparent!important;
-  color:transparent!important;font-size:0!important;
-}
-.logo .brand-mark:before,.editorial-library .brand-mark:before{
-  content:"";position:absolute;inset:4px;background:var(--wine);
-  clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);
-}
-.logo .brand-mark:after,.editorial-library .brand-mark:after{
-  content:"";position:absolute;width:4px;height:4px;border-radius:50%;
-  background:var(--paper);left:50%;top:50%;transform:translate(-50%,-50%);
-}
+/* Shared typography — Open Notebook */
+:root{--hand:'Dancing Script',cursive;--display:'Inter',Arial,sans-serif;--subtitle:'Inter',Arial,sans-serif}
+.logo .brand-name,.logo .hand,.editorial-library .brand-name,.brand-name{font-family:'Dancing Script',cursive!important;font-weight:600!important;letter-spacing:0!important;text-transform:lowercase!important;font-size:16px!important;line-height:1.1!important;color:var(--ink)}
+.logo .brand-mark,.editorial-library .brand-mark{width:34px;height:34px;position:relative;flex:none;border:0!important;border-radius:0!important;background:transparent!important;color:transparent!important;font-size:0!important}
+.logo .brand-mark:before,.editorial-library .brand-mark:before{content:"";position:absolute;inset:4px;background:var(--wine);clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)}
+.logo .brand-mark:after,.editorial-library .brand-mark:after{content:"";position:absolute;width:4px;height:4px;border-radius:50%;background:var(--paper);left:50%;top:50%;transform:translate(-50%,-50%)}
 .logo .brand-mark i,.editorial-library .brand-mark i{display:none}
-.editorial-library .sec-title,.editorial-library h1,
-.coming-page h1,.coming-page h2{font-family:var(--display)}
-.editorial-library .hero-sub,.editorial-library .sec-sub,
-.coming-lead,.coming-card ul,.coming-bottom p{font-family:var(--subtitle)}
-@media(max-width:600px){
-  .logo .brand-name,.logo .hand,.editorial-library .brand-name,.brand-name{font-size:16px!important}
-}
+h1,.editorial-library h1,.editorial-library .sec-title,.coming-page h1,.coming-page h2,.editorial-library .note-box h3,.editorial-library .item h3{font-family:var(--display)}
+h1 em,.editorial-library h1 em,.editorial-library .sec-title em{font-family:var(--display);font-style:italic}
+.hero-sub,.editorial-library .hero-sub,.editorial-library .sec-sub,.coming-lead,.coming-card ul,.coming-bottom p{font-family:var(--subtitle)}
+.library-signature,.coming-signature,.coming-tag,.editorial-library .note-kicker{font-family:var(--sans)!important;font-style:italic!important;font-weight:500!important;letter-spacing:0!important;text-transform:none!important}
+.editorial-library .sec-sub{font:italic 400 clamp(1.1rem,1.7vw,1.45rem)/1.55 var(--subtitle);color:rgba(244,241,236,.76)}
+.editorial-library .f-label,.editorial-library .item .kind,.editorial-library .tag,.editorial-library .foot-note,.editorial-library .sec-index{font-family:var(--mono)!important;font-style:normal!important;letter-spacing:.08em!important;text-transform:uppercase!important}
+.editorial-library .st{font-family:var(--sans)!important;font-style:normal!important;font-size:10px!important;font-weight:700!important;letter-spacing:.08em!important;text-transform:uppercase!important}
+.hand{font-family:'Dancing Script',cursive}
+@media(max-width:600px){.logo .brand-name,.logo .hand,.editorial-library .brand-name,.brand-name{font-size:16px!important}}
