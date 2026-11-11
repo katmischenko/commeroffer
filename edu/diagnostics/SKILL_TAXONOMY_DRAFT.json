@@ -111,6 +111,18 @@
       ],
       "rules": [
         {
+          "groupId": "equations_inequalities",
+          "containsAny": [
+            "Решение системы линейных уравнений методом подстановки"
+          ]
+        },
+        {
+          "groupId": "statistics_probability",
+          "containsAny": [
+            "Нахождение медианы упорядоченного набора чисел"
+          ]
+        },
+        {
           "groupId": "algebraic_transformations",
           "containsAny": [
             "Сокращение рационального выражения с учётом ограничения на переменную"
@@ -648,9 +660,203 @@
         [
           "electromagnetic_induction",
           "Электромагнитная индукция"
+        ],
+        [
+          "thermodynamics",
+          "Термодинамические процессы и первый закон"
+        ],
+        [
+          "gas_laws",
+          "Законы идеального газа"
+        ],
+        [
+          "thermal_engines",
+          "Тепловые машины и КПД"
+        ],
+        [
+          "electrostatics",
+          "Электростатическое взаимодействие"
+        ],
+        [
+          "electric_field",
+          "Напряжённость электрического поля"
         ]
       ],
       "rules": [
+        {
+          "groupId": "electrostatics",
+          "containsAny": [
+            "Анализ зависимости силы Кулона от величины зарядов"
+          ]
+        },
+        {
+          "groupId": "thermodynamics",
+          "containsAny": [
+            "Применение первого закона термодинамики"
+          ]
+        },
+        {
+          "groupId": "momentum",
+          "containsAny": [
+            "Применение закона сохранения импульса при неупругом столкновении"
+          ]
+        },
+        {
+          "groupId": "thermodynamics",
+          "containsAny": [
+            "Распознавание адиабатического термодинамического процесса"
+          ]
+        },
+        {
+          "groupId": "electric_field",
+          "containsAny": [
+            "Расчёт напряжённости электрического поля по силе и заряду"
+          ]
+        },
+        {
+          "groupId": "circuit_calculations",
+          "containsAny": [
+            "Расчёт эквивалентного сопротивления параллельной цепи"
+          ]
+        },
+        {
+          "groupId": "oscillations_waves",
+          "containsAny": [
+            "Расчёт длины волны по скорости и частоте"
+          ]
+        },
+        {
+          "groupId": "momentum",
+          "containsAny": [
+            "Расчёт средней силы по изменению импульса за время"
+          ]
+        },
+        {
+          "groupId": "energy",
+          "containsAny": [
+            "Расчёт работы по изменению кинетической энергии"
+          ]
+        },
+        {
+          "groupId": "circuit_calculations",
+          "containsAny": [
+            "Расчёт общего сопротивления последовательной цепи"
+          ]
+        },
+        {
+          "groupId": "oscillations_waves",
+          "containsAny": [
+            "Определение направления колебаний частиц в поперечной волне"
+          ]
+        },
+        {
+          "groupId": "oscillations_waves",
+          "containsAny": [
+            "Расчёт периода гармонических колебаний по частоте"
+          ]
+        },
+        {
+          "groupId": "momentum",
+          "containsAny": [
+            "Определение направления импульса силы по изменению импульса тела"
+          ]
+        },
+        {
+          "groupId": "kinematics",
+          "containsAny": [
+            "Определение ускорения по наклону графика скорости от времени"
+          ]
+        },
+        {
+          "groupId": "electrostatics",
+          "containsAny": [
+            "Анализ зависимости силы Кулона от расстояния между зарядами"
+          ]
+        },
+        {
+          "groupId": "gas_laws",
+          "containsAny": [
+            "Применение закона Бойля — Мариотта"
+          ]
+        },
+        {
+          "groupId": "thermal_engines",
+          "containsAny": [
+            "Расчёт коэффициента полезного действия тепловой машины"
+          ]
+        },
+        {
+          "groupId": "thermodynamics",
+          "containsAny": [
+            "Распознавание изохорного термодинамического процесса"
+          ]
+        },
+        {
+          "groupId": "thermal_calculations",
+          "containsAny": [
+            "Расчёт количества теплоты при нагревании воды"
+          ]
+        },
+        {
+          "groupId": "ohm_law",
+          "containsAny": [
+            "Расчёт напряжения по закону Ома"
+          ]
+        },
+        {
+          "groupId": "oscillations_waves",
+          "containsAny": [
+            "Расчёт скорости распространения волны"
+          ]
+        },
+        {
+          "groupId": "oscillations_waves",
+          "containsAny": [
+            "Расчёт частоты колебаний по числу колебаний и времени"
+          ]
+        },
+        {
+          "groupId": "momentum",
+          "containsAny": [
+            "Применение теоремы об импульсе силы"
+          ]
+        },
+        {
+          "groupId": "kinematics",
+          "containsAny": [
+            "Расчёт конечной скорости при равноускоренном движении"
+          ]
+        },
+        {
+          "groupId": "electrical_measurements",
+          "containsAny": [
+            "Распознавание единицы электрического сопротивления"
+          ]
+        },
+        {
+          "groupId": "oscillations_waves",
+          "containsAny": [
+            "Определение переноса энергии механической волной"
+          ]
+        },
+        {
+          "groupId": "oscillations_waves",
+          "containsAny": [
+            "Определение периода колебаний"
+          ]
+        },
+        {
+          "groupId": "momentum",
+          "containsAny": [
+            "Распознавание единицы измерения импульса"
+          ]
+        },
+        {
+          "groupId": "kinematics",
+          "containsAny": [
+            "Определение направления ускорения при равноускоренном движении"
+          ]
+        },
         {
           "groupId": "electromagnetic_induction",
           "containsAny": [
