@@ -211,13 +211,15 @@ def main():
     required_guards = (
         "$('question').textContent=q.question;",
         "Array.isArray(data.questions)",
-        "$('grade').addEventListener('change',checkReady);",
-        "const candidates=['diagnostics/question-bank-'+profileId+'.json'];",
+        "$('grade').addEventListener('change',()=>{checkReady();updateCurriculumControls();});",
+        "const specificPath=curriculumBankPath(p);",
         "studentName:student,studentClass:String(grade),direction,experience:''",
         "telegramConsent:$('telegram-consent').checked",
         "async function saveAttempt(payload)",
         "CONSENT_VERSION",
         "REMOTE_SAVE_ENABLED",
+        "bankProgramMatched:matched",
+        "Выбран профиль «'+escapeHtml(bankMeta.curriculumName)+'», но отдельного банка пока нет.",
     )
     for guard in required_guards:
         if guard not in frontend:
