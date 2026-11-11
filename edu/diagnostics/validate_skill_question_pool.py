@@ -151,6 +151,16 @@ def main():
         "component_system": 2,
         "component_documentation": 2,
         "export_handoff": 2,
+        "css_spacing": 2,
+        "box_model": 2,
+        "resource_paths": 2,
+        "css_units": 2,
+        "script_loading": 2,
+        "object_navigation": 2,
+        "frame_structure": 2,
+        "shape_tools": 2,
+        "text_tool": 2,
+        "fill_properties": 2,
     }
     if len(questions) != sum(expected_groups.values()):
         errors.append(f"expected {sum(expected_groups.values())} draft questions, got {len(questions)}")
