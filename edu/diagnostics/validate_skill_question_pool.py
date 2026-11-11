@@ -181,6 +181,16 @@ def main():
         "layout_grid": 2,
         "object_editing": 2,
         "collaboration": 2,
+        "frame_constraints": 2,
+        "masks_cropping": 2,
+        "vector_operations": 2,
+        "version_control": 2,
+        "file_branching": 2,
+        "canvas_organization": 2,
+        "variable_types": 2,
+        "inspect_properties": 2,
+        "design_system_governance": 2,
+        "library_release": 2,
     }
     if len(questions) != sum(expected_groups.values()):
         errors.append(f"expected {sum(expected_groups.values())} draft questions, got {len(questions)}")
