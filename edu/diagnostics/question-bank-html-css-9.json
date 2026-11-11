@@ -73,7 +73,7 @@
       "skill": "понимание и применение HTML/CSS",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какой псевдокласс выбирает элемент, если он не отключён?",
+      "question": "Какой псевдокласс выбирает включённый элемент управления формы?",
       "options": [
         ":active",
         ":visited",
@@ -82,7 +82,7 @@
       ],
       "correctIndex": 3,
       "correctText": ":enabled",
-      "explanation": ":enabled соответствует включённым элементам управления."
+      "explanation": ":enabled соответствует элементам управления формы, которые не отключены."
     },
     {
       "id": "htmlcss9-05",
