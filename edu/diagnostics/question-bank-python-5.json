@@ -19,7 +19,7 @@
     {
       "id": "python5-01",
       "topic": "Основы Python",
-      "skill": "понимание",
+      "skill": "Использование print() для вывода данных",
       "difficulty": "basic",
       "type": "choice",
       "question": "Как записать вывод текста Привет в консоль?",
@@ -36,7 +36,7 @@
     {
       "id": "python5-02",
       "topic": "Переменные",
-      "skill": "понимание",
+      "skill": "Проверка допустимых имён переменных",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какое имя переменной записано корректно?",
@@ -53,7 +53,7 @@
     {
       "id": "python5-03",
       "topic": "Типы данных",
-      "skill": "понимание",
+      "skill": "Определение типа целочисленного значения",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой тип данных у значения 7?",
@@ -70,7 +70,7 @@
     {
       "id": "python5-04",
       "topic": "Арифметика",
-      "skill": "понимание",
+      "skill": "Вычисление результата целочисленного деления",
       "difficulty": "basic",
       "type": "choice",
       "question": "Чему равно 7 // 2 в Python?",
@@ -87,7 +87,7 @@
     {
       "id": "python5-05",
       "topic": "Условия",
-      "skill": "понимание",
+      "skill": "Выбор ветви else в условной конструкции",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какое ключевое слово начинает ветвь «иначе»?",
@@ -104,7 +104,7 @@
     {
       "id": "python5-06",
       "topic": "Строки",
-      "skill": "понимание и применение",
+      "skill": "Определение длины строки с помощью len()",
       "difficulty": "medium",
       "type": "short",
       "question": "Чему равно len('кот')?",
@@ -117,7 +117,7 @@
     {
       "id": "python5-07",
       "topic": "Списки",
-      "skill": "понимание и применение",
+      "skill": "Определение начального индекса элементов списка",
       "difficulty": "medium",
       "type": "choice",
       "question": "С какого индекса начинается нумерация элементов списка?",
@@ -134,7 +134,7 @@
     {
       "id": "python5-08",
       "topic": "Циклы",
-      "skill": "понимание и применение",
+      "skill": "Подсчёт итераций цикла range()",
       "difficulty": "medium",
       "type": "choice",
       "question": "Сколько раз выполнится for i in range(4)?",
@@ -151,7 +151,7 @@
     {
       "id": "python5-09",
       "topic": "Условия",
-      "skill": "понимание и применение",
+      "skill": "Запись цепочки сравнений в Python",
       "difficulty": "medium",
       "type": "choice",
       "question": "Как записать проверку, что x больше 5 и меньше 10?",
@@ -168,7 +168,7 @@
     {
       "id": "python5-10",
       "topic": "Списки",
-      "skill": "понимание и применение",
+      "skill": "Получение элемента списка по индексу",
       "difficulty": "medium",
       "type": "short",
       "question": "Что вернёт [4, 8, 12][1]?",
@@ -181,7 +181,7 @@
     {
       "id": "python5-11",
       "topic": "Функции",
-      "skill": "понимание и применение",
+      "skill": "Выбор return для возврата значения функции",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какое ключевое слово возвращает результат из функции?",
@@ -198,7 +198,7 @@
     {
       "id": "python5-12",
       "topic": "Циклы",
-      "skill": "понимание и применение",
+      "skill": "Подсчёт значений в диапазоне range()",
       "difficulty": "medium",
       "type": "short",
       "question": "Сколько раз выполнится цикл for i in range(2, 7)?",
@@ -211,7 +211,7 @@
     {
       "id": "python5-13",
       "topic": "Алгоритмы",
-      "skill": "понимание и применение",
+      "skill": "Трассировка накопления суммы в цикле",
       "difficulty": "advanced",
       "type": "short",
       "question": "Чему равна сумма: total=0; for n in [2,4,6]: total+=n?",
@@ -224,7 +224,7 @@
     {
       "id": "python5-14",
       "topic": "Функции",
-      "skill": "понимание и применение",
+      "skill": "Определение неявного возвращаемого значения функции",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Что произойдёт, если функция не содержит return?",
@@ -241,7 +241,7 @@
     {
       "id": "python5-15",
       "topic": "Списки",
-      "skill": "понимание и применение",
+      "skill": "Анализ изменения списка после append()",
       "difficulty": "advanced",
       "type": "short",
       "question": "После a=[1,2]; a.append(3); чему равна длина a?",
@@ -251,5 +251,7 @@
       ],
       "correctText": "3"
     }
-  ]
+  ],
+  "skillGranularity": "question_action",
+  "skillReviewStatus": "teacher_review_draft"
 }
