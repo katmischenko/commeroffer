@@ -1,10 +1,10 @@
 {
-  "version": "0.6.0",
+  "version": "0.7.0",
   "title": "Дополнительный пул заданий для расширения покрытия навыков",
   "status": "teacher_review_draft",
   "reviewStatus": "teacher_review_draft",
   "purpose": "Отдельный резерв заданий для педагогической проверки. Не подключён к активным банкам и не участвует в диагностике из 15 вопросов.",
-  "sourceBasis": "Создан на основе аудита покрытия edu/diagnostics/SKILL_COVERAGE_REPORT.md и очереди edu/diagnostics/SKILL_GAP_BACKLOG.md. Новые формулировки разработаны как независимые задания к уже существующим группам навыков. Четвёртое пополнение основано на проверке оставшихся двухвопросных групп математики и физики по активным банкам. Пятое пополнение подготовлено по приоритетным двухвопросным группам информатики и Python из очереди покрытия. Шестое пополнение подготовлено по оставшимся двухвопросным группам HTML/CSS и Figma после сверки с вопросами всех 14 действующих банков этих направлений. Седьмое пополнение: десять одиночных базовых групп HTML/CSS и Figma расширены двумя заданиями каждая после проверки действующих банков. Восьмое пополнение: ещё десять одиночных групп HTML/CSS и Figma расширены двумя заданиями каждая с приоритетом практических основ.",
+  "sourceBasis": "Создан на основе аудита покрытия edu/diagnostics/SKILL_COVERAGE_REPORT.md и очереди edu/diagnostics/SKILL_GAP_BACKLOG.md. Новые формулировки разработаны как независимые задания к уже существующим группам навыков. Четвёртое пополнение основано на проверке оставшихся двухвопросных групп математики и физики по активным банкам. Пятое пополнение подготовлено по приоритетным двухвопросным группам информатики и Python из очереди покрытия. Шестое пополнение подготовлено по оставшимся двухвопросным группам HTML/CSS и Figma после сверки с вопросами всех 14 действующих банков этих направлений. Седьмое пополнение: десять одиночных базовых групп HTML/CSS и Figma расширены двумя заданиями каждая после проверки действующих банков. Восьмое пополнение: ещё десять одиночных групп HTML/CSS и Figma расширены двумя заданиями каждая с приоритетом практических основ. Девятое пополнение: шесть одиночных групп HTML/CSS и четыре одиночные группы Figma дополнены двумя заданиями каждая.",
   "selectionPolicy": "До экспертной проверки и отдельного решения о механизме выбора задания не включать в активные банки.",
   "questions": [
     {
@@ -2717,6 +2717,415 @@
       ],
       "correctText": "Page",
       "explanation": "Page — отдельная страница файла Figma. На ней размещают фреймы и другие элементы, отделяя разные части проекта друг от друга."
+    },
+    {
+      "id": "pool-html9-motion-pref-001",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 9,
+      "curriculumId": "general",
+      "topic": "CSS-анимация",
+      "skill": "Учет системной настройки prefers-reduced-motion",
+      "groupId": "motion_preferences",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какой CSS-медиазапрос позволяет отключить или упростить анимации, если пользователь включил системную настройку уменьшения движения?",
+      "options": [
+        "@media (prefers-reduced-motion: reduce)",
+        "@media (animation: none)",
+        "@supports (motion: reduce)",
+        "@media (max-width: 600px)"
+      ],
+      "correctIndex": 0,
+      "correctText": "@media (prefers-reduced-motion: reduce)",
+      "explanation": "Медиавыражение prefers-reduced-motion: reduce сообщает, что пользователь предпочитает уменьшенное движение. Для такой ситуации можно отключить необязательные анимации или заменить их более спокойными переходами."
+    },
+    {
+      "id": "pool-html10-motion-pref-002",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 10,
+      "curriculumId": "general",
+      "topic": "CSS-анимация",
+      "skill": "Учет системной настройки prefers-reduced-motion",
+      "groupId": "motion_preferences",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Запиши значение настройки prefers-reduced-motion, которое соответствует предпочтению пользователя уменьшить анимацию и движение.",
+      "acceptedAnswers": [
+        "reduce"
+      ],
+      "correctText": "reduce",
+      "explanation": "Значение reduce указывает, что пользователь запросил уменьшенное движение. Это значение проверяют в медиазапросе prefers-reduced-motion."
+    },
+    {
+      "id": "pool-html9-supports-001",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 9,
+      "curriculumId": "general",
+      "topic": "CSS-возможности браузера",
+      "skill": "Проверка поддержки CSS-возможности через @supports",
+      "groupId": "feature_queries",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Для чего применяют конструкцию @supports (display: grid) в CSS?",
+      "options": [
+        "Чтобы проверить поддержку свойства display: grid и применить условные правила",
+        "Чтобы загрузить изображение только при прокрутке",
+        "Чтобы создать новую HTML-форму",
+        "Чтобы проверить ширину окна браузера"
+      ],
+      "correctIndex": 0,
+      "correctText": "Чтобы проверить поддержку свойства display: grid и применить условные правила",
+      "explanation": "Правило @supports позволяет проверить, поддерживает ли браузер указанную CSS-возможность, и применить вложенные стили при положительной проверке."
+    },
+    {
+      "id": "pool-html10-supports-fallback-002",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 10,
+      "curriculumId": "general",
+      "topic": "CSS-возможности браузера",
+      "skill": "Проверка поддержки CSS-возможности через @supports",
+      "groupId": "feature_queries",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Какое CSS-правило начинает условный блок проверки поддержки свойства браузером: @supports или @media?",
+      "acceptedAnswers": [
+        "@supports",
+        "supports"
+      ],
+      "correctText": "@supports",
+      "explanation": "@supports проверяет поддержку CSS-декларации. @media предназначено для условий медиасреды, например ширины экрана или предпочтений пользователя."
+    },
+    {
+      "id": "pool-html10-link-security-001",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 10,
+      "curriculumId": "general",
+      "topic": "HTML",
+      "skill": "Защита window.opener через rel=noopener",
+      "groupId": "link_security",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Ссылка открывает внешний сайт в новой вкладке через target=\"_blank\". Какой токен rel явно запрещает новой странице обращаться к window.opener?",
+      "options": [
+        "noopener",
+        "nofollow",
+        "external",
+        "noreferrer-only"
+      ],
+      "correctIndex": 0,
+      "correctText": "noopener",
+      "explanation": "Токен rel=\"noopener\" предотвращает получение открытой страницей ссылки на исходное окно через window.opener. Это снижает риск манипуляции исходной страницей."
+    },
+    {
+      "id": "pool-html10-link-security-002",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 10,
+      "curriculumId": "general",
+      "topic": "HTML",
+      "skill": "Защита window.opener через rel=noopener",
+      "groupId": "link_security",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Какой атрибут ссылки содержит значение noopener в записи <a target=\"_blank\" rel=\"noopener\">?",
+      "acceptedAnswers": [
+        "rel"
+      ],
+      "correctText": "rel",
+      "explanation": "Значение noopener указывается в атрибуте rel ссылки. Оно задаёт отношение и ограничения безопасности для открываемого ресурса."
+    },
+    {
+      "id": "pool-html11-module-001",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 11,
+      "curriculumId": "general",
+      "topic": "HTML-скрипты",
+      "skill": "Подключение JavaScript-модуля через type=module",
+      "groupId": "js_modules",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Как браузер трактует внешний скрипт, подключённый тегом <script type=\"module\" src=\"app.js\">?",
+      "options": [
+        "Как JavaScript-модуль с поддержкой import и export",
+        "Как обычный текстовый файл без выполнения",
+        "Как таблицу стилей CSS",
+        "Как скрипт, который выполняется только после клика"
+      ],
+      "correctIndex": 0,
+      "correctText": "Как JavaScript-модуль с поддержкой import и export",
+      "explanation": "type=\"module\" включает режим JavaScript-модуля. Такой скрипт может использовать import и export; внешние модули по умолчанию загружаются отложенно относительно разбора HTML."
+    },
+    {
+      "id": "pool-html11-module-002",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 11,
+      "curriculumId": "general",
+      "topic": "HTML-скрипты",
+      "skill": "Подключение JavaScript-модуля через type=module",
+      "groupId": "js_modules",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Какие два ключевых слова JavaScript используются для получения и предоставления экспортируемых сущностей между модулями?",
+      "acceptedAnswers": [
+        "import и export",
+        "import export",
+        "import, export"
+      ],
+      "correctText": "import и export",
+      "explanation": "Оператор import подключает экспортированные значения из другого модуля, а export делает функции, переменные или классы доступными для импорта."
+    },
+    {
+      "id": "pool-html11-content-visibility-001",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 11,
+      "curriculumId": "general",
+      "topic": "CSS-производительность",
+      "skill": "Оптимизация рендеринга внеэкранного содержимого через content-visibility",
+      "groupId": "rendering_performance",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "Какое основное назначение свойства content-visibility: auto для длинной веб-страницы?",
+      "options": [
+        "Позволить браузеру пропускать часть рендеринга содержимого вне видимой области до необходимости",
+        "Автоматически сжимать все изображения страницы",
+        "Удалять элементы, расположенные ниже первого экрана",
+        "Запрещать браузеру выполнять JavaScript"
+      ],
+      "correctIndex": 0,
+      "correctText": "Позволить браузеру пропускать часть рендеринга содержимого вне видимой области до необходимости",
+      "explanation": "content-visibility: auto может позволить браузеру отложить часть работы по отображению внеэкранных блоков, пока они не понадобятся при прокрутке. Это способ оптимизации рендеринга, а не удаления содержимого."
+    },
+    {
+      "id": "pool-html11-content-visibility-002",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 11,
+      "curriculumId": "general",
+      "topic": "CSS-производительность",
+      "skill": "Оптимизация рендеринга внеэкранного содержимого через content-visibility",
+      "groupId": "rendering_performance",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Какое значение свойства content-visibility включает возможность пропускать часть рендеринга содержимого, пока оно находится вне экрана?",
+      "acceptedAnswers": [
+        "auto"
+      ],
+      "correctText": "auto",
+      "explanation": "Значение auto позволяет браузеру применять оптимизацию рендеринга для содержимого, которое пока находится вне видимой области."
+    },
+    {
+      "id": "pool-html11-grid-areas-001",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 11,
+      "curriculumId": "general",
+      "topic": "CSS Grid",
+      "skill": "Построение именованных областей CSS Grid через grid-template-areas",
+      "groupId": "grid_areas",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какое свойство CSS Grid позволяет задать макет через именованные области, например header, main и footer?",
+      "options": [
+        "grid-template-areas",
+        "grid-auto-flow",
+        "grid-column-gap",
+        "align-content"
+      ],
+      "correctIndex": 0,
+      "correctText": "grid-template-areas",
+      "explanation": "Свойство grid-template-areas задаёт именованную схему областей сетки. Затем отдельным элементам можно назначить соответствующее имя через grid-area."
+    },
+    {
+      "id": "pool-html11-grid-areas-002",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 11,
+      "curriculumId": "general",
+      "topic": "CSS Grid",
+      "skill": "Построение именованных областей CSS Grid через grid-template-areas",
+      "groupId": "grid_areas",
+      "difficulty": "advanced",
+      "type": "short",
+      "question": "Какое CSS-свойство назначает конкретному Grid-элементу имя области, объявленной в grid-template-areas?",
+      "acceptedAnswers": [
+        "grid-area"
+      ],
+      "correctText": "grid-area",
+      "explanation": "После объявления областей в grid-template-areas элементу назначают нужную область с помощью свойства grid-area, например grid-area: header."
+    },
+    {
+      "id": "pool-figma5-visual-hierarchy-001",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 5,
+      "curriculumId": "general",
+      "topic": "Композиция",
+      "skill": "Анализ роли визуальной иерархии в композиции",
+      "groupId": "visual_hierarchy",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "На экране есть заголовок, основная кнопка и второстепенная подпись. Какой приём поможет зрителю сразу заметить главное действие?",
+      "options": [
+        "Сделать заголовок и основную кнопку визуально заметнее второстепенной подписи",
+        "Оформить все элементы одинаковым размером и контрастом",
+        "Спрятать кнопку среди декоративных деталей",
+        "Разместить все элементы без отступов"
+      ],
+      "correctIndex": 0,
+      "correctText": "Сделать заголовок и основную кнопку визуально заметнее второстепенной подписи",
+      "explanation": "Визуальная иерархия выделяет наиболее важные элементы размером, контрастом, положением и интервалами, помогая определить порядок восприятия."
+    },
+    {
+      "id": "pool-figma6-visual-hierarchy-002",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "Композиция",
+      "skill": "Анализ роли визуальной иерархии в композиции",
+      "groupId": "visual_hierarchy",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Как называется принцип организации элементов макета, который помогает зрителю понять, что важно в первую очередь, а что — во вторую?",
+      "acceptedAnswers": [
+        "визуальная иерархия",
+        "иерархия"
+      ],
+      "correctText": "Визуальная иерархия",
+      "explanation": "Визуальная иерархия задаёт относительную важность элементов и последовательность их восприятия."
+    },
+    {
+      "id": "pool-figma5-layout-grid-001",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 5,
+      "curriculumId": "general",
+      "topic": "Сетка",
+      "skill": "Применение layout grid для структуры и выравнивания",
+      "groupId": "layout_grid",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Для чего дизайнер включает Layout grid во фрейме Figma?",
+      "options": [
+        "Чтобы использовать направляющую сетку для выравнивания и размещения элементов",
+        "Чтобы автоматически создать интерактивный прототип",
+        "Чтобы заменить все текстовые стили",
+        "Чтобы экспортировать фрейм в SVG"
+      ],
+      "correctIndex": 0,
+      "correctText": "Чтобы использовать направляющую сетку для выравнивания и размещения элементов",
+      "explanation": "Layout grid помогает выстраивать элементы по колонкам, строкам или сетке, поддерживая согласованную структуру макета."
+    },
+    {
+      "id": "pool-figma6-layout-grid-002",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "Сетка",
+      "skill": "Применение layout grid для структуры и выравнивания",
+      "groupId": "layout_grid",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Как называется сетка-направляющая, которую можно добавить к Frame в Figma для выравнивания элементов по колонкам или строкам?",
+      "acceptedAnswers": [
+        "Layout grid",
+        "layout grid",
+        "сетка макета"
+      ],
+      "correctText": "Layout grid",
+      "explanation": "Layout grid — это направляющая сетка фрейма. Она помогает задавать колонки, строки или модульную сетку для выравнивания содержимого."
+    },
+    {
+      "id": "pool-figma6-duplicate-001",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "Редактирование",
+      "skill": "Дублирование объекта сочетанием клавиш",
+      "groupId": "object_editing",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какое стандартное сочетание клавиш дублирует выбранный объект в Figma?",
+      "options": [
+        "Ctrl/Cmd + D",
+        "Ctrl/Cmd + S",
+        "Ctrl/Cmd + Z",
+        "Ctrl/Cmd + G"
+      ],
+      "correctIndex": 0,
+      "correctText": "Ctrl/Cmd + D",
+      "explanation": "Сочетание Ctrl + D в Windows или Cmd + D в macOS дублирует выбранный объект."
+    },
+    {
+      "id": "pool-figma6-duplicate-002",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "Редактирование",
+      "skill": "Дублирование объекта сочетанием клавиш",
+      "groupId": "object_editing",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Какую букву нажимают вместе с Ctrl в Windows или Cmd в macOS, чтобы дублировать выбранный объект в Figma?",
+      "acceptedAnswers": [
+        "d",
+        "D"
+      ],
+      "correctText": "D",
+      "explanation": "Комбинация Ctrl/Cmd + D дублирует выбранный объект; в коротком ответе требуется указать клавишу D."
+    },
+    {
+      "id": "pool-figma6-comments-001",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "Совместная работа",
+      "skill": "Использование комментариев для контекстной обратной связи",
+      "groupId": "collaboration",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Почему комментарий в Figma полезно прикрепить непосредственно к конкретному месту макета?",
+      "options": [
+        "Так обратная связь связана с нужным элементом или областью и её проще понять",
+        "Так комментарий автоматически меняет размеры объекта",
+        "Так макет становится недоступен для просмотра",
+        "Так комментарий заменяет историю версий"
+      ],
+      "correctIndex": 0,
+      "correctText": "Так обратная связь связана с нужным элементом или областью и её проще понять",
+      "explanation": "Контекстный комментарий привязывается к месту на макете, поэтому участникам проще понять, к какому элементу относится замечание или вопрос."
+    },
+    {
+      "id": "pool-figma7-comments-002",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 7,
+      "curriculumId": "general",
+      "topic": "Совместная работа",
+      "skill": "Использование комментариев для контекстной обратной связи",
+      "groupId": "collaboration",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Какой инструмент совместной работы в Figma позволяет оставить замечание или вопрос, привязанный к определённому месту макета?",
+      "acceptedAnswers": [
+        "комментарий",
+        "comments",
+        "comment"
+      ],
+      "correctText": "Комментарий",
+      "explanation": "Комментарии позволяют обсуждать конкретные элементы макета, не перенося замечания в отдельный документ без визуального контекста."
     }
   ]
 }
