@@ -101,6 +101,36 @@ test("all 36 direction-and-grade profiles load a 15-question bank", async () => 
   await page.close();
 });
 
+test("all 18 Russian curriculum variants load their dedicated banks", async () => {
+  const profiles = [
+    ["math", 6], ["math", 7], ["math", 8], ["math", 9],
+    ["physics", 7], ["physics", 8], ["physics", 9],
+    ["physics", 10, "basic"], ["physics", 10, "advanced"],
+    ["physics", 11, "basic"], ["physics", 11, "advanced"],
+    ["informatics", 7], ["informatics", 8], ["informatics", 9],
+    ["informatics", 10, "basic"], ["informatics", 10, "advanced"],
+    ["informatics", 11, "basic"], ["informatics", 11, "advanced"]
+  ];
+  const page = await browser.newPage();
+  for (const [direction, grade, level] of profiles) {
+    await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
+    await page.locator("#student").fill("Проверка российского банка");
+    await page.locator("#direction").selectOption(direction);
+    await page.locator("#grade").selectOption(String(grade));
+    await page.locator("#curriculum-details summary").click();
+    await page.locator("#curriculum").selectOption("ru");
+    if (level) await page.locator("#curriculum-level").selectOption(level);
+    await page.locator("#start").click();
+    await page.waitForFunction(() => document.querySelector("#counter")?.textContent.trim() === "вопрос 1 из 15");
+    assert.match(
+      await page.locator("#profile-note").textContent(),
+      /Загружен отдельный банк: Россия/,
+      direction + " " + grade + (level ? " " + level : "")
+    );
+  }
+  await page.close();
+});
+
 test("result preserves literal HTML tags in question text", async () => {
   const page = await browser.newPage();
   await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
