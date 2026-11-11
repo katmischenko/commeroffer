@@ -79,6 +79,9 @@ def validate_bank(path: Path, errors: list[str], stems_by_direction, taxonomy, t
     if not isinstance(questions, list):
         fail(errors, f"{path.name}: missing questions array")
         return None
+    question_action_mode = data.get("skillGranularity") == "question_action"
+    if question_action_mode and data.get("skillReviewStatus") != "teacher_review_draft":
+        fail(errors, f"{path.name}: question_action skill labels must remain teacher_review_draft")
     if len(questions) != EXPECTED_COUNT:
         fail(errors, f"{path.name}: expected 15 questions, got {len(questions)}")
 
@@ -107,6 +110,12 @@ def validate_bank(path: Path, errors: list[str], stems_by_direction, taxonomy, t
         seen_ids.add(qid)
 
         skill = str(q.get("skill", "")).strip()
+        if question_action_mode and skill.casefold() in {
+            "понимание", "понимание и применение", "вычисление и применение",
+            "применение", "применение информатики", "применение python",
+            "понимание и применение figma", "понимание и применение html/css"
+        }:
+            fail(errors, f"{prefix}: question_action bank contains generic skill label {skill!r}")
         skill_group_id = skill_group_for(skill_taxonomy, direction, skill)
         if not skill_group_id:
             fail(errors, f"{prefix}: skill label is not mapped in SKILL_TAXONOMY_DRAFT.json: {skill!r}")
