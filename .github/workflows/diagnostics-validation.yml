@@ -28,6 +28,8 @@ jobs:
           node-version: "20"
       - name: Validate banks and frontend syntax
         run: python edu/diagnostics/validate_diagnostics.py
+      - name: Validate supplementary skill question pool
+        run: python edu/diagnostics/validate_skill_question_pool.py
       - name: Test Worker API, consent, archive and retention
         run: node --test edu/diagnostics/worker.test.mjs
       - name: Install Playwright
