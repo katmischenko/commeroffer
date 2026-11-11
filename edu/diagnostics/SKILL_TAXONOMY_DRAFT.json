@@ -4311,9 +4311,339 @@
         [
           "masks_cropping",
           "Маски и видимая область"
+        ],
+        [
+          "dev_handoff",
+          "Подготовка макета к разработке"
+        ],
+        [
+          "file_branching",
+          "Ветвление и управление изменениями"
+        ],
+        [
+          "canvas_organization",
+          "Организация рабочего холста"
+        ],
+        [
+          "variable_types",
+          "Типы переменных"
+        ],
+        [
+          "inspect_properties",
+          "Инспекция свойств макета"
+        ],
+        [
+          "component_properties",
+          "Свойства компонентов"
+        ],
+        [
+          "design_tokens",
+          "Токены дизайн-системы"
+        ],
+        [
+          "responsive_validation",
+          "Проверка адаптивности"
+        ],
+        [
+          "interaction_accessibility",
+          "Доступность интерактивных элементов"
+        ],
+        [
+          "component_documentation",
+          "Документирование компонентов"
+        ],
+        [
+          "ux_testing",
+          "Пользовательское тестирование"
+        ],
+        [
+          "design_system_governance",
+          "Управление дизайн-системой"
+        ],
+        [
+          "component_architecture",
+          "Архитектура компонентов"
+        ],
+        [
+          "token_architecture",
+          "Архитектура дизайн-токенов"
+        ],
+        [
+          "library_release",
+          "Обновление и публикация библиотек"
         ]
       ],
       "rules": [
+        {
+          "groupId": "ux_testing",
+          "containsAny": [
+            "Фиксация наблюдений и критериев успешности UX-тестирования"
+          ]
+        },
+        {
+          "groupId": "token_architecture",
+          "containsAny": [
+            "Организация тем через семантические переменные и режимы"
+          ]
+        },
+        {
+          "groupId": "component_architecture",
+          "containsAny": [
+            "Оценка избыточности и дублирования в библиотеке компонентов"
+          ]
+        },
+        {
+          "groupId": "dev_handoff",
+          "containsAny": [
+            "Подготовка спецификации состояний и интерактивного прототипа"
+          ]
+        },
+        {
+          "groupId": "interaction_accessibility",
+          "containsAny": [
+            "Проверка контраста текста и фона в разных состояниях"
+          ]
+        },
+        {
+          "groupId": "library_release",
+          "containsAny": [
+            "Проверка обратной совместимости перед обновлением библиотеки"
+          ]
+        },
+        {
+          "groupId": "ux_testing",
+          "containsAny": [
+            "Проверка переходов, состояний и ошибок перед тестированием прототипа"
+          ]
+        },
+        {
+          "groupId": "responsive_validation",
+          "containsAny": [
+            "Проверка адаптивного компонента на контрольных размерах"
+          ]
+        },
+        {
+          "groupId": "token_architecture",
+          "containsAny": [
+            "Различение primitive и semantic design tokens"
+          ]
+        },
+        {
+          "groupId": "component_architecture",
+          "containsAny": [
+            "Выбор между новым компонентом и дополнительным вариантом"
+          ]
+        },
+        {
+          "groupId": "prototyping",
+          "containsAny": [
+            "Построение отдельных потоков сложного сценария по ролям"
+          ]
+        },
+        {
+          "groupId": "design_tokens",
+          "containsAny": [
+            "Использование alias для единого источника значения токена"
+          ]
+        },
+        {
+          "groupId": "design_tokens",
+          "containsAny": [
+            "Выбор семантического значения для color.text.muted"
+          ]
+        },
+        {
+          "groupId": "component_architecture",
+          "containsAny": [
+            "Определение границ и вариантов общего компонента"
+          ]
+        },
+        {
+          "groupId": "design_system_governance",
+          "containsAny": [
+            "Определение правил управления и развития дизайн-системы"
+          ]
+        },
+        {
+          "groupId": "ux_testing",
+          "containsAny": [
+            "Проверка понятности сценария тестированием прототипа на пользователях"
+          ]
+        },
+        {
+          "groupId": "component_architecture",
+          "containsAny": [
+            "Оценка последствий чрезмерных переопределений экземпляров"
+          ]
+        },
+        {
+          "groupId": "token_architecture",
+          "containsAny": [
+            "Применение токенов и семантических переменных в дизайн-системе"
+          ]
+        },
+        {
+          "groupId": "dev_handoff",
+          "containsAny": [
+            "Проверка сценариев, компонентов и состояний перед передачей"
+          ]
+        },
+        {
+          "groupId": "interaction_accessibility",
+          "containsAny": [
+            "Оценка контраста текста и фона"
+          ]
+        },
+        {
+          "groupId": "dev_handoff",
+          "containsAny": [
+            "Документирование поведения интерактивного элемента для разработки"
+          ]
+        },
+        {
+          "groupId": "prototyping",
+          "containsAny": [
+            "Использование Overlay для показа модального экрана"
+          ]
+        },
+        {
+          "groupId": "component_documentation",
+          "containsAny": [
+            "Организация библиотеки компонентов по назначению"
+          ]
+        },
+        {
+          "groupId": "design_tokens",
+          "containsAny": [
+            "Использование alias для ссылки на значение другой переменной"
+          ]
+        },
+        {
+          "groupId": "responsive_validation",
+          "containsAny": [
+            "Проверка адаптивного поведения фреймов и Auto Layout"
+          ]
+        },
+        {
+          "groupId": "variables_design_system",
+          "containsAny": [
+            "Использование режимов Variables для переключения темы"
+          ]
+        },
+        {
+          "groupId": "prototyping",
+          "containsAny": [
+            "Настройка триггера On click в прототипе"
+          ]
+        },
+        {
+          "groupId": "component_properties",
+          "containsAny": [
+            "Определение component property как настраиваемого свойства экземпляра"
+          ]
+        },
+        {
+          "groupId": "auto_layout",
+          "containsAny": [
+            "Настройка Fill container для заполнения доступной ширины"
+          ]
+        },
+        {
+          "groupId": "variables_design_system",
+          "containsAny": [
+            "Использование Variables для хранения значений и режимов"
+          ]
+        },
+        {
+          "groupId": "prototyping",
+          "containsAny": [
+            "Разделение сложного прототипного сценария на отдельные потоки"
+          ]
+        },
+        {
+          "groupId": "dev_handoff",
+          "containsAny": [
+            "Спецификация состояний и поведения интерактивного компонента"
+          ]
+        },
+        {
+          "groupId": "design_tokens",
+          "containsAny": [
+            "Выбор семантического имени для токена цвета"
+          ]
+        },
+        {
+          "groupId": "component_documentation",
+          "containsAny": [
+            "Документирование назначения и вариантов компонента библиотеки"
+          ]
+        },
+        {
+          "groupId": "interaction_accessibility",
+          "containsAny": [
+            "Оценка удобства интерактивных областей для указателя и касания"
+          ]
+        },
+        {
+          "groupId": "component_properties",
+          "containsAny": [
+            "Замена экземпляра компонента через Swap instance"
+          ]
+        },
+        {
+          "groupId": "responsive_validation",
+          "containsAny": [
+            "Проверка адаптации карточки к содержимому разной длины"
+          ]
+        },
+        {
+          "groupId": "design_tokens",
+          "containsAny": [
+            "Определение design token как именованного значения параметра"
+          ]
+        },
+        {
+          "groupId": "prototyping",
+          "containsAny": [
+            "Моделирование прокрутки содержимого фрейма в прототипе"
+          ]
+        },
+        {
+          "groupId": "component_properties",
+          "containsAny": [
+            "Настройка Text property для редактирования текста экземпляра"
+          ]
+        },
+        {
+          "groupId": "inspect_properties",
+          "containsAny": [
+            "Получение параметров слоя для передачи в разработку через Inspect"
+          ]
+        },
+        {
+          "groupId": "variable_types",
+          "containsAny": [
+            "Выбор Boolean-типа для переменной да/нет"
+          ]
+        },
+        {
+          "groupId": "canvas_organization",
+          "containsAny": [
+            "Группировка областей большого холста через Section"
+          ]
+        },
+        {
+          "groupId": "file_branching",
+          "containsAny": [
+            "Организация отдельной ветки для согласования изменений"
+          ]
+        },
+        {
+          "groupId": "dev_handoff",
+          "containsAny": [
+            "Использование Dev Mode для изучения параметров макета"
+          ]
+        },
         {
           "groupId": "prototyping",
           "containsAny": [
