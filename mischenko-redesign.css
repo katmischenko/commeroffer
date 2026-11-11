@@ -13,6 +13,23 @@
   --me-serif:"Playfair Display",Georgia,serif;
   --me-sans:"DM Sans",Arial,sans-serif;
 }
+:root{
+  /* Bridge the original site tokens to the approved editorial palette.
+     This removes the old orange/blue notebook accents from inherited components. */
+  --paper:#F4F1EC;
+  --paper-2:#E8E1DA;
+  --line:rgba(41,37,45,.16);
+  --ink:#211e22;
+  --muted:#70686c;
+  --faint:#8b8186;
+  --marker:#A9232C;
+  --marker-soft:rgba(169,35,44,.12);
+  --pen:#7C3449;
+  --pen-soft:rgba(124,52,73,.12);
+  --hand:var(--me-serif);
+  --body:var(--me-sans);
+  --r:3px;
+}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
 body{font-family:var(--me-sans)!important;background:var(--me-ivory)!important;color:var(--me-ink)!important;background-image:none!important;font-size:15px!important;line-height:1.65!important;overflow-x:hidden}
@@ -177,3 +194,64 @@ footer a,footer small,footer .hand{color:#d9d0c8!important}
   .editorial-library main>section:nth-of-type(1){padding:34px 0!important}
 }
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+/* Final alignment pass: consistent editorial palette across legacy components */
+a,button{ -webkit-tap-highlight-color:transparent }
+:focus-visible{outline:2px solid var(--me-red)!important;outline-offset:4px!important}
+.hero{grid-template-areas:"copy art" "stats stats"!important}
+.hero-art{display:grid!important;place-items:center!important}
+.idea-orbit{border-color:rgba(124,52,73,.26)!important;box-shadow:0 0 0 26px rgba(124,52,73,.035),0 0 0 54px rgba(41,37,45,.025)!important}
+.idea-panel{border-radius:3px!important}
+.idea-chip{border-radius:3px!important}
+.hero-direction{color:var(--me-wine)!important}
+.hero-direction-arrow{color:var(--me-red)!important}
+.hstat{border-color:var(--me-line)!important}
+#about .margin-note{color:var(--me-wine)!important}
+#about .photo-frame{border-radius:2px!important}
+#subjects .note{background:#1b191e!important;border:1px solid rgba(244,241,236,.15)!important;border-radius:2px!important}
+#subjects .note:before{background:rgba(244,241,236,.12)!important}
+#subjects .note h3{color:var(--me-ivory)!important}
+#subjects .note .idx,#subjects .note .tag{color:#d9a9ad!important}
+#subjects .note .tag{border-color:rgba(244,241,236,.2)!important}
+#format .check{border-color:var(--me-line)!important}
+#format .check p,#format .check li{color:#625b60!important}
+#pricing .pricing-settings,#pricing .package-option{box-shadow:none!important;border-radius:2px!important}
+#pricing .pricing-summary{border-radius:2px!important}
+#results .pin{border-radius:2px!important;box-shadow:none!important}
+.resources-inline .library-feature,.resources-inline .library-topics-card,.resources-inline .library-open-card{border-radius:2px!important}
+#faq .faq-q:hover{color:var(--me-red)!important}
+.faq-item[data-open="true"] .pm{color:var(--me-red)!important}
+.cta-final{position:relative;overflow:hidden}
+.cta-final:before{content:"";position:absolute;inset:18px;border:1px solid rgba(244,241,236,.12);pointer-events:none}
+.cta-final>*{position:relative;z-index:1}
+footer .foot-links a:hover{color:#fff!important}
+.editorial-library .hero{position:relative}
+.editorial-library .hero:before{opacity:.3!important}
+.editorial-library .hero:after{opacity:.45!important}
+.editorial-library .note-box{border-radius:2px!important;box-shadow:none!important}
+.editorial-library .filters{align-items:flex-start!important}
+.editorial-library .lib{align-items:stretch!important}
+.editorial-library .item{display:flex!important;flex-direction:column!important;min-height:225px!important}
+.editorial-library .item .meta{margin-top:auto!important;padding-top:18px!important}
+.editorial-library .item[aria-disabled="true"]{cursor:default!important;opacity:.78}
+.editorial-library .item[aria-disabled="true"]:hover{transform:none!important;background:#e8e1da!important}
+.editorial-library .empty{padding:28px 0!important}
+@media(max-width:980px){
+  .nav{gap:16px!important}
+  .nav-identity{gap:18px!important}
+  .hero{grid-template-columns:minmax(0,1fr) minmax(250px,.82fr)!important}
+  .hero-art{min-height:370px!important}
+}
+@media(max-width:760px){
+  .hero{grid-template-areas:"copy" "art" "stats"!important}
+  .hero-art{min-height:320px!important}
+  .nav-note{display:none!important}
+  .cta-final:before{inset:10px}
+  .editorial-library .item{min-height:0!important}
+}
+@media(max-width:420px){
+  .nav{padding-left:18px!important;padding-right:18px!important}
+  .logo .hand{font-size:23px!important}
+  .nav-cta{padding:10px 12px!important;font-size:10px!important}
+  .hero-note{column-gap:0!important}
+}
