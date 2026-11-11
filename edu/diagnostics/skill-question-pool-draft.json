@@ -1,10 +1,10 @@
 {
-  "version": "0.5.0",
+  "version": "0.6.0",
   "title": "Дополнительный пул заданий для расширения покрытия навыков",
   "status": "teacher_review_draft",
   "reviewStatus": "teacher_review_draft",
   "purpose": "Отдельный резерв заданий для педагогической проверки. Не подключён к активным банкам и не участвует в диагностике из 15 вопросов.",
-  "sourceBasis": "Создан на основе аудита покрытия edu/diagnostics/SKILL_COVERAGE_REPORT.md и очереди edu/diagnostics/SKILL_GAP_BACKLOG.md. Новые формулировки разработаны как независимые задания к уже существующим группам навыков. Четвёртое пополнение основано на проверке оставшихся двухвопросных групп математики и физики по активным банкам. Пятое пополнение подготовлено по приоритетным двухвопросным группам информатики и Python из очереди покрытия. Шестое пополнение подготовлено по оставшимся двухвопросным группам HTML/CSS и Figma после сверки с вопросами всех 14 действующих банков этих направлений. Седьмое пополнение: десять одиночных базовых групп HTML/CSS и Figma расширены двумя заданиями каждая после проверки действующих банков.",
+  "sourceBasis": "Создан на основе аудита покрытия edu/diagnostics/SKILL_COVERAGE_REPORT.md и очереди edu/diagnostics/SKILL_GAP_BACKLOG.md. Новые формулировки разработаны как независимые задания к уже существующим группам навыков. Четвёртое пополнение основано на проверке оставшихся двухвопросных групп математики и физики по активным банкам. Пятое пополнение подготовлено по приоритетным двухвопросным группам информатики и Python из очереди покрытия. Шестое пополнение подготовлено по оставшимся двухвопросным группам HTML/CSS и Figma после сверки с вопросами всех 14 действующих банков этих направлений. Седьмое пополнение: десять одиночных базовых групп HTML/CSS и Figma расширены двумя заданиями каждая после проверки действующих банков. Восьмое пополнение: ещё десять одиночных групп HTML/CSS и Figma расширены двумя заданиями каждая с приоритетом практических основ.",
   "selectionPolicy": "До экспертной проверки и отдельного решения о механизме выбора задания не включать в активные банки.",
   "questions": [
     {
@@ -2293,6 +2293,430 @@
       "correctIndex": 0,
       "correctText": "Fill",
       "explanation": "Fill задаёт внутреннюю заливку фигуры, а Stroke отвечает за её обводку по краю."
+    },
+    {
+      "id": "pool-html10-flex-share-001",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 10,
+      "curriculumId": "general",
+      "topic": "CSS",
+      "skill": "Определение поведения flex: 1 при распределении пространства",
+      "groupId": "css_flex_behavior",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "У двух flex-элементов задано flex: 1. Что обычно произойдёт со свободным пространством в контейнере?",
+      "options": [
+        "Оно будет распределено между элементами с одинаковым коэффициентом роста",
+        "Оба элемента исчезнут",
+        "Первый элемент займёт всю ширину, второй получит нулевую ширину",
+        "Элементы выйдут из потока документа"
+      ],
+      "correctIndex": 0,
+      "correctText": "Оно будет распределено между элементами с одинаковым коэффициентом роста",
+      "explanation": "flex: 1 задаёт положительный коэффициент роста. При одинаковых значениях flex элементы делят доступное свободное пространство между собой."
+    },
+    {
+      "id": "pool-html10-flex-axis-002",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 10,
+      "curriculumId": "general",
+      "topic": "CSS",
+      "skill": "Определение поведения flex: 1 при распределении пространства",
+      "groupId": "css_flex_behavior",
+      "difficulty": "advanced",
+      "type": "short",
+      "question": "В flex-контейнере два элемента имеют одинаковое значение flex: 1. Какой фактор в первую очередь определяет долю свободного пространства, которую получает каждый из них?",
+      "acceptedAnswers": [
+        "коэффициент flex-grow",
+        "значение flex-grow",
+        "коэффициент роста"
+      ],
+      "correctText": "Коэффициент flex-grow",
+      "explanation": "Свободное пространство распределяется с учётом коэффициентов flex-grow. При одинаковых коэффициентах элементы получают равные доли свободного пространства."
+    },
+    {
+      "id": "pool-html8-transition-duration-001",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 8,
+      "curriculumId": "general",
+      "topic": "CSS",
+      "skill": "Настройка перехода CSS-свойств через transition",
+      "groupId": "css_transitions",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какое свойство CSS задаёт продолжительность плавного перехода изменения opacity?",
+      "options": [
+        "transition-duration",
+        "animation-delay",
+        "transform",
+        "visibility"
+      ],
+      "correctIndex": 0,
+      "correctText": "transition-duration",
+      "explanation": "Свойство transition-duration задаёт длительность перехода между значениями CSS-свойства."
+    },
+    {
+      "id": "pool-html9-transition-shorthand-002",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 9,
+      "curriculumId": "general",
+      "topic": "CSS",
+      "skill": "Настройка перехода CSS-свойств через transition",
+      "groupId": "css_transitions",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Что означает запись transition: opacity 0.3s ease;?",
+      "options": [
+        "Изменение opacity будет переходить плавно за 0,3 секунды с функцией ease",
+        "Элемент станет прозрачным навсегда",
+        "Анимация будет повторяться бесконечно",
+        "Свойство opacity будет изменяться только после перезагрузки"
+      ],
+      "correctIndex": 0,
+      "correctText": "Изменение opacity будет переходить плавно за 0,3 секунды с функцией ease",
+      "explanation": "В сокращённой записи указаны свойство opacity, длительность 0,3 секунды и функция временной кривой ease."
+    },
+    {
+      "id": "pool-html10-custom-prop-001",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 10,
+      "curriculumId": "general",
+      "topic": "CSS",
+      "skill": "Объявление и использование CSS custom properties",
+      "groupId": "css_custom_properties",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Как правильно объявить пользовательское CSS-свойство с именем main-color?",
+      "options": [
+        ":root { --main-color: #222; }",
+        ":root { main-color: #222; }",
+        "--main-color { color: #222; }",
+        "var(main-color) { #222; }"
+      ],
+      "correctIndex": 0,
+      "correctText": ":root { --main-color: #222; }",
+      "explanation": "Пользовательские CSS-свойства объявляются с префиксом --, например --main-color. Часто их размещают в :root, чтобы использовать во всём документе."
+    },
+    {
+      "id": "pool-html10-custom-fallback-002",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 10,
+      "curriculumId": "general",
+      "topic": "CSS",
+      "skill": "Объявление и использование CSS custom properties",
+      "groupId": "css_custom_properties",
+      "difficulty": "advanced",
+      "type": "short",
+      "question": "Как записать значение CSS-свойства color, чтобы использовать пользовательскую переменную --text-color, а при её отсутствии применить запасной цвет black?",
+      "acceptedAnswers": [
+        "var(--text-color, black)",
+        "var(--text-color,black)"
+      ],
+      "correctText": "var(--text-color, black)",
+      "explanation": "Функция var() принимает имя пользовательского свойства и необязательное запасное значение через запятую."
+    },
+    {
+      "id": "pool-html11-dialog-modal-001",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 11,
+      "curriculumId": "general",
+      "topic": "HTML-диалоги",
+      "skill": "Использование нативного элемента dialog",
+      "groupId": "html_dialogs",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какой метод JavaScript открывает элемент dialog в модальном режиме?",
+      "options": [
+        "showModal()",
+        "show()",
+        "open()",
+        "displayModal()"
+      ],
+      "correctIndex": 0,
+      "correctText": "showModal()",
+      "explanation": "Метод showModal() открывает нативный dialog как модальное окно: оно появляется в верхнем слое, а остальная часть документа становится недоступной для взаимодействия."
+    },
+    {
+      "id": "pool-html11-dialog-nonmodal-002",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 11,
+      "curriculumId": "general",
+      "topic": "HTML-диалоги",
+      "skill": "Использование нативного элемента dialog",
+      "groupId": "html_dialogs",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "Какой метод открывает dialog без модального режима?",
+      "options": [
+        "show()",
+        "showModal()",
+        "openModal()",
+        "focus()"
+      ],
+      "correctIndex": 0,
+      "correctText": "show()",
+      "explanation": "Метод show() открывает диалог как немодальный. В отличие от showModal(), он не блокирует взаимодействие с остальной страницей."
+    },
+    {
+      "id": "pool-html9-grid-autofit-001",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 9,
+      "curriculumId": "general",
+      "topic": "CSS Grid",
+      "skill": "Построение адаптивных колонок через repeat, auto-fit и minmax",
+      "groupId": "responsive_grid",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какое поведение задаёт grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))?",
+      "options": [
+        "Создаёт столько колонок шириной не менее 200px, сколько помещается в контейнере",
+        "Всегда создаёт ровно две колонки шириной 200px",
+        "Запрещает колонкам растягиваться",
+        "Создаёт одну колонку фиксированной ширины 1px"
+      ],
+      "correctIndex": 0,
+      "correctText": "Создаёт столько колонок шириной не менее 200px, сколько помещается в контейнере",
+      "explanation": "auto-fit позволяет разместить доступное число колонок, а minmax задаёт минимальную ширину 200px и возможность растяжения до доли свободного пространства."
+    },
+    {
+      "id": "pool-html10-grid-autofit-002",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 10,
+      "curriculumId": "general",
+      "topic": "CSS Grid",
+      "skill": "Построение адаптивных колонок через repeat, auto-fit и minmax",
+      "groupId": "responsive_grid",
+      "difficulty": "advanced",
+      "type": "short",
+      "question": "Какое ключевое слово в repeat(auto-fit, minmax(220px, 1fr)) помогает автоматически разместить максимально возможное число колонок в доступной ширине?",
+      "acceptedAnswers": [
+        "auto-fit"
+      ],
+      "correctText": "auto-fit",
+      "explanation": "Ключевое слово auto-fit позволяет сетке подбирать число колонок, которые помещаются в доступном пространстве с учётом ограничений minmax."
+    },
+    {
+      "id": "pool-figma5-align-center-001",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 5,
+      "curriculumId": "general",
+      "topic": "Выравнивание",
+      "skill": "Выравнивание объектов командами Align",
+      "groupId": "alignment",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какую команду Align нужно выбрать, чтобы расположить несколько объектов на одной вертикальной оси по центру?",
+      "options": [
+        "Align horizontal centers",
+        "Align left",
+        "Align top",
+        "Distribute vertical spacing"
+      ],
+      "correctIndex": 0,
+      "correctText": "Align horizontal centers",
+      "explanation": "Команда Align horizontal centers выравнивает выбранные объекты по общей вертикальной центральной линии."
+    },
+    {
+      "id": "pool-figma6-align-spacing-002",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "Выравнивание",
+      "skill": "Выравнивание объектов командами Align",
+      "groupId": "alignment",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Три карточки расположены вертикально с разными промежутками. Какое действие поможет сделать расстояния между ними одинаковыми?",
+      "options": [
+        "Distribute vertical spacing",
+        "Align left",
+        "Align bottom",
+        "Flip horizontal"
+      ],
+      "correctIndex": 0,
+      "correctText": "Distribute vertical spacing",
+      "explanation": "Команда распределения вертикальных промежутков делает расстояния между выбранными объектами одинаковыми."
+    },
+    {
+      "id": "pool-figma5-group-shortcut-001",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 5,
+      "curriculumId": "general",
+      "topic": "Группы",
+      "skill": "Понимание группировки объектов",
+      "groupId": "grouping",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Для чего объединяют несколько объектов в группу в Figma?",
+      "options": [
+        "Чтобы перемещать и организовывать их как единое целое",
+        "Чтобы автоматически превратить их в компонент",
+        "Чтобы экспортировать каждый объект в отдельный файл",
+        "Чтобы удалить связь между слоями"
+      ],
+      "correctIndex": 0,
+      "correctText": "Чтобы перемещать и организовывать их как единое целое",
+      "explanation": "Группировка объединяет выбранные объекты для совместного перемещения и организации, не превращая их автоматически в компонент."
+    },
+    {
+      "id": "pool-figma6-group-ungroup-002",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "Группы",
+      "skill": "Понимание группировки объектов",
+      "groupId": "grouping",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Как называется действие, которое отменяет группировку выбранных объектов в Figma?",
+      "acceptedAnswers": [
+        "Ungroup",
+        "разгруппировать",
+        "разгруппировка"
+      ],
+      "correctText": "Ungroup",
+      "explanation": "Команда Ungroup снимает группировку и возвращает вложенные объекты на прежний уровень иерархии слоёв."
+    },
+    {
+      "id": "pool-figma5-image-fill-001",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 5,
+      "curriculumId": "general",
+      "topic": "Изображения",
+      "skill": "Управление кадрированием изображения режимами Fill и Crop",
+      "groupId": "image_cropping",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какой режим размещения изображения заполняет всю фигуру, даже если часть изображения будет обрезана?",
+      "options": [
+        "Fill",
+        "Fit",
+        "Tile",
+        "Crop"
+      ],
+      "correctIndex": 0,
+      "correctText": "Fill",
+      "explanation": "Режим Fill заполняет всю область фигуры и при необходимости обрезает часть изображения, сохраняя пропорции."
+    },
+    {
+      "id": "pool-figma6-image-crop-002",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "Изображения",
+      "skill": "Управление кадрированием изображения режимами Fill и Crop",
+      "groupId": "image_cropping",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какой режим позволяет вручную перемещать и масштабировать изображение внутри заданной фигуры, выбирая видимую область?",
+      "options": [
+        "Crop",
+        "Fit",
+        "Tile",
+        "Stretch"
+      ],
+      "correctIndex": 0,
+      "correctText": "Crop",
+      "explanation": "Режим Crop позволяет вручную настроить положение и масштаб изображения внутри контейнера, определяя, какая часть будет видна."
+    },
+    {
+      "id": "pool-figma5-svg-export-001",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 5,
+      "curriculumId": "general",
+      "topic": "Экспорт",
+      "skill": "Выбор формата SVG для векторного экспорта",
+      "groupId": "export_formats",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какой формат лучше выбрать для экспорта простой векторной иконки, которую нужно масштабировать без потери чёткости?",
+      "options": [
+        "SVG",
+        "JPEG",
+        "GIF",
+        "BMP"
+      ],
+      "correctIndex": 0,
+      "correctText": "SVG",
+      "explanation": "SVG хранит векторные контуры и позволяет масштабировать иконку без потери качества."
+    },
+    {
+      "id": "pool-figma6-svg-text-002",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "Экспорт",
+      "skill": "Выбор формата SVG для векторного экспорта",
+      "groupId": "export_formats",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Какое расширение обычно имеет файл векторной графики, экспортированный из Figma в формате Scalable Vector Graphics?",
+      "acceptedAnswers": [
+        ".svg",
+        "svg"
+      ],
+      "correctText": ".svg",
+      "explanation": "Scalable Vector Graphics сокращается до SVG; экспортированный файл обычно имеет расширение .svg."
+    },
+    {
+      "id": "pool-figma6-pages-001",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "Страницы",
+      "skill": "Организация частей проекта на отдельных страницах Figma",
+      "groupId": "file_organization",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "В одном файле Figma нужно отдельно хранить исследование, готовые экраны и варианты экспериментов. Какой инструмент организации файла для этого подходит?",
+      "options": [
+        "Создать отдельные Pages",
+        "Сделать каждый экран отдельным файлом",
+        "Переименовать все слои одинаково",
+        "Поместить все объекты в один Group"
+      ],
+      "correctIndex": 0,
+      "correctText": "Создать отдельные Pages",
+      "explanation": "Страницы позволяют разделить крупные части проекта внутри одного файла и упорядочить рабочее пространство."
+    },
+    {
+      "id": "pool-figma7-pages-purpose-002",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 7,
+      "curriculumId": "general",
+      "topic": "Страницы",
+      "skill": "Организация частей проекта на отдельных страницах Figma",
+      "groupId": "file_organization",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Как называется отдельная рабочая область внутри одного файла Figma, на которой можно размещать фреймы и другие объекты?",
+      "acceptedAnswers": [
+        "Page",
+        "страница",
+        "Pages"
+      ],
+      "correctText": "Page",
+      "explanation": "Page — отдельная страница файла Figma. На ней размещают фреймы и другие элементы, отделяя разные части проекта друг от друга."
     }
   ]
 }
