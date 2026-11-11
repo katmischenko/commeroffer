@@ -39,7 +39,7 @@
       "skill": "понимание и применение HTML/CSS",
       "difficulty": "basic",
       "type": "choice",
-      "question": "Какой тип input подходит для выбора целого числа с помощью числового поля?",
+      "question": "Какой тип input предназначен для ввода числового значения?",
       "options": [
         "type=\"text-number\"",
         "type=\"number\"",
@@ -48,7 +48,7 @@
       ],
       "correctIndex": 1,
       "correctText": "type=\"number\"",
-      "explanation": "type=number создаёт поле для числового значения."
+      "explanation": "type=\"number\" создаёт поле для числового значения; допустимые шаги можно дополнительно ограничить атрибутом step."
     },
     {
       "id": "htmlcss9-03",
