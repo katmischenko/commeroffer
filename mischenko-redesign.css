@@ -1,6 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 /* MISCHENKO EDU — approved editorial / architectural direction */
 :root{--me-black:#111014;--me-ivory:#F4F1EC;--me-red:#A9232C;--me-graphite:#29252D;--me-stone:#D9D0C8;--me-wine:#7C3449;--me-ink:#211e22;--me-muted:#777078;--me-line:rgba(41,37,45,.16);--me-serif:"Cormorant Garamond",Georgia,serif;--me-sans:"Manrope",Arial,sans-serif}
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{font-family:var(--me-sans)!important;background:var(--me-ivory)!important;color:var(--me-ink)!important;background-image:none!important;font-size:15px!important;line-height:1.65!important}
