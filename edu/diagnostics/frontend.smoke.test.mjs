@@ -145,6 +145,10 @@ test("result gives topic-specific next steps without claiming mastery from one i
   await page.locator("#save-status").waitFor();
   const result = await page.locator("#result").textContent();
   assert.match(result, /Что делать дальше/);
+  assert.match(result, /Предварительные тематические разделы/);
+  assert.match(result, /Числа и вычисления/);
+  assert.match(result, /Геометрия/);
+  assert.match(result, /черновая группировка близких тем/);
   assert.match(result, /Рациональные числа — 0 из 3; задания №1, 2, 7/);
   assert.match(result, /Углы — 0 из 1; задания №4/);
   assert.match(result, /не надёжный вывод об освоении всей темы/);
