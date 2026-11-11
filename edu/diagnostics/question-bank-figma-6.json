@@ -19,7 +19,7 @@
     {
       "id": "figma6-01",
       "topic": "Страницы",
-      "skill": "понимание и применение Figma",
+      "skill": "Организация частей проекта на отдельных страницах Figma",
       "difficulty": "basic",
       "type": "choice",
       "question": "Зачем в одном файле Figma создают несколько Pages?",
@@ -36,7 +36,7 @@
     {
       "id": "figma6-02",
       "topic": "Слои",
-      "skill": "понимание и применение Figma",
+      "skill": "Блокировка слоя от случайного редактирования",
       "difficulty": "basic",
       "type": "choice",
       "question": "Что произойдёт, если заблокировать слой?",
@@ -53,7 +53,7 @@
     {
       "id": "figma6-03",
       "topic": "Редактирование",
-      "skill": "понимание и применение Figma",
+      "skill": "Дублирование объекта сочетанием клавиш",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какое действие обычно дублирует выбранный объект сочетанием клавиш?",
@@ -70,7 +70,7 @@
     {
       "id": "figma6-04",
       "topic": "Совместная работа",
-      "skill": "понимание и применение Figma",
+      "skill": "Использование комментариев для контекстной обратной связи",
       "difficulty": "basic",
       "type": "choice",
       "question": "Для чего оставляют комментарий на макете?",
@@ -87,7 +87,7 @@
     {
       "id": "figma6-05",
       "topic": "Фреймы",
-      "skill": "понимание и применение Figma",
+      "skill": "Ограничение содержимого границами фрейма",
       "difficulty": "basic",
       "type": "choice",
       "question": "Что делает Clip content у фрейма?",
@@ -104,7 +104,7 @@
     {
       "id": "figma6-06",
       "topic": "Constraints",
-      "skill": "понимание и применение Figma",
+      "skill": "Настройка Constraints для изменения размера фрейма",
       "difficulty": "medium",
       "type": "choice",
       "question": "Зачем задают Constraints для объекта внутри фрейма?",
@@ -121,7 +121,7 @@
     {
       "id": "figma6-07",
       "topic": "Auto Layout",
-      "skill": "понимание и применение Figma",
+      "skill": "Применение Auto Layout для автоматического размещения",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что добавляет Auto Layout к группе элементов?",
@@ -138,7 +138,7 @@
     {
       "id": "figma6-08",
       "topic": "Auto Layout",
-      "skill": "понимание и применение Figma",
+      "skill": "Настройка размера Hug contents",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что означает Hug contents для размера элемента?",
@@ -155,7 +155,7 @@
     {
       "id": "figma6-09",
       "topic": "Компоненты",
-      "skill": "понимание и применение Figma",
+      "skill": "Распознавание Variant как состояния компонента",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что такое Variant в наборе компонентов?",
@@ -172,7 +172,7 @@
     {
       "id": "figma6-10",
       "topic": "Прототип",
-      "skill": "понимание и применение Figma",
+      "skill": "Настройка перехода между фреймами в прототипе",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что показывает соединительная линия между двумя фреймами на вкладке Prototype?",
@@ -189,7 +189,7 @@
     {
       "id": "figma6-11",
       "topic": "Экспорт",
-      "skill": "понимание и применение Figma",
+      "skill": "Выбор формата PNG в панели Export",
       "difficulty": "medium",
       "type": "choice",
       "question": "Где обычно выбирают формат PNG для экспорта выбранного объекта?",
@@ -206,7 +206,7 @@
     {
       "id": "figma6-12",
       "topic": "Маски",
-      "skill": "понимание и применение Figma",
+      "skill": "Использование маски для ограничения видимой области",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что делает маска в макете?",
@@ -223,7 +223,7 @@
     {
       "id": "figma6-13",
       "topic": "Компоненты",
-      "skill": "понимание и применение Figma",
+      "skill": "Выбор набора вариантов для состояний компонента",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Что удобнее использовать для кнопки, у которой есть состояния обычная и отключённая?",
@@ -240,7 +240,7 @@
     {
       "id": "figma6-14",
       "topic": "Адаптивность",
-      "skill": "понимание и применение Figma",
+      "skill": "Настройка привязок Left and right",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Если карточка должна сохранять одинаковый отступ от левого и правого края фрейма, какие Constraints подходят?",
@@ -257,7 +257,7 @@
     {
       "id": "figma6-15",
       "topic": "Слои",
-      "skill": "понимание и применение Figma",
+      "skill": "Организация слоёв с помощью осмысленных названий",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Почему полезно давать слоям понятные имена вместо Rectangle 24 и Frame 13?",
@@ -271,5 +271,7 @@
       "correctText": "Так проще находить элементы и передавать макет другому человеку",
       "explanation": "Осмысленные имена делают структуру файла понятной для команды."
     }
-  ]
+  ],
+  "skillGranularity": "question_action",
+  "skillReviewStatus": "teacher_review_draft"
 }
