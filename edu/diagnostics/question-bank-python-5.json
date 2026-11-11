@@ -201,7 +201,7 @@
       "skill": "понимание и применение",
       "difficulty": "medium",
       "type": "short",
-      "question": "Сколько раз напечатает число цикл for i in range(2, 7)?",
+      "question": "Сколько раз выполнится цикл for i in range(2, 7)?",
       "explanation": "range(2,7) включает 2,3,4,5,6 — пять значений.",
       "acceptedAnswers": [
         "5"
