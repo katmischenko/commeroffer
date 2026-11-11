@@ -147,7 +147,7 @@
     });
     empty.style.display = shown ? 'none' : 'block';
     if(!shown){
-      var labels = {figma:'Figma',web:'HTML/CSS',inf:'информатике',math:'математике',phys:'физике',python:'Python'};
+      var labels = {figma:'Figma',web:'HTML/CSS',inf:'информатика',math:'математика',phys:'физика',python:'Python'};
       empty.textContent = curSubj !== 'all' && labels[curSubj]
         ? 'Материалы по направлению ' + labels[curSubj] + ' пока готовятся. Напиши мне, если нужна конкретная тема ✎'
         : 'По этому сочетанию фильтров пока нет материалов. Попробуй изменить фильтры или напиши мне ✎';
