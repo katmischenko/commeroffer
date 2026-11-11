@@ -53,7 +53,16 @@ def topic_group_for(taxonomy, direction: str, topic: str):
     return None
 
 
-def validate_bank(path: Path, errors: list[str], stems_by_direction, taxonomy, taxonomy_coverage):
+def skill_group_for(taxonomy, direction: str, skill: str):
+    direction_map = taxonomy.get("directions", {}).get(direction, {})
+    normalized = str(skill).casefold().strip()
+    for rule in direction_map.get("rules", []):
+        if any(str(part).casefold() in normalized for part in rule.get("containsAny", [])):
+            return rule.get("groupId")
+    return None
+
+
+def validate_bank(path: Path, errors: list[str], stems_by_direction, taxonomy, taxonomy_coverage, skill_taxonomy, skill_coverage):
     filename_match = re.match(r"question-bank-(informatics|physics|math|python|html-css|figma)-(\d+)(.*)\.json$", path.name)
     if not filename_match:
         fail(errors, f"{path.name}: unrecognized bank filename")
@@ -96,6 +105,21 @@ def validate_bank(path: Path, errors: list[str], stems_by_direction, taxonomy, t
         if qid in seen_ids:
             fail(errors, f"{prefix}: duplicate id {qid}")
         seen_ids.add(qid)
+
+        skill = str(q.get("skill", "")).strip()
+        skill_group_id = skill_group_for(skill_taxonomy, direction, skill)
+        if not skill_group_id:
+            fail(errors, f"{prefix}: skill label is not mapped in SKILL_TAXONOMY_DRAFT.json: {skill!r}")
+        else:
+            allowed_skill_groups = {
+                group.get("id") if isinstance(group, dict) else group[0]
+                for group in skill_taxonomy.get("directions", {}).get(direction, {}).get("groups", [])
+                if (isinstance(group, dict) and group.get("id")) or (isinstance(group, list) and group)
+            }
+            if skill_group_id not in allowed_skill_groups:
+                fail(errors, f"{prefix}: skill rule points to unknown group {skill_group_id!r}")
+            else:
+                skill_coverage[direction][skill_group_id] += 1
 
         topic = str(q.get("topic", "")).strip()
         group_id = topic_group_for(taxonomy, direction, topic)
@@ -156,11 +180,17 @@ def main():
     taxonomy_coverage = defaultdict(Counter)
     profile_path = DIAG / "profiles.json"
     taxonomy_path = DIAG / "TOPIC_TAXONOMY_DRAFT.json"
+    skill_taxonomy_path = DIAG / "SKILL_TAXONOMY_DRAFT.json"
     if not taxonomy_path.exists():
         fail(errors, "missing required diagnostics file: edu/diagnostics/TOPIC_TAXONOMY_DRAFT.json")
         taxonomy = {"directions": {}}
     else:
         taxonomy = json.loads(taxonomy_path.read_text(encoding="utf-8"))
+    if not skill_taxonomy_path.exists():
+        fail(errors, "missing required diagnostics file: edu/diagnostics/SKILL_TAXONOMY_DRAFT.json")
+        skill_taxonomy = {"directions": {}}
+    else:
+        skill_taxonomy = json.loads(skill_taxonomy_path.read_text(encoding="utf-8"))
     profiles = json.loads(profile_path.read_text(encoding="utf-8"))
     expected = {p["profileId"] for p in profiles.get("profiles", [])}
     if profiles.get("experienceSelectionImplemented") is not False:
@@ -176,7 +206,7 @@ def main():
 
     bank_data_by_id = {}
     for path in files:
-        data = validate_bank(path, errors, stems_by_direction, taxonomy, taxonomy_coverage)
+        data = validate_bank(path, errors, stems_by_direction, taxonomy, taxonomy_coverage, skill_taxonomy, skill_coverage)
         if isinstance(data, dict) and data.get("bankId"):
             bank_data_by_id[data["bankId"]] = path.name
 
@@ -208,7 +238,7 @@ def main():
     schema_path = DIAG / "schema.sql"
     worker_test_path = DIAG / "worker.test.mjs"
     frontend_test_path = DIAG / "frontend.smoke.test.mjs"
-    for required in (worker_path, archive_path, privacy_path, migration_path, level_migration_path, year_migration_path, consent_migration_path, schema_path, worker_test_path, frontend_test_path, taxonomy_path):
+    for required in (worker_path, archive_path, privacy_path, migration_path, level_migration_path, year_migration_path, consent_migration_path, schema_path, worker_test_path, frontend_test_path, taxonomy_path, skill_taxonomy_path):
         if not required.exists():
             fail(errors, f"missing required diagnostics file: {required.relative_to(ROOT)}")
 
@@ -309,12 +339,22 @@ def main():
     print(f"Checked {len(files)} question banks.")
     print(f"Expected profile count: {len(expected)}.")
     print("Topic taxonomy coverage: every question topic label must map to a declared group.")
+    print("Skill taxonomy coverage: every question skill label must map to a declared group.")
     for direction, counts in sorted(taxonomy_coverage.items()):
         labels = {
             group[0]: group[1]
             for group in taxonomy.get("directions", {}).get(direction, {}).get("groups", [])
         }
         print(f"  {direction}: " + ", ".join(
+            f"{labels.get(group_id, group_id)}={count}"
+            for group_id, count in sorted(counts.items())
+        ))
+    for direction, counts in sorted(skill_coverage.items()):
+        labels = {
+            group[0]: group[1]
+            for group in skill_taxonomy.get("directions", {}).get(direction, {}).get("groups", [])
+        }
+        print(f"  skill/{direction}: " + ", ".join(
             f"{labels.get(group_id, group_id)}={count}"
             for group_id, count in sorted(counts.items())
         ))
