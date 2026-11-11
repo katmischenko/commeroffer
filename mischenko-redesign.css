@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root{
   --paper:#f4f2ee;
@@ -9,7 +9,7 @@
   --muted:#77716f;
   --line:rgba(18,18,18,.14);
   --line-light:rgba(244,242,238,.18);
-  --serif:"Cormorant Garamond",Georgia,serif;
+  --serif:"Inter",Arial,sans-serif;
   --sans:"Inter",Arial,sans-serif;
   --gutter:4%;
   --section:clamp(4.5rem,8vw,7rem);
@@ -387,7 +387,7 @@ body{
 
 /* AUTHOR'S HANDWRITTEN LAYER — a little less polish, a little more Katya */
 
-:root{--hand:"Caveat",cursive}
+:root{--hand:var(--sans)}
 .section-heading{font-weight:400;letter-spacing:-.035em}
 .hero h1{font-weight:400}
 .hero-note,.about-stamp,.note,.about-credential>span,.subject-route strong{
@@ -406,3 +406,7 @@ body{
 .process-aside:after{content:"без зубрёжки, договорились?";display:block;margin-top:22px;font:500 22px var(--hand);color:var(--wine);transform:rotate(-2deg)}
 .library-directions span:after{height:2px;transform:rotate(-1deg)}
 @media(max-width:820px){.about-aside:after{right:0;bottom:-8%}}
+
+/* Brand wordmark: handwritten English name; all other typography follows the Open Notebook system. */
+.brand-name{font-family:"Segoe Script","Brush Script MT",cursive;font-weight:500;letter-spacing:0;text-transform:none;font-size:19px;}
+@media(max-width:600px){.brand-name{font-size:17px}}
