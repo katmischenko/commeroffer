@@ -176,6 +176,13 @@
       ],
       "rules": [
         {
+          "groupId": "electricity",
+          "containsAny": [
+            "Переменный ток",
+            "Последовательное соединение"
+          ]
+        },
+        {
           "groupId": "measurement",
           "containsAny": [
             "Измерен",
@@ -258,6 +265,13 @@
             "Динамик",
             "Законы сохранения"
           ]
+        },
+        {
+          "groupId": "mechanics",
+          "containsAny": [
+            "Графики движения",
+            "Законы Ньютона"
+          ]
         }
       ]
     },
@@ -313,9 +327,27 @@
           "web_technology",
           "Веб-технологии",
           "Веб-разработка и клиентские технологии."
+        ],
+        [
+          "ai_models",
+          "Искусственный интеллект и моделирование",
+          "Модели, моделирование и основы искусственного интеллекта."
         ]
       ],
       "rules": [
+        {
+          "groupId": "ai_models",
+          "containsAny": [
+            "Искусственный интеллект",
+            "Моделирован"
+          ]
+        },
+        {
+          "groupId": "logic",
+          "containsAny": [
+            "Логическ"
+          ]
+        },
         {
           "groupId": "models",
           "containsAny": [
@@ -409,6 +441,22 @@
             "Инварианты циклов",
             "ООП"
           ]
+        },
+        {
+          "groupId": "computer_systems",
+          "containsAny": [
+            "Устройств"
+          ]
+        },
+        {
+          "groupId": "algorithms",
+          "containsAny": [
+            "Переменн",
+            "Цикл",
+            "Ветвлен",
+            "Трассиров",
+            "Отладк"
+          ]
         }
       ]
     },
@@ -462,6 +510,12 @@
         ]
       ],
       "rules": [
+        {
+          "groupId": "collections",
+          "containsAny": [
+            "Итератор"
+          ]
+        },
         {
           "groupId": "errors",
           "containsAny": [
@@ -691,6 +745,12 @@
         ]
       ],
       "rules": [
+        {
+          "groupId": "interface_foundations",
+          "containsAny": [
+            "Группы"
+          ]
+        },
         {
           "groupId": "design_systems",
           "containsAny": [
