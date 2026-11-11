@@ -3774,7 +3774,7 @@
           ]
         },
         {
-          "groupId": "css_sizing",
+          "groupId": "css_box_model",
           "containsAny": [
             "Настройка пропорций блока через aspect-ratio"
           ]
