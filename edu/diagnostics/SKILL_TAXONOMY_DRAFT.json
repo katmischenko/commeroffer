@@ -1676,9 +1676,347 @@
         [
           "information_volume",
           "Информационный объём данных"
+        ],
+        [
+          "cryptography",
+          "Криптография и шифрование"
+        ],
+        [
+          "prefix_codes",
+          "Префиксное кодирование"
+        ],
+        [
+          "signed_number_representation",
+          "Представление знаковых чисел"
+        ],
+        [
+          "recursion",
+          "Рекурсивные алгоритмы"
+        ],
+        [
+          "algorithm_complexity",
+          "Оценка сложности алгоритмов"
+        ],
+        [
+          "file_processing",
+          "Файловый ввод-вывод и потоковая обработка"
+        ],
+        [
+          "numerical_methods",
+          "Численные методы"
+        ],
+        [
+          "sorting_searching",
+          "Сортировка и поиск"
+        ],
+        [
+          "graph_theory",
+          "Теория графов и маршруты"
+        ],
+        [
+          "tree_structures",
+          "Деревья и структуры данных"
+        ],
+        [
+          "cybersecurity",
+          "Информационная безопасность"
+        ],
+        [
+          "ai_literacy",
+          "Критическая оценка результатов ИИ"
+        ],
+        [
+          "database_relations",
+          "Реляционные базы данных"
+        ],
+        [
+          "object_oriented_programming",
+          "Объектно-ориентированное программирование"
+        ],
+        [
+          "web_development",
+          "Веб-разработка"
+        ],
+        [
+          "javascript_events",
+          "События JavaScript"
+        ],
+        [
+          "dynamic_programming",
+          "Динамическое программирование"
         ]
       ],
       "rules": [
+        {
+          "groupId": "algorithm_complexity",
+          "containsAny": [
+            "Определение сложности сортировки слиянием"
+          ]
+        },
+        {
+          "groupId": "graph_theory",
+          "containsAny": [
+            "Нахождение кратчайшего пути в взвешенном графе"
+          ]
+        },
+        {
+          "groupId": "dynamic_programming",
+          "containsAny": [
+            "Подсчёт вариантов подъёма с помощью динамического программирования"
+          ]
+        },
+        {
+          "groupId": "database_relations",
+          "containsAny": [
+            "Определение ограничения ссылочной целостности внешним ключом"
+          ]
+        },
+        {
+          "groupId": "javascript_events",
+          "containsAny": [
+            "Определение обработчика события в JavaScript"
+          ]
+        },
+        {
+          "groupId": "web_development",
+          "containsAny": [
+            "Выбор HTML-элемента input для ввода текста"
+          ]
+        },
+        {
+          "groupId": "graph_theory",
+          "containsAny": [
+            "Выбор алгоритма Дейкстры для графа с неотрицательными весами"
+          ]
+        },
+        {
+          "groupId": "tree_structures",
+          "containsAny": [
+            "Распознавание очереди по принципу FIFO"
+          ]
+        },
+        {
+          "groupId": "tree_structures",
+          "containsAny": [
+            "Распознавание стека по принципу LIFO"
+          ]
+        },
+        {
+          "groupId": "dynamic_programming",
+          "containsAny": [
+            "Объяснение повторного использования результатов подзадач в динамическом программировании"
+          ]
+        },
+        {
+          "groupId": "web_development",
+          "containsAny": [
+            "Определение роли HTML в структуре веб-страницы"
+          ]
+        },
+        {
+          "groupId": "database_relations",
+          "containsAny": [
+            "Определение назначения внешнего ключа базы данных"
+          ]
+        },
+        {
+          "groupId": "object_oriented_programming",
+          "containsAny": [
+            "Определение назначения наследования классов"
+          ]
+        },
+        {
+          "groupId": "object_oriented_programming",
+          "containsAny": [
+            "Объяснение принципа инкапсуляции"
+          ]
+        },
+        {
+          "groupId": "object_oriented_programming",
+          "containsAny": [
+            "Определение класса как описания объектов"
+          ]
+        },
+        {
+          "groupId": "graph_theory",
+          "containsAny": [
+            "Выбор алгоритма Дейкстры для кратчайших путей"
+          ]
+        },
+        {
+          "groupId": "graph_theory",
+          "containsAny": [
+            "Подсчёт путей в ориентированном ациклическом графе"
+          ]
+        },
+        {
+          "groupId": "ai_literacy",
+          "containsAny": [
+            "Определение смещения в данных машинного обучения"
+          ]
+        },
+        {
+          "groupId": "information_models",
+          "containsAny": [
+            "Интерпретация результатов компьютерного эксперимента с моделью"
+          ]
+        },
+        {
+          "groupId": "algorithmic_tracing",
+          "containsAny": [
+            "Фильтрация элементов массива и вычисление их суммы"
+          ]
+        },
+        {
+          "groupId": "network_services",
+          "containsAny": [
+            "Определение назначения DNS"
+          ]
+        },
+        {
+          "groupId": "spreadsheet_operations",
+          "containsAny": [
+            "Определение поведения абсолютной ссылки в таблице"
+          ]
+        },
+        {
+          "groupId": "programming_basics",
+          "containsAny": [
+            "Подсчёт символов в строке"
+          ]
+        },
+        {
+          "groupId": "database_operations",
+          "containsAny": [
+            "Определение назначения первичного ключа"
+          ]
+        },
+        {
+          "groupId": "graph_theory",
+          "containsAny": [
+            "Подсчёт простых путей между вершинами графа"
+          ]
+        },
+        {
+          "groupId": "ai_literacy",
+          "containsAny": [
+            "Оценка необходимости проверки ответа генеративной модели"
+          ]
+        },
+        {
+          "groupId": "cybersecurity",
+          "containsAny": [
+            "Распознавание фишинговой попытки получения данных"
+          ]
+        },
+        {
+          "groupId": "algorithmic_reasoning",
+          "containsAny": [
+            "Выбор полного просмотра для поиска максимума в массиве"
+          ]
+        },
+        {
+          "groupId": "tree_structures",
+          "containsAny": [
+            "Распознавание корня дерева"
+          ]
+        },
+        {
+          "groupId": "graph_theory",
+          "containsAny": [
+            "Определение пути в графе"
+          ]
+        },
+        {
+          "groupId": "file_processing",
+          "containsAny": [
+            "Выбор потоковой обработки для большого файла"
+          ]
+        },
+        {
+          "groupId": "algorithm_complexity",
+          "containsAny": [
+            "Оценка линейной сложности по числу сравнений"
+          ]
+        },
+        {
+          "groupId": "cryptography",
+          "containsAny": [
+            "Определение принципа открытого и закрытого ключей RSA"
+          ]
+        },
+        {
+          "groupId": "sorting_searching",
+          "containsAny": [
+            "Определение условия применимости двоичного поиска"
+          ]
+        },
+        {
+          "groupId": "sorting_searching",
+          "containsAny": [
+            "Распознавание быстрой сортировки по принципу разбиения"
+          ]
+        },
+        {
+          "groupId": "number_base_conversion",
+          "containsAny": [
+            "Перевод двоичного числа в десятичную систему"
+          ]
+        },
+        {
+          "groupId": "numerical_methods",
+          "containsAny": [
+            "Выбор метода бисекции для приближённого поиска корня"
+          ]
+        },
+        {
+          "groupId": "file_processing",
+          "containsAny": [
+            "Выбор режима файла для чтения и добавления данных"
+          ]
+        },
+        {
+          "groupId": "algorithm_complexity",
+          "containsAny": [
+            "Оценка сложности двух вложенных циклов"
+          ]
+        },
+        {
+          "groupId": "recursion",
+          "containsAny": [
+            "Трассировка рекурсивного вычисления факториала"
+          ]
+        },
+        {
+          "groupId": "signed_number_representation",
+          "containsAny": [
+            "Определение дополнительного кода для знаковых целых чисел"
+          ]
+        },
+        {
+          "groupId": "logical_operations",
+          "containsAny": [
+            "Распознавание дизъюнктивной нормальной формы"
+          ]
+        },
+        {
+          "groupId": "prefix_codes",
+          "containsAny": [
+            "Распознавание префиксного свойства кода Фано"
+          ]
+        },
+        {
+          "groupId": "cryptography",
+          "containsAny": [
+            "Определение принципа шифра Цезаря"
+          ]
+        },
+        {
+          "groupId": "network_services",
+          "containsAny": [
+            "Определение назначения маски подсети"
+          ]
+        },
         {
           "groupId": "logical_operations",
           "containsAny": [
