@@ -650,6 +650,41 @@
     html{scroll-behavior:auto}
     *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   }
+
+  /* ---------- читаемая типографика ---------- */
+  body{font-size:18px;line-height:1.72}
+  .nav-links a{font-size:clamp(13px,1.05vw,14.5px)}
+  .mobile-menu-links a{font-size:15px}
+  .hero-sub{font-size:clamp(16px,1.35vw,18px);line-height:1.65}
+  .sec-sub{font-size:17px;line-height:1.75}
+  .about-text p:not(.lead):not(.margin-note){font-size:17px;line-height:1.8}
+  .note>p,.route-note p,.check p{font-size:16.5px;line-height:1.78}
+  .note li{font-size:15.5px;line-height:1.65}
+  .note .tag{font-size:13px}
+  .pin .q{font-size:16.5px;line-height:1.75}
+  .pin .who small{font-size:13.5px}
+  .edu .edu-intro{font-size:clamp(16px,1.55vw,18px);line-height:1.8}
+  .edu-item h3,.edu-bottom strong{font-size:18px}
+  .edu-item p,.edu-bottom p{font-size:15.5px;line-height:1.72}
+  .foot small{font-size:14px}
+  .foot-links a{font-size:15px}
+  .pricing-field label{font-size:13px}
+  .pricing-eyebrow{font-size:12px}
+  .single-price>span:last-child,.trial-price>span:last-child,
+  .package-count,.package-option>span:last-child{font-size:13px}
+  .pricing-footnote{font-size:12px}
+  .pricing-bottom-note p{font-size:14.5px}
+  @media(max-width:700px){
+    body{font-size:17px;line-height:1.7}
+    .hero-sub{font-size:16px;line-height:1.72}
+    .sec-sub{font-size:16px}
+    .about-text p:not(.lead):not(.margin-note){font-size:16px}
+    .note>p,.route-note p,.check p,.pin .q{font-size:16px}
+    .note li{font-size:15px}
+    .edu-item p,.edu-bottom p{font-size:15px}
+    .pricing-bottom-note p{font-size:14.5px}
+  }
+
 </style>
 </head>
 <body>
