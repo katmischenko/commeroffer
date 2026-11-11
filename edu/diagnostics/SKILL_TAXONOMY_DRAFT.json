@@ -1611,9 +1611,325 @@
         [
           "list_mutation",
           "Изменение списков"
+        ],
+        [
+          "input_output",
+          "Ввод и вывод данных"
+        ],
+        [
+          "assignment_variables",
+          "Переменные и присваивание"
+        ],
+        [
+          "operator_precedence",
+          "Арифметические операторы и приоритет"
+        ],
+        [
+          "comments_syntax",
+          "Синтаксис и комментарии"
+        ],
+        [
+          "type_conversion",
+          "Типы данных и преобразование"
+        ],
+        [
+          "string_processing",
+          "Обработка строк"
+        ],
+        [
+          "list_operations",
+          "Операции со списками"
+        ],
+        [
+          "built_in_functions",
+          "Встроенные функции"
+        ],
+        [
+          "dictionary_operations",
+          "Работа со словарями"
+        ],
+        [
+          "function_semantics",
+          "Параметры и результаты функций"
+        ],
+        [
+          "file_operations",
+          "Работа с файлами"
+        ],
+        [
+          "exception_handling",
+          "Обработка исключений"
+        ],
+        [
+          "algorithm_analysis",
+          "Алгоритмы и оценка сложности"
         ]
       ],
       "rules": [
+        {
+          "groupId": "function_semantics",
+          "containsAny": [
+            "Трассировка возвращаемого значения функции"
+          ]
+        },
+        {
+          "groupId": "algorithm_analysis",
+          "containsAny": [
+            "Определение линейной временной сложности алгоритма"
+          ]
+        },
+        {
+          "groupId": "list_operations",
+          "containsAny": [
+            "Формирование списка с вычислением элементов"
+          ]
+        },
+        {
+          "groupId": "assignment_variables",
+          "containsAny": [
+            "Трассировка составного оператора умножения с присваиванием"
+          ]
+        },
+        {
+          "groupId": "exception_handling",
+          "containsAny": [
+            "Выбор блока except для обработки исключения"
+          ]
+        },
+        {
+          "groupId": "file_operations",
+          "containsAny": [
+            "Выбор режима чтения файла в open()"
+          ]
+        },
+        {
+          "groupId": "function_semantics",
+          "containsAny": [
+            "Определение параметра в объявлении функции"
+          ]
+        },
+        {
+          "groupId": "loop_tracing",
+          "containsAny": [
+            "Трассировка цикла while с изменением счётчика"
+          ]
+        },
+        {
+          "groupId": "dictionary_operations",
+          "containsAny": [
+            "Получение значения словаря по ключу"
+          ]
+        },
+        {
+          "groupId": "list_operations",
+          "containsAny": [
+            "Определение результата среза списка"
+          ]
+        },
+        {
+          "groupId": "conditional_logic",
+          "containsAny": [
+            "Выбор логического оператора and"
+          ]
+        },
+        {
+          "groupId": "list_operations",
+          "containsAny": [
+            "Добавление элемента в конец списка методом append()"
+          ]
+        },
+        {
+          "groupId": "string_processing",
+          "containsAny": [
+            "Выбор функции len() для определения длины строки"
+          ]
+        },
+        {
+          "groupId": "operator_precedence",
+          "containsAny": [
+            "Вычисление остатка от деления оператором %"
+          ]
+        },
+        {
+          "groupId": "type_conversion",
+          "containsAny": [
+            "Распознавание логического типа данных bool"
+          ]
+        },
+        {
+          "groupId": "list_operations",
+          "containsAny": [
+            "Подсчёт элементов, удовлетворяющих условию фильтрации"
+          ]
+        },
+        {
+          "groupId": "list_operations",
+          "containsAny": [
+            "Формирование списка с фильтрацией по условию"
+          ]
+        },
+        {
+          "groupId": "loop_tracing",
+          "containsAny": [
+            "Подсчёт выполнений вложенных циклов"
+          ]
+        },
+        {
+          "groupId": "built_in_functions",
+          "containsAny": [
+            "Применение sorted() для сортировки списка"
+          ]
+        },
+        {
+          "groupId": "conditional_logic",
+          "containsAny": [
+            "Проверка чётности числа через остаток от деления"
+          ]
+        },
+        {
+          "groupId": "function_semantics",
+          "containsAny": [
+            "Трассировка вызова функции с возвращаемым результатом"
+          ]
+        },
+        {
+          "groupId": "dictionary_operations",
+          "containsAny": [
+            "Получение значения словаря с запасным значением через get()"
+          ]
+        },
+        {
+          "groupId": "string_processing",
+          "containsAny": [
+            "Получение последнего символа строки отрицательным индексом"
+          ]
+        },
+        {
+          "groupId": "loop_tracing",
+          "containsAny": [
+            "Подсчёт значений в range() с заданным шагом"
+          ]
+        },
+        {
+          "groupId": "conditional_logic",
+          "containsAny": [
+            "Выбор elif для дополнительной проверки условия"
+          ]
+        },
+        {
+          "groupId": "loop_tracing",
+          "containsAny": [
+            "Выбор break для досрочного завершения цикла"
+          ]
+        },
+        {
+          "groupId": "type_conversion",
+          "containsAny": [
+            "Преобразование строки в вещественное число"
+          ]
+        },
+        {
+          "groupId": "conditional_logic",
+          "containsAny": [
+            "Применение логического отрицания not"
+          ]
+        },
+        {
+          "groupId": "conditional_logic",
+          "containsAny": [
+            "Выбор оператора сравнения на равенство"
+          ]
+        },
+        {
+          "groupId": "loop_tracing",
+          "containsAny": [
+            "Трассировка накопления суммы в цикле"
+          ]
+        },
+        {
+          "groupId": "built_in_functions",
+          "containsAny": [
+            "Вычисление суммы и длины списков встроенными функциями"
+          ]
+        },
+        {
+          "groupId": "list_operations",
+          "containsAny": [
+            "Получение добавленного элемента списка по индексу"
+          ]
+        },
+        {
+          "groupId": "assignment_variables",
+          "containsAny": [
+            "Трассировка составных операторов присваивания"
+          ]
+        },
+        {
+          "groupId": "built_in_functions",
+          "containsAny": [
+            "Применение функции max() к списку"
+          ]
+        },
+        {
+          "groupId": "string_processing",
+          "containsAny": [
+            "Трассировка повторения строки оператором умножения"
+          ]
+        },
+        {
+          "groupId": "conditional_logic",
+          "containsAny": [
+            "Трассировка проверки условия с включённой границей"
+          ]
+        },
+        {
+          "groupId": "loop_tracing",
+          "containsAny": [
+            "Подсчёт значений в диапазоне range()"
+          ]
+        },
+        {
+          "groupId": "list_operations",
+          "containsAny": [
+            "Получение первого элемента списка по индексу"
+          ]
+        },
+        {
+          "groupId": "string_processing",
+          "containsAny": [
+            "Определение длины строки функцией len()"
+          ]
+        },
+        {
+          "groupId": "type_conversion",
+          "containsAny": [
+            "Преобразование строки в целое число"
+          ]
+        },
+        {
+          "groupId": "comments_syntax",
+          "containsAny": [
+            "Распознавание символа однострочного комментария"
+          ]
+        },
+        {
+          "groupId": "operator_precedence",
+          "containsAny": [
+            "Применение приоритета арифметических операций"
+          ]
+        },
+        {
+          "groupId": "assignment_variables",
+          "containsAny": [
+            "Запись оператора присваивания переменной"
+          ]
+        },
+        {
+          "groupId": "input_output",
+          "containsAny": [
+            "Определение типа результата input()"
+          ]
+        },
         {
           "groupId": "list_mutation",
           "containsAny": [
