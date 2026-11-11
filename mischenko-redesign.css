@@ -339,7 +339,7 @@ body{
 }
 .hero h1,.section-heading,.final-cta h2{font-family:var(--serif)}
 .hero h1 em,.section-heading em,.final-cta h2 em{
-  position:relative;z-index:0;display:inline-block;font-family:'Cormorant Garamond',Georgia,serif;
+  position:relative;z-index:0;display:inline-block;font-family:var(--sans);
   font-style:italic;font-weight:600;padding:0 .07em .03em;
 }
 .hero h1 em:after,.section-heading em:after,.final-cta h2 em:after{
