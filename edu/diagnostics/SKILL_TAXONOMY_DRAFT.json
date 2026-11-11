@@ -2629,9 +2629,335 @@
         [
           "algorithm_analysis",
           "Алгоритмы и оценка сложности"
+        ],
+        [
+          "immutable_sequences",
+          "Неизменяемые последовательности"
+        ],
+        [
+          "set_operations",
+          "Операции с множествами"
+        ],
+        [
+          "file_io",
+          "Файловый ввод-вывод"
+        ],
+        [
+          "iterators_generators",
+          "Итераторы и генераторы"
+        ],
+        [
+          "sorting_collections",
+          "Сортировка коллекций"
+        ],
+        [
+          "algorithm_complexity",
+          "Оценка сложности алгоритмов"
+        ],
+        [
+          "function_parameters",
+          "Параметры функций"
+        ],
+        [
+          "object_model",
+          "Объектная модель Python"
+        ],
+        [
+          "type_annotations",
+          "Аннотации типов"
+        ],
+        [
+          "functional_programming",
+          "Функциональные инструменты"
+        ],
+        [
+          "context_managers",
+          "Контекстные менеджеры"
+        ],
+        [
+          "decorators",
+          "Декораторы"
+        ],
+        [
+          "memoization",
+          "Мемоизация и кэширование"
+        ],
+        [
+          "testing",
+          "Автоматизированное тестирование"
         ]
       ],
       "rules": [
+        {
+          "groupId": "algorithm_complexity",
+          "containsAny": [
+            "Определение сложности сортировки слиянием"
+          ]
+        },
+        {
+          "groupId": "memoization",
+          "containsAny": [
+            "Использование мемоизации для кэширования результатов подзадач"
+          ]
+        },
+        {
+          "groupId": "decorators",
+          "containsAny": [
+            "Применение декоратора к функции через синтаксис @"
+          ]
+        },
+        {
+          "groupId": "loop_tracing",
+          "containsAny": [
+            "Подсчёт итераций range() с отрицательным шагом"
+          ]
+        },
+        {
+          "groupId": "object_model",
+          "containsAny": [
+            "Сравнение списков по содержимому оператором =="
+          ]
+        },
+        {
+          "groupId": "context_managers",
+          "containsAny": [
+            "Определение метода __exit__ протокола контекстного менеджера"
+          ]
+        },
+        {
+          "groupId": "iterators_generators",
+          "containsAny": [
+            "Получение индексов и значений через enumerate"
+          ]
+        },
+        {
+          "groupId": "functional_programming",
+          "containsAny": [
+            "Создание анонимной функции с помощью lambda"
+          ]
+        },
+        {
+          "groupId": "function_parameters",
+          "containsAny": [
+            "Использование **kwargs для сбора именованных аргументов"
+          ]
+        },
+        {
+          "groupId": "object_model",
+          "containsAny": [
+            "Использование @property для доступа к методу как атрибуту"
+          ]
+        },
+        {
+          "groupId": "type_annotations",
+          "containsAny": [
+            "Интерпретация аннотаций типов аргументов и результата"
+          ]
+        },
+        {
+          "groupId": "function_parameters",
+          "containsAny": [
+            "Использование *args для сбора позиционных аргументов"
+          ]
+        },
+        {
+          "groupId": "object_model",
+          "containsAny": [
+            "Различение идентичности объектов оператором is"
+          ]
+        },
+        {
+          "groupId": "object_model",
+          "containsAny": [
+            "Определение ссылки self на текущий экземпляр"
+          ]
+        },
+        {
+          "groupId": "object_model",
+          "containsAny": [
+            "Определение назначения метода инициализации __init__"
+          ]
+        },
+        {
+          "groupId": "functional_programming",
+          "containsAny": [
+            "Определение замыкания и доступа к внешней области видимости"
+          ]
+        },
+        {
+          "groupId": "set_operations",
+          "containsAny": [
+            "Оценка средней сложности проверки принадлежности множеству"
+          ]
+        },
+        {
+          "groupId": "algorithm_complexity",
+          "containsAny": [
+            "Оценка квадратичной сложности двух вложенных циклов"
+          ]
+        },
+        {
+          "groupId": "testing",
+          "containsAny": [
+            "Определение назначения unittest для автоматических тестов"
+          ]
+        },
+        {
+          "groupId": "object_model",
+          "containsAny": [
+            "Запись наследования при объявлении класса"
+          ]
+        },
+        {
+          "groupId": "object_model",
+          "containsAny": [
+            "Определение метода класса"
+          ]
+        },
+        {
+          "groupId": "algorithm_complexity",
+          "containsAny": [
+            "Оценка логарифмической сложности бинарного поиска"
+          ]
+        },
+        {
+          "groupId": "context_managers",
+          "containsAny": [
+            "Объяснение автоматического закрытия файла контекстным менеджером"
+          ]
+        },
+        {
+          "groupId": "iterators_generators",
+          "containsAny": [
+            "Определение роли yield в генераторе"
+          ]
+        },
+        {
+          "groupId": "iterators_generators",
+          "containsAny": [
+            "Распознавание объекта-итератора, создаваемого iter()"
+          ]
+        },
+        {
+          "groupId": "exception_handling",
+          "containsAny": [
+            "Определение назначения блока finally"
+          ]
+        },
+        {
+          "groupId": "file_io",
+          "containsAny": [
+            "Подключение модуля math оператором import"
+          ]
+        },
+        {
+          "groupId": "function_semantics",
+          "containsAny": [
+            "Определение роли return в функции"
+          ]
+        },
+        {
+          "groupId": "dictionary_operations",
+          "containsAny": [
+            "Распознавание словаря dict по хранению пар ключ–значение"
+          ]
+        },
+        {
+          "groupId": "type_conversion",
+          "containsAny": [
+            "Выбор типа float для вещественных чисел"
+          ]
+        },
+        {
+          "groupId": "dictionary_operations",
+          "containsAny": [
+            "Определение изменения существующего значения словаря по ключу"
+          ]
+        },
+        {
+          "groupId": "algorithm_complexity",
+          "containsAny": [
+            "Оценка квадратичной сложности вложенного полного прохода"
+          ]
+        },
+        {
+          "groupId": "algorithmic_reasoning",
+          "containsAny": [
+            "Определение необходимости базового случая в рекурсии"
+          ]
+        },
+        {
+          "groupId": "file_io",
+          "containsAny": [
+            "Чтение строк файла через итерацию по файловому объекту"
+          ]
+        },
+        {
+          "groupId": "exception_handling",
+          "containsAny": [
+            "Распознавание ValueError при преобразовании некорректной строки"
+          ]
+        },
+        {
+          "groupId": "function_parameters",
+          "containsAny": [
+            "Применение значения параметра функции по умолчанию"
+          ]
+        },
+        {
+          "groupId": "sorting_collections",
+          "containsAny": [
+            "Сортировка списка словарей по полю через key"
+          ]
+        },
+        {
+          "groupId": "iterators_generators",
+          "containsAny": [
+            "Объединение последовательностей попарно функцией zip()"
+          ]
+        },
+        {
+          "groupId": "iterators_generators",
+          "containsAny": [
+            "Использование enumerate для получения индекса и элемента"
+          ]
+        },
+        {
+          "groupId": "list_operations",
+          "containsAny": [
+            "Формирование нового списка с помощью list comprehension"
+          ]
+        },
+        {
+          "groupId": "file_io",
+          "containsAny": [
+            "Выбор режима a для добавления данных в файл"
+          ]
+        },
+        {
+          "groupId": "exception_handling",
+          "containsAny": [
+            "Выбор блока try для потенциально ошибочного кода"
+          ]
+        },
+        {
+          "groupId": "dictionary_operations",
+          "containsAny": [
+            "Получение представления ключей словаря методом keys()"
+          ]
+        },
+        {
+          "groupId": "set_operations",
+          "containsAny": [
+            "Определение поведения множества при добавлении дубликата"
+          ]
+        },
+        {
+          "groupId": "immutable_sequences",
+          "containsAny": [
+            "Определение неизменяемости кортежа"
+          ]
+        },
         {
           "groupId": "function_semantics",
           "containsAny": [
