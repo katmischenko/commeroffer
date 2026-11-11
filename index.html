@@ -527,57 +527,85 @@
     transform:rotate(-1.2deg);
   }
 
-  /* ---------- интерактивный прайс ---------- */
-  .pricing-panel{position:relative;padding:clamp(24px,4vw,42px);background:var(--paper-2);border:1px solid rgba(255,157,69,.28);border-radius:20px;box-shadow:0 20px 55px rgba(0,0,0,.28)}
-  .pricing-topline{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:25px}
-  .pricing-panel .hand-idx,.pricing-bottom .hand-idx{font:700 23px var(--hand);color:var(--pen)}
-  .pricing-mark{font:600 18px var(--hand);color:var(--marker);transform:rotate(-3deg)}
-  .pricing-controls{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:16px}
-  .pricing-field{display:flex;flex-direction:column;gap:9px;min-width:0}
-  .pricing-field label{font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--muted)}
-  .pricing-field select{width:100%;min-height:48px;padding:11px 38px 11px 13px;border:1px solid rgba(234,231,223,.18);border-radius:10px;background:#111216;color:var(--ink);font:500 13px var(--body);outline:none}
-  .pricing-field select:focus{border-color:var(--marker)}
-  .duration-switch{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px;background:#111216;border:1px solid rgba(234,231,223,.13);border-radius:11px;min-height:48px}
-  .duration-btn{border:0;border-radius:8px;background:transparent;color:var(--muted);font:700 13px var(--body);cursor:pointer;transition:background .2s,color .2s}
-  .duration-btn.active{background:var(--marker);color:#1d1305}
-  .pricing-result{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:25px}
-  .single-price,.trial-price{padding:22px 24px;border-radius:13px;background:rgba(255,255,255,.025);border:1px solid rgba(234,231,223,.12);display:flex;flex-direction:column;gap:5px}
-  .single-price{border-color:rgba(255,157,69,.35);background:rgba(255,157,69,.045)}
-  .pricing-eyebrow{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
-  .single-price strong,.trial-price strong{font:700 clamp(29px,4vw,39px) var(--hand);color:var(--marker);line-height:1.15;margin:4px 0}
-  .single-price>span:last-child,.trial-price>span:last-child{font-size:12px;color:var(--muted);line-height:1.5}
-  .package-heading{display:flex;align-items:end;justify-content:space-between;gap:20px;margin:31px 0 15px}
-  .package-heading h3{font-size:23px;margin-top:2px}
-  .package-heading p{max-width:290px;color:var(--muted);font-size:12px;text-align:right}
-  .package-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-  .package-option{padding:19px 18px;border:1px dashed rgba(234,231,223,.2);border-radius:12px;background:rgba(12,10,15,.22);display:flex;flex-direction:column;gap:6px}
-  .package-option.featured{border-style:solid;border-color:rgba(255,157,69,.48);background:rgba(255,157,69,.055);transform:translateY(-4px)}
-  .package-count{font-size:12px;font-weight:800;color:var(--muted)}
-  .package-option strong{font:700 clamp(24px,3vw,31px) var(--hand);color:var(--marker);line-height:1.2}
-  .package-option>span:last-child{font-size:12px;color:var(--pen)}
-  .pricing-footnote{margin-top:15px;color:var(--faint);font-size:11px;line-height:1.6}
-  .pricing-bottom{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:28px;padding:22px 25px;border-left:2px solid var(--pen);background:rgba(142,201,255,.035)}
-  .pricing-bottom-note p{max-width:620px;color:var(--muted);font-size:13px;line-height:1.65;margin-top:5px}
-  @media(max-width:760px){.pricing-controls{grid-template-columns:1fr 1fr}.pricing-field:nth-child(2){grid-column:1/-1}.pricing-result{grid-template-columns:1fr}}
-  @media(max-width:700px){
-    .wrap{padding-left:18px;padding-right:18px}
-    section{padding:68px 0}
-    .pricing-panel{padding:22px 16px}
-    .pricing-topline{align-items:flex-start;flex-wrap:wrap}
-    .pricing-controls{grid-template-columns:minmax(0,1fr)}
-    .pricing-field:nth-child(2){grid-column:auto}
-    .pricing-result{grid-template-columns:minmax(0,1fr)}
-    .package-heading{align-items:flex-start;flex-direction:column;gap:5px}
-    .package-heading p{text-align:left}
-    .package-grid{grid-template-columns:minmax(0,1fr)}
-    .package-option.featured{transform:none}
-    .pricing-bottom{align-items:stretch;flex-direction:column}
-    .pricing-bottom .btn{width:100%;justify-content:center}
-    .single-price,.trial-price{padding:18px 20px}
-    .foot{align-items:flex-start}
-    .foot-links{flex-wrap:wrap;gap:14px}
+  /* ---------- компактный конструктор стоимости ---------- */
+  #pricing{padding-top:78px;padding-bottom:78px}
+  #pricing .sec-head{margin-bottom:30px}
+  #pricing .sec-title{font-size:clamp(30px,4vw,46px)}
+  #pricing .sec-sub{max-width:66ch;margin-top:10px;font-size:14px}
+  .pricing-panel{
+    position:relative;padding:26px 28px 24px;
+    background:linear-gradient(135deg,rgba(255,157,69,.055),transparent 42%),var(--paper-2);
+    border:1px solid rgba(234,231,223,.13);border-radius:18px;
+    box-shadow:0 18px 48px rgba(0,0,0,.2);
   }
- 
+  .pricing-topline{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:19px}
+  .pricing-panel .hand-idx,.pricing-bottom .hand-idx{font:700 21px var(--hand);color:var(--pen)}
+  .pricing-mark{font:600 17px var(--hand);color:var(--marker);transform:rotate(-2deg)}
+  .pricing-controls{display:grid;grid-template-columns:minmax(155px,.85fr) minmax(260px,1.5fr) minmax(190px,1fr);gap:12px;align-items:end}
+  .pricing-field{display:flex;flex-direction:column;gap:6px;min-width:0}
+  .pricing-field label{font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--faint)}
+  .pricing-field select{width:100%;height:44px;padding:9px 34px 9px 12px;border:1px solid rgba(234,231,223,.15);border-radius:9px;background:#111216;color:var(--ink);font:500 12px var(--body);outline:none}
+  .pricing-field select:focus{border-color:var(--marker)}
+  .duration-switch{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;background:#111216;border:1px solid rgba(234,231,223,.13);border-radius:9px;height:44px}
+  .duration-btn{border:0;border-radius:6px;background:transparent;color:var(--muted);font:700 12px var(--body);cursor:pointer;transition:background .2s,color .2s}
+  .duration-btn.active{background:var(--marker);color:#1d1305}
+  .pricing-result{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(220px,.8fr);gap:12px;margin-top:16px}
+  .single-price,.trial-price{min-height:116px;padding:17px 20px;border-radius:11px;display:flex;flex-direction:column;justify-content:center;gap:3px}
+  .single-price{border:1px solid rgba(255,157,69,.35);background:rgba(255,157,69,.065)}
+  .trial-price{border:1px solid rgba(234,231,223,.11);background:rgba(12,10,15,.28)}
+  .pricing-eyebrow{font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+  .single-price strong{font:700 clamp(32px,4vw,43px) var(--hand);color:var(--marker);line-height:1.05;margin:3px 0}
+  .trial-price strong{font:700 clamp(25px,3vw,33px) var(--hand);color:var(--ink);line-height:1.1;margin:3px 0}
+  .single-price>span:last-child,.trial-price>span:last-child{font-size:11px;color:var(--muted);line-height:1.45}
+  .package-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:22px 0 10px}
+  .package-heading h3{font-size:19px;margin-top:0}
+  .package-heading .hand-idx{font-size:17px}
+  .package-heading p{max-width:280px;color:var(--faint);font-size:10px;text-align:right;line-height:1.45}
+  .package-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+  .package-option{position:relative;padding:13px 15px;border:1px solid rgba(234,231,223,.12);border-radius:10px;background:rgba(12,10,15,.24);display:grid;grid-template-columns:1fr auto;align-items:center;gap:3px 12px}
+  .package-option.featured{border-color:rgba(255,157,69,.48);background:rgba(255,157,69,.07);transform:none}
+  .package-count{font-size:11px;font-weight:800;color:var(--muted)}
+  .package-option strong{grid-column:1/-1;font:700 clamp(23px,2.6vw,29px) var(--hand);color:var(--marker);line-height:1.1}
+  .package-option>span:last-child{font-size:10px;color:var(--pen)}
+  .package-option.featured::after{content:"популярный выбор";grid-column:2;grid-row:1;font-size:9px;color:var(--marker);white-space:nowrap}
+  .pricing-footnote{margin-top:10px;color:var(--faint);font-size:10px;line-height:1.5}
+  .pricing-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:17px;padding:16px 19px;border:1px solid rgba(142,201,255,.13);border-radius:11px;background:rgba(142,201,255,.035)}
+  .pricing-bottom-note p{max-width:610px;color:var(--muted);font-size:11px;line-height:1.55;margin-top:3px}
+  .pricing-bottom .btn{flex:none;padding:12px 20px;font-size:12px}
+  @media(max-width:760px){
+    #pricing{padding-top:62px;padding-bottom:62px}
+    .pricing-controls{grid-template-columns:1fr 1.3fr}
+    .pricing-field:nth-child(2){grid-column:auto}
+    .pricing-field:last-child{grid-column:1/-1}
+    .pricing-result{grid-template-columns:1.2fr .8fr}
+    .package-heading{align-items:flex-start}
+    .package-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .package-option{padding:12px 10px}
+    .package-option.featured::after{font-size:8px}
+  }
+  @media(max-width:560px){
+    #pricing{padding:58px 0}
+    #pricing .sec-head{margin-bottom:22px}
+    .pricing-panel{padding:18px 14px}
+    .pricing-topline{margin-bottom:14px}
+    .pricing-panel .hand-idx{font-size:18px}
+    .pricing-mark{font-size:15px}
+    .pricing-controls{grid-template-columns:1fr}
+    .pricing-field:nth-child(2),.pricing-field:last-child{grid-column:auto}
+    .pricing-result{grid-template-columns:1fr;gap:8px;margin-top:12px}
+    .single-price,.trial-price{min-height:0;padding:14px 16px}
+    .single-price strong{font-size:34px}
+    .trial-price strong{font-size:28px}
+    .package-heading{flex-direction:column;gap:3px;margin:17px 0 9px}
+    .package-heading p{text-align:left}
+    .package-grid{grid-template-columns:1fr;gap:7px}
+    .package-option{grid-template-columns:1fr auto;padding:11px 13px}
+    .package-option strong{grid-column:auto;grid-row:1/3;font-size:25px}
+    .package-option.featured::after{grid-column:2;grid-row:2;text-align:right}
+    .pricing-bottom{align-items:stretch;flex-direction:column;gap:12px;padding:14px}
+    .pricing-bottom .btn{width:100%;justify-content:center}
+  }
+
   /* ---------- анкета ---------- */
   .anketa{
     max-width:720px;margin:0 auto;
@@ -1125,7 +1153,7 @@
       <div class="sec-head reveal">
         <div class="sec-index">закладка ✦ прайс</div>
         <h2 class="sec-title">Выбираем удобный <span class="hl">формат</span></h2>
-        <p class="sec-sub">Стоимость зависит от направления, продолжительности занятия и региона. Выбери параметры — калькулятор покажет цену разового занятия и абонементов.</p>
+        <p class="sec-sub">Выбери направление, регион оплаты и длительность. Сразу увидишь стоимость занятия и варианты абонементов.</p>
       </div>
 
       <div class="pricing-panel">
@@ -1179,7 +1207,7 @@
           <div class="trial-price">
             <span class="pricing-eyebrow">Пробное занятие · для любого направления</span>
             <strong id="trialLessonPrice">1 200 ₽</strong>
-            <span>Знакомство, определение уровня и обсуждение целей</span>
+            <span>Знакомство и определение учебной задачи</span>
           </div>
         </div>
 
@@ -1188,7 +1216,7 @@
             <span class="hand-idx">если планируем заниматься регулярно</span>
             <h3>Абонементы</h3>
           </div>
-          <p>Чем больше пакет, тем выгоднее стоимость одного занятия.</p>
+          <p>Пакеты на 8, 12 и 24 занятия со скидкой.</p>
         </div>
         <div class="package-grid" id="packageGrid" aria-live="polite">
           <article class="package-option">
