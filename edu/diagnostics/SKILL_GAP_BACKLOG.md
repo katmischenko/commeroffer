@@ -255,3 +255,8 @@
 ## Статус девятого пополнения — 11.11.2026
 
 Добавлены 20 черновых заданий для групп: prefers-reduced-motion, @supports, rel=noopener, JavaScript modules, content-visibility, grid-template-areas, визуальная иерархия, Layout grid, дублирование объектов и контекстные комментарии Figma. Общий объём — 150 заданий по 75 группам; статус `teacher_review_draft`.
+
+
+## Статус десятого пополнения — 11.11.2026
+
+В пул добавлены 20 заданий для групп Figma: Constraints, маски, Subtract, Version history, ветвление файлов, Section, Boolean-переменные, Inspect/Dev Mode, управление дизайн-системой и обратная совместимость библиотеки. Общий объём — 170 заданий по 85 группам. Статус — `teacher_review_draft`.
