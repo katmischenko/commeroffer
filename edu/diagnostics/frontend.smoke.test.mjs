@@ -46,7 +46,7 @@ test("simple setup, unknown answer, navigation and local-only result", async () 
   assert.equal(await page.locator("#student").isVisible(), true);
   assert.equal(await page.locator("#direction").isVisible(), true);
   assert.equal(await page.locator("#grade").isVisible(), true);
-  for (const obsolete of ["#curriculum", "#curriculum-year", "#curriculum-level", "#experience"]) {
+  for (const obsolete of ["#curriculum-year", "#experience"]) {
     assert.equal(await page.locator(obsolete).count(), 0, obsolete + " must not be part of the simple setup");
   }
   await page.locator("#student").fill("Тестовый ученик");
@@ -194,6 +194,35 @@ test("teacher archive: renders attempts, filters and compares two runs", async (
   assert.match(await page.evaluate(() => window.__printedHtml), /Диагностика Mischenko Edu/);
   assert.match(await page.evaluate(() => window.__printedHtml), /Сократи дробь 6\/8/);
   await page.close();
+});
+
+test("optional curriculum selection uses a matching Russian bank and warns on fallback", async () => {
+  const page = await browser.newPage();
+  await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
+  await page.locator("#student").fill("Проверка программы");
+  await page.locator("#direction").selectOption("math");
+  await page.locator("#grade").selectOption("7");
+  assert.equal(await page.locator("#start").isEnabled(), true);
+  assert.equal(await page.locator("#curriculum-details").evaluate(el => el.open), false);
+  await page.locator("#curriculum-details summary").click();
+  await page.locator("#curriculum").selectOption("ru");
+  assert.match(await page.locator("#curriculum-note").textContent(), /отдельный российский набор/);
+  await page.locator("#start").click();
+  await page.waitForFunction(() => document.querySelector("#counter")?.textContent.trim() === "вопрос 1 из 15");
+  assert.match(await page.locator("#profile-note").textContent(), /отдельный банк: Россия/);
+  await page.close();
+
+  const fallbackPage = await browser.newPage();
+  await fallbackPage.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
+  await fallbackPage.locator("#student").fill("Проверка fallback");
+  await fallbackPage.locator("#direction").selectOption("math");
+  await fallbackPage.locator("#grade").selectOption("7");
+  await fallbackPage.locator("#curriculum-details summary").click();
+  await fallbackPage.locator("#curriculum").selectOption("by");
+  await fallbackPage.locator("#start").click();
+  await fallbackPage.waitForFunction(() => document.querySelector("#counter")?.textContent.trim() === "вопрос 1 из 15");
+  assert.match(await fallbackPage.locator("#profile-note").textContent(), /соответствие выбранной программе не подтверждено/);
+  await fallbackPage.close();
 });
 
 test("mobile: setup fits a narrow viewport without horizontal overflow", async () => {
