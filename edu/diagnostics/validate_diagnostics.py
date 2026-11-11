@@ -178,6 +178,7 @@ def main():
     errors = []
     stems_by_direction = defaultdict(lambda: defaultdict(list))
     taxonomy_coverage = defaultdict(Counter)
+    skill_coverage = defaultdict(Counter)
     profile_path = DIAG / "profiles.json"
     taxonomy_path = DIAG / "TOPIC_TAXONOMY_DRAFT.json"
     skill_taxonomy_path = DIAG / "SKILL_TAXONOMY_DRAFT.json"
