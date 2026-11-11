@@ -3446,9 +3446,363 @@
         [
           "resource_paths",
           "Пути к ресурсам"
+        ],
+        [
+          "html_forms",
+          "HTML-формы и элементы управления"
+        ],
+        [
+          "responsive_grid",
+          "Адаптивные CSS-сетки"
+        ],
+        [
+          "motion_preferences",
+          "Учет предпочтений движения"
+        ],
+        [
+          "image_optimization",
+          "Адаптивность и загрузка изображений"
+        ],
+        [
+          "script_loading",
+          "Загрузка и выполнение скриптов"
+        ],
+        [
+          "feature_queries",
+          "Проверка поддержки CSS-возможностей"
+        ],
+        [
+          "container_queries",
+          "Контейнерные запросы"
+        ],
+        [
+          "cascade_layers",
+          "Слои CSS-каскада"
+        ],
+        [
+          "html_metadata",
+          "Метаданные HTML-документа"
+        ],
+        [
+          "css_units",
+          "Единицы измерения CSS"
+        ],
+        [
+          "css_flex_behavior",
+          "Поведение элементов Flexbox"
+        ],
+        [
+          "css_transitions",
+          "Переходы и анимации CSS"
+        ],
+        [
+          "css_custom_properties",
+          "Пользовательские свойства CSS"
+        ],
+        [
+          "css_architecture",
+          "Архитектура CSS"
+        ],
+        [
+          "link_security",
+          "Безопасность внешних ссылок"
+        ],
+        [
+          "html_dialogs",
+          "Диалоговые элементы HTML"
+        ],
+        [
+          "js_modules",
+          "JavaScript-модули"
+        ],
+        [
+          "advanced_selectors",
+          "Сложные CSS-селекторы"
+        ],
+        [
+          "rendering_performance",
+          "Производительность рендеринга"
+        ],
+        [
+          "grid_areas",
+          "Именованные области CSS Grid"
+        ],
+        [
+          "focus_management",
+          "Управление клавиатурным фокусом"
         ]
       ],
       "rules": [
+        {
+          "groupId": "css_architecture",
+          "containsAny": [
+            "Организация каскада CSS через архитектурные слои"
+          ]
+        },
+        {
+          "groupId": "focus_management",
+          "containsAny": [
+            "Управление фокусом при открытии и закрытии модального dialog"
+          ]
+        },
+        {
+          "groupId": "container_queries",
+          "containsAny": [
+            "Различение container query и media query"
+          ]
+        },
+        {
+          "groupId": "html_forms",
+          "containsAny": [
+            "Предотвращение отправки формы кнопкой через type=button"
+          ]
+        },
+        {
+          "groupId": "grid_areas",
+          "containsAny": [
+            "Построение именованных областей CSS Grid через grid-template-areas"
+          ]
+        },
+        {
+          "groupId": "accessibility",
+          "containsAny": [
+            "Объявление динамических обновлений через aria-live=polite"
+          ]
+        },
+        {
+          "groupId": "container_queries",
+          "containsAny": [
+            "Включение запросов по inline-размеру контейнера"
+          ]
+        },
+        {
+          "groupId": "cascade_layers",
+          "containsAny": [
+            "Определение приоритета обычных правил в слоях @layer"
+          ]
+        },
+        {
+          "groupId": "advanced_selectors",
+          "containsAny": [
+            "Выбор элемента по наличию потомка через :has()"
+          ]
+        },
+        {
+          "groupId": "rendering_performance",
+          "containsAny": [
+            "Оптимизация рендеринга внеэкранного содержимого через content-visibility"
+          ]
+        },
+        {
+          "groupId": "advanced_selectors",
+          "containsAny": [
+            "Группировка альтернативных селекторов с помощью :is()"
+          ]
+        },
+        {
+          "groupId": "accessibility",
+          "containsAny": [
+            "Исключение поддерева из фокуса и дерева доступности через inert"
+          ]
+        },
+        {
+          "groupId": "image_optimization",
+          "containsAny": [
+            "Выбор адаптивных источников изображения элементом picture"
+          ]
+        },
+        {
+          "groupId": "js_modules",
+          "containsAny": [
+            "Подключение JavaScript-модуля через type=module"
+          ]
+        },
+        {
+          "groupId": "html_dialogs",
+          "containsAny": [
+            "Использование нативного элемента dialog"
+          ]
+        },
+        {
+          "groupId": "link_security",
+          "containsAny": [
+            "Защита window.opener через rel=noopener"
+          ]
+        },
+        {
+          "groupId": "css_architecture",
+          "containsAny": [
+            "Выбор методологии именования и ограничения области CSS-стилей"
+          ]
+        },
+        {
+          "groupId": "css_custom_properties",
+          "containsAny": [
+            "Объявление и использование CSS custom properties"
+          ]
+        },
+        {
+          "groupId": "accessibility",
+          "containsAny": [
+            "Задание доступного имени элемента через aria-label"
+          ]
+        },
+        {
+          "groupId": "css_transitions",
+          "containsAny": [
+            "Настройка перехода CSS-свойств через transition"
+          ]
+        },
+        {
+          "groupId": "responsive_design",
+          "containsAny": [
+            "Настройка адаптивного размера через clamp()"
+          ]
+        },
+        {
+          "groupId": "image_optimization",
+          "containsAny": [
+            "Интерпретация object-fit: cover"
+          ]
+        },
+        {
+          "groupId": "html_forms",
+          "containsAny": [
+            "Выбор type=email для поля электронной почты"
+          ]
+        },
+        {
+          "groupId": "css_box_model",
+          "containsAny": [
+            "Ограничение максимальной ширины элемента"
+          ]
+        },
+        {
+          "groupId": "css_flex_behavior",
+          "containsAny": [
+            "Определение поведения flex: 1 при распределении пространства"
+          ]
+        },
+        {
+          "groupId": "html_metadata",
+          "containsAny": [
+            "Задание языка HTML-документа атрибутом lang"
+          ]
+        },
+        {
+          "groupId": "css_selectors",
+          "containsAny": [
+            "Сравнение специфичности селектора класса и идентификатора"
+          ]
+        },
+        {
+          "groupId": "css_units",
+          "containsAny": [
+            "Интерпретация единицы rem относительно корневого шрифта"
+          ]
+        },
+        {
+          "groupId": "html_document_structure",
+          "containsAny": [
+            "Подключение внешней таблицы стилей элементом link"
+          ]
+        },
+        {
+          "groupId": "html_metadata",
+          "containsAny": [
+            "Определение назначения элемента head"
+          ]
+        },
+        {
+          "groupId": "cascade_layers",
+          "containsAny": [
+            "Управление приоритетом CSS-правил через @layer"
+          ]
+        },
+        {
+          "groupId": "container_queries",
+          "containsAny": [
+            "Включение контейнерных запросов через container-type"
+          ]
+        },
+        {
+          "groupId": "feature_queries",
+          "containsAny": [
+            "Проверка поддержки CSS-возможности через @supports"
+          ]
+        },
+        {
+          "groupId": "script_loading",
+          "containsAny": [
+            "Определение порядка выполнения внешнего script с defer"
+          ]
+        },
+        {
+          "groupId": "image_optimization",
+          "containsAny": [
+            "Настройка положения изображения через object-position"
+          ]
+        },
+        {
+          "groupId": "motion_preferences",
+          "containsAny": [
+            "Учет системной настройки prefers-reduced-motion"
+          ]
+        },
+        {
+          "groupId": "responsive_grid",
+          "containsAny": [
+            "Построение адаптивных колонок через repeat, auto-fit и minmax"
+          ]
+        },
+        {
+          "groupId": "focus_management",
+          "containsAny": [
+            "Определение условий отображения индикатора :focus-visible"
+          ]
+        },
+        {
+          "groupId": "image_optimization",
+          "containsAny": [
+            "Отложенная загрузка изображения через loading=lazy"
+          ]
+        },
+        {
+          "groupId": "accessibility",
+          "containsAny": [
+            "Связывание поля с описанием или сообщением об ошибке через aria-describedby"
+          ]
+        },
+        {
+          "groupId": "css_sizing",
+          "containsAny": [
+            "Настройка пропорций блока через aspect-ratio"
+          ]
+        },
+        {
+          "groupId": "advanced_selectors",
+          "containsAny": [
+            "Выбор включённого элемента формы через :enabled"
+          ]
+        },
+        {
+          "groupId": "accessibility",
+          "containsAny": [
+            "Определение назначения атрибута alt для доступности"
+          ]
+        },
+        {
+          "groupId": "html_forms",
+          "containsAny": [
+            "Выбор типа input для числового значения"
+          ]
+        },
+        {
+          "groupId": "html_forms",
+          "containsAny": [
+            "Группировка связанных полей формы элементом fieldset"
+          ]
+        },
         {
           "groupId": "form_accessibility",
           "containsAny": [
