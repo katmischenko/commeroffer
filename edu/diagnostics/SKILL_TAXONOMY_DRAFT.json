@@ -1854,9 +1854,325 @@
         [
           "algorithm_sequences",
           "Последовательности действий и команд"
+        ],
+        [
+          "archiving",
+          "Архивация и сжатие файлов"
+        ],
+        [
+          "browser_navigation",
+          "Работа с веб-страницами"
+        ],
+        [
+          "text_formatting",
+          "Форматирование текстовых документов"
+        ],
+        [
+          "presentation_design",
+          "Оформление презентаций"
+        ],
+        [
+          "fact_verification",
+          "Проверка достоверности информации"
+        ],
+        [
+          "program_debugging",
+          "Поиск логических ошибок программ"
+        ],
+        [
+          "euclidean_algorithm",
+          "Алгоритм Евклида"
+        ],
+        [
+          "prime_testing",
+          "Проверка чисел на простоту"
+        ],
+        [
+          "graph_traversal",
+          "Пути и связи в графах"
+        ],
+        [
+          "database_queries",
+          "Запросы к базам данных"
+        ],
+        [
+          "array_processing",
+          "Обработка массивов"
+        ],
+        [
+          "sorting",
+          "Сортировка данных"
+        ],
+        [
+          "modeling_workflow",
+          "Этапы компьютерного моделирования"
         ]
       ],
       "rules": [
+        {
+          "groupId": "array_processing",
+          "containsAny": [
+            "Поиск минимального элемента неотсортированного массива полным просмотром"
+          ]
+        },
+        {
+          "groupId": "graph_traversal",
+          "containsAny": [
+            "Подсчёт путей в ориентированном ациклическом графе"
+          ]
+        },
+        {
+          "groupId": "modeling_workflow",
+          "containsAny": [
+            "Определение этапа тестирования компьютерной модели"
+          ]
+        },
+        {
+          "groupId": "tree_structures",
+          "containsAny": [
+            "Распознавание листа дерева по отсутствию потомков"
+          ]
+        },
+        {
+          "groupId": "array_processing",
+          "containsAny": [
+            "Подсчёт элементов массива, удовлетворяющих условию"
+          ]
+        },
+        {
+          "groupId": "database_queries",
+          "containsAny": [
+            "Определение назначения запроса на выборку базы данных"
+          ]
+        },
+        {
+          "groupId": "sorting",
+          "containsAny": [
+            "Сортировка массива по возрастанию"
+          ]
+        },
+        {
+          "groupId": "spreadsheet_operations",
+          "containsAny": [
+            "Определение поведения абсолютной ссылки в таблице"
+          ]
+        },
+        {
+          "groupId": "array_processing",
+          "containsAny": [
+            "Поиск максимального элемента массива"
+          ]
+        },
+        {
+          "groupId": "graph_traversal",
+          "containsAny": [
+            "Подсчёт путей между вершинами ориентированного графа"
+          ]
+        },
+        {
+          "groupId": "information_models",
+          "containsAny": [
+            "Определение информационной модели объекта"
+          ]
+        },
+        {
+          "groupId": "sequence_indexing",
+          "containsAny": [
+            "Определение начального индекса списка Python"
+          ]
+        },
+        {
+          "groupId": "graph_theory",
+          "containsAny": [
+            "Определение ребра как связи вершин графа"
+          ]
+        },
+        {
+          "groupId": "digital_safety",
+          "containsAny": [
+            "Выбор мер защиты учётной записи"
+          ]
+        },
+        {
+          "groupId": "network_services",
+          "containsAny": [
+            "Определение назначения IP-адреса узла"
+          ]
+        },
+        {
+          "groupId": "prime_testing",
+          "containsAny": [
+            "Определение достаточной границы проверки числа на простоту"
+          ]
+        },
+        {
+          "groupId": "program_debugging",
+          "containsAny": [
+            "Распознавание логической ошибки программы"
+          ]
+        },
+        {
+          "groupId": "logical_operations",
+          "containsAny": [
+            "Определение набора значений для ложности дизъюнкции"
+          ]
+        },
+        {
+          "groupId": "programming_basics",
+          "containsAny": [
+            "Подсчёт вхождений символа в строку"
+          ]
+        },
+        {
+          "groupId": "algorithmic_tracing",
+          "containsAny": [
+            "Трассировка последовательных присваиваний в программе"
+          ]
+        },
+        {
+          "groupId": "euclidean_algorithm",
+          "containsAny": [
+            "Вычисление НОД алгоритмом Евклида"
+          ]
+        },
+        {
+          "groupId": "loop_tracing",
+          "containsAny": [
+            "Определение условия завершения цикла while"
+          ]
+        },
+        {
+          "groupId": "loop_tracing",
+          "containsAny": [
+            "Подсчёт итераций цикла range() с заданным шагом"
+          ]
+        },
+        {
+          "groupId": "condition_tracing",
+          "containsAny": [
+            "Трассировка ветвления при заданном значении переменной"
+          ]
+        },
+        {
+          "groupId": "condition_tracing",
+          "containsAny": [
+            "Определение назначения условия if"
+          ]
+        },
+        {
+          "groupId": "algorithm_structures",
+          "containsAny": [
+            "Распознавание циклической алгоритмической структуры"
+          ]
+        },
+        {
+          "groupId": "programming_basics",
+          "containsAny": [
+            "Определение назначения переменной в программе"
+          ]
+        },
+        {
+          "groupId": "logical_operations",
+          "containsAny": [
+            "Вычисление составного логического выражения"
+          ]
+        },
+        {
+          "groupId": "number_base_conversion",
+          "containsAny": [
+            "Перевод двоичного числа в десятичную систему"
+          ]
+        },
+        {
+          "groupId": "algorithmic_tracing",
+          "containsAny": [
+            "Трассировка последовательности команд исполнителя"
+          ]
+        },
+        {
+          "groupId": "raster_graphics",
+          "containsAny": [
+            "Расчёт объёма растрового изображения по глубине цвета"
+          ]
+        },
+        {
+          "groupId": "code_capacity",
+          "containsAny": [
+            "Расчёт количества кодируемых символов по длине двоичного кода"
+          ]
+        },
+        {
+          "groupId": "data_units",
+          "containsAny": [
+            "Перевод килобайтов в байты"
+          ]
+        },
+        {
+          "groupId": "fact_verification",
+          "containsAny": [
+            "Проверка достоверности факта по независимым источникам"
+          ]
+        },
+        {
+          "groupId": "algorithm_structures",
+          "containsAny": [
+            "Распознавание последовательной алгоритмической структуры"
+          ]
+        },
+        {
+          "groupId": "file_paths",
+          "containsAny": [
+            "Построение относительного пути к файлу во вложенной папке"
+          ]
+        },
+        {
+          "groupId": "presentation_design",
+          "containsAny": [
+            "Определение эффекта перехода между слайдами"
+          ]
+        },
+        {
+          "groupId": "raster_graphics",
+          "containsAny": [
+            "Расчёт информационного объёма растрового изображения"
+          ]
+        },
+        {
+          "groupId": "text_formatting",
+          "containsAny": [
+            "Определение выравнивания абзаца по ширине"
+          ]
+        },
+        {
+          "groupId": "data_units",
+          "containsAny": [
+            "Перевод байтов в биты"
+          ]
+        },
+        {
+          "groupId": "browser_navigation",
+          "containsAny": [
+            "Распознавание браузера как программы просмотра веб-страниц"
+          ]
+        },
+        {
+          "groupId": "archiving",
+          "containsAny": [
+            "Определение назначения архиватора"
+          ]
+        },
+        {
+          "groupId": "file_management",
+          "containsAny": [
+            "Определение формата изображения по расширению PNG"
+          ]
+        },
+        {
+          "groupId": "computer_architecture",
+          "containsAny": [
+            "Определение роли процессора в обработке команд и данных"
+          ]
+        },
         {
           "groupId": "raster_graphics",
           "containsAny": [
