@@ -97,12 +97,9 @@
       "topic": "Неравенства",
       "skill": "решение линейного неравенства",
       "difficulty": "medium",
-      "type": "short",
+      "type": "choice",
       "question": "Реши неравенство 2x − 3 > 5.",
       "explanation": "Прибавим 3: 2x > 8. Разделим на 2: x > 4.",
-      "acceptedAnswers": [
-        "1/2"
-      ],
       "correctText": "x > 4",
       "options": [
         "x > 4",
@@ -224,12 +221,9 @@
       "topic": "Квадратные уравнения",
       "skill": "решение квадратного уравнения",
       "difficulty": "advanced",
-      "type": "short",
+      "type": "choice",
       "question": "Какие корни имеет уравнение x² − 5x + 6 = 0?",
       "explanation": "Разложим: (x − 2)(x − 3) = 0. Поэтому x = 2 или x = 3.",
-      "acceptedAnswers": [
-        "3/8"
-      ],
       "correctText": "2 и 3",
       "options": [
         "1 и 6",
@@ -244,12 +238,9 @@
       "topic": "Рациональные выражения",
       "skill": "сокращение рационального выражения",
       "difficulty": "advanced",
-      "type": "short",
+      "type": "choice",
       "question": "Упрости выражение (x² − 9)/(x − 3), если x ≠ 3.",
       "explanation": "Числитель — разность квадратов: x² − 9 = (x − 3)(x + 3). Сокращаем общий множитель x − 3 при x ≠ 3.",
-      "acceptedAnswers": [
-        "36"
-      ],
       "correctText": "x + 3",
       "options": [
         "x − 3",
