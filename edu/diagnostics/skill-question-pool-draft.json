@@ -1,10 +1,10 @@
 {
-  "version": "0.4.0",
+  "version": "0.5.0",
   "title": "Дополнительный пул заданий для расширения покрытия навыков",
   "status": "teacher_review_draft",
   "reviewStatus": "teacher_review_draft",
   "purpose": "Отдельный резерв заданий для педагогической проверки. Не подключён к активным банкам и не участвует в диагностике из 15 вопросов.",
-  "sourceBasis": "Создан на основе аудита покрытия edu/diagnostics/SKILL_COVERAGE_REPORT.md и очереди edu/diagnostics/SKILL_GAP_BACKLOG.md. Новые формулировки разработаны как независимые задания к уже существующим группам навыков. Четвёртое пополнение основано на проверке оставшихся двухвопросных групп математики и физики по активным банкам. Пятое пополнение подготовлено по приоритетным двухвопросным группам информатики и Python из очереди покрытия. Шестое пополнение подготовлено по оставшимся двухвопросным группам HTML/CSS и Figma после сверки с вопросами всех 14 действующих банков этих направлений.",
+  "sourceBasis": "Создан на основе аудита покрытия edu/diagnostics/SKILL_COVERAGE_REPORT.md и очереди edu/diagnostics/SKILL_GAP_BACKLOG.md. Новые формулировки разработаны как независимые задания к уже существующим группам навыков. Четвёртое пополнение основано на проверке оставшихся двухвопросных групп математики и физики по активным банкам. Пятое пополнение подготовлено по приоритетным двухвопросным группам информатики и Python из очереди покрытия. Шестое пополнение подготовлено по оставшимся двухвопросным группам HTML/CSS и Figma после сверки с вопросами всех 14 действующих банков этих направлений. Седьмое пополнение: десять одиночных базовых групп HTML/CSS и Figma расширены двумя заданиями каждая после проверки действующих банков.",
   "selectionPolicy": "До экспертной проверки и отдельного решения о механизме выбора задания не включать в активные банки.",
   "questions": [
     {
@@ -1875,6 +1875,424 @@
       "correctIndex": 0,
       "correctText": "Что выбран нужный масштаб экспорта и файл имеет ожидаемые размеры",
       "explanation": "Масштаб экспорта влияет на фактическое разрешение ресурса. Перед передачей важно проверить масштаб и размеры файла относительно требований интерфейса."
+    },
+    {
+      "id": "pool-html5-padding-content-001",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 5,
+      "curriculumId": "general",
+      "topic": "CSS",
+      "skill": "Выбор CSS-свойства внутренних отступов",
+      "groupId": "css_spacing",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какое свойство CSS задаёт расстояние между содержимым элемента и его границей?",
+      "options": [
+        "margin",
+        "padding",
+        "border",
+        "gap"
+      ],
+      "correctIndex": 1,
+      "correctText": "padding",
+      "explanation": "Внутренний отступ между содержимым и границей элемента задаёт padding. Свойство margin отвечает за внешний отступ."
+    },
+    {
+      "id": "pool-html6-padding-box-002",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "CSS",
+      "skill": "Выбор CSS-свойства внутренних отступов",
+      "groupId": "css_spacing",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Какое CSS-свойство нужно изменить, чтобы увеличить пространство внутри карточки между текстом и её рамкой?",
+      "acceptedAnswers": [
+        "padding"
+      ],
+      "correctText": "padding",
+      "explanation": "Пространство внутри границы элемента регулируется свойством padding. Увеличение padding отодвигает содержимое от рамки."
+    },
+    {
+      "id": "pool-html6-box-model-calc-001",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "CSS",
+      "skill": "Интерпретация модели размеров box-sizing",
+      "groupId": "box_model",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "У элемента задано width: 200px; box-sizing: border-box; padding: 20px с каждой стороны; border: 5px с каждой стороны. Чему равна ширина области содержимого?",
+      "acceptedAnswers": [
+        "150",
+        "150px"
+      ],
+      "correctText": "150px",
+      "explanation": "При border-box заданная ширина 200px включает padding и border. Ширина содержимого: 200 − 20 − 20 − 5 − 5 = 150px."
+    },
+    {
+      "id": "pool-html7-box-model-calc-002",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 7,
+      "curriculumId": "general",
+      "topic": "CSS",
+      "skill": "Интерпретация модели размеров box-sizing",
+      "groupId": "box_model",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Элемент имеет width: 300px; box-sizing: border-box; padding: 10px с каждой стороны; border: 2px с каждой стороны. Какова ширина содержимого?",
+      "options": [
+        "300px",
+        "280px",
+        "276px",
+        "324px"
+      ],
+      "correctIndex": 2,
+      "correctText": "276px",
+      "explanation": "При border-box общая ширина равна 300px и включает внутренние отступы и границы. Ширина содержимого: 300 − 10 − 10 − 2 − 2 = 276px."
+    },
+    {
+      "id": "pool-html6-resource-path-001",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "Пути к ресурсам",
+      "skill": "Построение относительного пути к ресурсу из соседней папки",
+      "groupId": "resource_paths",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Файл страницы находится в папке site/pages/about/, а изображение logo.png — в папке site/images/. Запиши относительный путь от страницы к изображению.",
+      "acceptedAnswers": [
+        "../../images/logo.png"
+      ],
+      "correctText": "../../images/logo.png",
+      "explanation": "Из папки about нужно подняться на уровень pages (..), затем на уровень site (..), после чего перейти в images и открыть logo.png."
+    },
+    {
+      "id": "pool-html7-resource-path-002",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 7,
+      "curriculumId": "general",
+      "topic": "Пути к ресурсам",
+      "skill": "Построение относительного пути к ресурсу из соседней папки",
+      "groupId": "resource_paths",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Файл index.html находится в папке pages/, а таблица стилей main.css — в соседней папке styles/. Какой путь нужно указать в href?",
+      "options": [
+        "styles/main.css",
+        "../styles/main.css",
+        "../../styles/main.css",
+        "/pages/styles/main.css"
+      ],
+      "correctIndex": 1,
+      "correctText": "../styles/main.css",
+      "explanation": "Из папки pages нужно подняться на один уровень к общей родительской папке, а затем перейти в соседнюю папку styles."
+    },
+    {
+      "id": "pool-html6-rem-calc-001",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "CSS",
+      "skill": "Интерпретация единицы rem относительно корневого шрифта",
+      "groupId": "css_units",
+      "difficulty": "basic",
+      "type": "short",
+      "question": "Корневой размер шрифта документа равен 16px. Чему равен размер 1.5rem?",
+      "acceptedAnswers": [
+        "24",
+        "24px"
+      ],
+      "correctText": "24px",
+      "explanation": "Единица rem рассчитывается относительно корневого размера шрифта. 1,5 × 16px = 24px."
+    },
+    {
+      "id": "pool-html7-rem-calc-002",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 7,
+      "curriculumId": "general",
+      "topic": "CSS",
+      "skill": "Интерпретация единицы rem относительно корневого шрифта",
+      "groupId": "css_units",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Если размер шрифта элемента html равен 10px, чему соответствует значение 2rem?",
+      "options": [
+        "2px",
+        "10px",
+        "12px",
+        "20px"
+      ],
+      "correctIndex": 3,
+      "correctText": "20px",
+      "explanation": "Размер 1rem равен корневому размеру шрифта. При корневом размере 10px значение 2rem составляет 20px."
+    },
+    {
+      "id": "pool-html9-defer-order-001",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 9,
+      "curriculumId": "general",
+      "topic": "HTML-скрипты",
+      "skill": "Определение порядка выполнения внешнего script с defer",
+      "groupId": "script_loading",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Когда браузер выполняет внешний скрипт с атрибутом defer?",
+      "options": [
+        "Сразу при обнаружении тега, не продолжая разбор HTML",
+        "После завершения разбора HTML, до события DOMContentLoaded",
+        "Только после полной загрузки всех изображений",
+        "Каждый раз при прокрутке страницы"
+      ],
+      "correctIndex": 1,
+      "correctText": "После завершения разбора HTML, до события DOMContentLoaded",
+      "explanation": "Скрипт с defer загружается параллельно разбору HTML, но выполняется после завершения разбора документа и до DOMContentLoaded."
+    },
+    {
+      "id": "pool-html10-defer-order-002",
+      "directionId": "html-css",
+      "direction": "HTML/CSS",
+      "class": 10,
+      "curriculumId": "general",
+      "topic": "HTML-скрипты",
+      "skill": "Определение порядка выполнения внешнего script с defer",
+      "groupId": "script_loading",
+      "difficulty": "advanced",
+      "type": "short",
+      "question": "Два внешних скрипта подключены в документе по порядку, и оба имеют атрибут defer. В каком порядке они выполнятся?",
+      "acceptedAnswers": [
+        "в порядке подключения",
+        "в том же порядке, в котором подключены",
+        "по порядку в html"
+      ],
+      "correctText": "В порядке подключения",
+      "explanation": "Внешние скрипты с defer выполняются после разбора HTML и сохраняют порядок, в котором они указаны в документе."
+    },
+    {
+      "id": "pool-figma5-move-shortcut-001",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 5,
+      "curriculumId": "general",
+      "topic": "Интерфейс Figma",
+      "skill": "Использование Move для выбора и перемещения объектов",
+      "groupId": "object_navigation",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какой инструмент в Figma используют, чтобы выбрать объект на холсте и переместить его?",
+      "options": [
+        "Move",
+        "Pen",
+        "Text",
+        "Hand"
+      ],
+      "correctIndex": 0,
+      "correctText": "Move",
+      "explanation": "Инструмент Move предназначен для выбора объектов на холсте и их перемещения."
+    },
+    {
+      "id": "pool-figma6-move-layer-002",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "Интерфейс Figma",
+      "skill": "Использование Move для выбора и перемещения объектов",
+      "groupId": "object_navigation",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Какую клавишу обычно используют для быстрого включения инструмента Move в Figma?",
+      "acceptedAnswers": [
+        "v",
+        "V"
+      ],
+      "correctText": "V",
+      "explanation": "В Figma клавиша V — стандартное сочетание для выбора инструмента Move."
+    },
+    {
+      "id": "pool-figma5-frame-001",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 5,
+      "curriculumId": "general",
+      "topic": "Фреймы",
+      "skill": "Понимание назначения Frame как контейнера",
+      "groupId": "frame_structure",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Для чего используют Frame в Figma при создании экрана приложения?",
+      "options": [
+        "Чтобы создать контейнер для элементов экрана",
+        "Чтобы автоматически удалить все слои",
+        "Чтобы заменить все цвета документа",
+        "Чтобы экспортировать файл в PDF"
+      ],
+      "correctIndex": 0,
+      "correctText": "Чтобы создать контейнер для элементов экрана",
+      "explanation": "Frame служит контейнером для элементов макета и помогает организовать структуру экрана."
+    },
+    {
+      "id": "pool-figma6-frame-nesting-002",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "Фреймы",
+      "skill": "Понимание назначения Frame как контейнера",
+      "groupId": "frame_structure",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Внутри фрейма мобильного экрана размещены заголовок, изображение и кнопка. Как называется отношение этих объектов к фрейму?",
+      "options": [
+        "Они являются дочерними слоями фрейма",
+        "Они автоматически становятся отдельными файлами",
+        "Они заменяют сам фрейм",
+        "Они не могут перемещаться вместе с фреймом"
+      ],
+      "correctIndex": 0,
+      "correctText": "Они являются дочерними слоями фрейма",
+      "explanation": "Элементы, помещённые внутрь Frame, становятся его дочерними слоями и образуют иерархию документа."
+    },
+    {
+      "id": "pool-figma5-rectangle-001",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 5,
+      "curriculumId": "general",
+      "topic": "Фигуры",
+      "skill": "Выбор инструмента Rectangle для создания фигуры",
+      "groupId": "shape_tools",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какой инструмент нужно выбрать, чтобы нарисовать прямоугольник на холсте Figma?",
+      "options": [
+        "Rectangle",
+        "Text",
+        "Move",
+        "Pen"
+      ],
+      "correctIndex": 0,
+      "correctText": "Rectangle",
+      "explanation": "Инструмент Rectangle создаёт прямоугольные фигуры на холсте."
+    },
+    {
+      "id": "pool-figma6-rectangle-shortcut-002",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "Фигуры",
+      "skill": "Выбор инструмента Rectangle для создания фигуры",
+      "groupId": "shape_tools",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Какую клавишу нажать, чтобы быстро выбрать инструмент Rectangle в Figma?",
+      "acceptedAnswers": [
+        "r",
+        "R"
+      ],
+      "correctText": "R",
+      "explanation": "Стандартное сочетание клавиш для инструмента Rectangle в Figma — R."
+    },
+    {
+      "id": "pool-figma5-text-001",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 5,
+      "curriculumId": "general",
+      "topic": "Текст",
+      "skill": "Добавление текстового объекта инструментом Text",
+      "groupId": "text_tool",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какой инструмент используют для добавления надписи в макет Figma?",
+      "options": [
+        "Text",
+        "Move",
+        "Frame",
+        "Rectangle"
+      ],
+      "correctIndex": 0,
+      "correctText": "Text",
+      "explanation": "Инструмент Text создаёт текстовые объекты, которые можно размещать и редактировать на холсте."
+    },
+    {
+      "id": "pool-figma6-text-area-002",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "Текст",
+      "skill": "Добавление текстового объекта инструментом Text",
+      "groupId": "text_tool",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Что произойдёт, если после выбора инструмента Text протянуть указатель по холсту, а не просто щёлкнуть в одной точке?",
+      "options": [
+        "Создастся текстовая область заданной ширины",
+        "Создастся прямоугольник без текста",
+        "Весь текст документа будет удалён",
+        "Автоматически включится Auto Layout"
+      ],
+      "correctIndex": 0,
+      "correctText": "Создастся текстовая область заданной ширины",
+      "explanation": "Щелчок инструментом Text создаёт текстовый объект, а протягивание по холсту позволяет задать область для текста с переносами строк."
+    },
+    {
+      "id": "pool-figma5-fill-001",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 5,
+      "curriculumId": "general",
+      "topic": "Цвет",
+      "skill": "Определение содержимого параметра Fill",
+      "groupId": "fill_properties",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Что задаёт параметр Fill у прямоугольника в Figma?",
+      "options": [
+        "Цвет или другое содержимое заливки внутри фигуры",
+        "Толщину внешней обводки",
+        "Положение слоя в списке",
+        "Скорость анимации прототипа"
+      ],
+      "correctIndex": 0,
+      "correctText": "Цвет или другое содержимое заливки внутри фигуры",
+      "explanation": "Fill отвечает за заливку объекта: например, сплошной цвет, градиент или изображение. Обводка настраивается отдельно."
+    },
+    {
+      "id": "pool-figma6-fill-stroke-002",
+      "directionId": "figma",
+      "direction": "Figma",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "Цвет",
+      "skill": "Определение содержимого параметра Fill",
+      "groupId": "fill_properties",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "У прямоугольника нужно изменить внутренний цвет, не меняя линию по краю. Какой параметр следует изменить?",
+      "options": [
+        "Fill",
+        "Stroke",
+        "Opacity",
+        "Corner radius"
+      ],
+      "correctIndex": 0,
+      "correctText": "Fill",
+      "explanation": "Fill задаёт внутреннюю заливку фигуры, а Stroke отвечает за её обводку по краю."
     }
   ]
 }
