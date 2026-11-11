@@ -163,7 +163,7 @@ img{display:block;max-width:100%}
 .package-count{font-size:9px;color:rgba(244,242,238,.65)}
 .package-option strong{font:500 21px var(--serif);white-space:nowrap}
 .package-option span:last-child{font-size:9px;color:rgba(244,242,238,.65)}
-.pricing-footnote{margin:18px 0 0;color:rgba(244,242,238,.58);font-size:9px;position:relative;z-index:1}
+.pricing-footnote{margin:18px 0 0;color:rgba(244,242,238,.58);font-size:9px;position:relative;z-index:1}\n.pricing-hint{font-size:10px;margin:20px 0 0;color:var(--muted)}\n.trial-sub{color:rgba(244,242,238,.55)}\n.pricing-contact{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-top:28px}\n.pricing-contact p{margin:0}\n.library-note{font-size:10px;color:rgba(244,242,238,.58)}
 /* Library */
 .library{background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
 .library:before,.library:after{content:"";position:absolute;border:1px solid rgba(244,242,238,.10);border-radius:50%;pointer-events:none}
