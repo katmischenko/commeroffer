@@ -1,0 +1,419 @@
+{
+  "version": "0.1.0",
+  "status": "teacher_review_draft",
+  "title": "Черновая карта проверяемых действий",
+  "policy": "Сопоставление сохраняет исходный question.skill. Широкие метки вроде «понимание и применение» и «применение информатики» не дают достаточной точности для индивидуальной аналитики; их нельзя интерпретировать как отдельный измеренный навык.",
+  "matching": "first_matching_rule_case_insensitive_substring",
+  "directions": {
+    "math": {
+      "label": "Математика",
+      "groups": [
+        [
+          "conceptual_understanding",
+          "Понимание понятий и правил"
+        ],
+        [
+          "calculation",
+          "Вычисление и получение численного результата"
+        ],
+        [
+          "application",
+          "Применение математических методов"
+        ],
+        [
+          "interpretation",
+          "Интерпретация представлений и данных"
+        ],
+        [
+          "reasoning",
+          "Анализ и математическое рассуждение"
+        ],
+        [
+          "integrated_generic",
+          "Общая метка: понимание и применение"
+        ]
+      ],
+      "rules": [
+        {
+          "groupId": "integrated_generic",
+          "containsAny": [
+            "понимание и применение"
+          ]
+        },
+        {
+          "groupId": "calculation",
+          "containsAny": [
+            "вычислен",
+            "нахождение",
+            "расчёт",
+            "сокращение"
+          ]
+        },
+        {
+          "groupId": "interpretation",
+          "containsAny": [
+            "интерпретац",
+            "медиан"
+          ]
+        },
+        {
+          "groupId": "reasoning",
+          "containsAny": [
+            "анализ",
+            "разложение"
+          ]
+        },
+        {
+          "groupId": "application",
+          "containsAny": [
+            "применение",
+            "решение"
+          ]
+        },
+        {
+          "groupId": "conceptual_understanding",
+          "containsAny": [
+            "понимание"
+          ]
+        }
+      ]
+    },
+    "physics": {
+      "label": "Физика",
+      "groups": [
+        [
+          "conceptual_understanding",
+          "Понимание физических явлений и законов"
+        ],
+        [
+          "calculation",
+          "Расчёт физических величин"
+        ],
+        [
+          "application",
+          "Применение законов, формул и моделей"
+        ],
+        [
+          "interpretation",
+          "Чтение и интерпретация графиков"
+        ],
+        [
+          "reasoning",
+          "Сравнение и анализ физических ситуаций"
+        ],
+        [
+          "integrated_generic",
+          "Общая метка: понимание и применение"
+        ]
+      ],
+      "rules": [
+        {
+          "groupId": "integrated_generic",
+          "containsAny": [
+            "понимание и применение"
+          ]
+        },
+        {
+          "groupId": "interpretation",
+          "containsAny": [
+            "интерпретация графика",
+            "чтение графика"
+          ]
+        },
+        {
+          "groupId": "calculation",
+          "containsAny": [
+            "расчёт",
+            "вычисление"
+          ]
+        },
+        {
+          "groupId": "reasoning",
+          "containsAny": [
+            "различение",
+            "сравнение",
+            "анализ"
+          ]
+        },
+        {
+          "groupId": "application",
+          "containsAny": [
+            "применение",
+            "решение задач"
+          ]
+        },
+        {
+          "groupId": "conceptual_understanding",
+          "containsAny": [
+            "понимание"
+          ]
+        }
+      ]
+    },
+    "informatics": {
+      "label": "Информатика",
+      "groups": [
+        [
+          "conceptual_understanding",
+          "Понимание терминов, принципов и алгоритмов"
+        ],
+        [
+          "calculation",
+          "Вычисление и точность"
+        ],
+        [
+          "application",
+          "Применение алгоритмов и способов решения"
+        ],
+        [
+          "interpretation",
+          "Чтение и интерпретация данных"
+        ],
+        [
+          "algorithmic_reasoning",
+          "Алгоритмический анализ и трассировка"
+        ],
+        [
+          "reasoning_selection",
+          "Анализ ситуации и выбор способа действия"
+        ],
+        [
+          "digital_tool_use",
+          "Применение цифровых инструментов"
+        ],
+        [
+          "integrated_generic",
+          "Общая метка: понимание и применение"
+        ]
+      ],
+      "rules": [
+        {
+          "groupId": "integrated_generic",
+          "containsAny": [
+            "понимание и применение"
+          ]
+        },
+        {
+          "groupId": "digital_tool_use",
+          "containsAny": [
+            "применение цифрового инструмента",
+            "выбор инструмента"
+          ]
+        },
+        {
+          "groupId": "calculation",
+          "containsAny": [
+            "вычислен",
+            "расчёт"
+          ]
+        },
+        {
+          "groupId": "interpretation",
+          "containsAny": [
+            "чтение и интерпретация",
+            "интерпретация данных"
+          ]
+        },
+        {
+          "groupId": "algorithmic_reasoning",
+          "containsAny": [
+            "анализ последовательности команд",
+            "анализ данных и алгоритмов",
+            "понимание алгоритма"
+          ]
+        },
+        {
+          "groupId": "reasoning_selection",
+          "containsAny": [
+            "анализ ситуации",
+            "анализ и сравнение",
+            "анализ и выбор",
+            "классификация"
+          ]
+        },
+        {
+          "groupId": "application",
+          "containsAny": [
+            "применение",
+            "решение"
+          ]
+        },
+        {
+          "groupId": "conceptual_understanding",
+          "containsAny": [
+            "понимание"
+          ]
+        }
+      ]
+    },
+    "python": {
+      "label": "Python",
+      "groups": [
+        [
+          "conceptual_understanding",
+          "Понимание конструкций и принципов языка"
+        ],
+        [
+          "calculation",
+          "Вычисление и преобразование данных"
+        ],
+        [
+          "application",
+          "Применение конструкций Python"
+        ],
+        [
+          "algorithmic_reasoning",
+          "Алгоритмическое мышление"
+        ],
+        [
+          "digital_tool_use",
+          "Практическое использование Python"
+        ],
+        [
+          "integrated_generic",
+          "Общая метка: понимание и применение"
+        ]
+      ],
+      "rules": [
+        {
+          "groupId": "integrated_generic",
+          "containsAny": [
+            "понимание и применение"
+          ]
+        },
+        {
+          "groupId": "digital_tool_use",
+          "containsAny": [
+            "применение python"
+          ]
+        },
+        {
+          "groupId": "calculation",
+          "containsAny": [
+            "вычисление"
+          ]
+        },
+        {
+          "groupId": "algorithmic_reasoning",
+          "containsAny": [
+            "алгоритм",
+            "рекурс",
+            "сложност"
+          ]
+        },
+        {
+          "groupId": "application",
+          "containsAny": [
+            "применение"
+          ]
+        },
+        {
+          "groupId": "conceptual_understanding",
+          "containsAny": [
+            "понимание"
+          ]
+        }
+      ]
+    },
+    "html-css": {
+      "label": "HTML/CSS",
+      "groups": [
+        [
+          "conceptual_understanding",
+          "Понимание веб-стандартов и принципов"
+        ],
+        [
+          "application",
+          "Применение HTML и CSS"
+        ],
+        [
+          "digital_tool_use",
+          "Практическая работа с HTML/CSS"
+        ],
+        [
+          "integrated_generic",
+          "Общая метка: понимание и применение"
+        ]
+      ],
+      "rules": [
+        {
+          "groupId": "integrated_generic",
+          "containsAny": [
+            "понимание и применение"
+          ]
+        },
+        {
+          "groupId": "digital_tool_use",
+          "containsAny": [
+            "применение html/css"
+          ]
+        },
+        {
+          "groupId": "application",
+          "containsAny": [
+            "применение"
+          ]
+        },
+        {
+          "groupId": "conceptual_understanding",
+          "containsAny": [
+            "понимание"
+          ]
+        }
+      ]
+    },
+    "figma": {
+      "label": "Figma",
+      "groups": [
+        [
+          "conceptual_understanding",
+          "Понимание интерфейса и принципов дизайна"
+        ],
+        [
+          "application",
+          "Применение функций и инструментов Figma"
+        ],
+        [
+          "digital_tool_use",
+          "Практическая работа в Figma"
+        ],
+        [
+          "integrated_generic",
+          "Общая метка: понимание и применение"
+        ]
+      ],
+      "rules": [
+        {
+          "groupId": "integrated_generic",
+          "containsAny": [
+            "понимание и применение"
+          ]
+        },
+        {
+          "groupId": "digital_tool_use",
+          "containsAny": [
+            "применение figma"
+          ]
+        },
+        {
+          "groupId": "application",
+          "containsAny": [
+            "применение"
+          ]
+        },
+        {
+          "groupId": "conceptual_understanding",
+          "containsAny": [
+            "понимание"
+          ]
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Карта нормализует только верхний уровень проверяемого действия, но не доказывает, что конкретное задание действительно измеряет заявленный навык.",
+    "Смешанные и общие метки должны быть заменены на более конкретные при педагогической переработке вопросов.",
+    "Пока не использовать skill-группы для оценки сильных и слабых навыков ученика.",
+    "Для полноценной аналитики каждое действие должно проверяться несколькими независимыми заданиями разного формата и сложности."
+  ]
+}
