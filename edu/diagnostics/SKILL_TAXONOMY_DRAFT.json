@@ -640,9 +640,53 @@
         [
           "oscillations_waves",
           "Колебания и механические волны"
+        ],
+        [
+          "fluid_pressure_buoyancy",
+          "Выталкивающая сила и свойства жидкости"
+        ],
+        [
+          "electromagnetic_induction",
+          "Электромагнитная индукция"
         ]
       ],
       "rules": [
+        {
+          "groupId": "electromagnetic_induction",
+          "containsAny": [
+            "Определение условий возникновения электромагнитной индукции"
+          ]
+        },
+        {
+          "groupId": "oscillations_waves",
+          "containsAny": [
+            "Расчёт скорости распространения звуковой волны"
+          ]
+        },
+        {
+          "groupId": "oscillations_waves",
+          "containsAny": [
+            "Расчёт частоты механических колебаний"
+          ]
+        },
+        {
+          "groupId": "kinematics",
+          "containsAny": [
+            "Определение средней векторной скорости по перемещению"
+          ]
+        },
+        {
+          "groupId": "circuit_calculations",
+          "containsAny": [
+            "Расчёт общего тока в параллельной цепи одинаковых резисторов"
+          ]
+        },
+        {
+          "groupId": "fluid_pressure_buoyancy",
+          "containsAny": [
+            "Определение факторов, влияющих на силу Архимеда"
+          ]
+        },
         {
           "groupId": "electric_power",
           "containsAny": [
