@@ -685,6 +685,87 @@
     .pricing-bottom-note p{font-size:14.5px}
   }
 
+
+  /* ---------- компактные развороты: один раздел на экран ---------- */
+  @media (min-width: 1000px) and (min-height: 780px) {
+    main > section {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: 88px 0 34px;
+    }
+    main > section > .wrap { width: 100%; }
+    main > section .sec-head { margin-bottom: 28px; }
+
+    #about .about-grid { gap: 42px; }
+    #about .about-text .lead { margin-bottom: 18px; }
+    #about .about-text p:not(.lead):not(.margin-note) {
+      margin-bottom: 12px;
+      line-height: 1.62;
+    }
+    #about .margin-note { margin: 5px 0 10px; }
+    #about .photo-frame { max-width: 390px; margin: 0 auto; }
+    #about .photo-img { max-height: 430px; }
+
+    #subjects .notes { gap: 16px 20px; }
+    #subjects .note { padding: 23px 25px 20px; }
+    #subjects .note h3 { margin: 6px 0; }
+    #subjects .note ul { margin-top: 10px; }
+    #subjects .note li { padding: 5px 0; }
+    #subjects .note .tags { margin-top: 12px; }
+    #subjects .route-note { margin-top: 20px; padding: 18px 24px; }
+
+    #format .check { padding: 17px 8px; gap: 20px; }
+    #format .check p { margin-top: 5px; line-height: 1.58; }
+
+    #pricing .sec-head { margin-bottom: 20px; }
+    #pricing .pricing-panel { padding: 23px 28px; }
+    #pricing .pricing-topline { margin-bottom: 15px; }
+    #pricing .pricing-result { margin-top: 16px; }
+    #pricing .single-price,
+    #pricing .trial-price { padding: 15px 20px; }
+    #pricing .package-heading { margin: 18px 0 10px; }
+    #pricing .package-option { padding: 13px 16px; }
+    #pricing .pricing-footnote { margin-top: 9px; }
+    #pricing .pricing-bottom { margin-top: 16px; padding: 15px 20px; }
+
+    #results .sec-head { margin-bottom: 22px; }
+    #results .pins { gap: 18px 22px; }
+    #results .pin { padding: 21px; }
+    #results .pin .who { margin-top: 12px; }
+
+    #faq .sec-head { margin-bottom: 18px; }
+    #faq .faq-q { padding: 15px 4px; }
+    #faq .faq-a p { padding-bottom: 15px; }
+
+    main > section:has(.edu) { padding-top: 76px; padding-bottom: 28px; }
+    .edu { padding: 30px 38px; }
+    .edu-head { margin-bottom: 20px; }
+    .edu h2 { margin: 10px 0; }
+    .edu-grid { gap: 10px; margin-bottom: 18px; }
+    .edu-item { min-height: 0; padding: 14px 17px; }
+    .edu-item .edu-num { margin-bottom: 3px; }
+    .edu-bottom { padding-top: 16px; }
+
+    .cta-final { padding: 70px 0; }
+  }
+
+  @media (min-width: 1000px) and (max-height: 779px) {
+    main > section { padding-top: 76px; padding-bottom: 28px; }
+    main > section .sec-head { margin-bottom: 22px; }
+    #about .about-text p:not(.lead):not(.margin-note) { margin-bottom: 9px; line-height: 1.55; }
+    #subjects .note { padding: 19px 22px 17px; }
+    #subjects .note li { padding: 4px 0; }
+    #subjects .route-note { margin-top: 14px; padding: 14px 20px; }
+    #format .check { padding: 13px 8px; }
+    #pricing .pricing-panel { padding: 18px 24px; }
+    #pricing .package-heading { margin: 13px 0 8px; }
+    #pricing .package-option { padding: 10px 14px; }
+    #results .pin { padding: 17px; }
+    #faq .faq-q { padding: 12px 4px; }
+    .edu { padding: 24px 30px; }
+  }
+
 </style>
 </head>
 <body>
