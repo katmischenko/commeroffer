@@ -17,10 +17,6 @@
           "Вычисление и получение численного результата"
         ],
         [
-          "application",
-          "Применение математических методов"
-        ],
-        [
           "interpretation",
           "Интерпретация представлений и данных"
         ],
@@ -110,6 +106,12 @@
         ]
       ],
       "rules": [
+        {
+          "groupId": "proportional_reasoning",
+          "containsAny": [
+            "Решение задачи на отношение и пропорциональное увеличение"
+          ]
+        },
         {
           "groupId": "equations_inequalities",
           "containsAny": [
@@ -521,13 +523,6 @@
           "containsAny": [
             "анализ",
             "разложение"
-          ]
-        },
-        {
-          "groupId": "application",
-          "containsAny": [
-            "применение",
-            "решение"
           ]
         },
         {
