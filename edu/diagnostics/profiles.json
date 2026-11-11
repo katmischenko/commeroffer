@@ -7,11 +7,6 @@
     "medium": 7,
     "advanced": 3
   },
-  "experienceRequiredFor": [
-    "python",
-    "html-css",
-    "figma"
-  ],
   "directions": [
     {
       "id": "informatics",
@@ -57,8 +52,7 @@
         9,
         10,
         11
-      ],
-      "experienceRequired": true
+      ]
     },
     {
       "id": "html-css",
@@ -71,8 +65,7 @@
         9,
         10,
         11
-      ],
-      "experienceRequired": true
+      ]
     },
     {
       "id": "figma",
@@ -85,8 +78,7 @@
         9,
         10,
         11
-      ],
-      "experienceRequired": true
+      ]
     }
   ],
   "profiles": [
@@ -600,5 +592,7 @@
       "bankId": "informatics-11-ru-2026-2027-advanced",
       "reviewStatus": "teacher_review_draft"
     }
-  ]
+  ],
+  "experienceSelectionImplemented": false,
+  "experienceSelectionNote": "Уровень опыта для Python, HTML/CSS и Figma не запрашивается формой и не влияет на подбор заданий в текущей версии."
 }
