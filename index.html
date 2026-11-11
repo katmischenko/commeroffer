@@ -7,7 +7,7 @@
 <meta name="description" content="Информатика, математика, физика и программирование онлайн, 1:1. Открытая тетрадь репетитора: система, практика и результат без зубрёжки.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
     --paper:#141416;
@@ -1464,83 +1464,143 @@ footer{border-color:var(--line)!important}
 <link rel="stylesheet" href="mischenko-redesign.css?v=20261111-4">\n
 <style id="mischenko-editorial-final">
 :root{
- --me-black:#111014!important;--me-ivory:#F4F1EC!important;--me-red:#A9232C!important;
- --me-graphite:#29252D!important;--me-stone:#D9D0C8!important;--me-wine:#7C3449!important;
- --paper:#F4F1EC!important;--paper-2:#E8E1DA!important;--ink:#211e22!important;
- --muted:#70686c!important;--faint:#8b8186!important;--marker:#A9232C!important;
- --marker-soft:rgba(169,35,44,.12)!important;--pen:#7C3449!important;
- --hand:"Playfair Display",Georgia,serif!important;--body:"DM Sans",Arial,sans-serif!important;
- --r:3px!important
+ --me-paper:#f4f2ee;--me-ink:#1a1a1a;--me-muted:#666;--me-red:#6b0f18;
+ --me-dark:#121212;--me-serif:'Playfair Display',Georgia,serif;--me-sans:'Inter',Arial,sans-serif;
+ --paper:#f4f2ee!important;--paper-2:#e8e4db!important;--ink:#1a1a1a!important;
+ --muted:#666!important;--faint:#888!important;--marker:#6b0f18!important;
+ --marker-soft:rgba(107,15,24,.12)!important;--pen:#6b0f18!important;
+ --hand:'Playfair Display',Georgia,serif!important;--body:'Inter',Arial,sans-serif!important;
+ --line:rgba(26,26,26,.12)!important;--surface:#fff!important;--surface-raised:#f7f5f1!important;
 }
-html{scroll-padding-top:78px!important}
-body,body.editorial-home{background:#F4F1EC!important;background-image:linear-gradient(rgba(41,37,45,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(41,37,45,.035) 1px,transparent 1px)!important;background-size:72px 72px!important;color:#211e22!important;font-family:"DM Sans",Arial,sans-serif!important}
-header{background:rgba(244,241,236,.94)!important;border-bottom:1px solid rgba(41,37,45,.16)!important;backdrop-filter:blur(18px)!important}
-.logo,.logo .hand{color:#111014!important}.logo .hand{font-family:"Playfair Display",Georgia,serif!important}
-.nav-note{color:#70686c!important}.nav-note i{color:#A9232C!important}
-.nav-links a{color:#625b60!important}.nav-links a:hover{color:#A9232C!important}
-.nav-cta,.btn-marker,.btn-pen,.mobile-menu-links .menu-contact a{background:#A9232C!important;color:#fff!important;border:1px solid #A9232C!important;border-radius:2px!important;box-shadow:none!important}
-.btn,.btn-ghost{border-radius:2px!important}.btn-ghost{color:#111014!important;border-color:rgba(17,16,20,.3)!important}
-h1,h2,h3,.sec-title,.hero-title{font-family:"Playfair Display",Georgia,serif!important;font-weight:500!important;letter-spacing:-.045em!important;color:#111014!important}
-h1,.hero h1{font-size:clamp(56px,7.2vw,104px)!important;line-height:.96!important;max-width:10ch!important}
-.sec-title{font-size:clamp(40px,5vw,68px)!important;line-height:1.02!important}
-.hand,.hero-hand,.hero-direction,.hand-idx,.hand-top{font-family:"Playfair Display",Georgia,serif!important;font-style:italic!important;color:#7C3449!important}
-.hl,.hl-o,.u{background:none!important;box-shadow:none!important;color:#A9232C!important;border-bottom:1px solid currentColor!important}
-section{scroll-margin-top:78px!important;padding:clamp(72px,8vw,116px) 0!important}
-.sec-sub{color:#70686c!important}
-.hero{min-height:calc(100svh - 76px)!important;padding:clamp(118px,13vh,154px) 0 56px!important;grid-template-columns:minmax(0,1.02fr) minmax(320px,.98fr)!important;grid-template-areas:"copy art" "stats stats"!important;column-gap:clamp(28px,5vw,76px)!important}
-.hero:before{background:radial-gradient(circle at 36% 30%,#f4f1ec 0 8%,#d9d0c8 18%,#7c3449 43%,#29252d 66%,#111014 72%)!important;box-shadow:inset -28px -32px 72px rgba(17,16,20,.36),0 36px 90px rgba(41,37,45,.14)!important}
-.hero:after{border-color:rgba(124,52,73,.38)!important;box-shadow:0 0 0 26px rgba(124,52,73,.03),0 0 0 54px rgba(41,37,45,.025)!important}
-.hero-meta{border:0!important;border-left:2px solid #A9232C!important;border-radius:0!important;color:#746b70!important}
-.hero-meta i{background:#A9232C!important}
-.hero-sub{color:#625b60!important}.hero-sub b{color:#111014!important}
-.hero-hand,.hero-direction{color:#7C3449!important}
-.hero-direction-arrow{color:#A9232C!important}
-.hero-art:before,.idea-orbit{border-color:rgba(124,52,73,.25)!important;box-shadow:0 0 0 26px rgba(124,52,73,.035),0 0 0 54px rgba(41,37,45,.025)!important}
-.idea-panel{background:linear-gradient(145deg,#29252d,#111014)!important;border:1px solid rgba(244,241,236,.2)!important;border-radius:3px!important}
-.idea-panel-label,.idea-question em,.idea-bottom b,.math-chip b,.graph-chip span{color:#d98b91!important}
-.code-window{background:#111014!important;border-color:rgba(244,241,236,.15)!important;border-radius:3px!important}
-.code-top{background:#29252d!important}.code-lines b{color:#d98b91!important}.code-lines .indent2{color:#d9d0c8!important}
-.idea-chip{background:#F4F1EC!important;color:#29252D!important;border:1px solid rgba(41,37,45,.15)!important;border-radius:3px!important}
-.idea-chip small{color:#776d72!important}.math-chip b{color:#A9232C!important}.graph-chip span{color:#7C3449!important}
-.hero-note{border-color:rgba(41,37,45,.16)!important}.hstat{border-color:rgba(41,37,45,.16)!important}
-.hstat b{font-family:"Playfair Display",Georgia,serif!important;color:#111014!important;font-weight:500!important}.hstat b em{color:#A9232C!important}.hstat span{color:#786f73!important}
-#about{background:#F4F1EC!important}#about .margin-note{color:#7C3449!important}
-.about-text p{color:#5f585d!important}.about-text .lead{font-family:"Playfair Display",Georgia,serif!important;color:#111014!important}
-.photo-frame{background:#D9D0C8!important;border:1px solid rgba(41,37,45,.16)!important;box-shadow:16px 16px 0 rgba(124,52,73,.11)!important}
-#subjects{background:#111014!important;color:#F4F1EC!important}
-#subjects .sec-title,#subjects h3{color:#F4F1EC!important}
-#subjects .sec-sub,#subjects p,#subjects li{color:#c3b9bd!important}
-#subjects .sec-index,#subjects .note .idx,#subjects .note .tag{color:#d99aa2!important}
-#subjects .route-note{background:#29252D!important;border:1px solid rgba(244,241,236,.14)!important}
-#subjects .note{background:#1b191e!important;border:1px solid rgba(244,241,236,.14)!important}
-#subjects .note h3{color:#F4F1EC!important}#subjects .note .tag{border-color:rgba(244,241,236,.2)!important}
-#format{background:#E8E1DA!important}#format .check{border-color:rgba(41,37,45,.16)!important}
-#format .check .box{background:#111014!important;color:#F4F1EC!important;border-radius:0!important}
-#format h4{font-family:"Playfair Display",Georgia,serif!important;color:#111014!important}
-#format .check p,#format .check li{color:#625b60!important}
-#pricing{background:#F4F1EC!important}#pricing .pricing-settings,#pricing .package-option{background:#E8E1DA!important;border:1px solid rgba(41,37,45,.16)!important;box-shadow:none!important;border-radius:2px!important}
-#pricing .pricing-summary{background:#111014!important;color:#F4F1EC!important;border-radius:2px!important}
-#pricing .pricing-summary strong,#pricing .pricing-summary span{color:#F4F1EC!important}
-#pricing .package-option.featured{background:#29252D!important;border-color:#7C3449!important;color:#F4F1EC!important}
-#pricing .package-option.featured *{color:#F4F1EC!important}
-#results{background:#E8E1DA!important}#results .pin{background:#F4F1EC!important;border:1px solid rgba(41,37,45,.16)!important;box-shadow:none!important}
-#results .q{font-family:"Playfair Display",Georgia,serif!important;color:#111014!important}#results .who{color:#7C3449!important}
-.resources-inline{background:#111014!important}
-.library-feature{background:#29252D!important;border:1px solid rgba(244,241,236,.14)!important}
-.library-feature h2,.library-feature p{color:#F4F1EC!important}
-.library-topics-card{background:#F4F1EC!important}.library-open-card{background:#A9232C!important;color:#fff!important}
-#faq{background:#F4F1EC!important}.faq-item{background:transparent!important;border:0!important;border-bottom:1px solid rgba(41,37,45,.16)!important}
-.faq-q{font-family:"Playfair Display",Georgia,serif!important;color:#111014!important}
-.cta-final{background:#29252D!important;color:#F4F1EC!important;border-radius:2px!important;position:relative!important}
-.cta-final h2,.cta-final p{color:#F4F1EC!important}
-footer{background:#111014!important;color:#F4F1EC!important;border-top:1px solid rgba(244,241,236,.15)!important}
-footer a,footer small,footer .hand{color:#D9D0C8!important}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body.editorial-home{background:var(--me-paper)!important;background-image:none!important;color:var(--me-ink)!important;font-family:var(--me-sans)!important;line-height:1.6}
+header{position:absolute!important;top:0!important;background:transparent!important;border:0!important;backdrop-filter:none!important}
+.nav{height:auto!important;padding:28px 4%!important;max-width:none!important;gap:24px!important}
+.nav-identity{gap:0!important}
+.logo .hand{font:500 25px var(--me-serif)!important;color:var(--me-ink)!important}
+.nav-note{display:none!important}
+.nav-links{display:flex!important;justify-content:center!important;gap:6px!important;background:rgba(255,255,255,.8)!important;backdrop-filter:blur(12px);border:1px solid rgba(0,0,0,.06)!important;border-radius:50px!important;padding:5px!important}
+.nav-links a{display:block;padding:10px 15px!important;border-radius:50px!important;color:#666!important;font-size:13px!important}
+.nav-links a:hover{background:#1a1a1a!important;color:#f4f2ee!important}
+.nav-cta{background:#1a1a1a!important;color:#f4f2ee!important;border-radius:50px!important;padding:12px 19px!important}
+.mobile-menu{display:none!important}
+.template-hero{position:relative;display:flex;align-items:flex-start;gap:28px;min-height:710px;padding:150px 4% 70px;overflow:hidden}
+.template-sidebar{display:flex;flex-direction:column;gap:10px;background:#fff;padding:10px;border-radius:28px;box-shadow:0 10px 30px rgba(0,0,0,.05);z-index:4}
+.template-sidebar a{width:40px;height:40px;display:grid;place-items:center;border-radius:50%;color:#666;font-size:19px}
+.template-sidebar a:hover,.template-sidebar a.active{background:#1a1a1a;color:#fff}
+.template-hero-content{flex:1;position:relative;z-index:3;padding-top:26px;max-width:610px}
+.template-eyebrow{display:flex;align-items:center;gap:10px;text-transform:uppercase;letter-spacing:2px;font-size:11px;color:#666;margin-bottom:22px}
+.template-eyebrow:before{content:"";width:30px;height:1px;background:#1a1a1a}
+.template-hero h1{font:400 clamp(54px,6.2vw,88px)/1.03 var(--me-serif)!important;letter-spacing:-2px!important;max-width:720px!important;margin:0 0 22px}
+.template-hero h1 em{color:var(--me-red);font-style:italic}
+.template-hero-content>p{max-width:460px;font-size:17px;line-height:1.75;color:#666;margin:0 0 30px}
+.template-hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.template-btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 23px;border-radius:50px;font-size:13px;font-weight:600;transition:.25s}
+.template-btn-dark{background:#1a1a1a;color:#f4f2ee}
+.template-btn-dark:hover{background:#6b0f18;color:#fff;transform:translateY(-2px)}
+.template-btn-light{background:#fff;color:#1a1a1a;border:1px solid rgba(0,0,0,.1)}
+.template-btn-light:hover{background:#e8e4db}
+.template-hero-visual{position:absolute;right:4%;top:90px;width:52%;height:560px;z-index:1;display:flex;justify-content:center;align-items:center}
+.template-hero-visual:before{content:"";position:absolute;inset:5% 0 5% 12%;border:1px solid rgba(107,15,24,.22);border-radius:48% 48% 4px 4px;pointer-events:none}
+.template-hero-visual img{width:88%;height:88%;object-fit:cover;border-radius:24px;mask-image:linear-gradient(to left,#000 55%,transparent 100%);-webkit-mask-image:linear-gradient(to left,#000 55%,transparent 100%);filter:saturate(.72)}
+.template-float{position:absolute;background:rgba(255,255,255,.78);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.9);padding:17px 20px;border-radius:18px;box-shadow:0 20px 40px rgba(0,0,0,.1);z-index:3;animation:templateFloat 6s ease-in-out infinite}
+.template-float h4{font:600 13px var(--me-sans);color:var(--me-red);margin:0 0 5px}
+.template-float p{font-size:11px;line-height:1.55;color:#666;margin:0}
+.template-float-one{top:30%;right:23%}
+.template-float-two{top:58%;right:2%;animation-delay:2s}
+.template-image-note{position:absolute;bottom:6%;right:11%;font:italic 15px var(--me-serif);color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.5);z-index:3}
+@keyframes templateFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.bottom-panel-wrapper{position:relative;z-index:5;padding:0 4%;margin-top:-32px}
+.bottom-panel{background:#fff;border-radius:22px;padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:22px;box-shadow:0 20px 50px rgba(0,0,0,.06)}
+.bottom-panel-intro{max-width:210px;flex:0 0 210px}
+.bottom-panel-intro h3{font:500 18px var(--me-serif);margin:0 0 5px;color:#1a1a1a}
+.bottom-panel-intro p{font-size:11px;line-height:1.5;color:#666;margin:0}
+.stats-group{display:flex;gap:clamp(18px,3vw,42px);padding:0 25px;border-left:1px solid rgba(0,0,0,.1);border-right:1px solid rgba(0,0,0,.1)}
+.stat-item .num{font:300 29px var(--me-sans);line-height:1.1;color:#1a1a1a}
+.stat-item .lbl{font-size:10px;color:#666;white-space:nowrap}
+.panel-cta a{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#1a1a1a;color:#fff;font-size:22px}
+section{scroll-margin-top:90px}
+.wrap{max-width:1160px}
+section:not(.template-hero){padding:88px 0!important}
+.sec-index{font:600 12px var(--me-sans)!important;letter-spacing:.15em!important;text-transform:uppercase;color:#6b0f18!important;transform:none!important}
+.sec-title{font:400 clamp(36px,4.5vw,58px)/1.08 var(--me-serif)!important;letter-spacing:-1px!important;color:#1a1a1a!important}
+.sec-sub{color:#666!important}
+h2,h3,h4{font-family:var(--me-serif)}
+.about-grid{gap:60px}
+.about-text .lead{font:400 23px/1.45 var(--me-serif)!important;color:#1a1a1a!important}
+.about-text p{color:#666!important}
+.about-card,.direction-card,.resource-card,.library-bento-card,.pricing-card,.price-card,.package-option,.review-card,.faq-item,.contact-card,.feature-card,.benefit-card,.step-card,.quote-card,.resource-tile,.pricing-builder,.pricing-settings,.pricing-summary,.pricing-result,.pricing-packs,.pricing-cta,.library-feature,.library-topics-card,.library-open-card,.item,.note-box,.quiz,.task,.result-card,.workbook-card,.pin{
+ background:#fff!important;border:1px solid rgba(0,0,0,.08)!important;border-radius:18px!important;box-shadow:0 12px 32px rgba(0,0,0,.035)!important
+}
+#subjects{background:#121212!important;color:#f4f2ee!important}
+#subjects .sec-title,#subjects h3{color:#f4f2ee!important}
+#subjects .sec-sub,#subjects p,#subjects li{color:#bcb8b5!important}
+#subjects .sec-index{color:#d5a2a6!important}
+#subjects .direction-card,#subjects .note,#subjects .route-note{background:#1d1b1d!important;border-color:rgba(255,255,255,.12)!important}
+#subjects .direction-card h3,#subjects .note h3{color:#fff!important}
+#subjects .direction-card p,#subjects .note p{color:#bcb8b5!important}
+#format{background:#e8e4db!important}
+#format .sec-title,#format h3,#format h4{color:#1a1a1a!important}
+#format p,#format li{color:#666!important}
+#pricing{background:#f4f2ee!important}
+#pricing .pricing-settings,#pricing .package-option{background:#fff!important;border:1px solid rgba(0,0,0,.1)!important;border-radius:16px!important}
+#pricing .pricing-summary{background:#121212!important;color:#fff!important;border-radius:16px!important}
+#pricing .pricing-summary strong,#pricing .pricing-summary span{color:#fff!important}
+#pricing .package-option.featured{background:#6b0f18!important;color:#fff!important;border-color:#6b0f18!important}
+#pricing .package-option.featured *{color:#fff!important}
+#results{background:#e8e4db!important}
+#results .pin{padding:28px!important}
+#results .q{font:italic 20px/1.5 var(--me-serif)!important;color:#1a1a1a!important}
+#results .who{font:600 13px var(--me-sans)!important;color:#6b0f18!important}
+#results .who small{color:#777!important}
+.resources-inline{background:#121212!important}
+.library-feature{background:#1e1b20!important;border-color:rgba(255,255,255,.12)!important}
+.library-feature h2,.library-feature p{color:#f4f2ee!important}
+.library-topics-card{background:#f4f2ee!important}
+.library-open-card{background:#6b0f18!important;color:#fff!important}
+#faq{background:#fff!important}
+.faq-item{background:transparent!important;border:0!important;border-bottom:1px solid rgba(0,0,0,.12)!important;border-radius:0!important;box-shadow:none!important}
+.faq-q{font:500 20px var(--me-serif)!important;color:#1a1a1a!important}
+.faq-a p{color:#666!important}
+.cta-final{background:#121212!important;color:#fff!important;border-radius:24px!important}
+.cta-final h2,.cta-final p{color:#fff!important}
+footer{background:#121212!important;color:#f4f2ee!important;border-top:1px solid rgba(255,255,255,.1)!important}
+footer a,footer small,footer .hand{color:#d6cfca!important}
+.nav-cta:hover{background:#6b0f18!important;box-shadow:0 10px 26px rgba(107,15,24,.2)!important}
+@media(max-width:1024px){
+ .template-hero{min-height:660px;padding-top:130px}
+ .template-hero h1{font-size:clamp(48px,6vw,70px)!important}
+ .template-hero-visual{width:53%;right:2%;height:500px;top:110px}
+ .template-sidebar{display:none}
+ .bottom-panel{flex-wrap:wrap}
+ .bottom-panel-intro{flex:1 1 100%;max-width:none}
+ .stats-group{flex:1;justify-content:space-between}
+}
 @media(max-width:760px){
- .hero{grid-template-columns:1fr!important;grid-template-areas:"copy" "art" "stats"!important;padding-top:108px!important;padding-bottom:44px!important;min-height:auto!important}
- .hero-art{min-height:330px!important;width:min(100%,480px);margin:24px auto 0}
- .hero-note{grid-template-columns:repeat(2,minmax(0,1fr))!important}
- .about-grid,.notes,.library-bento{grid-template-columns:1fr!important}
+ header{position:absolute!important}
+ .nav{padding:18px 5%!important}
+ .nav-links,.nav-cta{display:none!important}
+ .mobile-menu{display:block!important}
+ .template-hero{display:block;min-height:auto;padding:112px 5% 35px}
+ .template-hero-content{padding:0;max-width:100%}
+ .template-hero h1{font-size:clamp(48px,13vw,68px)!important;max-width:100%!important}
+ .template-hero-content>p{font-size:15px;max-width:100%}
+ .template-hero-visual{position:relative;top:auto;right:auto;width:100%;height:350px;margin:18px auto 0}
+ .template-hero-visual img{width:100%;height:100%;mask-image:none;-webkit-mask-image:none;border-radius:18px}
+ .template-float-one{top:12%;right:4%}.template-float-two{top:61%;right:2%}
+ .template-image-note{right:12%;bottom:7%;font-size:12px}
+ .bottom-panel-wrapper{margin-top:0;padding:0 5%}
+ .bottom-panel{padding:20px;gap:18px}
+ .stats-group{width:100%;padding:16px 0 0;border:0;border-top:1px solid rgba(0,0,0,.1);display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+ .stat-item .num{font-size:25px}.stat-item .lbl{white-space:normal}
+ .panel-cta{display:none}
+ section:not(.template-hero){padding:64px 0!important}
+ .sec-head{margin-bottom:32px}
+ .about-grid{gap:28px}
+ .formats-grid,.reviews-grid,.faq-grid{grid-template-columns:1fr!important}
+ .cta-final{padding:44px 24px!important}
 }
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 </style>\n</head>
 <body class="editorial-home">
 
@@ -1576,57 +1636,52 @@ footer a,footer small,footer .hand{color:#D9D0C8!important}
 
 <main id="top">
 
-  <!-- HERO -->
-  <div class="wrap">
-    <div class="hero">
-      <div class="hero-copy">
-        <div class="hero-meta"><i></i>репетиторство · онлайн · один на один</div>
-        <h1>Учиться —<br>это <span class="hl">исследовать.</span>
-          <span class="hero-hand">— задавать вопросы, пробовать, находить своё.</span>
-        </h1>
-        <p class="hero-sub">Помогаю разобраться в сложных темах, увидеть логику за формулами и кодом и научиться находить решения самостоятельно. На занятиях мы задаём вопросы, экспериментируем и проверяем идеи на практике. <b>Информатика, математика, физика и программирование</b> — онлайн, индивидуально.</p>
-        <div class="hero-actions">
-          <a class="btn btn-marker" href="#diagnosticChoice" data-open-diagnostic aria-haspopup="dialog">Начать с диагностики ✎</a>
-          <a class="btn btn-ghost" href="#subjects">Выбрать направление ↓</a>
-        </div>
-        <div class="hero-direction" aria-hidden="true">
-          <span>начни отсюда</span>
-          <span class="hero-direction-arrow">↖</span>
-        </div>
-      </div>
-      <div class="hero-art" role="img" aria-label="Учебное пространство: код, математическая задача, график и заметки">
-        <div class="idea-orbit" aria-hidden="true"></div>
-        <div class="idea-panel">
-          <div class="idea-panel-head"><span><i></i><i></i><i></i></span><b>лаборатория идей</b><small>01 / 03</small></div>
-          <div class="idea-panel-label">ПРОБУЕМ · НАБЛЮДАЕМ · ПОНИМАЕМ</div>
-          <div class="idea-question">А что, если <em>попробовать иначе?</em></div>
-          <div class="code-window">
-            <div class="code-top"><span>experiment.py</span><span>↗</span></div>
-            <div class="code-lines">
-              <div><i>01</i><span><b>for</b> idea <b>in</b> attempts:</span></div>
-              <div><i>02</i><span class="indent"><b>if</b> idea.works():</span></div>
-              <div><i>03</i><span class="indent2">understand(idea)</span></div>
-              <div><i>04</i><span><em># ошибка — тоже данные</em></span></div>
-            </div>
-            <div class="code-result"><span>●</span> найдено решение <b>✓</b></div>
-          </div>
-          <div class="idea-bottom"><span>вопрос → гипотеза → проверка</span><b>думай смелее ↗</b></div>
-        </div>
-        <div class="idea-chip math-chip"><small>МАТЕМАТИКА</small><b>(a + b)²</b><span>= a² + 2ab + b²</span></div>
-        <div class="idea-chip graph-chip"><small>ФИЗИКА</small><svg viewBox="0 0 112 58" aria-hidden="true"><path d="M8 5V49H106" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".55"/><path d="M12 43C31 42 37 34 50 29S78 17 102 7" fill="none" stroke="#8ec9ff" stroke-width="2.5" stroke-linecap="round"/><path d="M12 43C31 42 37 34 50 29S78 17 102 7" fill="none" stroke="#8ec9ff" stroke-width="7" opacity=".1"/></svg><span>смотрим, как меняется</span></div>
-        <div class="idea-hand-note">не бойся проверить ✎</div>
-        <div class="idea-spark" aria-hidden="true">✳</div>
+  <!-- HERO — новая редакционная композиция -->
+  <section class="template-hero" id="top">
+    <aside class="template-sidebar" aria-label="Быстрая навигация">
+      <a class="active" href="#top" aria-label="Главная">⌂</a>
+      <a href="#subjects" aria-label="Направления">✦</a>
+      <a href="edu/index.html" aria-label="Библиотека">▤</a>
+      <a href="https://t.me/katerin_mischenko" target="_blank" rel="noopener" aria-label="Telegram">↗</a>
+    </aside>
+    <div class="template-hero-content">
+      <div class="template-eyebrow">Лаборатория идей · Mischenko Edu</div>
+      <h1>Учиться —<br>это <em>исследовать.</em></h1>
+      <p>Задавать вопросы, пробовать, находить своё. Помогаю разобраться в сложных темах, увидеть логику за формулами и кодом и научиться находить решения самостоятельно.</p>
+      <div class="template-hero-actions">
+        <a class="template-btn template-btn-dark" href="#diagnosticChoice" data-open-diagnostic aria-haspopup="dialog">Начать с диагностики ↗</a>
+        <a class="template-btn template-btn-light" href="#about">Обо мне</a>
       </div>
     </div>
-    <div class="hero-note">
-        <div class="hstat"><b>8<em>+</em></b><span>лет преподавания</span></div>
-        <div class="hstat"><b>1<em>:</em>1</b><span>только индивидуально</span></div>
-        <div class="hstat"><b>570<em>+</em></b><span>учеников за всё время</span></div>
-        <div class="hstat"><b>6</b><span>направлений в библиотеке</span></div>
+    <div class="template-hero-visual" aria-label="Визуальная лаборатория обучения">
+      <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1200&auto=format&fit=crop" alt="Абстрактная живопись в учебной лаборатории">
+      <div class="template-float template-float-one">
+        <h4>experiment.py ↗</h4>
+        <p>01 for idea in attempts:<br>02&nbsp;&nbsp; if idea.works():<br>03&nbsp;&nbsp;&nbsp;&nbsp; understand(idea)</p>
       </div>
-  </div>
+      <div class="template-float template-float-two">
+        <h4>ФИЗИКА</h4>
+        <p>смотрим, как меняется</p>
+      </div>
+      <div class="template-image-note">Пробуем · наблюдаем · понимаем</div>
+    </div>
+  </section>
 
-  <hr class="divider">
+  <div class="bottom-panel-wrapper">
+    <div class="bottom-panel">
+      <div class="bottom-panel-intro">
+        <h3>Мой подход. Твоё понимание.</h3>
+        <p>Помогаю понять предмет и самостоятельно находить решения.</p>
+      </div>
+      <div class="stats-group">
+        <div class="stat-item"><div class="num">8+</div><div class="lbl">лет преподавания</div></div>
+        <div class="stat-item"><div class="num">1:1</div><div class="lbl">индивидуально</div></div>
+        <div class="stat-item"><div class="num">570+</div><div class="lbl">учеников за всё время</div></div>
+        <div class="stat-item"><div class="num">6</div><div class="lbl">направлений в библиотеке</div></div>
+      </div>
+      <div class="panel-cta"><a href="https://t.me/katerin_mischenko" target="_blank" rel="noopener" aria-label="Написать в Telegram">↗</a></div>
+    </div>
+  </div>
 
   <!-- ABOUT -->
   <section id="about">
