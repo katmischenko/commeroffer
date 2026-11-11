@@ -42,6 +42,11 @@
 .back{display:block;width:fit-content;margin-bottom:34px}
 #unknown.is-selected{border-color:var(--pen);background:var(--pen-soft);color:var(--pen)}
 .diag-answer-note{font-size:13px;color:var(--muted);margin-top:10px}
+.diag-curriculum{margin:0 0 22px;padding:14px 16px;border:1px solid rgba(234,231,223,.14);border-radius:14px}
+.diag-curriculum summary{cursor:pointer;color:var(--ink);font-weight:700}
+.diag-curriculum .diag-fields{margin:16px 0 4px}
+.diag-curriculum-note{font-size:13px;color:var(--muted);line-height:1.5;margin:10px 0 0}
+
 @media(max-width:640px){.diag-fields{grid-template-columns:1fr}.diag-field.full{grid-column:auto}}
 </style>
 </head>
@@ -81,6 +86,27 @@
           <select id="grade"></select>
         </div>
       </div>
+      <details class="diag-curriculum" id="curriculum-details">
+        <summary>Уточнить учебную программу (необязательно)</summary>
+        <div class="diag-fields">
+          <div class="diag-field">
+            <label for="curriculum">Программа обучения</label>
+            <select id="curriculum">
+              <option value="generic">Общий набор — по умолчанию</option>
+              <option value="ru">Россия — 2026/2027</option>
+              <option value="by">Беларусь — 2026/2027</option>
+            </select>
+          </div>
+          <div class="diag-field" id="curriculum-level-field" hidden>
+            <label for="curriculum-level">Уровень (10–11 классы)</label>
+            <select id="curriculum-level">
+              <option value="basic">Базовый</option>
+              <option value="advanced">Углублённый</option>
+            </select>
+          </div>
+        </div>
+        <p class="diag-curriculum-note" id="curriculum-note">Если не менять этот параметр, будет использован общий набор заданий. Выбор программы помогает подобрать подходящий банк там, где он уже подготовлен.</p>
+      </details>
       <div class="diag-consents" id="consent-panel" hidden>
         <label class="diag-consent"><input type="checkbox" id="storage-consent"> <span>Подтверждаю, что я совершеннолетний ученик или родитель / законный представитель несовершеннолетнего, и даю согласие передать ответы преподавателю и сохранить результат в закрытом архиве Mischenko Edu для анализа и подготовки рекомендаций. <a href="diagnostics/privacy.html" target="_blank" rel="noopener">Как используются данные</a>.</span></label>
         <label class="diag-consent diag-consent-secondary"><input type="checkbox" id="telegram-consent" disabled> <span>Разрешаю дополнительно отправить преподавателю уведомление в Telegram о завершённой диагностике.</span></label>
@@ -141,7 +167,35 @@ function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;',
 function normalize(v){return String(v??'').trim().toLowerCase().replace(/\s+/g,' ');}
 function profile(){
  const d=directions.find(x=>x.id===$('direction').value);
- return {direction:d,grade:$('grade').value};
+ return {direction:d,grade:$('grade').value,curriculum:$('curriculum').value,level:$('curriculum-level').value};
+}
+function curriculumBankPath(p){
+ if(p.curriculum!=='ru')return '';
+ const base='diagnostics/question-bank-'+p.direction.id+'-'+p.grade+'-ru-2026-2027';
+ const levelNeeded=(p.grade==='10'||p.grade==='11')&&(p.direction.id==='informatics'||p.direction.id==='physics');
+ if(levelNeeded)return base+'-'+p.level+'.json';
+ const path=base+'.json';
+ const available=[
+  'informatics-7','informatics-8','informatics-9',
+  'physics-7','physics-8','physics-9',
+  'math-6','math-7','math-8','math-9'
+ ];
+ return available.includes(p.direction.id+'-'+p.grade)?path:'';
+}
+function updateCurriculumControls(){
+ const p=profile();
+ const showLevel=p.curriculum==='ru'&&(p.grade==='10'||p.grade==='11')&&(p.direction.id==='informatics'||p.direction.id==='physics');
+ $('curriculum-level-field').hidden=!showLevel;
+ const path=curriculumBankPath(p);
+ if(p.curriculum==='generic'){
+  $('curriculum-note').textContent='Будет использован общий набор заданий для выбранного направления и класса.';
+ }else if(path){
+  $('curriculum-note').textContent='Для этого профиля подготовлен отдельный российский набор 2026/2027. Он остаётся черновым и требует педагогической проверки.';
+ }else if(p.curriculum==='by'){
+  $('curriculum-note').textContent='Отдельного проверенного банка Беларуси в репозитории пока нет. Будет использован общий набор, это не подтверждает соответствие белорусской программе.';
+ }else{
+  $('curriculum-note').textContent='Отдельного российского банка для этого класса и направления пока нет. Будет использован общий набор с явной пометкой в результате.';
+ }
 }
 function fillGrades(){
  const d=directions.find(x=>x.id===$('direction').value);
@@ -220,7 +274,7 @@ function buildPayload(score,percentage,title,weak,report){
  const statusLabels={answered:'Ответ дан',unknown:'Не знаю',skipped:'Пропущено',unanswered:'Нет ответа'};
  return {
   attemptId:makeId(),studentName:student,studentClass:String(grade),direction,experience:'',
-  curriculumId:'',curriculumName:'',curriculumDetail:'',curriculumLevel:'',curriculumYear:'',bankProgramMatched:false,bankId:bankMeta.id,bankReviewStatus:bankMeta.reviewStatus,consent:true,telegramConsent:$('telegram-consent').checked,
+  curriculumId:bankMeta.curriculumId||'',curriculumName:bankMeta.curriculumName||'',curriculumDetail:'',curriculumLevel:bankMeta.curriculumLevel||'',curriculumYear:bankMeta.curriculumYear||'',bankProgramMatched:!!bankMeta.bankProgramMatched,bankId:bankMeta.id,bankReviewStatus:bankMeta.reviewStatus,consent:true,telegramConsent:$('telegram-consent').checked,
   consentVersion:CONSENT_VERSION,consentAt:new Date().toISOString(),score,maxScore:15,percentage,completedAt:new Date().toISOString(),
   weakTopics:weak.map(([name,v])=>name+' — '+v.right+'/'+v.total),
   answers:report.map(({q,a,ok})=>({
@@ -290,7 +344,7 @@ function finish(){
   '<p>'+percent+'% правильных ответов. '+description+'</p></div>'+
   '<p class="diag-hint">Ученик: '+escapeHtml(student)+'</p>'+
   '<p class="diag-hint">Направление: '+escapeHtml(direction)+', класс: '+escapeHtml(grade)+'</p>'+
-  '<p class="diag-hint">Использован общий набор заданий для выбранного направления и класса. Набор проходит педагогическую проверку.</p>'+
+  '<p class="diag-hint">'+(bankMeta.bankProgramMatched?'Использован отдельный банк программы: '+escapeHtml(bankMeta.curriculumName)+'. Банк требует педагогической проверки.':bankMeta.curriculumId?'Выбран профиль «'+escapeHtml(bankMeta.curriculumName)+'», но отдельного банка пока нет. Использован общий набор; соответствие программе не подтверждено.':'Использован общий набор заданий для выбранного направления и класса. Набор проходит педагогическую проверку.')+'</p>'+
   '<h3 class="diag-section-title">Темы без ошибок в этом наборе</h3>'+
   (strong.length?'<ul class="q-topics">'+strong.map(([t,v])=>'<li>'+escapeHtml(t)+' — '+v.right+' из '+v.total+'</li>').join('')+'</ul>':'<p class="diag-hint">Пока нет тем, где все задания выполнены верно. Это не приговор — просто ориентир для дальнейшей работы.</p>')+
   '<h3 class="diag-section-title">Темы, где встретились ошибки</h3>'+
@@ -359,8 +413,10 @@ function finish(){
   saveAttempt(lastPayload);
  }
 }
-$('direction').addEventListener('change',fillGrades);
-$('grade').addEventListener('change',checkReady);
+$('direction').addEventListener('change',()=>{fillGrades();updateCurriculumControls();});
+$('grade').addEventListener('change',()=>{checkReady();updateCurriculumControls();});
+$('curriculum').addEventListener('change',()=>{checkReady();updateCurriculumControls();});
+$('curriculum-level').addEventListener('change',()=>{checkReady();updateCurriculumControls();});
 $('student').addEventListener('input',checkReady);
 $('storage-consent').addEventListener('change',checkReady);
 $('telegram-consent').addEventListener('change',checkReady);
@@ -369,7 +425,8 @@ $('start').addEventListener('click',async()=>{
  $('start').disabled=true;$('start').textContent='Загружаю задания…';
  try{
   const profileId=p.direction.id+'-'+p.grade;
-  const candidates=['diagnostics/question-bank-'+profileId+'.json'];
+  const specificPath=curriculumBankPath(p);
+  const candidates=[specificPath,'diagnostics/question-bank-'+profileId+'.json'].filter(Boolean);
   let data=null;let bankPathUsed='';
   for(const candidate of candidates){
    const res=await fetch(candidate,{cache:'no-store'});
@@ -377,8 +434,22 @@ $('start').addEventListener('click',async()=>{
   }
   if(!data)throw new Error('Не удалось загрузить задания.');
   if(!Array.isArray(data.questions)||data.questions.length!==15)throw new Error('В наборе должно быть 15 заданий.');
-  bankMeta={id:data.bankId||bankPathUsed,reviewStatus:data.reviewStatus||'teacher_review_draft'};
-  $('profile-note').textContent='Загружен общий набор заданий для выбранного направления и класса. Он проходит педагогическую проверку.';
+  const matched=!!specificPath&&bankPathUsed===specificPath;
+  const curriculumNames={generic:'Общий набор',ru:'Россия — 2026/2027',by:'Беларусь — 2026/2027'};
+  bankMeta={
+   id:data.bankId||bankPathUsed,
+   reviewStatus:data.reviewStatus||'teacher_review_draft',
+   curriculumId:p.curriculum==='generic'?'':p.curriculum,
+   curriculumName:p.curriculum==='generic'?'':curriculumNames[p.curriculum],
+   curriculumYear:p.curriculum==='generic'?'':'2026/2027',
+   curriculumLevel:p.curriculum==='ru'&&specificPath&&(p.grade==='10'||p.grade==='11')?p.level:'',
+   bankProgramMatched:matched
+  };
+  $('profile-note').textContent=matched
+   ?'Загружен отдельный банк: '+curriculumNames[p.curriculum]+'. Это черновик, который требует педагогической проверки.'
+   :p.curriculum==='generic'
+    ?'Загружен общий набор заданий для выбранного направления и класса. Он проходит педагогическую проверку.'
+    :'Отдельного банка для выбранной программы и профиля пока нет. Загружен общий набор; соответствие выбранной программе не подтверждено.';
   bank=data.questions;answers=Array(bank.length).fill(null);index=0;
   $('setup').hidden=true;$('quiz').hidden=false;renderQuestion();
  }catch(e){
@@ -389,7 +460,7 @@ $('back').addEventListener('click',()=>{if(index>0){index--;renderQuestion();}})
 $('skip').addEventListener('click',()=>{answers[index]={answerText:'',status:'skipped'};if(index<bank.length-1){index++;renderQuestion();}else finish();});
 $('next').addEventListener('click',()=>{if(index<bank.length-1){index++;renderQuestion();}else finish();});
 $('direction').innerHTML=directions.map(d=>'<option value="'+d.id+'">'+d.name+'</option>').join('');
-fillGrades();
+fillGrades();updateCurriculumControls();
 })();
 </script>
 </body>
