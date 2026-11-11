@@ -1,0 +1,32 @@
+/* MISCHENKO EDU — unified visual identity */
+:root{--me-ink:#17151a;--me-graphite:#29252d;--me-ivory:#f4f0e9;--me-paper:#ebe5dc;--me-muted:#777078;--me-line:rgba(35,29,36,.14);--me-wine:#87394d;--me-red:#b52f3d;--me-blush:#d7a49a;--me-shadow:0 24px 70px rgba(31,22,29,.14);--me-serif:Georgia,'Times New Roman',serif;--me-sans:'Manrope',Arial,sans-serif}
+html{scroll-behavior:smooth}body{font-family:var(--me-sans)!important;background:var(--me-ivory)!important;color:var(--me-ink)!important;background-image:none!important}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.18;background-image:linear-gradient(rgba(60,43,48,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(60,43,48,.04) 1px,transparent 1px);background-size:48px 48px}
+body>*{position:relative;z-index:1}::selection{background:var(--me-wine);color:white}
+a{transition:color .25s,background .25s,border-color .25s,transform .25s}
+header{background:rgba(244,240,233,.9)!important;border-bottom:1px solid var(--me-line)!important;backdrop-filter:blur(18px)!important}
+.logo,.logo .hand{color:var(--me-ink)!important}.logo .hand{font-family:var(--me-serif)!important;font-style:italic;letter-spacing:-.06em}
+.nav-note,.logo small{color:var(--me-muted)!important}.nav-note i{color:var(--me-red)!important}
+.nav-links a,.nav-link,.foot-links a{color:#625b63!important}.nav-links a:hover,.nav-link:hover,.foot-links a:hover{color:var(--me-red)!important}
+.nav-cta,.btn-marker,.btn-pen,.btn-primary{background:var(--me-wine)!important;color:#fff!important;border:1px solid var(--me-wine)!important;border-radius:3px!important;box-shadow:none!important}
+.nav-cta:hover,.btn-marker:hover,.btn-pen:hover,.btn-primary:hover{background:var(--me-ink)!important;transform:translateY(-2px)}
+.btn,.btn-ghost{border-radius:3px!important}.wrap{max-width:1240px!important}
+h1,h2,h3,.sec-title,.hero-title{letter-spacing:-.045em}h1,.hero h1,.hero-title{font-family:var(--me-serif)!important;font-weight:500!important;line-height:.98!important;letter-spacing:-.055em!important}
+h2,.sec-title{font-family:var(--me-serif)!important;font-weight:500!important;line-height:1.04!important}
+.hand,.sec-index,.hero .sec-index{font-family:var(--me-serif)!important;font-style:italic!important;color:var(--me-wine)!important;transform:none!important}
+.hl,.hl-o,.u{background:none!important;box-shadow:none!important;color:var(--me-red)!important;border-bottom:1px solid currentColor;padding:0 0 .08em!important}
+.hero{position:relative;isolation:isolate;min-height:86svh;padding-top:clamp(130px,15vw,185px)!important;padding-bottom:80px!important;overflow:hidden}
+.hero:before{content:"";position:absolute;z-index:-1;right:5%;top:17%;width:clamp(230px,34vw,470px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 34% 28%,#fff 0,rgba(215,164,154,.8) 20%,rgba(135,57,77,.94) 48%,rgba(41,37,45,.98) 73%);box-shadow:inset -30px -34px 70px rgba(12,9,14,.48),0 45px 100px rgba(80,34,52,.2);filter:saturate(.78)}
+.hero:after{content:"";position:absolute;z-index:-1;right:11%;top:24%;width:clamp(190px,28vw,370px);aspect-ratio:1;border:1px solid rgba(255,255,255,.65);border-radius:50%;transform:rotate(-24deg) scaleY(.42);box-shadow:0 0 0 22px rgba(255,255,255,.04),0 0 0 44px rgba(135,57,77,.06)}
+.hero h1{max-width:10ch!important;font-size:clamp(54px,8.2vw,108px)!important;position:relative;z-index:2}
+.hero-sub{max-width:47ch!important;color:#665f66!important;font-size:clamp(16px,1.6vw,19px)!important}
+.hero-meta{border-color:var(--me-red)!important;color:var(--me-muted)!important}.hero .btn,.hero a.btn{position:relative;z-index:2}
+section{position:relative}section:nth-of-type(even){background:var(--me-ink)!important;color:var(--me-ivory)!important}
+section:nth-of-type(even) .sec-title,section:nth-of-type(even) h2,section:nth-of-type(even) h3{color:var(--me-ivory)!important}
+section:nth-of-type(even) p,section:nth-of-type(even) .sec-sub{color:#bdb5bd!important}section:nth-of-type(even) .sec-index{color:#d68a91!important}
+.about-card,.direction-card,.resource-card,.library-bento-card,.pricing-card,.price-card,.review-card,.faq-item,.contact-card,.feature-card,.benefit-card,.step-card,.quote-card,.resource-tile,.library-feature,.library-topics-card,.library-open-card,.item,.note-box,.quiz,.task,.result-card,.workbook-card,.package-option,.tool-card,.subject-card{border:1px solid var(--me-line)!important;border-radius:3px!important;box-shadow:var(--me-shadow)!important}
+.card:hover,.direction-card:hover,.resource-card:hover,.resource-tile:hover{transform:translateY(-4px);border-color:rgba(135,57,77,.45)!important}
+footer{background:var(--me-ink)!important;color:var(--me-ivory)!important;border-color:rgba(255,255,255,.12)!important}footer a{color:#d8cbd0!important}
+input,select,textarea,button{border-radius:3px}
+@media(max-width:760px){.hero{min-height:auto;padding-top:120px!important;padding-bottom:64px!important}.hero:before{right:-18%;top:24%;width:55vw;opacity:.68}.hero:after{right:-10%;top:28%;width:47vw}.hero h1{font-size:clamp(48px,13vw,76px)!important;max-width:9ch!important}section{padding-top:58px!important;padding-bottom:58px!important}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
