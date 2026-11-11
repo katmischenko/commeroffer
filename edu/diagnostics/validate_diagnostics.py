@@ -44,7 +44,16 @@ def fail(errors, message):
     errors.append(message)
 
 
-def validate_bank(path: Path, errors: list[str], stems_by_direction):
+def topic_group_for(taxonomy, direction: str, topic: str):
+    direction_map = taxonomy.get("directions", {}).get(direction, {})
+    normalized = str(topic).casefold().strip()
+    for rule in direction_map.get("rules", []):
+        if any(str(part).casefold() in normalized for part in rule.get("containsAny", [])):
+            return rule.get("groupId")
+    return None
+
+
+def validate_bank(path: Path, errors: list[str], stems_by_direction, taxonomy):
     filename_match = re.match(r"question-bank-(informatics|physics|math|python|html-css|figma)-(\d+)(.*)\.json$", path.name)
     if not filename_match:
         fail(errors, f"{path.name}: unrecognized bank filename")
@@ -88,6 +97,18 @@ def validate_bank(path: Path, errors: list[str], stems_by_direction):
             fail(errors, f"{prefix}: duplicate id {qid}")
         seen_ids.add(qid)
 
+        topic = str(q.get("topic", "")).strip()
+        group_id = topic_group_for(taxonomy, direction, topic)
+        if not group_id:
+            fail(errors, f"{prefix}: topic label is not mapped in TOPIC_TAXONOMY_DRAFT.json: {topic!r}")
+        else:
+            allowed_groups = {
+                group.get("id")
+                for group in taxonomy.get("directions", {}).get(direction, {}).get("groups", [])
+            }
+            if group_id not in allowed_groups:
+                fail(errors, f"{prefix}: topic rule points to unknown group {group_id!r}")
+
         stem = re.sub(r"\\s+", " ", str(q.get("question", "")).strip().lower())
         if stem in seen_stems:
             fail(errors, f"{prefix}: duplicate question inside bank")
@@ -130,6 +151,12 @@ def main():
     errors = []
     stems_by_direction = defaultdict(lambda: defaultdict(list))
     profile_path = DIAG / "profiles.json"
+    taxonomy_path = DIAG / "TOPIC_TAXONOMY_DRAFT.json"
+    if not taxonomy_path.exists():
+        fail(errors, "missing required diagnostics file: edu/diagnostics/TOPIC_TAXONOMY_DRAFT.json")
+        taxonomy = {"directions": {}}
+    else:
+        taxonomy = json.loads(taxonomy_path.read_text(encoding="utf-8"))
     profiles = json.loads(profile_path.read_text(encoding="utf-8"))
     expected = {p["profileId"] for p in profiles.get("profiles", [])}
     if profiles.get("experienceSelectionImplemented") is not False:
@@ -145,7 +172,7 @@ def main():
 
     bank_data_by_id = {}
     for path in files:
-        data = validate_bank(path, errors, stems_by_direction)
+        data = validate_bank(path, errors, stems_by_direction, taxonomy)
         if isinstance(data, dict) and data.get("bankId"):
             bank_data_by_id[data["bankId"]] = path.name
 
@@ -177,7 +204,7 @@ def main():
     schema_path = DIAG / "schema.sql"
     worker_test_path = DIAG / "worker.test.mjs"
     frontend_test_path = DIAG / "frontend.smoke.test.mjs"
-    for required in (worker_path, archive_path, privacy_path, migration_path, level_migration_path, year_migration_path, consent_migration_path, schema_path, worker_test_path, frontend_test_path):
+    for required in (worker_path, archive_path, privacy_path, migration_path, level_migration_path, year_migration_path, consent_migration_path, schema_path, worker_test_path, frontend_test_path, taxonomy_path):
         if not required.exists():
             fail(errors, f"missing required diagnostics file: {required.relative_to(ROOT)}")
 
@@ -277,6 +304,7 @@ def main():
 
     print(f"Checked {len(files)} question banks.")
     print(f"Expected profile count: {len(expected)}.")
+    print("Topic taxonomy coverage: every question topic label must map to a declared group.")
     if warnings:
         fail(errors, f"cross-grade duplicate question stems found: {len(warnings)}")
         by_direction = Counter()
