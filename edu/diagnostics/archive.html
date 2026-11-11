@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Архив диагностик — Mischenko Edu</title>
+<title>Архив диагностик — mischenko edu</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="../edu.css">
@@ -36,8 +36,8 @@
 .empty{padding:30px;color:var(--muted);text-align:center}
 @media(max-width:600px){.admin-panel{padding:18px}.admin-form{display:grid}.admin-form input{width:100%}}
 </style>
-<link rel="stylesheet" href="../../mischenko-redesign.css?v=9">
-<link rel="stylesheet" href="../shared.css?v=4">
+<link rel="stylesheet" href="../../mischenko-redesign.css?v=10">
+<link rel="stylesheet" href="../shared.css?v=5">
 </head>
 <body>
 <header><nav class="nav"><a class="logo" href="../index.html"><span class="brand-mark" aria-hidden="true"><i></i></span><span class="brand-name">mischenko edu</span></a><div class="nav-right"><a class="nav-link" href="../diagnostika.html">К диагностике</a></div></nav></header>
@@ -138,7 +138,7 @@ function printAttempt(a){
  const w=window.open("","_blank");
  if(!w){showStatus("Разреши всплывающие окна для печати.");return;}
  const answers=(p.answers||[]).map((x,i)=>'<article><h3>'+(i+1)+'. '+esc(x.question)+'</h3><p><b>Ответ:</b> '+esc(x.answerText||"Не отвечено")+'</p><p><b>Правильный ответ:</b> '+esc(x.correctText)+'</p><p><b>Статус:</b> '+esc(x.statusLabel)+' · <b>Тема:</b> '+esc(x.topic)+' · <b>Сложность:</b> '+esc(x.difficulty)+'</p><p>'+esc(x.explanation)+'</p></article>').join("");
- w.document.write('<!doctype html><html lang="ru"><meta charset="utf-8"><title>Диагностика — '+esc(p.studentName)+'</title><style>body{font:14px Arial;max-width:850px;margin:35px auto;color:#222;line-height:1.5}h1{font-size:24px}article{border-top:1px solid #ddd;padding:12px 0;break-inside:avoid}h3{font-size:15px}p{margin:5px 0}.muted{color:#666}@media print{button{display:none}}</style><h1>Диагностика Mischenko Edu</h1><p>'+esc(p.studentName)+' · '+esc(p.studentClass)+' класс · '+esc(p.direction)+' · '+esc(p.curriculumName||"Программа не указана")+(p.curriculumYear?' · '+esc(p.curriculumYear):'')+(p.curriculumLevel?' · '+esc(({basic:'базовый',advanced:'углублённый / повышенный',unknown:'уровень не указан'})[p.curriculumLevel]||p.curriculumLevel):'')+(p.curriculumDetail?' · '+esc(p.curriculumDetail):'')+'</p><p>'+((p.bankProgramMatched)?'Банк заданий: отдельный черновик выбранной программы; педагогическая вычитка не завершена':'Банк заданий: общий черновой набор, соответствие программе не подтверждено')+(p.bankId?' · '+esc(p.bankId):'')+' · '+esc(p.bankReviewStatus||'teacher_review_draft')+'</p><h2>Результат: '+esc(p.score)+' / 15 ('+esc(p.percentage)+'%)</h2>'+answers+'<script>window.onload=()=>window.print()<\\/script></html>');
+ w.document.write('<!doctype html><html lang="ru"><meta charset="utf-8"><title>Диагностика — '+esc(p.studentName)+'</title><style>body{font:14px Arial;max-width:850px;margin:35px auto;color:#222;line-height:1.5}h1{font-size:24px}article{border-top:1px solid #ddd;padding:12px 0;break-inside:avoid}h3{font-size:15px}p{margin:5px 0}.muted{color:#666}@media print{button{display:none}}</style><h1>Диагностика mischenko edu</h1><p>'+esc(p.studentName)+' · '+esc(p.studentClass)+' класс · '+esc(p.direction)+' · '+esc(p.curriculumName||"Программа не указана")+(p.curriculumYear?' · '+esc(p.curriculumYear):'')+(p.curriculumLevel?' · '+esc(({basic:'базовый',advanced:'углублённый / повышенный',unknown:'уровень не указан'})[p.curriculumLevel]||p.curriculumLevel):'')+(p.curriculumDetail?' · '+esc(p.curriculumDetail):'')+'</p><p>'+((p.bankProgramMatched)?'Банк заданий: отдельный черновик выбранной программы; педагогическая вычитка не завершена':'Банк заданий: общий черновой набор, соответствие программе не подтверждено')+(p.bankId?' · '+esc(p.bankId):'')+' · '+esc(p.bankReviewStatus||'teacher_review_draft')+'</p><h2>Результат: '+esc(p.score)+' / 15 ('+esc(p.percentage)+'%)</h2>'+answers+'<script>window.onload=()=>window.print()<\\/script></html>');
  w.document.close();
 }
 $("load").addEventListener("click",loadArchive);
