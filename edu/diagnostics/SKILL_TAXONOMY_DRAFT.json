@@ -546,10 +546,6 @@
           "Понимание физических явлений и законов"
         ],
         [
-          "calculation",
-          "Расчёт физических величин"
-        ],
-        [
           "application",
           "Применение законов, формул и моделей"
         ],
@@ -1563,7 +1559,7 @@
           ]
         },
         {
-          "groupId": "calculation",
+          "groupId": "physical_calculation",
           "containsAny": [
             "расчёт",
             "вычисление"
@@ -1634,10 +1630,6 @@
         [
           "information_coding",
           "Кодирование и представление информации"
-        ],
-        [
-          "number_system_conversion",
-          "Перевод чисел между системами счисления"
         ],
         [
           "logic_reasoning",
@@ -3006,7 +2998,7 @@
           ]
         },
         {
-          "groupId": "number_system_conversion",
+          "groupId": "number_base_conversion",
           "containsAny": [
             "Перевод двоичного числа в десятичную систему"
           ]
@@ -3024,7 +3016,7 @@
           ]
         },
         {
-          "groupId": "number_system_conversion",
+          "groupId": "number_base_conversion",
           "containsAny": [
             "Определение количества символов в системе счисления"
           ]
@@ -3970,10 +3962,6 @@
           "Общая метка: понимание и применение"
         ],
         [
-          "semantic_markup",
-          "Семантическая HTML-разметка"
-        ],
-        [
           "html_elements",
           "Назначение HTML-элементов"
         ],
@@ -4708,7 +4696,7 @@
           ]
         },
         {
-          "groupId": "semantic_markup",
+          "groupId": "semantic_html",
           "containsAny": [
             "Выбор семантического элемента основного содержимого"
           ]
