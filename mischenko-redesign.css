@@ -438,7 +438,7 @@ body{
   font-family:var(--display);
   font-style:italic;
 }
-.hero-lead,.section-intro,.about-main p,.faq-intro .section-intro,
+.hero-lead,.section-intro,.about-main p:not(.about-mantra),.faq-intro .section-intro,
 .about-credential .credential-copy{
   font-family:var(--subtitle);
 }
