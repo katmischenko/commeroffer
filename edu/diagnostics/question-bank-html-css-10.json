@@ -260,16 +260,16 @@
       "skill": "понимание и применение",
       "difficulty": "advanced",
       "type": "choice",
-      "question": "Что важно учитывать при открытии ссылки в новой вкладке через target='_blank'?",
-      "explanation": "noopener предотвращает доступ новой страницы к window.opener.",
+      "question": "Какой токен rel явно запрещает открытой в новой вкладке странице доступ к window.opener?",
+      "explanation": "noopener явно запрещает новой странице получать доступ к window.opener; это полезно указывать при использовании target=\"_blank\".",
       "options": [
-        "Удалять href",
-        "Убирать текст ссылки",
-        "Добавлять rel='noopener'",
-        "Заменять a на span"
+        "rel=\"external\"",
+        "rel=\"nofollow\"",
+        "rel=\"noopener\"",
+        "rel=\"author\""
       ],
       "correctIndex": 2,
-      "correctText": "Добавлять rel='noopener'"
+      "correctText": "rel=\"noopener\""
     }
   ]
 }
