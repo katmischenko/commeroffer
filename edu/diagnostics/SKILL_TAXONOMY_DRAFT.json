@@ -728,6 +728,96 @@
       ],
       "rules": [
         {
+          "groupId": "nuclear_physics",
+          "containsAny": [
+            "Определение изменения массового числа при бета-минус-распаде"
+          ]
+        },
+        {
+          "groupId": "electric_circuits",
+          "containsAny": [
+            "Расчёт заряда конденсатора по ёмкости и напряжению"
+          ]
+        },
+        {
+          "groupId": "thermal_engines",
+          "containsAny": [
+            "Расчёт затраченной энергии по КПД и полезной работе"
+          ]
+        },
+        {
+          "groupId": "nuclear_physics",
+          "containsAny": [
+            "Определение массового числа ядра по числу нуклонов"
+          ]
+        },
+        {
+          "groupId": "photoelectric_effect",
+          "containsAny": [
+            "Определение физического смысла работы выхода электрона"
+          ]
+        },
+        {
+          "groupId": "optics",
+          "containsAny": [
+            "Расчёт оптической силы собирающей линзы"
+          ]
+        },
+        {
+          "groupId": "electromagnetic_induction",
+          "containsAny": [
+            "Определение условия возникновения индукционного тока"
+          ]
+        },
+        {
+          "groupId": "magnetic_field",
+          "containsAny": [
+            "Определение магнитного поля, создаваемого током"
+          ]
+        },
+        {
+          "groupId": "ohm_law",
+          "containsAny": [
+            "Расчёт силы тока по закону Ома"
+          ]
+        },
+        {
+          "groupId": "kinematics",
+          "containsAny": [
+            "Расчёт времени подъёма тела до верхней точки"
+          ]
+        },
+        {
+          "groupId": "nuclear_physics",
+          "containsAny": [
+            "Определение продукта альфа-распада"
+          ]
+        },
+        {
+          "groupId": "quantum_physics",
+          "containsAny": [
+            "Распознавание фотона как кванта излучения"
+          ]
+        },
+        {
+          "groupId": "magnetic_field",
+          "containsAny": [
+            "Определение ориентации северного полюса магнитной стрелки"
+          ]
+        },
+        {
+          "groupId": "electrical_measurements",
+          "containsAny": [
+            "Расчёт электрического заряда по силе тока и времени"
+          ]
+        },
+        {
+          "groupId": "dynamics",
+          "containsAny": [
+            "Применение второго закона Ньютона"
+          ]
+        },
+        {
           "groupId": "relativity",
           "containsAny": [
             "Объяснение замедления времени в специальной теории относительности"
@@ -1744,9 +1834,197 @@
         [
           "dynamic_programming",
           "Динамическое программирование"
+        ],
+        [
+          "computer_devices",
+          "Устройства компьютера и периферия"
+        ],
+        [
+          "file_management",
+          "Файлы, папки и операции с ними"
+        ],
+        [
+          "information_storage",
+          "Хранение информации и носители"
+        ],
+        [
+          "file_paths",
+          "Пути к файлам и папкам"
+        ],
+        [
+          "algorithm_sequences",
+          "Последовательности действий и команд"
         ]
       ],
       "rules": [
+        {
+          "groupId": "raster_graphics",
+          "containsAny": [
+            "Расчёт объёма несжатого изображения по разрешению и глубине цвета"
+          ]
+        },
+        {
+          "groupId": "logical_operations",
+          "containsAny": [
+            "Распознавание логической тавтологии"
+          ]
+        },
+        {
+          "groupId": "algorithmic_tracing",
+          "containsAny": [
+            "Трассировка вложенных циклов с накоплением значения"
+          ]
+        },
+        {
+          "groupId": "algorithm_complexity",
+          "containsAny": [
+            "Оценка худшей временной сложности линейного поиска"
+          ]
+        },
+        {
+          "groupId": "network_services",
+          "containsAny": [
+            "Выбор HTTPS для защищённой передачи веб-страниц"
+          ]
+        },
+        {
+          "groupId": "database_operations",
+          "containsAny": [
+            "Запись условия отбора строк в SQL через WHERE"
+          ]
+        },
+        {
+          "groupId": "programming_basics",
+          "containsAny": [
+            "Трассировка вызова функции с заданным аргументом"
+          ]
+        },
+        {
+          "groupId": "logical_operations",
+          "containsAny": [
+            "Применение закона поглощения в логике"
+          ]
+        },
+        {
+          "groupId": "code_capacity",
+          "containsAny": [
+            "Расчёт минимальной длины фиксированного кода символов"
+          ]
+        },
+        {
+          "groupId": "spreadsheet_operations",
+          "containsAny": [
+            "Выбор функции MAX для поиска наибольшего значения диапазона"
+          ]
+        },
+        {
+          "groupId": "logical_operations",
+          "containsAny": [
+            "Вычисление логического отрицания"
+          ]
+        },
+        {
+          "groupId": "recursion",
+          "containsAny": [
+            "Распознавание рекурсивного алгоритма"
+          ]
+        },
+        {
+          "groupId": "number_base_conversion",
+          "containsAny": [
+            "Перевод двоичного числа в десятичную систему"
+          ]
+        },
+        {
+          "groupId": "algorithm_sequences",
+          "containsAny": [
+            "Определение правильного порядка последовательных действий"
+          ]
+        },
+        {
+          "groupId": "digital_safety",
+          "containsAny": [
+            "Завершение сеанса личной почты на общем компьютере"
+          ]
+        },
+        {
+          "groupId": "algorithmic_tracing",
+          "containsAny": [
+            "Трассировка последовательности арифметических команд"
+          ]
+        },
+        {
+          "groupId": "data_units",
+          "containsAny": [
+            "Сравнение размеров файлов в разных единицах"
+          ]
+        },
+        {
+          "groupId": "file_management",
+          "containsAny": [
+            "Выбор операции переименования файла без изменения содержимого"
+          ]
+        },
+        {
+          "groupId": "computer_devices",
+          "containsAny": [
+            "Выбор носителя для переноса файла между компьютерами"
+          ]
+        },
+        {
+          "groupId": "digital_safety",
+          "containsAny": [
+            "Выбор безопасного действия при получении неизвестной ссылки"
+          ]
+        },
+        {
+          "groupId": "algorithmic_tracing",
+          "containsAny": [
+            "Трассировка повторяющихся команд исполнителя"
+          ]
+        },
+        {
+          "groupId": "file_paths",
+          "containsAny": [
+            "Построение относительного пути к файлу во вложенной папке"
+          ]
+        },
+        {
+          "groupId": "data_units",
+          "containsAny": [
+            "Перевод килобайтов в байты"
+          ]
+        },
+        {
+          "groupId": "algorithm_structures",
+          "containsAny": [
+            "Определение алгоритма как последовательности действий"
+          ]
+        },
+        {
+          "groupId": "file_management",
+          "containsAny": [
+            "Определение типа файла по расширению"
+          ]
+        },
+        {
+          "groupId": "computer_devices",
+          "containsAny": [
+            "Выбор устройства для ввода текста"
+          ]
+        },
+        {
+          "groupId": "data_units",
+          "containsAny": [
+            "Перевод байтов в биты"
+          ]
+        },
+        {
+          "groupId": "information_storage",
+          "containsAny": [
+            "Распознавание примера хранения информации"
+          ]
+        },
         {
           "groupId": "algorithm_complexity",
           "containsAny": [
