@@ -1,10 +1,10 @@
 {
-  "version": "0.2.0",
+  "version": "0.3.0",
   "title": "Дополнительный пул заданий для расширения покрытия навыков",
   "status": "teacher_review_draft",
   "reviewStatus": "teacher_review_draft",
   "purpose": "Отдельный резерв заданий для педагогической проверки. Не подключён к активным банкам и не участвует в диагностике из 15 вопросов.",
-  "sourceBasis": "Создан на основе аудита покрытия edu/diagnostics/SKILL_COVERAGE_REPORT.md и очереди edu/diagnostics/SKILL_GAP_BACKLOG.md. Новые формулировки разработаны как независимые задания к уже существующим группам навыков. Четвёртое пополнение основано на проверке оставшихся двухвопросных групп математики и физики по активным банкам.",
+  "sourceBasis": "Создан на основе аудита покрытия edu/diagnostics/SKILL_COVERAGE_REPORT.md и очереди edu/diagnostics/SKILL_GAP_BACKLOG.md. Новые формулировки разработаны как независимые задания к уже существующим группам навыков. Четвёртое пополнение основано на проверке оставшихся двухвопросных групп математики и физики по активным банкам. Пятое пополнение подготовлено по приоритетным двухвопросным группам информатики и Python из очереди покрытия.",
   "selectionPolicy": "До экспертной проверки и отдельного решения о механизме выбора задания не включать в активные банки.",
   "questions": [
     {
@@ -990,6 +990,543 @@
       "correctIndex": 3,
       "correctText": "2000 Дж",
       "explanation": "η = A/Q₁, значит Q₁ = A/η. При η = 0,20 получаем Q₁ = 400/0,20 = 2000 Дж."
+    },
+    {
+      "id": "pool-inf6-device-keyboard-001",
+      "directionId": "informatics",
+      "direction": "Информатика",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "Устройства компьютера",
+      "skill": "Выбор устройства для ввода текста",
+      "groupId": "computer_devices",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Ученик готовит текстовый доклад на компьютере. Какое устройство он использует для ввода букв, цифр и знаков?",
+      "options": [
+        "Монитор",
+        "Клавиатура",
+        "Принтер",
+        "Колонки"
+      ],
+      "correctIndex": 1,
+      "correctText": "Клавиатура",
+      "explanation": "Клавиатура — устройство ввода. С её помощью пользователь вводит текстовые символы и команды."
+    },
+    {
+      "id": "pool-inf6-device-storage-002",
+      "directionId": "informatics",
+      "direction": "Информатика",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "Устройства компьютера",
+      "skill": "Выбор носителя для переноса файла между компьютерами",
+      "groupId": "computer_devices",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Как называется компактный съёмный носитель, который подключают к USB-порту и используют для переноса файлов между компьютерами?",
+      "acceptedAnswers": [
+        "USB-флеш-накопитель",
+        "флешка",
+        "USB-флешка"
+      ],
+      "correctText": "USB-флеш-накопитель",
+      "explanation": "USB-флеш-накопитель хранит файлы и позволяет перенести их на другой компьютер без подключения к интернету."
+    },
+    {
+      "id": "pool-inf7-cpu-001",
+      "directionId": "informatics",
+      "direction": "Информатика",
+      "class": 7,
+      "curriculumId": "ru-2026-2027",
+      "topic": "Устройство компьютера",
+      "skill": "Определение роли процессора в обработке команд и данных",
+      "groupId": "computer_architecture",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какой компонент компьютера выполняет арифметические и логические операции при исполнении программы?",
+      "options": [
+        "Оперативная память",
+        "Процессор",
+        "Монитор",
+        "Накопитель"
+      ],
+      "correctIndex": 1,
+      "correctText": "Процессор",
+      "explanation": "Процессор выполняет команды программы и обрабатывает данные, в том числе выполняет арифметические и логические операции."
+    },
+    {
+      "id": "pool-inf10-cpu-002",
+      "directionId": "informatics",
+      "direction": "Информатика",
+      "class": 10,
+      "curriculumId": "ru-2026-2027-basic",
+      "topic": "Архитектура компьютера",
+      "skill": "Определение роли процессора в архитектуре компьютера",
+      "groupId": "computer_architecture",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Как называется центральный компонент компьютера, который выполняет команды программы и координирует обработку данных?",
+      "acceptedAnswers": [
+        "процессор",
+        "центральный процессор",
+        "CPU"
+      ],
+      "correctText": "Процессор",
+      "explanation": "Центральный процессор выполняет программные команды и управляет ходом их обработки."
+    },
+    {
+      "id": "pool-inf10-caesar-001",
+      "directionId": "informatics",
+      "direction": "Информатика",
+      "class": 10,
+      "curriculumId": "ru-2026-2027-advanced",
+      "topic": "Криптография",
+      "skill": "Определение принципа шифра Цезаря",
+      "groupId": "cryptography",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "В шифре Цезаря каждая буква заменяется другой буквой алфавита по одному и тому же правилу. В чём состоит это правило?",
+      "options": [
+        "Буквы переставляются в обратном порядке",
+        "Каждая буква сдвигается на фиксированное число позиций",
+        "Каждая буква заменяется случайным символом",
+        "Слова записываются справа налево"
+      ],
+      "correctIndex": 1,
+      "correctText": "Каждая буква сдвигается на фиксированное число позиций",
+      "explanation": "Шифр Цезаря использует фиксированный сдвиг букв алфавита на заданное число позиций."
+    },
+    {
+      "id": "pool-inf10-rsa-002",
+      "directionId": "informatics",
+      "direction": "Информатика",
+      "class": 10,
+      "curriculumId": "ru-2026-2027-advanced",
+      "topic": "Криптография",
+      "skill": "Определение принципа открытого и закрытого ключей RSA",
+      "groupId": "cryptography",
+      "difficulty": "advanced",
+      "type": "short",
+      "question": "Отправитель хочет зашифровать сообщение так, чтобы прочитать его мог только адресат. Какой ключ адресата он должен использовать в схеме RSA?",
+      "acceptedAnswers": [
+        "открытый ключ",
+        "публичный ключ"
+      ],
+      "correctText": "Открытый ключ адресата",
+      "explanation": "Для шифрования сообщения адресату используют его открытый ключ. Расшифровать сообщение можно соответствующим закрытым ключом адресата."
+    },
+    {
+      "id": "pool-inf11-db-fk-001",
+      "directionId": "informatics",
+      "direction": "Информатика",
+      "class": 11,
+      "curriculumId": "ru-2026-2027-advanced",
+      "topic": "Базы данных",
+      "skill": "Определение назначения внешнего ключа базы данных",
+      "groupId": "database_relations",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "В таблице Заказы есть поле customer_id, а в таблице Клиенты — первичный ключ id. Какую роль выполняет поле customer_id?",
+      "options": [
+        "Хранит внешний ключ, связывающий заказ с клиентом",
+        "Служит названием всей базы данных",
+        "Хранит пароль пользователя",
+        "Задаёт порядок сортировки заказов"
+      ],
+      "correctIndex": 0,
+      "correctText": "Хранит внешний ключ, связывающий заказ с клиентом",
+      "explanation": "Внешний ключ в таблице Заказы ссылается на запись таблицы Клиенты и устанавливает связь между таблицами."
+    },
+    {
+      "id": "pool-inf11-db-integrity-002",
+      "directionId": "informatics",
+      "direction": "Информатика",
+      "class": 11,
+      "curriculumId": "ru-2026-2027-advanced",
+      "topic": "Базы данных",
+      "skill": "Определение ограничения ссылочной целостности внешним ключом",
+      "groupId": "database_relations",
+      "difficulty": "advanced",
+      "type": "short",
+      "question": "В таблице Заказы поле customer_id является внешним ключом на Клиенты.id. Можно ли добавить заказ со значением customer_id = 500, если клиента с id = 500 нет?",
+      "acceptedAnswers": [
+        "нет",
+        "нельзя",
+        "нет, нельзя"
+      ],
+      "correctText": "Нет",
+      "explanation": "Ограничение ссылочной целостности не позволяет внешнему ключу ссылаться на отсутствующую запись родительской таблицы."
+    },
+    {
+      "id": "pool-inf6-path-001",
+      "directionId": "informatics",
+      "direction": "Информатика",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "Файлы и папки",
+      "skill": "Построение относительного пути к файлу во вложенной папке",
+      "groupId": "file_paths",
+      "difficulty": "basic",
+      "type": "short",
+      "question": "В текущей папке находится папка «Фото», а в ней файл «лето.jpg». Запиши относительный путь к файлу.",
+      "acceptedAnswers": [
+        "Фото/лето.jpg",
+        "Фото\\лето.jpg"
+      ],
+      "correctText": "Фото/лето.jpg",
+      "explanation": "Относительный путь начинается от текущей папки. Сначала указываем вложенную папку «Фото», затем имя файла."
+    },
+    {
+      "id": "pool-inf7-path-002",
+      "directionId": "informatics",
+      "direction": "Информатика",
+      "class": 7,
+      "curriculumId": "ru-2026-2027",
+      "topic": "Файловые системы",
+      "skill": "Построение относительного пути к файлу во вложенной папке",
+      "groupId": "file_paths",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Текущая папка — «Школа». Файл main.html находится в папке «Проекты», вложенной в папку «Сайт». Какой относительный путь ведёт к файлу?",
+      "options": [
+        "Сайт/Проекты/main.html",
+        "Школа/Сайт/main.html",
+        "main.html/Проекты",
+        "Сайт/main.html/Проекты"
+      ],
+      "correctIndex": 0,
+      "correctText": "Сайт/Проекты/main.html",
+      "explanation": "От текущей папки «Школа» нужно пройти в «Сайт», затем в «Проекты» и открыть main.html."
+    },
+    {
+      "id": "pool-inf10-file-append-001",
+      "directionId": "informatics",
+      "direction": "Информатика",
+      "class": 10,
+      "curriculumId": "ru-2026-2027-advanced",
+      "topic": "Файлы",
+      "skill": "Выбор режима файла для чтения и добавления данных",
+      "groupId": "file_processing",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какой режим открытия файла в Python позволяет читать его содержимое и дописывать данные в конец, не удаляя прежнее содержимое?",
+      "options": [
+        "w+",
+        "r",
+        "a+",
+        "x"
+      ],
+      "correctIndex": 2,
+      "correctText": "a+",
+      "explanation": "Режим a+ открывает файл для чтения и добавления. Новые данные записываются в конец, существующее содержимое сохраняется."
+    },
+    {
+      "id": "pool-inf10-file-stream-002",
+      "directionId": "informatics",
+      "direction": "Информатика",
+      "class": 10,
+      "curriculumId": "ru-2026-2027-advanced",
+      "topic": "Файлы",
+      "skill": "Выбор потоковой обработки для большого файла",
+      "groupId": "file_processing",
+      "difficulty": "advanced",
+      "type": "short",
+      "question": "Какой способ обработки подходит для очень большого текстового файла, если его нельзя целиком загрузить в оперативную память?",
+      "acceptedAnswers": [
+        "читать файл построчно",
+        "построчное чтение",
+        "потоковое чтение",
+        "обрабатывать файл по частям"
+      ],
+      "correctText": "Читать файл построчно или блоками",
+      "explanation": "Потоковая обработка читает файл последовательно небольшими порциями, поэтому не требует хранить весь файл в оперативной памяти."
+    },
+    {
+      "id": "pool-inf10-sort-001",
+      "directionId": "informatics",
+      "direction": "Информатика",
+      "class": 10,
+      "curriculumId": "ru-2026-2027-advanced",
+      "topic": "Сортировка",
+      "skill": "Распознавание быстрой сортировки по принципу разбиения",
+      "groupId": "sorting_searching",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Какой алгоритм сортировки выбирает опорный элемент и разделяет остальные элементы на группы относительно него?",
+      "options": [
+        "Сортировка пузырьком",
+        "Быстрая сортировка",
+        "Линейный поиск",
+        "Поразрядное кодирование"
+      ],
+      "correctIndex": 1,
+      "correctText": "Быстрая сортировка",
+      "explanation": "Быстрая сортировка использует опорный элемент и разбиение последовательности на части, которые затем сортируются отдельно."
+    },
+    {
+      "id": "pool-inf10-search-002",
+      "directionId": "informatics",
+      "direction": "Информатика",
+      "class": 10,
+      "curriculumId": "ru-2026-2027-advanced",
+      "topic": "Поиск",
+      "skill": "Определение условия применимости двоичного поиска",
+      "groupId": "sorting_searching",
+      "difficulty": "basic",
+      "type": "short",
+      "question": "Какое обязательное свойство должна иметь последовательность перед применением обычного двоичного поиска?",
+      "acceptedAnswers": [
+        "быть отсортированной",
+        "отсортированность",
+        "отсортированный порядок"
+      ],
+      "correctText": "Последовательность должна быть отсортирована",
+      "explanation": "Двоичный поиск на каждом шаге отбрасывает половину диапазона, сравнивая искомое значение со средним элементом. Для этого элементы должны быть упорядочены."
+    },
+    {
+      "id": "pool-inf8-euclid-001",
+      "directionId": "informatics",
+      "direction": "Информатика",
+      "class": 8,
+      "curriculumId": "ru-2026-2027",
+      "topic": "Алгоритм Евклида",
+      "skill": "Вычисление НОД алгоритмом Евклида",
+      "groupId": "euclidean_algorithm",
+      "difficulty": "basic",
+      "type": "short",
+      "question": "Найди НОД чисел 54 и 24 с помощью алгоритма Евклида.",
+      "acceptedAnswers": [
+        "6"
+      ],
+      "correctText": "6",
+      "explanation": "54 = 24 × 2 + 6; 24 делится на 6 без остатка. Последний ненулевой остаток равен 6, это НОД."
+    },
+    {
+      "id": "pool-inf8-euclid-002",
+      "directionId": "informatics",
+      "direction": "Информатика",
+      "class": 8,
+      "curriculumId": "ru-2026-2027",
+      "topic": "Алгоритмы",
+      "skill": "Вычисление НОД алгоритмом Евклида",
+      "groupId": "euclidean_algorithm",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Чему равен НОД чисел 105 и 45?",
+      "options": [
+        "5",
+        "10",
+        "15",
+        "30"
+      ],
+      "correctIndex": 2,
+      "correctText": "15",
+      "explanation": "По алгоритму Евклида: 105 = 45 × 2 + 15, а 45 = 15 × 3. Последний ненулевой остаток равен 15."
+    },
+    {
+      "id": "pool-inf11-ai-check-001",
+      "directionId": "informatics",
+      "direction": "Информатика",
+      "class": 11,
+      "curriculumId": "ru-2026-2027-basic",
+      "topic": "Искусственный интеллект",
+      "skill": "Оценка необходимости проверки ответа генеративной модели",
+      "groupId": "ai_literacy",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Генеративная модель привела точную на вид цитату из учебника. Как лучше поступить перед тем, как использовать её в работе?",
+      "options": [
+        "Сразу считать цитату достоверной",
+        "Проверить цитату по учебнику или другому надёжному источнику",
+        "Оценить достоверность только по уверенности формулировки",
+        "Спросить ту же модель и принять повтор ответа за подтверждение"
+      ],
+      "correctIndex": 1,
+      "correctText": "Проверить цитату по учебнику или другому надёжному источнику",
+      "explanation": "Генеративная модель может создавать правдоподобные, но вымышленные цитаты и факты. Проверка по первоисточнику помогает обнаружить ошибку."
+    },
+    {
+      "id": "pool-inf11-ai-bias-002",
+      "directionId": "informatics",
+      "direction": "Информатика",
+      "class": 11,
+      "curriculumId": "ru-2026-2027-basic",
+      "topic": "Искусственный интеллект",
+      "skill": "Определение смещения в данных машинного обучения",
+      "groupId": "ai_literacy",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "В обучающей выборке почти нет примеров из одной группы пользователей. Как называется систематическое искажение, которое может из-за этого возникнуть в результатах модели?",
+      "acceptedAnswers": [
+        "смещение",
+        "bias"
+      ],
+      "correctText": "Смещение (bias)",
+      "explanation": "Смещение в данных возникает, когда обучающая выборка неполно или неравномерно представляет реальные случаи. Это может приводить к систематически менее точным или несправедливым результатам."
+    },
+    {
+      "id": "pool-python5-index-001",
+      "directionId": "python",
+      "direction": "Python",
+      "class": 5,
+      "curriculumId": "general",
+      "topic": "Списки",
+      "skill": "Определение начального индекса элементов списка",
+      "groupId": "sequence_indexing",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какой индекс имеет первый элемент списка в Python?",
+      "options": [
+        "0",
+        "1",
+        "−1",
+        "Длина списка"
+      ],
+      "correctIndex": 0,
+      "correctText": "0",
+      "explanation": "Индексация списков в Python начинается с нуля, поэтому первый элемент имеет индекс 0."
+    },
+    {
+      "id": "pool-python5-index-002",
+      "directionId": "python",
+      "direction": "Python",
+      "class": 5,
+      "curriculumId": "general",
+      "topic": "Списки",
+      "skill": "Получение элемента списка по индексу",
+      "groupId": "sequence_indexing",
+      "difficulty": "basic",
+      "type": "short",
+      "question": "Что вернёт выражение [\"a\", \"b\", \"c\", \"d\"][2]?",
+      "acceptedAnswers": [
+        "c",
+        "'c'",
+        "\"c\""
+      ],
+      "correctText": "c",
+      "explanation": "Индексация начинается с нуля: индексам 0, 1 и 2 соответствуют элементы a, b и c. Поэтому выражение возвращает строку 'c'."
+    },
+    {
+      "id": "pool-python5-return-001",
+      "directionId": "python",
+      "direction": "Python",
+      "class": 5,
+      "curriculumId": "general",
+      "topic": "Функции",
+      "skill": "Выбор return для возврата значения функции",
+      "groupId": "function_return",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какое ключевое слово нужно использовать в теле функции, чтобы вернуть вычисленное значение вызывающему коду?",
+      "options": [
+        "print",
+        "input",
+        "return",
+        "break"
+      ],
+      "correctIndex": 2,
+      "correctText": "return",
+      "explanation": "Оператор return завершает выполнение функции и передаёт вызывающему коду указанное значение."
+    },
+    {
+      "id": "pool-python5-return-002",
+      "directionId": "python",
+      "direction": "Python",
+      "class": 5,
+      "curriculumId": "general",
+      "topic": "Функции",
+      "skill": "Определение неявного возвращаемого значения функции",
+      "groupId": "function_return",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Какое значение вернёт функция, если в ней выполняется print(\"Готово\"), но оператор return отсутствует?",
+      "acceptedAnswers": [
+        "None",
+        "none"
+      ],
+      "correctText": "None",
+      "explanation": "Если функция завершилась без оператора return, Python возвращает значение None. Вызов print сам по себе не задаёт возвращаемое значение функции."
+    },
+    {
+      "id": "pool-python6-precedence-001",
+      "directionId": "python",
+      "direction": "Python",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "Арифметика",
+      "skill": "Применение приоритета арифметических операций",
+      "groupId": "operator_precedence",
+      "difficulty": "basic",
+      "type": "short",
+      "question": "Вычисли значение выражения 4 + 3 * 2.",
+      "acceptedAnswers": [
+        "10"
+      ],
+      "correctText": "10",
+      "explanation": "Умножение выполняется раньше сложения: 3 × 2 = 6, затем 4 + 6 = 10."
+    },
+    {
+      "id": "pool-python8-modulo-002",
+      "directionId": "python",
+      "direction": "Python",
+      "class": 8,
+      "curriculumId": "general",
+      "topic": "Операторы",
+      "skill": "Вычисление остатка от деления оператором %",
+      "groupId": "operator_precedence",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Чему равно выражение 23 % 4 в Python?",
+      "options": [
+        "5",
+        "3",
+        "4",
+        "1"
+      ],
+      "correctIndex": 1,
+      "correctText": "3",
+      "explanation": "Оператор % возвращает остаток от деления. 23 = 4 × 5 + 3, поэтому 23 % 4 = 3."
+    },
+    {
+      "id": "pool-python9-set-001",
+      "directionId": "python",
+      "direction": "Python",
+      "class": 9,
+      "curriculumId": "general",
+      "topic": "Множества",
+      "skill": "Определение поведения множества при добавлении дубликата",
+      "groupId": "set_operations",
+      "difficulty": "basic",
+      "type": "short",
+      "question": "Сколько элементов будет в множестве после выполнения кода: s = {2, 2, 5, 5, 5}?",
+      "acceptedAnswers": [
+        "2"
+      ],
+      "correctText": "2",
+      "explanation": "Множество хранит только уникальные элементы. Повторяющиеся значения 2 и 5 не создают новых элементов, поэтому длина множества равна 2."
+    },
+    {
+      "id": "pool-python10-set-002",
+      "directionId": "python",
+      "direction": "Python",
+      "class": 10,
+      "curriculumId": "general",
+      "topic": "Коллекции",
+      "skill": "Оценка средней сложности проверки принадлежности множеству",
+      "groupId": "set_operations",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "Какова средняя временная сложность проверки выражения x in my_set для обычного множества set в Python?",
+      "options": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n²)"
+      ],
+      "correctIndex": 0,
+      "correctText": "O(1)",
+      "explanation": "Множества реализованы на основе хеш-таблиц. В среднем проверка принадлежности выполняется за постоянное время O(1), хотя в отдельных худших случаях возможны коллизии."
     }
   ]
 }
