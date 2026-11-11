@@ -235,44 +235,136 @@ html.reveal-ready .reveal{opacity:0;transform:translateY(24px)}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){html.reveal-ready .reveal{opacity:1;transform:none;transition:none}}
 
-
-/* Unified Mischenko Edu dark-burgundy visual system */
+/* Mischenko Edu — единая дизайн-система */
 :root{
-  --paper:#0c0a0f;--paper-2:#17141b;
-  --line:rgba(216,208,210,.12);--ink:#e8e0e2;
-  --muted:#b4a8ae;--faint:#81747c;
-  --marker:#9b465f;--marker-soft:rgba(155,70,95,.16);
-  --pen:#c7b6bc;--pen-soft:rgba(199,182,188,.12);
+  --paper:#0c0a0f;--paper-2:#151219;--surface:#19151d;--surface-raised:#201922;
+  --line:rgba(220,208,214,.12);--ink:#eee8eb;--muted:#b6aab1;--faint:#827780;
+  --marker:#914158;--marker-hover:#a94f69;--marker-soft:rgba(145,65,88,.14);
+  --pen:#c9b9c0;--pen-soft:rgba(201,185,192,.10);
+  --hand:'Manrope',sans-serif;--body:'Manrope',sans-serif;--r:16px;
+  --content-width:1160px;
 }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
   background-color:var(--paper);
-  background-image:radial-gradient(ellipse at 15% 0%,rgba(91,35,55,.13),transparent 38%),radial-gradient(ellipse at 90% 38%,rgba(58,32,43,.10),transparent 34%);
+  background-image:radial-gradient(ellipse at 50% -18%,rgba(106,39,62,.17),transparent 48%);
+  color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;
 }
-::selection{background:#6f2d43;color:#fff}
-header{background:rgba(12,10,15,.84);border-bottom-color:rgba(216,208,210,.1)}
-.logo .hand,.nav-link:hover,.back,.sec-index,.f-group .f-label{color:var(--pen)}
-.nav-cta,.btn-pen{background:linear-gradient(135deg,#9b465f,#6e293f);color:#fff;box-shadow:0 8px 24px rgba(92,35,55,.18)}
-.nav-cta:hover,.btn-pen:hover{box-shadow:0 14px 34px rgba(120,43,68,.3)}
-.btn-marker{background:linear-gradient(135deg,#9b465f,#6e293f);color:#fff}
-.hl,.hl-o{background:linear-gradient(100deg,transparent,#6e293f2b,transparent);box-shadow:0 0 0 4px rgba(110,41,63,.12);color:#c77b91}
-.chip.on{background:#8e3b55;border-color:#8e3b55;color:#fff}
-.chip.on-st{background:#3a202b;border-color:#8d455c;color:#eadde1}
-.item,.note-box,.quiz,.task,.sim-log,.q-result,.fc-card,.result-card,.comic .frame,.workbook-card{
-  background:linear-gradient(145deg,rgba(34,27,34,.97),rgba(20,16,22,.99));
-  border:1px solid rgba(216,208,210,.12);border-radius:22px;
-  box-shadow:0 16px 42px rgba(0,0,0,.18);
+::selection{background:var(--marker);color:#fff}
+.wrap{max-width:var(--content-width)}
+.hand,.sec-index,.sec-index,.f-group .f-label,.back,.q-count,.item .kind,.st,.sim-step .who,.empty,.fc-face .fc-label,.foot .hand{
+  font-family:var(--body)!important;font-style:normal;letter-spacing:.02em;
 }
-.item{padding:26px 25px 23px;border-radius:20px}
-.item:hover{border-color:rgba(155,70,95,.55);box-shadow:0 22px 48px rgba(0,0,0,.32)}
-.item .kind,.back{color:#c7b6bc}
-.st-soon{color:#bd7187}
-.st-ok,.tag-free{color:#a9c5b1}
-.tag-paid{color:#bd7187}
-.note-box::before{background:rgba(155,70,95,.24)}
-.note-box li::before{color:#c7b6bc}
-.quiz,.task{padding:clamp(22px,4vw,34px)}
-.q-opt,.chip,.fc-actions button{border-radius:14px}
-.q-opt{background:#211820;border-color:rgba(216,208,210,.16);color:var(--ink)}
-.q-opt:hover{border-color:#9b465f}
-footer{border-color:rgba(216,208,210,.1)}
-@media(max-width:640px){.item{padding:23px 21px}}
+.hand,.logo .hand{font-weight:700!important}
+.hl,.hl-o{
+  background:linear-gradient(90deg,transparent,rgba(145,65,88,.16),transparent)!important;
+  box-shadow:none!important;color:#d59aaa!important;border-radius:2px;
+}
+header{
+  background:rgba(12,10,15,.9)!important;
+  border-bottom:1px solid var(--line)!important;
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+}
+.logo .hand,.nav-note i,.sec-index,.hero-hand,.hero-direction,.idea-panel-label,.back,.f-group .f-label{
+  color:var(--pen)!important;
+}
+.nav-links a,.nav-link,.foot-links a{color:var(--muted)}
+.nav-links a:hover,.nav-link:hover,.foot-links a:hover{color:#d59aaa}
+.nav-cta,.btn-marker,.btn-pen,.mobile-menu-links .menu-contact a{
+  background:var(--marker)!important;color:#fff!important;border:1px solid var(--marker)!important;
+  border-radius:9px!important;box-shadow:none!important;
+}
+.nav-cta:hover,.btn-marker:hover,.btn-pen:hover,.mobile-menu-links .menu-contact a:hover{
+  background:var(--marker-hover)!important;border-color:var(--marker-hover)!important;
+  transform:translateY(-2px);box-shadow:0 10px 26px rgba(145,65,88,.2)!important;
+}
+.btn,.nav-cta,.chip,.q-opt,.fc-btn,.pricing-field select,.duration-switch,.duration-btn{
+  border-radius:9px!important;
+}
+.btn-ghost{background:transparent!important;color:var(--ink)!important;border:1px solid rgba(220,208,214,.22)!important}
+.btn-ghost:hover{border-color:var(--pen)!important;background:rgba(255,255,255,.025)!important}
+section{scroll-margin-top:84px}
+.sec-head{margin-bottom:36px}
+.sec-index{font-size:11px!important;font-weight:800!important;text-transform:uppercase;letter-spacing:.16em!important;transform:none!important;margin-bottom:12px!important}
+.sec-title{font-weight:750;letter-spacing:-.035em;line-height:1.08}
+.sec-sub{color:var(--muted)}
+/* Одинаковая поверхность для всех смысловых карточек */
+.about-card,.direction-card,.resource-card,.library-bento-card,.pricing-card,.price-card,
+.package-option,.review-card,.faq-item,.contact-card,.feature-card,.benefit-card,.step-card,
+.quote-card,.resource-tile,.pricing-builder,.pricing-settings,.pricing-summary,.pricing-result,
+.pricing-packs,.pricing-cta,.library-feature,.library-topics-card,.library-open-card,
+.item,.note-box,.quiz,.task,.sim-log,.result-card,.comic .frame,.workbook-card,
+.fc-face,.idea-panel,.idea-chip,.code-window,.faq-item,.pricing-settings,.pricing-summary,
+article[class*="card"]{
+  background:var(--surface)!important;
+  border:1px solid var(--line)!important;
+  border-radius:var(--r)!important;
+  box-shadow:none!important;
+}
+.about-card,.direction-card,.resource-card,.library-bento-card,.pricing-card,.price-card,
+.package-option,.review-card,.faq-item,.contact-card,.feature-card,.benefit-card,.step-card,
+.quote-card,.resource-tile,.pricing-builder,.pricing-settings,.pricing-summary,.pricing-result,
+.pricing-packs,.pricing-cta,.library-feature,.library-topics-card,.library-open-card,
+.item,.note-box,.quiz,.task,.result-card,.workbook-card{padding:26px}
+.item{padding:25px!important;transition:border-color .2s,background .2s,transform .2s!important}
+.item:hover,.direction-card:hover,.resource-card:hover,.package-option:hover{
+  background:var(--surface-raised)!important;border-color:rgba(145,65,88,.55)!important;
+  box-shadow:none!important;transform:translateY(-2px);
+}
+.item .kind,.back,.q-count,.fc-face .fc-label{color:var(--pen)!important}
+.item h3,.sec-title,.package-heading h3{color:var(--ink)}
+.item p,.note-box p,.note-box li{color:var(--muted)}
+.st-soon,.tag-paid{color:#d28da0!important}
+.st-ok,.tag-free{color:#a9c5b1!important}
+.tag,.chip{border-radius:7px!important}
+.tag-free,.tag-paid{background:transparent}
+.chip{background:transparent!important;color:var(--muted)!important;border:1px solid var(--line)!important}
+.chip:hover,.chip.on{background:var(--marker)!important;border-color:var(--marker)!important;color:#fff!important}
+.chip.on-st{background:var(--surface-raised)!important;border-color:var(--marker)!important;color:#e8cbd3!important}
+input,select,textarea,.q-input,.q-opt,.pricing-field select{
+  background:#100d13!important;color:var(--ink)!important;border:1px solid var(--line)!important;
+  border-radius:9px!important;box-shadow:none!important;
+}
+input:focus,select:focus,textarea:focus,.q-input:focus{outline:none;border-color:var(--marker)!important}
+.q-opt:hover{border-color:var(--marker)!important;transform:translateY(-1px)}
+.q-opt.right{border-color:#6b9b7a!important;background:rgba(107,155,122,.1)!important}
+.q-opt.wrong{border-color:#b66d69!important;background:rgba(182,109,105,.1)!important}
+.q-progress i{background:var(--marker)!important}
+.q-result .big{color:#d28da0!important}
+.note-box::before{display:none!important}
+.note-box li::before,.q-topics li::before{color:#d28da0!important}
+.fc-face,.fc-face.back{border-color:var(--line)!important}
+.fc-know{background:#547b62!important;color:#fff!important}
+.fc-dunno{background:rgba(182,109,105,.12)!important;color:#d49a96!important;border:1px solid rgba(182,109,105,.35)!important}
+.sim-log{border-left:2px solid var(--marker)!important;background:var(--surface)!important}
+.idea-panel{transform:none!important}
+.idea-chip{box-shadow:none!important}
+.idea-panel::before,.idea-panel::after{display:none}
+.idea-panel-head,.code-top{border-color:var(--line)!important}
+.idea-panel-label,.idea-question em,.idea-bottom b,.math-chip b,.graph-chip span{color:#d28da0!important}
+.idea-panel-head i:first-child{background:var(--marker)!important}
+.idea-panel-head i:nth-child(2){background:var(--pen)!important}
+.hero-art::before,.idea-orbit{border-color:rgba(145,65,88,.2)!important;box-shadow:0 0 0 26px rgba(145,65,88,.025),0 0 0 54px rgba(145,65,88,.018)!important}
+.hero-meta{border:1px solid var(--line)!important;border-radius:7px!important}
+.hero-meta i{background:var(--marker)!important}
+.hstat{border-right-color:var(--line)!important}
+#pricing .pricing-settings,#pricing .pricing-summary,#pricing .package-section{
+  background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--r)!important;
+  box-shadow:none!important;
+}
+#pricing .package-section{padding:24px!important}
+#pricing .package-option{background:var(--surface-raised)!important;border:1px solid var(--line)!important;border-radius:10px!important}
+#pricing .package-option.featured{background:rgba(145,65,88,.12)!important;border-color:rgba(145,65,88,.6)!important}
+#pricing .pricing-bottom{background:transparent!important;border:1px solid var(--line)!important;border-radius:var(--r)!important}
+#pricing .pricing-bottom .btn{background:var(--marker)!important;color:#fff!important;border-radius:9px!important}
+footer{border-color:var(--line)!important}
+@media(max-width:640px){
+  section{padding:64px 0}
+  .about-card,.direction-card,.resource-card,.library-bento-card,.pricing-card,.price-card,
+  .package-option,.review-card,.faq-item,.contact-card,.feature-card,.benefit-card,.step-card,
+  .quote-card,.resource-tile,.pricing-builder,.pricing-settings,.pricing-summary,.pricing-result,
+  .pricing-packs,.pricing-cta,.library-feature,.library-topics-card,.library-open-card,
+  .item,.note-box,.quiz,.task,.result-card,.workbook-card{padding:20px!important}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
