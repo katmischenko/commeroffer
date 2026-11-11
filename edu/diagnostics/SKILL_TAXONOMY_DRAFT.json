@@ -2114,9 +2114,319 @@
         [
           "responsive_design",
           "Адаптивные медиазапросы"
+        ],
+        [
+          "html_document_structure",
+          "Структура HTML-документа"
+        ],
+        [
+          "semantic_html",
+          "Семантическая HTML-разметка"
+        ],
+        [
+          "css_visual_styling",
+          "Визуальное оформление CSS"
+        ],
+        [
+          "css_box_model",
+          "Размеры и блочная модель CSS"
+        ],
+        [
+          "css_layout_flex",
+          "Раскладка Flexbox"
+        ],
+        [
+          "css_layout_grid",
+          "Раскладка CSS Grid"
+        ],
+        [
+          "css_positioning",
+          "Позиционирование и наложение"
+        ],
+        [
+          "form_accessibility",
+          "Формы и доступность"
+        ],
+        [
+          "interaction_states",
+          "Интерактивные состояния"
+        ],
+        [
+          "resource_paths",
+          "Пути к ресурсам"
         ]
       ],
       "rules": [
+        {
+          "groupId": "form_accessibility",
+          "containsAny": [
+            "Выбор доступного интерактивного элемента с клавиатурной поддержкой"
+          ]
+        },
+        {
+          "groupId": "css_layout_grid",
+          "containsAny": [
+            "Определение принципа двумерной раскладки CSS Grid"
+          ]
+        },
+        {
+          "groupId": "css_positioning",
+          "containsAny": [
+            "Определение stacking context, создаваемого transform"
+          ]
+        },
+        {
+          "groupId": "responsive_design",
+          "containsAny": [
+            "Настройка viewport для мобильной ширины экрана"
+          ]
+        },
+        {
+          "groupId": "css_positioning",
+          "containsAny": [
+            "Управление порядком наложения элементов через z-index"
+          ]
+        },
+        {
+          "groupId": "form_accessibility",
+          "containsAny": [
+            "Применение обязательного поля формы через required"
+          ]
+        },
+        {
+          "groupId": "css_positioning",
+          "containsAny": [
+            "Определение поведения position: relative"
+          ]
+        },
+        {
+          "groupId": "css_layout_grid",
+          "containsAny": [
+            "Настройка промежутков между flex- и grid-элементами"
+          ]
+        },
+        {
+          "groupId": "css_layout_flex",
+          "containsAny": [
+            "Включение гибкой раскладки через display: flex"
+          ]
+        },
+        {
+          "groupId": "form_accessibility",
+          "containsAny": [
+            "Связывание label и input через for и id"
+          ]
+        },
+        {
+          "groupId": "html_attributes",
+          "containsAny": [
+            "Определение назначения атрибута href"
+          ]
+        },
+        {
+          "groupId": "css_box_model",
+          "containsAny": [
+            "Выбор CSS-свойства внешнего отступа"
+          ]
+        },
+        {
+          "groupId": "css_selectors",
+          "containsAny": [
+            "Запись CSS-селектора по идентификатору"
+          ]
+        },
+        {
+          "groupId": "html_elements",
+          "containsAny": [
+            "Выбор HTML-элемента маркированного списка"
+          ]
+        },
+        {
+          "groupId": "html_document_structure",
+          "containsAny": [
+            "Объявление типа документа HTML5 через DOCTYPE"
+          ]
+        },
+        {
+          "groupId": "css_visual_styling",
+          "containsAny": [
+            "Использование псевдоэлемента ::first-line"
+          ]
+        },
+        {
+          "groupId": "css_box_model",
+          "containsAny": [
+            "Определение поведения overflow: auto при переполнении"
+          ]
+        },
+        {
+          "groupId": "css_positioning",
+          "containsAny": [
+            "Определение containing block для absolute-позиционирования"
+          ]
+        },
+        {
+          "groupId": "responsive_design",
+          "containsAny": [
+            "Настройка медиазапроса по минимальной ширине окна"
+          ]
+        },
+        {
+          "groupId": "form_accessibility",
+          "containsAny": [
+            "Использование placeholder для подсказки поля ввода"
+          ]
+        },
+        {
+          "groupId": "css_layout_grid",
+          "containsAny": [
+            "Настройка промежутков между дорожками CSS Grid"
+          ]
+        },
+        {
+          "groupId": "interaction_states",
+          "containsAny": [
+            "Оформление элемента в состоянии фокуса"
+          ]
+        },
+        {
+          "groupId": "css_box_model",
+          "containsAny": [
+            "Установка минимальной ширины элемента"
+          ]
+        },
+        {
+          "groupId": "css_layout_flex",
+          "containsAny": [
+            "Выравнивание flex-элементов по поперечной оси"
+          ]
+        },
+        {
+          "groupId": "css_layout_flex",
+          "containsAny": [
+            "Распределение flex-элементов вдоль главной оси"
+          ]
+        },
+        {
+          "groupId": "css_selectors",
+          "containsAny": [
+            "Запись атрибутного CSS-селектора по имени и значению"
+          ]
+        },
+        {
+          "groupId": "css_visual_styling",
+          "containsAny": [
+            "Выбор CSS-свойства семейства шрифтов"
+          ]
+        },
+        {
+          "groupId": "semantic_html",
+          "containsAny": [
+            "Выбор элемента article для самостоятельной публикации"
+          ]
+        },
+        {
+          "groupId": "semantic_html",
+          "containsAny": [
+            "Определение назначения семантического элемента footer"
+          ]
+        },
+        {
+          "groupId": "semantic_html",
+          "containsAny": [
+            "Выбор семантического элемента навигации"
+          ]
+        },
+        {
+          "groupId": "resource_paths",
+          "containsAny": [
+            "Построение относительного пути к ресурсу из соседней папки"
+          ]
+        },
+        {
+          "groupId": "css_positioning",
+          "containsAny": [
+            "Определение поведения position: relative в потоке документа"
+          ]
+        },
+        {
+          "groupId": "css_selectors",
+          "containsAny": [
+            "Сравнение специфичности CSS-селекторов"
+          ]
+        },
+        {
+          "groupId": "html_elements",
+          "containsAny": [
+            "Выбор HTML-элемента нумерованного списка"
+          ]
+        },
+        {
+          "groupId": "css_selectors",
+          "containsAny": [
+            "Интерпретация составного CSS-селектора элемента и класса"
+          ]
+        },
+        {
+          "groupId": "interaction_states",
+          "containsAny": [
+            "Определение состояния элемента при наведении :hover"
+          ]
+        },
+        {
+          "groupId": "css_visual_styling",
+          "containsAny": [
+            "Выбор CSS-свойства скругления углов"
+          ]
+        },
+        {
+          "groupId": "css_visual_styling",
+          "containsAny": [
+            "Интерпретация поведения display: none"
+          ]
+        },
+        {
+          "groupId": "form_accessibility",
+          "containsAny": [
+            "Связывание подписи label с полем формы"
+          ]
+        },
+        {
+          "groupId": "html_attributes",
+          "containsAny": [
+            "Настройка открытия ссылки в новом контексте через target"
+          ]
+        },
+        {
+          "groupId": "css_box_model",
+          "containsAny": [
+            "Выбор CSS-свойства высоты элемента"
+          ]
+        },
+        {
+          "groupId": "html_elements",
+          "containsAny": [
+            "Выбор HTML-тега строки таблицы"
+          ]
+        },
+        {
+          "groupId": "css_visual_styling",
+          "containsAny": [
+            "Выбор CSS-свойства цвета фона"
+          ]
+        },
+        {
+          "groupId": "html_attributes",
+          "containsAny": [
+            "Использование атрибута id для уникальной идентификации"
+          ]
+        },
+        {
+          "groupId": "html_document_structure",
+          "containsAny": [
+            "Определение назначения элемента title"
+          ]
+        },
         {
           "groupId": "accessibility",
           "containsAny": [
