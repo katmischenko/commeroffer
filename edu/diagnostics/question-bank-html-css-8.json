@@ -226,8 +226,8 @@
       "skill": "понимание и применение",
       "difficulty": "advanced",
       "type": "choice",
-      "question": "Что создаёт новый контекст наложения среди прочего при transform не равном none?",
-      "explanation": "Ненулевой transform создаёт stacking context.",
+      "question": "Какой эффект создаёт transform, если его значение отлично от none?",
+      "explanation": "Значение transform, отличное от none, создаёт новый контекст наложения (stacking context).",
       "options": [
         "Stacking context",
         "HTML-форму",
