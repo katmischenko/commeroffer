@@ -19,7 +19,7 @@
     {
       "id": "htmlcss6-01",
       "topic": "HTML-документ",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Определение назначения элемента title",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой элемент задаёт название страницы, которое обычно видно на вкладке браузера?",
@@ -36,7 +36,7 @@
     {
       "id": "htmlcss6-02",
       "topic": "HTML-атрибуты",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Использование атрибута id для уникальной идентификации",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой атрибут позволяет связать элемент с уникальным идентификатором?",
@@ -53,7 +53,7 @@
     {
       "id": "htmlcss6-03",
       "topic": "CSS-цвета",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Выбор CSS-свойства цвета фона",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какое свойство задаёт цвет фона элемента?",
@@ -70,7 +70,7 @@
     {
       "id": "htmlcss6-04",
       "topic": "HTML-таблицы",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Выбор HTML-тега строки таблицы",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой тег создаёт строку таблицы?",
@@ -87,7 +87,7 @@
     {
       "id": "htmlcss6-05",
       "topic": "CSS-размеры",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Выбор CSS-свойства высоты элемента",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какое свойство задаёт высоту элемента?",
@@ -104,7 +104,7 @@
     {
       "id": "htmlcss6-06",
       "topic": "HTML-ссылки",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Настройка открытия ссылки в новом контексте через target",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какой атрибут ссылки просит браузер открыть страницу в новом контексте (обычно новой вкладке)?",
@@ -121,7 +121,7 @@
     {
       "id": "htmlcss6-07",
       "topic": "HTML-формы",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Связывание подписи label с полем формы",
       "difficulty": "medium",
       "type": "choice",
       "question": "Для чего нужен элемент label рядом с полем ввода?",
@@ -138,7 +138,7 @@
     {
       "id": "htmlcss6-08",
       "topic": "CSS-отображение",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Интерпретация поведения display: none",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что происходит с элементом при display: none?",
@@ -155,7 +155,7 @@
     {
       "id": "htmlcss6-09",
       "topic": "CSS-оформление",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Выбор CSS-свойства скругления углов",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какое свойство скругляет углы блока?",
@@ -172,7 +172,7 @@
     {
       "id": "htmlcss6-10",
       "topic": "CSS-псевдоклассы",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Определение состояния элемента при наведении :hover",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что описывает селектор a:hover?",
@@ -189,7 +189,7 @@
     {
       "id": "htmlcss6-11",
       "topic": "CSS-селекторы",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Интерпретация составного CSS-селектора элемента и класса",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что выберет селектор p.note?",
@@ -206,7 +206,7 @@
     {
       "id": "htmlcss6-12",
       "topic": "HTML-списки",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Выбор HTML-элемента нумерованного списка",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какой элемент создаёт нумерованный список?",
@@ -223,7 +223,7 @@
     {
       "id": "htmlcss6-13",
       "topic": "CSS-специфичность",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Сравнение специфичности CSS-селекторов",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Какое правило обычно имеет больший приоритет при сравнении обычных селекторов без !important?",
@@ -240,7 +240,7 @@
     {
       "id": "htmlcss6-14",
       "topic": "CSS-поток документа",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Определение поведения position: relative в потоке документа",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Какое значение position оставляет элемент в обычном потоке, но позволяет смещать его относительно исходного места?",
@@ -257,7 +257,7 @@
     {
       "id": "htmlcss6-15",
       "topic": "Пути к ресурсам",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Построение относительного пути к ресурсу из соседней папки",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Страница находится в папке pages, а изображение — в соседней папке images. Какой относительный путь ведёт к photo.png?",
@@ -271,5 +271,7 @@
       "correctText": "../images/photo.png",
       "explanation": "Из pages нужно подняться на уровень выше и перейти в images."
     }
-  ]
+  ],
+  "skillGranularity": "question_action",
+  "skillReviewStatus": "teacher_review_draft"
 }
