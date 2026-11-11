@@ -153,6 +153,7 @@ def validate_bank(path: Path, errors: list[str], stems_by_direction, taxonomy, t
 def main():
     errors = []
     stems_by_direction = defaultdict(lambda: defaultdict(list))
+    taxonomy_coverage = defaultdict(Counter)
     profile_path = DIAG / "profiles.json"
     taxonomy_path = DIAG / "TOPIC_TAXONOMY_DRAFT.json"
     if not taxonomy_path.exists():
