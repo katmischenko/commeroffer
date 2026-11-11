@@ -1090,9 +1090,303 @@
         [
           "password_assessment",
           "Оценка надёжности пароля"
+        ],
+        [
+          "positional_number_systems",
+          "Разрядная структура систем счисления"
+        ],
+        [
+          "number_base_conversion",
+          "Перевод чисел между системами счисления"
+        ],
+        [
+          "logical_operations",
+          "Логические операции и выражения"
+        ],
+        [
+          "algorithm_structures",
+          "Структуры алгоритмов"
+        ],
+        [
+          "loop_tracing",
+          "Трассировка циклов"
+        ],
+        [
+          "spreadsheet_operations",
+          "Электронные таблицы и формулы"
+        ],
+        [
+          "programming_basics",
+          "Базовые конструкции программирования"
+        ],
+        [
+          "data_units",
+          "Единицы измерения информации"
+        ],
+        [
+          "information_models",
+          "Информационные модели"
+        ],
+        [
+          "database_operations",
+          "Операции и ключи баз данных"
+        ],
+        [
+          "network_services",
+          "Сетевые адреса и службы"
+        ],
+        [
+          "algorithmic_tracing",
+          "Трассировка алгоритмов и переменных"
         ]
       ],
       "rules": [
+        {
+          "groupId": "code_capacity",
+          "containsAny": [
+            "Расчёт объёма несжатого растрового изображения"
+          ]
+        },
+        {
+          "groupId": "logical_operations",
+          "containsAny": [
+            "Распознавание операции исключающего ИЛИ"
+          ]
+        },
+        {
+          "groupId": "algorithmic_tracing",
+          "containsAny": [
+            "Трассировка алгоритма обмена значениями переменных"
+          ]
+        },
+        {
+          "groupId": "network_services",
+          "containsAny": [
+            "Определение назначения IP-адреса"
+          ]
+        },
+        {
+          "groupId": "database_operations",
+          "containsAny": [
+            "Выбор SQL-оператора для извлечения строк"
+          ]
+        },
+        {
+          "groupId": "spreadsheet_operations",
+          "containsAny": [
+            "Определение поведения абсолютной ссылки при копировании"
+          ]
+        },
+        {
+          "groupId": "loop_tracing",
+          "containsAny": [
+            "Расчёт изменения переменной при повторении команды в цикле"
+          ]
+        },
+        {
+          "groupId": "logical_operations",
+          "containsAny": [
+            "Вычисление составного логического выражения"
+          ]
+        },
+        {
+          "groupId": "code_capacity",
+          "containsAny": [
+            "Определение минимального количества бит для кодирования символов"
+          ]
+        },
+        {
+          "groupId": "number_base_conversion",
+          "containsAny": [
+            "Перевод шестнадцатеричного числа в десятичную систему"
+          ]
+        },
+        {
+          "groupId": "spreadsheet_operations",
+          "containsAny": [
+            "Распознавание начала формулы электронной таблицы"
+          ]
+        },
+        {
+          "groupId": "logical_operations",
+          "containsAny": [
+            "Вычисление логической дизъюнкции"
+          ]
+        },
+        {
+          "groupId": "algorithm_structures",
+          "containsAny": [
+            "Распознавание алгоритма с ветвлением"
+          ]
+        },
+        {
+          "groupId": "data_units",
+          "containsAny": [
+            "Перевод кибибайтов в байты"
+          ]
+        },
+        {
+          "groupId": "code_capacity",
+          "containsAny": [
+            "Расчёт объёма сообщения по длине кода символа"
+          ]
+        },
+        {
+          "groupId": "logical_operations",
+          "containsAny": [
+            "Определение значений переменных для составного логического условия"
+          ]
+        },
+        {
+          "groupId": "algorithmic_tracing",
+          "containsAny": [
+            "Трассировка алгоритма с условным накоплением суммы"
+          ]
+        },
+        {
+          "groupId": "network_services",
+          "containsAny": [
+            "Определение назначения DNS"
+          ]
+        },
+        {
+          "groupId": "database_operations",
+          "containsAny": [
+            "Определение назначения первичного ключа базы данных"
+          ]
+        },
+        {
+          "groupId": "spreadsheet_operations",
+          "containsAny": [
+            "Выбор функции среднего значения в электронной таблице"
+          ]
+        },
+        {
+          "groupId": "loop_tracing",
+          "containsAny": [
+            "Подсчёт итераций цикла с включёнными границами"
+          ]
+        },
+        {
+          "groupId": "logical_operations",
+          "containsAny": [
+            "Применение закона де Моргана"
+          ]
+        },
+        {
+          "groupId": "code_capacity",
+          "containsAny": [
+            "Определение минимальной длины кода символа"
+          ]
+        },
+        {
+          "groupId": "logical_operations",
+          "containsAny": [
+            "Вычисление логической конъюнкции с отрицанием"
+          ]
+        },
+        {
+          "groupId": "algorithm_structures",
+          "containsAny": [
+            "Распознавание линейной алгоритмической структуры"
+          ]
+        },
+        {
+          "groupId": "data_units",
+          "containsAny": [
+            "Перевод байтов в биты"
+          ]
+        },
+        {
+          "groupId": "algorithmic_tracing",
+          "containsAny": [
+            "Трассировка цикла с условным изменением переменной"
+          ]
+        },
+        {
+          "groupId": "number_base_conversion",
+          "containsAny": [
+            "Перевод десятичного числа в двоичную систему"
+          ]
+        },
+        {
+          "groupId": "logical_operations",
+          "containsAny": [
+            "Анализ составного логического условия"
+          ]
+        },
+        {
+          "groupId": "programming_basics",
+          "containsAny": [
+            "Определение длины строки в Python"
+          ]
+        },
+        {
+          "groupId": "information_models",
+          "containsAny": [
+            "Выбор графовой модели для представления связей"
+          ]
+        },
+        {
+          "groupId": "programming_basics",
+          "containsAny": [
+            "Трассировка целочисленного деления в Python"
+          ]
+        },
+        {
+          "groupId": "loop_tracing",
+          "containsAny": [
+            "Подсчёт повторений цикла по заданному числу итераций"
+          ]
+        },
+        {
+          "groupId": "spreadsheet_operations",
+          "containsAny": [
+            "Вычисление суммы значений диапазона электронной таблицы"
+          ]
+        },
+        {
+          "groupId": "logical_operations",
+          "containsAny": [
+            "Определение условия ложности логической операции ИЛИ"
+          ]
+        },
+        {
+          "groupId": "number_base_conversion",
+          "containsAny": [
+            "Перевод двоичного числа в десятичную систему"
+          ]
+        },
+        {
+          "groupId": "programming_basics",
+          "containsAny": [
+            "Выбор целочисленного типа данных"
+          ]
+        },
+        {
+          "groupId": "spreadsheet_operations",
+          "containsAny": [
+            "Определение адреса ячейки электронной таблицы"
+          ]
+        },
+        {
+          "groupId": "algorithm_structures",
+          "containsAny": [
+            "Распознавание циклической алгоритмической структуры"
+          ]
+        },
+        {
+          "groupId": "logical_operations",
+          "containsAny": [
+            "Вычисление отрицания логического значения"
+          ]
+        },
+        {
+          "groupId": "positional_number_systems",
+          "containsAny": [
+            "Определение веса разряда двоичного числа"
+          ]
+        },
         {
           "groupId": "password_assessment",
           "containsAny": [
