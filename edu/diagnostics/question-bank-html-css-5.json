@@ -229,13 +229,13 @@
       "question": "Что означает box-sizing: border-box?",
       "explanation": "При border-box заданные width и height включают содержимое, padding и border.",
       "options": [
-        "Ширина включает padding и border",
+        "Заданные width и height включают padding и border",
         "Ширина включает только текст",
         "Границы не отображаются",
         "Элемент становится блочным"
       ],
       "correctIndex": 0,
-      "correctText": "Ширина включает padding и border"
+      "correctText": "Заданные width и height включают padding и border"
     },
     {
       "id": "htmlcss5-14",
