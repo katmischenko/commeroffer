@@ -1056,6 +1056,26 @@
     #pricing .pricing-bottom{align-items:stretch!important;flex-direction:column!important}
     #pricing .pricing-bottom .btn{width:100%!important;justify-content:center!important}
   }
+
+  /* Библиотека встроена в общий поток страницы, без отдельной промо-карточки */
+  .resources-inline{padding:30px 0 34px!important}
+  .resources-row{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);align-items:center;gap:34px;padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .resources-label{display:block;margin-bottom:7px;color:var(--faint);font-size:9px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+  .resources-copy h2{font-size:clamp(22px,2.8vw,32px);line-height:1.12;letter-spacing:-.03em;margin:0 0 7px}
+  .resources-copy h2 em{font-family:var(--hand);font-size:1.13em;color:var(--marker);font-weight:600}
+  .resources-copy p{max-width:54ch;margin:0;color:var(--muted);font-size:12px;line-height:1.55}
+  .resources-details{display:flex;flex-direction:column;align-items:flex-start;gap:13px}
+  .resources-topics{display:flex;flex-wrap:wrap;gap:6px}
+  .resources-topics span{padding:5px 9px;border:1px solid rgba(234,231,223,.13);border-radius:3px;color:var(--muted);font-size:10px;line-height:1.2}
+  .resources-link{display:inline-flex;align-items:center;gap:9px;color:var(--marker);font-size:11px;font-weight:800;text-decoration:none;border-bottom:1px solid rgba(255,157,69,.4);padding-bottom:3px;transition:gap .2s,border-color .2s}
+  .resources-link:hover{gap:14px;border-color:var(--marker)}
+  .resources-link span{font-size:15px}
+  @media(max-width:760px){
+    .resources-inline{padding:22px 0 26px!important}
+    .resources-row{grid-template-columns:1fr;gap:15px;padding:17px 0}
+    .resources-copy h2{font-size:27px}
+    .resources-details{gap:10px}
+  }
 </style>
 </head>
 <body>
@@ -1415,55 +1435,25 @@
     </div>
   </section>
 
-  <hr class="divider">
-
-  <!-- EDU -->
-  <section>
+  <!-- LIBRARY: встроенный раздел сайта -->
+  <section class="resources-inline" id="library">
     <div class="wrap">
-      <div class="edu reveal">
-        <div class="edu-aside">
-          <span class="edu-kicker">Mischenko Edu <i>✳</i></span>
-          <div class="edu-edition">МЕТОДИЧЕСКАЯ<br>БИБЛИОТЕКА <span>№ 01</span></div>
-          <div class="edu-index" aria-hidden="true"><strong>01</strong><span>Каталог учебных материалов</span></div>
+      <div class="resources-row">
+        <div class="resources-copy">
+          <span class="resources-label">Mischenko Edu · материалы</span>
+          <h2>Есть что <em>изучить</em> самостоятельно</h2>
+          <p>Конспекты, задания и тренажёры — дополнительные материалы к занятиям и для самостоятельной практики.</p>
         </div>
-        <div class="edu-main">
-          <div class="edu-head">
-            <span class="edu-overline">собрано для самостоятельной работы</span>
-            <h2>Учиться. Разбираться. <em>Создавать.</em></h2>
-            <p class="edu-intro">Конспекты, практика и интерактивные тренажёры — чтобы не просто прочитать тему, а разобраться и применить знания.</p>
+        <div class="resources-details">
+          <div class="resources-topics" aria-label="Направления библиотеки">
+            <span>Физика</span><span>Информатика</span><span>Математика</span>
+            <span>Python</span><span>Figma</span><span>HTML / CSS</span>
           </div>
-          <div class="edu-grid">
-            <article class="edu-item">
-              <span class="edu-num">01</span>
-              <div><h3>Конспекты и теория</h3><p>Объяснения, правила и важные детали.</p></div>
-              <span class="edu-arrow">↗</span>
-            </article>
-            <article class="edu-item">
-              <span class="edu-num">02</span>
-              <div><h3>Практика и сборники</h3><p>Задания для закрепления и подготовки.</p></div>
-              <span class="edu-arrow">↗</span>
-            </article>
-            <article class="edu-item">
-              <span class="edu-num">03</span>
-              <div><h3>Тренажёры</h3><p>Интерактивная практика и самопроверка.</p></div>
-              <span class="edu-arrow">↗</span>
-            </article>
-            <article class="edu-item">
-              <span class="edu-num">04</span>
-              <div><h3>Дополнительные материалы</h3><p>Чек-листы, диагностики и памятки.</p></div>
-              <span class="edu-arrow">↗</span>
-            </article>
-          </div>
-          <div class="edu-bottom">
-            <p class="edu-access"><b>Бесплатные и платные материалы</b><span>Формат каждого пособия будет указан в каталоге.</span></p>
-            <a class="btn btn-marker" href="edu/index.html">Перейти в библиотеку <span>↗</span></a>
-          </div>
+          <a class="resources-link" href="edu/index.html">Открыть библиотеку <span>↗</span></a>
         </div>
       </div>
     </div>
   </section>
-
-  <hr class="divider">
 
   <!-- FAQ -->
   <section id="faq">
