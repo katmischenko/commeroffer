@@ -107,7 +107,7 @@
       "skill": "понимание и применение Figma",
       "difficulty": "medium",
       "type": "choice",
-      "question": "Какой режим размера подходит текстовому блоку, который должен занимать всю доступную ширину контейнера?",
+      "question": "Какой режим размера подходит текстовому блоку внутри Auto Layout, если он должен занимать всю доступную ширину контейнера?",
       "options": [
         "Hug contents",
         "Fill container",
@@ -116,7 +116,7 @@
       ],
       "correctIndex": 1,
       "correctText": "Fill container",
-      "explanation": "Fill container занимает доступное пространство в родительском Auto Layout."
+      "explanation": "Fill container занимает доступное пространство внутри родительского Auto Layout."
     },
     {
       "id": "figma7-07",
