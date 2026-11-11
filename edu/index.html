@@ -64,16 +64,17 @@
             <button class="chip" data-subj="inf">информатика</button>
             <button class="chip" data-subj="math">математика</button>
             <button class="chip" data-subj="phys">физика</button>
-            <button class="chip" data-subj="python">Python</button>\n            <button class="chip" data-subj="figma">Figma</button>\n            <button class="chip" data-subj="web">HTML/CSS</button>
+            <button class="chip" data-subj="python">Python</button>
+            <button class="chip" data-subj="figma">Figma</button>
+            <button class="chip" data-subj="web">HTML/CSS</button>
           </div>
         </div>
         <div class="f-group">
-          <span class="f-label">статус</span>
-          <div class="chips" id="stChips">
-            <button class="chip on-st on" data-st="all">все</button>
-            <button class="chip" data-st="ok">уже доступно</button>
-            <button class="chip" data-st="soon">скоро</button>
-            
+          <span class="f-label">доступ</span>
+          <div class="chips" id="priceChips">
+            <button class="chip on-st on" data-price="all">все</button>
+            <button class="chip" data-price="free">бесплатные</button>
+            <button class="chip" data-price="paid">платные</button>
           </div>
         </div>
       </div>
@@ -125,8 +126,8 @@
     lib.innerHTML = '';
     ITEMS.forEach(function(it){
       var matchSubj = (curSubj === 'all') || (it.subj === curSubj);
-      var matchSt = (curSt === 'all') || (it.st === curSt);
-      if(!matchSubj || !matchSt) return;
+      var matchPrice = (curPrice === 'all') || (curPrice === 'free' && it.free) || (curPrice === 'paid' && !it.free);
+      if(!matchSubj || !matchPrice) return;
       shown++;
       var a = document.createElement(it.st === 'soon' ? 'div' : 'a');
       a.className = 'item';
