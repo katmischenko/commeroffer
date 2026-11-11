@@ -19,7 +19,7 @@
     {
       "id": "htmlcss8-01",
       "topic": "HTML",
-      "skill": "понимание",
+      "skill": "Объявление типа документа HTML5 через DOCTYPE",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какое объявление указывает браузеру на современный HTML5?",
@@ -36,7 +36,7 @@
     {
       "id": "htmlcss8-02",
       "topic": "HTML",
-      "skill": "понимание",
+      "skill": "Выбор HTML-элемента маркированного списка",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой тег задаёт маркированный список?",
@@ -53,7 +53,7 @@
     {
       "id": "htmlcss8-03",
       "topic": "CSS",
-      "skill": "понимание",
+      "skill": "Запись CSS-селектора по идентификатору",
       "difficulty": "basic",
       "type": "choice",
       "question": "Как выбрать элемент с id=\"menu\"?",
@@ -70,7 +70,7 @@
     {
       "id": "htmlcss8-04",
       "topic": "CSS",
-      "skill": "понимание",
+      "skill": "Выбор CSS-свойства внешнего отступа",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какое свойство управляет внешним отступом?",
@@ -87,7 +87,7 @@
     {
       "id": "htmlcss8-05",
       "topic": "HTML",
-      "skill": "понимание",
+      "skill": "Определение назначения атрибута href",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой атрибут указывает адрес перехода ссылки?",
@@ -104,7 +104,7 @@
     {
       "id": "htmlcss8-06",
       "topic": "Формы",
-      "skill": "понимание и применение",
+      "skill": "Связывание label и input через for и id",
       "difficulty": "medium",
       "type": "choice",
       "question": "Как связать label с input?",
@@ -121,7 +121,7 @@
     {
       "id": "htmlcss8-07",
       "topic": "CSS",
-      "skill": "понимание и применение",
+      "skill": "Включение гибкой раскладки через display: flex",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какое значение display включает гибкую раскладку?",
@@ -138,7 +138,7 @@
     {
       "id": "htmlcss8-08",
       "topic": "CSS",
-      "skill": "понимание и применение",
+      "skill": "Настройка промежутков между flex- и grid-элементами",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какое свойство задаёт расстояние между элементами flex/grid?",
@@ -155,7 +155,7 @@
     {
       "id": "htmlcss8-09",
       "topic": "CSS",
-      "skill": "понимание и применение",
+      "skill": "Определение поведения position: relative",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что делает position: relative?",
@@ -172,7 +172,7 @@
     {
       "id": "htmlcss8-10",
       "topic": "HTML",
-      "skill": "понимание и применение",
+      "skill": "Применение обязательного поля формы через required",
       "difficulty": "medium",
       "type": "choice",
       "question": "Для чего используют атрибут required у поля формы?",
@@ -189,7 +189,7 @@
     {
       "id": "htmlcss8-11",
       "topic": "CSS",
-      "skill": "понимание и применение",
+      "skill": "Управление порядком наложения элементов через z-index",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какое свойство меняет порядок наложения позиционированных элементов?",
@@ -206,7 +206,7 @@
     {
       "id": "htmlcss8-12",
       "topic": "Адаптивность",
-      "skill": "понимание и применение",
+      "skill": "Настройка viewport для мобильной ширины экрана",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что обычно задают в viewport meta для корректной мобильной ширины?",
@@ -223,7 +223,7 @@
     {
       "id": "htmlcss8-13",
       "topic": "CSS",
-      "skill": "понимание и применение",
+      "skill": "Определение stacking context, создаваемого transform",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Какой эффект создаёт transform, если его значение отлично от none?",
@@ -240,7 +240,7 @@
     {
       "id": "htmlcss8-14",
       "topic": "CSS",
-      "skill": "понимание и применение",
+      "skill": "Определение принципа двумерной раскладки CSS Grid",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Какова основная идея CSS Grid?",
@@ -257,7 +257,7 @@
     {
       "id": "htmlcss8-15",
       "topic": "Доступность",
-      "skill": "понимание и применение",
+      "skill": "Выбор доступного интерактивного элемента с клавиатурной поддержкой",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Какой подход лучше для интерактивного элемента, который должен работать с клавиатуры?",
@@ -271,5 +271,7 @@
       "correctIndex": 2,
       "correctText": "Использовать button или корректную семантику и клавиатурное управление"
     }
-  ]
+  ],
+  "skillGranularity": "question_action",
+  "skillReviewStatus": "teacher_review_draft"
 }
