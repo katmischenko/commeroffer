@@ -131,6 +131,26 @@ test("all 18 Russian curriculum variants load their dedicated banks", async () =
   await page.close();
 });
 
+test("result gives topic-specific next steps without claiming mastery from one item", async () => {
+  const page = await browser.newPage();
+  await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
+  await page.locator("#student").fill("Проверка рекомендаций");
+  await page.locator("#direction").selectOption("math");
+  await page.locator("#grade").selectOption("7");
+  await page.locator("#start").click();
+  await page.waitForFunction(() => document.querySelector("#counter")?.textContent.trim() === "вопрос 1 из 15");
+  await page.locator('[data-option="1"]').click();
+  for (let i = 0; i < 14; i++) await page.locator("#skip").click();
+  const result = await page.locator("#result").textContent();
+  assert.match(result, /Что делать дальше/);
+  assert.match(result, /Рациональные числа — 0 из 3; задания №1, 2, 7/);
+  assert.match(result, /Углы — 0 из 1; задания №4/);
+  assert.match(result, /не надёжный вывод об освоении всей темы/);
+  assert.match(result, /реши ещё 2–3 похожих задания/);
+  assert.doesNotMatch(result, /Основные понятия и способы решения в целом освоены/);
+  await page.close();
+});
+
 test("result preserves literal HTML tags in question text", async () => {
   const page = await browser.newPage();
   await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
