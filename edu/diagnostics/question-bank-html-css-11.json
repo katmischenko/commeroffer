@@ -19,7 +19,7 @@
     {
       "id": "htmlcss11-01",
       "topic": "HTML-диалоги",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Использование нативного элемента dialog",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой встроенный HTML-элемент предназначен для диалогового окна?",
@@ -36,7 +36,7 @@
     {
       "id": "htmlcss11-02",
       "topic": "HTML-скрипты",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Подключение JavaScript-модуля через type=module",
       "difficulty": "basic",
       "type": "choice",
       "question": "Что означает атрибут type=\"module\" у script?",
@@ -53,7 +53,7 @@
     {
       "id": "htmlcss11-03",
       "topic": "Адаптивные изображения",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Выбор адаптивных источников изображения элементом picture",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой элемент позволяет выбрать разные источники изображения для разных условий?",
@@ -70,7 +70,7 @@
     {
       "id": "htmlcss11-04",
       "topic": "HTML-доступность",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Исключение поддерева из фокуса и дерева доступности через inert",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой атрибут временно исключает элемент и его потомков из взаимодействия и дерева доступности?",
@@ -87,7 +87,7 @@
     {
       "id": "htmlcss11-05",
       "topic": "CSS-селекторы",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Группировка альтернативных селекторов с помощью :is()",
       "difficulty": "basic",
       "type": "choice",
       "question": "Что выбирает псевдокласс :is(.card, .panel)?",
@@ -104,7 +104,7 @@
     {
       "id": "htmlcss11-06",
       "topic": "CSS-производительность",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Оптимизация рендеринга внеэкранного содержимого через content-visibility",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что делает content-visibility: auto?",
@@ -121,7 +121,7 @@
     {
       "id": "htmlcss11-07",
       "topic": "CSS-селекторы",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Выбор элемента по наличию потомка через :has()",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что позволяет выбрать карточку, внутри которой есть элемент .warning?",
@@ -138,7 +138,7 @@
     {
       "id": "htmlcss11-08",
       "topic": "CSS-каскад",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Определение приоритета обычных правил в слоях @layer",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что определяет порядок приоритета обычных (не !important) правил в слоях, объявленных через @layer?",
@@ -155,7 +155,7 @@
     {
       "id": "htmlcss11-09",
       "topic": "CSS-контейнеры",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Включение запросов по inline-размеру контейнера",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какое значение container-type включает запросы по inline-размеру контейнера?",
@@ -172,7 +172,7 @@
     {
       "id": "htmlcss11-10",
       "topic": "HTML-доступность",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Объявление динамических обновлений через aria-live=polite",
       "difficulty": "medium",
       "type": "choice",
       "question": "Для чего используют aria-live=\"polite\"?",
@@ -189,7 +189,7 @@
     {
       "id": "htmlcss11-11",
       "topic": "CSS Grid",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Построение именованных областей CSS Grid через grid-template-areas",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что позволяет свойство grid-template-areas?",
@@ -206,7 +206,7 @@
     {
       "id": "htmlcss11-12",
       "topic": "HTML-формы",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Предотвращение отправки формы кнопкой через type=button",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какой атрибут у кнопки формы позволяет не отправлять форму при нажатии?",
@@ -223,7 +223,7 @@
     {
       "id": "htmlcss11-13",
       "topic": "CSS-контейнерные запросы",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Различение container query и media query",
       "difficulty": "advanced",
       "type": "choice",
       "question": "В чём главное отличие container query от media query?",
@@ -240,7 +240,7 @@
     {
       "id": "htmlcss11-14",
       "topic": "HTML-доступность",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Управление фокусом при открытии и закрытии модального dialog",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Что важно сделать при открытии модального dialog, чтобы клавиатурный пользователь не потерял контекст?",
@@ -257,7 +257,7 @@
     {
       "id": "htmlcss11-15",
       "topic": "CSS-архитектура",
-      "skill": "понимание и применение HTML/CSS",
+      "skill": "Организация каскада CSS через архитектурные слои",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Какое преимущество даёт разделение CSS на слои reset, base, components и utilities?",
@@ -271,5 +271,7 @@
       "correctText": "Явный порядок каскада и более предсказуемое управление приоритетами",
       "explanation": "Слои помогают организовать стили и контролировать приоритеты между группами правил."
     }
-  ]
+  ],
+  "skillGranularity": "question_action",
+  "skillReviewStatus": "teacher_review_draft"
 }
