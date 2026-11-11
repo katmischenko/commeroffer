@@ -108,15 +108,15 @@
       "difficulty": "medium",
       "type": "choice",
       "question": "Какое свойство задаёт расстояние между элементами в Auto Layout?",
-      "explanation": "Spacing between items задаёт промежуток между дочерними элементами.",
+      "explanation": "Gap between items задаёт промежуток между дочерними элементами Auto Layout.",
       "options": [
         "Stroke",
-        "Spacing between items",
+        "Gap between items (промежуток между элементами)",
         "Blend mode",
         "Corner smoothing"
       ],
       "correctIndex": 1,
-      "correctText": "Spacing between items"
+      "correctText": "Gap between items (промежуток между элементами)"
     },
     {
       "id": "figma8-07",
