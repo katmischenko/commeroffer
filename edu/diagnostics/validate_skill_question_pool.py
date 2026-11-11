@@ -130,6 +130,19 @@ def main():
         "astrophysics": 2,
         "interference": 2,
         "thermal_engines": 2,
+        "computer_devices": 2,
+        "computer_architecture": 2,
+        "cryptography": 2,
+        "database_relations": 2,
+        "file_paths": 2,
+        "file_processing": 2,
+        "sorting_searching": 2,
+        "euclidean_algorithm": 2,
+        "ai_literacy": 2,
+        "sequence_indexing": 2,
+        "function_return": 2,
+        "operator_precedence": 2,
+        "set_operations": 2,
     }
     if len(questions) != sum(expected_groups.values()):
         errors.append(f"expected {sum(expected_groups.values())} draft questions, got {len(questions)}")
