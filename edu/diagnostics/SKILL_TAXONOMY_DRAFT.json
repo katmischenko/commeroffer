@@ -680,9 +680,227 @@
         [
           "electric_field",
           "Напряжённость электрического поля"
+        ],
+        [
+          "magnetic_field",
+          "Магнитное поле и магнитное действие тока"
+        ],
+        [
+          "electromagnetic_waves",
+          "Электромагнитные волны"
+        ],
+        [
+          "optics",
+          "Геометрическая и волновая оптика"
+        ],
+        [
+          "quantum_physics",
+          "Квантовые свойства излучения"
+        ],
+        [
+          "transformers",
+          "Трансформаторы и переменный ток"
+        ],
+        [
+          "interference",
+          "Интерференция и когерентность"
+        ],
+        [
+          "photoelectric_effect",
+          "Фотоэффект"
+        ],
+        [
+          "nuclear_physics",
+          "Радиоактивность и ядерные процессы"
+        ],
+        [
+          "astrophysics",
+          "Астрофизические наблюдения"
+        ],
+        [
+          "relativity",
+          "Специальная теория относительности"
+        ],
+        [
+          "ac_circuits",
+          "Цепи переменного тока"
         ]
       ],
       "rules": [
+        {
+          "groupId": "relativity",
+          "containsAny": [
+            "Объяснение замедления времени в специальной теории относительности"
+          ]
+        },
+        {
+          "groupId": "nuclear_physics",
+          "containsAny": [
+            "Перевод энергии из мегаэлектронвольт в джоули"
+          ]
+        },
+        {
+          "groupId": "quantum_physics",
+          "containsAny": [
+            "Анализ зависимости длины волны де Бройля от импульса"
+          ]
+        },
+        {
+          "groupId": "nuclear_physics",
+          "containsAny": [
+            "Расчёт доли радиоактивного вещества после периодов полураспада"
+          ]
+        },
+        {
+          "groupId": "astrophysics",
+          "containsAny": [
+            "Интерпретация синего смещения спектральных линий"
+          ]
+        },
+        {
+          "groupId": "quantum_physics",
+          "containsAny": [
+            "Расчёт частоты фотона по его энергии"
+          ]
+        },
+        {
+          "groupId": "interference",
+          "containsAny": [
+            "Интерпретация интерференционной картины когерентных волн"
+          ]
+        },
+        {
+          "groupId": "electromagnetic_waves",
+          "containsAny": [
+            "Расчёт длины электромагнитной волны по частоте"
+          ]
+        },
+        {
+          "groupId": "ac_circuits",
+          "containsAny": [
+            "Определение полного сопротивления RLC-цепи при резонансе"
+          ]
+        },
+        {
+          "groupId": "ac_circuits",
+          "containsAny": [
+            "Расчёт периода переменного тока по частоте"
+          ]
+        },
+        {
+          "groupId": "nuclear_physics",
+          "containsAny": [
+            "Определение состава атомного ядра"
+          ]
+        },
+        {
+          "groupId": "quantum_physics",
+          "containsAny": [
+            "Анализ зависимости энергии фотона от частоты"
+          ]
+        },
+        {
+          "groupId": "optics",
+          "containsAny": [
+            "Распознавание дифракции как волнового явления"
+          ]
+        },
+        {
+          "groupId": "electromagnetic_waves",
+          "containsAny": [
+            "Распознавание скорости электромагнитной волны в вакууме"
+          ]
+        },
+        {
+          "groupId": "magnetic_field",
+          "containsAny": [
+            "Расчёт энергии магнитного поля катушки по индуктивности и току"
+          ]
+        },
+        {
+          "groupId": "astrophysics",
+          "containsAny": [
+            "Интерпретация красного смещения спектра галактики"
+          ]
+        },
+        {
+          "groupId": "photoelectric_effect",
+          "containsAny": [
+            "Расчёт кинетической энергии фотоэлектрона по уравнению Эйнштейна"
+          ]
+        },
+        {
+          "groupId": "quantum_physics",
+          "containsAny": [
+            "Анализ зависимости энергии фотона от длины волны"
+          ]
+        },
+        {
+          "groupId": "nuclear_physics",
+          "containsAny": [
+            "Распознавание состава альфа-частицы"
+          ]
+        },
+        {
+          "groupId": "nuclear_physics",
+          "containsAny": [
+            "Расчёт доли вещества после нескольких периодов полураспада"
+          ]
+        },
+        {
+          "groupId": "photoelectric_effect",
+          "containsAny": [
+            "Анализ изменения энергии фотоэлектронов с частотой света"
+          ]
+        },
+        {
+          "groupId": "interference",
+          "containsAny": [
+            "Определение условия устойчивой интерференции"
+          ]
+        },
+        {
+          "groupId": "ac_circuits",
+          "containsAny": [
+            "Определение условия возникновения резонанса"
+          ]
+        },
+        {
+          "groupId": "transformers",
+          "containsAny": [
+            "Расчёт коэффициента трансформации по числу витков"
+          ]
+        },
+        {
+          "groupId": "quantum_physics",
+          "containsAny": [
+            "Распознавание фотона как кванта электромагнитного излучения"
+          ]
+        },
+        {
+          "groupId": "optics",
+          "containsAny": [
+            "Выбор собирающей линзы по её оптическому действию"
+          ]
+        },
+        {
+          "groupId": "electromagnetic_waves",
+          "containsAny": [
+            "Определение источника электромагнитного излучения"
+          ]
+        },
+        {
+          "groupId": "electromagnetic_induction",
+          "containsAny": [
+            "Определение условия возникновения индукционного тока"
+          ]
+        },
+        {
+          "groupId": "magnetic_field",
+          "containsAny": [
+            "Определение направления линий магнитного поля прямого проводника"
+          ]
+        },
         {
           "groupId": "electrostatics",
           "containsAny": [
@@ -1418,9 +1636,139 @@
         [
           "algorithmic_tracing",
           "Трассировка алгоритмов и переменных"
+        ],
+        [
+          "computer_architecture",
+          "Архитектура компьютера"
+        ],
+        [
+          "operating_systems",
+          "Операционные системы"
+        ],
+        [
+          "software_licensing",
+          "Лицензирование программного обеспечения"
+        ],
+        [
+          "unicode_encoding",
+          "Кодирование символов Unicode"
+        ],
+        [
+          "document_formatting",
+          "Структурирование текстовых документов"
+        ],
+        [
+          "raster_graphics",
+          "Растровая графика и глубина цвета"
+        ],
+        [
+          "digital_audio",
+          "Цифровой звук и дискретизация"
+        ],
+        [
+          "vector_graphics",
+          "Векторная графика"
+        ],
+        [
+          "3d_modeling",
+          "Трёхмерное моделирование"
+        ],
+        [
+          "information_volume",
+          "Информационный объём данных"
         ]
       ],
       "rules": [
+        {
+          "groupId": "logical_operations",
+          "containsAny": [
+            "Преобразование логического выражения по дистрибутивному закону"
+          ]
+        },
+        {
+          "groupId": "raster_graphics",
+          "containsAny": [
+            "Расчёт объёма растрового изображения по глубине цвета"
+          ]
+        },
+        {
+          "groupId": "number_base_conversion",
+          "containsAny": [
+            "Перевод шестнадцатеричного числа в десятичную систему"
+          ]
+        },
+        {
+          "groupId": "information_volume",
+          "containsAny": [
+            "Расчёт информационного объёма текстового документа"
+          ]
+        },
+        {
+          "groupId": "logical_operations",
+          "containsAny": [
+            "Вычисление значения логического выражения с отрицанием"
+          ]
+        },
+        {
+          "groupId": "3d_modeling",
+          "containsAny": [
+            "Определение операции Extrude в 3D-моделировании"
+          ]
+        },
+        {
+          "groupId": "vector_graphics",
+          "containsAny": [
+            "Различение векторного и растрового представления графики"
+          ]
+        },
+        {
+          "groupId": "digital_audio",
+          "containsAny": [
+            "Определение смысла частоты дискретизации звука"
+          ]
+        },
+        {
+          "groupId": "raster_graphics",
+          "containsAny": [
+            "Расчёт информационного объёма растрового изображения"
+          ]
+        },
+        {
+          "groupId": "document_formatting",
+          "containsAny": [
+            "Использование стилей заголовков для структурирования документа"
+          ]
+        },
+        {
+          "groupId": "unicode_encoding",
+          "containsAny": [
+            "Определение назначения Unicode"
+          ]
+        },
+        {
+          "groupId": "code_capacity",
+          "containsAny": [
+            "Расчёт количества комбинаций, кодируемых битовой последовательностью"
+          ]
+        },
+        {
+          "groupId": "software_licensing",
+          "containsAny": [
+            "Интерпретация условий свободной лицензии программного обеспечения"
+          ]
+        },
+        {
+          "groupId": "operating_systems",
+          "containsAny": [
+            "Определение функций операционной системы"
+          ]
+        },
+        {
+          "groupId": "computer_architecture",
+          "containsAny": [
+            "Определение роли процессора в архитектуре компьютера"
+          ]
+        },
         {
           "groupId": "code_capacity",
           "containsAny": [
