@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Визуальные референсы — Mischenko Edu</title>
+<style>
+:root{color-scheme:light;--ink:#24212a;--muted:#77717d;--paper:#f7f5f2;--line:#e6e0dc;--accent:#8b4058}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 Inter,Arial,sans-serif}
+main{width:min(1120px,calc(100% - 40px));margin:0 auto;padding:54px 0 70px}
+header{margin-bottom:30px}
+.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700}
+h1{font:500 clamp(30px,5vw,48px)/1.08 Georgia,serif;margin:12px 0}
+.intro{color:var(--muted);max-width:620px;margin:0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+figure{margin:0;background:#fff;border:1px solid var(--line);padding:10px}
+figure img{display:block;width:100%;height:auto;max-height:680px;object-fit:contain;background:#f0eeeb;cursor:zoom-in}
+figcaption{padding:10px 3px 2px;color:var(--muted);font-size:12px}
+dialog{border:0;padding:12px;background:#fff;max-width:min(94vw,1200px);max-height:94vh}
+dialog::backdrop{background:rgba(20,17,23,.86)}
+dialog img{display:block;max-width:calc(94vw - 24px);max-height:calc(94vh - 24px);object-fit:contain}
+@media(max-width:680px){main{width:min(100% - 24px,560px);padding-top:32px}.grid{grid-template-columns:1fr;gap:14px}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div class="eyebrow">Mischenko Edu · visual research</div>
+<h1>Визуальные ориентиры</h1>
+<p class="intro">Четыре изображения, собранные для обсуждения будущего визуального направления. Нажми на изображение, чтобы открыть его крупнее.</p>
+</header>
+<section class="grid" aria-label="Галерея референсов">
+<figure><img src="./a6a6331de9ca25efafddc5fa953edd78.jpg" alt="Референс 1"><figcaption>Референс 01</figcaption></figure>
+<figure><img src="./b5f09dd98daeb6ffb9bd6529a22b45a1.jpg" alt="Референс 2"><figcaption>Референс 02</figcaption></figure>
+<figure><img src="./3f6bb39ee7f1eee8a1c7acfc89f8b8b2.jpg" alt="Референс 3"><figcaption>Референс 03</figcaption></figure>
+<figure><img src="./fb9ed010363e9ccb4bc9bc1ef0de5ae2.jpg" alt="Референс 4"><figcaption>Референс 04</figcaption></figure>
+</section>
+</main>
+<dialog id="viewer"><img alt="Увеличенный референс"></dialog>
+<script>
+const viewer=document.querySelector('#viewer');
+const preview=viewer.querySelector('img');
+document.querySelectorAll('figure img').forEach(img=>img.addEventListener('click',()=>{preview.src=img.src;preview.alt=img.alt;viewer.showModal()}));
+viewer.addEventListener('click',()=>viewer.close());
+</script>
+</body>
+</html>
