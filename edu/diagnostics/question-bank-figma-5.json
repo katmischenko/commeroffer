@@ -19,7 +19,7 @@
     {
       "id": "figma5-01",
       "topic": "Интерфейс Figma",
-      "skill": "понимание",
+      "skill": "Использование Move для выбора и перемещения объектов",
       "difficulty": "basic",
       "type": "choice",
       "question": "Для чего предназначен инструмент Move?",
@@ -36,7 +36,7 @@
     {
       "id": "figma5-02",
       "topic": "Фреймы",
-      "skill": "понимание",
+      "skill": "Понимание назначения Frame как контейнера",
       "difficulty": "basic",
       "type": "choice",
       "question": "Что такое Frame в Figma?",
@@ -53,7 +53,7 @@
     {
       "id": "figma5-03",
       "topic": "Фигуры",
-      "skill": "понимание",
+      "skill": "Выбор инструмента Rectangle для создания фигуры",
       "difficulty": "basic",
       "type": "choice",
       "question": "Как создать прямоугольник?",
@@ -70,7 +70,7 @@
     {
       "id": "figma5-04",
       "topic": "Текст",
-      "skill": "понимание",
+      "skill": "Добавление текстового объекта инструментом Text",
       "difficulty": "basic",
       "type": "choice",
       "question": "Как добавить надпись в макет?",
@@ -87,7 +87,7 @@
     {
       "id": "figma5-05",
       "topic": "Слои",
-      "skill": "понимание",
+      "skill": "Поиск панели Layers в интерфейсе",
       "difficulty": "basic",
       "type": "choice",
       "question": "Где обычно отображается список слоёв?",
@@ -104,7 +104,7 @@
     {
       "id": "figma5-06",
       "topic": "Цвет",
-      "skill": "понимание и применение",
+      "skill": "Определение содержимого параметра Fill",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что задаёт параметр Fill?",
@@ -121,7 +121,7 @@
     {
       "id": "figma5-07",
       "topic": "Выравнивание",
-      "skill": "понимание и применение",
+      "skill": "Выравнивание объектов командами Align",
       "difficulty": "medium",
       "type": "choice",
       "question": "Для чего нужны кнопки Align?",
@@ -138,7 +138,7 @@
     {
       "id": "figma5-08",
       "topic": "Группы",
-      "skill": "понимание и применение",
+      "skill": "Понимание группировки объектов",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что даёт группировка объектов?",
@@ -155,7 +155,7 @@
     {
       "id": "figma5-09",
       "topic": "Компоненты",
-      "skill": "понимание и применение",
+      "skill": "Понимание повторного использования компонентов",
       "difficulty": "medium",
       "type": "choice",
       "question": "Для чего создают компонент?",
@@ -172,7 +172,7 @@
     {
       "id": "figma5-10",
       "topic": "Прототип",
-      "skill": "понимание и применение",
+      "skill": "Настройка переходов и взаимодействий прототипа",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что можно настроить во вкладке Prototype?",
@@ -189,7 +189,7 @@
     {
       "id": "figma5-11",
       "topic": "Изображения",
-      "skill": "понимание и применение",
+      "skill": "Управление кадрированием изображения режимами Fill и Crop",
       "difficulty": "medium",
       "type": "choice",
       "question": "Как изменить кадрирование изображения внутри фигуры?",
@@ -206,7 +206,7 @@
     {
       "id": "figma5-12",
       "topic": "Экспорт",
-      "skill": "понимание и применение",
+      "skill": "Выбор формата SVG для векторного экспорта",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какой формат подходит для экспорта векторной иконки?",
@@ -223,7 +223,7 @@
     {
       "id": "figma5-13",
       "topic": "Композиция",
-      "skill": "понимание и применение",
+      "skill": "Анализ роли визуальной иерархии в композиции",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Почему важно соблюдать визуальную иерархию?",
@@ -240,7 +240,7 @@
     {
       "id": "figma5-14",
       "topic": "Компоненты",
-      "skill": "понимание и применение",
+      "skill": "Распознавание экземпляра главного компонента",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Что такое instance (экземпляр) компонента?",
@@ -257,7 +257,7 @@
     {
       "id": "figma5-15",
       "topic": "Сетка",
-      "skill": "понимание и применение",
+      "skill": "Применение layout grid для структуры и выравнивания",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Для чего используют layout grid?",
@@ -271,5 +271,7 @@
       "correctIndex": 2,
       "correctText": "Для согласованного выравнивания и построения композиции"
     }
-  ]
+  ],
+  "skillGranularity": "question_action",
+  "skillReviewStatus": "teacher_review_draft"
 }
