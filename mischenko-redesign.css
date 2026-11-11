@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
 
 :root{
   --paper:#f4f2ee;
@@ -386,7 +386,7 @@ body{
 
 
 /* AUTHOR'S HANDWRITTEN LAYER — a little less polish, a little more Katya */
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+
 :root{--hand:"Caveat",cursive}
 .section-heading{font-weight:400;letter-spacing:-.035em}
 .hero h1{font-weight:400}
