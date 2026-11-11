@@ -19,7 +19,7 @@
     {
       "id": "python7-01",
       "topic": "Сравнения",
-      "skill": "применение Python",
+      "skill": "Выбор оператора сравнения на равенство",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой оператор проверяет равенство двух значений?",
@@ -36,7 +36,7 @@
     {
       "id": "python7-02",
       "topic": "Логика",
-      "skill": "применение Python",
+      "skill": "Применение логического отрицания not",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой оператор Python меняет True на False и наоборот?",
@@ -53,7 +53,7 @@
     {
       "id": "python7-03",
       "topic": "Преобразование типов",
-      "skill": "применение Python",
+      "skill": "Преобразование строки в вещественное число",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой результат даст float(\"3.5\")?",
@@ -70,7 +70,7 @@
     {
       "id": "python7-04",
       "topic": "Циклы",
-      "skill": "применение Python",
+      "skill": "Выбор break для досрочного завершения цикла",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какое ключевое слово досрочно завершает ближайший цикл?",
@@ -87,7 +87,7 @@
     {
       "id": "python7-05",
       "topic": "Ветвление",
-      "skill": "применение Python",
+      "skill": "Выбор elif для дополнительной проверки условия",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какое слово добавляет ещё одну проверку после if?",
@@ -104,7 +104,7 @@
     {
       "id": "python7-06",
       "topic": "Циклы и накопление",
-      "skill": "вычисление и применение",
+      "skill": "Трассировка накопления суммы в цикле",
       "difficulty": "medium",
       "type": "short",
       "question": "Чему равна сумма после выполнения s = 0; for n in [1, 3, 5]: s += n?",
@@ -117,7 +117,7 @@
     {
       "id": "python7-07",
       "topic": "Функция range",
-      "skill": "вычисление и применение",
+      "skill": "Подсчёт значений в range() с заданным шагом",
       "difficulty": "medium",
       "type": "short",
       "question": "Сколько чисел перебирает range(2, 9, 3)?",
@@ -130,7 +130,7 @@
     {
       "id": "python7-08",
       "topic": "Строки",
-      "skill": "вычисление и применение",
+      "skill": "Получение последнего символа строки отрицательным индексом",
       "difficulty": "medium",
       "type": "short",
       "question": "Что вернёт выражение \"python\"[-1]?",
@@ -143,7 +143,7 @@
     {
       "id": "python7-09",
       "topic": "Словари",
-      "skill": "применение Python",
+      "skill": "Получение значения словаря с запасным значением через get()",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что вернёт d.get(\"age\", 0), если ключа age в словаре нет?",
@@ -160,7 +160,7 @@
     {
       "id": "python7-10",
       "topic": "Функции",
-      "skill": "вычисление и применение",
+      "skill": "Трассировка вызова функции с возвращаемым результатом",
       "difficulty": "medium",
       "type": "short",
       "question": "Что вернёт square(4), если функция определена как def square(x): return x * x?",
@@ -173,7 +173,7 @@
     {
       "id": "python7-11",
       "topic": "Условия",
-      "skill": "применение Python",
+      "skill": "Проверка чётности числа через остаток от деления",
       "difficulty": "medium",
       "type": "choice",
       "question": "Как проверить, что n — чётное число?",
@@ -190,7 +190,7 @@
     {
       "id": "python7-12",
       "topic": "Сортировка",
-      "skill": "применение Python",
+      "skill": "Применение sorted() для сортировки списка",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что вернёт sorted([3, 1, 2])?",
@@ -207,7 +207,7 @@
     {
       "id": "python7-13",
       "topic": "Вложенные циклы",
-      "skill": "вычисление и применение",
+      "skill": "Подсчёт выполнений вложенных циклов",
       "difficulty": "advanced",
       "type": "short",
       "question": "Сколько раз выполнится print, если внешний цикл повторяется 2 раза, а внутренний — 3 раза для каждого внешнего прохода?",
@@ -220,7 +220,7 @@
     {
       "id": "python7-14",
       "topic": "Генераторы списков",
-      "skill": "применение Python",
+      "skill": "Формирование списка с фильтрацией по условию",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Что создаёт [n for n in range(6) if n % 2 == 0]?",
@@ -237,7 +237,7 @@
     {
       "id": "python7-15",
       "topic": "Алгоритмы",
-      "skill": "вычисление и применение",
+      "skill": "Подсчёт элементов, удовлетворяющих условию фильтрации",
       "difficulty": "advanced",
       "type": "short",
       "question": "Сколько элементов останется после фильтрации [2, 5, 8, 11, 14] условием x > 7?",
@@ -247,5 +247,7 @@
       "correctText": "3",
       "explanation": "Условию соответствуют 8, 11 и 14."
     }
-  ]
+  ],
+  "skillGranularity": "question_action",
+  "skillReviewStatus": "teacher_review_draft"
 }
