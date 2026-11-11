@@ -472,9 +472,39 @@
         [
           "loop_boundary_analysis",
           "Анализ границ циклов и диапазонов"
+        ],
+        [
+          "network_purpose",
+          "Понимание назначения компьютерных сетей"
+        ],
+        [
+          "code_capacity",
+          "Расчёт ёмкости двоичного кодирования"
+        ],
+        [
+          "password_assessment",
+          "Оценка надёжности пароля"
         ]
       ],
       "rules": [
+        {
+          "groupId": "password_assessment",
+          "containsAny": [
+            "Оценка надёжности пароля"
+          ]
+        },
+        {
+          "groupId": "code_capacity",
+          "containsAny": [
+            "Определение минимальной длины двоичного кода"
+          ]
+        },
+        {
+          "groupId": "network_purpose",
+          "containsAny": [
+            "Определение назначения компьютерной сети"
+          ]
+        },
         {
           "groupId": "loop_boundary_analysis",
           "containsAny": [
