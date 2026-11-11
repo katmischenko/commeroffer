@@ -29,7 +29,7 @@
     <div class="hero">
       <span class="sec-index">закладка ✦ мои материалы</span>
       <h1>Библиотека, где <span class="hl">оживают</span> темы</h1>
-      <p class="hero-sub">Привет! Здесь собираются мои авторские пособия и тренажёры по информатике, математике, физике и программированию. <b>Диагностика уже доступна</b>, а методические разработки, карточки, симуляторы и квесты постепенно готовятся к публикации.</p>
+      <p class="hero-sub">Привет! Здесь собраны авторские пособия и тренажёры по шести направлениям: физика, информатика, математика, Python, Figma и HTML/CSS. <b>Диагностика уже доступна</b>, Новые материалы будут добавляться постепенно.</p>
     </div>
   </div>
 
@@ -64,7 +64,7 @@
             <button class="chip" data-subj="inf">информатика</button>
             <button class="chip" data-subj="math">математика</button>
             <button class="chip" data-subj="phys">физика</button>
-            <button class="chip" data-subj="prog">программирование</button>
+            <button class="chip" data-subj="python">Python</button>\n            <button class="chip" data-subj="figma">Figma</button>\n            <button class="chip" data-subj="web">HTML/CSS</button>
           </div>
         </div>
         <div class="f-group">
@@ -107,7 +107,7 @@
   var ITEMS = [
     {kind:'диагностика', title:'Диагностика', desc:'Бесплатная онлайн-диагностика из 15 заданий. Сейчас работает в локальном режиме: результат можно посмотреть в браузере, удалённое сохранение пока отключено.', subj:'all', subjName:'все направления', st:'ok', stName:'доступно', stClass:'st-ok', free:true, href:'diagnostika.html'},
     {kind:'flash-карточки', title:'Формулы физики — карточки', desc:'Принцип «знаю / не знаю»: листаешь, переворачиваешь, честно отмечаешь. Незнакомые возвращаются снова.', subj:'phys', subjName:'физика', st:'soon', stName:'скоро', stClass:'st-soon', free:true, href:'flashcards.html'},
-    {kind:'игра-тренажёр', title:'Симулятор «Один день из жизни разработчика»', desc:'Принимай решения, пиши мини-код и смотри, как твои решения меняют проект. 4 дня — 4 сюжета.', subj:'prog', subjName:'программирование', st:'soon', stName:'скоро', stClass:'st-soon', free:true, href:'simulator.html'},
+    {kind:'игра-тренажёр', title:'Симулятор «Один день из жизни разработчика»', desc:'Принимай решения, пиши мини-код и смотри, как твои решения меняют проект. 4 дня — 4 сюжета.', subj:'python', subjName:'Python', st:'soon', stName:'скоро', stClass:'st-soon', free:true, href:'simulator.html'},
     {kind:'квест', title:'Escape room «Побег из лаборатории»', desc:'Цифровая комната: выбраться можно, только решив цепочку задач по информатике и математике.', subj:'math', subjName:'математика + информатика', st:'soon', stName:'скоро', stClass:'st-soon', free:true, href:'escape-room.html'},
     {kind:'шпаргалки', title:'Cheat sheets для ОГЭ по информатике', desc:'Сжатые стильные PDF-карты: формулы, команды, типы заданий. Распечатал — повесил — повторяешь.', subj:'inf', subjName:'информатика · ОГЭ', st:'soon', stName:'скоро', stClass:'st-soon', free:true, href:'cheatsheets.html'},
     {kind:'тетради-комиксы', title:'Рабочие тетради-комиксы', desc:'Учебный материал как сюжетный комикс с героями, а в конце темы — задание на закрепление.', subj:'inf', subjName:'информатика', st:'soon', stName:'скоро', stClass:'st-soon', free:false, href:'workbooks.html'},
@@ -118,7 +118,7 @@
 
   var lib = document.getElementById('lib');
   var empty = document.getElementById('empty');
-  var curSubj = 'all', curSt = 'all';
+  var curSubj = 'all', curPrice = 'all';
 
   function render(){
     var shown = 0;
@@ -151,13 +151,13 @@
       chip.addEventListener('click', function(){
         document.querySelectorAll('#' + id + ' .chip').forEach(function(c){ c.classList.remove('on'); });
         chip.classList.add('on');
-        if(key === 'subj') curSubj = chip.dataset.subj; else curSt = chip.dataset.st;
+        if(key === 'subj') curSubj = chip.dataset.subj; else curPrice = chip.dataset.price;
         render();
       });
     });
   }
   bindChips('subjChips', 'subj');
-  bindChips('stChips', 'st');
+  bindChips('priceChips', 'price');
   render();
 
   if('IntersectionObserver' in window){
