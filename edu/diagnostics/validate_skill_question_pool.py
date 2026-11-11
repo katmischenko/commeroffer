@@ -161,6 +161,16 @@ def main():
         "shape_tools": 2,
         "text_tool": 2,
         "fill_properties": 2,
+        "css_flex_behavior": 2,
+        "css_transitions": 2,
+        "css_custom_properties": 2,
+        "html_dialogs": 2,
+        "responsive_grid": 2,
+        "alignment": 2,
+        "grouping": 2,
+        "image_cropping": 2,
+        "export_formats": 2,
+        "file_organization": 2,
     }
     if len(questions) != sum(expected_groups.values()):
         errors.append(f"expected {sum(expected_groups.values())} draft questions, got {len(questions)}")
