@@ -167,7 +167,7 @@
         "75 Н/Кл",
         "0,33 Н/Кл"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "correctText": "3 000 Н/Кл",
       "explanation": "E = F/q = 15·10⁻⁶ Н / (5·10⁻⁹ Кл) = 3·10³ Н/Кл = 3 000 Н/Кл."
     },
