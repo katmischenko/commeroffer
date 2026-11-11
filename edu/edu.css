@@ -2,7 +2,7 @@
 :root{
   --ink:#111014;--ink-2:#19171c;--graphite:#29252d;--paper:#f4f1ec;
   --stone:#d9d0c8;--wine:#7c3449;--red:#a9232c;--muted:#aaa3a0;
-  --line:rgba(244,241,236,.14);--serif:'Cormorant Garamond',Georgia,serif;
+  --line:rgba(244,241,236,.14);--serif:'Inter',Arial,sans-serif;
   --sans:'Inter',Arial,sans-serif;--mono:'SF Mono','Fira Code',monospace;--gutter:clamp(22px,5.4vw,88px);
   --ease:cubic-bezier(.2,.75,.25,1);--marker:rgba(169,35,44,.62);--marker-soft:rgba(217,161,164,.24)
 }
@@ -123,7 +123,7 @@ body.editorial-library:after{content:"";position:fixed;inset:0;z-index:-1;pointe
 
 
 /* AUTHOR'S NOTEBOOK — less school portal, more personal studio */
-:root{--hand:"Caveat",cursive}
+:root{--hand:var(--sans)}
 .editorial-library h1{font-weight:400;letter-spacing:-.045em}
 .editorial-library .sec-title{font-weight:400;letter-spacing:-.035em}
 .editorial-library .hero-sub{font-size:14px;line-height:1.85;color:rgba(244,241,236,.76)}
@@ -153,3 +153,7 @@ body.editorial-library:after{content:"";position:fixed;inset:0;z-index:-1;pointe
  .editorial-library .note-box:before{right:18px;top:7px}
  .editorial-library .item{min-height:225px}
 }
+
+/* Brand wordmark: handwritten English name; all other typography follows the Open Notebook system. */
+.editorial-library .brand-name{font-family:"Segoe Script","Brush Script MT",cursive;font-size:21px;font-weight:500;letter-spacing:0;text-transform:none;}
+@media(max-width:600px){.editorial-library .brand-name{font-size:18px}}
