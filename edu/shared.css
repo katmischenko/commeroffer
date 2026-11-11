@@ -7,7 +7,7 @@
   --pen:#6b0f18;--pen-soft:rgba(107,15,24,.08);
   --serif:'Inter',Arial,sans-serif;--sans:'Inter',Arial,sans-serif;
   --mono:'SF Mono','Fira Code',ui-monospace,monospace;
-  --hand:'Inter',Arial,sans-serif;--gutter:4%;
+  --hand:'Caveat',cursive;--gutter:4%;
   --ease:cubic-bezier(.2,.75,.25,1);
 }
 html{scroll-behavior:smooth;scroll-padding-top:100px}
@@ -41,7 +41,7 @@ header{
   font:600 16px var(--sans);letter-spacing:0;
 }
 .logo .brand-name,.logo .hand{
-  display:inline-block;color:var(--ink);font:500 19px/1.1 "Segoe Script","Brush Script MT",cursive;
+  display:inline-block;color:var(--ink);font:600 25px/1.05 'Dancing Script',cursive;
   letter-spacing:0;text-transform:none;
 }
 .logo small{display:none!important}
@@ -76,7 +76,7 @@ h1{
   max-width:900px;margin:18px 0 22px;color:var(--ink);
   font:400 clamp(2.8rem,6vw,5.8rem)/1.02 var(--sans);letter-spacing:-.055em;
 }
-h1 em,h1 .hl,h1 .marker-highlight{color:var(--wine);font-style:normal}
+h1 em{color:var(--wine);font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600}h1 .hl,h1 .marker-highlight{color:var(--wine);font-style:normal}
 .hero-sub{
   max-width:720px;margin:0 0 34px;color:#625c59;
   font:400 clamp(14px,1.25vw,17px)/1.85 var(--sans);
@@ -101,7 +101,7 @@ footer{
   display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 0;
 }
 .foot small{font-size:9px;color:rgba(244,242,238,.55);letter-spacing:.08em}
-.foot-note,.hand{font-family:var(--sans);font-size:12px;font-weight:500;color:#e3c3c5;letter-spacing:0}
+.foot-note{font-family:var(--sans);font-size:12px;font-weight:500;color:#e3c3c5;letter-spacing:0}\n.hand{font-family:var(--hand);font-size:22px;font-weight:500;color:var(--wine);letter-spacing:0}
 .foot-links{display:flex;gap:18px;flex-wrap:wrap}
 .foot-links a{font-size:10px;color:rgba(244,242,238,.76);text-decoration:none}
 .foot-links a:hover{color:white}
@@ -116,7 +116,7 @@ footer{
   max-width:900px;color:var(--ink);font:400 clamp(3.2rem,7vw,7rem)/.98 var(--sans);
   letter-spacing:-.06em;
 }
-.editorial-library h1 em,.editorial-library .sec-title em{color:var(--wine);font-weight:400}
+.editorial-library h1 em,.editorial-library .sec-title em{color:var(--wine);font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600}
 .editorial-library .marker-highlight:before{
   background:linear-gradient(100deg,rgba(107,15,24,.14),rgba(138,39,48,.25));
 }
@@ -287,7 +287,7 @@ footer{
 }
 .editorial-library .brand-name{
   display:inline-block;color:var(--ink);
-  font:500 19px/1.1 "Segoe Script","Brush Script MT",cursive;
+  font:600 25px/1.05 'Dancing Script',cursive;
   letter-spacing:0;text-transform:none;
 }
 .editorial-library .nav-link{
