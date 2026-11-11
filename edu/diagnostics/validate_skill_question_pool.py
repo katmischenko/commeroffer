@@ -115,6 +115,10 @@ def main():
         "transformers": 2,
         "percent_calculation": 2,
         "optical_phenomena": 2,
+        "percent_proportional": 2,
+        "equations_inequalities": 2,
+        "ohm_law": 2,
+        "oscillations_waves": 2,
     }
     if len(questions) != sum(expected_groups.values()):
         errors.append(f"expected {sum(expected_groups.values())} draft questions, got {len(questions)}")
