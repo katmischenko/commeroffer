@@ -163,9 +163,18 @@ const API='https://mischenko-edu-diagnostics.mks-ki.workers.dev/diagnostics';
 const CONSENT_VERSION='2026-11-10-v1';
 const REMOTE_SAVE_ENABLED=false; // включить только после миграций D1, Deploy Worker и интеграционного теста
 const $=id=>document.getElementById(id);
-let bank=[],index=0,answers=[],student='',direction='',grade='',lastPayload=null,bankMeta={id:'',reviewStatus:'teacher_review_draft'};
+let bank=[],index=0,answers=[],student='',direction='',directionId='',grade='',lastPayload=null,topicTaxonomy=null,bankMeta={id:'',reviewStatus:'teacher_review_draft'};
 function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function normalize(v){return String(v??'').trim().toLowerCase().replace(/\s+/g,' ');}
+function resolveTopicGroup(topic){
+ const config=topicTaxonomy?.directions?.[directionId];
+ if(!config)return null;
+ const normalized=String(topic??'').toLocaleLowerCase('ru');
+ const rule=config.rules.find(r=>(r.containsAny||[]).some(part=>normalized.includes(String(part).toLocaleLowerCase('ru'))));
+ if(!rule)return null;
+ const group=config.groups.find(item=>item[0]===rule.groupId);
+ return group?{id:group[0],label:group[1],description:group[2]}:null;
+}
 function profile(){
  const d=directions.find(x=>x.id===$('direction').value);
  return {direction:d,grade:$('grade').value,curriculum:$('curriculum').value,level:$('curriculum-level').value};
@@ -318,14 +327,21 @@ async function saveAttempt(payload){
 }
 function finish(){
  const score=bank.reduce((n,q,i)=>n+(isCorrect(q,answers[i])?1:0),0);
- const topicStats={};
+ const topicStats={},groupStats={};
  const report=bank.map((q,i)=>{
   const a=answers[i]||{status:'skipped',answerText:''},ok=isCorrect(q,a);
   if(!topicStats[q.topic])topicStats[q.topic]={right:0,total:0,items:[]};
   topicStats[q.topic].total++;
   topicStats[q.topic].items.push(i+1);
   if(ok)topicStats[q.topic].right++;
-  return {q,a,ok};
+  const group=resolveTopicGroup(q.topic);
+  const groupId=group?.id||'unmapped';
+  if(!groupStats[groupId])groupStats[groupId]={group,right:0,total:0,items:[],topics:{}};
+  const gs=groupStats[groupId];
+  gs.total++;gs.items.push(i+1);if(ok)gs.right++;
+  if(!gs.topics[q.topic])gs.topics[q.topic]={right:0,total:0,items:[]};
+  gs.topics[q.topic].total++;gs.topics[q.topic].items.push(i+1);if(ok)gs.topics[q.topic].right++;
+  return {q,a,ok,group};
  });
  const percent=Math.round(score/bank.length*100);
  const description=score>=12
@@ -337,6 +353,10 @@ function finish(){
  const topicRows=Object.entries(topicStats).sort((a,b)=>(a[1].right/a[1].total)-(b[1].right/b[1].total));
  const weak=topicRows.filter(([,v])=>v.right<v.total);
  const strong=topicRows.filter(([,v])=>v.right===v.total);
+ const groupRows=Object.entries(groupStats).sort((a,b)=>(a[1].right/a[1].total)-(b[1].right/b[1].total));
+ const groupList=groupRows.length
+  ?'<ul class="q-topics">'+groupRows.map(([,v])=>'<li><b>'+escapeHtml(v.group?.label||'Требует классификации')+'</b> — '+v.right+' из '+v.total+'; задания №'+v.items.join(', ')+'<ul>'+Object.entries(v.topics).map(([name,stat])=>'<li>'+escapeHtml(name)+' — '+stat.right+' из '+stat.total+'</li>').join('')+'</ul></li>').join('')+'</ul>'
+  :'<p class="diag-hint">Нет данных для тематической карты.</p>';
  const topicList=(items)=>items.length
   ?'<ul class="q-topics">'+items.map(([t,v])=>'<li>'+escapeHtml(t)+' — '+v.right+' из '+v.total+'; задания №'+v.items.join(', ')+'</li>').join('')+'</ul>'
   :'<p class="diag-hint">В этом наборе таких тем нет.</p>';
@@ -356,6 +376,9 @@ function finish(){
   '<p class="diag-hint">Ученик: '+escapeHtml(student)+'</p>'+
   '<p class="diag-hint">Направление: '+escapeHtml(direction)+', класс: '+escapeHtml(grade)+'</p>'+
   '<p class="diag-hint">'+(bankMeta.bankProgramMatched?'Использован отдельный банк программы: '+escapeHtml(bankMeta.curriculumName)+'. Банк требует педагогической проверки.':bankMeta.curriculumId?'Выбран профиль «'+escapeHtml(bankMeta.curriculumName)+'», но отдельного банка пока нет. Использован общий набор; соответствие программе не подтверждено.':'Использован общий набор заданий для выбранного направления и класса. Набор проходит педагогическую проверку.')+'</p>'+
+  '<h3 class="diag-section-title">Предварительные тематические разделы</h3>'+
+  '<p class="diag-hint">Это черновая группировка близких тем для навигации. Она не является утверждённой программой и не доказывает освоение раздела. Внутри каждого раздела сохранены исходные названия тем.</p>'+
+  groupList+
   '<h3 class="diag-section-title">Темы, где все задания этого набора выполнены верно</h3>'+
   topicList(strong)+
   '<h3 class="diag-section-title">Темы, где стоит разобрать ошибки</h3>'+
@@ -434,7 +457,7 @@ $('student').addEventListener('input',checkReady);
 $('storage-consent').addEventListener('change',checkReady);
 $('telegram-consent').addEventListener('change',checkReady);
 $('start').addEventListener('click',async()=>{
- const p=profile();student=$('student').value.trim();direction=p.direction.name;grade=p.grade;
+ const p=profile();student=$('student').value.trim();direction=p.direction.name;directionId=p.direction.id;grade=p.grade;
  $('start').disabled=true;$('start').textContent='Загружаю задания…';
  try{
   const profileId=p.direction.id+'-'+p.grade;
@@ -446,6 +469,9 @@ $('start').addEventListener('click',async()=>{
    if(res.ok){data=await res.json();bankPathUsed=candidate;break;}
   }
   if(!data)throw new Error('Не удалось загрузить задания.');
+  const taxonomyResponse=await fetch('diagnostics/TOPIC_TAXONOMY_DRAFT.json',{cache:'no-store'});
+  if(!taxonomyResponse.ok)throw new Error('Не удалось загрузить тематическую карту диагностики.');
+  topicTaxonomy=await taxonomyResponse.json();
   if(!Array.isArray(data.questions)||data.questions.length!==15)throw new Error('В наборе должно быть 15 заданий.');
   const matched=!!specificPath&&bankPathUsed===specificPath;
   const curriculumNames={generic:'Общий набор',ru:'Россия — 2026/2027',by:'Беларусь — 2026/2027'};
