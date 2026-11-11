@@ -19,7 +19,7 @@
     {
       "id": "python6-01",
       "topic": "Ввод данных",
-      "skill": "применение Python",
+      "skill": "Определение типа результата input()",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой результат возвращает input() без дополнительного преобразования?",
@@ -36,7 +36,7 @@
     {
       "id": "python6-02",
       "topic": "Переменные",
-      "skill": "применение Python",
+      "skill": "Запись оператора присваивания переменной",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какая строка присваивает переменной points значение 12?",
@@ -53,7 +53,7 @@
     {
       "id": "python6-03",
       "topic": "Арифметика",
-      "skill": "применение Python",
+      "skill": "Применение приоритета арифметических операций",
       "difficulty": "basic",
       "type": "choice",
       "question": "Чему равно выражение 5 + 2 * 3?",
@@ -70,7 +70,7 @@
     {
       "id": "python6-04",
       "topic": "Комментарии",
-      "skill": "применение Python",
+      "skill": "Распознавание символа однострочного комментария",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой символ начинает однострочный комментарий в Python?",
@@ -87,7 +87,7 @@
     {
       "id": "python6-05",
       "topic": "Преобразование типов",
-      "skill": "применение Python",
+      "skill": "Преобразование строки в целое число",
       "difficulty": "basic",
       "type": "choice",
       "question": "Как превратить строку \"42\" в целое число?",
@@ -104,7 +104,7 @@
     {
       "id": "python6-06",
       "topic": "Строки",
-      "skill": "вычисление и применение",
+      "skill": "Определение длины строки функцией len()",
       "difficulty": "medium",
       "type": "short",
       "question": "Чему равно len(\"robot\")? Введи число.",
@@ -117,7 +117,7 @@
     {
       "id": "python6-07",
       "topic": "Списки",
-      "skill": "применение Python",
+      "skill": "Получение первого элемента списка по индексу",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что вернёт выражение [4, 7, 9][0]?",
@@ -134,7 +134,7 @@
     {
       "id": "python6-08",
       "topic": "Циклы",
-      "skill": "вычисление и применение",
+      "skill": "Подсчёт значений в диапазоне range()",
       "difficulty": "medium",
       "type": "short",
       "question": "Сколько значений перебирает range(2, 5)?",
@@ -147,7 +147,7 @@
     {
       "id": "python6-09",
       "topic": "Условия",
-      "skill": "применение Python",
+      "skill": "Трассировка проверки условия с включённой границей",
       "difficulty": "medium",
       "type": "choice",
       "question": "Если score = 10, что будет при проверке score >= 10?",
@@ -164,7 +164,7 @@
     {
       "id": "python6-10",
       "topic": "Строки",
-      "skill": "вычисление и применение",
+      "skill": "Трассировка повторения строки оператором умножения",
       "difficulty": "medium",
       "type": "short",
       "question": "Что выведет выражение print(\"py\" * 3)?",
@@ -177,7 +177,7 @@
     {
       "id": "python6-11",
       "topic": "Встроенные функции",
-      "skill": "применение Python",
+      "skill": "Применение функции max() к списку",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что вернёт max([3, 8, 2])?",
@@ -194,7 +194,7 @@
     {
       "id": "python6-12",
       "topic": "Составные операторы",
-      "skill": "вычисление и применение",
+      "skill": "Трассировка составных операторов присваивания",
       "difficulty": "medium",
       "type": "short",
       "question": "После x = 6; x -= 2; x *= 3 чему равно x?",
@@ -207,7 +207,7 @@
     {
       "id": "python6-13",
       "topic": "Изменение списка",
-      "skill": "вычисление и применение",
+      "skill": "Получение добавленного элемента списка по индексу",
       "difficulty": "advanced",
       "type": "short",
       "question": "После nums = [2, 4]; nums.append(6) чему равно nums[2]?",
@@ -220,7 +220,7 @@
     {
       "id": "python6-14",
       "topic": "Списки и функции",
-      "skill": "вычисление и применение",
+      "skill": "Вычисление суммы и длины списков встроенными функциями",
       "difficulty": "advanced",
       "type": "short",
       "question": "Чему равно sum([1, 2, 3]) + len([5, 5])?",
@@ -233,7 +233,7 @@
     {
       "id": "python6-15",
       "topic": "Циклы",
-      "skill": "вычисление и применение",
+      "skill": "Трассировка накопления суммы в цикле",
       "difficulty": "advanced",
       "type": "short",
       "question": "Какое число получится: total = 0; for i in range(3): total += i?",
@@ -243,5 +243,7 @@
       "correctText": "3",
       "explanation": "Цикл прибавляет 0, затем 1 и 2: итог 3."
     }
-  ]
+  ],
+  "skillGranularity": "question_action",
+  "skillReviewStatus": "teacher_review_draft"
 }
