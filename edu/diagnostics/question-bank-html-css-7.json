@@ -94,7 +94,8 @@
       "options": [
         ".data-state-active",
         "[data-state=\"active\"]",
-        "#active"
+        "#active",
+        ".active"
       ],
       "correctIndex": 1,
       "correctText": "[data-state=\"active\"]",
