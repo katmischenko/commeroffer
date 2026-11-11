@@ -1,0 +1,298 @@
+{
+  "version": "0.1.0",
+  "title": "Дополнительный пул заданий для расширения покрытия навыков",
+  "status": "teacher_review_draft",
+  "reviewStatus": "teacher_review_draft",
+  "purpose": "Отдельный резерв заданий для педагогической проверки. Не подключён к активным банкам и не участвует в диагностике из 15 вопросов.",
+  "sourceBasis": "Создан на основе аудита покрытия edu/diagnostics/SKILL_COVERAGE_REPORT.md и очереди edu/diagnostics/SKILL_GAP_BACKLOG.md. Новые формулировки разработаны как независимые задания к уже существующим группам навыков.",
+  "selectionPolicy": "До экспертной проверки и отдельного решения о механизме выбора задания не включать в активные банки.",
+  "questions": [
+    {
+      "id": "pool-math6-decimal-001",
+      "directionId": "math",
+      "direction": "Математика",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "Десятичные дроби",
+      "skill": "Чтение десятичной записи числа",
+      "groupId": "decimal_notation",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Как читается число 4,205?",
+      "options": [
+        "Четыре целых двадцать пять десятых",
+        "Четыре целых двести пять тысячных",
+        "Четыре целых двадцать пять сотых",
+        "Четыреста пять тысячных"
+      ],
+      "correctIndex": 1,
+      "correctText": "Четыре целых двести пять тысячных",
+      "explanation": "После запятой три цифры, поэтому дробная часть выражена в тысячных. Число 4,205 — это 4 целых и 205 тысячных."
+    },
+    {
+      "id": "pool-math6-decimal-002",
+      "directionId": "math",
+      "direction": "Математика",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "Десятичные дроби",
+      "skill": "Чтение десятичной записи числа",
+      "groupId": "decimal_notation",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Запиши десятичной дробью: семь целых три десятых.",
+      "acceptedAnswers": [
+        "7,3",
+        "7.3"
+      ],
+      "correctText": "7,3",
+      "explanation": "Три десятых записываются цифрой 3 в первом разряде после запятой. Получаем 7,3."
+    },
+    {
+      "id": "pool-math6-fraction-001",
+      "directionId": "math",
+      "direction": "Математика",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "Обыкновенные дроби",
+      "skill": "Распознавание равных обыкновенных дробей",
+      "groupId": "fraction_equivalence",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какая из дробей равна 3/5?",
+      "options": [
+        "6/15",
+        "9/15",
+        "3/10",
+        "12/25"
+      ],
+      "correctIndex": 1,
+      "correctText": "9/15",
+      "explanation": "Умножим числитель и знаменатель дроби 3/5 на 3: получим 9/15. Значение дроби при этом не меняется."
+    },
+    {
+      "id": "pool-math6-fraction-002",
+      "directionId": "math",
+      "direction": "Математика",
+      "class": 6,
+      "curriculumId": "general",
+      "topic": "Обыкновенные дроби",
+      "skill": "Распознавание равных обыкновенных дробей",
+      "groupId": "fraction_equivalence",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Заполни пропуск так, чтобы дроби были равны: 4/7 = __/28.",
+      "acceptedAnswers": [
+        "16"
+      ],
+      "correctText": "16",
+      "explanation": "Знаменатель 7 умножили на 4, чтобы получить 28. Значит, числитель тоже умножаем на 4: 4 × 4 = 16."
+    },
+    {
+      "id": "pool-physics7-buoyancy-001",
+      "directionId": "physics",
+      "direction": "Физика",
+      "class": 7,
+      "curriculumId": "general",
+      "topic": "Архимедова сила",
+      "skill": "Определение факторов, влияющих на силу Архимеда",
+      "groupId": "fluid_pressure_buoyancy",
+      "difficulty": "medium",
+      "type": "choice",
+      "question": "Два одинаковых по объёму тела полностью погрузили: первое — в пресную воду, второе — в более плотный солёный раствор. В какой жидкости выталкивающая сила больше?",
+      "options": [
+        "В пресной воде",
+        "В солёном растворе",
+        "Силы одинаковы, так как объёмы тел одинаковы",
+        "Это зависит только от массы тел"
+      ],
+      "correctIndex": 1,
+      "correctText": "В солёном растворе",
+      "explanation": "При полном погружении сила Архимеда Fₐ = ρжgV. При одинаковом объёме вытесненной жидкости и одном g сила больше в жидкости с большей плотностью."
+    },
+    {
+      "id": "pool-physics7-buoyancy-002",
+      "directionId": "physics",
+      "direction": "Физика",
+      "class": 7,
+      "curriculumId": "general",
+      "topic": "Архимедова сила",
+      "skill": "Определение факторов, влияющих на силу Архимеда",
+      "groupId": "fluid_pressure_buoyancy",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Тело вытесняет 0,003 м³ воды. Плотность воды 1000 кг/м³, g = 10 Н/кг. Найди выталкивающую силу.",
+      "acceptedAnswers": [
+        "30",
+        "30 Н"
+      ],
+      "correctText": "30 Н",
+      "explanation": "Fₐ = ρgV = 1000 × 10 × 0,003 = 30 Н."
+    },
+    {
+      "id": "pool-physics10-electricfield-001",
+      "directionId": "physics",
+      "direction": "Физика",
+      "class": 10,
+      "curriculumId": "ru-2026-2027-advanced",
+      "topic": "Электрическое поле",
+      "skill": "Расчёт напряжённости электрического поля по силе и заряду",
+      "groupId": "electric_field",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "На заряд 4 мкКл в электрическом поле действует сила 0,08 Н. Определи напряжённость поля в Н/Кл.",
+      "acceptedAnswers": [
+        "20000",
+        "2·10^4",
+        "2e4"
+      ],
+      "correctText": "20 000 Н/Кл",
+      "explanation": "Используем E = F/q. Заряд 4 мкКл = 0,000004 Кл. E = 0,08 / 0,000004 = 20 000 Н/Кл."
+    },
+    {
+      "id": "pool-physics10-electricfield-002",
+      "directionId": "physics",
+      "direction": "Физика",
+      "class": 10,
+      "curriculumId": "ru-2026-2027-advanced",
+      "topic": "Электрическое поле",
+      "skill": "Расчёт напряжённости электрического поля по силе и заряду",
+      "groupId": "electric_field",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "В однородном электрическом поле на заряд 5 нКл действует сила 15 мкН. Чему равна напряжённость поля?",
+      "options": [
+        "300 Н/Кл",
+        "3 000 Н/Кл",
+        "75 Н/Кл",
+        "0,33 Н/Кл"
+      ],
+      "correctIndex": 0,
+      "correctText": "3 000 Н/Кл",
+      "explanation": "E = F/q = 15·10⁻⁶ Н / (5·10⁻⁹ Кл) = 3·10³ Н/Кл = 3 000 Н/Кл."
+    },
+    {
+      "id": "pool-physics10-gas-001",
+      "directionId": "physics",
+      "direction": "Физика",
+      "class": 10,
+      "curriculumId": "ru-2026-2027-basic",
+      "topic": "Идеальный газ",
+      "skill": "Применение закона Бойля — Мариотта",
+      "groupId": "gas_laws",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Газ при постоянной температуре занимает объём 3 л под давлением 200 кПа. Какой объём он займёт при давлении 120 кПа?",
+      "acceptedAnswers": [
+        "5",
+        "5 л"
+      ],
+      "correctText": "5 л",
+      "explanation": "При постоянной температуре p₁V₁ = p₂V₂. V₂ = p₁V₁/p₂ = 200 × 3 / 120 = 5 л."
+    },
+    {
+      "id": "pool-physics10-gas-002",
+      "directionId": "physics",
+      "direction": "Физика",
+      "class": 10,
+      "curriculumId": "ru-2026-2027-basic",
+      "topic": "Идеальный газ",
+      "skill": "Применение закона Бойля — Мариотта",
+      "groupId": "gas_laws",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "Газ сжали изотермически: объём уменьшился с 6 л до 2 л. Начальное давление было 90 кПа. Каково конечное давление?",
+      "options": [
+        "30 кПа",
+        "90 кПа",
+        "180 кПа",
+        "270 кПа"
+      ],
+      "correctIndex": 3,
+      "correctText": "270 кПа",
+      "explanation": "По закону Бойля — Мариотта p₁V₁ = p₂V₂. p₂ = 90 × 6 / 2 = 270 кПа."
+    },
+    {
+      "id": "pool-physics11-relativity-001",
+      "directionId": "physics",
+      "direction": "Физика",
+      "class": 11,
+      "curriculumId": "ru-2026-2027-advanced",
+      "topic": "Специальная теория относительности",
+      "skill": "Объяснение замедления времени в специальной теории относительности",
+      "groupId": "relativity",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "Космический аппарат движется относительно Земли со скоростью, близкой к скорости света. Как соотносятся интервалы времени для часов на борту и часов земного наблюдателя?",
+      "options": [
+        "Земной наблюдатель измерит больший интервал между одинаковыми событиями на борту",
+        "Земной наблюдатель измерит меньший интервал",
+        "Оба наблюдателя всегда измерят одинаковый интервал",
+        "Время на борту остановится для всех наблюдателей"
+      ],
+      "correctIndex": 0,
+      "correctText": "Земной наблюдатель измерит больший интервал между одинаковыми событиями на борту",
+      "explanation": "Для движущихся относительно наблюдателя часов проявляется замедление времени: наблюдатель в земной системе отсчёта измерит больший промежуток между событиями на борту. Собственное время измеряется в системе, где часы покоятся."
+    },
+    {
+      "id": "pool-physics11-relativity-002",
+      "directionId": "physics",
+      "direction": "Физика",
+      "class": 11,
+      "curriculumId": "ru-2026-2027-advanced",
+      "topic": "Специальная теория относительности",
+      "skill": "Объяснение замедления времени в специальной теории относительности",
+      "groupId": "relativity",
+      "difficulty": "advanced",
+      "type": "short",
+      "question": "Собственное время между двумя событиями на борту корабля равно 3 нс. Корабль движется относительно Земли со скоростью 0,8c. Какой интервал времени между этими событиями измерит земной наблюдатель? Используй γ = 5/3.",
+      "acceptedAnswers": [
+        "5",
+        "5 нс"
+      ],
+      "correctText": "5 нс",
+      "explanation": "В земной системе Δt = γΔt₀ = (5/3) × 3 нс = 5 нс."
+    },
+    {
+      "id": "pool-physics11-transformer-001",
+      "directionId": "physics",
+      "direction": "Физика",
+      "class": 11,
+      "curriculumId": "ru-2026-2027-basic",
+      "topic": "Трансформатор",
+      "skill": "Расчёт коэффициента трансформации по числу витков",
+      "groupId": "transformers",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "В первичной обмотке идеального трансформатора 800 витков, во вторичной — 200. Напряжение на первичной обмотке равно 220 В. Найди напряжение на вторичной обмотке.",
+      "acceptedAnswers": [
+        "55",
+        "55 В"
+      ],
+      "correctText": "55 В",
+      "explanation": "Для идеального трансформатора U₂/U₁ = N₂/N₁. U₂ = 220 × 200/800 = 55 В."
+    },
+    {
+      "id": "pool-physics11-transformer-002",
+      "directionId": "physics",
+      "direction": "Физика",
+      "class": 11,
+      "curriculumId": "ru-2026-2027-basic",
+      "topic": "Трансформатор",
+      "skill": "Расчёт коэффициента трансформации по числу витков",
+      "groupId": "transformers",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "Идеальный трансформатор повышает напряжение с 24 В до 96 В. Сколько витков должно быть во вторичной обмотке, если в первичной 150 витков?",
+      "options": [
+        "37,5",
+        "300",
+        "450",
+        "600"
+      ],
+      "correctIndex": 3,
+      "correctText": "600",
+      "explanation": "U₂/U₁ = N₂/N₁, поэтому N₂ = N₁ × U₂/U₁ = 150 × 96/24 = 600 витков."
+    }
+  ]
+}
