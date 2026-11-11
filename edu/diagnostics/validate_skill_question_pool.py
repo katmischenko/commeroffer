@@ -119,6 +119,17 @@ def main():
         "equations_inequalities": 2,
         "ohm_law": 2,
         "oscillations_waves": 2,
+        "coordinate_interpretation": 2,
+        "fraction_operations": 2,
+        "sequences": 2,
+        "formula_selection": 2,
+        "unit_conversion": 2,
+        "relationship_analysis": 2,
+        "magnetic_effects": 2,
+        "electrostatics": 2,
+        "astrophysics": 2,
+        "interference": 2,
+        "thermal_engines": 2,
     }
     if len(questions) != sum(expected_groups.values()):
         errors.append(f"expected {sum(expected_groups.values())} draft questions, got {len(questions)}")
