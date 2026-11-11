@@ -19,7 +19,7 @@
     {
       "id": "htmlcss10-01",
       "topic": "HTML",
-      "skill": "понимание",
+      "skill": "Определение назначения элемента head",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой элемент содержит метаданные документа?",
@@ -36,7 +36,7 @@
     {
       "id": "htmlcss10-02",
       "topic": "HTML",
-      "skill": "понимание",
+      "skill": "Подключение внешней таблицы стилей элементом link",
       "difficulty": "basic",
       "type": "choice",
       "question": "Как подключить внешний CSS-файл?",
@@ -53,7 +53,7 @@
     {
       "id": "htmlcss10-03",
       "topic": "CSS",
-      "skill": "понимание",
+      "skill": "Интерпретация единицы rem относительно корневого шрифта",
       "difficulty": "basic",
       "type": "choice",
       "question": "Что означает единица rem?",
@@ -70,7 +70,7 @@
     {
       "id": "htmlcss10-04",
       "topic": "CSS",
-      "skill": "понимание",
+      "skill": "Сравнение специфичности селектора класса и идентификатора",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какой селектор имеет более высокую специфичность: .card или #card?",
@@ -87,7 +87,7 @@
     {
       "id": "htmlcss10-05",
       "topic": "HTML",
-      "skill": "понимание",
+      "skill": "Задание языка HTML-документа атрибутом lang",
       "difficulty": "basic",
       "type": "choice",
       "question": "Как указать язык документа на русском?",
@@ -104,7 +104,7 @@
     {
       "id": "htmlcss10-06",
       "topic": "CSS",
-      "skill": "понимание и применение",
+      "skill": "Определение поведения flex: 1 при распределении пространства",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что делает flex: 1 у flex-элемента в типичном случае?",
@@ -121,7 +121,7 @@
     {
       "id": "htmlcss10-07",
       "topic": "CSS",
-      "skill": "понимание и применение",
+      "skill": "Ограничение максимальной ширины элемента",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какое свойство ограничивает максимальную ширину элемента?",
@@ -138,7 +138,7 @@
     {
       "id": "htmlcss10-08",
       "topic": "HTML",
-      "skill": "понимание и применение",
+      "skill": "Выбор type=email для поля электронной почты",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какой атрибут input задаёт тип проверки электронной почты?",
@@ -155,7 +155,7 @@
     {
       "id": "htmlcss10-09",
       "topic": "CSS",
-      "skill": "понимание и применение",
+      "skill": "Интерпретация object-fit: cover",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что делает object-fit: cover для изображения?",
@@ -172,7 +172,7 @@
     {
       "id": "htmlcss10-10",
       "topic": "Адаптивность",
-      "skill": "понимание и применение",
+      "skill": "Настройка адаптивного размера через clamp()",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что лучше использовать для адаптивных размеров текста относительно окна просмотра?",
@@ -189,7 +189,7 @@
     {
       "id": "htmlcss10-11",
       "topic": "CSS",
-      "skill": "понимание и применение",
+      "skill": "Настройка перехода CSS-свойств через transition",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какое свойство задаёт плавный переход между значениями стилей?",
@@ -206,7 +206,7 @@
     {
       "id": "htmlcss10-12",
       "topic": "Доступность",
-      "skill": "понимание и применение",
+      "skill": "Задание доступного имени элемента через aria-label",
       "difficulty": "medium",
       "type": "choice",
       "question": "Для чего нужен aria-label?",
@@ -223,7 +223,7 @@
     {
       "id": "htmlcss10-13",
       "topic": "CSS",
-      "skill": "понимание и применение",
+      "skill": "Объявление и использование CSS custom properties",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Что такое CSS custom property?",
@@ -240,7 +240,7 @@
     {
       "id": "htmlcss10-14",
       "topic": "CSS",
-      "skill": "понимание и применение",
+      "skill": "Выбор методологии именования и ограничения области CSS-стилей",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Какой принцип помогает избежать конфликтов стилей в крупном проекте?",
@@ -257,7 +257,7 @@
     {
       "id": "htmlcss10-15",
       "topic": "HTML",
-      "skill": "понимание и применение",
+      "skill": "Защита window.opener через rel=noopener",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Какой токен rel явно запрещает открытой в новой вкладке странице доступ к window.opener?",
@@ -271,5 +271,7 @@
       "correctIndex": 2,
       "correctText": "rel=\"noopener\""
     }
-  ]
+  ],
+  "skillGranularity": "question_action",
+  "skillReviewStatus": "teacher_review_draft"
 }
