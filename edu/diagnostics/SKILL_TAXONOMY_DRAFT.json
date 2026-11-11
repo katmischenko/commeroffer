@@ -31,9 +31,139 @@
         [
           "integrated_generic",
           "Общая метка: понимание и применение"
+        ],
+        [
+          "fraction_equivalence",
+          "Распознавание равных дробей"
+        ],
+        [
+          "decimal_notation",
+          "Чтение десятичной записи"
+        ],
+        [
+          "percent_calculation",
+          "Вычисление процентов"
+        ],
+        [
+          "coordinate_interpretation",
+          "Работа с координатной прямой"
+        ],
+        [
+          "geometry_calculation",
+          "Геометрические вычисления"
+        ],
+        [
+          "fraction_operations",
+          "Действия с обыкновенными дробями"
+        ],
+        [
+          "decimal_operations",
+          "Действия с десятичными дробями"
+        ],
+        [
+          "proportional_reasoning",
+          "Пропорциональные рассуждения"
+        ],
+        [
+          "equation_solving",
+          "Решение уравнений"
+        ],
+        [
+          "multi_step_calculation",
+          "Многошаговые вычисления"
         ]
       ],
       "rules": [
+        {
+          "groupId": "geometry_calculation",
+          "containsAny": [
+            "Восстановление размеров прямоугольника по периметру и вычисление площади"
+          ]
+        },
+        {
+          "groupId": "decimal_operations",
+          "containsAny": [
+            "Вычисление выражения с десятичными дробями и скобками"
+          ]
+        },
+        {
+          "groupId": "proportional_reasoning",
+          "containsAny": [
+            "Решение задачи на пропорциональную стоимость"
+          ]
+        },
+        {
+          "groupId": "decimal_operations",
+          "containsAny": [
+            "Умножение десятичных дробей"
+          ]
+        },
+        {
+          "groupId": "percent_calculation",
+          "containsAny": [
+            "Нахождение процента от количества в текстовой задаче"
+          ]
+        },
+        {
+          "groupId": "geometry_calculation",
+          "containsAny": [
+            "Вычисление площади прямоугольника"
+          ]
+        },
+        {
+          "groupId": "equation_solving",
+          "containsAny": [
+            "Решение линейного уравнения обратным действием"
+          ]
+        },
+        {
+          "groupId": "proportional_reasoning",
+          "containsAny": [
+            "Решение задач на отношение и пропорциональное увеличение"
+          ]
+        },
+        {
+          "groupId": "decimal_operations",
+          "containsAny": [
+            "Вычитание десятичных дробей"
+          ]
+        },
+        {
+          "groupId": "fraction_operations",
+          "containsAny": [
+            "Сложение обыкновенных дробей с одинаковыми знаменателями"
+          ]
+        },
+        {
+          "groupId": "geometry_calculation",
+          "containsAny": [
+            "Вычисление периметра квадрата"
+          ]
+        },
+        {
+          "groupId": "coordinate_interpretation",
+          "containsAny": [
+            "Определение положения отрицательных чисел на координатной прямой"
+          ]
+        },
+        {
+          "groupId": "percent_calculation",
+          "containsAny": [
+            "Вычисление процента от числа"
+          ]
+        },
+        {
+          "groupId": "decimal_notation",
+          "containsAny": [
+            "Чтение десятичной записи числа"
+          ]
+        },
+        {
+          "groupId": "fraction_equivalence",
+          "containsAny": [
+            "Распознавание равных обыкновенных дробей"
+          ]
+        },
         {
           "groupId": "integrated_generic",
           "containsAny": [
@@ -104,9 +234,127 @@
         [
           "integrated_generic",
           "Общая метка: понимание и применение"
+        ],
+        [
+          "unit_identification",
+          "Распознавание физических единиц"
+        ],
+        [
+          "concept_identification",
+          "Понимание физических понятий"
+        ],
+        [
+          "formula_selection",
+          "Выбор физической величины и формулы"
+        ],
+        [
+          "unit_conversion",
+          "Перевод единиц измерения"
+        ],
+        [
+          "physical_calculation",
+          "Расчёт физических величин"
+        ],
+        [
+          "relationship_analysis",
+          "Анализ зависимостей физических величин"
+        ],
+        [
+          "multi_step_modeling",
+          "Многошаговое решение физических задач"
         ]
       ],
       "rules": [
+        {
+          "groupId": "physical_calculation",
+          "containsAny": [
+            "Расчёт давления тела на опору"
+          ]
+        },
+        {
+          "groupId": "physical_calculation",
+          "containsAny": [
+            "Определение объёма по массе и плотности"
+          ]
+        },
+        {
+          "groupId": "physical_calculation",
+          "containsAny": [
+            "Расчёт средней скорости на участке с остановкой"
+          ]
+        },
+        {
+          "groupId": "physical_calculation",
+          "containsAny": [
+            "Расчёт мощности по работе и времени"
+          ]
+        },
+        {
+          "groupId": "physical_calculation",
+          "containsAny": [
+            "Расчёт силы тяжести по массе"
+          ]
+        },
+        {
+          "groupId": "physical_calculation",
+          "containsAny": [
+            "Расчёт механической работы"
+          ]
+        },
+        {
+          "groupId": "relationship_analysis",
+          "containsAny": [
+            "Анализ зависимости давления от площади опоры"
+          ]
+        },
+        {
+          "groupId": "physical_calculation",
+          "containsAny": [
+            "Расчёт плотности по массе и объёму"
+          ]
+        },
+        {
+          "groupId": "unit_conversion",
+          "containsAny": [
+            "Перевод километров в метры"
+          ]
+        },
+        {
+          "groupId": "physical_calculation",
+          "containsAny": [
+            "Расчёт скорости с переводом времени в СИ"
+          ]
+        },
+        {
+          "groupId": "concept_identification",
+          "containsAny": [
+            "Различение видов сил по физическому смыслу"
+          ]
+        },
+        {
+          "groupId": "unit_identification",
+          "containsAny": [
+            "Распознавание единицы измерения массы"
+          ]
+        },
+        {
+          "groupId": "formula_selection",
+          "containsAny": [
+            "Выбор физической величины по формуле"
+          ]
+        },
+        {
+          "groupId": "concept_identification",
+          "containsAny": [
+            "Определение механического движения"
+          ]
+        },
+        {
+          "groupId": "unit_identification",
+          "containsAny": [
+            "Распознавание основной единицы длины СИ"
+          ]
+        },
         {
           "groupId": "integrated_generic",
           "containsAny": [
@@ -188,9 +436,111 @@
         [
           "debugging",
           "Поиск и исправление ошибок"
+        ],
+        [
+          "information_coding",
+          "Кодирование и представление информации"
+        ],
+        [
+          "number_system_conversion",
+          "Перевод чисел между системами счисления"
+        ],
+        [
+          "logic_reasoning",
+          "Логические высказывания и операции"
+        ],
+        [
+          "algorithm_classification",
+          "Распознавание алгоритмических структур"
+        ],
+        [
+          "condition_tracing",
+          "Трассировка условий и ветвлений"
+        ],
+        [
+          "spreadsheet_reasoning",
+          "Работа с формулами и ссылками таблиц"
+        ],
+        [
+          "digital_safety",
+          "Оценка цифровой безопасности"
+        ],
+        [
+          "command_tracing",
+          "Трассировка команд исполнителя"
+        ],
+        [
+          "loop_boundary_analysis",
+          "Анализ границ циклов и диапазонов"
         ]
       ],
       "rules": [
+        {
+          "groupId": "loop_boundary_analysis",
+          "containsAny": [
+            "Выбор границ диапазона для заданного количества повторений"
+          ]
+        },
+        {
+          "groupId": "logic_reasoning",
+          "containsAny": [
+            "Анализ таблицы истинности отрицания конъюнкции"
+          ]
+        },
+        {
+          "groupId": "command_tracing",
+          "containsAny": [
+            "Последовательное выполнение команд исполнителя"
+          ]
+        },
+        {
+          "groupId": "spreadsheet_reasoning",
+          "containsAny": [
+            "Определение изменения относительной ссылки в таблице"
+          ]
+        },
+        {
+          "groupId": "condition_tracing",
+          "containsAny": [
+            "Трассировка ветвления при заданном значении переменной"
+          ]
+        },
+        {
+          "groupId": "logic_reasoning",
+          "containsAny": [
+            "Вычисление значения логической операции И"
+          ]
+        },
+        {
+          "groupId": "number_system_conversion",
+          "containsAny": [
+            "Перевод двоичного числа в десятичную систему"
+          ]
+        },
+        {
+          "groupId": "algorithm_classification",
+          "containsAny": [
+            "Различение видов алгоритмических структур"
+          ]
+        },
+        {
+          "groupId": "logic_reasoning",
+          "containsAny": [
+            "Распознавание логического высказывания"
+          ]
+        },
+        {
+          "groupId": "number_system_conversion",
+          "containsAny": [
+            "Определение количества символов в системе счисления"
+          ]
+        },
+        {
+          "groupId": "information_coding",
+          "containsAny": [
+            "Определение способа представления информации кодом"
+          ]
+        },
         {
           "groupId": "debugging",
           "containsAny": [
