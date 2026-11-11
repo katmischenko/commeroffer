@@ -18,7 +18,7 @@
 
 <header>
   <nav class="nav">
-    <a class="logo" href="index.html"><span class="brand-mark">M</span><span class="brand-name">Mischenko Edu</span></a>
+    <a class="logo" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i></span><span class="brand-name">mischenko edu</span></a>
     <div class="nav-right">
       <a class="nav-link" href="../index.html">Главная</a>
       <a class="nav-cta" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Связаться <span>↗</span></a>
@@ -29,7 +29,7 @@
 <main>
   <div class="wrap">
     <div class="hero">
-      <span class="sec-index">M/E — МОЯ КОЛЛЕКЦИЯ <i>01 / 06</i></span>
+      <span class="library-signature">Лаборатория идей · Mischenko Edu</span>
       <h1>Здесь сложное<br><em class="marker-highlight">становится понятным.</em></h1>
       <p class="hero-sub">Это моя мастерская знаний: пособия, тренажёры, эксперименты и маленькие открытия. Выбирай, с чем сегодня будем разбираться — и не бойся задавать неудобные вопросы.</p>
     </div>
@@ -109,9 +109,9 @@
 <script>
   var ITEMS = [
     {kind:'диагностика', title:'Диагностика', desc:'Бесплатная онлайн-диагностика из 15 заданий. Сейчас работает в локальном режиме: результат можно посмотреть в браузере, удалённое сохранение пока отключено.', subj:'all', subjName:'все направления', st:'ok', stName:'доступно', stClass:'st-ok', free:true, href:'diagnostika.html'},
-    {kind:'flash-карточки', title:'Формулы физики — карточки', desc:'Интерактивная колода из 8 карточек: переворачивай, проверяй себя и возвращайся к формулам, которые пока не запомнились.', subj:'phys', subjName:'физика', st:'ok', stName:'доступно', stClass:'st-ok', free:true, href:'flashcards.html'},
-    {kind:'игра-тренажёр', title:'Симулятор «Один день из жизни разработчика»', desc:'Интерактивная история о работе junior-разработчика: принимай решения, читай код и следи за состоянием проекта.', subj:'python', subjName:'Python', st:'ok', stName:'доступно', stClass:'st-ok', free:true, href:'simulator.html'},
-    {kind:'квест', title:'Escape room «Побег из лаборатории»', desc:'Четыре замка, четыре задачи по информатике и математике. Реши их, чтобы выбраться из лаборатории.', subj:'math', subjName:'математика + информатика', st:'ok', stName:'доступно', stClass:'st-ok', free:true, href:'escape-room.html'},
+    {kind:'flash-карточки', title:'Формулы физики — карточки', desc:'Интерактивная колода из 8 карточек: переворачивай, проверяй себя и возвращайся к формулам, которые пока не запомнились.', subj:'phys', subjName:'физика', st:'soon', stName:'скоро', stClass:'st-soon', free:true, href:'flashcards.html'},
+    {kind:'игра-тренажёр', title:'Симулятор «Один день из жизни разработчика»', desc:'Интерактивная история о работе junior-разработчика: принимай решения, читай код и следи за состоянием проекта.', subj:'python', subjName:'Python', st:'soon', stName:'скоро', stClass:'st-soon', free:true, href:'simulator.html'},
+    {kind:'квест', title:'Escape room «Побег из лаборатории»', desc:'Четыре замка, четыре задачи по информатике и математике. Реши их, чтобы выбраться из лаборатории.', subj:'math', subjName:'математика + информатика', st:'soon', stName:'скоро', stClass:'st-soon', free:true, href:'escape-room.html'},
     {kind:'шпаргалки', title:'Cheat sheets для ОГЭ по информатике', desc:'Сжатые стильные PDF-карты: формулы, команды, типы заданий. Распечатал — повесил — повторяешь.', subj:'inf', subjName:'информатика · ОГЭ', st:'soon', stName:'скоро', stClass:'st-soon', free:true, href:'cheatsheets.html'},
     {kind:'тетради-комиксы', title:'Рабочие тетради-комиксы', desc:'Учебный материал как сюжетный комикс с героями, а в конце темы — задание на закрепление.', subj:'inf', subjName:'информатика', st:'soon', stName:'скоро', stClass:'st-soon', free:false, href:'workbooks.html'},
     {kind:'пособие', title:'Интерактивный Python с нуля', desc:'Сюжетные проекты, закрепление каждой темы и проверка кода прямо в пособии. Итог — свой проект.', subj:'python', subjName:'Python', st:'soon', stName:'скоро', stClass:'st-soon', free:false, href:'posobiya.html'},
@@ -131,7 +131,7 @@
       var matchPrice = (curPrice === 'all') || (curPrice === 'free' && it.free) || (curPrice === 'paid' && !it.free);
       if(!matchSubj || !matchPrice) return;
       shown++;
-      var canOpen = it.st === 'ok' || !it.free;
+      var canOpen = true;
       var a = document.createElement(canOpen ? 'a' : 'div');
       a.className = 'item';
       if(canOpen) a.href = it.href;

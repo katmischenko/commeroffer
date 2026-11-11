@@ -1,139 +1,23 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Формулы физики — flash-карточки — Mischenko Edu</title>
-<meta name="description" content="Flash-карточки по формулам физики: принцип «знаю / не знаю». Бесплатно, прямо в браузере.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="edu.css">
-<link rel="stylesheet" href="../mischenko-redesign.css?v=8">
-<link rel="stylesheet" href="shared.css?v=3">
-</head>
-<body>
-
-<header>
-  <nav class="nav">
-    <a class="logo" href="index.html"><span class="brand-mark">M</span><span class="hand">Mischenko Edu</span></a>
-    <div class="nav-right">
-      <a class="nav-link" href="index.html">← в библиотеку</a>
-      <a class="nav-cta" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Написать мне</a>
-    </div>
-  </nav>
-</header>
-
-<main>
-  <div class="wrap page">
-    <a class="back" href="index.html">← назад к полкам</a>
-    <span class="sec-index">flash-карточки · бесплатно</span>
-    <h1>Формулы физики: <span class="hl">знаю / не знаю</span></h1>
-    <p class="hero-sub">Нажми на карточку — она перевернётся и покажет формулу, обозначения и единицы. Потом честно отметь: знаю или не знаю. «Незнакомые» карточки вернутся в конце — так работает настоящее запоминание.</p>
-
-    <div class="fc-zone">
-      <div class="fc-meta">
-        <span id="fcPos">карточка 1 из 8</span>
-        <span id="fcStats">знаю: 0 · повторю: 0</span>
-      </div>
-      <div class="fc-card" id="fcCard">
-        <div class="fc-inner">
-          <div class="fc-face" id="fcFront"></div>
-          <div class="fc-face back" id="fcBack"></div>
-        </div>
-      </div>
-      <div class="fc-actions">
-        <button class="fc-btn fc-dunno" id="fcDunno">не знаю ✗</button>
-        <button class="fc-btn fc-know" id="fcKnow">знаю ✓</button>
-      </div>
-      <div id="fcDone" style="display:none" class="q-result">
-        <div class="big" id="fcDoneBig"></div>
-        <p id="fcDoneText"></p>
-        <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-          <button class="btn btn-pen" id="fcRepeat">Повторить незнакомые ↺</button>
-          <button class="btn btn-ghost" onclick="location.reload()">Начать заново</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</main>
-
-<footer>
-  <div class="wrap foot">
-    <small>© 2026 Mischenko Edu</small>
-    <span class="hand">повторение — мать учения ✎</span>
-    <div class="foot-links">
-      <a href="../index.html">Сайт репетитора</a>
-      <a href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Telegram</a>
-    </div>
-  </div>
-</footer>
-
-<script>
-  var DECK = [
-    {name:'Сила — второй закон Ньютона', formula:'F = m · a', sub:'F — сила (Н), m — масса (кг), a — ускорение (м/с²)'},
-    {name:'Скорость', formula:'v = s / t', sub:'v — скорость (м/с), s — путь (м), t — время (с)'},
-    {name:'Плотность', formula:'ρ = m / V', sub:'ρ — плотность (кг/м³), m — масса (кг), V — объём (м³)'},
-    {name:'Давление', formula:'p = F / S', sub:'p — давление (Па), F — сила (Н), S — площадь (м²)'},
-    {name:'Механическая работа', formula:'A = F · s', sub:'A — работа (Дж), F — сила (Н), s — перемещение (м)'},
-    {name:'Количество теплоты', formula:'Q = c · m · Δt', sub:'Q — теплота (Дж), c — уд. теплоёмкость, m — масса, Δt — изменение температуры'},
-    {name:'Закон Ома', formula:'I = U / R', sub:'I — сила тока (А), U — напряжение (В), R — сопротивление (Ом)'},
-    {name:'Мощность тока', formula:'P = U · I', sub:'P — мощность (Вт), U — напряжение (В), I — сила тока (А)'}
-  ];
-
-  var queue = DECK.slice(), repeat = [], known = 0, dunno = 0, flipped = false;
-  var card = document.getElementById('fcCard');
-  var front = document.getElementById('fcFront');
-  var back = document.getElementById('fcBack');
-  var pos = document.getElementById('fcPos');
-  var stats = document.getElementById('fcStats');
-
-  function shuffle(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
-  shuffle(queue);
-
-  function show(){
-    if(!queue.length){ finish(); return; }
-    var c = queue[0];
-    flipped = false;
-    card.classList.remove('flip');
-    front.innerHTML = '<span class="fc-label">напомни формулу…</span><div class="fc-main">' + c.name + '</div><span class="fc-sub">нажми, чтобы перевернуть ↻</span>';
-    back.innerHTML = '<span class="fc-label">формула:</span><div class="fc-main">' + c.formula + '</div><span class="fc-sub">' + c.sub + '</span>';
-    pos.textContent = 'карточка ' + (DECK.length - queue.length + 1) + ' из ' + DECK.length;
-    stats.textContent = 'знаю: ' + known + ' · повторю: ' + dunno;
-  }
-
-  card.addEventListener('click', function(){
-    flipped = !flipped;
-    card.classList.toggle('flip', flipped);
-  });
-
-  document.getElementById('fcKnow').addEventListener('click', function(){
-    known++; queue.shift(); show();
-  });
-  document.getElementById('fcDunno').addEventListener('click', function(){
-    dunno++; repeat.push(queue.shift()); show();
-  });
-
-  function finish(){
-    card.style.display = 'none';
-    document.querySelector('.fc-actions').style.display = 'none';
-    var done = document.getElementById('fcDone');
-    done.style.display = 'block';
-    document.getElementById('fcDoneBig').textContent = known + ' / ' + DECK.length;
-    var txt;
-    if(!repeat.length){ txt = 'Идеально — все формулы на месте! 🏆 Загляни завтра и проверь себя ещё раз.'; document.getElementById('fcRepeat').style.display='none'; }
-    else { txt = 'Честная работа! «Незнакомых» карточек: ' + repeat.length + ' — повтори их ещё разок, и они встанут на место.'; }
-    document.getElementById('fcDoneText').textContent = txt;
-  }
-
-  document.getElementById('fcRepeat').addEventListener('click', function(){
-    queue = shuffle(repeat.slice()); repeat = [];
-    card.style.display = 'block';
-    document.querySelector('.fc-actions').style.display = 'flex';
-    document.getElementById('fcDone').style.display = 'none';
-    show();
-  });
-
-  show();
-</script>
-</body>
-</html>
+<html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#f4f2ee">
+<title>Формулы физики — карточки — Mischenko Edu</title><meta name="description" content="Карточки для повторения школьных формул по физике: формула, обозначения и единицы измерения.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../mischenko-redesign.css?v=9"><link rel="stylesheet" href="shared.css?v=4">
+</head><body>
+<header><nav class="nav">
+<a class="logo" href="index.html" aria-label="Библиотека Mischenko Edu"><span class="brand-mark" aria-hidden="true"><i></i></span><span class="brand-name">mischenko edu</span></a>
+<div class="nav-right"><a class="nav-link" href="index.html">← библиотека</a><a class="nav-cta" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Связаться ↗</a></div>
+</nav></header>
+<main><div class="wrap"><section class="coming-page">
+<a class="back" href="index.html">← ко всем материалам</a><div class="coming-tag">Лаборатория идей · скоро</div>
+<h1>Формулы физики: знаю или повторяю</h1><p class="coming-lead">Колода карточек помогает проверять себя активно: сначала вспомнить формулу, затем открыть ответ и честно отметить, насколько уверенно ты её знаешь.</p>
+<div class="coming-grid">
+<article class="coming-card"><h2>Что будет внутри</h2><ul><li>Восемь карточек с формулами физики</li><li>Формула, обозначения величин и единицы измерения</li><li>Самопроверка по принципу «знаю / не знаю»</li><li>Повторение карточек, которые пока вызывают затруднение</li></ul></article>
+<article class="coming-card"><h2>Для кого этот материал</h2><ul><li>Школьникам, изучающим физику</li><li>Для повторения формул перед самостоятельной или контрольной</li><li>Тем, кому полезнее проверять себя, а не перечитывать список формул</li></ul></article>
+</div>
+<div class="coming-bottom"><p>Материал готовится к публикации. Когда он появится в библиотеке, здесь откроется полный доступ к описанию и самому содержанию.</p>
+<div class="coming-actions"><a class="coming-primary" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Уточнить о публикации ↗</a><a class="coming-secondary" href="index.html">Вернуться в библиотеку</a></div></div>
+</section></div></main>
+<footer><div class="wrap foot"><small>© 2026 Mischenko Edu</small><span class="hand">Лаборатория идей · mischenko edu</span><div class="foot-links"><a href="../index.html">Главная</a><a href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Telegram</a></div></div></footer>
+</body></html>

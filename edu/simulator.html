@@ -1,149 +1,23 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Симулятор «Один день из жизни разработчика» — Mischenko Edu</title>
-<meta name="description" content="Игра-тренажёр: проживи день разработчика, принимай решения и смотри, как они влияют на проект.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="edu.css">
-<link rel="stylesheet" href="../mischenko-redesign.css?v=8">
-<link rel="stylesheet" href="shared.css?v=3">
-</head>
-<body>
-
-<header>
-  <nav class="nav">
-    <a class="logo" href="index.html"><span class="brand-mark">M</span><span class="hand">Mischenko Edu</span></a>
-    <div class="nav-right">
-      <a class="nav-link" href="index.html">← в библиотеку</a>
-      <a class="nav-cta" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Написать мне</a>
-    </div>
-  </nav>
-</header>
-
-<main>
-  <div class="wrap page">
-    <a class="back" href="index.html">← назад к полкам</a>
-    <span class="sec-index">игра-тренажёр · бесплатно</span>
-    <h1>Один день из жизни <span class="hl">разработчика</span></h1>
-    <p class="hero-sub">Ты — junior-разработчик, и сегодня у проекта дедлайн. Каждое твоё решение меняет здоровье проекта. Читай код, думай и выбирай — в конце узнаешь, чем всё закончилось 👩‍💻</p>
-
-    <div class="quiz">
-      <div class="q-progress"><i id="bar"></i></div>
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
-        <span class="q-count" id="dayLabel" style="margin:0">утро · 09:00</span>
-        <span class="hand" style="font-size:20px;color:var(--muted)">здоровье проекта: <b id="hp" style="color:var(--marker)">50</b>%</span>
-      </div>
-      <div id="step"></div>
-    </div>
-  </div>
-</main>
-
-<footer>
-  <div class="wrap foot">
-    <small>© 2026 Mischenko Edu</small>
-    <span class="hand">решения важнее кода ✎</span>
-    <div class="foot-links">
-      <a href="../index.html">Сайт репетитора</a>
-      <a href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Telegram</a>
-    </div>
-  </div>
-</footer>
-
-<script>
-  var STEPS = [
-    {time:'утро · 09:00', who:'Тимлид в мессенджере',
-     text:'«Привет! Клиент пишет: на сайте вместо списка учеников выводится пустота. Вот функция — глянь, пока я на созвоне»<br><br><code>def get_names(students):<br>&nbsp;&nbsp;return [s["name"] for s in students if s["age"] > 12]</code><br><br>Что проверишь первым делом?',
-     choices:[
-       {t:'Запущу код с реальными данными и посмотрю, что внутри students', hp:+15, log:'Ты быстро видишь: у части записей поле называется <code>"age_years"</code>, а не <code>"age"</code>. Баг найден за 10 минут — клиент спокоен.'},
-       {t:'Перепишу функцию с нуля — так надёжнее', hp:-10, log:'Новая функция делает то же самое, а баг был в данных. Потерян час, плюс новая версия сломала другой фильтр.'},
-       {t:'Отвечу клиенту «у нас всё работает» и закрою задачу', hp:-20, log:'Клиент присылает скриншот пустого экрана. Неловко. Доверие подорвано.'}
-     ]},
-    {time:'день · 12:30', who:'Внутренний голос',
-     text:'Нужно добавить скидку 10% на пакеты от 8 занятий. Куда запишешь логику?',
-     choices:[
-       {t:'Захардкожу: if lessons >= 8: price = price * 0.9 — прямо в кнопку оплаты', hp:-10, log:'Работает… пока. Через месяц скидку меняют на 15%, и её ищут по всему коду два часа.'},
-       {t:'Вынесу в отдельную функцию discount(lessons, price) с комментарием', hp:+15, log:'Код читается, скидка меняется в одном месте. Тимлид ставит + на ревью.'},
-       {t:'Сделаю константу DISCOUNT = 0.1 и функцию, и тест на неё', hp:+25, log:'Идеально: логика отделена, значение в одном месте, тест не даст сломать. Так пишут взрослые команды.'}
-     ]},
-    {time:'день · 15:00', who:'Однокурсник в соседнем окне',
-     text:'«Слушай, а что выведет твой код? Спорим на кофе!»<br><br><code>x = [1, 2, 3]<br>y = x<br>y.append(4)<br>print(len(x))</code>',
-     choices:[
-       {t:'3 — мы же не меняли x', hp:-15, log:'Кофе прощай: <code>y = x</code> не копирует список, а ссылается на него. len(x) == 4. Списки — изменяемые!'},
-       {t:'4 — y и x указывают на один и тот же список', hp:+20, log:'Верно! <code>y = x</code> — это ссылка, а не копия. Оба имени смотрят на один список, и append виден в обоих. Кофе твой ☕'},
-       {t:'Ошибка — так нельзя писать', hp:-10, log:'Код вполне легален и отработает: выведет 4. Осторожнее с изменяемыми типами.'}
-     ]},
-    {time:'вечер · 18:45', who:'Тимлид снова',
-     text:'«До релиза час. Твой модуль готов, но тесты не запускались. Что делаем?»',
-     choices:[
-       {t:'Залью как есть — визуально я всё проверил', hp:-20, log:'Релиз выкатили… и откатили через 40 минут: на проде нашёлся кейс, который ломал всё. Ночь длинная.'},
-       {t:'Прогоню хотя бы основные сценарии вручную и честно скажу о рисках', hp:+15, log:'Ты находишь один баг до релиза и чинишь. Тимлид: «Вот за это тебя и держим».'},
-       {t:'Предложу перенести релиз на завтра и дописать тесты', hp:+10, log:'Решение зрелое, но клиент ждал сегодня. Плюс за честность, минус за срыв — в следующий раз планируй тесты с утра.'}
-     ]}
-  ];
-
-  var i = 0, hp = 50;
-  var step = document.getElementById('step');
-  var bar = document.getElementById('bar');
-  var hpEl = document.getElementById('hp');
-  var dayLabel = document.getElementById('dayLabel');
-
-  function clamp(v){ return Math.max(0, Math.min(100, v)); }
-
-  function renderStep(){
-    var s = STEPS[i];
-    bar.style.width = (i / STEPS.length * 100) + '%';
-    dayLabel.textContent = s.time;
-    var html = '<div class="sim-step"><div class="who">' + s.who + ':</div>' +
-               '<div class="q-text" style="font-weight:500">' + s.text + '</div>' +
-               '<div class="sim-choices">';
-    s.choices.forEach(function(c, idx){
-      html += '<button class="q-opt" data-i="' + idx + '">' + c.t + '</button>';
-    });
-    html += '</div><div id="logZone"></div></div>';
-    step.innerHTML = html;
-
-    step.querySelectorAll('.q-opt').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        var c = s.choices[+btn.dataset.i];
-        hp = clamp(hp + c.hp);
-        hpEl.textContent = hp;
-        hpEl.style.color = hp >= 60 ? '#7ed1a0' : (hp >= 35 ? 'var(--marker)' : '#ff8a7a');
-        step.querySelectorAll('.q-opt').forEach(function(b){ b.disabled = true; });
-        btn.classList.add(c.hp > 0 ? 'right' : 'wrong');
-        var zone = document.getElementById('logZone');
-        zone.innerHTML = '<div class="sim-log"><b>' + (c.hp > 0 ? '+' + c.hp : c.hp) + '% проекту.</b> ' + c.log +
-          '<div style="margin-top:14px"><button class="btn btn-pen" id="next" style="padding:10px 24px;font-size:14px">' +
-          (i + 1 < STEPS.length ? 'Дальше →' : 'Итог дня →') + '</button></div>';
-        document.getElementById('next').addEventListener('click', function(){
-          i++;
-          if(i < STEPS.length) renderStep(); else renderEnd();
-        });
-      });
-    });
-  }
-
-  function renderEnd(){
-    bar.style.width = '100%';
-    dayLabel.textContent = 'итог дня · 19:00';
-    var title, text;
-    if(hp >= 85){ title = '🏆 Проект спасён, релиз вышел'; text = 'Ты думал как инженер: проверял данные, отделял логику, знал про ссылки и не боялся честности. Тимлид намекнул на повышение. Так держать!'; }
-    else if(hp >= 55){ title = '💪 Проект выжил, но день был тяжёлым'; text = 'Релиз состоялся, но пара решений потребовала аврала. Хорошая новость: теперь ты точно знаешь, где расти. Список тем — у меня 😉'; }
-    else { title = '🌧 Проект пришлось спасать всей командой'; text = 'День выдался жёстким, но именно так и учатся: каждая ошибка выше — это тема, которую можно разобрать и больше не наступать.'; }
-    step.innerHTML = '<div class="q-result">' +
-      '<div class="big">' + hp + '%</div>' +
-      '<div class="q-text" style="margin-top:10px">' + title + '</div>' +
-      '<p>' + text + '</p>' +
-      '<p>Хочешь научиться принимать такие решения на автомате? Приходи на занятия по Python — разберём и ссылки, и архитектуру, и дедлайны.</p>' +
-      '<div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">' +
-      '<a class="btn btn-marker" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Написать Катерине ✈</a>' +
-      '<button class="btn btn-ghost" onclick="location.reload()">Прожить день заново</button>' +
-      '</div></div>';
-  }
-
-  renderStep();
-</script>
-</body>
-</html>
+<html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#f4f2ee">
+<title>Симулятор — Один день из жизни разработчика — Mischenko Edu</title><meta name="description" content="Игровой тренажёр Mischenko Edu о задачах и решениях junior-разработчика.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../mischenko-redesign.css?v=9"><link rel="stylesheet" href="shared.css?v=4">
+</head><body>
+<header><nav class="nav">
+<a class="logo" href="index.html" aria-label="Библиотека Mischenko Edu"><span class="brand-mark" aria-hidden="true"><i></i></span><span class="brand-name">mischenko edu</span></a>
+<div class="nav-right"><a class="nav-link" href="index.html">← библиотека</a><a class="nav-cta" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Связаться ↗</a></div>
+</nav></header>
+<main><div class="wrap"><section class="coming-page">
+<a class="back" href="index.html">← ко всем материалам</a><div class="coming-tag">Лаборатория идей · скоро</div>
+<h1>Один день из жизни разработчика</h1><p class="coming-lead">Интерактивная история о рабочем дне junior-разработчика. Решения влияют на ход проекта: нужно читать код, оценивать риски и выбирать, как поступить в непростой ситуации.</p>
+<div class="coming-grid">
+<article class="coming-card"><h2>Что будет внутри</h2><ul><li>Сюжетный рабочий день с несколькими ситуациями</li><li>Фрагменты кода и вопросы на понимание</li><li>Выбор решений и последствия каждого выбора</li><li>Обратная связь о том, почему решение оказалось удачным или рискованным</li></ul></article>
+<article class="coming-card"><h2>Для кого этот материал</h2><ul><li>Начинающим изучать программирование</li><li>Тем, кто хочет увидеть применение логики и кода в практических ситуациях</li><li>Для тренировки внимательности и инженерного мышления</li></ul></article>
+</div>
+<div class="coming-bottom"><p>Материал готовится к публикации. Когда он появится в библиотеке, здесь откроется полный доступ к описанию и самому содержанию.</p>
+<div class="coming-actions"><a class="coming-primary" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Уточнить о публикации ↗</a><a class="coming-secondary" href="index.html">Вернуться в библиотеку</a></div></div>
+</section></div></main>
+<footer><div class="wrap foot"><small>© 2026 Mischenko Edu</small><span class="hand">Лаборатория идей · mischenko edu</span><div class="foot-links"><a href="../index.html">Главная</a><a href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Telegram</a></div></div></footer>
+</body></html>

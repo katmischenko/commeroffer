@@ -1,100 +1,23 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cheat sheets и чек-листы — Mischenko Edu</title>
-<meta name="description" content="Сжатые шпаргалки для ОГЭ по информатике и чек-листы по математике. Скоро в библиотеке.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="edu.css">
-<style>
-  .sheet{
-    background:var(--paper-2);border:1px solid var(--line);border-radius:6px 20px 6px 20px;
-    padding:28px;margin-top:22px;position:relative;transform:rotate(-.5deg);
-  }
-  .sheet::before{content:"";position:absolute;top:-13px;left:34px;width:90px;height:26px;background:rgba(234,231,223,.15);border-radius:2px;transform:rotate(-4deg)}
-  .sheet h4{font-weight:800;font-size:18px;margin-bottom:6px}
-  .sheet p{color:var(--muted);font-size:14.5px}
-  .sheet .st{position:absolute;top:22px;right:24px}
-  .mini-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:14.5px}
-  .mini-table td{padding:9px 12px;border-top:1px dashed rgba(234,231,223,.14);color:var(--muted)}
-  .mini-table td:first-child{color:var(--ink);font-weight:700;white-space:nowrap}
-  .mini-table code{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:.9em;background:rgba(142,201,255,.12);color:var(--pen);border-radius:6px;padding:2px 8px}
-</style>
-<link rel="stylesheet" href="../mischenko-redesign.css?v=8">
-<link rel="stylesheet" href="shared.css?v=3">
-</head>
-<body>
-
-<header>
-  <nav class="nav">
-    <a class="logo" href="index.html"><span class="brand-mark">M</span><span class="hand">Mischenko Edu</span></a>
-    <div class="nav-right">
-      <a class="nav-link" href="index.html">← в библиотеку</a>
-      <a class="nav-cta" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Написать мне</a>
-    </div>
-  </nav>
-</header>
-
-<main>
-  <div class="wrap page">
-    <a class="back" href="index.html">← назад к полкам</a>
-    <span class="sec-index">шпаргалки · статус: скоро</span>
-    <h1>Cheat sheets — <span class="hl">карманные</span> шпаргалки</h1>
-    <p class="hero-sub">Сжатые, стильные PDF-карты формата mind map: только база — формулы, команды, типы заданий. Распечатал → повесил над столом → повторяешь глазами каждый день. Первый комплект — по ОГЭ информатике, дальше чек-листы по математике.</p>
-
-    <div class="sheet reveal">
-      <span class="st st-soon">скоро</span>
-      <h4>Cheat sheet «Системы счисления»</h4>
-      <p>Переводы 2↔10↔16, быстрые приёмы, типичные ловушки ОГЭ.</p>
-    </div>
-    <div class="sheet reveal" style="transform:rotate(.6deg)">
-      <span class="st st-soon">скоро</span>
-      <h4>Cheat sheet «Python для ОГЭ»</h4>
-      <p>Базовые команды и конструкции, которые встречаются в заданиях.</p>
-      <table class="mini-table">
-        <tr><td><code>len(s)</code></td><td>длина строки или списка</td></tr>
-        <tr><td><code>for i in range(n)</code></td><td>цикл n раз: 0, 1, …, n−1</td></tr>
-        <tr><td><code>s.count('a')</code></td><td>сколько раз 'a' встречается в s</td></tr>
-        <tr><td><code>int(x, 2)</code></td><td>перевод из двоичной строки в число</td></tr>
-      </table>
-      <p class="hand" style="color:var(--pen);font-size:20px;margin-top:14px">↑ вот так будет выглядеть начинка — только суть ✎</p>
-    </div>
-    <div class="sheet reveal">
-      <span class="st st-soon">скоро</span>
-      <h4>Чек-листы «Математика без паники»</h4>
-      <p>Сложные темы простыми словами: дроби, проценты, уравнения, геометрия по шагам.</p>
-    </div>
-
-    <div class="note-box reveal" style="margin-top:34px">
-      <h3>Хочешь получить первый комплект раньше всех?</h3>
-      <p>Напиши мне в Telegram слово «ШПАРГАЛКИ» — как только PDF будут готовы, пришлю тебе первым. Бесплатно.</p>
-      <div style="margin-top:18px"><a class="btn btn-pen" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Написать «ШПАРГАЛКИ» ✈</a></div>
-    </div>
-  </div>
-</main>
-
-<footer>
-  <div class="wrap foot">
-    <small>© 2026 Mischenko Edu</small>
-    <span class="hand">шпаргалка — для повторения, не для экзамена ✎</span>
-    <div class="foot-links">
-      <a href="../index.html">Сайт репетитора</a>
-      <a href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Telegram</a>
-    </div>
-  </div>
-</footer>
-
-<script>
-  if('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, {threshold:.12});
-    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-  }else{
-    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
-  }
-</script>
-</body>
-</html>
+<html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#f4f2ee">
+<title>Шпаргалки и чек-листы — Mischenko Edu</title><meta name="description" content="Краткие PDF-шпаргалки и чек-листы Mischenko Edu по информатике и математике.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../mischenko-redesign.css?v=9"><link rel="stylesheet" href="shared.css?v=4">
+</head><body>
+<header><nav class="nav">
+<a class="logo" href="index.html" aria-label="Библиотека Mischenko Edu"><span class="brand-mark" aria-hidden="true"><i></i></span><span class="brand-name">mischenko edu</span></a>
+<div class="nav-right"><a class="nav-link" href="index.html">← библиотека</a><a class="nav-cta" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Связаться ↗</a></div>
+</nav></header>
+<main><div class="wrap"><section class="coming-page">
+<a class="back" href="index.html">← ко всем материалам</a><div class="coming-tag">Лаборатория идей · скоро</div>
+<h1>Коротко о главном. Наглядно и по делу</h1><p class="coming-lead">Шпаргалки и чек-листы собирают самое важное на одной странице: без лишнего текста, с понятной структурой и визуальными связями. Их можно быстро повторить перед уроком, контрольной или экзаменом.</p>
+<div class="coming-grid">
+<article class="coming-card"><h2>Что будет внутри</h2><ul><li>PDF-карты по подготовке к ОГЭ по информатике</li><li>Формулы, команды и типы заданий в сжатом виде</li><li>Чек-листы по сложным темам математики</li><li>Структура mind map, чтобы видеть связи между понятиями</li></ul></article>
+<article class="coming-card"><h2>Для кого этот материал</h2><ul><li>Школьникам для повторения и систематизации</li><li>Тем, кому удобнее видеть тему целиком на одной странице</li><li>Для самостоятельной подготовки и быстрого повторения</li></ul></article>
+</div>
+<div class="coming-bottom"><p>Материал готовится к публикации. Когда он появится в библиотеке, здесь откроется полный доступ к описанию и самому содержанию.</p>
+<div class="coming-actions"><a class="coming-primary" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Уточнить о публикации ↗</a><a class="coming-secondary" href="index.html">Вернуться в библиотеку</a></div></div>
+</section></div></main>
+<footer><div class="wrap foot"><small>© 2026 Mischenko Edu</small><span class="hand">Лаборатория идей · mischenko edu</span><div class="foot-links"><a href="../index.html">Главная</a><a href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Telegram</a></div></div></footer>
+</body></html>

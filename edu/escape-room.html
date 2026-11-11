@@ -1,160 +1,23 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Escape room «Побег из лаборатории» — Mischenko Edu</title>
-<meta name="description" content="Цифровой квест: выбериcь из лаборатории, решив цепочку задач по информатике и математике.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="edu.css">
-<style>
-  .door{
-    text-align:center;padding:34px 0 6px;
-  }
-  .door .big-emoji{font-size:56px;line-height:1;filter:grayscale(1);transition:filter .5s,transform .5s}
-  .lock-open .big-emoji{filter:none;transform:scale(1.15) rotate(-6deg)}
-  .locks{display:flex;gap:12px;justify-content:center;margin:22px 0}
-  .lock{
-    width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
-    border:1px solid rgba(234,231,223,.2);font-size:20px;background:var(--paper);
-    transition:all .4s;
-  }
-  .lock.open{background:rgba(126,209,160,.15);border-color:#7ed1a0}
-  .hint-btn{
-    background:none;border:0;cursor:pointer;font-family:var(--hand);font-weight:600;
-    font-size:19px;color:var(--pen);margin-top:14px;
-  }
-  .hint{display:none;margin-top:10px;font-size:14px;color:var(--muted);border-left:3px solid var(--pen);padding:8px 14px;background:rgba(142,201,255,.07);border-radius:0 12px 12px 0}
-</style>
-<link rel="stylesheet" href="../mischenko-redesign.css?v=8">
-<link rel="stylesheet" href="shared.css?v=3">
-</head>
-<body>
-
-<header>
-  <nav class="nav">
-    <a class="logo" href="index.html"><span class="brand-mark">M</span><span class="hand">Mischenko Edu</span></a>
-    <div class="nav-right">
-      <a class="nav-link" href="index.html">← в библиотеку</a>
-      <a class="nav-cta" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Написать мне</a>
-    </div>
-  </nav>
-</header>
-
-<main>
-  <div class="wrap page">
-    <a class="back" href="index.html">← назад к полкам</a>
-    <span class="sec-index">квест · бесплатно</span>
-    <h1>Escape room <span class="hl">«Побег из лаборатории»</span></h1>
-    <p class="hero-sub">Ты остался в компьютерной лаборатории после уроков — и дверь заблокирована системой безопасности. Четыре замка, четыре задачи. Вводи коды — и выбирайся! Если застрял, под каждой задачей прячется подсказка 🔦</p>
-
-    <div class="quiz">
-      <div class="locks" id="locks">
-        <div class="lock">🔒</div><div class="lock">🔒</div><div class="lock">🔒</div><div class="lock">🔒</div>
-      </div>
-      <div class="q-progress"><i id="bar"></i></div>
-      <div id="room"></div>
-    </div>
-  </div>
-</main>
-
-<footer>
-  <div class="wrap foot">
-    <small>© 2026 Mischenko Edu</small>
-    <span class="hand">код к двери — в голове ✎</span>
-    <div class="foot-links">
-      <a href="../index.html">Сайт репетитора</a>
-      <a href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Telegram</a>
-    </div>
-  </div>
-</footer>
-
-<script>
-  var ROOMS = [
-    {title:'Замок 1 · Двоичный сторож',
-     text:'На мониторе горит табличка: «Я считаю только нулями и единицами. Скажи, сколько будет <code>1011</code> в вашем десятичном мире — и пропущу».',
-     hint:'Разложи по степеням двойки: 1·8 + 0·4 + 1·2 + 1·1 = …',
-     answer:'11'},
-    {title:'Замок 2 · Шкаф с дискетами',
-     text:'На шкафу наклейка: «Во мне ровно <code>2 Кбайта</code> дискет. Назови это число в байтах».',
-     hint:'1 Кбайт = 1024 байта.',
-     answer:'2048'},
-    {title:'Замок 3 · Терминал с кодом',
-     text:'Терминал выполняет команду и ждёт результат:<br><code>print(len("python") * 2)</code><br>Что он выведет?',
-     hint:'Сколько букв в слове "python"? Умножь на 2.',
-     answer:'12'},
-    {title:'Замок 4 · Дверной механизм',
-     text:'Последняя загадка на двери: <code>2, 4, 8, 16, ?</code> — «продолжи ряд, и я откроюсь».',
-     hint:'Каждое следующее число — в два раза больше предыдущего.',
-     answer:'32'}
-  ];
-
-  var i = 0;
-  var room = document.getElementById('room');
-  var bar = document.getElementById('bar');
-  var locks = document.querySelectorAll('#locks .lock');
-
-  function renderRoom(){
-    var r = ROOMS[i];
-    bar.style.width = (i / ROOMS.length * 100) + '%';
-    room.innerHTML =
-      '<div class="q-count">комната ' + (i+1) + ' из ' + ROOMS.length + '</div>' +
-      '<div class="q-text" style="font-weight:600">' + r.title + '</div>' +
-      '<p style="color:var(--muted);margin-bottom:22px">' + r.text + '</p>' +
-      '<div style="display:flex;gap:12px;flex-wrap:wrap">' +
-      '<input class="q-input" id="code" inputmode="numeric" placeholder="введи код…" style="max-width:220px">' +
-      '<button class="btn btn-pen" id="try" style="padding:13px 26px;font-size:15px">Проверить</button>' +
-      '</div>' +
-      '<button class="hint-btn" id="hintBtn">подсказка 🔦</button>' +
-      '<div class="hint" id="hint">' + r.hint + '</div>' +
-      '<div class="sim-log" id="roomMsg" style="display:none"></div>';
-
-    document.getElementById('hintBtn').addEventListener('click', function(){
-      var h = document.getElementById('hint');
-      h.style.display = h.style.display === 'block' ? 'none' : 'block';
-    });
-
-    function attempt(){
-      var val = document.getElementById('code').value.trim();
-      var msg = document.getElementById('roomMsg');
-      if(val === r.answer){
-        locks[i].textContent = '🔓';
-        locks[i].classList.add('open');
-        msg.style.display = 'block';
-        msg.innerHTML = '<b>Есть! Замок открыт 🔓</b>' +
-          '<div style="margin-top:14px"><button class="btn btn-pen" id="nextRoom" style="padding:10px 24px;font-size:14px">' +
-          (i + 1 < ROOMS.length ? 'Следующая комната →' : 'Толкнуть дверь →') + '</button></div>';
-        document.getElementById('try').disabled = true;
-        document.getElementById('nextRoom').addEventListener('click', function(){
-          i++;
-          if(i < ROOMS.length) renderRoom(); else renderWin();
-        });
-      } else {
-        msg.style.display = 'block';
-        msg.innerHTML = '<b>Не то…</b> замок щёлкнул, но не открылся. Попробуй ещё или загляни в подсказку.';
-      }
-    }
-    document.getElementById('try').addEventListener('click', attempt);
-    document.getElementById('code').addEventListener('keydown', function(e){ if(e.key === 'Enter') attempt(); });
-    document.getElementById('code').focus();
-  }
-
-  function renderWin(){
-    bar.style.width = '100%';
-    room.innerHTML =
-      '<div class="door lock-open"><div class="big-emoji">🚪✨</div></div>' +
-      '<div class="q-result">' +
-      '<div class="big">Ты выбрался!</div>' +
-      '<p>Все четыре замка открыты: двоичная система, объёмы памяти, базовый код и закономерности — вот что открывает любые двери. Буквально.</p>' +
-      '<p>Хочешь квест посложнее или разбор всех задач? Напиши мне.</p>' +
-      '<div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">' +
-      '<a class="btn btn-marker" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Написать Катерине ✈</a>' +
-      '<button class="btn btn-ghost" onclick="location.reload()">Пройти ещё раз</button>' +
-      '</div></div>';
-  }
-
-  renderRoom();
-</script>
-</body>
-</html>
+<html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#f4f2ee">
+<title>Escape room — Побег из лаборатории — Mischenko Edu</title><meta name="description" content="Учебный квест Mischenko Edu с задачами по информатике и математике.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../mischenko-redesign.css?v=9"><link rel="stylesheet" href="shared.css?v=4">
+</head><body>
+<header><nav class="nav">
+<a class="logo" href="index.html" aria-label="Библиотека Mischenko Edu"><span class="brand-mark" aria-hidden="true"><i></i></span><span class="brand-name">mischenko edu</span></a>
+<div class="nav-right"><a class="nav-link" href="index.html">← библиотека</a><a class="nav-cta" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Связаться ↗</a></div>
+</nav></header>
+<main><div class="wrap"><section class="coming-page">
+<a class="back" href="index.html">← ко всем материалам</a><div class="coming-tag">Лаборатория идей · скоро</div>
+<h1>Побег из лаборатории</h1><p class="coming-lead">Учебный квест, в котором знания становятся ключом к выходу. Чтобы открыть дверь, нужно пройти несколько испытаний, разобраться в условиях и найти правильные коды.</p>
+<div class="coming-grid">
+<article class="coming-card"><h2>Что будет внутри</h2><ul><li>Четыре замка и четыре последовательные задачи</li><li>Задания по информатике и математике</li><li>Подсказки для тех случаев, когда решение пока не находится</li><li>Финальная цель — выбраться из лаборатории, применяя логику и знания</li></ul></article>
+<article class="coming-card"><h2>Для кого этот материал</h2><ul><li>Тем, кто любит задачи с сюжетом и игровым сценарием</li><li>Для повторения информатики и математики</li><li>Для тренировки логики и внимательного чтения условий</li></ul></article>
+</div>
+<div class="coming-bottom"><p>Материал готовится к публикации. Когда он появится в библиотеке, здесь откроется полный доступ к описанию и самому содержанию.</p>
+<div class="coming-actions"><a class="coming-primary" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Уточнить о публикации ↗</a><a class="coming-secondary" href="index.html">Вернуться в библиотеку</a></div></div>
+</section></div></main>
+<footer><div class="wrap foot"><small>© 2026 Mischenko Edu</small><span class="hand">Лаборатория идей · mischenko edu</span><div class="foot-links"><a href="../index.html">Главная</a><a href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Telegram</a></div></div></footer>
+</body></html>
