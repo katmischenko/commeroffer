@@ -255,3 +255,11 @@ footer .foot-links a:hover{color:#fff!important}
   .nav-cta{padding:10px 12px!important;font-size:10px!important}
   .hero-note{column-gap:0!important}
 }
+
+/* Remove the last hard-coded notebook-blue/orange details */
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(169,35,44,.35)}
+  55%{box-shadow:0 0 0 9px rgba(169,35,44,0)}
+}
+.graph-chip svg path{stroke:#d98b91!important}
+.idea-panel .code-lines em{color:#c9a5aa!important}
