@@ -184,9 +184,20 @@
         [
           "integrated_generic",
           "Общая метка: понимание и применение"
+        ],
+        [
+          "debugging",
+          "Поиск и исправление ошибок"
         ]
       ],
       "rules": [
+        {
+          "groupId": "debugging",
+          "containsAny": [
+            "поиск и исправление ошибки",
+            "отладка"
+          ]
+        },
         {
           "groupId": "integrated_generic",
           "containsAny": [
