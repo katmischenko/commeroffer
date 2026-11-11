@@ -140,7 +140,9 @@ test("result gives topic-specific next steps without claiming mastery from one i
   await page.locator("#start").click();
   await page.waitForFunction(() => document.querySelector("#counter")?.textContent.trim() === "вопрос 1 из 15");
   await page.locator('[data-option="1"]').click();
+  await page.locator("#next").click();
   for (let i = 0; i < 14; i++) await page.locator("#skip").click();
+  await page.locator("#save-status").waitFor();
   const result = await page.locator("#result").textContent();
   assert.match(result, /Что делать дальше/);
   assert.match(result, /Рациональные числа — 0 из 3; задания №1, 2, 7/);
