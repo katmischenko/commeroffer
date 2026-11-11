@@ -4,12 +4,13 @@
   --stone:#d9d0c8;--wine:#7c3449;--red:#a9232c;--muted:#aaa3a0;
   --line:rgba(244,241,236,.14);--serif:'Cormorant Garamond',Georgia,serif;
   --sans:'Manrope',Arial,sans-serif;--gutter:clamp(22px,5.4vw,88px);
-  --ease:cubic-bezier(.2,.75,.25,1)
+  --ease:cubic-bezier(.2,.75,.25,1);--marker:rgba(169,35,44,.62);--marker-soft:rgba(217,161,164,.24)
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body.editorial-library{background:var(--ink);color:var(--paper);font-family:var(--sans);font-size:14px;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 body.editorial-library:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.2;background-image:linear-gradient(rgba(244,241,236,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(244,241,236,.035) 1px,transparent 1px);background-size:56px 56px}
+body.editorial-library:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.42;background-repeat:no-repeat;background-position:center;background-size:100% 100%;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 1000' preserveAspectRatio='none'%3E%3Cpath d='M-80 210 C180 80 300 350 540 235 S900 80 1100 225 S1400 390 1680 175' fill='none' stroke='%23a9232c' stroke-opacity='.42' stroke-width='1.5'/%3E%3Cpath d='M-100 250 C180 120 330 390 570 275 S920 120 1120 265 S1430 430 1700 215' fill='none' stroke='%23d9a1a4' stroke-opacity='.28' stroke-width='1'/%3E%3Cpath d='M-80 760 C190 620 340 890 590 770 S930 610 1130 755 S1440 920 1680 700' fill='none' stroke='%23a9232c' stroke-opacity='.34' stroke-width='1.3'/%3E%3Cpath d='M-100 800 C190 660 360 930 620 810 S960 650 1160 795 S1450 960 1700 740' fill='none' stroke='%23d9a1a4' stroke-opacity='.2' stroke-width='1'/%3E%3C/svg%3E")}
 .editorial-library a{color:inherit}
 .editorial-library .wrap{width:min(1440px,100%);margin:0 auto;padding:0 var(--gutter)}
 .editorial-library header{position:sticky;top:0;z-index:20;background:rgba(17,16,20,.86);border-bottom:1px solid var(--line);backdrop-filter:blur(18px)}
@@ -28,9 +29,13 @@ body.editorial-library:before{content:"";position:fixed;inset:0;pointer-events:n
 .editorial-library .hero:after{content:"M/E";position:absolute;right:var(--gutter);top:20%;font:500 clamp(150px,27vw,390px)/.8 var(--serif);letter-spacing:-.1em;color:rgba(244,241,236,.025);pointer-events:none}
 .editorial-library .sec-index{display:flex;align-items:center;gap:20px;color:#d9a1a4;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:28px}
 .editorial-library .sec-index:before{content:"";width:35px;height:1px;background:var(--red)}
+.editorial-library .hero .sec-index{font-family:var(--sans)}
 .editorial-library .sec-index i{font-style:normal;color:rgba(244,241,236,.35);font-size:9px}
 .editorial-library h1{position:relative;z-index:1;font:500 clamp(4rem,10vw,9.5rem)/.82 var(--serif);letter-spacing:-.065em;max-width:1000px}
-.editorial-library h1 em,.editorial-library .sec-title em{font-weight:400;color:#d9a1a4}
+.editorial-library h1 em,.editorial-library .sec-title em{font-weight:400;color:#f0dadd}
+.editorial-library .marker-highlight{position:relative;z-index:0;display:inline-block;padding:0 .08em .04em}
+.editorial-library .marker-highlight:before{content:"";position:absolute;z-index:-1;left:-.035em;right:-.08em;bottom:.06em;height:.29em;background:linear-gradient(100deg,rgba(169,35,44,.68),rgba(124,52,73,.54));transform:rotate(-1.4deg);clip-path:polygon(1% 12%,98% 0,100% 75%,2% 100%);border-radius:3px}
+.editorial-library .sec-title .marker-highlight:before{height:.25em;bottom:.02em;opacity:.8}
 .editorial-library .hero-sub{position:relative;z-index:1;max-width:510px;margin:35px 0 0 auto;color:rgba(244,241,236,.62);font-size:13px;line-height:1.9}
 .editorial-library section{padding:clamp(52px,7vw,96px) 0}
 .editorial-library .note-box{position:relative;display:grid;grid-template-columns:.55fr 1fr;gap:7%;padding:clamp(26px,4vw,54px);background:var(--paper);color:var(--ink);border-radius:2px}
