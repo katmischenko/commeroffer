@@ -19,7 +19,7 @@
     {
       "id": "figma7-01",
       "topic": "Auto Layout",
-      "skill": "понимание и применение Figma",
+      "skill": "Включение Auto Layout сочетанием Shift + A",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какое сочетание клавиш обычно включает Auto Layout для выбранного фрейма или группы?",
@@ -36,7 +36,7 @@
     {
       "id": "figma7-02",
       "topic": "Сетка",
-      "skill": "понимание и применение Figma",
+      "skill": "Использование layout grid для выравнивания элементов",
       "difficulty": "basic",
       "type": "choice",
       "question": "Какую задачу решает layout grid на фрейме?",
@@ -53,7 +53,7 @@
     {
       "id": "figma7-03",
       "topic": "Компоненты",
-      "skill": "понимание и применение Figma",
+      "skill": "Создание экземпляра с наследованием свойств главного компонента",
       "difficulty": "basic",
       "type": "choice",
       "question": "Что происходит, когда создают instance из главного компонента?",
@@ -70,7 +70,7 @@
     {
       "id": "figma7-04",
       "topic": "Компоненты",
-      "skill": "понимание и применение Figma",
+      "skill": "Настройка Boolean property для переключения видимости",
       "difficulty": "basic",
       "type": "choice",
       "question": "Для чего используют Boolean property у компонента?",
@@ -87,7 +87,7 @@
     {
       "id": "figma7-05",
       "topic": "Векторная графика",
-      "skill": "понимание и применение Figma",
+      "skill": "Применение операции Subtract к векторным фигурам",
       "difficulty": "basic",
       "type": "choice",
       "question": "Что делает операция Subtract при объединении фигур?",
@@ -104,7 +104,7 @@
     {
       "id": "figma7-06",
       "topic": "Auto Layout",
-      "skill": "понимание и применение Figma",
+      "skill": "Выбор Fill container для заполнения доступной ширины",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какой режим размера подходит текстовому блоку внутри Auto Layout, если он должен занимать всю доступную ширину контейнера?",
@@ -121,7 +121,7 @@
     {
       "id": "figma7-07",
       "topic": "Constraints",
-      "skill": "понимание и применение Figma",
+      "skill": "Настройка привязки Right к краю фрейма",
       "difficulty": "medium",
       "type": "choice",
       "question": "Какой вариант привязки удержит объект у правого края фрейма при его расширении?",
@@ -138,7 +138,7 @@
     {
       "id": "figma7-08",
       "topic": "Прототип",
-      "skill": "понимание и применение Figma",
+      "skill": "Настройка триггера After delay в прототипе",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что означает триггер After delay?",
@@ -155,7 +155,7 @@
     {
       "id": "figma7-09",
       "topic": "Прототип",
-      "skill": "понимание и применение Figma",
+      "skill": "Использование Open overlay для показа поверх текущего экрана",
       "difficulty": "medium",
       "type": "choice",
       "question": "Для чего используют Open overlay?",
@@ -172,7 +172,7 @@
     {
       "id": "figma7-10",
       "topic": "Переменные",
-      "skill": "понимание и применение Figma",
+      "skill": "Организация связанных значений в коллекции Variables",
       "difficulty": "medium",
       "type": "choice",
       "question": "Что позволяет коллекция Variables?",
@@ -189,7 +189,7 @@
     {
       "id": "figma7-11",
       "topic": "История версий",
-      "skill": "понимание и применение Figma",
+      "skill": "Просмотр и восстановление версий файла",
       "difficulty": "medium",
       "type": "choice",
       "question": "Для чего нужна Version history?",
@@ -206,7 +206,7 @@
     {
       "id": "figma7-12",
       "topic": "Компоненты",
-      "skill": "понимание и применение Figma",
+      "skill": "Сохранение связи экземпляра с главным компонентом",
       "difficulty": "medium",
       "type": "choice",
       "question": "Почему экземпляр компонента лучше не превращать без необходимости в независимые слои?",
@@ -223,7 +223,7 @@
     {
       "id": "figma7-13",
       "topic": "Auto Layout",
-      "skill": "понимание и применение Figma",
+      "skill": "Построение вложенной структуры Auto Layout",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Что даёт вложенный Auto Layout внутри карточки?",
@@ -240,7 +240,7 @@
     {
       "id": "figma7-14",
       "topic": "Интерактивные компоненты",
-      "skill": "понимание и применение Figma",
+      "skill": "Настройка переходов между состояниями интерактивного компонента",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Что позволяет сделать Interactive Component?",
@@ -257,7 +257,7 @@
     {
       "id": "figma7-15",
       "topic": "Дизайн-система",
-      "skill": "понимание и применение Figma",
+      "skill": "Именование переменных по семантическому назначению",
       "difficulty": "advanced",
       "type": "choice",
       "question": "Зачем использовать семантические имена переменных, например color.text.primary?",
@@ -271,5 +271,7 @@
       "correctText": "Чтобы имя описывало назначение значения, а не конкретный оттенок",
       "explanation": "Семантические имена сохраняют смысл при смене тем и палитр."
     }
-  ]
+  ],
+  "skillGranularity": "question_action",
+  "skillReviewStatus": "teacher_review_draft"
 }
