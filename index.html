@@ -1000,6 +1000,62 @@
     .edu-bottom .btn{width:100%;justify-content:center}
   }
 
+
+  /* Compact pricing calculator overrides */
+  #pricing{padding:48px 0!important}
+  #pricing .sec-head{margin-bottom:16px!important}
+  #pricing .sec-title{font-size:clamp(28px,3.2vw,38px)!important}
+  #pricing .sec-sub{font-size:12px!important;margin-top:6px!important}
+  #pricing .pricing-panel{padding:16px 18px!important;border-radius:9px!important}
+  #pricing .pricing-topline{display:none!important}
+  #pricing .pricing-controls{grid-template-columns:minmax(125px,.75fr) minmax(210px,1.5fr) minmax(160px,.85fr)!important;gap:10px!important;padding:0!important;border:0!important}
+  #pricing .pricing-field{gap:4px!important}
+  #pricing .pricing-field label{font-size:9px!important}
+  #pricing .pricing-field select,#pricing .duration-switch{height:38px!important;font-size:11px!important}
+  #pricing .pricing-result{grid-template-columns:1fr 1fr!important;gap:12px!important;margin-top:12px!important;padding:10px 12px!important}
+  #pricing .single-price,#pricing .trial-price{display:grid!important;grid-template-columns:1fr auto!important;align-items:center!important;gap:2px 8px!important;min-height:0!important;padding:0!important}
+  #pricing .trial-price{border:0!important;border-left:1px solid var(--line)!important;padding-left:12px!important}
+  #pricing .single-price strong{grid-column:2!important;grid-row:1/3!important;font-size:25px!important;margin:0!important}
+  #pricing .trial-price strong{grid-column:2!important;grid-row:1/3!important;font-size:22px!important;margin:0!important}
+  #pricing .pricing-eyebrow{font-size:9px!important}
+  #pricing .single-price>span:last-child,#pricing .trial-price>span:last-child{font-size:9px!important;line-height:1.3!important}
+  #pricing .package-heading{margin:12px 0 7px!important;padding:0!important;border:0!important;align-items:baseline!important}
+  #pricing .package-heading h3{font-size:15px!important}
+  #pricing .package-heading .hand-idx{display:none!important}
+  #pricing .package-heading p{font-size:9px!important}
+  #pricing .package-grid{gap:6px!important}
+  #pricing .package-option{padding:8px 10px!important;gap:2px 6px!important;border-radius:5px!important}
+  #pricing .package-count{font-size:9px!important}
+  #pricing .package-option strong{font-size:19px!important}
+  #pricing .package-option>span:last-child{font-size:9px!important}
+  #pricing .package-option.featured::after{content:none!important}
+  #pricing .pricing-footnote{font-size:9px!important;margin-top:7px!important}
+  #pricing .pricing-bottom{margin-top:8px!important;padding:9px 12px!important;gap:10px!important}
+  #pricing .pricing-bottom .hand-idx{font-size:13px!important}
+  #pricing .pricing-bottom-note p{font-size:9px!important;margin-top:0!important}
+  #pricing .pricing-bottom .btn{padding:8px 12px!important;font-size:10px!important}
+  @media(max-width:760px){
+    #pricing{padding:40px 0!important}
+    #pricing .pricing-controls{grid-template-columns:1fr 1fr!important}
+    #pricing .pricing-field:nth-child(2){grid-column:1/-1!important;grid-row:1!important}
+    #pricing .pricing-field:first-child{grid-column:1!important;grid-row:2!important}
+    #pricing .pricing-field:last-child{grid-column:2!important;grid-row:2!important}
+    #pricing .package-option{padding:8px!important}
+  }
+  @media(max-width:560px){
+    #pricing{padding:34px 0!important}
+    #pricing .sec-head{margin-bottom:13px!important}
+    #pricing .pricing-panel{padding:13px!important}
+    #pricing .pricing-controls{grid-template-columns:1fr!important}
+    #pricing .pricing-field:first-child,#pricing .pricing-field:nth-child(2),#pricing .pricing-field:last-child{grid-column:1!important;grid-row:auto!important}
+    #pricing .pricing-result{grid-template-columns:1fr!important;gap:8px!important}
+    #pricing .single-price,#pricing .trial-price{grid-template-columns:1fr auto!important}
+    #pricing .trial-price{border:0!important;border-top:1px solid var(--line)!important;padding:8px 0 0!important}
+    #pricing .package-grid{grid-template-columns:1fr!important;gap:5px!important}
+    #pricing .package-option{padding:7px 9px!important}
+    #pricing .pricing-bottom{align-items:stretch!important;flex-direction:column!important}
+    #pricing .pricing-bottom .btn{width:100%!important;justify-content:center!important}
+  }
 </style>
 </head>
 <body>
