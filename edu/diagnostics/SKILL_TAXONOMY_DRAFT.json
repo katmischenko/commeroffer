@@ -71,9 +71,297 @@
         [
           "multi_step_calculation",
           "Многошаговые вычисления"
+        ],
+        [
+          "number_operations",
+          "Числовые преобразования и вычисления"
+        ],
+        [
+          "algebraic_transformations",
+          "Алгебраические преобразования"
+        ],
+        [
+          "equations_inequalities",
+          "Решение уравнений и неравенств"
+        ],
+        [
+          "function_analysis",
+          "Анализ функций и координат"
+        ],
+        [
+          "geometry_reasoning",
+          "Геометрические свойства и вычисления"
+        ],
+        [
+          "statistics_probability",
+          "Статистика и вероятность"
+        ],
+        [
+          "percent_proportional",
+          "Проценты и пропорциональные зависимости"
+        ],
+        [
+          "sequences",
+          "Последовательности и прогрессии"
+        ],
+        [
+          "trigonometry",
+          "Тригонометрические отношения"
         ]
       ],
       "rules": [
+        {
+          "groupId": "trigonometry",
+          "containsAny": [
+            "Вычисление синуса угла по отношению катета к гипотенузе"
+          ]
+        },
+        {
+          "groupId": "function_analysis",
+          "containsAny": [
+            "Определение координат вершины параболы по её уравнению"
+          ]
+        },
+        {
+          "groupId": "equations_inequalities",
+          "containsAny": [
+            "Нахождение произведения корней по теореме Виета"
+          ]
+        },
+        {
+          "groupId": "geometry_reasoning",
+          "containsAny": [
+            "Вычисление длины окружности через радиус"
+          ]
+        },
+        {
+          "groupId": "statistics_probability",
+          "containsAny": [
+            "Вычисление вероятности события при одном броске кубика"
+          ]
+        },
+        {
+          "groupId": "trigonometry",
+          "containsAny": [
+            "Определение табличного значения синуса угла"
+          ]
+        },
+        {
+          "groupId": "sequences",
+          "containsAny": [
+            "Вычисление члена арифметической прогрессии"
+          ]
+        },
+        {
+          "groupId": "equations_inequalities",
+          "containsAny": [
+            "Решение линейного неравенства"
+          ]
+        },
+        {
+          "groupId": "equations_inequalities",
+          "containsAny": [
+            "Нахождение суммы корней по теореме Виета"
+          ]
+        },
+        {
+          "groupId": "function_analysis",
+          "containsAny": [
+            "Распознавание графика квадратичной функции"
+          ]
+        },
+        {
+          "groupId": "equations_inequalities",
+          "containsAny": [
+            "Определение двух корней уравнения вида x²=a"
+          ]
+        },
+        {
+          "groupId": "algebraic_transformations",
+          "containsAny": [
+            "Применение свойства нулевой степени"
+          ]
+        },
+        {
+          "groupId": "number_operations",
+          "containsAny": [
+            "Извлечение квадратного корня из десятичной дроби"
+          ]
+        },
+        {
+          "groupId": "geometry_reasoning",
+          "containsAny": [
+            "Вычисление периметра квадрата по его площади"
+          ]
+        },
+        {
+          "groupId": "statistics_probability",
+          "containsAny": [
+            "Вычисление вероятности выбора объекта"
+          ]
+        },
+        {
+          "groupId": "function_analysis",
+          "containsAny": [
+            "Определение линейной функции по условию пересечения оси ординат"
+          ]
+        },
+        {
+          "groupId": "statistics_probability",
+          "containsAny": [
+            "Вычисление среднего арифметического набора чисел"
+          ]
+        },
+        {
+          "groupId": "geometry_reasoning",
+          "containsAny": [
+            "Нахождение гипотенузы по теореме Пифагора"
+          ]
+        },
+        {
+          "groupId": "number_operations",
+          "containsAny": [
+            "Вычисление арифметического квадратного корня"
+          ]
+        },
+        {
+          "groupId": "equations_inequalities",
+          "containsAny": [
+            "Решение системы линейных уравнений методом сложения"
+          ]
+        },
+        {
+          "groupId": "function_analysis",
+          "containsAny": [
+            "Вычисление значения функции подстановкой аргумента"
+          ]
+        },
+        {
+          "groupId": "algebraic_transformations",
+          "containsAny": [
+            "Упрощение произведения степеней с одинаковым основанием"
+          ]
+        },
+        {
+          "groupId": "number_operations",
+          "containsAny": [
+            "Вычитание обыкновенных дробей с одинаковыми знаменателями"
+          ]
+        },
+        {
+          "groupId": "geometry_reasoning",
+          "containsAny": [
+            "Применение свойства суммы углов треугольника"
+          ]
+        },
+        {
+          "groupId": "percent_proportional",
+          "containsAny": [
+            "Вычисление процента от числа"
+          ]
+        },
+        {
+          "groupId": "equations_inequalities",
+          "containsAny": [
+            "Решение линейного уравнения делением обеих частей"
+          ]
+        },
+        {
+          "groupId": "number_operations",
+          "containsAny": [
+            "Вычисление степени натурального числа"
+          ]
+        },
+        {
+          "groupId": "statistics_probability",
+          "containsAny": [
+            "Вычисление вероятности простого события"
+          ]
+        },
+        {
+          "groupId": "function_analysis",
+          "containsAny": [
+            "Вычисление значения линейной функции при отрицательном аргументе"
+          ]
+        },
+        {
+          "groupId": "percent_proportional",
+          "containsAny": [
+            "Решение обратной задачи на увеличение на процент"
+          ]
+        },
+        {
+          "groupId": "statistics_probability",
+          "containsAny": [
+            "Вычисление среднего арифметического"
+          ]
+        },
+        {
+          "groupId": "geometry_reasoning",
+          "containsAny": [
+            "Вычисление третьего угла треугольника"
+          ]
+        },
+        {
+          "groupId": "function_analysis",
+          "containsAny": [
+            "Проверка принадлежности точки графику линейной функции"
+          ]
+        },
+        {
+          "groupId": "percent_proportional",
+          "containsAny": [
+            "Решение пропорции"
+          ]
+        },
+        {
+          "groupId": "algebraic_transformations",
+          "containsAny": [
+            "Раскрытие скобок с применением распределительного свойства"
+          ]
+        },
+        {
+          "groupId": "number_operations",
+          "containsAny": [
+            "Вычисление выражения с отрицательными множителями и вычитанием"
+          ]
+        },
+        {
+          "groupId": "equations_inequalities",
+          "containsAny": [
+            "Решение линейного уравнения"
+          ]
+        },
+        {
+          "groupId": "function_analysis",
+          "containsAny": [
+            "Определение четверти координатной плоскости по координатам точки"
+          ]
+        },
+        {
+          "groupId": "geometry_reasoning",
+          "containsAny": [
+            "Применение свойства суммы смежных углов"
+          ]
+        },
+        {
+          "groupId": "algebraic_transformations",
+          "containsAny": [
+            "Вычисление значения выражения подстановкой переменной"
+          ]
+        },
+        {
+          "groupId": "number_operations",
+          "containsAny": [
+            "Сложение рациональных чисел с разными знаками"
+          ]
+        },
+        {
+          "groupId": "number_operations",
+          "containsAny": [
+            "Сравнение рациональных чисел"
+          ]
+        },
         {
           "groupId": "geometry_calculation",
           "containsAny": [
