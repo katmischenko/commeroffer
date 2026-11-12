@@ -1,11 +1,12 @@
 /* MISCHENKO EDU — shared visual system for the main site and every library page */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Dancing+Script:wght@500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 :root{
   --paper:#f4f2ee;--paper-bright:#fffdfa;--paper-2:#fffdfa;
   --ink:#121212;--ink-2:#242020;--graphite:#e9e3dd;--stone:#d9d0c8;
   --wine:#6b0f18;--wine-light:#8a2730;--red:#8a2730;
   --muted:#77716f;--faint:#77716f;--line:rgba(18,18,18,.14);
   --pen:#6b0f18;--pen-soft:rgba(107,15,24,.08);
-  --serif:'Inter',Arial,sans-serif;--sans:'Inter',Arial,sans-serif;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',Arial,sans-serif;
   --mono:'SF Mono','Fira Code',ui-monospace,monospace;
   --hand:'Dancing Script',cursive;--gutter:4%;
   --ease:cubic-bezier(.2,.75,.25,1);
@@ -322,7 +323,7 @@ footer{
 
 
 /* SHARED BRAND, TYPE AND COMING-SOON PAGES */
-:root{--display:'Inter',Arial,sans-serif;--subtitle:'Inter',Arial,sans-serif}
+:root{--display:'Cormorant Garamond',Georgia,serif;--subtitle:'Inter',Arial,sans-serif}
 .logo{gap:8px}
 .logo .brand-mark{width:27px;height:27px;position:relative;flex:none;border:0;border-radius:0;background:transparent;color:transparent;font-size:0}
 .logo .brand-mark:before{content:"";position:absolute;inset:4px;background:var(--wine);clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)}
@@ -359,7 +360,7 @@ h1,.editorial-library h1,.editorial-library .sec-title{font-family:var(--display
 
 
 /* Shared typography — Open Notebook */
-:root{--hand:'Dancing Script',cursive;--display:'Inter',Arial,sans-serif;--subtitle:'Inter',Arial,sans-serif}
+:root{--hand:'Dancing Script',cursive;--display:'Cormorant Garamond',Georgia,serif;--subtitle:'Inter',Arial,sans-serif}
 .logo .brand-name,.logo .hand,.editorial-library .brand-name,.brand-name{font-family:'Dancing Script',cursive!important;font-weight:600!important;letter-spacing:0!important;text-transform:lowercase!important;font-size:16px!important;line-height:1.1!important;color:var(--ink)}
 .logo .brand-mark,.editorial-library .brand-mark{width:34px;height:34px;position:relative;flex:none;border:0!important;border-radius:0!important;background:transparent!important;color:transparent!important;font-size:0!important}
 .logo .brand-mark:before,.editorial-library .brand-mark:before{content:"";position:absolute;inset:4px;background:var(--wine);clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)}
@@ -368,9 +369,9 @@ h1,.editorial-library h1,.editorial-library .sec-title{font-family:var(--display
 h1,.editorial-library h1,.editorial-library .sec-title,.coming-page h1,.coming-page h2,.editorial-library .note-box h3,.editorial-library .item h3{font-family:var(--display)}
 h1 em,.editorial-library h1 em,.editorial-library .sec-title em{font-family:var(--display);font-style:italic}
 .hero-sub,.editorial-library .hero-sub,.editorial-library .sec-sub,.coming-lead,.coming-card ul,.coming-bottom p{font-family:var(--subtitle)}
-.library-signature,.coming-signature,.coming-tag,.editorial-library .note-kicker{font-family:var(--sans)!important;font-style:italic!important;font-weight:500!important;letter-spacing:0!important;text-transform:none!important}
-.editorial-library .sec-sub{font:italic 400 clamp(1.1rem,1.7vw,1.45rem)/1.55 var(--subtitle);color:rgba(244,241,236,.76)}
-.editorial-library .f-label,.editorial-library .item .kind,.editorial-library .tag,.editorial-library .foot-note,.editorial-library .sec-index{font-family:var(--mono)!important;font-style:normal!important;letter-spacing:.08em!important;text-transform:uppercase!important}
-.editorial-library .st{font-family:var(--sans)!important;font-style:normal!important;font-size:10px!important;font-weight:700!important;letter-spacing:.08em!important;text-transform:uppercase!important}
+.library-signature,.coming-signature,.coming-tag,.editorial-library .note-kicker{font-family:var(--hand)!important;font-style:normal!important;font-weight:500!important;letter-spacing:0!important;text-transform:none!important}
+.editorial-library .sec-sub{font:italic 400 clamp(1.1rem,1.7vw,1.45rem)/1.55 var(--subtitle);color:#625c59}
+.editorial-library .f-label,.editorial-library .item .kind,.editorial-library .st,.editorial-library .foot-note,.editorial-library .sec-index{font-family:var(--hand)!important;font-style:normal!important;font-weight:500!important;letter-spacing:0!important;text-transform:none!important}
+.editorial-library .tag{font-family:var(--sans)!important;font-style:normal!important;letter-spacing:0!important;text-transform:none!important}
 .hand{font-family:'Dancing Script',cursive}
 @media(max-width:600px){.logo .brand-name,.logo .hand,.editorial-library .brand-name,.brand-name{font-size:16px!important}}
