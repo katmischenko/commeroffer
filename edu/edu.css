@@ -2,7 +2,7 @@
 :root{
   --ink:#111014;--ink-2:#19171c;--graphite:#29252d;--paper:#f4f1ec;
   --stone:#d9d0c8;--wine:#7c3449;--red:#a9232c;--muted:#aaa3a0;
-  --line:rgba(244,241,236,.14);--serif:'Inter',Arial,sans-serif;
+  --line:rgba(244,241,236,.14);--serif:'Cormorant Garamond',Georgia,serif;
   --sans:'Inter',Arial,sans-serif;--mono:'SF Mono','Fira Code',monospace;--gutter:clamp(22px,5.4vw,88px);
   --ease:cubic-bezier(.2,.75,.25,1);--marker:rgba(169,35,44,.62);--marker-soft:rgba(217,161,164,.24)
 }
