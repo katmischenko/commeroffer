@@ -1,184 +1,106 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>mischenko edu — библиотека знаний</title>
-<meta name="description" content="Библиотека учебных материалов mischenko edu: пособия, тренажёры и интерактивная практика по шести направлениям.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08070d">
+<title>Библиотека mischenko edu — цифровая лаборатория знаний</title>
+<meta name="description" content="Учебные материалы mischenko edu: диагностика, карточки, тренажёры, шпаргалки и пособия по шести направлениям.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Dancing+Script:wght@500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../mischenko-redesign.css?v=13">
-<link rel="stylesheet" href="edu.css?v=9">
-<link rel="stylesheet" href="shared.css?v=9">
-
-
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#08070d;--panel:#100d17;--panel2:#17111e;--ink:#f7eff8;--muted:#b2a5b7;--pink:#ff286f;--violet:#a76aff;--line:rgba(255,255,255,.14);--mono:"Space Mono",monospace;--sans:Inter,Arial,sans-serif;--max:1220px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{margin:0;background:var(--bg);color:var(--ink);font:400 14px/1.65 var(--sans);overflow-x:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 76% 8%,#6e287b38,transparent 32%),radial-gradient(ellipse at 5% 42%,#ff286f13,transparent 34%),linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:auto,auto,58px 58px,58px 58px;mask-image:linear-gradient(#000,transparent 95%)}a{color:inherit;text-decoration:none}button{font:inherit}.wrap{width:min(var(--max),calc(100% - 56px));margin:auto}.mono,.eyebrow,.micro,.navlinks,.btn,.field-label,.tag,.status,.filter-label,.footnote{font-family:var(--mono)}.topline{height:4px;background:linear-gradient(90deg,var(--pink),var(--violet) 58%,transparent)}
+header{height:74px;border-bottom:1px solid var(--line);display:flex;align-items:center;position:sticky;top:0;z-index:20;background:#08070de8;backdrop-filter:blur(18px)}.nav{display:flex;align-items:center;justify-content:space-between;gap:22px}.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:-.06em;text-transform:lowercase;white-space:nowrap}.brand-mark{width:27px;height:27px;border:1px solid var(--pink);display:grid;place-items:center;transform:rotate(45deg);box-shadow:0 0 22px #ff286f55}.brand-mark:after{content:"";width:9px;height:9px;border:2px solid var(--pink)}.brand-name{font-size:16px}.navlinks{display:flex;gap:22px;align-items:center;font-size:9px;text-transform:uppercase;color:#c9bdcc;letter-spacing:.08em}.navlinks a:hover{color:var(--pink)}.nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:12px 18px;background:var(--pink);color:#100711;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--pink);clip-path:polygon(0 0,92% 0,100% 30%,100% 100%,8% 100%,0 72%);transition:.2s;cursor:pointer}.nav-cta:hover,.btn:hover{transform:translateY(-2px);box-shadow:0 0 26px #ff286f66}.btn.ghost{background:transparent;color:var(--ink);border-color:#ff286f88;clip-path:none}.menu{display:none;background:transparent;border:1px solid var(--line);color:var(--ink);padding:8px 11px}
+.eyebrow{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#ff78a3;display:flex;align-items:center;gap:11px}.eyebrow:before{content:"";width:24px;height:1px;background:var(--pink);box-shadow:0 0 10px var(--pink)}
+.hero{min-height:510px;display:grid;grid-template-columns:1.08fr .92fr;gap:32px;align-items:center;padding:66px 0 68px;position:relative;border-bottom:1px solid transparent}.hero:after{content:"";position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--pink),var(--violet),transparent)}.hero-copy{position:relative;z-index:2}.hero h1{font-size:clamp(58px,8.6vw,112px);line-height:.82;letter-spacing:-.095em;margin:25px 0 24px;font-weight:900;text-transform:uppercase}.outline{color:transparent;-webkit-text-stroke:1.4px #f4ddec;text-shadow:0 0 28px #ff286f44}.pink{color:var(--pink);text-shadow:0 0 32px #ff286f66}.hero-copy>p{max-width:550px;color:#c0b4c4;line-height:1.85;font-size:13px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.hero-meta{display:flex;gap:30px;margin-top:37px}.metric strong{display:block;color:var(--pink);font-size:24px;letter-spacing:-.06em}.metric span{display:block;color:#a99bad;font:8px var(--mono);text-transform:uppercase;letter-spacing:.1em;margin-top:5px}
+.hero-art{height:370px;position:relative;display:grid;place-items:center;isolation:isolate}.art-grid{position:absolute;inset:0;background:linear-gradient(90deg,transparent 49.8%,#ff286f33 50%,transparent 50.2%),linear-gradient(transparent 49.8%,#a76aff33 50%,transparent 50.2%)}.orbit{position:absolute;width:min(310px,80%);aspect-ratio:1;border:1px solid #ff286f88;border-radius:50%;box-shadow:0 0 60px #ff286f22,inset 0 0 50px #a76aff1b;transform:rotate(-20deg)}.orbit:before,.orbit:after{content:"";position:absolute;inset:9%;border:1px solid #a76aff88;border-radius:50%;transform:rotate(55deg) scaleX(.55)}.orbit:after{inset:-10%;border-color:#ff286f55;transform:rotate(-38deg) scaleX(.38)}.book-core{width:178px;height:224px;position:relative;display:grid;place-items:center;background:linear-gradient(140deg,#48204f,#17101f 65%);border:1px solid #ff4b91aa;transform:rotate(-8deg) skewY(2deg);box-shadow:0 0 65px #ff286f44,inset 0 0 40px #b14dff33}.book-core:before{content:"";position:absolute;inset:12px;border:1px solid #ff8ab788}.book-core:after{content:"";position:absolute;left:15px;right:15px;top:28px;height:1px;background:#ff8ab7;box-shadow:0 20px #ff8ab755,0 40px #ff8ab755,0 60px #ff8ab755,0 80px #ff8ab755}.book-symbol{z-index:1;font-size:58px;font-weight:900;color:#f7d9ee;text-shadow:0 0 22px var(--pink)}.float{position:absolute;padding:11px 14px;background:#0b0812e8;border:1px solid #ff286f66;box-shadow:0 12px 30px #0008}.float small{display:block;font:8px var(--mono);color:#b7a8bb;text-transform:uppercase}.float b{display:block;color:var(--pink);font-size:14px;margin-top:3px}.float.a{left:0;top:17%}.float.b{right:0;bottom:15%}.art-caption{position:absolute;right:4%;top:6%;font:8px var(--mono);color:#ff9cbd;letter-spacing:.12em}
+.quickbar{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);background:linear-gradient(110deg,#130d19,#0c0a11);margin-top:-1px}.quick{padding:17px 21px;border-right:1px solid var(--line);display:flex;gap:13px;align-items:center}.quick:last-child{border:0}.quick i{font-style:normal;color:var(--pink);font-size:20px}.quick b{display:block;font-size:11px}.quick small{display:block;color:#a99bad;font:8px var(--mono);margin-top:3px;text-transform:uppercase}
+section{padding:78px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:28px}.section-head h2{font-size:clamp(34px,5vw,58px);line-height:.93;letter-spacing:-.075em;text-transform:uppercase;margin:13px 0 0}.section-head h2 em{font-style:normal;color:var(--pink)}.section-head>p{max-width:380px;color:var(--muted);font-size:12px;line-height:1.75;margin:0}
+.filters{border-block:1px solid var(--line);padding:18px 0 20px;margin-bottom:24px;display:grid;gap:16px}.filter-row{display:flex;align-items:flex-start;gap:17px;flex-wrap:wrap}.filter-label{min-width:112px;padding-top:8px;color:#ff78a3;font-size:8px;letter-spacing:.12em;text-transform:uppercase}.chips{display:flex;gap:7px;flex-wrap:wrap}.chip{border:1px solid #ffffff29;background:#100d17;color:#cfc3d2;padding:8px 12px;font:9px var(--mono);cursor:pointer;transition:.2s}.chip:hover{border-color:#ff286f99;color:#fff}.chip.active{background:var(--pink);border-color:var(--pink);color:#100711;font-weight:700;box-shadow:0 0 17px #ff286f35}
+.catalog-top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:0 0 14px}.catalog-count{font:9px var(--mono);color:#a99bad;text-transform:uppercase;letter-spacing:.08em}.catalog-count b{color:var(--pink)}.catalog-note{font-size:10px;color:#8f8295}
+.catalog{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.card{min-height:245px;padding:21px;background:linear-gradient(145deg,#17101e,#0d0b12);border:1px solid var(--line);position:relative;overflow:hidden;display:flex;flex-direction:column;transition:.25s}.card:before{content:"";position:absolute;inset:10px;border:1px solid #ff286f12;pointer-events:none}.card:after{content:"";position:absolute;width:120px;height:120px;border:1px solid #ff286f33;right:-62px;bottom:-62px;transform:rotate(45deg);box-shadow:0 0 0 14px #a76aff09,0 0 0 28px #ff286f08;pointer-events:none}.card:hover{border-color:#ff286f99;transform:translateY(-4px);box-shadow:0 16px 42px #0009}.card-head{display:flex;justify-content:space-between;align-items:center;gap:10px;position:relative;z-index:1}.kind{font:8px var(--mono);letter-spacing:.12em;color:#ff8bb0;text-transform:uppercase}.status{font-size:8px;text-transform:uppercase;letter-spacing:.08em;padding:5px 8px;border:1px solid #ffffff2b;color:#bcb0c1}.status.ready{color:#8fe0ad;border-color:#8fe0ad55}.status.soon{color:#ff9cbd;border-color:#ff286f55}.card h3{font-size:19px;line-height:1.15;letter-spacing:-.045em;margin:22px 0 9px;position:relative;z-index:1}.card p{font-size:11px;color:#b2a5b7;line-height:1.7;margin:0 0 18px;position:relative;z-index:1}.card-foot{display:flex;justify-content:space-between;align-items:end;gap:10px;margin-top:auto;position:relative;z-index:1}.tags{display:flex;gap:6px;flex-wrap:wrap}.tag{padding:5px 7px;border:1px solid #ffffff29;color:#bdb0c3;font-size:8px}.tag.free{color:#9be2b4;border-color:#8fe0ad55}.tag.paid{color:#ff9cbd;border-color:#ff286f66}.card-link{font:9px var(--mono);color:var(--pink);white-space:nowrap}.card-link:hover{color:#fff}.empty{display:none;padding:34px 20px;text-align:center;border:1px dashed #ffffff30;color:var(--muted);font-size:12px}
+.directions{padding-top:26px;border-top:1px solid var(--line);margin-top:44px}.direction-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:9px}.direction{padding:16px 12px;background:#100d17;border:1px solid var(--line);min-height:104px;position:relative}.direction b{display:block;font-size:11px}.direction small{display:block;color:#a99bad;font:8px var(--mono);margin-top:9px}.direction:after{content:"";position:absolute;right:11px;top:12px;width:5px;height:5px;background:var(--pink);box-shadow:0 0 10px var(--pink)}
+.note{margin-top:38px;padding:24px 26px;border-left:2px solid var(--pink);background:linear-gradient(90deg,#ff286f12,transparent);display:grid;grid-template-columns:.7fr 1.3fr;gap:25px}.note strong{font-size:18px;line-height:1.25}.note p{margin:0;color:#b2a5b7;font-size:11px;line-height:1.8}
+.cta{margin-top:55px;padding:28px;border:1px solid #a76aff66;background:radial-gradient(ellipse at 85% 50%,#6e287b38,transparent 45%),linear-gradient(120deg,#17101e,#0c0911);display:flex;justify-content:space-between;align-items:center;gap:25px}.cta h3{font-size:clamp(22px,3vw,32px);line-height:1.05;margin:0 0 7px;letter-spacing:-.05em}.cta p{font-size:11px;color:var(--muted);margin:0}
+footer{border-top:1px solid var(--line);padding:24px 0;background:#08070d}.foot{display:flex;align-items:center;justify-content:space-between;gap:18px}.foot small{font:8px var(--mono);color:#827587;letter-spacing:.08em}.foot-links{display:flex;gap:18px}.foot-links a{font-size:10px;color:#b2a5b7}.foot-links a:hover{color:var(--pink)}
+@media(max-width:900px){.wrap{width:min(100% - 40px,700px)}.navlinks{display:none}.menu{display:block}.nav-cta{margin-left:auto}.hero{grid-template-columns:1fr;padding:48px 0 58px}.hero-art{height:300px;grid-row:1}.hero-copy{grid-row:2}.hero h1{font-size:clamp(56px,13vw,88px)}.quickbar{grid-template-columns:1fr}.quick{border-right:0;border-bottom:1px solid var(--line)}.quick:last-child{border-bottom:0}.section-head{display:block}.section-head>p{margin-top:14px}.catalog{grid-template-columns:repeat(2,minmax(0,1fr))}.direction-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.wrap{width:calc(100% - 30px)}header{height:66px}.brand-name{font-size:14px}.nav-cta{padding:10px 12px;font-size:8px}.hero{padding-top:30px}.hero-art{height:245px}.book-core{width:130px;height:170px}.book-symbol{font-size:43px}.float{padding:8px 10px}.float.a{left:-2%}.float.b{right:-2%}.hero h1{font-size:clamp(48px,14vw,70px)}.hero-meta{gap:20px}.metric strong{font-size:20px}section{padding:58px 0}.filter-row{display:block}.filter-label{display:block;margin-bottom:9px}.chip{padding:8px 10px;font-size:8px}.catalog{grid-template-columns:1fr}.card{min-height:220px}.direction-grid{grid-template-columns:repeat(2,1fr)}.note{grid-template-columns:1fr;gap:10px;padding:20px}.cta{display:block;padding:23px}.cta .btn{margin-top:18px}.foot{flex-wrap:wrap}.foot-links{width:100%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+</style>
 </head>
-<body class="editorial-library">
-
-<header>
-  <nav class="nav">
-    <a class="logo" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i></span><span class="brand-name">mischenko edu</span></a>
-    <div class="nav-right">
-      <a class="nav-link" href="../index.html">Главная</a>
-      <a class="nav-cta" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Связаться <span>↗</span></a>
-    </div>
-  </nav>
-</header>
-
+<body>
+<div class="topline"></div>
+<header><div class="wrap nav">
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-name">mischenko edu</span></a>
+<nav class="navlinks"><a href="index.html">Главная</a><a href="#catalog">Каталог</a><a href="#directions">Направления</a></nav>
+<a class="nav-cta" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Связаться ↗</a>
+<button class="menu" id="menuBtn" aria-label="Открыть меню">☰</button>
+</div></header>
 <main>
-  <div class="wrap">
-    <div class="hero">
-      <span class="library-signature">Лаборатория идей · mischenko edu</span>
-      <h1>Здесь сложное<br><em class="marker-highlight">становится понятным.</em></h1>
-      <p class="hero-sub">Это моя мастерская знаний: пособия, тренажёры, эксперименты и маленькие открытия. Выбирай, с чем сегодня будем разбираться — и не бойся задавать неудобные вопросы.</p>
-    </div>
-  </div>
-
-  <!-- ОПИСАНИЕ -->
-  <section>
-    <div class="wrap">
-      <div class="note-box reveal">
-        <span class="note-kicker">пара слов от автора</span><h3>Не коллекция скучных файлов. А инструменты, чтобы наконец понять.</h3>
-        <ul>
-          <li><b>Ученикам</b> — скоро здесь появятся тренажёры, карточки и практика для самостоятельной работы</li>
-          <li><b>Родителям</b> — начните с диагностики: она поможет увидеть предварительную картину знаний и определить темы для повторения</li>
-          <li><b>Моим ученикам</b> — сможете использовать материалы к занятиям и для самостоятельного закрепления</li>
-          <li><b>Как пользоваться</b> — сейчас доступна диагностика; остальные материалы отмечены статусом «скоро» и открываются как страницы с описанием будущего содержания</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- БИБЛИОТЕКА -->
-  <section style="padding-top:0">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="sec-index">02 / ЧТО БУДЕМ ИССЛЕДОВАТЬ</div>
-        <h2 class="sec-title">С чего начнём <em class="marker-highlight">разбирать?</em></h2>
-      </div>
-
-      <div class="filters reveal">
-        <div class="f-group">
-          <span class="f-label">выбирай тему</span>
-          <div class="chips" id="subjChips">
-            <button class="chip on" data-subj="all">все</button>
-            <button class="chip" data-subj="inf">информатика</button>
-            <button class="chip" data-subj="math">математика</button>
-            <button class="chip" data-subj="phys">физика</button>
-            <button class="chip" data-subj="python">Python</button>
-            <button class="chip" data-subj="figma">Figma</button>
-            <button class="chip" data-subj="web">HTML/CSS</button>
-          </div>
-        </div>
-        <div class="f-group">
-          <span class="f-label">формат доступа</span>
-          <div class="chips" id="priceChips">
-            <button class="chip on-st on" data-price="all">все</button>
-            <button class="chip" data-price="free">бесплатные</button>
-            <button class="chip" data-price="paid">платные</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="lib" id="lib"></div>
-      <div class="empty" id="empty">По этому сочетанию фильтров пока нет материалов. Попробуй изменить фильтры или напиши мне ✎</div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section style="padding-top:0">
-    <div class="wrap" style="text-align:center">
-      <p class="sec-sub reveal" style="margin:0 auto 28px">Не нашёл то, что искал? Возможно, пора создать это вместе. Напиши мне — обсудим идею ✎</p>
-      <a class="btn btn-pen reveal" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Обсудить материал <span>↗</span></a>
-    </div>
-  </section>
+<div class="wrap">
+<section class="hero" id="top">
+<div class="hero-copy">
+<div class="eyebrow">MISCHENKO EDU / KNOWLEDGE SYSTEM 01</div>
+<h1>БИБЛИОТЕКА<br><span class="outline">ЗНАНИЙ</span><br><span class="pink">06 / 06</span></h1>
+<p>Цифровая лаборатория учебных материалов. Здесь теория превращается в практику: изучай, проверяй себя, возвращайся к сложным темам и собирай собственную систему знаний.</p>
+<div class="hero-actions"><a class="btn" href="#catalog">Открыть каталог ↘</a><a class="btn ghost" href="../index.html">На главную</a></div>
+<div class="hero-meta"><div class="metric"><strong>06</strong><span>направлений</span></div><div class="metric"><strong>FREE + PRO</strong><span>форматы доступа</span></div><div class="metric"><strong>01</strong><span>пространство знаний</span></div></div>
+</div>
+<div class="hero-art" aria-label="Абстрактная цифровая книга"><div class="art-grid"></div><div class="orbit"></div><div class="book-core"><span class="book-symbol">M.</span></div><div class="float a"><small>LEARN / 01</small><b>Изучай</b></div><div class="float b"><small>CHECK / 02</small><b>Проверяй</b></div><div class="art-caption">DIGITAL LEARNING SPACE</div></div>
+</section>
+<div class="quickbar"><div class="quick"><i>↗</i><div><b>Понятная структура</b><small>Тема → практика → результат</small></div></div><div class="quick"><i>⌘</i><div><b>Разные форматы</b><small>Карточки, квесты, пособия</small></div></div><div class="quick"><i>◎</i><div><b>Самостоятельная работа</b><small>Повторяй в своём темпе</small></div></div></div>
+<section id="catalog">
+<div class="section-head"><div><div class="eyebrow">02 / MATERIAL DATABASE</div><h2>НАЙДИ СВОЙ<br><em>ИНСТРУМЕНТ.</em></h2></div><p>Выбери направление и формат доступа. Сейчас открыта диагностика, остальные материалы находятся в подготовке — карточки уже показывают, что появится в библиотеке.</p></div>
+<div class="filters">
+<div class="filter-row"><span class="filter-label">01 / направление</span><div class="chips" id="subjectFilters">
+<button class="chip active" data-subject="all">Все</button><button class="chip" data-subject="inf">Информатика</button><button class="chip" data-subject="math">Математика</button><button class="chip" data-subject="phys">Физика</button><button class="chip" data-subject="python">Python</button><button class="chip" data-subject="figma">Figma</button><button class="chip" data-subject="web">HTML/CSS</button>
+</div></div>
+<div class="filter-row"><span class="filter-label">02 / доступ</span><div class="chips" id="priceFilters"><button class="chip active" data-price="all">Все материалы</button><button class="chip" data-price="free">Бесплатные</button><button class="chip" data-price="paid">Платные</button></div></div>
+</div>
+<div class="catalog-top"><div class="catalog-count" id="count">НАЙДЕНО: <b>09</b> МАТЕРИАЛОВ</div><div class="catalog-note">Обновление каталога — постепенно</div></div>
+<div class="catalog" id="catalogGrid"></div><div class="empty" id="empty">По этому фильтру пока нет материалов. Выбери другое направление.</div>
+<div class="directions" id="directions"><div class="eyebrow">03 / SIX KNOWLEDGE DOMAINS</div><div class="direction-grid">
+<div class="direction"><b>Физика</b><small>ФОРМУЛЫ / ЗАКОНЫ</small></div><div class="direction"><b>Информатика</b><small>ЛОГИКА / АЛГОРИТМЫ</small></div><div class="direction"><b>Математика</b><small>ПРАВИЛА / ВЫЧИСЛЕНИЯ</small></div><div class="direction"><b>Python</b><small>КОД / ПРАКТИКА</small></div><div class="direction"><b>Figma</b><small>ИНТЕРФЕЙСЫ / ДИЗАЙН</small></div><div class="direction"><b>HTML/CSS</b><small>ВЕБ / ВЁРСТКА</small></div>
+</div></div>
+<div class="note"><strong>НЕ ЗУБРИТЬ.<br>ПОНИМАТЬ СИСТЕМУ.</strong><p>Материалы создаются как инструменты для обучения: от короткого объяснения до самостоятельной проверки. Бесплатные ресурсы можно использовать для знакомства с темой, платные пособия будут включать более подробную структуру и практику. Доступность каждого материала указана прямо в карточке.</p></div>
+<div class="cta"><div><h3>НУЖЕН МАТЕРИАЛ ПОД ТВОЮ ЗАДАЧУ?</h3><p>Можно обсудить тему, формат или индивидуальную разработку пособия.</p></div><a class="btn" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Обсудить идею ↗</a></div>
+</section>
+</div>
 </main>
-
-<footer>
-  <div class="wrap foot">
-    <small>© 2026 mischenko edu · DIGITAL LEARNING</small>
-    <span class="foot-note">УЧИСЬ. ПОНИМАЙ. СОЗДАВАЙ.</span>
-    <div class="foot-links">
-      <a href="../index.html">Главная</a>
-      <a href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Telegram</a>
-    </div>
-  </div>
-</footer>
-
+<footer><div class="wrap foot"><small>© 2026 MISCHENKO EDU · DIGITAL LEARNING</small><div class="foot-links"><a href="index.html">Главная</a><a href="#top">Наверх ↑</a><a href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Telegram ↗</a></div></div></footer>
 <script>
-  var ITEMS = [
-    {kind:'диагностика', title:'Диагностика', desc:'Бесплатная онлайн-диагностика из 15 заданий. Сейчас работает в локальном режиме: результат можно посмотреть в браузере, удалённое сохранение пока отключено.', subj:'all', subjName:'все направления', st:'ok', stName:'доступно', stClass:'st-ok', free:true, href:'diagnostika.html'},
-    {kind:'flash-карточки', title:'Формулы физики — карточки', desc:'Интерактивная колода из 8 карточек: переворачивай, проверяй себя и возвращайся к формулам, которые пока не запомнились.', subj:'phys', subjName:'физика', st:'soon', stName:'скоро', stClass:'st-soon', free:true, href:'flashcards.html'},
-    {kind:'игра-тренажёр', title:'Симулятор «Один день из жизни разработчика»', desc:'Интерактивная история о работе junior-разработчика: принимай решения, читай код и следи за состоянием проекта.', subj:'python', subjName:'Python', st:'soon', stName:'скоро', stClass:'st-soon', free:true, href:'simulator.html'},
-    {kind:'квест', title:'Escape room «Побег из лаборатории»', desc:'Четыре замка, четыре задачи по информатике и математике. Реши их, чтобы выбраться из лаборатории.', subj:'math', subjName:'математика + информатика', st:'soon', stName:'скоро', stClass:'st-soon', free:true, href:'escape-room.html'},
-    {kind:'шпаргалки', title:'Cheat sheets для ОГЭ по информатике', desc:'Сжатые стильные PDF-карты: формулы, команды, типы заданий. Распечатал — повесил — повторяешь.', subj:'inf', subjName:'информатика · ОГЭ', st:'soon', stName:'скоро', stClass:'st-soon', free:true, href:'cheatsheets.html'},
-    {kind:'тетради-комиксы', title:'Рабочие тетради-комиксы', desc:'Учебный материал как сюжетный комикс с героями, а в конце темы — задание на закрепление.', subj:'inf', subjName:'информатика', st:'soon', stName:'скоро', stClass:'st-soon', free:false, href:'workbooks.html'},
-    {kind:'пособие', title:'Интерактивный Python с нуля', desc:'Сюжетные проекты, закрепление каждой темы и проверка кода прямо в пособии. Итог — свой проект.', subj:'python', subjName:'Python', st:'soon', stName:'скоро', stClass:'st-soon', free:false, href:'posobiya.html'},
-    {kind:'методическое пособие', title:'Подготовка к ОГЭ/ЕГЭ по информатике — 4 части', desc:'Теория, практические задания, решения и памятки. Сейчас проходит предметную вычитку; публикация скоро.', subj:'inf', subjName:'информатика · ОГЭ/ЕГЭ', st:'soon', stName:'скоро', stClass:'st-soon', free:false, href:'posobiya.html'},
-    {kind:'чек-листы', title:'Математика: сложные темы простыми словами', desc:'Короткие конспекты-чеклисты по темам, на которых спотыкаются чаще всего.', subj:'math', subjName:'математика', st:'soon', stName:'скоро', stClass:'st-soon', free:true, href:'cheatsheets.html'}
-  ];
-
-  var lib = document.getElementById('lib');
-  var empty = document.getElementById('empty');
-  var curSubj = 'all', curPrice = 'all';
-
-  function render(){
-    var shown = 0;
-    lib.innerHTML = '';
-    ITEMS.forEach(function(it){
-      var matchSubj = (curSubj === 'all') || (it.subj === 'all') || (it.subj === curSubj);
-      var matchPrice = (curPrice === 'all') || (curPrice === 'free' && it.free) || (curPrice === 'paid' && !it.free);
-      if(!matchSubj || !matchPrice) return;
-      shown++;
-      var canOpen = true;
-      var a = document.createElement(canOpen ? 'a' : 'div');
-      a.className = 'item';
-      if(canOpen) a.href = it.href;
-      else a.setAttribute('aria-disabled', 'true');
-      a.innerHTML =
-        '<span class="st ' + it.stClass + '">' + it.stName + '</span>' +
-        '<span class="kind">' + it.kind + '</span>' +
-        '<h3>' + it.title + '</h3>' +
-        '<p>' + it.desc + '</p>' +
-        '<div class="meta">' +
-          '<span class="tag tag-subj">' + it.subjName + '</span>' +
-          (it.free ? '<span class="tag tag-free">бесплатно</span>' : '<span class="tag tag-paid">платно</span>') +
-        '</div>';
-      lib.appendChild(a);
-    });
-    empty.style.display = shown ? 'none' : 'block';
-    if(!shown){
-      var labels = {figma:'Figma',web:'HTML/CSS',inf:'информатика',math:'математика',phys:'физика',python:'Python'};
-      empty.textContent = curSubj !== 'all' && labels[curSubj]
-        ? 'Материалы по направлению ' + labels[curSubj] + ' пока готовятся. Напиши мне, если нужна конкретная тема ✎'
-        : 'По этому сочетанию фильтров пока нет материалов. Попробуй изменить фильтры или напиши мне ✎';
-    }
-  }
-
-  function bindChips(id, key){
-    document.querySelectorAll('#' + id + ' .chip').forEach(function(chip){
-      chip.addEventListener('click', function(){
-        document.querySelectorAll('#' + id + ' .chip').forEach(function(c){ c.classList.remove('on'); });
-        chip.classList.add('on');
-        if(key === 'subj') curSubj = chip.dataset.subj; else curPrice = chip.dataset.price;
-        render();
-      });
-    });
-  }
-  bindChips('subjChips', 'subj');
-  bindChips('priceChips', 'price');
-  render();
-
-  if('IntersectionObserver' in window){
-    document.documentElement.classList.add('reveal-ready');
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, {threshold:0,rootMargin:'0px 0px -24px 0px'});
-    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-  }else{
-    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
-  }
+const ITEMS=[
+{kind:"ДИАГНОСТИКА",title:"Диагностика знаний",desc:"Бесплатная онлайн-диагностика из 15 заданий. Результат можно посмотреть в браузере; удалённое сохранение пока отключено.",subject:["inf","math","phys"],label:"несколько направлений",free:true,status:"Доступно",href:"diagnostika.html"},
+{kind:"FLASH-КАРТОЧКИ",title:"Формулы физики — карточки",desc:"Интерактивная колода: переворачивай карточки, проверяй себя и возвращайся к формулам, которые пока не запомнились.",subject:["phys"],label:"Физика",free:true,status:"Скоро",href:"flashcards.html"},
+{kind:"ИГРА-ТРЕНАЖЁР",title:"Один день из жизни разработчика",desc:"Интерактивная история о работе junior-разработчика: принимай решения, читай код и следи за состоянием проекта.",subject:["python"],label:"Python",free:true,status:"Скоро",href:"simulator.html"},
+{kind:"КВЕСТ",title:"Побег из лаборатории",desc:"Четыре замка, четыре задачи по информатике и математике. Реши их, чтобы выбраться из лаборатории.",subject:["math","inf"],label:"Математика · информатика",free:true,status:"Скоро",href:"escape-room.html"},
+{kind:"ШПАРГАЛКИ",title:"Cheat sheets для ОГЭ по информатике",desc:"Сжатые PDF-карты: формулы, команды и типы заданий. Распечатал — повесил — повторяешь.",subject:["inf"],label:"Информатика · ОГЭ",free:true,status:"Скоро",href:"cheatsheets.html"},
+{kind:"РАБОЧИЕ ТЕТРАДИ",title:"Рабочие тетради-комиксы",desc:"Учебный материал как сюжетный комикс с героями, а в конце темы — задание на закрепление.",subject:["inf"],label:"Информатика",free:false,status:"Скоро",href:"workbooks.html"},
+{kind:"ИНТЕРАКТИВНОЕ ПОСОБИЕ",title:"Python с нуля",desc:"Сюжетные проекты, закрепление каждой темы и проверка кода прямо в пособии. Итог — собственный проект.",subject:["python"],label:"Python",free:false,status:"Скоро",href:"posobiya.html"},
+{kind:"МЕТОДИЧЕСКОЕ ПОСОБИЕ",title:"Подготовка к ОГЭ/ЕГЭ по информатике — 4 части",desc:"Теория, практические задания, решения и памятки. Материал проходит предметную вычитку.",subject:["inf"],label:"Информатика · ОГЭ/ЕГЭ",free:false,status:"Скоро",href:"posobiya.html"},
+{kind:"ЧЕК-ЛИСТЫ",title:"Математика: сложные темы простыми словами",desc:"Короткие конспекты-чек-листы по темам, на которых ученики спотыкаются чаще всего.",subject:["math"],label:"Математика",free:true,status:"Скоро",href:"cheatsheets.html"},
+{kind:"РАЗДЕЛ",title:"Дизайн и интерфейсы",desc:"Материалы по Figma: работа с интерфейсами, визуальная структура и практика проектирования. Раздел формируется.",subject:["figma"],label:"Figma",free:true,status:"Скоро",href:"index.html"},
+{kind:"РАЗДЕЛ",title:"Создание сайтов",desc:"Материалы по HTML и CSS: структура страницы, стили, адаптивность и первые проекты. Раздел формируется.",subject:["web"],label:"HTML/CSS",free:true,status:"Скоро",href:"index.html"}
+];
+const grid=document.getElementById("catalogGrid"),empty=document.getElementById("empty"),count=document.getElementById("count");
+let subject="all",price="all";
+function render(){
+ const list=ITEMS.filter(x=>(subject==="all"||x.subject.includes(subject))&&(price==="all"||(price==="free"&&x.free)||(price==="paid"&&!x.free)));
+ grid.innerHTML="";
+ list.forEach(x=>{
+  const a=document.createElement("a");a.className="card";a.href=x.href;
+  const safe=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  a.innerHTML='<div class="card-head"><span class="kind">'+safe(x.kind)+'</span><span class="status '+(x.status==="Доступно"?"ready":"soon")+'">'+safe(x.status)+'</span></div><h3>'+safe(x.title)+'</h3><p>'+safe(x.desc)+'</p><div class="card-foot"><div class="tags"><span class="tag">'+safe(x.label)+'</span><span class="tag '+(x.free?"free":"paid")+'">'+(x.free?"Бесплатно":"Платно")+'</span></div><span class="card-link">'+(x.status==="Доступно"?"ОТКРЫТЬ ↗":"ПОДРОБНЕЕ ↗")+'</span></div>';
+  grid.appendChild(a);
+ });
+ count.innerHTML='НАЙДЕНО: <b>'+String(list.length).padStart(2,"0")+'</b> МАТЕРИАЛОВ';
+ empty.style.display=list.length?"none":"block";
+}
+function bind(id,attr,set){document.querySelectorAll("#"+id+" .chip").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("#"+id+" .chip").forEach(x=>x.classList.remove("active"));b.classList.add("active");set(b.dataset[attr]);render()}))}
+bind("subjectFilters","subject",v=>subject=v);bind("priceFilters","price",v=>price=v);
+document.getElementById("menuBtn").addEventListener("click",()=>{const n=document.querySelector(".navlinks");n.style.display=n.style.display==="flex"?"none":"flex";n.style.position="absolute";n.style.top="64px";n.style.right="18px";n.style.padding="18px";n.style.background="#100d17";n.style.border="1px solid #ffffff22";n.style.flexDirection="column"});
+render();
 </script>
-</body>
-</html>
+</body></html>
