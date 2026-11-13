@@ -28,6 +28,8 @@ footer{border-top:1px solid var(--line);padding:24px 0;background:#08070d}.foot{
 @media(max-width:900px){.wrap{width:min(100% - 40px,700px)}.navlinks{display:none}.menu{display:block}.nav-cta{margin-left:auto}.hero{grid-template-columns:1fr;padding:48px 0 58px}.hero-art{height:300px;grid-row:1}.hero-copy{grid-row:2}.hero h1{font-size:clamp(56px,13vw,88px)}.quickbar{grid-template-columns:1fr}.quick{border-right:0;border-bottom:1px solid var(--line)}.quick:last-child{border-bottom:0}.section-head{display:block}.section-head>p{margin-top:14px}.catalog{grid-template-columns:repeat(2,minmax(0,1fr))}.direction-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:560px){.wrap{width:calc(100% - 30px)}header{height:66px}.brand-name{font-size:14px}.nav-cta{padding:10px 12px;font-size:8px}.hero{padding-top:30px}.hero-art{height:245px}.book-core{width:130px;height:170px}.book-symbol{font-size:43px}.float{padding:8px 10px}.float.a{left:-2%}.float.b{right:-2%}.hero h1{font-size:clamp(48px,14vw,70px)}.hero-meta{gap:20px}.metric strong{font-size:20px}section{padding:58px 0}.filter-row{display:block}.filter-label{display:block;margin-bottom:9px}.chip{padding:8px 10px;font-size:8px}.catalog{grid-template-columns:1fr}.card{min-height:220px}.direction-grid{grid-template-columns:repeat(2,1fr)}.note{grid-template-columns:1fr;gap:10px;padding:20px}.cta{display:block;padding:23px}.cta .btn{margin-top:18px}.foot{flex-wrap:wrap}.foot-links{width:100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+.status.demo{color:#d7a5ff;border-color:#a76aff88;background:#a76aff12}
+@media(max-width:560px){.float.a{left:0}.float.b{right:0}.hero-art{overflow:hidden}}
 </style>
 </head>
 <body>
@@ -79,7 +81,7 @@ const ITEMS=[
 {kind:"ШПАРГАЛКИ",title:"Cheat sheets для ОГЭ по информатике",desc:"Сжатые PDF-карты: формулы, команды и типы заданий. Распечатал — повесил — повторяешь.",subject:["inf"],label:"Информатика · ОГЭ",free:true,status:"Скоро",href:"cheatsheets.html"},
 {kind:"РАБОЧИЕ ТЕТРАДИ",title:"Рабочие тетради-комиксы",desc:"Учебный материал как сюжетный комикс с героями, а в конце темы — задание на закрепление.",subject:["inf"],label:"Информатика",free:false,status:"Скоро",href:"workbooks.html"},
 {kind:"ИНТЕРАКТИВНОЕ ПОСОБИЕ",title:"Python с нуля",desc:"Сюжетные проекты, закрепление каждой темы и проверка кода прямо в пособии. Итог — собственный проект.",subject:["python"],label:"Python",free:false,status:"Скоро",href:"posobiya.html"},
-{kind:"МЕТОДИЧЕСКОЕ ПОСОБИЕ",title:"Подготовка к ОГЭ/ЕГЭ по информатике — 4 части",desc:"Теория, практические задания, решения и памятки. Материал проходит предметную вычитку.",subject:["inf"],label:"Информатика · ОГЭ/ЕГЭ",free:false,status:"Скоро",href:"posobiya.html"},
+{kind:"МЕТОДИЧЕСКОЕ ПОСОБИЕ",title:"Подготовка к ОГЭ/ЕГЭ по информатике — 4 части",desc:"12 тематических разделов: теория, практические задания, решения и памятки. Открой ознакомительный фрагмент.",subject:["inf"],label:"Информатика · ОГЭ/ЕГЭ",free:false,status:"Демо",href:"materials/informatics-manual.html"},
 {kind:"ЧЕК-ЛИСТЫ",title:"Математика: сложные темы простыми словами",desc:"Короткие конспекты-чек-листы по темам, на которых ученики спотыкаются чаще всего.",subject:["math"],label:"Математика",free:true,status:"Скоро",href:"cheatsheets.html"},
 {kind:"РАЗДЕЛ",title:"Дизайн и интерфейсы",desc:"Материалы по Figma: работа с интерфейсами, визуальная структура и практика проектирования. Раздел формируется.",subject:["figma"],label:"Figma",free:true,status:"Скоро",href:"index.html"},
 {kind:"РАЗДЕЛ",title:"Создание сайтов",desc:"Материалы по HTML и CSS: структура страницы, стили, адаптивность и первые проекты. Раздел формируется.",subject:["web"],label:"HTML/CSS",free:true,status:"Скоро",href:"index.html"}
@@ -92,7 +94,7 @@ function render(){
  list.forEach(x=>{
   const a=document.createElement("a");a.className="card";a.href=x.href;
   const safe=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-  a.innerHTML='<div class="card-head"><span class="kind">'+safe(x.kind)+'</span><span class="status '+(x.status==="Доступно"?"ready":"soon")+'">'+safe(x.status)+'</span></div><h3>'+safe(x.title)+'</h3><p>'+safe(x.desc)+'</p><div class="card-foot"><div class="tags"><span class="tag">'+safe(x.label)+'</span><span class="tag '+(x.free?"free":"paid")+'">'+(x.free?"Бесплатно":"Платно")+'</span></div><span class="card-link">'+(x.status==="Доступно"?"ОТКРЫТЬ ↗":"ПОДРОБНЕЕ ↗")+'</span></div>';
+  const statusClass=x.status==="Доступно"?"ready":x.status==="Демо"?"demo":"soon";const action=x.status==="Доступно"?"ОТКРЫТЬ ↗":x.status==="Демо"?"ОТКРЫТЬ ДЕМО ↗":"ПОДРОБНЕЕ ↗";a.innerHTML='<div class="card-head"><span class="kind">'+safe(x.kind)+'</span><span class="status '+statusClass+'">'+safe(x.status)+'</span></div><h3>'+safe(x.title)+'</h3><p>'+safe(x.desc)+'</p><div class="card-foot"><div class="tags"><span class="tag">'+safe(x.label)+'</span><span class="tag '+(x.free?"free":"paid")+'">'+(x.free?"Бесплатно":"Платно")+'</span></div><span class="card-link">'+action+'</span></div>';
   grid.appendChild(a);
  });
  count.innerHTML='НАЙДЕНО: <b>'+String(list.length).padStart(2,"0")+'</b> МАТЕРИАЛОВ';
