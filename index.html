@@ -1,433 +1,119 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f4f2ee">
-  <title>Катерина Мищенко — репетитор | mischenko edu</title>
-  <meta name="description" content="Индивидуальные онлайн-занятия по информатике, математике, физике и программированию. Школьная программа, ОГЭ и ЕГЭ. mischenko edu.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="mischenko-redesign.css?v=13">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08070d">
+<title>mischenko edu — лаборатория знаний</title>
+<meta name="description" content="Индивидуальные онлайн-занятия по информатике, математике, физике и программированию. Подготовка к ОГЭ и ЕГЭ. Авторская библиотека mischenko edu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#08070d;--panel:#100d17;--panel2:#17111e;--ink:#f7eff8;--muted:#b2a5b7;--pink:#ff286f;--violet:#a76aff;--line:rgba(255,255,255,.14);--mono:"Space Mono",monospace;--sans:Inter,Arial,sans-serif;--max:1220px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 72% 8%,#6e287b38,transparent 32%),radial-gradient(ellipse at 5% 42%,#ff286f15,transparent 34%),linear-gradient(#ffffff09 1px,transparent 1px),linear-gradient(90deg,#ffffff09 1px,transparent 1px);background-size:auto,auto,58px 58px,58px 58px;mask-image:linear-gradient(#000 0%,#000 55%,transparent 100%)}
+a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}.wrap{width:min(var(--max),calc(100% - 64px));margin:auto}.mono,.eyebrow,.micro,.navlinks,.btn,.field label,.metric span,.tag,.step-no,.footnote{font-family:var(--mono)}.topline{height:4px;background:linear-gradient(90deg,var(--pink),var(--violet) 58%,transparent)}
+header{height:76px;border-bottom:1px solid var(--line);display:flex;align-items:center;position:sticky;top:0;z-index:20;background:#08070de8;backdrop-filter:blur(18px)}.nav{display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:-.06em;text-transform:lowercase;white-space:nowrap}.brand-mark{width:28px;height:28px;border:1px solid var(--pink);display:grid;place-items:center;transform:rotate(45deg);box-shadow:0 0 22px #ff286f55;position:relative}.brand-mark:after{content:"";width:10px;height:10px;border:2px solid var(--pink)}.brand-name{font-size:17px}.navlinks{display:flex;gap:22px;align-items:center;font-size:9px;text-transform:uppercase;color:#c9bdcc;letter-spacing:.08em}.navlinks a:hover,.social a:hover{color:var(--pink)}.nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:13px 18px;background:var(--pink);color:#100711;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border:1px solid var(--pink);clip-path:polygon(0 0,92% 0,100% 30%,100% 100%,8% 100%,0 72%);transition:.2s;cursor:pointer}.nav-cta:hover,.btn:hover{transform:translateY(-2px);box-shadow:0 0 26px #ff286f66}.btn.ghost{background:transparent;color:var(--ink);border-color:#ff286f88;clip-path:none}.menu-toggle{display:none;background:none;border:1px solid var(--line);color:var(--ink);padding:8px 12px}
+.eyebrow{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#ff78a3;display:flex;align-items:center;gap:11px}.eyebrow:before{content:"";width:24px;height:1px;background:var(--pink);box-shadow:0 0 10px var(--pink)}
+.hero{min-height:680px;display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center;padding:66px 0 82px;position:relative}.hero:after{content:"";position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--pink),var(--violet),transparent)}.hero-copy{position:relative;z-index:2}.hero h1{font-size:clamp(62px,8.5vw,116px);line-height:.83;letter-spacing:-.095em;margin:27px 0 25px;font-weight:900;text-transform:uppercase}.outline{color:transparent;-webkit-text-stroke:1.4px #f4ddec;text-shadow:0 0 28px #ff286f44}.pink{color:var(--pink);text-shadow:0 0 32px #ff286f66}.hero-copy>p{max-width:510px;color:#c0b4c4;line-height:1.8;font-size:14px}.hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}.hero-meta{display:flex;gap:34px;margin-top:48px}.metric strong{display:block;color:var(--pink);font-size:27px;letter-spacing:-.06em}.metric span{display:block;color:#a99bad;font-size:8px;text-transform:uppercase;letter-spacing:.1em;margin-top:5px}
+.hero-art{height:520px;position:relative;display:grid;place-items:center;isolation:isolate}.art-grid{position:absolute;inset:0;background:linear-gradient(90deg,transparent 49.8%,#ff286f33 50%,transparent 50.2%),linear-gradient(transparent 49.8%,#a76aff33 50%,transparent 50.2%);z-index:-1}.halo{position:absolute;width:min(440px,88%);aspect-ratio:1;border:1px solid #ff286f88;border-radius:50%;box-shadow:0 0 60px #ff286f22,inset 0 0 50px #a76aff1b;transform:rotate(-18deg)}.halo:before,.halo:after{content:"";position:absolute;inset:9%;border:1px solid #a76aff88;border-radius:50%;transform:rotate(55deg) scaleX(.55)}.halo:after{inset:-9%;border-color:#ff286f55;transform:rotate(-38deg) scaleX(.38)}.portrait-frame{width:64%;aspect-ratio:.78;position:relative;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 32%,#8e3b9d 0,#28152f 38%,#100d18 75%);border:1px solid #ff4b91aa;clip-path:polygon(18% 0,82% 0,100% 24%,91% 85%,50% 100%,9% 85%,0 24%);box-shadow:0 0 70px #ff286f44,inset 0 0 55px #b14dff33;overflow:hidden}.portrait-frame:before{content:"";position:absolute;inset:12%;border:1px solid #ff8ab7aa;clip-path:inherit}.portrait-frame:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 5px,#ff9dc41c 6px);mix-blend-mode:screen}.portrait-placeholder{text-align:center;z-index:2;padding:20px}.portrait-placeholder .sigil{font-size:clamp(64px,9vw,112px);font-weight:900;letter-spacing:-.14em;color:#f4d9f0;text-shadow:0 0 15px var(--pink),0 0 50px var(--pink);line-height:1}.portrait-placeholder small{display:block;margin-top:20px;font:8px var(--mono);letter-spacing:.16em;color:#ffd1e1}.orbit{position:absolute;font:8px var(--mono);letter-spacing:.13em;text-transform:uppercase;color:#ff9cbd}.orbit.a{top:8%;right:1%}.orbit.b{bottom:10%;left:0}.floating{position:absolute;padding:12px 15px;background:#0b0812dd;border:1px solid #ff286f66;box-shadow:0 12px 30px #0008;backdrop-filter:blur(12px)}.floating small{display:block;font:8px var(--mono);color:#b7a8bb;text-transform:uppercase}.floating b{display:block;color:var(--pink);font-size:17px;margin-top:4px}.floating.f1{left:-2%;top:23%}.floating.f2{right:-1%;bottom:20%}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);background:linear-gradient(110deg,#130d19,#0c0a11);margin-top:-30px;position:relative;z-index:2}.stat{padding:22px;display:flex;align-items:center;gap:15px;border-right:1px solid var(--line)}.stat:last-child{border:0}.stat-icon{width:39px;height:39px;border:1px solid #ff286f77;display:grid;place-items:center;color:var(--pink);font-size:17px;transform:rotate(45deg);flex:none}.stat-icon span{transform:rotate(-45deg)}.stat b{display:block;font-size:11px}.stat small{display:block;color:#a99bad;font:8px var(--mono);margin-top:5px;text-transform:uppercase}
+section{padding:100px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:36px}.section-head h2,.split h2,.diag-copy h2,.faq-intro h2{font-size:clamp(38px,5.5vw,66px);line-height:.93;letter-spacing:-.075em;text-transform:uppercase;margin:14px 0 0}.section-head h2 em,.split h2 em{font-style:normal;color:var(--pink)}.section-head>p{max-width:390px;color:var(--muted);font-size:13px;line-height:1.75;margin:0}.directions{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.direction{min-height:190px;padding:23px;background:linear-gradient(145deg,#17101e,#0d0b12);border:1px solid var(--line);position:relative;overflow:hidden;transition:.25s}.direction:hover{border-color:#ff286f99;transform:translateY(-4px);box-shadow:0 15px 40px #0008}.direction:after{content:"";position:absolute;width:130px;height:130px;border:1px solid #ff286f33;right:-55px;bottom:-65px;transform:rotate(45deg);box-shadow:0 0 0 14px #a76aff0a,0 0 0 28px #ff286f09}.direction .num{font:9px var(--mono);color:var(--pink)}.direction .symbol{font-size:25px;color:#ff79a5;margin:18px 0 12px}.direction h3{font-size:19px;margin:0 0 7px;letter-spacing:-.04em}.direction p{font-size:11px;color:var(--muted);margin:0;max-width:260px;line-height:1.6}.direction .arrow{position:absolute;right:22px;top:20px;color:#ff6b9b}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:65px;align-items:center}.visual-panel{min-height:400px;position:relative;background:radial-gradient(ellipse at 50% 45%,#51234f 0,#1a1022 38%,#0d0b12 75%);border:1px solid #a76aff55;display:grid;place-items:center;overflow:hidden}.visual-panel:before{content:"";position:absolute;inset:25px;border:1px solid #ff286f66;transform:rotate(8deg)}.visual-panel:after{content:"";position:absolute;width:230px;height:230px;border:1px solid #ff286f88;border-radius:50%;box-shadow:0 0 60px #ff286f44,inset 0 0 40px #a76aff44}.visual-word{z-index:1;text-align:center;font-weight:900;font-size:clamp(48px,7vw,86px);letter-spacing:-.12em;text-shadow:0 0 25px #ff286f99}.visual-word small{display:block;font:8px var(--mono);letter-spacing:.2em;color:#ff9dbd;text-shadow:none}.feature-list{display:grid;gap:20px;margin-top:27px}.feature{display:grid;grid-template-columns:32px 1fr;gap:13px}.feature i{font:11px var(--mono);font-style:normal;color:var(--pink);padding-top:3px}.feature b{font-size:13px}.feature p{margin:5px 0 0;color:var(--muted);font-size:11px;line-height:1.7}
+.credential{margin-top:28px;padding:18px 20px;border-left:2px solid var(--pink);background:linear-gradient(90deg,#ff286f12,transparent)}.credential b{display:block;font-size:13px}.credential span{display:block;font:9px var(--mono);color:#b5a6ba;margin-top:5px}.bio-copy{color:#c2b6c5;font-size:13px;line-height:1.85}.bio-copy p{margin:0 0 14px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);background:#0e0b14}.step{padding:24px 21px;border-right:1px solid var(--line)}.step:last-child{border:0}.step-no{font-size:10px;color:var(--pink)}.step h3{font-size:15px;line-height:1.3;margin:20px 0 9px}.step p{font-size:11px;color:var(--muted);line-height:1.7;margin:0}
+.pricing{background:linear-gradient(110deg,#120b18,#0b0910);border-block:1px solid #ff286f44;position:relative}.pricing-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:16px}.panel{padding:28px;background:#0a0810;border:1px solid #ff286f55;box-shadow:0 20px 70px #0006}.panel-kicker{font-size:9px;color:var(--pink);letter-spacing:.13em;text-transform:uppercase}.panel h3{font-size:22px;margin:12px 0 23px}.field-label{display:block;font-size:9px;color:#c9b8ca;text-transform:uppercase;letter-spacing:.1em;margin:19px 0 8px}.field-select{width:100%;border:1px solid #ffffff2b;background:#15101b;color:#fff;padding:13px;font-size:12px;outline:none}.field-select:focus{border-color:var(--pink)}.duration-switch{display:grid;grid-template-columns:1fr 1fr;gap:8px}.duration-btn{background:#17111e;border:1px solid var(--line);color:#d8cddd;padding:12px;font-size:11px;cursor:pointer}.duration-btn.active{border-color:var(--pink);background:#ff286f1c;color:#fff;box-shadow:inset 0 0 20px #ff286f12}.pricing-hint,.pricing-footnote{color:#a99bad;font-size:10px;line-height:1.7}.price-main{padding:20px 0;border-bottom:1px solid var(--line)}.price-main>span{display:block;font:9px var(--mono);color:#b7a8bb;text-transform:uppercase}.price-main strong{display:block;font-size:clamp(34px,4vw,50px);letter-spacing:-.07em;color:var(--pink);margin:5px 0}.price-main small{color:#c2b6c5;font-size:11px}.trial-line{display:flex;justify-content:space-between;gap:15px;padding:16px 0;border-bottom:1px solid var(--line);font-size:12px}.trial-line small{display:block;color:var(--muted);font-size:9px;margin-top:4px}.trial-line strong{color:#fff;white-space:nowrap}.packages-title{display:flex;justify-content:space-between;gap:15px;align-items:baseline;margin:20px 0 12px}.packages-title h4{margin:0;font-size:15px}.packages-title span{font-size:9px;color:var(--muted)}.package-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.package-option{padding:14px 11px;border:1px solid var(--line);background:#14101a}.package-option.featured{border-color:var(--pink);background:linear-gradient(145deg,#ff286f20,#17111e)}.package-option span{display:block;font-size:9px;color:#bcaec1;line-height:1.5}.package-option .package-count{font:8px var(--mono);color:#ff82aa}.package-option strong{display:block;font-size:18px;margin:9px 0 4px;letter-spacing:-.04em}.pricing-footnote{margin-top:16px}.pricing-contact{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:22px}.pricing-contact p{max-width:600px;color:var(--muted);font-size:12px;line-height:1.7}
+.library{background:radial-gradient(ellipse at 15% 50%,#3b17401c,transparent 45%)}.library-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}.library-count{font-size:clamp(60px,9vw,104px);font-weight:900;letter-spacing:-.1em;color:var(--pink);line-height:1;margin:24px 0 14px;text-shadow:0 0 30px #ff286f55}.library-count span{display:inline-block;margin-left:18px;max-width:150px;font:9px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#b9a9be}.library h2{font-size:clamp(33px,4vw,52px);line-height:.98;letter-spacing:-.07em;margin:0 0 15px;text-transform:uppercase}.library p{color:var(--muted);font-size:12px;line-height:1.8;max-width:590px}.library-directions{display:flex;flex-wrap:wrap;gap:8px;margin:23px 0}.library-directions span,.tag{padding:8px 11px;border:1px solid #ff286f55;color:#f2dce8;font-size:9px}.library-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap}.library-note{font:8px var(--mono);color:#a99bad;text-transform:uppercase}.library-side{padding:35px;border:1px solid #a76aff66;background:linear-gradient(145deg,#1a1124,#0d0a13);position:relative;overflow:hidden}.library-side:after{content:"";position:absolute;width:190px;height:190px;border:1px solid #ff286f44;right:-85px;bottom:-85px;transform:rotate(45deg);box-shadow:0 0 0 20px #a76aff0a,0 0 0 40px #ff286f0a}.library-side small{font:9px var(--mono);color:var(--pink);letter-spacing:.16em}.library-side h3{font-size:26px;line-height:1.1;margin:18px 0}.library-side p{position:relative;z-index:1}
+.review-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.review{padding:25px;border:1px solid var(--line);background:linear-gradient(145deg,#17101e,#0d0b12)}.quote{font-size:38px;color:var(--pink);line-height:.8}.review blockquote{margin:17px 0 22px;font-size:14px;line-height:1.7;color:#eee4ef}.review-meta{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:13px;font-size:10px}.review-meta span{color:var(--muted)}.footnote{font-size:8px;color:#9e91a3;line-height:1.7;margin-top:17px;max-width:800px}
+.faq-layout{display:grid;grid-template-columns:.7fr 1.3fr;gap:65px}.faq-intro p{font-size:12px;color:var(--muted);line-height:1.8}.faq-list{border-top:1px solid var(--line)}.faq-item{border-bottom:1px solid var(--line)}.faq-q{width:100%;background:none;border:0;color:var(--ink);padding:19px 0;display:flex;justify-content:space-between;gap:20px;text-align:left;font-size:13px;cursor:pointer}.faq-q span:last-child{color:var(--pink);font-size:19px;line-height:1}.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .25s}.faq-a>div{overflow:hidden}.faq-a p{margin:0;color:var(--muted);font-size:11px;line-height:1.8;padding:0 30px 18px 0}.faq-item[data-open=true] .faq-a{grid-template-rows:1fr}.faq-item[data-open=true] .faq-q span:last-child{transform:rotate(45deg)}
+.diagnostic{background:linear-gradient(110deg,#150d1a,#0b0910);border-block:1px solid #ff286f55;position:relative;overflow:hidden}.diagnostic:after{content:"";position:absolute;width:480px;height:480px;border:1px solid #ff286f22;border-radius:50%;right:-180px;top:-170px;box-shadow:0 0 0 35px #a76aff09,0 0 0 70px #ff286f08}.diag-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:55px;position:relative;z-index:1;align-items:center}.diag-copy h2{font-size:clamp(40px,5.5vw,67px);line-height:.94;letter-spacing:-.08em;text-transform:uppercase;margin:18px 0}.diag-copy h2 span{color:var(--pink)}.diag-copy p{font-size:12px;line-height:1.8;color:var(--muted);max-width:420px}.diag-form{padding:27px;background:#0a0810;border:1px solid #ff286f66;box-shadow:0 20px 70px #0008;display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:grid;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:8px;color:#c9b8ca;text-transform:uppercase;letter-spacing:.1em}.field input,.field select,.field textarea{width:100%;border:1px solid #ffffff24;background:#15101b;color:#fff;padding:12px;outline:none;border-radius:0;font-size:11px}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--pink);box-shadow:0 0 0 2px #ff286f22}.field textarea{min-height:85px;resize:vertical}.diag-form .btn{grid-column:1/-1}.form-note,.success{grid-column:1/-1;color:#a99bad;font:8px var(--mono);line-height:1.6}.success{display:none;color:#ff9cbd;border:1px solid #ff286f66;padding:12px}
+footer{padding:35px 0 28px;border-top:1px solid var(--line)}.foot{display:flex;justify-content:space-between;gap:20px;align-items:center}.foot p{font:8px var(--mono);color:#96899a}.social{display:flex;gap:18px;font:9px var(--mono);text-transform:uppercase;color:#c7bdcb}
+@media(max-width:900px){.wrap{width:min(100% - 40px,700px)}.navlinks{display:none}.menu-toggle{display:block}.nav-cta{margin-left:auto}.hero{grid-template-columns:1fr;padding:50px 0 70px}.hero-art{height:400px;grid-row:1}.hero-copy{grid-row:2}.hero h1{font-size:clamp(58px,13vw,92px)}.stats{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}.directions{grid-template-columns:1fr 1fr}.split,.library-layout,.faq-layout,.diag-grid,.pricing-layout{grid-template-columns:1fr;gap:35px}.visual-panel{min-height:300px}.section-head{display:block}.section-head>p{margin-top:18px}.steps{grid-template-columns:1fr 1fr}.step:nth-child(2){border-right:0}.step:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+@media(max-width:560px){.wrap{width:calc(100% - 30px)}header{height:65px}.nav-cta{padding:10px 12px;font-size:8px}.brand-name{font-size:15px}.hero{padding-top:25px}.hero-art{height:300px}.portrait-frame{width:60%}.hero-meta{gap:20px;flex-wrap:wrap}.metric strong{font-size:22px}.stats{grid-template-columns:1fr}.stat{border-right:0;border-bottom:1px solid var(--line)!important}.stat:last-child{border-bottom:0!important}.directions,.review-grid{grid-template-columns:1fr}.direction{min-height:160px}section{padding:72px 0}.steps{grid-template-columns:1fr}.step{border-right:0;border-bottom:1px solid var(--line)}.step:last-child{border-bottom:0}.pricing-contact{align-items:flex-start;flex-direction:column}.package-grid{grid-template-columns:1fr}.packages-title{display:block}.packages-title span{display:block;margin-top:5px}.diag-form{grid-template-columns:1fr;padding:18px}.field.full,.diag-form .btn,.form-note,.success{grid-column:1}.foot{align-items:flex-start;flex-direction:column}.floating{padding:9px 11px}.floating.f1{left:-1%;top:12%}.floating.f2{right:-1%;bottom:12%}}
+.mobile-menu{display:none;position:absolute;top:65px;left:0;right:0;padding:14px 20px 20px;background:#0c0912;border-bottom:1px solid var(--line);flex-direction:column;gap:15px;font:10px var(--mono);text-transform:uppercase}.mobile-menu.open{display:flex}
+</style>
 </head>
-<body id="top">
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="brand" href="#top" aria-label="Катерина Мищенко — на главную">
-        <span class="brand-mark" aria-hidden="true"><i></i></span>
-        <span class="brand-name">mischenko edu</span>
-      </a>
-      <nav class="nav-pill" aria-label="Основная навигация">
-        <a href="#about">Обо мне</a>
-        <a href="#subjects">Направления</a>
-        <a href="#process">Как занимаемся</a>
-        <a href="#pricing">Стоимость</a>
-        <a href="#library">Библиотека</a>
-        <a href="#reviews">Отзывы</a>
-      </nav>
-      <a class="btn btn-dark header-cta" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Написать мне <span>↗</span></a>
-      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileNav">☰</button>
-    </div>
-    <nav class="mobile-nav" id="mobileNav" aria-label="Мобильная навигация">
-      <a href="#about">Обо мне</a>
-      <a href="#subjects">Направления</a>
-      <a href="#process">Как занимаемся</a>
-      <a href="#pricing">Стоимость</a>
-      <a href="#library">Библиотека</a>
-      <a href="#reviews">Отзывы</a>
-      <a href="#faq">Вопросы</a>
-      <a href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Написать мне ↗</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-grid">
-        <aside class="hero-rail" aria-label="Навигация по странице">
-          <span>01 / mischenko edu</span><i></i><span>Учиться · понимать · создавать</span>
-        </aside>
-        <div class="hero-copy">
-          <div class="hero-kicker">Лаборатория идей <span>·</span> mischenko edu</div>
-          <h1 id="hero-title">Учиться —<br>это <em>исследовать.</em></h1>
-          <p class="hero-lead">Задавать вопросы, пробовать, находить своё. Помогаю разобраться в сложных темах, увидеть логику за формулами и кодом и научиться находить решения самостоятельно.</p>
-          <div class="hero-actions">
-            <button class="btn btn-wine" type="button" data-open-diagnostic>Начать с диагностики <span>↗</span></button>
-            <a class="text-link" href="#about">Познакомиться <span>↓</span></a>
-          </div>
-          <div class="hero-note">Индивидуальные онлайн-занятия · 1:1</div>
-        </div>
-        <div class="hero-visual">
-          <img class="hero-photo" src="katya.jpg" alt="Катерина Мищенко" fetchpriority="high">
-          <span class="visual-index">mischenko edu / 2026</span>
-          <div class="float-card one"><small>Опыт преподавания</small><strong>8+ лет</strong></div>
-          <div class="float-card two"><small>Формат</small><strong>Индивидуально<br>и онлайн</strong></div>
-          <div class="float-card three"><small>За время преподавания</small><strong>570+ учеников</strong></div>
-        </div>
-      </div>
-      <div class="hero-stats">
-        <div class="stat"><strong>8+</strong><span>лет преподавания</span></div>
-        <div class="stat"><strong>1:1</strong><span>индивидуальный формат</span></div>
-        <div class="stat"><strong>570+</strong><span>учеников за всё время</span></div>
-        <div class="stat"><strong>06</strong><span>направлений в библиотеке</span></div>
-      </div>
-    </section>
-
-    <section class="section about" id="about">
-      <div class="wrap about-grid">
-        <div class="about-aside">
-          <div class="eyebrow">Страница 01 · обо мне</div>
-          <h2 class="section-heading">Мой подход.<br><em>Твоё понимание.</em></h2>
-          <p>Помогаю понять предмет, научиться рассуждать и самостоятельно находить решения.</p>
-          <p class="about-mantra"><span>понимать важнее,</span><strong>чем зубрить.</strong></p>
-        </div>
-        <div class="about-main">
-          <p class="lead">Я — Катерина Мищенко, преподаватель информатики, математики, физики и программирования.</p>
-          <p>Работаю индивидуально и онлайн со школьниками и взрослыми, которые изучают код. На занятиях важен не только ответ. Мы разбираем ход мысли, ищем ошибки, сравниваем способы решения и учимся понимать, почему метод работает.</p>
-          <p>К экзаменам готовимся системно: изучаем темы, тренируемся на заданиях и возвращаемся к тому, что пока вызывает трудности.</p>
-          <p>Разрабатываю материалы mischenko edu — конспекты, тренажёры и практику для самостоятельной работы.</p>
-          <div class="about-credential">
-            <span>↳</span>
-            <div class="credential-copy"><b><em>Мозырский государственный педагогический университет им. И. П. Шамякина</em></b><br>2017</div>
-          </div>
-          <div class="about-credential additional-credential"><span>↳</span><div class="credential-copy"><b><em>Курсы школы Skyeng</em></b><br>Дополнительное обучение</div></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section subjects" id="subjects">
-      <div class="wrap">
-        <div class="subjects-head">
-          <div>
-            <div class="eyebrow">Страница 02 · направления</div>
-            <h2 class="section-heading">Что изучаем</h2>
-            <p class="section-intro">Четыре предметных направления и индивидуальный маршрут под твою цель.</p>
-          </div>
-          <a class="text-link" href="#pricing">Выбрать формат <span>↗</span></a>
-        </div>
-        <div class="subjects-grid">
-          <article class="subject-card" data-no="01">
-            <div class="subject-symbol">⌘</div>
-            <h3>Информатика</h3>
-            <p>Школьная программа и работа с пробелами. ОГЭ и ЕГЭ: теория, задания, практика.</p>
-            <div class="subject-tags"><span>Школа</span><span>ОГЭ</span><span>ЕГЭ</span></div>
-          </article>
-          <article class="subject-card" data-no="02">
-            <div class="subject-symbol">∑</div>
-            <h3>Математика</h3>
-            <p>Программа 6–9 классов и сложные темы. Вычисления, логика, решение задач, работа над ошибками.</p>
-            <div class="subject-tags"><span>6–9 классы</span><span>Школьная программа</span></div>
-          </article>
-          <article class="subject-card" data-no="03">
-            <div class="subject-symbol">∆</div>
-            <h3>Физика</h3>
-            <p>Теория и физические явления простыми словами. Задачи с подробным разбором, подготовка к контрольным и ОГЭ.</p>
-            <div class="subject-tags"><span>Школьная программа</span><span>ОГЭ</span></div>
-          </article>
-          <article class="subject-card" data-no="04">
-            <div class="subject-symbol">{ }</div>
-            <h3>Программирование</h3>
-            <p>От основ кода до собственных проектов: Python, Scratch, HTML/CSS и Figma.</p>
-            <div class="subject-tags"><span>Python</span><span>Scratch</span><span>HTML/CSS</span><span>Figma</span></div>
-          </article>
-        </div>
-        <div class="subject-route">
-          <div><strong>Обучение под конкретную цель</strong><p>Составляем маршрут от твоего уровня и задачи. При необходимости объединяем несколько предметов, определяем последовательность и темп — без лишнего и перегруза.</p></div>
-          <a class="btn btn-dark" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Обсудить свой маршрут ↗</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section process" id="process">
-      <div class="wrap process-grid">
-        <div class="process-aside">
-          <div class="eyebrow">Страница 03 · как занимаемся</div>
-          <h2 class="section-heading">Не по шаблону —<br><em>а под тебя.</em></h2>
-          <p class="section-intro">Сначала определяем твою цель и уровень, затем выстраиваем маршрут и корректируем его по ходу занятий.</p>
-          <div class="note">«Не просто получить правильный ответ, а понять, как к нему прийти».</div>
-        </div>
-        <div class="process-list">
-          <article class="process-step"><div class="num">01</div><div><h3>Сначала знакомимся и разбираемся</h3><p>Определяем цель и текущий уровень: что уже понятно, где пробелы и как ты подходишь к задачам.</p></div></article>
-          <article class="process-step"><div class="num">02</div><div><h3>Собираем твой маршрут</h3><p>Выбираем порядок тем и темп. Подбираю задания под твою цель — двигаемся последовательно, без перегруза.</p></div></article>
-          <article class="process-step"><div class="num">03</div><div><h3>Пробуем, задаём вопросы, ищем решение</h3><p>Объясняю тему, мы решаем задачи и проверяем способы. Ошибки разбираем по причине и пробуем снова — так появляется самостоятельность.</p></div></article>
-          <article class="process-step"><div class="num">04</div><div><h3>Смотрим, что уже получается</h3><p>Проверяем, можешь ли ты применить правило и объяснить решение. Закрепляем сложное или переходим к следующей теме.</p></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section pricing" id="pricing">
-      <div class="wrap">
-        <div class="pricing-top">
-          <div>
-            <div class="eyebrow">Закладка · стоимость</div>
-            <h2 class="section-heading">Выбираем удобный формат</h2>
-            <p class="section-intro">Выбери направление, регион оплаты и длительность. Калькулятор покажет стоимость занятия и абонементов.</p>
-          </div>
-        </div>
-        <div class="pricing-layout">
-          <div class="pricing-panel">
-            <div class="panel-kicker">01 / параметры занятия</div>
-            <h3>Настрой своё занятие</h3>
-            <label class="field-label" for="pricingService">Направление</label>
-            <select class="field-select" id="pricingService">
-              <option value="math">Математика · 6–9 классы</option>
-              <option value="physicsSchool">Физика · школьная программа</option>
-              <option value="physicsOge">Физика · подготовка к ОГЭ</option>
-              <option value="infoSchool">Информатика · школьная программа</option>
-              <option value="infoOge">Информатика · подготовка к ОГЭ</option>
-              <option value="infoEge">Информатика · подготовка к ЕГЭ</option>
-              <option value="scratch">Scratch</option>
-              <option value="pythonBasic">Python · основы</option>
-              <option value="pythonProjects">Python · алгоритмы и проекты</option>
-              <option value="pythonExam">Python · подготовка к экзаменам</option>
-              <option value="htmlCss">HTML/CSS</option>
-              <option value="figma">Figma</option>
-              <option value="individual">Индивидуальное обучение · направление №5</option>
-            </select>
-            <label class="field-label" for="pricingRegion">Страна оплаты</label>
-            <select class="field-select" id="pricingRegion">
-              <option value="ru">Россия · ₽</option>
-              <option value="by">Беларусь · BYN</option>
-              <option value="intl">Другие страны · €</option>
-            </select>
-            <span class="field-label">Длительность занятия</span>
-            <div class="duration-switch" role="group" aria-label="Длительность занятия">
-              <button class="duration-btn active" type="button" data-duration="45" aria-pressed="true">45 минут</button>
-              <button class="duration-btn" type="button" data-duration="60" aria-pressed="false">60 минут</button>
-            </div>
-            <p class="pricing-hint">Выбери параметры — стоимость обновится автоматически.</p>
-          </div>
-          <div class="pricing-panel price-result" aria-live="polite">
-            <div class="panel-kicker">02 / твоя стоимость</div>
-            <div class="price-main"><span>Одно занятие</span><strong id="singleLessonPrice">1 300 ₽</strong><small id="singleLessonDescription">Математика · 6–9 классы · 45 минут</small></div>
-            <div class="trial-line"><span>Пробное занятие<br><small class="trial-sub">Знакомство и определение учебной задачи</small></span><strong id="trialLessonPrice">1 200 ₽</strong></div>
-            <div class="packages-title"><h4>Абонементы</h4><span>Больше занятий — заметнее экономия</span></div>
-            <div class="package-grid" id="packageGrid">
-              <article class="package-option"><span class="package-count">08 занятий · −5%</span><strong>9 880 ₽</strong><span>1 235 ₽ за занятие</span></article>
-              <article class="package-option featured"><span class="package-count">12 занятий · −10%</span><strong>14 040 ₽</strong><span>1 170 ₽ за занятие</span></article>
-              <article class="package-option"><span class="package-count">24 занятия · −15%</span><strong>26 520 ₽</strong><span>1 105 ₽ за занятие</span></article>
-            </div>
-            <p class="pricing-footnote">Абонементы можно использовать для регулярных занятий по выбранному направлению. Стоимость фиксируется при оплате пакета. Без скрытых доплат и обязательств.</p>
-          </div>
-        </div>
-        <div class="pricing-contact">
-          <p class="section-intro">Не уверены, что выбрать? Обсудим задачу, подберём направление и продолжительность занятий.</p>
-          <a class="btn btn-wine" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Обсудить обучение ↗</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section library" id="library">
-      <div class="wrap library-layout">
-        <div>
-          <div class="eyebrow">mischenko edu / Library</div>
-          <div class="library-count">06<span>направлений · одна библиотека</span></div>
-          <h2 class="section-heading">Знания, к которым можно вернуться</h2>
-          <p class="section-intro">Авторские материалы, конспекты и интерактивная практика — в одном пространстве, рядом с занятиями.</p>
-          <div class="library-directions">
-            <span>Физика</span><span>Информатика</span>
-            <span>Математика</span><span>Python</span>
-            <span>Figma</span><span>HTML / CSS</span>
-          </div>
-          <div class="library-actions">
-            <a class="btn btn-light" href="edu/index.html">Перейти к материалам <span>↗</span></a>
-            <span class="library-note">Выбрать тему и формат</span>
-          </div>
-        </div>
-        <aside class="library-side">
-          <small>ЧТО ВНУТРИ</small>
-          <h3>Не только читать.<br>Пробовать и проверять.</h3>
-          <p>В библиотеке собраны материалы для самостоятельной работы: конспекты, карточки, тренажёры, интерактивная практика и пособия по направлениям.</p>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section reviews" id="reviews">
-      <div class="wrap">
-        <div class="reviews-head">
-          <div>
-            <div class="eyebrow">Страница 04 · результаты</div>
-            <h2 class="section-heading">Отзывы учеников<br>и родителей.</h2>
-            <p class="section-intro">Что меняется, когда сложное становится понятным: истории учеников о нашей работе.</p>
-          </div>
-        </div>
-        <div class="review-grid">
-          <article class="review-card"><div class="quote-mark">“</div><blockquote>Сначала по информатике были оценки 6–7, некоторые темы приходилось разбирать заново. Теперь материал понятнее, задания даются увереннее, постепенно идём к 9.</blockquote><div class="review-meta"><strong>Василиса</strong><span>Школьная информатика</span></div></article>
-          <article class="review-card"><div class="quote-mark">“</div><blockquote>Раньше формулы приходилось просто учить. Теперь понимаю, откуда они берутся и как применять их в задачах. Задания ОГЭ уже решаю самостоятельно.</blockquote><div class="review-meta"><strong>Илья</strong><span>Физика · подготовка к ОГЭ</span></div></article>
-          <article class="review-card"><div class="quote-mark">“</div><blockquote>Разбираем условия лабораторных по Python, пишем код и доводим работу до результата. Теперь могу разобраться в задании и сдать лабораторную на 4.</blockquote><div class="review-meta"><strong>Иван</strong><span>Python · университет</span></div></article>
-          <article class="review-card"><div class="quote-mark">“</div><blockquote>Раньше запоминал готовый способ и терялся, если условие менялось. Теперь понимаю, почему выбираю решение, и могу попробовать сам.</blockquote><div class="review-meta"><strong>Собирательная обратная связь</strong><span>Пример изменений в обучении</span></div></article>
-        </div>
-        <p class="review-disclaimer">Тексты адаптированы по реальным результатам обучения и не являются дословными цитатами. Последняя карточка — собирательная обратная связь, а не отдельный отзыв.</p>
-      </div>
-    </section>
-
-    <section class="section faq" id="faq">
-      <div class="wrap faq-layout">
-        <div class="faq-intro">
-          <div class="eyebrow">Страница 05 · вопросы</div>
-          <h2 class="section-heading">Спрашивают<br><em>часто.</em></h2>
-          <p class="section-intro">Коротко о формате занятий, подготовке и материалах. Если не нашла ответ — можно написать мне напрямую.</p>
-          <a class="text-link" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Задать свой вопрос ↗</a>
-        </div>
-        <div class="faq-list">
-          <article class="faq-item" data-open="true"><button class="faq-q" type="button" aria-expanded="true"><span>Занятия проходят онлайн?</span><span>+</span></button><div class="faq-a"><div><p>Да, все занятия — индивидуальные и проходят онлайн. Можно выбрать продолжительность 45 или 60 минут. Материал, темп и количество практики подбираю под ученика, а план обучения меняю по мере продвижения.</p></div></div></article>
-          <article class="faq-item" data-open="false"><button class="faq-q" type="button" aria-expanded="false"><span>Можно начать с диагностики?</span><span>+</span></button><div class="faq-a"><div><p>Конечно. По любому из четырёх предметных направлений — информатике, математике, физике или программированию — можно обсудить диагностику со мной. Самостоятельный тест сейчас работает в пилотном режиме по нескольким профилям: он помогает наметить темы для повторения, но не заменяет полноценный разбор с преподавателем.</p></div></div></article>
-          <article class="faq-item" data-open="false"><button class="faq-q" type="button" aria-expanded="false"><span>Сколько стоит занятие?</span><span>+</span></button><div class="faq-a"><div><p>Стоимость пробного занятия и регулярных встреч зависит от региона оплаты. Точный тариф можно посмотреть в разделе «Стоимость»: выбери страну, направление и продолжительность занятия. Для пакетов на 8, 12 и 24 занятия действуют скидки.</p></div></div></article>
-          <article class="faq-item" data-open="false"><button class="faq-q" type="button" aria-expanded="false"><span>Готовишь к ОГЭ и ЕГЭ?</span><span>+</span></button><div class="faq-a"><div><p>Да. По информатике готовлю к ОГЭ и ЕГЭ, по физике — к ОГЭ. Идём по темам и типам заданий, разбираем ошибки, отрабатываем сложные места и постепенно привыкаем к экзаменационному формату.</p></div></div></article>
-          <article class="faq-item" data-open="false"><button class="faq-q" type="button" aria-expanded="false"><span>С какого возраста можно заниматься?</span><span>+</span></button><div class="faq-a"><div><p>Математика — для 6–9 классов. Информатика и программирование — в зависимости от уровня и задачи. Физика — со школьного курса. Если не уверены, подойдёт ли занятие, напишите мне: обсудим возраст, подготовку и цель.</p></div></div></article>
-          <article class="faq-item" data-open="false"><button class="faq-q" type="button" aria-expanded="false"><span>А если уже есть пробелы?</span><span>+</span></button><div class="faq-a"><div><p>Это не повод начинать всё сначала или пытаться выучить тему наизусть. Сначала находим, где именно теряется понимание, затем закрываем пробелы и возвращаемся к программе. Важно не просто получить правильный ответ, а разобраться, как к нему прийти.</p></div></div></article>
-          <article class="faq-item" data-open="false"><button class="faq-q" type="button" aria-expanded="false"><span>Программирование — только Python?</span><span>+</span></button><div class="faq-a"><div><p>Нет. Работаем с Python, Scratch, HTML и CSS, а также с Figma — знакомимся с интерфейсами и визуальным проектированием. Направление выбираем под возраст, интерес и задачу: от первых проектов до разбора конкретных учебных задач.</p></div></div></article>
-          <article class="faq-item" data-open="false"><button class="faq-q" type="button" aria-expanded="false"><span>Что есть в библиотеке mischenko edu? Всё платное?</span><span>+</span></button><div class="faq-a"><div><p>Сейчас в библиотеке доступна диагностика знаний. Остальные материалы готовятся к публикации: на страницах уже можно посмотреть, что будет внутри каждого пособия, тренажёра или квеста.</p></div></div></article>
-          <article class="faq-item" data-open="false"><button class="faq-q" type="button" aria-expanded="false"><span>Можно заниматься сразу по нескольким направлениям?</span><span>+</span></button><div class="faq-a"><div><p>Да. Если цель требует знаний из разных областей, составим индивидуальный маршрут: объединим нужные предметы и навыки, определим последовательность и темп. Не обязательно ограничиваться одним направлением.</p></div></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="final-cta" id="contact">
-      <div class="final-cta-inner">
-        <div>
-          <div class="eyebrow">Последняя страница · самая важная</div>
-          <h2>Начнём<br>с диагностики?</h2>
-          <p>Можно пройти тест самостоятельно или сначала написать мне — вместе выберем удобный формат и разберёмся, с чего начать.</p>
-        </div>
-        <div class="final-actions">
-          <button class="btn btn-light" type="button" data-open-diagnostic>Выбрать формат диагностики ↗</button>
-          <a class="btn btn-outline" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Написать в Telegram ↗</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-copy">© 2026 Катерина Мищенко · репетиторство онлайн<br>До встречи на занятии!</div>
-      <nav class="footer-links" aria-label="Дополнительная навигация">
-        <a href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Telegram ↗</a>
-        <a href="edu/index.html">Пособия</a>
-        <a class="to-top" href="#top">Наверх ↑</a>
-      </nav>
-    </div>
-  </footer>
-
-  <dialog class="diagnostic-dialog" id="diagnosticChoice" aria-labelledby="dialogTitle">
-    <div class="dialog-inner">
-      <button class="dialog-close" type="button" data-close-diagnostic aria-label="Закрыть">×</button>
-      <div class="eyebrow">mischenko edu · первый шаг</div>
-      <h2 id="dialogTitle">Как начнём?</h2>
-      <p>Можно пройти диагностику по информатике самостоятельно или написать мне — обсудим задачу и выберем подходящий следующий шаг. Оба варианта бесплатные.</p>
-      <div class="dialog-options">
-        <a class="dialog-option" href="edu/diagnostika.html"><span><strong>Пройти диагностику</strong><small>15 заданий, результат и разбор после завершения</small></span><b>↗</b></a>
-        <a class="dialog-option" href="https://t.me/katerin_mischenko?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%B4%D0%B8%D0%B0%D0%B3%D0%BD%D0%BE%D1%81%D1%82%D0%B8%D0%BA%D1%83%20%D0%BF%D0%BE%20%D0%BE%D0%B4%D0%BD%D0%BE%D0%BC%D1%83%20%D0%B8%D0%B7%20%D0%BD%D0%B0%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9.%20%D0%9F%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D0%B6%D0%B8%D1%82%D0%B5%2C%20%D0%BF%D0%BE%D0%B6%D0%B0%D0%BB%D1%83%D0%B9%D1%81%D1%82%D0%B0%2C%20%D0%BA%D0%B0%D0%BA%20%D0%B4%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D1%82%D1%8C%D1%81%D1%8F%20%D0%BE%20%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%B8%20%D0%B8%20%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82%D0%B5%3F"><span><strong>Обсудить занятия со мной</strong><small>Расскажи, с каким предметом и задачей пришли, — подберём следующий шаг</small></span><b>↗</b></a>
-      </div>
-    </div>
-  </dialog>
-
-  <script>
-    (function(){
-      var menuToggle = document.getElementById('menuToggle');
-      var mobileNav = document.getElementById('mobileNav');
-      if(menuToggle && mobileNav){
-        menuToggle.addEventListener('click',function(){
-          var open = mobileNav.classList.toggle('open');
-          menuToggle.setAttribute('aria-expanded',open ? 'true' : 'false');
-          menuToggle.textContent = open ? '×' : '☰';
-        });
-        mobileNav.querySelectorAll('a').forEach(function(link){
-          link.addEventListener('click',function(){
-            mobileNav.classList.remove('open');
-            menuToggle.setAttribute('aria-expanded','false');
-            menuToggle.textContent = '☰';
-          });
-        });
-      }
-
-      var diagnosticChoice = document.getElementById('diagnosticChoice');
-      document.querySelectorAll('[data-open-diagnostic]').forEach(function(button){
-        button.addEventListener('click',function(){
-          if(diagnosticChoice && typeof diagnosticChoice.showModal === 'function') diagnosticChoice.showModal();
-        });
-      });
-      document.querySelectorAll('[data-close-diagnostic]').forEach(function(button){
-        button.addEventListener('click',function(){
-          if(diagnosticChoice) diagnosticChoice.close();
-        });
-      });
-      if(diagnosticChoice){
-        diagnosticChoice.addEventListener('click',function(event){
-          if(event.target === diagnosticChoice) diagnosticChoice.close();
-        });
-      }
-
-      document.querySelectorAll('.faq-q').forEach(function(button){
-        button.addEventListener('click',function(){
-          var item = button.closest('.faq-item');
-          var wasOpen = item.getAttribute('data-open') === 'true';
-          document.querySelectorAll('.faq-item').forEach(function(other){
-            other.setAttribute('data-open','false');
-            other.querySelector('.faq-q').setAttribute('aria-expanded','false');
-          });
-          if(!wasOpen){
-            item.setAttribute('data-open','true');
-            button.setAttribute('aria-expanded','true');
-          }
-        });
-      });
-
-      var tariffs = {
-        ru:{currency:'RUB',trial:1200,math:[1300,1700],physicsSchool:[1500,1950],physicsOge:[1700,2200],infoSchool:[1400,1800],infoOge:[1600,2100],infoEge:[1800,2400],scratch:[1400,1800],pythonBasic:[1600,2100],pythonProjects:[1800,2400],pythonExam:[2000,2600],htmlCss:[1700,2200],figma:[1700,2200],individual:[1700,2200]},
-        by:{currency:'BYN',trial:30,math:[32,40],physicsSchool:[35,45],physicsOge:[40,50],infoSchool:[40,50],infoOge:[45,60],infoEge:[50,65],scratch:[32,40],pythonBasic:[36,45],pythonProjects:[40,50],pythonExam:[45,60],htmlCss:[36,45],figma:[36,45],individual:[50,60]},
-        intl:{currency:'EUR',trial:20,math:[22,28],physicsSchool:[23,30],physicsOge:[27,35],infoSchool:[22,28],infoOge:[27,35],infoEge:[30,38],scratch:[22,28],pythonBasic:[25,32],pythonProjects:[28,36],pythonExam:[32,42],htmlCss:[27,35],figma:[27,35],individual:[28,35]}
-      };
-      var serviceNames = {
-        math:'Математика · 6–9 классы',physicsSchool:'Физика · школьная программа',physicsOge:'Физика · подготовка к ОГЭ',
-        infoSchool:'Информатика · школьная программа',infoOge:'Информатика · подготовка к ОГЭ',infoEge:'Информатика · подготовка к ЕГЭ',
-        scratch:'Scratch',pythonBasic:'Python · основы',pythonProjects:'Python · алгоритмы и проекты',
-        pythonExam:'Python · подготовка к экзаменам',htmlCss:'HTML/CSS',figma:'Figma',individual:'Индивидуальное обучение · направление №5'
-      };
-      var region = document.getElementById('pricingRegion');
-      var service = document.getElementById('pricingService');
-      var single = document.getElementById('singleLessonPrice');
-      var description = document.getElementById('singleLessonDescription');
-      var trial = document.getElementById('trialLessonPrice');
-      var packageGrid = document.getElementById('packageGrid');
-      var duration = 45;
-      function money(value,currency){
-        var digits = currency === 'EUR' ? 2 : 0;
-        return new Intl.NumberFormat('ru-RU',{style:'currency',currency:currency,minimumFractionDigits:digits,maximumFractionDigits:digits}).format(value);
-      }
-      function renderPrice(){
-        if(!region || !service || !single || !description || !trial || !packageGrid) return;
-        var selected = tariffs[region.value];
-        var key = service.value;
-        var base = selected[key][duration === 45 ? 0 : 1];
-        single.textContent = money(base,selected.currency);
-        description.textContent = serviceNames[key] + ' · ' + duration + ' минут';
-        trial.textContent = money(selected.trial,selected.currency);
-        var packs = [{count:8,discount:5},{count:12,discount:10},{count:24,discount:15}];
-        packageGrid.innerHTML = packs.map(function(pack,index){
-          var digits = selected.currency === 'EUR' ? 2 : 0;
-          var total = Number((base * pack.count * (1 - pack.discount / 100)).toFixed(digits));
-          var per = Number((total / pack.count).toFixed(digits));
-          return '<article class="package-option ' + (index === 1 ? 'featured' : '') + '">' +
-            '<span class="package-count">' + String(pack.count).padStart(2,'0') + ' занятий · −' + pack.discount + '%</span>' +
-            '<strong>' + money(total,selected.currency) + '</strong>' +
-            '<span>' + money(per,selected.currency) + ' за занятие</span></article>';
-        }).join('');
-      }
-      if(region) region.addEventListener('change',renderPrice);
-      if(service) service.addEventListener('change',renderPrice);
-      document.querySelectorAll('.duration-btn').forEach(function(button){
-        button.addEventListener('click',function(){
-          duration = Number(button.getAttribute('data-duration'));
-          document.querySelectorAll('.duration-btn').forEach(function(other){
-            var active = other === button;
-            other.classList.toggle('active',active);
-            other.setAttribute('aria-pressed',active ? 'true' : 'false');
-          });
-          renderPrice();
-        });
-      });
-      renderPrice();
-    })();
-  </script>
-</body>
-</html>
+<body>
+<div class="topline"></div>
+<header><div class="wrap nav">
+<a class="brand" href="#top" aria-label="mischenko edu"><span class="brand-mark"></span><span class="brand-name">mischenko edu</span></a>
+<nav class="navlinks" aria-label="Главная навигация"><a href="#about">Обо мне</a><a href="#directions">Направления</a><a href="#method">Подход</a><a href="#pricing">Стоимость</a><a href="#library">Библиотека</a><a href="#reviews">Отзывы</a></nav>
+<a class="nav-cta" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Написать мне ↗</a><button class="menu-toggle" id="menuToggle" aria-label="Открыть меню" aria-expanded="false">☰</button>
+<nav class="mobile-menu" id="mobileMenu"><a href="#about">Обо мне</a><a href="#directions">Направления</a><a href="#method">Подход</a><a href="#pricing">Стоимость</a><a href="#library">Библиотека</a><a href="#reviews">Отзывы</a><a href="#faq">Вопросы</a><a href="#diagnostic">Диагностика</a></nav>
+</div></header>
+<main id="top">
+<div class="wrap hero">
+<div class="hero-copy"><div class="eyebrow">Digital learning lab · 01 / mischenko edu</div><h1>ПОНЯТЬ.<br><span class="outline">СОЗДАТЬ.</span><br><span class="pink">БОЛЬШЕ.</span></h1>
+<p>Обучение, в котором сложное становится понятным. Исследуем, задаём вопросы, пишем код, находим решения — и превращаем знания в реальные навыки.</p>
+<div class="hero-actions"><a class="btn" href="#directions">Исследовать ↗</a><a class="btn ghost" href="#diagnostic">Начать с диагностики</a></div>
+<div class="hero-meta"><div class="metric"><strong>8+</strong><span>лет преподавания</span></div><div class="metric"><strong>570+</strong><span>учеников за всё время</span></div><div class="metric"><strong>1:1</strong><span>индивидуально онлайн</span></div></div></div>
+<div class="hero-art"><div class="art-grid"></div><div class="halo"></div><div class="portrait-frame"><div class="portrait-placeholder"><div class="sigil">M<span style="color:#ff286f">/</span>E</div><small>ПОРТРЕТ ДОБАВИМ ПОЗЖЕ</small></div></div><div class="orbit a">Knowledge is power / 2026</div><div class="orbit b">Explore · Learn · Create</div><div class="floating f1"><small>Формат</small><b>1 : 1</b></div><div class="floating f2"><small>Направлений</small><b>06</b></div></div>
+</div>
+<div class="wrap stats">
+<div class="stat"><div class="stat-icon"><span>⌘</span></div><div><b>Информатика</b><small>Логика и алгоритмы</small></div></div><div class="stat"><div class="stat-icon"><span>∑</span></div><div><b>Математика</b><small>Понимание и практика</small></div></div><div class="stat"><div class="stat-icon"><span>∆</span></div><div><b>Физика</b><small>Формулы и закономерности</small></div></div><div class="stat"><div class="stat-icon"><span>&lt;/&gt;</span></div><div><b>Программирование</b><small>Код, веб и дизайн</small></div></div>
+</div>
+<section id="about"><div class="wrap split"><div><div class="eyebrow">01 / кто стоит за лабораторией</div><div class="visual-panel"><div class="visual-word">THINK<span style="color:#ff286f">/</span>DO<small>НЕ ЗАПОМИНАТЬ. ПОНИМАТЬ.</small></div></div></div><div><h2>ЗНАНИЯ —<br><em>ЭТО ИНСТРУМЕНТ.</em></h2><div class="bio-copy"><p>Я — Катерина Мищенко, преподаватель информатики, математики, физики и программирования.</p><p>Работаю индивидуально и онлайн со школьниками и взрослыми, которые изучают код. На занятиях важен не только ответ. Мы разбираем ход мысли, ищем ошибки, сравниваем способы решения и учимся понимать, почему метод работает.</p><p>К экзаменам готовимся системно: изучаем темы, тренируемся на заданиях и возвращаемся к тому, что пока вызывает трудности.</p><p>Разрабатываю материалы mischenko edu — конспекты, тренажёры и практику для самостоятельной работы.</p></div><div class="credential"><b>Мозырский государственный педагогический университет им. И. П. Шамякина</b><span>2017 · Курсы школы Skyeng — дополнительное обучение</span></div></div></div></section>
+<section id="directions"><div class="wrap"><div class="section-head"><div><div class="eyebrow">02 / choose your dimension</div><h2>ТВОЯ ТОЧКА<br><em>ВХОДА.</em></h2></div><p>Четыре предметных направления и цифровые инструменты. Выбираем не модный предмет, а то, что нужно для твоей цели, уровня и темпа.</p></div>
+<div class="directions">
+<a class="direction" href="#diagnostic"><span class="num">01 / SCIENCE</span><span class="arrow">↗</span><div class="symbol">∆</div><h3>Физика</h3><p>Школьная программа, контрольные и подготовка к ОГЭ. Формулы, явления и задачи с разбором.</p></a>
+<a class="direction" href="#diagnostic"><span class="num">02 / LOGIC</span><span class="arrow">↗</span><div class="symbol">⌘</div><h3>Информатика</h3><p>Школьная программа, устранение пробелов, подготовка к ОГЭ и ЕГЭ.</p></a>
+<a class="direction" href="#diagnostic"><span class="num">03 / MATH</span><span class="arrow">↗</span><div class="symbol">∑</div><h3>Математика</h3><p>6–9 классы: вычисления, логика, решение задач и работа над ошибками.</p></a>
+<a class="direction" href="#diagnostic"><span class="num">04 / CODE</span><span class="arrow">↗</span><div class="symbol">&lt;/&gt;</div><h3>Python</h3><p>Основы, алгоритмы, проекты и подготовка к экзаменационным задачам.</p></a>
+<a class="direction" href="#diagnostic"><span class="num">05 / DESIGN</span><span class="arrow">↗</span><div class="symbol">◇</div><h3>Figma</h3><p>Интерфейсы, композиция и визуальное проектирование.</p></a>
+<a class="direction" href="#diagnostic"><span class="num">06 / WEB</span><span class="arrow">↗</span><div class="symbol">▤</div><h3>HTML / CSS</h3><p>Создание сайтов и первые шаги в веб-разработке.</p></a>
+</div></div></section>
+<section id="method"><div class="wrap"><div class="section-head"><div><div class="eyebrow">03 / beyond memorizing</div><h2>НЕ ПРОСТО<br><em>ОБЪЯСНЯЮ.</em></h2></div><p>Моя задача — не выдать готовый ответ, а помочь увидеть логику. Чтобы ученик мог разобраться самостоятельно, даже когда задача выглядит незнакомой.</p></div>
+<div class="steps">
+<article class="step"><div class="step-no">01 / ANALYSE</div><h3>Знакомимся и разбираемся</h3><p>Определяем цель и текущий уровень: что уже понятно, где пробелы и как ты подходишь к задачам.</p></article>
+<article class="step"><div class="step-no">02 / DESIGN</div><h3>Собираем маршрут</h3><p>Выбираем порядок тем и темп. Подбираю задания под твою цель — без перегруза.</p></article>
+<article class="step"><div class="step-no">03 / PRACTICE</div><h3>Пробуем и ищем решение</h3><p>Решаем задачи, пишем код, проверяем способы. Ошибки разбираем по причине.</p></article>
+<article class="step"><div class="step-no">04 / RESULT</div><h3>Проверяем понимание</h3><p>Смотрим, можешь ли ты применить правило и объяснить решение самостоятельно.</p></article>
+</div></div></section>
+<section class="pricing" id="pricing"><div class="wrap"><div class="section-head"><div><div class="eyebrow">04 / transparent pricing</div><h2>ТВОЙ ФОРМАТ.<br><em>ТВОЙ ТЕМП.</em></h2></div><p>Выбери направление, регион оплаты и длительность. Калькулятор покажет стоимость занятия и абонементов.</p></div>
+<div class="pricing-layout"><div class="panel"><div class="panel-kicker">01 / параметры занятия</div><h3>Настрой своё занятие</h3><label class="field-label" for="pricingService">Направление</label><select class="field-select" id="pricingService">
+<option value="math">Математика · 6–9 классы</option><option value="physicsSchool">Физика · школьная программа</option><option value="physicsOge">Физика · подготовка к ОГЭ</option><option value="infoSchool">Информатика · школьная программа</option><option value="infoOge">Информатика · подготовка к ОГЭ</option><option value="infoEge">Информатика · подготовка к ЕГЭ</option><option value="scratch">Scratch</option><option value="pythonBasic">Python · основы</option><option value="pythonProjects">Python · алгоритмы и проекты</option><option value="pythonExam">Python · подготовка к экзаменам</option><option value="htmlCss">HTML/CSS</option><option value="figma">Figma</option><option value="individual">Индивидуальное обучение</option></select>
+<label class="field-label" for="pricingRegion">Страна оплаты</label><select class="field-select" id="pricingRegion"><option value="ru">Россия · ₽</option><option value="by">Беларусь · BYN</option><option value="intl">Другие страны · €</option></select>
+<span class="field-label">Длительность занятия</span><div class="duration-switch" role="group" aria-label="Длительность занятия"><button class="duration-btn active" type="button" data-duration="45" aria-pressed="true">45 минут</button><button class="duration-btn" type="button" data-duration="60" aria-pressed="false">60 минут</button></div><p class="pricing-hint">Выбери параметры — стоимость обновится автоматически.</p></div>
+<div class="panel" aria-live="polite"><div class="panel-kicker">02 / твоя стоимость</div><div class="price-main"><span>Одно занятие</span><strong id="singleLessonPrice">1 300 ₽</strong><small id="singleLessonDescription">Математика · 6–9 классы · 45 минут</small></div><div class="trial-line"><span>Пробное занятие<small>Знакомство и определение учебной задачи</small></span><strong id="trialLessonPrice">1 200 ₽</strong></div><div class="packages-title"><h4>Абонементы</h4><span>Больше занятий — заметнее экономия</span></div><div class="package-grid" id="packageGrid"></div><p class="pricing-footnote">Абонементы на 8, 12 и 24 занятия со скидками 5%, 10% и 15%. Стоимость фиксируется при оплате пакета.</p></div></div>
+<div class="pricing-contact"><p>Не уверены, что выбрать? Обсудим задачу, подберём направление и продолжительность занятий.</p><a class="btn" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Обсудить обучение ↗</a></div></div></section>
+<section id="library"><div class="wrap library-layout"><div><div class="eyebrow">05 / mischenko edu library</div><div class="library-count">06<span>направлений<br>одна библиотека</span></div><h2>ЗНАНИЯ, К КОТОРЫМ<br>МОЖНО ВЕРНУТЬСЯ.</h2><p>Авторские материалы, конспекты и интерактивная практика — в одном пространстве, рядом с занятиями. Здесь можно не только читать, но и проверять себя.</p><div class="library-directions"><span>Физика</span><span>Информатика</span><span>Математика</span><span>Python</span><span>Figma</span><span>HTML / CSS</span></div><div class="library-actions"><a class="btn" href="edu/index.html">Перейти к материалам ↗</a><span class="library-note">Бесплатные и платные материалы</span></div></div><aside class="library-side"><small>ЧТО ВНУТРИ</small><h3>НЕ ТОЛЬКО ЧИТАТЬ.<br>ПРОБОВАТЬ И ПРОВЕРЯТЬ.</h3><p>Конспекты, карточки, тренажёры, интерактивная практика и пособия по направлениям. Сейчас доступна диагностика знаний; остальные материалы готовятся к публикации.</p></aside></div></section>
+<section id="reviews"><div class="wrap"><div class="section-head"><div><div class="eyebrow">06 / real learning progress</div><h2>ИЗМЕНЕНИЯ,<br><em>КОТОРЫЕ ВИДНО.</em></h2></div><p>Что меняется, когда сложное становится понятным: истории учеников о нашей работе.</p></div><div class="review-grid">
+<article class="review"><div class="quote">“</div><blockquote>Сначала по информатике были оценки 6–7, некоторые темы приходилось разбирать заново. Теперь материал понятнее, задания даются увереннее, постепенно идём к 9.</blockquote><div class="review-meta"><strong>Василиса</strong><span>Школьная информатика</span></div></article>
+<article class="review"><div class="quote">“</div><blockquote>Раньше формулы приходилось просто учить. Теперь понимаю, откуда они берутся и как применять их в задачах. Задания ОГЭ уже решаю самостоятельно.</blockquote><div class="review-meta"><strong>Илья</strong><span>Физика · подготовка к ОГЭ</span></div></article>
+<article class="review"><div class="quote">“</div><blockquote>Разбираем условия лабораторных по Python, пишем код и доводим работу до результата. Теперь могу разобраться в задании и сдать лабораторную на 4.</blockquote><div class="review-meta"><strong>Иван</strong><span>Python · университет</span></div></article>
+<article class="review"><div class="quote">“</div><blockquote>Раньше запоминал готовый способ и терялся, если условие менялось. Теперь понимаю, почему выбираю решение, и могу попробовать сам.</blockquote><div class="review-meta"><strong>Собирательная обратная связь</strong><span>Пример изменений в обучении</span></div></article>
+</div><p class="footnote">Тексты адаптированы по реальным результатам обучения и не являются дословными цитатами. Последняя карточка — собирательная обратная связь, а не отдельный отзыв.</p></div></section>
+<section id="faq"><div class="wrap faq-layout"><div class="faq-intro"><div class="eyebrow">07 / questions</div><h2>СПРАШИВАЮТ<br><em>ЧАСТО.</em></h2><p>Коротко о формате занятий, подготовке и материалах. Если не нашла ответ — можно написать мне напрямую.</p><a class="btn ghost" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Задать свой вопрос ↗</a></div>
+<div class="faq-list">
+<article class="faq-item" data-open="true"><button class="faq-q" aria-expanded="true"><span>Занятия проходят онлайн?</span><span>+</span></button><div class="faq-a"><div><p>Да, все занятия — индивидуальные и проходят онлайн. Можно выбрать продолжительность 45 или 60 минут. Материал, темп и количество практики подбираю под ученика, а план обучения меняю по мере продвижения.</p></div></div></article>
+<article class="faq-item" data-open="false"><button class="faq-q" aria-expanded="false"><span>Можно начать с диагностики?</span><span>+</span></button><div class="faq-a"><div><p>По информатике, математике, физике или программированию можно обсудить диагностику со мной. Самостоятельный тест сейчас работает в пилотном режиме по нескольким профилям: он помогает наметить темы для повторения, но не заменяет полноценный разбор с преподавателем.</p></div></div></article>
+<article class="faq-item" data-open="false"><button class="faq-q" aria-expanded="false"><span>Сколько стоит занятие?</span><span>+</span></button><div class="faq-a"><div><p>Стоимость зависит от региона оплаты, направления и продолжительности. Выбери параметры в калькуляторе выше. Для пакетов на 8, 12 и 24 занятия действуют скидки.</p></div></div></article>
+<article class="faq-item" data-open="false"><button class="faq-q" aria-expanded="false"><span>Готовишь к ОГЭ и ЕГЭ?</span><span>+</span></button><div class="faq-a"><div><p>Да. По информатике готовлю к ОГЭ и ЕГЭ, по физике — к ОГЭ. Идём по темам и типам заданий, разбираем ошибки и отрабатываем сложные места.</p></div></div></article>
+<article class="faq-item" data-open="false"><button class="faq-q" aria-expanded="false"><span>С какого возраста можно заниматься?</span><span>+</span></button><div class="faq-a"><div><p>Математика — для 6–9 классов. Информатика и программирование — в зависимости от уровня и задачи. Физика — со школьного курса. Если не уверены, подойдёт ли занятие, напишите мне.</p></div></div></article>
+<article class="faq-item" data-open="false"><button class="faq-q" aria-expanded="false"><span>А если уже есть пробелы?</span><span>+</span></button><div class="faq-a"><div><p>Сначала находим, где именно теряется понимание, затем закрываем пробелы и возвращаемся к программе. Важно не просто получить правильный ответ, а разобраться, как к нему прийти.</p></div></div></article>
+<article class="faq-item" data-open="false"><button class="faq-q" aria-expanded="false"><span>Программирование — только Python?</span><span>+</span></button><div class="faq-a"><div><p>Нет. Работаем с Python, Scratch, HTML и CSS, а также с Figma — знакомимся с интерфейсами и визуальным проектированием.</p></div></div></article>
+<article class="faq-item" data-open="false"><button class="faq-q" aria-expanded="false"><span>Что есть в библиотеке? Всё платное?</span><span>+</span></button><div class="faq-a"><div><p>В библиотеке предусмотрены бесплатные и платные материалы по шести направлениям. Сейчас доступна диагностика знаний, остальные материалы готовятся к публикации.</p></div></div></article>
+<article class="faq-item" data-open="false"><button class="faq-q" aria-expanded="false"><span>Можно заниматься по нескольким направлениям?</span><span>+</span></button><div class="faq-a"><div><p>Да. Если цель требует знаний из разных областей, составим индивидуальный маршрут: объединим нужные предметы и навыки, определим последовательность и темп.</p></div></div></article>
+</div></div></section>
+<section class="diagnostic" id="diagnostic"><div class="wrap diag-grid"><div class="diag-copy"><div class="eyebrow">08 / start here</div><h2>ДАВАЙ НАЙДЁМ<br>ТВОЙ <span>МАРШРУТ.</span></h2><p>Оставь заявку на знакомство. Расскажешь, что хочется освоить, а я помогу определить первый шаг и подходящий формат занятий.</p><p class="micro" style="font-size:8px;color:#a99bad">NO PRESSURE · JUST A GOOD START</p></div>
+<form class="diag-form" id="leadForm"><div class="field"><label for="student">Как к тебе обращаться?</label><input id="student" name="student" placeholder="Имя" required></div><div class="field"><label for="contact">Контакт для связи</label><input id="contact" name="contact" placeholder="Telegram / телефон" required></div><div class="field"><label for="subject">Направление</label><select id="subject" name="subject" required><option value="">Выбери направление</option><option>Физика</option><option>Информатика</option><option>Математика</option><option>Python</option><option>Figma</option><option>HTML / CSS</option><option>Пока не определились</option></select></div><div class="field"><label for="level">Класс / уровень</label><input id="level" name="level" placeholder="Например, 8 класс"></div><div class="field full"><label for="goal">Что хочется изменить или освоить?</label><textarea id="goal" name="goal" placeholder="Можно коротко — разберёмся вместе"></textarea></div><button class="btn" type="submit">Отправить заявку ↗</button><div class="form-note">Форма демонстрационная: перед запуском подключим отправку заявок в Telegram или почту. Сейчас данные никуда не отправляются.</div><div class="success" id="success" role="status">Проверка формы пройдена. Для реальных заявок нужно подключить канал отправки.</div></form></div></section>
+</main>
+<footer><div class="wrap foot"><a class="brand" href="#top"><span class="brand-mark"></span><span class="brand-name">mischenko edu</span></a><p>© 2026 КАТЕРИНА МИЩЕНКО · ОБУЧЕНИЕ ОНЛАЙН</p><div class="social"><a href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Telegram ↗</a><a href="edu/index.html">Библиотека ↗</a><a href="#top">Наверх ↑</a></div></div></footer>
+<script>
+(function(){
+const menuButton=document.getElementById('menuToggle'),menu=document.getElementById('mobileMenu');
+if(menuButton&&menu){menuButton.addEventListener('click',()=>{const open=menu.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open));menuButton.textContent=open?'×':'☰'});menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');menuButton.setAttribute('aria-expanded','false');menuButton.textContent='☰'}))}
+document.querySelectorAll('.faq-q').forEach(button=>button.addEventListener('click',()=>{const item=button.closest('.faq-item'),wasOpen=item.dataset.open==='true';document.querySelectorAll('.faq-item').forEach(other=>{other.dataset.open='false';other.querySelector('.faq-q').setAttribute('aria-expanded','false')});if(!wasOpen){item.dataset.open='true';button.setAttribute('aria-expanded','true')}}));
+const tariffs={
+ru:{currency:'RUB',trial:1200,math:[1300,1700],physicsSchool:[1500,1950],physicsOge:[1700,2200],infoSchool:[1400,1800],infoOge:[1600,2100],infoEge:[1800,2400],scratch:[1400,1800],pythonBasic:[1600,2100],pythonProjects:[1800,2400],pythonExam:[2000,2600],htmlCss:[1700,2200],figma:[1700,2200],individual:[1700,2200]},
+by:{currency:'BYN',trial:30,math:[32,40],physicsSchool:[35,45],physicsOge:[40,50],infoSchool:[40,50],infoOge:[45,60],infoEge:[50,65],scratch:[32,40],pythonBasic:[36,45],pythonProjects:[40,50],pythonExam:[45,60],htmlCss:[36,45],figma:[36,45],individual:[50,60]},
+intl:{currency:'EUR',trial:20,math:[22,28],physicsSchool:[23,30],physicsOge:[27,35],infoSchool:[22,28],infoOge:[27,35],infoEge:[30,38],scratch:[22,28],pythonBasic:[25,32],pythonProjects:[28,36],pythonExam:[32,42],htmlCss:[27,35],figma:[27,35],individual:[28,35]}};
+const names={math:'Математика · 6–9 классы',physicsSchool:'Физика · школьная программа',physicsOge:'Физика · подготовка к ОГЭ',infoSchool:'Информатика · школьная программа',infoOge:'Информатика · подготовка к ОГЭ',infoEge:'Информатика · подготовка к ЕГЭ',scratch:'Scratch',pythonBasic:'Python · основы',pythonProjects:'Python · алгоритмы и проекты',pythonExam:'Python · подготовка к экзаменам',htmlCss:'HTML/CSS',figma:'Figma',individual:'Индивидуальное обучение'};
+const region=document.getElementById('pricingRegion'),service=document.getElementById('pricingService'),single=document.getElementById('singleLessonPrice'),description=document.getElementById('singleLessonDescription'),trial=document.getElementById('trialLessonPrice'),grid=document.getElementById('packageGrid');let duration=45;
+function money(value,currency){const digits=currency==='EUR'?2:0;return new Intl.NumberFormat('ru-RU',{style:'currency',currency,minimumFractionDigits:digits,maximumFractionDigits:digits}).format(value)}
+function renderPrice(){if(!region||!service||!single||!description||!trial||!grid)return;const selected=tariffs[region.value],key=service.value,base=selected[key][duration===45?0:1];single.textContent=money(base,selected.currency);description.textContent=names[key]+' · '+duration+' минут';trial.textContent=money(selected.trial,selected.currency);grid.innerHTML=[{count:8,discount:5},{count:12,discount:10},{count:24,discount:15}].map((pack,index)=>{const digits=selected.currency==='EUR'?2:0,total=Number((base*pack.count*(1-pack.discount/100)).toFixed(digits)),per=Number((total/pack.count).toFixed(digits));return '<article class="package-option '+(index===1?'featured':'')+'"><span class="package-count">'+String(pack.count).padStart(2,'0')+' занятий · −'+pack.discount+'%</span><strong>'+money(total,selected.currency)+'</strong><span>'+money(per,selected.currency)+' за занятие</span></article>'}).join('')}
+if(region)region.addEventListener('change',renderPrice);if(service)service.addEventListener('change',renderPrice);document.querySelectorAll('.duration-btn').forEach(button=>button.addEventListener('click',()=>{duration=Number(button.dataset.duration);document.querySelectorAll('.duration-btn').forEach(other=>{const active=other===button;other.classList.toggle('active',active);other.setAttribute('aria-pressed',String(active))});renderPrice()}));renderPrice();
+const form=document.getElementById('leadForm');if(form)form.addEventListener('submit',event=>{event.preventDefault();if(form.reportValidity())document.getElementById('success').style.display='block'});
+})();
+</script>
+</body></html>
