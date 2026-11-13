@@ -306,7 +306,8 @@ test("all library pages use the complete Cyber layout on desktop and mobile", as
     "/edu/diagnostika.html",
     "/edu/diagnostika-v2-preview.html",
     "/edu/diagnostics/archive.html",
-    "/edu/diagnostics/privacy.html"
+    "/edu/diagnostics/privacy.html",
+    "/edu/materials/informatics-manual.html"
   ];
   const page = await browser.newPage({ viewport: { width: 1365, height: 900 } });
   const pageErrors = [];
@@ -337,28 +338,23 @@ test("all library pages use the complete Cyber layout on desktop and mobile", as
 });
 
 
-test("diagnostic readiness diagnostics", async () => {
+
+test("four-part informatics manual demo shows the full outline and a real preview fragment", async () => {
   const page = await browser.newPage({ viewport: { width: 1365, height: 900 } });
   const errors = [];
   page.on("pageerror", error => errors.push(error.message));
-  await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
-  const before = await page.evaluate(() => ({
-    direction: document.querySelector("#direction")?.value,
-    grade: document.querySelector("#grade")?.value,
-    startDisabled: document.querySelector("#start")?.disabled,
-    options: [...document.querySelectorAll("#direction option")].map(x => x.value)
-  }));
-  await page.locator("#student").fill("Диагностика");
-  await page.locator("#direction").selectOption("informatics");
-  await page.locator("#grade").selectOption("6");
-  const after = await page.evaluate(() => ({
-    student: document.querySelector("#student")?.value,
-    direction: document.querySelector("#direction")?.value,
-    grade: document.querySelector("#grade")?.value,
-    startDisabled: document.querySelector("#start")?.disabled,
-    profileNote: document.querySelector("#profile-note")?.textContent,
-    curriculum: document.querySelector("#curriculum")?.value
-  }));
-  console.log("DIAGNOSTIC_READINESS", JSON.stringify({ before, after, errors }));
+  const response = await page.goto(baseUrl + "/edu/materials/informatics-manual.html", { waitUntil: "domcontentloaded" });
+  assert.equal(response?.status(), 200);
+  assert.equal(await page.locator("#part-1").count(), 1);
+  assert.equal(await page.locator("#part-2").count(), 1);
+  assert.equal(await page.locator("#part-3").count(), 1);
+  assert.equal(await page.locator("#part-4").count(), 1);
+  assert.match(await page.locator("#preview").textContent(), /Что такое система счисления/);
+  assert.match(await page.locator("#preview").textContent(), /Шестнадцатеричная/);
+  assert.equal(await page.locator("table").count(), 1);
+  await page.setViewportSize({ width: 390, height: 844 });
+  const dimensions = await page.evaluate(() => ({ viewport: document.documentElement.clientWidth, content: document.documentElement.scrollWidth }));
+  assert.ok(dimensions.content <= dimensions.viewport, "manual demo mobile overflow: " + JSON.stringify(dimensions));
+  assert.deepEqual(errors, []);
   await page.close();
 });
