@@ -94,6 +94,6 @@ footer{border-top:1px solid var(--line);padding:24px 0;background:#08070d}.foot{
 @media print{body{background:#fff;color:#111}.admin-wrap{max-width:none}.attempt{break-inside:avoid}}
 
 /* Compact mobile navigation on service screens */
-@media(max-width:900px){header{height:auto;min-height:66px;padding:10px 0}.nav{flex-wrap:wrap;gap:10px}.navlinks{display:flex;order:3;width:100%;justify-content:center;gap:14px;font-size:8px}.nav-cta{margin-left:auto}.menu{display:none}}
+@media(max-width:900px){header{height:auto;min-height:66px;padding:10px 0}.nav{flex-wrap:wrap;gap:10px}.navlinks{display:flex;order:3;width:100%;justify-content:center;gap:14px;font-size:8px}.navlinks a{white-space:nowrap}.nav-cta{margin-left:auto}.menu{display:none}}
 
 .back{display:inline-flex;align-items:center;gap:8px;color:#ff9cbd;font:9px var(--mono);letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px}.back:hover{color:#fff}.hand{font:italic 11px var(--sans);color:#ff9cbd}.diagnostic-hero{min-height:430px}
