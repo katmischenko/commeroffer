@@ -292,3 +292,45 @@ test("mobile: setup fits a narrow viewport without horizontal overflow", async (
   assert.equal(await page.locator("#start").isVisible(), true);
   await page.close();
 });
+
+
+test("all library pages use the complete Cyber layout on desktop and mobile", async () => {
+  const routes = [
+    "/edu/index.html",
+    "/edu/cheatsheets.html",
+    "/edu/escape-room.html",
+    "/edu/flashcards.html",
+    "/edu/posobiya.html",
+    "/edu/simulator.html",
+    "/edu/workbooks.html",
+    "/edu/diagnostika.html",
+    "/edu/diagnostika-v2-preview.html",
+    "/edu/diagnostics/archive.html",
+    "/edu/diagnostics/privacy.html"
+  ];
+  const page = await browser.newPage({ viewport: { width: 1365, height: 900 } });
+  const pageErrors = [];
+  page.on("pageerror", error => pageErrors.push(error.message));
+  for (const route of routes) {
+    await page.setViewportSize({ width: 1365, height: 900 });
+    const response = await page.goto(baseUrl + route, { waitUntil: "domcontentloaded" });
+    assert.equal(response?.status(), 200, route + " should load");
+    await page.locator("main .hero h1").waitFor();
+    assert.equal(await page.locator(".topline").count(), 1, route + " should have the Cyber top line");
+    assert.equal(await page.locator(".quickbar").count(), 1, route + " should have the shared quickbar");
+    assert.equal(await page.locator(".coming-page").count(), 0, route + " must not retain the old placeholder layout");
+    assert.equal(
+      await page.locator("body").evaluate(el => getComputedStyle(el).backgroundColor),
+      "rgb(8, 7, 13)",
+      route + " should use the Cyber background"
+    );
+    await page.setViewportSize({ width: 390, height: 844 });
+    const dimensions = await page.evaluate(() => ({
+      viewport: document.documentElement.clientWidth,
+      content: document.documentElement.scrollWidth
+    }));
+    assert.ok(dimensions.content <= dimensions.viewport, route + " mobile overflow: " + JSON.stringify(dimensions));
+  }
+  assert.deepEqual(pageErrors, []);
+  await page.close();
+});
