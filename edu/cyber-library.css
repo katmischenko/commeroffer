@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap');
 /* MISCHENKO EDU — CYBER LIBRARY SYSTEM. Shared by all library subpages. */
 :root{color-scheme:dark;--bg:#08070d;--panel:#100d17;--panel2:#17111e;--ink:#f7eff8;--muted:#b2a5b7;--pink:#ff286f;--violet:#a76aff;--line:rgba(255,255,255,.14);--sans:Inter,Arial,sans-serif;--mono:"Space Mono",monospace}
 html{scroll-behavior:smooth;scroll-padding-top:90px}body{background:#08070d!important;color:#f7eff8!important;font-family:Inter,Arial,sans-serif!important;background-image:radial-gradient(ellipse at 78% 4%,#6e287b30,transparent 34%),radial-gradient(ellipse at 5% 42%,#ff286f10,transparent 34%),linear-gradient(#ffffff07 1px,transparent 1px),linear-gradient(90deg,#ffffff07 1px,transparent 1px)!important;background-size:auto,auto,58px 58px,58px 58px!important;background-attachment:fixed!important}
