@@ -329,8 +329,36 @@ test("all library pages use the complete Cyber layout on desktop and mobile", as
       viewport: document.documentElement.clientWidth,
       content: document.documentElement.scrollWidth
     }));
-    assert.ok(dimensions.content <= dimensions.viewport, route + " mobile overflow: " + JSON.stringify(dimensions));
+    const overflowers = await page.evaluate(() => [...document.querySelectorAll("body *")].map(el => ({tag:el.tagName,cls:typeof el.className==="string"?el.className:"",id:el.id,left:Math.round(el.getBoundingClientRect().left),right:Math.round(el.getBoundingClientRect().right),width:Math.round(el.getBoundingClientRect().width)})).filter(x => x.right > document.documentElement.clientWidth + 1 || x.left < -1).slice(0,12));
+    assert.ok(dimensions.content <= dimensions.viewport, route + " mobile overflow: " + JSON.stringify({dimensions,overflowers}));
   }
   assert.deepEqual(pageErrors, []);
+  await page.close();
+});
+
+
+test("diagnostic readiness diagnostics", async () => {
+  const page = await browser.newPage({ viewport: { width: 1365, height: 900 } });
+  const errors = [];
+  page.on("pageerror", error => errors.push(error.message));
+  await page.goto(baseUrl + "/edu/diagnostika.html", { waitUntil: "domcontentloaded" });
+  const before = await page.evaluate(() => ({
+    direction: document.querySelector("#direction")?.value,
+    grade: document.querySelector("#grade")?.value,
+    startDisabled: document.querySelector("#start")?.disabled,
+    options: [...document.querySelectorAll("#direction option")].map(x => x.value)
+  }));
+  await page.locator("#student").fill("Диагностика");
+  await page.locator("#direction").selectOption("informatics");
+  await page.locator("#grade").selectOption("6");
+  const after = await page.evaluate(() => ({
+    student: document.querySelector("#student")?.value,
+    direction: document.querySelector("#direction")?.value,
+    grade: document.querySelector("#grade")?.value,
+    startDisabled: document.querySelector("#start")?.disabled,
+    profileNote: document.querySelector("#profile-note")?.textContent,
+    curriculum: document.querySelector("#curriculum")?.value
+  }));
+  console.log("DIAGNOSTIC_READINESS", JSON.stringify({ before, after, errors }));
   await page.close();
 });
