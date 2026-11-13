@@ -30,3 +30,65 @@ footer{border-top:1px solid var(--line);padding:24px 0;background:#08070d}.foot{
 .material-note{margin-top:35px;padding:24px 26px;border-left:2px solid var(--pink);background:linear-gradient(90deg,#ff286f12,transparent);display:grid;grid-template-columns:.7fr 1.3fr;gap:25px}.material-note strong{font-size:18px;line-height:1.25}.material-note p{margin:0;color:var(--muted);font-size:11px;line-height:1.8}.status.soon{color:#ff9cbd;border-color:#ff286f66}.page-hero-meta .metric strong{font-size:23px}
 @media(max-width:900px){.resource-grid{grid-template-columns:1fr}.step-grid{grid-template-columns:1fr}.material-note{grid-template-columns:1fr;gap:10px}}
 @media(max-width:560px){.resource-card{padding:20px}.material-note{padding:20px}.hero-art{height:245px}.artifact{transform:scale(.84) rotate(-7deg)}}
+
+
+/* DIAGNOSTICS — same Cyber visual language, original assessment logic retained */
+.quiz{padding:clamp(20px,4vw,38px);background:linear-gradient(145deg,#17101e,#0d0b12);border:1px solid var(--line);position:relative;box-shadow:0 18px 48px #0007}
+.quiz+.quiz{margin-top:18px}
+.quiz .sec-title{font-size:clamp(24px,3vw,34px);line-height:1.05;letter-spacing:-.05em;margin:13px 0}
+.quiz .sec-sub,.diag-hint,.diag-curriculum-note{color:var(--muted);font-size:12px;line-height:1.75}
+.diag-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:24px 0}
+.diag-field{display:flex;flex-direction:column;gap:8px;min-width:0}
+.diag-field label{font:9px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#d8cbdc}
+.diag-field input,.diag-field select,.q-input,.admin-form input,.filter{width:100%;min-height:48px;padding:12px 14px;background:#0c0912;color:var(--ink);border:1px solid #ffffff35;border-radius:2px;font:13px var(--sans)}
+.diag-field input:focus,.diag-field select:focus,.q-input:focus,.admin-form input:focus,.filter:focus{outline:1px solid var(--pink);border-color:var(--pink)}
+.diag-curriculum{padding:17px 18px;background:#0c0912;border:1px solid var(--line);margin:20px 0}
+.diag-curriculum summary{cursor:pointer;color:#f3d9e5;font-size:12px;font-weight:700}
+.diag-curriculum-note{margin:12px 0 0}
+.diag-consents{padding:15px;border:1px solid #ff286f55;margin:18px 0}
+.diag-consent{display:flex;align-items:flex-start;gap:10px;color:#e9dfea;font-size:11px;line-height:1.7;margin:9px 0}
+.diag-consent input,.compare-pick input{accent-color:var(--pink);flex:0 0 auto;margin-top:4px}
+.diag-consent a,.notice-card a{color:#ff78a3;text-decoration:underline;text-underline-offset:3px}
+.diag-hint{margin:12px 0}
+.diag-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:22px}
+.btn{min-height:44px;padding:12px 18px;border-radius:0}
+.btn:disabled,button:disabled{opacity:.38;cursor:not-allowed;box-shadow:none}
+.btn-pen{background:var(--pink);color:#100711;border:1px solid var(--pink)}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid #ffffff42;clip-path:none}
+.q-progress{height:5px;background:#302235;margin-bottom:20px;overflow:hidden}
+.q-progress i{display:block;height:100%;background:linear-gradient(90deg,var(--pink),var(--violet))}
+.q-count,.diag-status{font:9px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#ff78a3}
+.q-text{font-size:clamp(20px,2.6vw,30px);line-height:1.35;font-weight:700;margin:20px 0}
+.q-opts{display:grid;gap:9px}
+.q-opt{width:100%;text-align:left;padding:14px 16px;background:#0d0a13;border:1px solid #ffffff25;color:var(--ink);cursor:pointer;border-radius:2px}
+.q-opt:hover,.q-opt.selected{border-color:var(--pink);background:#ff286f16}
+.diag-answer{padding:18px;background:#100d17;border:1px solid var(--line);margin-top:18px;color:var(--ink)}
+.q-result{color:var(--ink)}
+.big{font-size:clamp(36px,6vw,64px);font-weight:900;letter-spacing:-.07em;color:var(--pink)}
+.diag-section-title{font:9px var(--mono);text-transform:uppercase;letter-spacing:.14em;color:#ff78a3;margin:22px 0 10px}
+.diag-topic-row,.diag-detail{padding:12px 0;border-bottom:1px solid var(--line);color:#d8cedb}
+.admin-wrap,.notice-wrap{max-width:1040px;margin:0 auto;padding:25px 0 76px}
+.admin-panel,.notice-card{background:linear-gradient(145deg,#17101e,#0d0b12);border:1px solid var(--line);padding:clamp(20px,3vw,32px);margin:20px 0;color:var(--ink)}
+.admin-form{display:flex;gap:10px;flex-wrap:wrap}
+.admin-form input,.filter{min-width:0;flex:1 1 240px}
+.admin-form button,.action{min-height:43px;padding:11px 17px;background:var(--pink);color:#100711;border:1px solid var(--pink);font:700 9px var(--mono);letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.hint,.status,.meta,.empty{color:var(--muted);font-size:11px;line-height:1.75}
+.status{color:#ff91b4;margin-top:12px}
+.archive-list{display:grid;gap:13px;margin-top:18px}
+.attempt{background:#100d17;border:1px solid var(--line);padding:20px;margin:0 0 12px}
+.attempt-head{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;flex-wrap:wrap}
+.attempt h3{font-size:17px;margin:0 0 7px}
+.score{color:var(--pink);font:700 15px var(--mono);white-space:nowrap}
+.compare-pick{display:flex;align-items:center;gap:8px;margin:14px 0;color:var(--muted);font-size:11px}
+.detail{border-top:1px solid var(--line);padding-top:13px;margin-top:13px}
+.detail summary{color:#ff9cbd;cursor:pointer;font-size:12px;font-weight:700}
+.answer{padding:12px 0;border-bottom:1px solid var(--line);font-size:11px;line-height:1.7;color:#d8cedb}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.actions .action{font-size:8px}
+.notice-card h2{font-size:20px;margin:28px 0 10px;color:var(--ink)}
+.notice-card p,.notice-card li{color:#c8bdcd;font-size:12px;line-height:1.8}
+.notice-card ul{padding-left:22px}
+.notice-warning{padding:15px 17px;border-left:3px solid var(--pink);background:#ff286f0c;color:#f1e8f1}
+.notice-warning strong{color:#fff}
+@media(max-width:700px){.diag-fields{grid-template-columns:1fr}.diag-actions .btn{flex:1 1 auto}.admin-form>*{flex:1 1 100%}.attempt-head{display:block}.score{margin-top:10px}}
+@media print{body{background:#fff;color:#111}.admin-wrap{max-width:none}.attempt{break-inside:avoid}}

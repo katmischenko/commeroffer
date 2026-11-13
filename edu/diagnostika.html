@@ -49,30 +49,15 @@
 .diag-curriculum-note{font-size:13px;color:var(--muted);line-height:1.5;margin:10px 0 0}
 
 @media(max-width:640px){.diag-fields{grid-template-columns:1fr}.diag-field.full{grid-column:auto}}
-</style>
+</style><link rel="stylesheet" href="cyber-library.css?v=4">
 <link rel="stylesheet" href="../mischenko-redesign.css?v=13">
 <link rel="stylesheet" href="shared.css?v=9">
 <link rel="stylesheet" href="cyber-library.css?v=2">
 </head>
 <body>
-<header>
-  <nav class="nav">
-    <a class="logo" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i></span><span class="brand-name">mischenko edu</span></a>
-    <div class="nav-right">
-      <a class="nav-link" href="index.html">← в библиотеку</a>
-      <a class="nav-cta" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Написать мне</a>
-    </div>
-  </nav>
-</header>
+<div class="topline"></div><header><div class="wrap nav"><a class="brand" href="../edu/index.html"><span class="brand-mark"></span><span class="brand-name">mischenko edu</span></a><nav class="navlinks" aria-label="Навигация"><a href="../edu/index.html">Библиотека</a><a href="../edu/index.html#catalog">Каталог</a><a href="../index.html">Главная</a></nav><a class="nav-cta" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Связаться ↗</a><button class="menu" id="menuBtn" aria-label="Открыть меню">☰</button></div></header>
 
-<main>
-  <div class="wrap page">
-    <a class="back" href="index.html">← назад к полкам</a>
-    <span class="sec-index" id="diagnostic-label">тест-диагностика · бесплатно</span>
-    <h1>Проверим, что ты <span class="hl">уже знаешь</span></h1>
-    <p class="hero-sub">15 заданий помогут увидеть, какие темы ты освоил(а), а какие стоит повторить. Во время прохождения правильные ответы не показываются — сначала спокойно закончим работу, а затем разберём результат.</p>
-
-    <section class="quiz" id="setup">
+<main><div class="wrap"><section class="hero diagnostic-hero" id="top"><div class="hero-copy"><a class="back" href="index.html">← в библиотеку</a><div class="eyebrow">MISCHENKO EDU / KNOWLEDGE CHECK</div><h1>ПРОВЕРЬ.<br><span class="outline">ПОЙМИ.</span><br><span class="pink">ДЕЙСТВУЙ.</span></h1><p>15 заданий помогут увидеть, какие темы ты освоил(а), а какие стоит повторить. Во время прохождения правильные ответы не показываются — сначала спокойно закончим работу, а затем разберём результат.</p><div class="hero-meta page-hero-meta"><div class="metric"><strong>15</strong><span>заданий</span></div><div class="metric"><strong>06</strong><span>направлений</span></div><div class="metric"><strong>01</strong><span>карта знаний</span></div></div></div><div class="hero-art"><div class="art-grid"></div><div class="orbit"></div><div class="artifact artifact-stack"><span>?</span></div><div class="float a"><small>CHECK / 01</small><b>Проверь</b></div><div class="float b"><small>INSIGHT / 02</small><b>Пойми</b></div><div class="art-caption">KNOWLEDGE PROFILE / 15 QUESTIONS</div></div></section><div class="quickbar"><div class="quick"><i>↗</i><div><b>Без подсказок</b><small>Сначала самостоятельный ответ</small></div></div><div class="quick"><i>⌘</i><div><b>Анализ по темам</b><small>Сильные стороны и пробелы</small></div></div><div class="quick"><i>◎</i><div><b>Рекомендации</b><small>Что повторить дальше</small></div></div></div><section class="quiz" id="setup">
       <div class="sec-index">шаг 1 · знакомство</div>
       <h2 class="sec-title">Выбери направление</h2>
       <p class="sec-sub">Укажи класс и направление, по которым хочешь проверить знания.</p>
@@ -505,5 +490,5 @@ $('direction').innerHTML=directions.map(d=>'<option value="'+d.id+'">'+d.name+'<
 fillGrades();updateCurriculumControls();
 })();
 </script>
-</body>
+<script>const b=document.getElementById("menuBtn");b?.addEventListener("click",()=>{const n=document.querySelector(".navlinks"),o=n.style.display==="flex";n.style.display=o?"none":"flex";n.style.position=o?"":"absolute";n.style.top=o?"":"66px";n.style.right=o?"":"18px";n.style.padding=o?"":"18px";n.style.background=o?"":"#100d17";n.style.border=o?"":"1px solid #ffffff22";n.style.flexDirection=o?"":"column";});</script></body>
 </html>

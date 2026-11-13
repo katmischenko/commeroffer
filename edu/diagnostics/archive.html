@@ -35,19 +35,14 @@
 .compare-topic{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-top:1px solid var(--line);font-size:13px}
 .empty{padding:30px;color:var(--muted);text-align:center}
 @media(max-width:600px){.admin-panel{padding:18px}.admin-form{display:grid}.admin-form input{width:100%}}
-</style>
+</style><link rel="stylesheet" href="../cyber-library.css?v=4">
 <link rel="stylesheet" href="../../mischenko-redesign.css?v=13">
 <link rel="stylesheet" href="../shared.css?v=9">
 <link rel="stylesheet" href="../cyber-library.css?v=2">
 </head>
 <body>
-<header><nav class="nav"><a class="logo" href="../index.html"><span class="brand-mark" aria-hidden="true"><i></i></span><span class="brand-name">mischenko edu</span></a><div class="nav-right"><a class="nav-link" href="../diagnostika.html">К диагностике</a></div></nav></header>
-<main class="admin-wrap">
-<a class="back" href="../index.html">← в библиотеку</a>
-<span class="sec-index">служебный раздел</span>
-<h1>Архив <span class="hl">диагностик</span></h1>
-<p class="hero-sub">История попыток учеников. Доступ защищён отдельным секретным ключом Worker — он не хранится в коде сайта.</p>
-<section class="admin-panel">
+<div class="topline"></div><header><div class="wrap nav"><a class="brand" href="../../edu/index.html"><span class="brand-mark"></span><span class="brand-name">mischenko edu</span></a><nav class="navlinks" aria-label="Навигация"><a href="../../edu/index.html">Библиотека</a><a href="../../edu/index.html#catalog">Каталог</a><a href="../../index.html">Главная</a></nav><a class="nav-cta" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Связаться ↗</a><button class="menu" id="menuBtn" aria-label="Открыть меню">☰</button></div></header>
+<main><div class="wrap"><section class="hero diagnostic-hero"><div class="hero-copy"><a class="back" href="../index.html">← в библиотеку</a><div class="eyebrow">MISCHENKO EDU / PRIVATE DATA SPACE</div><h1>АРХИВ<br><span class="outline">ДИАГНОСТИК.</span></h1><p>История попыток учеников. Доступ защищён отдельным секретным ключом Worker — он не хранится в коде сайта.</p><div class="hero-meta page-hero-meta"><div class="metric"><strong>180</strong><span>дней хранения</span></div><div class="metric"><strong>01</strong><span>закрытый доступ</span></div><div class="metric"><strong>PDF</strong><span>отчёт и сравнение</span></div></div></div><div class="hero-art"><div class="art-grid"></div><div class="orbit"></div><div class="artifact artifact-terminal"><span>⌘</span></div><div class="float a"><small>PRIVATE / 01</small><b>Архив</b></div><div class="float b"><small>REVIEW / 02</small><b>Анализ</b></div><div class="art-caption">TEACHER ACCESS ONLY</div></div></section><div class="quickbar"><div class="quick"><i>⌘</i><div><b>Закрытый доступ</b><small>Только по секретному ключу</small></div></div><div class="quick"><i>↗</i><div><b>История попыток</b><small>Просмотр и сравнение</small></div></div><div class="quick"><i>◎</i><div><b>Работа с результатом</b><small>Печать и удаление записей</small></div></div></div><div class="admin-wrap"><section class="admin-panel">
   <div class="admin-form">
     <input id="token" type="password" autocomplete="current-password" placeholder="ADMIN_TOKEN">
     <button id="load">Открыть архив</button>
@@ -64,7 +59,7 @@
   <div class="compare-view" id="compare-view" hidden></div>
   <div class="archive-list" id="list"></div>
 </section>
-</main>
+</div></div></main>
 <script>
 const API = "https://mischenko-edu-diagnostics.mks-ki.workers.dev/admin/attempts";
 let attempts = [];
@@ -148,5 +143,5 @@ $("compare").addEventListener("click",compareAttempts);
 $("search").addEventListener("input",render);
 $("token").addEventListener("keydown",e=>{if(e.key==="Enter")loadArchive();});
 </script>
-</body>
+<script>const b=document.getElementById("menuBtn");b?.addEventListener("click",()=>{const n=document.querySelector(".navlinks"),o=n.style.display==="flex";n.style.display=o?"none":"flex";n.style.position=o?"":"absolute";n.style.top=o?"":"66px";n.style.right=o?"":"18px";n.style.padding=o?"":"18px";n.style.background=o?"":"#100d17";n.style.border=o?"":"1px solid #ffffff22";n.style.flexDirection=o?"":"column";});</script></body>
 </html>
