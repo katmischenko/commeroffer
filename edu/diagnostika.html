@@ -9,47 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-<style>
-/* Только компоновка новых полей. Цвета, типографика, карточки и кнопки — из edu.css. */
-.q-opt.selected{border-color:var(--pen);background:var(--pen-soft)}
-.diag-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:26px 0}
-.diag-field{display:flex;flex-direction:column;gap:8px;min-width:0}
-[hidden]{display:none!important}
-.diag-field select,.diag-field input.q-input{display:block;min-height:54px;width:100%;max-width:100%;box-sizing:border-box}
-.diag-field.full{grid-column:1/-1}
-.diag-field label{font-size:14px;font-weight:700;color:var(--muted)}
-.diag-field select{font:inherit;font-size:16px;color:var(--ink);background:var(--paper);border:1px solid rgba(234,231,223,.2);border-radius:14px;padding:15px 18px;width:100%;outline:none}
-.diag-field select:focus{border-color:var(--pen)}
-.diag-field input.q-input{width:100%;box-sizing:border-box}
-.diag-consents{display:grid;gap:12px;margin:20px 0 8px}
-.diag-consent{display:flex;align-items:flex-start;gap:10px;color:var(--muted);font-size:13px;line-height:1.55}
-.diag-consent input{margin-top:3px;accent-color:var(--pen);flex:0 0 auto}
-.diag-consent a{color:var(--pen);text-decoration:underline;text-underline-offset:3px}
-.diag-consent-secondary{padding-left:27px}
-.diag-hint{color:var(--muted);font-size:14px;margin-top:14px}
-.diag-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
-.diag-actions .btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
-.diag-answer{margin:22px 0}
-.diag-feedback{margin-top:20px}
-.diag-feedback .sim-log{margin-top:0}
-.diag-section-title{font-size:19px;font-weight:800;margin:30px 0 12px}
-.diag-topic-row{display:flex;justify-content:space-between;gap:15px;padding:11px 0;border-top:1px dashed rgba(234,231,223,.14);font-size:15px}
-.diag-topic-row span{color:var(--muted)}
-.diag-topic-row b{color:var(--ink);white-space:nowrap}
-.diag-detail{border-top:1px dashed rgba(234,231,223,.14);padding:15px 0}
-.diag-detail summary{cursor:pointer;font-weight:700;color:var(--ink)}
-.diag-detail p{font-size:14px;color:var(--muted);margin-top:10px}
-.diag-status{font-family:var(--hand);font-size:20px;color:var(--pen);margin:8px 0}
-.back{display:block;width:fit-content;margin-bottom:34px}
-#unknown.is-selected{border-color:var(--pen);background:var(--pen-soft);color:var(--pen)}
-.diag-answer-note{font-size:13px;color:var(--muted);margin-top:10px}
-.diag-curriculum{margin:0 0 22px;padding:14px 16px;border:1px solid rgba(234,231,223,.14);border-radius:14px}
-.diag-curriculum summary{cursor:pointer;color:var(--ink);font-weight:700}
-.diag-curriculum .diag-fields{margin:16px 0 4px}
-.diag-curriculum-note{font-size:13px;color:var(--muted);line-height:1.5;margin:10px 0 0}
-
-@media(max-width:640px){.diag-fields{grid-template-columns:1fr}.diag-field.full{grid-column:auto}}
-</style><link rel="stylesheet" href="cyber-library.css?v=4">
+<link rel="stylesheet" href="cyber-library.css?v=5">
 
 
 
@@ -58,6 +18,7 @@
 <div class="topline"></div><header><div class="wrap nav"><a class="brand" href="../edu/index.html"><span class="brand-mark"></span><span class="brand-name">mischenko edu</span></a><nav class="navlinks" aria-label="Навигация"><a href="../edu/index.html">Библиотека</a><a href="../edu/index.html#catalog">Каталог</a><a href="../index.html">Главная</a></nav><a class="nav-cta" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Связаться ↗</a></div></header>
 
 <main><div class="wrap"><section class="hero diagnostic-hero" id="top"><div class="hero-copy"><a class="back" href="index.html">← в библиотеку</a><div class="eyebrow">MISCHENKO EDU / KNOWLEDGE CHECK</div><h1>ПРОВЕРЬ.<br><span class="outline">ПОЙМИ.</span><br><span class="pink">ДЕЙСТВУЙ.</span></h1><p>15 заданий помогут увидеть, какие темы ты освоил(а), а какие стоит повторить. Во время прохождения правильные ответы не показываются — сначала спокойно закончим работу, а затем разберём результат.</p><div class="hero-meta page-hero-meta"><div class="metric"><strong>15</strong><span>заданий</span></div><div class="metric"><strong>06</strong><span>направлений</span></div><div class="metric"><strong>01</strong><span>карта знаний</span></div></div></div><div class="hero-art"><div class="art-grid"></div><div class="orbit"></div><div class="artifact artifact-stack"><span>?</span></div><div class="float a"><small>CHECK / 01</small><b>Проверь</b></div><div class="float b"><small>INSIGHT / 02</small><b>Пойми</b></div><div class="art-caption">KNOWLEDGE PROFILE / 15 QUESTIONS</div></div></section><div class="quickbar"><div class="quick"><i>↗</i><div><b>Без подсказок</b><small>Сначала самостоятельный ответ</small></div></div><div class="quick"><i>⌘</i><div><b>Анализ по темам</b><small>Сильные стороны и пробелы</small></div></div><div class="quick"><i>◎</i><div><b>Рекомендации</b><small>Что повторить дальше</small></div></div></div><section class="quiz" id="setup">
+      <span id="diagnostic-label" hidden></span>
       <div class="sec-index">шаг 1 · знакомство</div>
       <h2 class="sec-title">Выбери направление</h2>
       <p class="sec-sub">Укажи класс и направление, по которым хочешь проверить знания.</p>
@@ -127,10 +88,12 @@
 
 <footer>
   <div class="wrap foot">
-    <small>© 2026 mischenko edu</small>
+    <small>© 2026 MISCHENKO EDU · DIGITAL LEARNING</small>
     <span class="hand">ошибка — это подсказка ✎</span>
     <div class="foot-links">
-      <a href="../index.html">Сайт репетитора</a>
+      <a href="index.html">Библиотека</a>
+      <a href="../index.html">Главная</a>
+      <a href="#top">Наверх ↑</a>
       <a href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Telegram</a>
     </div>
   </div>
