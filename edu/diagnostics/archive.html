@@ -8,34 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-<style>
-.admin-wrap{max-width:1050px;margin:0 auto;padding:125px 22px 70px}
-.admin-panel{background:var(--paper-2);border:1px solid var(--line);border-radius:18px;padding:24px;margin:22px 0}
-.admin-form{display:flex;gap:12px;flex-wrap:wrap}
-.admin-form input,.filter{min-width:0;flex:1;background:var(--paper);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:13px 15px;font:inherit}
-.admin-form button,.action{border:0;border-radius:100px;padding:12px 20px;background:var(--pen);color:#08131c;font:800 14px var(--body);cursor:pointer}
-.hint{color:var(--muted);font-size:13px;margin-top:10px}
-.status{color:var(--marker);margin-top:12px;font-size:14px}
-.archive-list{display:grid;gap:12px;margin-top:18px}
-.attempt{border:1px solid var(--line);border-radius:14px;padding:18px;background:var(--paper)}
-.attempt-head{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
-.attempt h3{font-size:17px}
-.meta{font-size:13px;color:var(--muted);margin-top:5px}
-.score{font-weight:800;color:var(--pen);white-space:nowrap}
-.detail{margin-top:15px;border-top:1px dashed var(--line);padding-top:12px}
-.detail summary{cursor:pointer;color:var(--pen);font-weight:700}
-.answer{font-size:13px;color:var(--muted);padding:10px 0;border-bottom:1px solid var(--line)}
-.answer b{color:var(--ink)}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-.compare-pick{display:inline-flex;align-items:center;gap:7px;color:var(--muted);font-size:13px;margin-top:14px}
-.compare-pick input{accent-color:var(--pen)}
-.compare-view{border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:18px;background:var(--paper)}
-.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.compare-grid>div{padding:12px;border:1px solid var(--line);border-radius:10px}
-.compare-topic{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-top:1px solid var(--line);font-size:13px}
-.empty{padding:30px;color:var(--muted);text-align:center}
-@media(max-width:600px){.admin-panel{padding:18px}.admin-form{display:grid}.admin-form input{width:100%}}
-</style><link rel="stylesheet" href="../cyber-library.css?v=4">
+<link rel="stylesheet" href="../cyber-library.css?v=5">
 
 
 
@@ -60,6 +33,7 @@
   <div class="archive-list" id="list"></div>
 </section>
 </div></div></main>
+<footer><div class="wrap foot"><small>© 2026 MISCHENKO EDU · DIGITAL LEARNING</small><div class="foot-links"><a href="../index.html">Библиотека</a><a href="../../index.html">Главная</a><a href="privacy.html">Конфиденциальность</a><a href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Telegram ↗</a></div></div></footer>
 <script>
 const API = "https://mischenko-edu-diagnostics.mks-ki.workers.dev/admin/attempts";
 let attempts = [];
@@ -134,7 +108,7 @@ function printAttempt(a){
  const w=window.open("","_blank");
  if(!w){showStatus("Разреши всплывающие окна для печати.");return;}
  const answers=(p.answers||[]).map((x,i)=>'<article><h3>'+(i+1)+'. '+esc(x.question)+'</h3><p><b>Ответ:</b> '+esc(x.answerText||"Не отвечено")+'</p><p><b>Правильный ответ:</b> '+esc(x.correctText)+'</p><p><b>Статус:</b> '+esc(x.statusLabel)+' · <b>Тема:</b> '+esc(x.topic)+' · <b>Сложность:</b> '+esc(x.difficulty)+'</p><p>'+esc(x.explanation)+'</p></article>').join("");
- w.document.write('<!doctype html><html lang="ru"><meta charset="utf-8"><title>Диагностика — '+esc(p.studentName)+'</title><style>body{font:14px Arial;max-width:850px;margin:35px auto;color:#222;line-height:1.5}h1{font-size:24px}article{border-top:1px solid #ddd;padding:12px 0;break-inside:avoid}h3{font-size:15px}p{margin:5px 0}.muted{color:#666}@media print{button{display:none}}</style><h1>Диагностика Mischenko Edu</h1><p>'+esc(p.studentName)+' · '+esc(p.studentClass)+' класс · '+esc(p.direction)+' · '+esc(p.curriculumName||"Программа не указана")+(p.curriculumYear?' · '+esc(p.curriculumYear):'')+(p.curriculumLevel?' · '+esc(({basic:'базовый',advanced:'углублённый / повышенный',unknown:'уровень не указан'})[p.curriculumLevel]||p.curriculumLevel):'')+(p.curriculumDetail?' · '+esc(p.curriculumDetail):'')+'</p><p>'+((p.bankProgramMatched)?'Банк заданий: отдельный черновик выбранной программы; педагогическая вычитка не завершена':'Банк заданий: общий черновой набор, соответствие программе не подтверждено')+(p.bankId?' · '+esc(p.bankId):'')+' · '+esc(p.bankReviewStatus||'teacher_review_draft')+'</p><h2>Результат: '+esc(p.score)+' / 15 ('+esc(p.percentage)+'%)</h2>'+answers+'<script>window.onload=()=>window.print()<\\/script></html>');
+ w.document.write('<!doctype html><html lang="ru"><meta charset="utf-8"><title>Диагностика — '+esc(p.studentName)+'</title><h1>Диагностика Mischenko Edu</h1><p>'+esc(p.studentName)+' · '+esc(p.studentClass)+' класс · '+esc(p.direction)+' · '+esc(p.curriculumName||"Программа не указана")+(p.curriculumYear?' · '+esc(p.curriculumYear):'')+(p.curriculumLevel?' · '+esc(({basic:'базовый',advanced:'углублённый / повышенный',unknown:'уровень не указан'})[p.curriculumLevel]||p.curriculumLevel):'')+(p.curriculumDetail?' · '+esc(p.curriculumDetail):'')+'</p><p>'+((p.bankProgramMatched)?'Банк заданий: отдельный черновик выбранной программы; педагогическая вычитка не завершена':'Банк заданий: общий черновой набор, соответствие программе не подтверждено')+(p.bankId?' · '+esc(p.bankId):'')+' · '+esc(p.bankReviewStatus||'teacher_review_draft')+'</p><h2>Результат: '+esc(p.score)+' / 15 ('+esc(p.percentage)+'%)</h2>'+answers+'<script>window.onload=()=>window.print()<\\/script></html>');
  w.document.close();
 }
 $("load").addEventListener("click",loadArchive);
