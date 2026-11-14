@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08070d">
+<title>Формулы физики — карточки | Mischenko Edu</title>
+<meta name="description" content="Школьная физика по разделам и темам: формулы, обозначения, единицы измерения и самопроверка.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="cyber-library.css?v=5">
+<style>
+:root{--pf-bg:#08070d;--pf-panel:#120e19;--pf-line:rgba(255,255,255,.14);--pf-pink:#ff286f;--pf-violet:#a76aff;--pf-text:#f7eff8;--pf-muted:#b2a5b7}
+*{box-sizing:border-box}body{font-family:Inter,Arial,sans-serif!important;background:var(--pf-bg);color:var(--pf-text)}
+button{font:inherit}.wrap{width:min(1220px,calc(100% - 56px));margin:auto}
+.page-intro{padding:68px 0 44px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:end}
+.kicker{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#ff78a3}
+.page-intro h1{font-size:clamp(42px,6vw,76px);line-height:.98;letter-spacing:-.075em;margin:17px 0}
+.page-intro h1 span{color:var(--pf-pink)}
+.page-intro p{font-size:14px;line-height:1.8;color:var(--pf-muted);max-width:690px;margin:0}
+.intro-aside{padding:22px;border:1px solid var(--pf-line);background:linear-gradient(145deg,#17101e,#0d0b12)}
+.intro-aside b{display:block;font-size:13px;margin-bottom:8px}
+.intro-aside p{font-size:11px;line-height:1.7;color:var(--pf-muted);margin:0}
+.section-nav{display:flex;gap:8px;flex-wrap:wrap;padding:17px 0;border-block:1px solid var(--pf-line)}
+.section-tab{padding:9px 12px;border:1px solid var(--pf-line);background:#100d17;color:#d8cddd;font-size:10px;cursor:pointer;transition:.2s}
+.section-tab:hover,.section-tab.active{border-color:var(--pf-pink);background:#ff286f18;color:#fff}
+.guide{padding:38px 0 14px}
+.block-heading{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:20px}
+.block-heading h2{font-size:clamp(26px,4vw,42px);line-height:1;letter-spacing:-.06em;margin:10px 0 0}
+.block-heading p{max-width:470px;color:var(--pf-muted);font-size:12px;line-height:1.7;margin:0}
+.audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.audience-card{padding:19px;background:linear-gradient(145deg,#17101e,#0d0b12);border:1px solid var(--pf-line)}
+.audience-card small{color:#ff78a3;font-size:9px;letter-spacing:.1em}
+.audience-card h3{font-size:15px;margin:10px 0 7px}
+.audience-card p{font-size:11px;line-height:1.7;color:var(--pf-muted);margin:0}
+.howto{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:13px}
+.how-step{padding:16px;border:1px solid var(--pf-line);background:#0e0b14}
+.how-step b{font-size:11px;display:block;margin:7px 0}
+.how-step p{font-size:10px;line-height:1.65;color:var(--pf-muted);margin:0}
+.topic-area{padding:55px 0 70px}
+.topic-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:20px}
+.topic-head h2{font-size:clamp(28px,4vw,44px);letter-spacing:-.06em;margin:8px 0 0}
+.topic-head p{font-size:11px;color:var(--pf-muted);margin:0}
+.cards-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.formula-card{background:linear-gradient(145deg,#17101e,#0d0b12);border:1px solid var(--pf-line);padding:19px;min-height:215px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.formula-card:after{content:"";position:absolute;right:-42px;bottom:-42px;width:90px;height:90px;border:1px solid #ff286f33;transform:rotate(45deg);pointer-events:none}
+.card-meta{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.card-topic{font-size:8px;color:#ff8ab1;letter-spacing:.1em;text-transform:uppercase}
+.card-number{font-size:8px;color:#887c90}
+.formula-card h3{font-size:15px;line-height:1.3;margin:15px 0 7px}
+.question{font-size:11px;color:var(--pf-muted);line-height:1.6;margin:0 0 15px}
+.answer-panel{display:none;border-top:1px solid var(--pf-line);padding-top:14px;margin-top:2px}
+.answer-panel.open{display:block}
+.formula{font-size:clamp(21px,2.5vw,28px);font-weight:700;letter-spacing:-.04em;color:#fff;margin-bottom:9px}
+.formula-note{font-size:10px;line-height:1.7;color:#d0c5d4}
+.formula-note div{margin:4px 0}
+.formula-note b{color:#ff9cbd;font-weight:600}
+.card-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:auto;padding-top:13px;position:relative;z-index:1}
+.reveal,.know{border:1px solid var(--pf-pink);background:transparent;color:#ff9cbd;padding:9px 11px;font-size:9px;cursor:pointer}
+.reveal:hover,.know:hover{background:#ff286f18;color:#fff}
+.know{border-color:#8fe0ad66;color:#9be2b4}
+.know.selected{background:#8fe0ad18;border-color:#8fe0ad;color:#b7f2c9}
+.progress-line{height:4px;background:#2b2031;margin:16px 0 22px}
+.progress-line span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pf-pink),var(--pf-violet));transition:width .2s}
+.progress-copy{font-size:10px;color:var(--pf-muted)}
+.quiz-box{padding:25px;border:1px solid var(--pf-line);background:linear-gradient(145deg,#17101e,#0d0b12);margin-top:25px}
+.quiz-box h3{font-size:20px;margin:0 0 8px}
+.quiz-box>p{font-size:11px;color:var(--pf-muted);line-height:1.7;margin:0 0 18px}
+.quiz-question{padding:15px 0;border-top:1px solid var(--pf-line)}
+.quiz-question strong{display:block;font-size:12px;margin-bottom:10px}
+.quiz-options{display:flex;gap:8px;flex-wrap:wrap}
+.quiz-option{padding:8px 11px;border:1px solid var(--pf-line);background:#0c0912;color:#e8deea;font-size:10px;cursor:pointer}
+.quiz-option.chosen{border-color:var(--pf-pink);background:#ff286f18}
+.quiz-feedback{display:none;font-size:10px;line-height:1.6;margin-top:9px}
+.quiz-feedback.show{display:block}
+.quiz-result{font-size:12px;color:#ff9cbd;margin-top:15px}
+.empty-state{padding:25px;border:1px dashed var(--pf-line);color:var(--pf-muted);font-size:12px;display:none}
+.note-panel{padding:22px;border-left:2px solid var(--pf-pink);background:#ff286f0d;margin:24px 0 0}
+.note-panel b{font-size:13px}.note-panel p{font-size:11px;color:var(--pf-muted);line-height:1.75;margin:7px 0 0}
+footer{margin-top:0}
+@media(max-width:900px){.page-intro{grid-template-columns:1fr;gap:20px}.cards-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.howto{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.wrap{width:calc(100% - 30px)}.page-intro{padding:48px 0 30px}.block-heading,.topic-head{display:block}.block-heading p,.topic-head p{margin-top:12px}.audience-grid,.cards-grid{grid-template-columns:1fr}.howto{grid-template-columns:1fr 1fr}.formula-card{min-height:190px}}
+</style>
+</head>
+<body>
+<div class="topline"></div>
+<header><div class="wrap nav"><a class="brand" href="index.html"><span class="brand-mark"></span><span class="brand-name">mischenko edu</span></a><nav class="navlinks"><a href="index.html">Библиотека</a><a href="index.html#catalog">Каталог</a><a href="../index.html">Главная</a></nav><a class="nav-cta" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Связаться ↗</a></div></header>
+<main><div class="wrap">
+<section class="page-intro" id="top">
+<div><div class="kicker">MISCHENKO EDU / PHYSICS / FORMULA CARDS</div><h1>ФИЗИКА.<br><span>ФОРМУЛЫ ПО ПОЛОЧКАМ.</span></h1><p>Не бесконечный список символов, а понятная карта школьной физики: раздел → тема → формула → проверка. Выбирай тему, сначала вспоминай ответ самостоятельно и только потом открывай карточку.</p></div>
+<aside class="intro-aside"><b>Как устроен материал</b><p>Сначала выбери крупный раздел физики. Внутри — темы, а в каждой теме — карточки с вопросом, формулой, расшифровкой обозначений и единицами измерения. В конце можно проверить себя мини-тестом.</p></aside>
+</section>
+<nav class="section-nav" id="sectionNav" aria-label="Разделы физики">
+<button class="section-tab active" data-section="all">Весь курс</button>
+<button class="section-tab" data-section="mechanics">Механика</button>
+<button class="section-tab" data-section="molecular">Молекулярная физика</button>
+<button class="section-tab" data-section="electricity">Электричество</button>
+<button class="section-tab" data-section="magnetism">Магнетизм</button>
+<button class="section-tab" data-section="optics">Колебания и оптика</button>
+<button class="section-tab" data-section="atomic">Атомная физика</button>
+</nav>
+<section class="guide" id="guide">
+<div class="block-heading"><div><div class="kicker">01 / BEFORE YOU START</div><h2>КОМУ И КАК <span style="color:var(--pf-pink)">ПОЛЬЗОВАТЬСЯ.</span></h2></div><p>Подойдёт школьникам, которые изучают физику, повторяют материал перед самостоятельными и контрольными или готовятся к экзамену. Это опора для повторения, а не замена объяснению и решению задач.</p></div>
+<div class="audience-grid">
+<article class="audience-card"><small>ДЛЯ УЧЕНИКА</small><h3>Учишь тему сейчас</h3><p>Открой нужный раздел после урока. Вспомни формулу, объясни каждое обозначение и попробуй применить её в задаче.</p></article>
+<article class="audience-card"><small>ДЛЯ ПОВТОРЕНИЯ</small><h3>Готовишься к проверочной</h3><p>Пройди карточки по теме без подсказок. Отметь то, что знаешь уверенно, и вернись к сложным карточкам позже.</p></article>
+<article class="audience-card"><small>ДЛЯ РОДИТЕЛЯ</small><h3>Помогаешь организовать учёбу</h3><p>Можно выбрать тему вместе с ребёнком и попросить его не просто назвать формулу, а объяснить смысл величин и единицы.</p></article>
+</div>
+<div class="howto">
+<div class="how-step"><small class="kicker">ШАГ 01</small><b>Выбери раздел и тему</b><p>Не пытайся учить всё сразу — двигайся небольшими блоками.</p></div>
+<div class="how-step"><small class="kicker">ШАГ 02</small><b>Вспомни формулу</b><p>Посмотри на вопрос и попробуй записать ответ до открытия.</p></div>
+<div class="how-step"><small class="kicker">ШАГ 03</small><b>Проверь обозначения</b><p>Сверь не только формулу, но и единицы измерения каждой величины.</p></div>
+<div class="how-step"><small class="kicker">ШАГ 04</small><b>Реши задачу</b><p>Формула считается усвоенной, когда ты умеешь применить её в задаче.</p></div>
+</div>
+<div class="note-panel"><b>Главный принцип: сначала вспоминаем — потом подглядываем.</b><p>Все формулы и разборы изначально скрыты. Кнопка «Показать формулу» открывает ответ, повторное нажатие закрывает его. Отметка «Знаю» — только если можешь самостоятельно записать формулу и объяснить её.</p></div>
+</section>
+<section class="topic-area" id="cards">
+<div class="topic-head"><div><div class="kicker">02 / FORMULA DECK</div><h2>КАРТОЧКИ ПО ТЕМАМ</h2></div><p id="cardCount">Загружаем карточки…</p></div>
+<div class="progress-copy" id="progressCopy">Освоено: 0 из 0 карточек</div><div class="progress-line"><span id="progressBar"></span></div>
+<div class="cards-grid" id="cardsGrid"></div>
+<div class="empty-state" id="emptyState">В этом разделе карточки появятся позже.</div>
+<div class="quiz-box" id="quizBox"><h3>Мини-проверка</h3><p>Проверь, узнаёшь ли ты формулы в выбранном разделе. Выбери один вариант в каждом вопросе.</p><div id="quizQuestions"></div><button class="reveal" id="checkQuiz" type="button">Проверить ответы</button><div class="quiz-result" id="quizResult" aria-live="polite"></div></div>
+</section>
+</div></main>
+<footer><div class="wrap foot"><small>© 2026 MISCHENKO EDU · PHYSICS FORMULA CARDS</small><div class="foot-links"><a href="index.html">Библиотека</a><a href="../index.html">Главная</a><a href="#top">Наверх ↑</a></div></div></footer>
+<script>
+const FORMULAS=[
+{section:"mechanics",topic:"Кинематика",title:"Скорость при равномерном движении",ask:"Как найти скорость, если тело проходит путь за известное время?",formula:"v = s / t",vars:["v — скорость, м/с","s — путь, м","t — время, с"],quiz:{q:"Как выразить путь через скорость и время?",opts:["s = v · t","s = t / v","s = v / t"],correct:0}},
+{section:"mechanics",topic:"Кинематика",title:"Путь при равномерном движении",ask:"Как найти путь, если скорость постоянна?",formula:"s = v · t",vars:["s — путь, м","v — скорость, м/с","t — время, с"],quiz:{q:"В каких единицах измеряется путь в СИ?",opts:["м/с","м","с"],correct:1}},
+{section:"mechanics",topic:"Кинематика",title:"Ускорение",ask:"Как определить изменение скорости за единицу времени?",formula:"a = (v − v₀) / t",vars:["a — ускорение, м/с²","v₀ — начальная скорость, м/с","v — конечная скорость, м/с","t — время изменения скорости, с"],quiz:{q:"Единица ускорения в СИ:",opts:["м/с","м/с²","Н"],correct:1}},
+{section:"mechanics",topic:"Кинематика",title:"Скорость при равноускоренном движении",ask:"Как найти скорость через начальную скорость, ускорение и время?",formula:"v = v₀ + a · t",vars:["v — скорость в момент времени t, м/с","v₀ — начальная скорость, м/с","a — ускорение, м/с²","t — время, с"],quiz:{q:"Если ускорение равно нулю, то скорость:",opts:["растёт","уменьшается","не изменяется"],correct:2}},
+{section:"mechanics",topic:"Динамика",title:"Второй закон Ньютона",ask:"Как связаны равнодействующая сила, масса и ускорение?",formula:"F = m · a",vars:["F — равнодействующая сила, Н","m — масса, кг","a — ускорение, м/с²"],quiz:{q:"Как найти массу по силе и ускорению?",opts:["m = F · a","m = F / a","m = a / F"],correct:1}},
+{section:"mechanics",topic:"Динамика",title:"Сила тяжести",ask:"Как найти силу, с которой Земля притягивает тело у поверхности?",formula:"Fтяж = m · g",vars:["Fтяж — сила тяжести, Н","m — масса, кг","g — ускорение свободного падения, примерно 9,8 м/с² (в школьных задачах часто 10 м/с²)"],quiz:{q:"При увеличении массы тела в 2 раза сила тяжести:",opts:["уменьшится в 2 раза","увеличится в 2 раза","не изменится"],correct:1}},
+{section:"mechanics",topic:"Динамика",title:"Сила упругости (закон Гука)",ask:"Как связана сила упругости с деформацией пружины?",formula:"Fупр = k · |Δl|",vars:["Fупр — модуль силы упругости, Н","k — жёсткость пружины, Н/м","Δl — изменение длины, м"],quiz:{q:"В каких единицах измеряется жёсткость пружины?",opts:["Н","Н/м","кг"],correct:1}},
+{section:"mechanics",topic:"Давление",title:"Давление твёрдого тела",ask:"Как найти давление, если известны сила и площадь опоры?",formula:"p = F / S",vars:["p — давление, Па","F — сила, действующая перпендикулярно поверхности, Н","S — площадь поверхности, м²"],quiz:{q:"Если площадь опоры уменьшить, а силу оставить прежней, давление:",opts:["увеличится","уменьшится","не изменится"],correct:0}},
+{section:"mechanics",topic:"Работа и энергия",title:"Механическая работа",ask:"Как найти работу постоянной силы, направленной вдоль перемещения?",formula:"A = F · s",vars:["A — работа, Дж","F — сила, Н","s — перемещение, м"],quiz:{q:"Единица работы в СИ:",opts:["Вт","Дж","Н"],correct:1}},
+{section:"mechanics",topic:"Работа и энергия",title:"Мощность",ask:"Как определить работу, совершённую за единицу времени?",formula:"N = A / t",vars:["N — мощность, Вт","A — работа, Дж","t — время, с"],quiz:{q:"Как найти работу через мощность и время?",opts:["A = N · t","A = N / t","A = t / N"],correct:0}},
+{section:"mechanics",topic:"Работа и энергия",title:"Кинетическая энергия",ask:"Как найти энергию движущегося тела?",formula:"Eк = m · v² / 2",vars:["Eк — кинетическая энергия, Дж","m — масса, кг","v — скорость, м/с"],quiz:{q:"Если скорость увеличить в 2 раза, кинетическая энергия:",opts:["увеличится в 2 раза","увеличится в 4 раза","не изменится"],correct:1}},
+{section:"mechanics",topic:"Работа и энергия",title:"Потенциальная энергия у поверхности Земли",ask:"Как найти энергию тела, поднятого на высоту?",formula:"Eп = m · g · h",vars:["Eп — потенциальная энергия, Дж","m — масса, кг","g — ускорение свободного падения, м/с²","h — высота относительно выбранного нулевого уровня, м"],quiz:{q:"При увеличении высоты в 3 раза потенциальная энергия:",opts:["увеличится в 3 раза","увеличится в 9 раз","не изменится"],correct:0}},
+{section:"mechanics",topic:"Импульс",title:"Импульс тела",ask:"Как определяется импульс движущегося тела?",formula:"p = m · v",vars:["p — импульс тела, кг·м/с","m — масса, кг","v — скорость, м/с"],quiz:{q:"Импульс тела зависит от:",opts:["массы и скорости","только массы","только времени"],correct:0}},
+{section:"molecular",topic:"Молекулярная физика",title:"Плотность вещества",ask:"Как найти плотность тела по массе и объёму?",formula:"ρ = m / V",vars:["ρ — плотность, кг/м³","m — масса, кг","V — объём, м³"],quiz:{q:"Как найти массу через плотность и объём?",opts:["m = ρ · V","m = ρ / V","m = V / ρ"],correct:0}},
+{section:"molecular",topic:"Тепловые явления",title:"Количество теплоты при нагревании",ask:"Сколько теплоты нужно для изменения температуры тела?",formula:"Q = c · m · (t₂ − t₁)",vars:["Q — количество теплоты, Дж","c — удельная теплоёмкость, Дж/(кг·°C)","m — масса, кг","t₂ − t₁ — изменение температуры, °C"],quiz:{q:"Что показывает удельная теплоёмкость?",opts:["теплоту для нагревания 1 кг на 1 °C","температуру плавления","массу тела"],correct:0}},
+{section:"molecular",topic:"Тепловые явления",title:"Количество теплоты при сгорании топлива",ask:"Как найти теплоту, выделившуюся при полном сгорании топлива?",formula:"Q = q · m",vars:["Q — количество теплоты, Дж","q — удельная теплота сгорания, Дж/кг","m — масса топлива, кг"],quiz:{q:"Единица удельной теплоты сгорания:",opts:["Дж","Дж/кг","кг/м³"],correct:1}},
+{section:"molecular",topic:"Фазовые переходы",title:"Плавление",ask:"Как найти количество теплоты для плавления вещества при температуре плавления?",formula:"Q = λ · m",vars:["Q — количество теплоты, Дж","λ — удельная теплота плавления, Дж/кг","m — масса, кг"],quiz:{q:"Во время плавления чистого кристаллического вещества при постоянном давлении температура:",opts:["растёт","не меняется","снижается"],correct:1}},
+{section:"molecular",topic:"Фазовые переходы",title:"Парообразование",ask:"Как найти количество теплоты для парообразования жидкости при температуре кипения?",formula:"Q = L · m",vars:["Q — количество теплоты, Дж","L — удельная теплота парообразования, Дж/кг","m — масса, кг"],quiz:{q:"При парообразовании жидкости требуется:",opts:["отводить теплоту","подводить теплоту","не обмениваться теплотой"],correct:1}},
+{section:"electricity",topic:"Электрический ток",title:"Сила тока",ask:"Как определить силу тока по заряду и времени?",formula:"I = q / t",vars:["I — сила тока, А","q — электрический заряд, Кл","t — время, с"],quiz:{q:"Единица силы тока:",opts:["В","А","Ом"],correct:1}},
+{section:"electricity",topic:"Электрический ток",title:"Напряжение",ask:"Как связаны работа электрического поля и заряд?",formula:"U = A / q",vars:["U — напряжение, В","A — работа электрического поля, Дж","q — заряд, Кл"],quiz:{q:"Как найти работу через напряжение и заряд?",opts:["A = U · q","A = U / q","A = q / U"],correct:0}},
+{section:"electricity",topic:"Электрический ток",title:"Закон Ома для участка цепи",ask:"Как найти силу тока через напряжение и сопротивление?",formula:"I = U / R",vars:["I — сила тока, А","U — напряжение, В","R — сопротивление, Ом"],quiz:{q:"Если сопротивление увеличить в 2 раза при неизменном напряжении, ток:",opts:["увеличится в 2 раза","уменьшится в 2 раза","не изменится"],correct:1}},
+{section:"electricity",topic:"Электрический ток",title:"Сопротивление проводника",ask:"От чего зависит сопротивление однородного проводника?",formula:"R = ρ · l / S",vars:["R — сопротивление, Ом","ρ — удельное сопротивление материала, Ом·м","l — длина проводника, м","S — площадь поперечного сечения, м²"],quiz:{q:"Если длину проводника увеличить, его сопротивление при прочих равных:",opts:["увеличится","уменьшится","не изменится"],correct:0}},
+{section:"electricity",topic:"Электрический ток",title:"Последовательное соединение",ask:"Как найти общее сопротивление последовательно соединённых резисторов?",formula:"R = R₁ + R₂ + …",vars:["R — общее сопротивление, Ом","R₁, R₂… — сопротивления отдельных резисторов, Ом"],quiz:{q:"При последовательном соединении сила тока в элементах:",opts:["одинакова","разная","равна нулю"],correct:0}},
+{section:"electricity",topic:"Электрический ток",title:"Параллельное соединение",ask:"Как найти общее сопротивление двух параллельных резисторов?",formula:"1/R = 1/R₁ + 1/R₂",vars:["R — общее сопротивление, Ом","R₁, R₂ — сопротивления ветвей, Ом"],quiz:{q:"При параллельном соединении напряжение на ветвях:",opts:["одинаково","разное","равно нулю"],correct:0}},
+{section:"electricity",topic:"Работа и мощность тока",title:"Работа электрического тока",ask:"Как найти работу тока через напряжение, силу тока и время?",formula:"A = U · I · t",vars:["A — работа, Дж","U — напряжение, В","I — сила тока, А","t — время, с"],quiz:{q:"Единица работы электрического тока:",opts:["Дж","А","Ом"],correct:0}},
+{section:"electricity",topic:"Работа и мощность тока",title:"Мощность электрического тока",ask:"Как найти мощность электрического тока?",formula:"P = U · I",vars:["P — мощность, Вт","U — напряжение, В","I — сила тока, А"],quiz:{q:"Как найти мощность через силу тока и сопротивление?",opts:["P = I² · R","P = I / R","P = R / I"],correct:0}},
+{section:"magnetism",topic:"Магнитное поле",title:"Сила Ампера",ask:"Как найти модуль силы, действующей на проводник с током в магнитном поле?",formula:"F = B · I · l · sin α",vars:["F — сила Ампера, Н","B — магнитная индукция, Тл","I — сила тока, А","l — длина проводника в поле, м","α — угол между направлением тока и вектором магнитной индукции"],quiz:{q:"Когда сила Ампера максимальна?",opts:["при α = 0°","при α = 90°","при α = 180°"],correct:1}},
+{section:"optics",topic:"Колебания и волны",title:"Период колебаний",ask:"Как найти период, если известно время нескольких колебаний?",formula:"T = t / N",vars:["T — период, с","t — общее время, с","N — число полных колебаний"],quiz:{q:"Период — это время:",opts:["одного полного колебания","десяти колебаний","половины колебания"],correct:0}},
+{section:"optics",topic:"Колебания и волны",title:"Частота колебаний",ask:"Как связаны частота и период?",formula:"ν = 1 / T",vars:["ν — частота, Гц","T — период, с"],quiz:{q:"Единица частоты:",opts:["с","Гц","м/с"],correct:1}},
+{section:"optics",topic:"Волны",title:"Скорость волны",ask:"Как связаны длина волны, частота и скорость её распространения?",formula:"v = λ · ν",vars:["v — скорость волны, м/с","λ — длина волны, м","ν — частота, Гц"],quiz:{q:"Если частота увеличится в 2 раза при неизменной скорости волны, длина волны:",opts:["увеличится в 2 раза","уменьшится в 2 раза","не изменится"],correct:1}},
+{section:"optics",topic:"Оптика",title:"Закон отражения света",ask:"Как соотносятся угол падения и угол отражения?",formula:"α = β",vars:["α — угол падения, отсчитываемый от нормали","β — угол отражения, отсчитываемый от нормали"],quiz:{q:"Углы падения и отражения отсчитывают:",opts:["от поверхности","от нормали к поверхности","от луча света"],correct:1}},
+{section:"optics",topic:"Оптика",title:"Оптическая сила линзы",ask:"Как связаны оптическая сила и фокусное расстояние?",formula:"D = 1 / F",vars:["D — оптическая сила, дптр","F — фокусное расстояние, м"],quiz:{q:"Фокусное расстояние в формуле нужно подставлять в:",opts:["сантиметрах","метрах","миллиметрах"],correct:1}},
+{section:"atomic",topic:"Атомная и ядерная физика",title:"Энергия фотона",ask:"Как найти энергию фотона через постоянную Планка и частоту?",formula:"E = h · ν",vars:["E — энергия фотона, Дж","h — постоянная Планка, Дж·с","ν — частота излучения, Гц"],quiz:{q:"При увеличении частоты фотона его энергия:",opts:["увеличивается","уменьшается","не меняется"],correct:0}},
+{section:"atomic",topic:"Атомная и ядерная физика",title:"Эквивалентность массы и энергии",ask:"Как связаны масса и энергия покоя?",formula:"E = m · c²",vars:["E — энергия покоя, Дж","m — масса, кг","c — скорость света в вакууме, м/с"],quiz:{q:"Скорость света в формуле:",opts:["около 3·10⁶ м/с","около 3·10⁸ м/с","около 3·10¹⁰ м/с"],correct:1}}
+];
+const sectionNames={mechanics:"Механика",molecular:"Молекулярная физика",electricity:"Электричество",magnetism:"Магнетизм",optics:"Колебания и оптика",atomic:"Атомная физика"};
+let activeSection="all";const known=new Set();const opened=new Set();
+const grid=document.getElementById("cardsGrid"),count=document.getElementById("cardCount"),empty=document.getElementById("emptyState");
+function visibleCards(){return FORMULAS.filter(x=>activeSection==="all"||x.section===activeSection)}
+function updateProgress(){const cards=visibleCards();const done=cards.filter((x)=>known.has(FORMULAS.indexOf(x))).length;document.getElementById("progressCopy").textContent="Освоено: "+done+" из "+cards.length+" карточек";document.getElementById("progressBar").style.width=(cards.length?done/cards.length*100:0)+"%"}
+function renderCards(){
+ const list=visibleCards();grid.innerHTML="";count.textContent=list.length+" карточек · "+(activeSection==="all"?"весь курс":sectionNames[activeSection]);empty.style.display=list.length?"none":"block";
+ list.forEach((x)=>{
+  const i=FORMULAS.indexOf(x),card=document.createElement("article");card.className="formula-card";
+  const vars=x.vars.map(v=>"<div>"+v+"</div>").join("");
+  card.innerHTML='<div class="card-meta"><span class="card-topic">'+x.topic+'</span><span class="card-number">CARD / '+String(i+1).padStart(2,"0")+'</span></div><h3>'+x.title+'</h3><p class="question">'+x.ask+'</p><div class="answer-panel '+(opened.has(i)?"open":"")+'" id="answer-'+i+'"><div class="formula">'+x.formula+'</div><div class="formula-note">'+vars+'</div></div><div class="card-actions"><button class="reveal" data-reveal="'+i+'" type="button">'+(opened.has(i)?"Скрыть формулу":"Показать формулу")+'</button><button class="know '+(known.has(i)?"selected":"")+'" data-know="'+i+'" type="button">'+(known.has(i)?"Знаю ✓":"Знаю")+'</button></div>';
+  grid.appendChild(card);
+ });
+ grid.querySelectorAll("[data-reveal]").forEach(b=>b.addEventListener("click",()=>{const i=Number(b.dataset.reveal);opened.has(i)?opened.delete(i):opened.add(i);renderCards()}));
+ grid.querySelectorAll("[data-know]").forEach(b=>b.addEventListener("click",()=>{const i=Number(b.dataset.know);known.has(i)?known.delete(i):known.add(i);renderCards()}));
+ updateProgress();renderQuiz();
+}
+function renderQuiz(){
+ const list=visibleCards().slice(0,Math.min(5,visibleCards().length));const host=document.getElementById("quizQuestions");host.innerHTML="";document.getElementById("quizResult").textContent="";
+ list.forEach((x,n)=>{const q=x.quiz,el=document.createElement("div");el.className="quiz-question";el.innerHTML='<strong>'+(n+1)+'. '+q.q+'</strong><div class="quiz-options">'+q.opts.map((o,j)=>'<button type="button" class="quiz-option" data-q="'+n+'" data-a="'+j+'">'+o+'</button>').join("")+'</div><div class="quiz-feedback" id="feedback-'+n+'"></div>';host.appendChild(el)});
+ host.querySelectorAll(".quiz-option").forEach(b=>b.addEventListener("click",()=>{host.querySelectorAll('[data-q="'+b.dataset.q+'"]').forEach(x=>x.classList.remove("chosen"));b.classList.add("chosen");document.getElementById("feedback-"+b.dataset.q).classList.remove("show")}));
+}
+document.getElementById("checkQuiz").addEventListener("click",()=>{
+ const list=visibleCards().slice(0,Math.min(5,visibleCards().length));let score=0;
+ list.forEach((x,n)=>{const picked=document.querySelector('.quiz-option[data-q="'+n+'"].chosen');const f=document.getElementById("feedback-"+n);f.classList.add("show");if(picked&&Number(picked.dataset.a)===x.quiz.correct){score++;f.style.color="#9be2b4";f.textContent="Верно."}else{f.style.color="#ff9cbd";f.textContent="Пока не совпало. Правильный ответ: "+x.quiz.opts[x.quiz.correct]}});
+ document.getElementById("quizResult").textContent="Результат: "+score+" из "+list.length+". "+(score===list.length?"Отлично — теперь попробуй применить формулы в задачах.":"Вернись к карточкам, где возникли сомнения, и повтори попытку.");
+});
+document.querySelectorAll(".section-tab").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".section-tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");activeSection=b.dataset.section;renderCards()}));
+renderCards();
+</script>
+</body></html>
