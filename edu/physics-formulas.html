@@ -176,13 +176,14 @@ function renderCards(){
  grid.querySelectorAll("[data-know]").forEach(b=>b.addEventListener("click",()=>{const i=Number(b.dataset.know);known.has(i)?known.delete(i):known.add(i);renderCards()}));
  updateProgress();renderQuiz();
 }
+function quizCards(){if(activeSection!=="all")return visibleCards().slice(0,5);return Object.keys(sectionNames).map(s=>FORMULAS.find(x=>x.section===s)).filter(Boolean)}
 function renderQuiz(){
- const list=visibleCards().slice(0,Math.min(5,visibleCards().length));const host=document.getElementById("quizQuestions");host.innerHTML="";document.getElementById("quizResult").textContent="";
+ const list=quizCards();const host=document.getElementById("quizQuestions");host.innerHTML="";document.getElementById("quizResult").textContent="";
  list.forEach((x,n)=>{const q=x.quiz,el=document.createElement("div");el.className="quiz-question";el.innerHTML='<strong>'+(n+1)+'. '+q.q+'</strong><div class="quiz-options">'+q.opts.map((o,j)=>'<button type="button" class="quiz-option" data-q="'+n+'" data-a="'+j+'">'+o+'</button>').join("")+'</div><div class="quiz-feedback" id="feedback-'+n+'"></div>';host.appendChild(el)});
  host.querySelectorAll(".quiz-option").forEach(b=>b.addEventListener("click",()=>{host.querySelectorAll('[data-q="'+b.dataset.q+'"]').forEach(x=>x.classList.remove("chosen"));b.classList.add("chosen");document.getElementById("feedback-"+b.dataset.q).classList.remove("show")}));
 }
 document.getElementById("checkQuiz").addEventListener("click",()=>{
- const list=visibleCards().slice(0,Math.min(5,visibleCards().length));let score=0;
+ const list=quizCards();let score=0;
  list.forEach((x,n)=>{const picked=document.querySelector('.quiz-option[data-q="'+n+'"].chosen');const f=document.getElementById("feedback-"+n);f.classList.add("show");if(picked&&Number(picked.dataset.a)===x.quiz.correct){score++;f.style.color="#9be2b4";f.textContent="Верно."}else{f.style.color="#ff9cbd";f.textContent="Пока не совпало. Правильный ответ: "+x.quiz.opts[x.quiz.correct]}});
  document.getElementById("quizResult").textContent="Результат: "+score+" из "+list.length+". "+(score===list.length?"Отлично — теперь попробуй применить формулы в задачах.":"Вернись к карточкам, где возникли сомнения, и повтори попытку.");
 });
