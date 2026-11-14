@@ -31,6 +31,40 @@ footer{padding:35px 0 28px;border-top:1px solid var(--line)}.foot{display:flex;j
 @media(max-width:900px){.wrap{width:min(100% - 40px,700px)}.navlinks{display:none}.menu-toggle{display:block}.nav-cta{margin-left:auto}.hero{grid-template-columns:1fr;padding:50px 0 70px}.hero-art{height:400px;grid-row:1}.hero-copy{grid-row:2}.hero h1{font-size:clamp(58px,13vw,92px)}.stats{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}.directions{grid-template-columns:1fr 1fr}.split,.library-layout,.faq-layout,.diag-grid,.pricing-layout{grid-template-columns:1fr;gap:35px}.visual-panel{min-height:300px}.section-head{display:block}.section-head>p{margin-top:18px}.steps{grid-template-columns:1fr 1fr}.step:nth-child(2){border-right:0}.step:nth-child(-n+2){border-bottom:1px solid var(--line)}}
 @media(max-width:560px){.wrap{width:calc(100% - 30px)}header{height:65px}.nav-cta{padding:10px 12px;font-size:8px}.brand-name{font-size:15px}.hero{padding-top:25px}.hero-art{height:300px}.portrait-frame{width:60%}.hero-meta{gap:20px;flex-wrap:wrap}.metric strong{font-size:22px}.stats{grid-template-columns:1fr}.stat{border-right:0;border-bottom:1px solid var(--line)!important}.stat:last-child{border-bottom:0!important}.directions,.review-grid{grid-template-columns:1fr}.direction{min-height:160px}section{padding:72px 0}.steps{grid-template-columns:1fr}.step{border-right:0;border-bottom:1px solid var(--line)}.step:last-child{border-bottom:0}.pricing-contact{align-items:flex-start;flex-direction:column}.package-grid{grid-template-columns:1fr}.packages-title{display:block}.packages-title span{display:block;margin-top:5px}.diag-form{grid-template-columns:1fr;padding:18px}.field.full,.diag-form .btn,.form-note,.success{grid-column:1}.foot{align-items:flex-start;flex-direction:column}.floating{padding:9px 11px}.floating.f1{left:-1%;top:12%}.floating.f2{right:-1%;bottom:12%}}
 .mobile-menu{display:none;position:absolute;top:65px;left:0;right:0;padding:14px 20px 20px;background:#0c0912;border-bottom:1px solid var(--line);flex-direction:column;gap:15px;font:10px var(--mono);text-transform:uppercase}.mobile-menu.open{display:flex}
+
+/* HERO REWORK — спокойная композиция, портрет без агрессивной обрезки */
+.hero{min-height:620px;grid-template-columns:1.08fr .92fr;gap:clamp(28px,5vw,76px);padding:54px 0 66px}
+.hero-copy{max-width:650px}
+.hero h1{font-size:clamp(58px,7.1vw,96px);line-height:.91;letter-spacing:-.085em;margin:24px 0 22px}
+.hero-copy>p{max-width:490px;font-size:15px;line-height:1.75;color:#c9bfce}
+.hero-actions{margin-top:26px}
+.hero-meta{gap:clamp(18px,3vw,34px);margin-top:38px}
+.hero-art{height:500px;min-width:0}
+.art-grid,.halo,.orbit,.floating{display:none}
+.portrait-frame{width:min(82%,390px);height:460px;aspect-ratio:auto;display:block;background:#100d17;border:1px solid #a76aff70;border-radius:190px 190px 10px 10px;clip-path:none;box-shadow:0 22px 70px #0009,0 0 45px #a76aff18;overflow:hidden}
+.portrait-photo{width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:none;background:linear-gradient(160deg,#17101e,#09080e)}
+.portrait-frame:before{content:"";position:absolute;inset:12px;border:1px solid #ff286f55;border-radius:180px 180px 4px 4px;clip-path:none;pointer-events:none}
+.portrait-frame:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 72%,#08070d44);mix-blend-mode:normal;pointer-events:none}
+.hero:after{bottom:0}
+@media(max-width:900px){
+ .hero{grid-template-columns:1fr;gap:24px;padding:44px 0 62px}
+ .hero-copy{grid-row:1;max-width:680px}
+ .hero-art{grid-row:2;height:390px}
+ .portrait-frame{height:370px;width:min(70%,340px)}
+ .hero h1{font-size:clamp(56px,10vw,84px)}
+}
+@media(max-width:560px){
+ .hero{padding:34px 0 52px;gap:16px}
+ .hero-art{height:320px}
+ .portrait-frame{height:305px;width:min(76%,280px)}
+ .hero h1{font-size:clamp(48px,13vw,68px);line-height:.94;margin:20px 0}
+ .hero-copy>p{font-size:13px;line-height:1.7}
+ .hero-meta{margin-top:28px;gap:18px}
+ .metric strong{font-size:21px}
+ .metric span{font-size:7px}
+ .hero-actions .btn{padding:12px 14px;font-size:9px}
+}
+
 </style>
 </head>
 <body>
