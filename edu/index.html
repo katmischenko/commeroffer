@@ -137,6 +137,57 @@ footer{background:#08070d}
  .domain-icon{font-size:20px;width:22px}
 }
 
+
+/* FINAL POLISH — compact first screen, one typography system, consistent controls */
+:root{--sans:Inter,Arial,sans-serif}
+body,button,input,select,textarea,.hero-copy,.hero-copy p,.tagline,.domain,.card,.section-head,.cta,.note{font-family:Inter,Arial,sans-serif!important}
+.hero{
+  height:clamp(620px,calc(100svh - 78px),820px)!important;
+  min-height:0!important;max-height:none!important;
+  align-items:center!important;
+}
+.hero-copy{padding-top:0!important;width:min(650px,56%)!important}
+.hero h1{font-family:Inter,Arial,sans-serif!important}
+.hero-copy>p{font-size:14px!important;line-height:1.7!important}
+.hero-actions{margin-top:24px!important}
+.primary,.nav-cta{
+  border-radius:0!important;
+  clip-path:polygon(0 0,94% 0,100% 24%,100% 100%,6% 100%,0 76%)!important;
+  font-family:Inter,Arial,sans-serif!important;
+  letter-spacing:.035em!important;
+}
+.primary{padding:14px 19px!important;font-size:11px!important}
+.hero-count{padding-left:20px!important}
+.hero-count strong{font-size:24px!important}
+.hero-count small{font:9px/1.4 Inter,Arial,sans-serif!important;letter-spacing:.08em}
+.domain-strip{bottom:12px!important;padding-top:10px!important}
+.domain{height:70px!important}
+.domain b{font-size:11px!important}
+.domain small{font-size:8px!important}
+.eyebrow,.navlinks,.nav-cta,.hero-count small,.filter-label,.chip,.catalog-count,.kind,.card-link,.foot small{
+  font-family:Inter,Arial,sans-serif!important;
+}
+@media(max-width:1100px) and (min-width:801px){
+ .hero{height:clamp(620px,calc(100svh - 78px),780px)!important}
+ .hero-copy{width:58%!important}
+ .hero h1{font-size:clamp(54px,6vw,76px)!important}
+ .domain{gap:8px!important;padding:8px!important}
+ .domain b{font-size:10px!important}
+}
+@media(max-width:800px){
+ .hero{height:auto!important;min-height:870px!important;padding-top:110px!important;align-items:flex-start!important}
+ .hero-copy{width:100%!important;padding-top:15px!important}
+ .domain{height:62px!important}
+}
+@media(max-height:700px) and (min-width:801px){
+ .hero{height:620px!important}
+ .hero h1{font-size:clamp(48px,5.2vw,68px)!important;margin:14px 0 7px!important}
+ .tagline{margin-bottom:16px!important;font-size:22px!important}
+ .hero-copy>p{font-size:12px!important}
+ .hero-actions{margin-top:17px!important}
+ .domain{height:58px!important}
+}
+
 </style>
 </head>
 <body>
@@ -176,7 +227,7 @@ footer{background:#08070d}
 <script>
 const ITEMS=[
 {kind:"ДИАГНОСТИКА",title:"Диагностика знаний",desc:"Бесплатная онлайн-диагностика из 15 заданий. Результат можно посмотреть в браузере; удалённое сохранение пока отключено.",subject:["inf","math","phys"],label:"несколько направлений",free:true,status:"Доступно",href:"diagnostika.html"},
-{kind:"FLASH-КАРТОЧКИ",title:"Формулы физики — карточки",desc:"Интерактивная колода: переворачивай карточки, проверяй себя и возвращайся к формулам, которые пока не запомнились.",subject:["phys"],label:"Физика",free:true,status:"Скоро",href:"flashcards.html"},
+{kind:"FLASH-КАРТОЧКИ",title:"Формулы физики — карточки",desc:"Школьный курс физики по разделам: понятные темы, формулы, обозначения, единицы измерения и мини-проверки.",subject:["phys"],label:"Физика · школьный курс",free:true,status:"Доступно",href:"physics-formulas.html"},
 {kind:"ИГРА-ТРЕНАЖЁР",title:"Один день из жизни разработчика",desc:"Интерактивная история о работе junior-разработчика: принимай решения, читай код и следи за состоянием проекта.",subject:["python"],label:"Python",free:true,status:"Скоро",href:"simulator.html"},
 {kind:"КВЕСТ",title:"Побег из лаборатории",desc:"Четыре замка, четыре задачи по информатике и математике. Реши их, чтобы выбраться из лаборатории.",subject:["math","inf"],label:"Математика · информатика",free:true,status:"Скоро",href:"escape-room.html"},
 {kind:"ШПАРГАЛКИ",title:"Cheat sheets для ОГЭ по информатике",desc:"Сжатые PDF-карты: формулы, команды и типы заданий. Распечатал — повесил — повторяешь.",subject:["inf"],label:"Информатика · ОГЭ",free:true,status:"Скоро",href:"cheatsheets.html"},
