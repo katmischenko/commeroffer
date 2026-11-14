@@ -65,6 +65,69 @@ footer{padding:35px 0 28px;border-top:1px solid var(--line)}.foot{display:flex;j
  .hero-actions .btn{padding:12px 14px;font-size:9px}
 }
 
+
+/* FIRST SCREEN — typography-led identity, no portrait */
+.hero{min-height:650px;grid-template-columns:1.04fr .96fr;gap:clamp(32px,5vw,78px);padding:58px 0 78px}
+.hero-copy{max-width:660px}
+.hero h1{font-size:clamp(54px,7.2vw,94px);line-height:.91;letter-spacing:-.088em;margin:25px 0 24px}
+.hero .outline{-webkit-text-stroke:1px #e8dce9;text-shadow:none}
+.hero .pink{color:#ff397e;text-shadow:0 0 24px #ff286f33}
+.hero-copy>p{max-width:500px;font-size:15px;line-height:1.8;color:#c4b9c9}
+.hero-actions{margin-top:30px;gap:12px}
+.hero-actions .btn{min-height:48px;padding:14px 18px}
+.hero-meta{gap:clamp(18px,3vw,34px);margin-top:44px}
+.metric strong{font-size:29px}
+.hero-art{height:500px;display:flex;align-items:center;justify-content:center;isolation:isolate}
+.hero-visual{width:min(100%,470px);height:440px;position:relative;overflow:hidden;border:1px solid #ffffff20;background:linear-gradient(145deg,#17111f 0%,#0d0b13 55%,#130d1b 100%);box-shadow:0 28px 80px #0008}
+.hero-visual:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 49.9%,#ffffff0c 50%,transparent 50.1%),linear-gradient(transparent 49.9%,#ffffff0c 50%,transparent 50.1%);background-size:52px 52px;mask-image:linear-gradient(135deg,#000,transparent 80%)}
+.hero-visual:after{content:"";position:absolute;width:360px;height:360px;border:1px solid #a76aff35;border-radius:50%;right:-140px;top:48px;box-shadow:0 0 0 22px #a76aff08,0 0 0 45px #ff286f08}
+.visual-top{position:absolute;top:22px;left:24px;right:24px;display:flex;justify-content:space-between;color:#9d91a5;font:9px var(--mono);letter-spacing:.12em}
+.visual-top span:last-child{color:#ff6f9d}
+.visual-core{position:absolute;inset:64px 0 120px;display:grid;place-items:center}
+.core-orbit{position:absolute;width:230px;height:230px;border:1px solid #ff397e55;border-radius:50%;transform:rotate(-28deg) scaleY(.72)}
+.orbit-two{width:280px;height:280px;border-color:#a76aff55;transform:rotate(42deg) scaleY(.42)}
+.core-mark{position:relative;z-index:1;font-size:clamp(78px,9vw,112px);font-weight:900;letter-spacing:-.14em;color:#f7eff8;text-shadow:0 0 35px #a76aff35}
+.core-mark span{color:#ff397e}
+.core-caption{position:absolute;z-index:1;bottom:4px;text-align:center;color:#a99bad;font:8px/1.8 var(--mono);letter-spacing:.22em}
+.visual-bottom{position:absolute;left:24px;right:24px;bottom:22px;border-top:1px solid #ffffff20;padding-top:16px;z-index:2}
+.visual-index{font:8px var(--mono);letter-spacing:.18em;color:#ff79a4;margin-bottom:13px}
+.visual-steps{display:flex;align-items:center;gap:9px;white-space:nowrap}
+.visual-steps span{font:8px var(--mono);color:#827687}
+.visual-steps span b{display:block;font:600 10px var(--sans);color:#d8cfdd;margin-top:5px;letter-spacing:.04em}
+.visual-steps span.active,.visual-steps span.active b{color:#ff79a4}
+.visual-steps i{height:1px;flex:1;min-width:8px;background:linear-gradient(90deg,#ff397e88,#a76aff55)}
+.visual-side-note{position:absolute;right:18px;top:46%;writing-mode:vertical-rl;font:8px/1.8 var(--mono);letter-spacing:.2em;color:#76677e}
+@media(max-width:900px){
+ .hero{min-height:auto;grid-template-columns:1fr;gap:34px;padding:52px 0 72px}
+ .hero-copy{max-width:720px}
+ .hero-art{height:390px;grid-row:2}
+ .hero-visual{height:370px;width:min(100%,520px)}
+ .hero h1{font-size:clamp(58px,10vw,84px)}
+}
+@media(max-width:560px){
+ .hero{padding:38px 0 58px;gap:26px}
+ .hero h1{font-size:clamp(45px,12.6vw,66px);line-height:.96;margin:20px 0}
+ .hero-copy>p{font-size:13px;line-height:1.72}
+ .hero-actions{margin-top:23px;gap:9px}
+ .hero-actions .btn{font-size:8px;padding:12px 13px;min-height:44px}
+ .hero-meta{margin-top:30px;gap:17px}
+ .metric strong{font-size:22px}
+ .metric span{font-size:7px}
+ .hero-art{height:300px}
+ .hero-visual{height:290px}
+ .visual-top{top:16px;left:16px;right:16px;font-size:7px}
+ .visual-core{inset:48px 0 92px}
+ .core-orbit{width:170px;height:170px}
+ .orbit-two{width:210px;height:210px}
+ .core-mark{font-size:76px}
+ .core-caption{font-size:7px}
+ .visual-bottom{left:16px;right:16px;bottom:15px;padding-top:11px}
+ .visual-steps{gap:6px}
+ .visual-steps span{font-size:7px}
+ .visual-steps span b{font-size:8px}
+ .visual-side-note{right:10px;font-size:6px}
+}
+
 </style>
 </head>
 <body>
@@ -77,11 +140,25 @@ footer{padding:35px 0 28px;border-top:1px solid var(--line)}.foot{display:flex;j
 </div></header>
 <main id="top">
 <div class="wrap hero">
-<div class="hero-copy"><div class="eyebrow">Digital learning lab · 01 / mischenko edu</div><h1>ПОНЯТЬ.<br><span class="outline">СОЗДАТЬ.</span><br><span class="pink">БОЛЬШЕ.</span></h1>
-<p>Обучение, в котором сложное становится понятным. Исследуем, задаём вопросы, пишем код, находим решения — и превращаем знания в реальные навыки.</p>
-<div class="hero-actions"><a class="btn" href="#directions">Исследовать ↗</a><a class="btn ghost" href="#diagnostic">Начать с диагностики</a></div>
+<div class="hero-copy"><div class="eyebrow">ИНДИВИДУАЛЬНОЕ ОБУЧЕНИЕ · ONLINE 1:1</div><h1>СЛОЖНОЕ.<br><span class="outline">СТАНОВИТСЯ</span><br><span class="pink">ПОНЯТНЫМ.</span></h1>
+<p>Информатика, математика, физика и программирование — без механической зубрёжки. Разбираемся в логике, учимся мыслить и уверенно применять знания.</p>
+<div class="hero-actions"><a class="btn" href="#directions">Выбрать направление ↗</a><a class="btn ghost" href="#diagnostic">Обсудить обучение</a></div>
 <div class="hero-meta"><div class="metric"><strong>8+</strong><span>лет преподавания</span></div><div class="metric"><strong>570+</strong><span>учеников за всё время</span></div><div class="metric"><strong>1:1</strong><span>индивидуально онлайн</span></div></div></div>
-<div class="hero-art"><div class="art-grid"></div><div class="halo"></div><div class="portrait-frame"><img class="portrait-photo" src="mischenko-edu-home-portrait.jpg" alt="Портрет преподавателя Mischenko Edu" fetchpriority="high"></div><div class="orbit a">Knowledge is power / 2026</div><div class="orbit b">Explore · Learn · Create</div><div class="floating f1"><small>Формат</small><b>1 : 1</b></div><div class="floating f2"><small>Направлений</small><b>06</b></div></div>
+<div class="hero-art" aria-label="Система обучения Mischenko Edu">
+  <div class="hero-visual">
+    <div class="visual-top"><span>ME / LEARNING SYSTEM</span><span>01—06</span></div>
+    <div class="visual-core">
+      <div class="core-orbit orbit-one"></div><div class="core-orbit orbit-two"></div>
+      <div class="core-mark">M<span>/</span>E</div>
+      <div class="core-caption">THINK CLEARLY<br>BUILD CONFIDENCE</div>
+    </div>
+    <div class="visual-bottom">
+      <div class="visual-index">ТВОЙ МАРШРУТ</div>
+      <div class="visual-steps"><span class="active">01 <b>ПОНЯТЬ</b></span><i></i><span>02 <b>ПРИМЕНИТЬ</b></span><i></i><span>03 <b>СОЗДАТЬ</b></span></div>
+    </div>
+    <div class="visual-side-note">KNOWLEDGE<br>IN MOTION</div>
+  </div>
+</div>
 </div>
 <div class="wrap stats">
 <div class="stat"><div class="stat-icon"><span>⌘</span></div><div><b>Информатика</b><small>Логика и алгоритмы</small></div></div><div class="stat"><div class="stat-icon"><span>∑</span></div><div><b>Математика</b><small>Понимание и практика</small></div></div><div class="stat"><div class="stat-icon"><span>∆</span></div><div><b>Физика</b><small>Формулы и закономерности</small></div></div><div class="stat"><div class="stat-icon"><span>&lt;/&gt;</span></div><div><b>Программирование</b><small>Код, веб и дизайн</small></div></div>
