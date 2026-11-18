@@ -294,7 +294,7 @@ test("mobile: setup fits a narrow viewport without horizontal overflow", async (
 });
 
 
-test("all library pages use the complete Cyber layout on desktop and mobile", async () => {
+test("all library pages render their expected layout on desktop and mobile", async () => {
   const routes = [
     "/edu/index.html",
     "/edu/cheatsheets.html",
@@ -316,15 +316,27 @@ test("all library pages use the complete Cyber layout on desktop and mobile", as
     await page.setViewportSize({ width: 1365, height: 900 });
     const response = await page.goto(baseUrl + route, { waitUntil: "domcontentloaded" });
     assert.equal(response?.status(), 200, route + " should load");
-    await page.locator("main .hero h1").waitFor();
-    assert.equal(await page.locator(".topline").count(), 1, route + " should have the Cyber top line");
-    assert.equal(await page.locator(".quickbar").count(), 1, route + " should have the shared quickbar");
-    assert.equal(await page.locator(".coming-page").count(), 0, route + " must not retain the old placeholder layout");
-    assert.equal(
-      await page.locator("body").evaluate(el => getComputedStyle(el).backgroundColor),
-      "rgb(8, 7, 13)",
-      route + " should use the Cyber background"
-    );
+    if (route === "/edu/index.html") {
+      await page.locator(".hero h1").waitFor();
+      assert.equal(await page.locator(".topline").count(), 1, route + " should have the editorial top line");
+      assert.equal(await page.locator(".nav-cta").count(), 1, route + " should have the catalog contact link");
+      assert.equal(await page.locator(".coming-page").count(), 0, route + " must not retain the old placeholder layout");
+      assert.equal(
+        await page.locator("body").evaluate(el => getComputedStyle(el).backgroundColor),
+        "rgb(9, 7, 7)",
+        route + " should use the editorial background"
+      );
+    } else {
+      await page.locator("main .hero h1").waitFor();
+      assert.equal(await page.locator(".topline").count(), 1, route + " should have the Cyber top line");
+      assert.equal(await page.locator(".quickbar").count(), 1, route + " should have the shared quickbar");
+      assert.equal(await page.locator(".coming-page").count(), 0, route + " must not retain the old placeholder layout");
+      assert.equal(
+        await page.locator("body").evaluate(el => getComputedStyle(el).backgroundColor),
+        "rgb(8, 7, 13)",
+        route + " should use the Cyber background"
+      );
+    }
     await page.setViewportSize({ width: 390, height: 844 });
     const dimensions = await page.evaluate(() => ({
       viewport: document.documentElement.clientWidth,
