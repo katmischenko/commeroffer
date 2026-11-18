@@ -3539,6 +3539,213 @@
       ],
       "correctText": "Проверка обратной совместимости",
       "explanation": "Проверка обратной совместимости оценивает, сохраняют ли прежние потребители библиотеки корректную работу после изменения компонента или ресурса."
+    },
+    {
+      "id": "pool-informatics11-dp-cost-001",
+      "directionId": "informatics",
+      "direction": "Информатика",
+      "class": 11,
+      "curriculumId": "ru-2026-2027-advanced",
+      "topic": "Динамическое программирование",
+      "skill": "Построение рекуррентного перехода для минимальной стоимости пути",
+      "groupId": "dynamic_programming",
+      "difficulty": "advanced",
+      "type": "choice",
+      "question": "В задаче поиска пути с минимальной стоимостью робот может попасть в клетку (i, j) только сверху или слева. c[i][j] — стоимость входа в эту клетку, а dp[i][j] — минимальная стоимость пути до неё. Какой переход нужно использовать?",
+      "options": [
+        "dp[i][j] = c[i][j] + dp[i−1][j] + dp[i][j−1]",
+        "dp[i][j] = c[i][j] + min(dp[i−1][j], dp[i][j−1])",
+        "dp[i][j] = min(c[i][j], dp[i−1][j] + dp[i][j−1])",
+        "dp[i][j] = dp[i−1][j] × dp[i][j−1]"
+      ],
+      "correctIndex": 1,
+      "correctText": "dp[i][j] = c[i][j] + min(dp[i−1][j], dp[i][j−1])",
+      "explanation": "В клетку можно прийти только сверху или слева. Для минимальной стоимости выбираем меньшую из двух накопленных стоимостей и добавляем стоимость входа в текущую клетку c[i][j]."
+    },
+    {
+      "id": "pool-informatics11-dp-grid-001",
+      "directionId": "informatics",
+      "direction": "Информатика",
+      "class": 11,
+      "curriculumId": "ru-2026-2027-advanced",
+      "topic": "Динамическое программирование",
+      "skill": "Подсчёт числа путей в сетке с помощью динамического программирования",
+      "groupId": "dynamic_programming",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "На поле 3 × 3 робот идёт из верхней левой клетки в нижнюю правую. За ход он перемещается только вправо или вниз, препятствий нет. В таблице динамического программирования число путей в каждой клетке равно сумме чисел в клетке сверху и слева. Сколько разных путей ведёт к нижней правой клетке?",
+      "acceptedAnswers": [
+        "6"
+      ],
+      "correctText": "6",
+      "explanation": "В первой строке и первом столбце получается по одной возможности. Для остальных клеток складываем число путей сверху и слева: строки таблицы дают 1, 1, 1; затем 1, 2, 3; затем 1, 3, 6. Ответ — 6 путей."
+    },
+    {
+      "id": "pool-informatics10-rec-base-001",
+      "directionId": "informatics",
+      "direction": "Информатика",
+      "class": 10,
+      "curriculumId": "ru-2026-2027-advanced",
+      "topic": "Алгоритмы",
+      "skill": "Определение базового случая рекурсивной функции",
+      "groupId": "recursion",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Рекурсивная функция sum_to(n) возвращает 0, если n == 0, а иначе возвращает n + sum_to(n − 1). Какое условие является базовым случаем и останавливает дальнейшие вызовы?",
+      "options": [
+        "n == 0",
+        "n > 0",
+        "n < 0",
+        "sum_to(n − 1) == 0"
+      ],
+      "correctIndex": 0,
+      "correctText": "n == 0",
+      "explanation": "Базовый случай — условие, при котором функция перестаёт вызывать саму себя и возвращает готовый результат. Здесь это n == 0."
+    },
+    {
+      "id": "pool-informatics10-rec-sum-001",
+      "directionId": "informatics",
+      "direction": "Информатика",
+      "class": 10,
+      "curriculumId": "ru-2026-2027-advanced",
+      "topic": "Алгоритмы",
+      "skill": "Суммирование чисел рекурсивной функцией",
+      "groupId": "recursion",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Функция sum_to(n) возвращает 0 при n == 0, а в остальных случаях вычисляет n + sum_to(n − 1). Чему равно sum_to(4)?",
+      "acceptedAnswers": [
+        "10"
+      ],
+      "correctText": "10",
+      "explanation": "Раскрываем вызовы: sum_to(4) = 4 + sum_to(3) = 4 + 3 + 2 + 1 + 0 = 10."
+    },
+    {
+      "id": "pool-informatics11-web-anchor-001",
+      "directionId": "informatics",
+      "direction": "Информатика",
+      "class": 11,
+      "curriculumId": "ru-2026-2027-advanced",
+      "topic": "Веб-разработка",
+      "skill": "Выбор HTML-элемента для гиперссылки",
+      "groupId": "web_development",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какой HTML-фрагмент создаёт ссылку для перехода на другую страницу сайта?",
+      "options": [
+        "<img src=\"materials.html\" alt=\"Материалы\">",
+        "<a href=\"materials.html\">Материалы</a>",
+        "<button href=\"materials.html\">Материалы</button>",
+        "<meta href=\"materials.html\">"
+      ],
+      "correctIndex": 1,
+      "correctText": "<a href=\"materials.html\">Материалы</a>",
+      "explanation": "Гиперссылку создаёт элемент a. Атрибут href указывает адрес страницы или ресурса, на который ведёт ссылка."
+    },
+    {
+      "id": "pool-informatics11-web-alt-001",
+      "directionId": "informatics",
+      "direction": "Информатика",
+      "class": 11,
+      "curriculumId": "ru-2026-2027-advanced",
+      "topic": "Веб-разработка",
+      "skill": "Определение назначения атрибута alt у изображения",
+      "groupId": "web_development",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Для чего нужен атрибут alt у HTML-элемента img?",
+      "acceptedAnswers": [
+        "Альтернативный текст изображения",
+        "альтернативный текст",
+        "текстовое описание изображения",
+        "описание изображения"
+      ],
+      "correctText": "Альтернативный текст изображения",
+      "explanation": "Атрибут alt задаёт текстовую альтернативу изображению. Её могут озвучивать программы экранного доступа; она также помогает понять смысл изображения, если оно не загрузилось."
+    },
+    {
+      "id": "pool-python11-context-as-001",
+      "directionId": "python",
+      "direction": "Python",
+      "class": 11,
+      "curriculumId": "general",
+      "topic": "Контекстные менеджеры",
+      "skill": "Определение объекта, связываемого с переменной as в конструкции with",
+      "groupId": "context_managers",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "В конструкции with open(\"notes.txt\", \"r\", encoding=\"utf-8\") as file: что представляет собой переменная file внутри блока with?",
+      "options": [
+        "Строку с именем файла",
+        "Объект открытого файла",
+        "Кодировку файла",
+        "Список файлов в папке"
+      ],
+      "correctIndex": 1,
+      "correctText": "Объект открытого файла",
+      "explanation": "Контекстный менеджер open возвращает объект файла. Именно этот объект связывается с именем file после слова as и используется для чтения или записи."
+    },
+    {
+      "id": "pool-python11-context-exit-001",
+      "directionId": "python",
+      "direction": "Python",
+      "class": 11,
+      "curriculumId": "general",
+      "topic": "Контекстные менеджеры",
+      "skill": "Определение момента вызова метода __exit__",
+      "groupId": "context_managers",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Если внутри блока with при работе с файлом возникает исключение, когда вызывается метод __exit__ контекстного менеджера?",
+      "acceptedAnswers": [
+        "При выходе из блока with, в том числе при исключении.",
+        "при выходе из блока with",
+        "после выхода из блока with",
+        "при выходе из блока with даже при исключении"
+      ],
+      "correctText": "При выходе из блока with, в том числе при исключении.",
+      "explanation": "Метод __exit__ вызывается при выходе из блока with. Это происходит и при обычном завершении, и при возникновении исключения; контекстный менеджер может выполнить очистку ресурса."
+    },
+    {
+      "id": "pool-python10-map-001",
+      "directionId": "python",
+      "direction": "Python",
+      "class": 10,
+      "curriculumId": "general",
+      "topic": "Функциональные инструменты",
+      "skill": "Трассировка результата применения map к последовательности",
+      "groupId": "functional_programming",
+      "difficulty": "basic",
+      "type": "choice",
+      "question": "Какой список получится после выполнения list(map(lambda x: x + 1, [2, 4, 6]))?",
+      "options": [
+        "[2, 4, 6]",
+        "[3, 5, 7]",
+        "[1, 3, 5]",
+        "[3, 4, 7]"
+      ],
+      "correctIndex": 1,
+      "correctText": "[3, 5, 7]",
+      "explanation": "map применяет функцию lambda x: x + 1 к каждому элементу последовательности: 2 становится 3, 4 — 5, 6 — 7. list преобразует результат в список."
+    },
+    {
+      "id": "pool-python11-filter-001",
+      "directionId": "python",
+      "direction": "Python",
+      "class": 11,
+      "curriculumId": "general",
+      "topic": "Функциональные инструменты",
+      "skill": "Трассировка результата применения filter к последовательности",
+      "groupId": "functional_programming",
+      "difficulty": "medium",
+      "type": "short",
+      "question": "Какой список вернёт list(filter(lambda x: x % 2 == 0, [1, 2, 3, 4, 5]))?",
+      "acceptedAnswers": [
+        "[2, 4]",
+        "[2,4]"
+      ],
+      "correctText": "[2, 4]",
+      "explanation": "filter оставляет только те элементы, для которых функция-предикат возвращает True. Условию x % 2 == 0 удовлетворяют 2 и 4. list материализует полученный итератор."
     }
   ]
 }

@@ -3085,6 +3085,42 @@
           "containsAny": [
             "понимание"
           ]
+        },
+        {
+          "groupId": "dynamic_programming",
+          "containsAny": [
+            "Построение рекуррентного перехода для минимальной стоимости пути"
+          ]
+        },
+        {
+          "groupId": "dynamic_programming",
+          "containsAny": [
+            "Подсчёт числа путей в сетке с помощью динамического программирования"
+          ]
+        },
+        {
+          "groupId": "recursion",
+          "containsAny": [
+            "Определение базового случая рекурсивной функции"
+          ]
+        },
+        {
+          "groupId": "recursion",
+          "containsAny": [
+            "Суммирование чисел рекурсивной функцией"
+          ]
+        },
+        {
+          "groupId": "web_development",
+          "containsAny": [
+            "Выбор HTML-элемента для гиперссылки"
+          ]
+        },
+        {
+          "groupId": "web_development",
+          "containsAny": [
+            "Определение назначения атрибута alt у изображения"
+          ]
         }
       ]
     },
@@ -3933,6 +3969,30 @@
           "groupId": "conceptual_understanding",
           "containsAny": [
             "понимание"
+          ]
+        },
+        {
+          "groupId": "context_managers",
+          "containsAny": [
+            "Определение объекта, связываемого с переменной as в конструкции with"
+          ]
+        },
+        {
+          "groupId": "context_managers",
+          "containsAny": [
+            "Определение момента вызова метода __exit__"
+          ]
+        },
+        {
+          "groupId": "functional_programming",
+          "containsAny": [
+            "Трассировка результата применения map к последовательности"
+          ]
+        },
+        {
+          "groupId": "functional_programming",
+          "containsAny": [
+            "Трассировка результата применения filter к последовательности"
           ]
         }
       ]
