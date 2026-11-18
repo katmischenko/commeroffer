@@ -323,7 +323,7 @@ test("all library pages render their expected layout on desktop and mobile", asy
       assert.equal(await page.locator(".coming-page").count(), 0, route + " must not retain the old placeholder layout");
       assert.equal(
         await page.locator("body").evaluate(el => getComputedStyle(el).backgroundColor),
-        "rgb(9, 7, 7)",
+        "rgb(8, 7, 13)",
         route + " should use the editorial background"
       );
     } else {
