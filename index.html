@@ -128,6 +128,19 @@ footer{padding:35px 0 28px;border-top:1px solid var(--line)}.foot{display:flex;j
  .visual-side-note{right:10px;font-size:6px}
 }
 
+
+/* Personal photographs — main page */
+.hero-photo-frame{isolation:isolate}
+.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:52% 42%;display:block}
+.hero-photo-frame:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#08070d55 0%,transparent 48%),linear-gradient(0deg,#08070dcc 0%,transparent 34%,#08070d22 100%);pointer-events:none}
+.hero-photo-frame .visual-top,.hero-photo-frame .visual-bottom{z-index:2}
+.about-photo-panel{display:block;min-height:400px;background:#0d0b12}
+.about-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%;display:block}
+.about-photo-panel:before{z-index:1;pointer-events:none}
+.about-photo-panel:after{z-index:1;pointer-events:none;background:linear-gradient(180deg,transparent 55%,#08070d55)}
+@media(max-width:900px){.about-photo-panel{min-height:340px}}
+@media(max-width:560px){.about-photo-panel{min-height:300px}}
+
 </style>
 </head>
 <body>
@@ -144,26 +157,21 @@ footer{padding:35px 0 28px;border-top:1px solid var(--line)}.foot{display:flex;j
 <p>Информатика, математика, физика и программирование — без механической зубрёжки. Разбираемся в логике, учимся мыслить и уверенно применять знания.</p>
 <div class="hero-actions"><a class="btn" href="#directions">Выбрать направление ↗</a><a class="btn ghost" href="#diagnostic">Обсудить обучение</a></div>
 <div class="hero-meta"><div class="metric"><strong>8+</strong><span>лет преподавания</span></div><div class="metric"><strong>570+</strong><span>учеников за всё время</span></div><div class="metric"><strong>1:1</strong><span>индивидуально онлайн</span></div></div></div>
-<div class="hero-art" aria-label="Система обучения Mischenko Edu">
-  <div class="hero-visual">
+<div class="hero-art" aria-label="Катерина Мищенко — преподаватель Mischenko Edu">
+  <div class="hero-visual hero-photo-frame">
+    <img class="hero-photo" src="hero-street.jpg" alt="Катерина на улице" fetchpriority="high">
     <div class="visual-top"><span>ME / LEARNING SYSTEM</span><span>01—06</span></div>
-    <div class="visual-core">
-      <div class="core-orbit orbit-one"></div><div class="core-orbit orbit-two"></div>
-      <div class="core-mark">M<span>/</span>E</div>
-      <div class="core-caption">THINK CLEARLY<br>BUILD CONFIDENCE</div>
-    </div>
     <div class="visual-bottom">
       <div class="visual-index">ТВОЙ МАРШРУТ</div>
       <div class="visual-steps"><span class="active">01 <b>ПОНЯТЬ</b></span><i></i><span>02 <b>ПРИМЕНИТЬ</b></span><i></i><span>03 <b>СОЗДАТЬ</b></span></div>
     </div>
-    <div class="visual-side-note">KNOWLEDGE<br>IN MOTION</div>
   </div>
 </div>
 </div>
 <div class="wrap stats">
 <div class="stat"><div class="stat-icon"><span>⌘</span></div><div><b>Информатика</b><small>Логика и алгоритмы</small></div></div><div class="stat"><div class="stat-icon"><span>∑</span></div><div><b>Математика</b><small>Понимание и практика</small></div></div><div class="stat"><div class="stat-icon"><span>∆</span></div><div><b>Физика</b><small>Формулы и закономерности</small></div></div><div class="stat"><div class="stat-icon"><span>&lt;/&gt;</span></div><div><b>Программирование</b><small>Код, веб и дизайн</small></div></div>
 </div>
-<section id="about"><div class="wrap split"><div><div class="eyebrow">01 / кто стоит за лабораторией</div><div class="visual-panel"><div class="visual-word">THINK<span style="color:#ff286f">/</span>DO<small>НЕ ЗАПОМИНАТЬ. ПОНИМАТЬ.</small></div></div></div><div><h2>ЗНАНИЯ —<br><em>ЭТО ИНСТРУМЕНТ.</em></h2><div class="bio-copy"><p>Я — Катерина Мищенко, преподаватель информатики, математики, физики и программирования.</p><p>Работаю индивидуально и онлайн со школьниками и взрослыми, которые изучают код. На занятиях важен не только ответ. Мы разбираем ход мысли, ищем ошибки, сравниваем способы решения и учимся понимать, почему метод работает.</p><p>К экзаменам готовимся системно: изучаем темы, тренируемся на заданиях и возвращаемся к тому, что пока вызывает трудности.</p><p>Разрабатываю материалы mischenko edu — конспекты, тренажёры и практику для самостоятельной работы.</p></div><div class="credential"><b>Мозырский государственный педагогический университет им. И. П. Шамякина</b><span>2017 · Курсы школы Skyeng — дополнительное обучение</span></div></div></div></section>
+<section id="about"><div class="wrap split"><div><div class="eyebrow">01 / кто стоит за лабораторией</div><div class="visual-panel about-photo-panel"><img class="about-photo" src="about-with-dog.jpg" alt="Катерина с французским бульдогом"></div></div><div><h2>ЗНАНИЯ —<br><em>ЭТО ИНСТРУМЕНТ.</em></h2><div class="bio-copy"><p>Я — Катерина Мищенко, преподаватель информатики, математики, физики и программирования.</p><p>Работаю индивидуально и онлайн со школьниками и взрослыми, которые изучают код. На занятиях важен не только ответ. Мы разбираем ход мысли, ищем ошибки, сравниваем способы решения и учимся понимать, почему метод работает.</p><p>К экзаменам готовимся системно: изучаем темы, тренируемся на заданиях и возвращаемся к тому, что пока вызывает трудности.</p><p>Разрабатываю материалы mischenko edu — конспекты, тренажёры и практику для самостоятельной работы.</p></div><div class="credential"><b>Мозырский государственный педагогический университет им. И. П. Шамякина</b><span>2017 · Курсы школы Skyeng — дополнительное обучение</span></div></div></div></section>
 <section id="directions"><div class="wrap"><div class="section-head"><div><div class="eyebrow">02 / choose your dimension</div><h2>ТВОЯ ТОЧКА<br><em>ВХОДА.</em></h2></div><p>Четыре предметных направления и цифровые инструменты. Выбираем не модный предмет, а то, что нужно для твоей цели, уровня и темпа.</p></div>
 <div class="directions">
 <a class="direction" href="#diagnostic"><span class="num">01 / SCIENCE</span><span class="arrow">↗</span><div class="symbol">∆</div><h3>Физика</h3><p>Школьная программа, контрольные и подготовка к ОГЭ. Формулы, явления и задачи с разбором.</p></a>
