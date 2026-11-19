@@ -118,6 +118,20 @@ body{background:#08070d;color:var(--sim-text)}
 .game-topline span{font:9px 'Space Mono';color:#a99bad}.game-topline b{font:10px 'Space Mono';color:#ff9cbd}
 @media(max-width:860px){.game-layout{grid-template-columns:1fr}.game-sidebar{position:static;grid-template-columns:repeat(2,minmax(0,1fr))}.game-sidebar .side-card:last-child{grid-column:1/-1}.game-stage{min-height:0}}
 @media(max-width:520px){.game-sidebar{grid-template-columns:1fr}.game-sidebar .side-card:last-child{grid-column:auto}.game-stage{padding:14px}}
+
+/* INTERACTIVE WORKSTATION */
+.workstation{border:1px solid #ffffff20;background:#09070d;margin:0 0 18px;overflow:hidden}
+.ws-head{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid #ffffff18}
+.ws-head b{font:9px 'Space Mono';color:#ff9cbd;letter-spacing:.1em}.ws-head span{font:8px 'Space Mono';color:#8e8295}
+.ws-tabs{display:flex;overflow:auto;border-bottom:1px solid #ffffff18}
+.ws-tab{flex:1;min-width:78px;padding:10px 8px;border:0;border-right:1px solid #ffffff12;background:#100d16;color:#a99bad;font:9px 'Space Mono';cursor:pointer}
+.ws-tab.active{background:#211323;color:#ff9cbd;box-shadow:inset 0 -2px var(--sim-pink)}
+.ws-screen{min-height:130px;padding:14px;font:10px/1.75 'Space Mono';color:#cfc1d4;white-space:pre-wrap}
+.ws-screen .ws-green{color:#9be2b4}.ws-screen .ws-pink{color:#ff9cbd}.ws-screen .ws-dim{color:#84778c}
+.skill-grid{display:flex;flex-wrap:wrap;gap:6px}.skill-chip{font:8px 'Space Mono';padding:6px 7px;border:1px solid #ffffff20;color:#8f8495;background:#0d0a12}.skill-chip.unlocked{border-color:#a76aff77;color:#d4baff;background:#a76aff12}
+.event-box{margin-top:14px;border:1px solid #ff9c5b66;background:#ff9c5b0b;padding:14px}.event-box>small{font:8px 'Space Mono';color:#ffbd82;letter-spacing:.12em}.event-box>b{display:block;font-size:12px;margin:7px 0}.event-box p{font-size:10px;line-height:1.65;color:#cfc1d4;margin:0 0 10px}.event-options{display:grid;gap:7px}.event-choice{padding:10px;text-align:left;border:1px solid #ffffff22;background:#130f17;color:#eee;font:10px/1.5 Inter;cursor:pointer}.event-choice:disabled{opacity:.65;cursor:default}.event-result{font-size:10px;line-height:1.6;color:#9be2b4;margin-top:10px}
+@media(max-width:520px){.ws-tab{min-width:70px;font-size:8px}.ws-screen{font-size:9px}}
+
 </style>
 </head>
 <body>
@@ -149,8 +163,8 @@ body{background:#08070d;color:var(--sim-text)}
 <div class="side-stat"><div><span>Качество кода</span><b id="quality-value">50</b></div><div class="meter"><i id="quality-meter"></i></div></div>
 <div class="side-stat"><div><span>Доверие команды</span><b id="team-value">50</b></div><div class="meter"><i id="team-meter"></i></div></div>
 <div class="side-stat"><div><span>Надёжность</span><b id="reliability-value">50</b></div><div class="meter"><i id="reliability-meter"></i></div></div></div>
-<div class="side-card"><div class="side-eyebrow">MISSION / CHECKLIST</div><b class="mission-title">Исправить оформление заказа</b><div class="mission-list" id="mission-list"><div><i></i><span>Понять требования</span></div><div><i></i><span>Найти причину бага</span></div><div><i></i><span>Исправить код</span></div><div><i></i><span>Протестировать</span></div><div><i></i><span>Выпустить обновление</span></div></div></div>
-</aside><div class="game-stage"><div id="scene-host" aria-live="polite"></div><div id="final-host" class="hidden" aria-live="polite"></div></div></div>
+<div class="side-card"><div class="side-eyebrow">SKILL INVENTORY / 03</div><b class="mission-title">Навыки, которые ты прокачиваешь</b><div class="skill-grid" id="skill-inventory"><span class="skill-chip">Требования</span><span class="skill-chip">Debugging</span><span class="skill-chip">Git</span><span class="skill-chip">JavaScript</span><span class="skill-chip">Безопасность</span><span class="skill-chip">Testing</span><span class="skill-chip">Code review</span><span class="skill-chip">Deploy</span></div><small style="display:block;color:#928598;font-size:8px;line-height:1.5;margin-top:10px">Навыки открываются по мере прохождения этапов.</small></div><div class="side-card"><div class="side-eyebrow">MISSION / CHECKLIST</div><b class="mission-title">Исправить оформление заказа</b><div class="mission-list" id="mission-list"><div><i></i><span>Понять требования</span></div><div><i></i><span>Найти причину бага</span></div><div><i></i><span>Исправить код</span></div><div><i></i><span>Протестировать</span></div><div><i></i><span>Выпустить обновление</span></div></div></div>
+</aside><div class="game-stage"><div class="workstation" id="workstation"><div class="ws-head"><b>WORKSTATION / DEV ENVIRONMENT</b><span>LOCAL SESSION · PRIVATE</span></div><div class="ws-tabs" role="tablist"><button class="ws-tab active" data-tool="editor">⌘ Редактор</button><button class="ws-tab" data-tool="terminal">› Терминал</button><button class="ws-tab" data-tool="browser">◎ Браузер</button><button class="ws-tab" data-tool="chat">▤ Команда</button></div><div class="ws-screen" id="ws-screen" aria-live="polite"></div></div><div id="scene-host" aria-live="polite"></div><div id="final-host" class="hidden" aria-live="polite"></div></div></div>
 </section>
 <section class="glossary">
 <div class="sim-kicker">QUICK REFERENCE / 01</div><h2>СЛОВАРЬ РАБОЧЕГО ДНЯ</h2>
@@ -218,18 +232,42 @@ const scenes=[
 {title:'Ничего не сообщу — коллеги сами заметят изменения',detail:'Моя часть работы закончена.',feedback:'Команда должна понимать, что изменилось, что проверено и есть ли известные ограничения. Без передачи контекста поддерживать проект сложнее.',lesson:'Короткая документация и понятная передача задачи — тоже часть работы разработчика.',delta:{quality:0,team:-8,reliability:-5},tag:'risky'}
 ]}
 ];
-const state={index:0,selected:null,quality:50,team:50,reliability:50,energy:100,focus:75,stress:15,xp:0,history:[],breakTaken:false};
+const skillNames=['Требования','Debugging','Git','JavaScript','Безопасность','Testing','Code review','Deploy'];
+const events=[
+{title:'Срочное сообщение от дизайнера',body:'Дизайнер пишет: «На узком экране кнопка оформления заказа уезжает вниз. Можешь проверить адаптивность?»',options:[{label:'Проверю мобильный сценарий и уточню ожидаемое поведение',feedback:'Ты проверил реальный пользовательский сценарий и не отмахнулся от замечания.',delta:{quality:5,team:4,reliability:4,energy:-3,xp:10}},{label:'Скажу, что это не входит в задачу, и проигнорирую',feedback:'Границы задачи важны, но замечание стоит передать команде и зафиксировать.',delta:{team:-6,reliability:-3,stress:5,xp:2}}]},
+{title:'Тестировщик нашёл новый сценарий',body:'В чате сообщение: «Если нажать “Назад” после отправки формы, пользователь может отправить заказ повторно».',options:[{label:'Проверю повторную отправку и предложу защиту от дублей',feedback:'Ты оценил риск для данных и проверил не только обычный сценарий.',delta:{quality:4,reliability:7,energy:-4,xp:12}},{label:'Попрошу завести отдельную задачу и пока не трогать',feedback:'Разделять задачи разумно, но сначала стоит оценить серьёзность риска и сообщить наставнику.',delta:{team:1,reliability:-4,stress:3,xp:4}}]},
+{title:'Наставник предлагает помощь',body:'Наставник замечает задержку на отладке: «Могу показать, как быстрее локализовать проблему. Разберём вместе?»',options:[{label:'Покажу, что уже проверил, и задам конкретный вопрос',feedback:'Ты сохраняешь самостоятельность, но используешь опыт команды.',delta:{team:6,focus:5,stress:-4,xp:12}},{label:'Откажусь — junior должен справляться сам',feedback:'Самостоятельность не означает изоляцию. Вопрос вовремя — часть профессиональной работы.',delta:{team:-5,stress:6,energy:-3,xp:2}}]}
+];
+const state={index:0,selected:null,quality:50,team:50,reliability:50,energy:100,focus:75,stress:15,xp:0,history:[],breakTaken:false,tool:'editor',event:null,eventResolved:false};
 const $=id=>document.getElementById(id);
 function clamp(n){return Math.max(0,Math.min(100,n))}
+function updateSkills(){
+ const unlocked=skillNames.map((name,i)=>i<Math.min(state.index+(state.selected!==null?1:0),8));
+ $('skill-inventory').innerHTML=skillNames.map((name,i)=>'<span class="skill-chip '+(unlocked[i]?'unlocked':'')+'">'+(unlocked[i]?'✓ ':'')+name+'</span>').join('');
+}
 function updateMetrics(){
  ['quality','team','reliability','energy','focus','stress'].forEach(k=>{$(k+'-value').textContent=state[k];$(k+'-meter').style.width=state[k]+'%'});
  $('xp-value').textContent=state.xp+' XP';
+ updateSkills();
  const done=state.index,checks=[done>=1,done>=2,done>=4,done>=6,done>=8];
  $('mission-list').innerHTML=['Понять требования','Найти причину бага','Исправить код','Протестировать','Выпустить обновление'].map((s,i)=>'<div class="'+(checks[i]?'done':'')+'"><i></i><span>'+s+'</span></div>').join('');
 }
 function safe(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function workspaceContent(tool,s){
+ const common='<span class="ws-dim">project / checkout-page</span>\\n';
+ if(tool==='editor')return common+'<span class="ws-pink">src/</span>\\n  cart.js\\n  checkout.js\\n  validation.js\\n\\n<span class="ws-green">●</span> '+(s.code?'Открыт фрагмент кода из текущей задачи':'Файлы проекта загружены')+'\\n<span class="ws-dim">Изучи контекст задачи ниже.</span>';
+ if(tool==='terminal')return '<span class="ws-green">junior@devbox</span>:~/checkout$ git status\\nOn branch fix/cart-total\\nworking tree '+(state.index<2?'clean':'has changes')+'\\n\\n<span class="ws-green">junior@devbox</span>:~/checkout$ '+(state.index>=5?'npm test\\n✓ cart total\\n✓ empty cart\\n✓ quantity update':'npm run dev\\n<span class="ws-green">✓</span> Local server running')+'\\n<span class="ws-dim">Учебная имитация терминала.</span>';
+ if(tool==='browser')return '<span class="ws-dim">localhost:3000 / checkout</span>\\n\\n┌──────────────────────────────┐\\n│  YOUR STORE                  │\\n│                              │\\n│  Товары в корзине            │\\n│  Количество: 2               │\\n│  Итого: 2 400 ₽              │\\n│                              │\\n│  [ ОФОРМИТЬ ЗАКАЗ ]           │\\n└──────────────────────────────┘\\n<span class="ws-green">●</span> Условный предпросмотр интерфейса';
+ return '<span class="ws-dim"># team-checkout</span>\\n<span class="ws-pink">Наставник · 09:12</span>  Сначала уточни критерии готовности.\\n<span class="ws-green">Дизайнер · 10:24</span>  Проверь мобильную ширину.\\n<span class="ws-pink">Тестировщик · 13:40</span>  Не забудь пустую корзину.\\n<span class="ws-dim">Учебная лента сообщений команды.</span>';
+}
+function setTool(tool){
+ state.tool=tool;
+ document.querySelectorAll('.ws-tab').forEach(b=>b.classList.toggle('active',b.dataset.tool===tool));
+ $('ws-screen').innerHTML=workspaceContent(tool,scenes[state.index]);
+}
 function render(){
  const s=scenes[state.index],host=$('scene-host');
+ setTool(state.tool);
  $('panel-title').textContent='Рабочая задача / '+(state.index+1);
  $('day-label').textContent='DAY '+String(state.index+1).padStart(2,'0')+' / 08';
  $('progress').style.width=(state.index/scenes.length*100)+'%';
@@ -253,9 +291,22 @@ function choose(i){
  const next=state.index===scenes.length-1?'Подвести итоги дня':'Перейти к следующему этапу →';
  const pdNote='Энергия '+pd.energy+' · Фокус '+(pd.focus>0?'+':'')+pd.focus+' · Стресс '+(pd.stress>0?'+':'')+pd.stress+' · XP +'+pd.xp;
  const rest=state.index===4&&!state.breakTaken?'<button class="break-button" id="take-break">☕ Перерыв 15 минут · восстановить силы</button>':'';
+ const eventIndex=[1,3,5].indexOf(state.index);
+ state.event=eventIndex>=0?events[eventIndex]:null;state.eventResolved=!state.event;
+ const eventHtml=state.event?'<div class="event-box" id="event-box"><small>RANDOM EVENT / TEAM SIGNAL</small><b>'+safe(state.event.title)+'</b><p>'+safe(state.event.body)+'</p><div class="event-options">'+state.event.options.map((o,n)=>'<button class="event-choice" data-event="'+n+'">'+safe(o.label)+'</button>').join('')+'</div><div id="event-result"></div></div>':'';
  $('feedback-host').innerHTML='<div class="feedback"><strong>'+safe(c.tag==='strong'?'Хорошее инженерное решение':c.tag==='risky'?'Есть риск в этом решении':'Неплохой вариант')+'</strong><p>'+safe(c.feedback)+'</p><p class="lesson"><b>Что важно запомнить:</b> '+safe(c.lesson)+'</p><p style="font:9px Space Mono;color:#bda4d0;margin-top:12px">'+safe(pdNote)+'</p></div><div class="scene-actions">'+rest+'<button class="sim-button" id="continue">'+next+'</button></div>';
  if($('take-break'))$('take-break').addEventListener('click',takeBreak);
+ if(state.event)$('event-box').querySelectorAll('[data-event]').forEach(btn=>btn.addEventListener('click',()=>resolveEvent(Number(btn.dataset.event))));
  $('continue').addEventListener('click',()=>{state.index++;state.selected=null;if(state.index>=scenes.length)finish();else render()});
+}
+function resolveEvent(i){
+ if(state.eventResolved)return;
+ const option=state.event.options[i];state.eventResolved=true;
+ Object.entries(option.delta).forEach(([k,v])=>{if(k==='xp')state.xp+=v;else state[k]=clamp(state[k]+v)});
+ updateMetrics();
+ $('event-box').querySelectorAll('[data-event]').forEach((b,n)=>{b.disabled=true;if(n===i)b.style.borderColor='#9be2b4'});
+ $('event-result').className='event-result';$('event-result').textContent=option.feedback+' Изменения показателей применены.';
+ $('continue').disabled=false;
 }
 function takeBreak(){if(state.breakTaken)return;state.breakTaken=true;state.energy=clamp(state.energy+18);state.focus=clamp(state.focus+6);state.stress=clamp(state.stress-12);updateMetrics();$('time-text').textContent='12:15';const b=$('take-break');if(b){b.disabled=true;b.textContent='✓ Перерыв использован · 12:15';}const p=document.createElement('p');p.className='lesson';p.textContent='Ты отвлёкся от экрана, восстановил силы и вернулся к задаче. Перерыв — часть продуктивной работы.';$('feedback-host').appendChild(p);}
 function finish(){
@@ -274,9 +325,10 @@ function finish(){
  $('restart').addEventListener('click',restart);
 }
 function restart(){
- state.index=0;state.selected=null;state.quality=50;state.team=50;state.reliability=50;state.energy=100;state.focus=75;state.stress=15;state.xp=0;state.history=[];state.breakTaken=false;
+ state.index=0;state.selected=null;state.tool='editor';state.event=null;state.eventResolved=false;state.quality=50;state.team=50;state.reliability=50;state.energy=100;state.focus=75;state.stress=15;state.xp=0;state.history=[];state.breakTaken=false;
  $('scene-host').classList.remove('hidden');$('final-host').classList.add('hidden');render();
 }
+document.querySelectorAll('.ws-tab').forEach(btn=>btn.addEventListener('click',()=>setTool(btn.dataset.tool)));
 render();
 })();
 </script>
