@@ -349,7 +349,7 @@ function finish(){
   const strengths=shortTopics(strong,'пока нет тем, где все задания выполнены верно');
   const areas=shortTopics(weak,'ошибок в проверенных темах нет');
   const message=[
-   'Здравствуйте! Я прошёл(ла) диагностику mischenko edu по предмету «'+direction+'», '+grade+' класс: '+score+' из '+bank.length+' ('+percent+'%).',
+   'Здравствуйте! Результат диагностики ученика «'+(student||'имя не указано')+'» по предмету «'+direction+'», '+grade+' класс: '+score+' из '+bank.length+' ('+percent+'%).',
    'Лучше всего получились темы: '+strengths+'. Повторить стоит: '+areas+'.',
    'Хочу обсудить результат и определить следующие шаги в обучении.'
   ].join('\n');
