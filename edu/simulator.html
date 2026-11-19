@@ -88,6 +88,36 @@ body{background:#08070d;color:var(--sim-text)}
 .hidden{display:none!important}
 @media(max-width:780px){.sim-hero{grid-template-columns:1fr;padding-top:48px}.sim-stamp{max-width:420px}.brief-grid{grid-template-columns:1fr}.metrics{grid-template-columns:1fr}.glossary-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.sim-wrap{width:calc(100% - 30px)}.panel-head{display:block}.day-label{display:block;margin-top:10px}.result-grid{grid-template-columns:1fr}.glossary-grid{grid-template-columns:1fr}.choice{padding:12px}}
+/* GAME HUD */
+.game-layout{display:grid;grid-template-columns:255px minmax(0,1fr);gap:18px;align-items:start;margin-top:22px}
+.game-sidebar{display:grid;gap:11px;position:sticky;top:18px}
+.side-card{border:1px solid var(--sim-line);background:linear-gradient(150deg,#17101e,#0d0a12);padding:15px}
+.side-eyebrow{font:9px 'Space Mono';letter-spacing:.13em;color:#ff8ab1;margin-bottom:14px}
+.player-name{display:flex;align-items:center;gap:10px;padding-bottom:13px;border-bottom:1px solid var(--sim-line);margin-bottom:12px}
+.avatar{width:36px;height:36px;display:grid;place-items:center;background:linear-gradient(140deg,#ff286f,#8f4fe8);font:700 11px 'Space Mono';color:white}
+.player-name b{display:block;font-size:11px}.player-name small{display:block;font-size:9px;color:var(--sim-muted);margin-top:3px}
+.side-stat{margin:13px 0}.side-stat>div:first-child{display:flex;justify-content:space-between;gap:8px;font-size:10px}.side-stat b{font:10px 'Space Mono';color:#ff9cbd}
+.side-stat .meter{margin-top:7px}.side-stat small{display:block;font-size:8px;color:#928598;margin-top:5px;line-height:1.45}
+.side-stat .meter i{background:linear-gradient(90deg,#ff286f,#a76aff)}
+.side-stat .stress-meter i{background:linear-gradient(90deg,#9be2b4,#ff9c5b,#ff286f)}
+.xp-line{display:flex;justify-content:space-between;border-top:1px solid var(--sim-line);padding-top:11px;margin-top:12px;font:9px 'Space Mono';color:#aa9bad}.xp-line b{color:#c5a1ff}
+.mission-title{display:block;font-size:11px;line-height:1.5;margin-bottom:12px}
+.mission-list{display:grid;gap:9px}.mission-list>div{display:flex;gap:8px;align-items:center;font-size:9px;color:#b7aabd}
+.mission-list i{width:11px;height:11px;border:1px solid #65546a;display:block;flex:none}
+.mission-list .done{color:#9be2b4}.mission-list .done i{background:#9be2b4;border-color:#9be2b4;box-shadow:inset 0 0 0 2px #17101e}
+.game-stage{min-width:0;border:1px solid var(--sim-line);background:#100c15;padding:clamp(16px,2.6vw,25px);min-height:570px}
+.game-stage .scene{border-top:0;padding-top:0}
+.game-stage .scene h3{font-size:clamp(23px,3vw,34px)}
+.game-stage .choice{min-height:72px;align-items:center}
+.game-stage .choice-index{width:30px;height:30px}
+.game-stage .feedback{animation:feedbackIn .25s ease-out}
+@keyframes feedbackIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.break-button{border:1px solid #9be2b477;background:#9be2b410;color:#a7e9bc;padding:11px 14px;font:700 9px 'Space Mono';cursor:pointer}
+.break-button:disabled{opacity:.5}
+.game-topline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--sim-line)}
+.game-topline span{font:9px 'Space Mono';color:#a99bad}.game-topline b{font:10px 'Space Mono';color:#ff9cbd}
+@media(max-width:860px){.game-layout{grid-template-columns:1fr}.game-sidebar{position:static;grid-template-columns:repeat(2,minmax(0,1fr))}.game-sidebar .side-card:last-child{grid-column:1/-1}.game-stage{min-height:0}}
+@media(max-width:520px){.game-sidebar{grid-template-columns:1fr}.game-sidebar .side-card:last-child{grid-column:auto}.game-stage{padding:14px}}
 </style>
 </head>
 <body>
@@ -110,13 +140,17 @@ body{background:#08070d;color:var(--sim-text)}
 <section class="sim-panel" id="simulator">
 <div class="panel-head"><div><div class="sim-kicker">THE WORKDAY / LIVE SIMULATION</div><h2 id="panel-title">Твой рабочий день начинается</h2></div><div class="day-label" id="day-label">DAY 01 / 08</div></div>
 <div class="progress-track"><span id="progress"></span></div><div class="progress-meta"><span id="progress-text">0 из 8 этапов</span><span id="time-text">09:00</span></div>
-<div class="metrics" id="metrics">
-<div class="metric"><div class="metric-line"><span>Качество решения</span><b id="quality-value">50</b></div><div class="meter"><i id="quality-meter"></i></div></div>
-<div class="metric"><div class="metric-line"><span>Командная работа</span><b id="team-value">50</b></div><div class="meter"><i id="team-meter"></i></div></div>
-<div class="metric"><div class="metric-line"><span>Надёжность проекта</span><b id="reliability-value">50</b></div><div class="meter"><i id="reliability-meter"></i></div></div>
-</div>
-<div id="scene-host" aria-live="polite"></div>
-<div id="final-host" class="hidden" aria-live="polite"></div>
+<div class="game-layout"><aside class="game-sidebar">
+<div class="side-card"><div class="side-eyebrow">PLAYER STATUS / 01</div><div class="player-name"><span class="avatar">JD</span><span><b>Junior developer</b><small>Уровень 01 · новичок</small></span></div>
+<div class="side-stat"><div><span>Энергия</span><b id="energy-value">100</b></div><div class="meter"><i id="energy-meter"></i></div><small>Запас сил персонажа</small></div>
+<div class="side-stat"><div><span>Концентрация</span><b id="focus-value">75</b></div><div class="meter"><i id="focus-meter"></i></div><small>Способность держать внимание</small></div>
+<div class="side-stat"><div><span>Стресс</span><b id="stress-value">15</b></div><div class="meter stress-meter"><i id="stress-meter"></i></div><small>Чем выше, тем сложнее сохранять ясность</small></div><div class="xp-line"><span>ОПЫТ / XP</span><b id="xp-value">0 XP</b></div></div>
+<div class="side-card"><div class="side-eyebrow">PROJECT STATUS / 02</div>
+<div class="side-stat"><div><span>Качество кода</span><b id="quality-value">50</b></div><div class="meter"><i id="quality-meter"></i></div></div>
+<div class="side-stat"><div><span>Доверие команды</span><b id="team-value">50</b></div><div class="meter"><i id="team-meter"></i></div></div>
+<div class="side-stat"><div><span>Надёжность</span><b id="reliability-value">50</b></div><div class="meter"><i id="reliability-meter"></i></div></div></div>
+<div class="side-card"><div class="side-eyebrow">MISSION / CHECKLIST</div><b class="mission-title">Исправить оформление заказа</b><div class="mission-list" id="mission-list"><div><i></i><span>Понять требования</span></div><div><i></i><span>Найти причину бага</span></div><div><i></i><span>Исправить код</span></div><div><i></i><span>Протестировать</span></div><div><i></i><span>Выпустить обновление</span></div></div></div>
+</aside><div class="game-stage"><div id="scene-host" aria-live="polite"></div><div id="final-host" class="hidden" aria-live="polite"></div></div></div>
 </section>
 <section class="glossary">
 <div class="sim-kicker">QUICK REFERENCE / 01</div><h2>СЛОВАРЬ РАБОЧЕГО ДНЯ</h2>
@@ -184,11 +218,14 @@ const scenes=[
 {title:'Ничего не сообщу — коллеги сами заметят изменения',detail:'Моя часть работы закончена.',feedback:'Команда должна понимать, что изменилось, что проверено и есть ли известные ограничения. Без передачи контекста поддерживать проект сложнее.',lesson:'Короткая документация и понятная передача задачи — тоже часть работы разработчика.',delta:{quality:0,team:-8,reliability:-5},tag:'risky'}
 ]}
 ];
-const state={index:0,selected:null,quality:50,team:50,reliability:50,history:[]};
+const state={index:0,selected:null,quality:50,team:50,reliability:50,energy:100,focus:75,stress:15,xp:0,history:[],breakTaken:false};
 const $=id=>document.getElementById(id);
 function clamp(n){return Math.max(0,Math.min(100,n))}
 function updateMetrics(){
- ['quality','team','reliability'].forEach(k=>{$(k+'-value').textContent=state[k];$(k+'-meter').style.width=state[k]+'%'});
+ ['quality','team','reliability','energy','focus','stress'].forEach(k=>{$(k+'-value').textContent=state[k];$(k+'-meter').style.width=state[k]+'%'});
+ $('xp-value').textContent=state.xp+' XP';
+ const done=state.index,checks=[done>=1,done>=3,done>=5,done>=6,done>=8];
+ $('mission-list').innerHTML=['Понять требования','Найти причину бага','Исправить код','Протестировать','Выпустить обновление'].map((s,i)=>'<div class="'+(checks[i]?'done':'')+'"><i></i><span>'+s+'</span></div>').join('');
 }
 function safe(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function render(){
@@ -201,20 +238,26 @@ function render(){
  updateMetrics();
  let code=s.code?'<div class="code-box"><div class="code-top"><span>CODE / EXAMPLE</span><span>READ CAREFULLY</span></div><pre>'+safe(s.code)+'</pre><div class="code-note">'+safe(s.codeNote||'')+'</div></div>':'';
  let choices=s.choices.map((c,i)=>'<button class="choice" type="button" data-choice="'+i+'"><span class="choice-index">'+String.fromCharCode(65+i)+'</span><span class="choice-copy"><b>'+safe(c.title)+'</b><small>'+safe(c.detail)+'</small></span></button>').join('');
- host.innerHTML='<div class="scene"><div class="scene-time">'+s.time+' / WORKDAY LOG</div><h3>'+safe(s.title)+'</h3><p class="scene-lead">'+safe(s.lead)+'</p><div class="context-box"><b>КОНТЕКСТ</b><p>'+safe(s.context)+'</p></div>'+code+'<div class="question-label">'+safe(s.task)+'</div><div class="choices">'+choices+'</div><div id="feedback-host"></div></div>';
+ host.innerHTML='<div class="game-topline"><span>WORKSTATION / CART CHECKOUT</span><b>● ONLINE · '+s.time+'</b></div><div class="scene"><div class="scene-time">'+s.time+' / WORKDAY LOG</div><h3>'+safe(s.title)+'</h3><p class="scene-lead">'+safe(s.lead)+'</p><div class="context-box"><b>КОНТЕКСТ</b><p>'+safe(s.context)+'</p></div>'+code+'<div class="question-label">'+safe(s.task)+'</div><div class="choices">'+choices+'</div><div id="feedback-host"></div></div>';
  host.querySelectorAll('[data-choice]').forEach(btn=>btn.addEventListener('click',()=>choose(Number(btn.dataset.choice))));
 }
 function choose(i){
  if(state.selected!==null)return;
  const s=scenes[state.index],c=s.choices[i];state.selected=i;
  Object.keys(c.delta).forEach(k=>state[k]=clamp(state[k]+c.delta[k]));
- state.history.push({scene:s.title,choice:c.title,tag:c.tag,lesson:c.lesson});
+ const pd=c.tag==='strong'?{energy:-5,focus:8,stress:-4,xp:20}:c.tag==='good'?{energy:-6,focus:4,stress:-2,xp:12}:{energy:-10,focus:-7,stress:10,xp:5};
+ ['energy','focus','stress'].forEach(k=>state[k]=clamp(state[k]+pd[k]));state.xp+=pd.xp;
+ state.history.push({scene:s.title,choice:c.title,tag:c.tag,lesson:c.lesson,playerDelta:pd});
  updateMetrics();
  $('scene-host').querySelectorAll('[data-choice]').forEach((btn,n)=>{btn.disabled=true;if(n===i)btn.classList.add(c.tag==='strong'?'correct':c.tag==='risky'?'risky':'selected')});
  const next=state.index===scenes.length-1?'Подвести итоги дня':'Перейти к следующему этапу →';
- $('feedback-host').innerHTML='<div class="feedback"><strong>'+safe(c.tag==='strong'?'Хорошее инженерное решение':c.tag==='risky'?'Есть риск в этом решении':'Неплохой вариант')+'</strong><p>'+safe(c.feedback)+'</p><p class="lesson"><b>Что важно запомнить:</b> '+safe(c.lesson)+'</p></div><div class="scene-actions"><button class="sim-button" id="continue">'+next+'</button></div>';
+ const pdNote='Энергия '+pd.energy+' · Фокус '+(pd.focus>0?'+':'')+pd.focus+' · Стресс '+(pd.stress>0?'+':'')+pd.stress+' · XP +'+pd.xp;
+ const rest=state.index===4&&!state.breakTaken?'<button class="break-button" id="take-break">☕ Перерыв 15 минут · восстановить силы</button>':'';
+ $('feedback-host').innerHTML='<div class="feedback"><strong>'+safe(c.tag==='strong'?'Хорошее инженерное решение':c.tag==='risky'?'Есть риск в этом решении':'Неплохой вариант')+'</strong><p>'+safe(c.feedback)+'</p><p class="lesson"><b>Что важно запомнить:</b> '+safe(c.lesson)+'</p><p style="font:9px Space Mono;color:#bda4d0;margin-top:12px">'+safe(pdNote)+'</p></div><div class="scene-actions">'+rest+'<button class="sim-button" id="continue">'+next+'</button></div>';
+ if($('take-break'))$('take-break').addEventListener('click',takeBreak);
  $('continue').addEventListener('click',()=>{state.index++;state.selected=null;if(state.index>=scenes.length)finish();else render()});
 }
+function takeBreak(){if(state.breakTaken)return;state.breakTaken=true;state.energy=clamp(state.energy+18);state.focus=clamp(state.focus+6);state.stress=clamp(state.stress-12);updateMetrics();$('time-text').textContent='12:15';const b=$('take-break');if(b){b.disabled=true;b.textContent='✓ Перерыв использован · 12:15';}const p=document.createElement('p');p.className='lesson';p.textContent='Ты отвлёкся от экрана, восстановил силы и вернулся к задаче. Перерыв — часть продуктивной работы.';$('feedback-host').appendChild(p);}
 function finish(){
  $('progress').style.width='100%';$('progress-text').textContent='8 из 8 этапов';$('time-text').textContent='18:00';$('panel-title').textContent='Рабочий день завершён';$('day-label').textContent='DAY COMPLETE';
  $('scene-host').classList.add('hidden');$('final-host').classList.remove('hidden');
@@ -226,11 +269,11 @@ function finish(){
  if(state.team<65)rec.push('Потренируй уточняющие вопросы, обсуждение code review и передачу результата коллегам.');
  if(state.reliability<65)rec.push('Повтори Git, тестирование граничных случаев и безопасный выпуск изменений.');
  if(!rec.length)rec.push('Следующий шаг — попробовать небольшой собственный проект и пройти весь цикл: задача → код → тесты → публикация.');
- $('final-host').innerHTML='<div class="scene"><div class="scene-time">18:00 / END OF DAY</div><h3>Ты дошёл(ла) до конца рабочего дня.</h3><p class="scene-lead">'+safe(summary)+'</p><div class="result-grid"><div class="result-card"><b>'+state.quality+'</b><span>Качество решений</span></div><div class="result-card"><b>'+state.team+'</b><span>Командная работа</span></div><div class="result-card"><b>'+state.reliability+'</b><span>Надёжность проекта</span></div></div><p class="result-copy">Хороших решений: '+strong+' из '+scenes.length+'. Эти показатели не являются оценкой твоих способностей — они показывают, какие подходы ты выбирал(а) в конкретных ситуациях.</p><div class="recommendation"><b>Что полезно повторить</b><p>'+rec.map(safe).join('<br>')+'</p></div><h4 style="font-size:12px;margin:22px 0 10px">Твои решения за день</h4>'+state.history.map((x,i)=>'<div class="context-box"><b>'+String(i+1).padStart(2,'0')+' / '+safe(x.scene)+'</b><p>'+safe(x.choice)+'</p><p>'+safe(x.lesson)+'</p></div>').join('')+'<div class="scene-actions"><button class="sim-button" id="restart">Пройти день заново</button><a class="sim-button secondary" href="index.html#catalog" style="text-decoration:none;display:inline-flex;align-items:center">Вернуться в библиотеку</a></div></div>';
+ $('final-host').innerHTML='<div class="scene"><div class="scene-time">18:00 / END OF DAY</div><h3>Ты дошёл(ла) до конца рабочего дня.</h3><p class="scene-lead">'+safe(summary)+'</p><div class="result-grid"><div class="result-card"><b>'+state.quality+'</b><span>Качество кода</span></div><div class="result-card"><b>'+state.team+'</b><span>Доверие команды</span></div><div class="result-card"><b>'+state.reliability+'</b><span>Надёжность проекта</span></div><div class="result-card"><b>'+state.energy+'</b><span>Остаток энергии</span></div><div class="result-card"><b>'+state.focus+'</b><span>Концентрация</span></div><div class="result-card"><b>'+state.stress+'</b><span>Уровень стресса</span></div></div><p class="result-copy">Хороших решений: '+strong+' из '+scenes.length+'. Эти показатели не являются оценкой твоих способностей — они показывают, какие подходы ты выбирал(а) в конкретных ситуациях.</p><div class="recommendation"><b>Что полезно повторить</b><p>'+rec.map(safe).join('<br>')+'</p></div><h4 style="font-size:12px;margin:22px 0 10px">Твои решения за день</h4>'+state.history.map((x,i)=>'<div class="context-box"><b>'+String(i+1).padStart(2,'0')+' / '+safe(x.scene)+'</b><p>'+safe(x.choice)+'</p><p>'+safe(x.lesson)+'</p></div>').join('')+'<div class="scene-actions"><button class="sim-button" id="restart">Пройти день заново</button><a class="sim-button secondary" href="index.html#catalog" style="text-decoration:none;display:inline-flex;align-items:center">Вернуться в библиотеку</a></div></div>';
  $('restart').addEventListener('click',restart);
 }
 function restart(){
- state.index=0;state.selected=null;state.quality=50;state.team=50;state.reliability=50;state.history=[];
+ state.index=0;state.selected=null;state.quality=50;state.team=50;state.reliability=50;state.energy=100;state.focus=75;state.stress=15;state.xp=0;state.history=[];state.breakTaken=false;
  $('scene-host').classList.remove('hidden');$('final-host').classList.add('hidden');render();
 }
 render();
