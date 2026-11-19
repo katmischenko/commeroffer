@@ -89,8 +89,11 @@ body{background:#08070d;color:var(--sim-text)}
 @media(max-width:780px){.sim-hero{grid-template-columns:1fr;padding-top:48px}.sim-stamp{max-width:420px}.brief-grid{grid-template-columns:1fr}.metrics{grid-template-columns:1fr}.glossary-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.sim-wrap{width:calc(100% - 30px)}.panel-head{display:block}.day-label{display:block;margin-top:10px}.result-grid{grid-template-columns:1fr}.glossary-grid{grid-template-columns:1fr}.choice{padding:12px}}
 /* GAME HUD */
-.game-layout{display:grid;grid-template-columns:255px minmax(0,1fr);gap:18px;align-items:start;margin-top:22px}
-.game-sidebar{display:grid;gap:11px;position:sticky;top:18px}
+.game-layout{display:grid;grid-template-columns:minmax(185px,215px) minmax(0,1fr) minmax(190px,225px);gap:16px;align-items:start;margin-top:22px}
+.game-sidebar{display:grid;gap:11px;position:sticky;top:18px;min-width:0}
+.game-left .skill-grid{display:grid;grid-template-columns:1fr 1fr}
+.game-right .side-card{padding:13px}
+.game-right .side-stat{margin:11px 0}
 .side-card{border:1px solid var(--sim-line);background:linear-gradient(150deg,#17101e,#0d0a12);padding:15px}
 .side-eyebrow{font:9px 'Space Mono';letter-spacing:.13em;color:#ff8ab1;margin-bottom:14px}
 .player-name{display:flex;align-items:center;gap:10px;padding-bottom:13px;border-bottom:1px solid var(--sim-line);margin-bottom:12px}
@@ -116,7 +119,9 @@ body{background:#08070d;color:var(--sim-text)}
 .break-button:disabled{opacity:.5}
 .game-topline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--sim-line)}
 .game-topline span{font:9px 'Space Mono';color:#a99bad}.game-topline b{font:10px 'Space Mono';color:#ff9cbd}
-@media(max-width:860px){.game-layout{grid-template-columns:1fr}.game-sidebar{position:static;grid-template-columns:repeat(2,minmax(0,1fr))}.game-sidebar .side-card:last-child{grid-column:1/-1}.game-stage{min-height:0}}
+@media(max-width:1120px){.game-layout{grid-template-columns:minmax(165px,190px) minmax(0,1fr) minmax(170px,195px);gap:10px}.game-right .side-card,.game-left .side-card{padding:11px}}
+@media(max-width:860px){.game-layout{grid-template-columns:1fr}.game-stage{grid-row:1;min-height:0}.game-left,.game-right{position:static;grid-template-columns:repeat(2,minmax(0,1fr))}.game-left .side-card,.game-right .side-card{grid-column:auto}}
+@media(max-width:520px){.game-left,.game-right{grid-template-columns:1fr}.game-left .skill-grid{grid-template-columns:1fr 1fr}.game-stage{padding:14px}}
 @media(max-width:520px){.game-sidebar{grid-template-columns:1fr}.game-sidebar .side-card:last-child{grid-column:auto}.game-stage{padding:14px}}
 
 /* INTERACTIVE WORKSTATION */
@@ -154,18 +159,19 @@ body{background:#08070d;color:var(--sim-text)}
 <section class="sim-panel" id="simulator">
 <div class="panel-head"><div><div class="sim-kicker">THE WORKDAY / LIVE SIMULATION</div><h2 id="panel-title">Твой рабочий день начинается</h2></div><div class="day-label" id="day-label">DAY 01 / 08</div></div>
 <div class="progress-track"><span id="progress"></span></div><div class="progress-meta"><span id="progress-text">0 из 8 этапов</span><span id="time-text">09:00</span></div>
-<div class="game-layout"><aside class="game-sidebar">
-<div class="side-card"><div class="side-eyebrow">PLAYER STATUS / 01</div><div class="player-name"><span class="avatar">JD</span><span><b>Junior developer</b><small>Уровень 01 · новичок</small></span></div>
+<div class="game-layout"><aside class="game-sidebar game-left">
+<div class="side-card"><div class="side-eyebrow">SKILL INVENTORY / 01</div><b class="mission-title">Навыки, которые ты прокачиваешь</b><div class="skill-grid" id="skill-inventory"><span class="skill-chip">Требования</span><span class="skill-chip">Debugging</span><span class="skill-chip">Git</span><span class="skill-chip">JavaScript</span><span class="skill-chip">Безопасность</span><span class="skill-chip">Testing</span><span class="skill-chip">Code review</span><span class="skill-chip">Deploy</span></div><small style="display:block;color:#928598;font-size:8px;line-height:1.5;margin-top:10px">Навыки открываются по мере прохождения этапов.</small></div>
+<div class="side-card"><div class="side-eyebrow">MISSION / CHECKLIST</div><b class="mission-title">Исправить оформление заказа</b><div class="mission-list" id="mission-list"><div><i></i><span>Понять требования</span></div><div><i></i><span>Найти причину бага</span></div><div><i></i><span>Исправить код</span></div><div><i></i><span>Протестировать</span></div><div><i></i><span>Выпустить обновление</span></div></div></div>
+</aside><div class="game-stage"><div class="workstation" id="workstation"><div class="ws-head"><b>WORKSTATION / DEV ENVIRONMENT</b><span>LOCAL SESSION · PRIVATE</span></div><div class="ws-tabs" role="tablist"><button class="ws-tab active" data-tool="editor">⌘ Редактор</button><button class="ws-tab" data-tool="terminal">› Терминал</button><button class="ws-tab" data-tool="browser">◎ Браузер</button><button class="ws-tab" data-tool="chat">▤ Команда</button></div><div class="ws-screen" id="ws-screen" aria-live="polite"></div><aside class="game-sidebar game-right">
+<div class="side-card"><div class="side-eyebrow">PLAYER STATUS / 02</div><div class="player-name"><span class="avatar">JD</span><span><b>Junior developer</b><small>Уровень 01 · новичок</small></span></div>
 <div class="side-stat"><div><span>Энергия</span><b id="energy-value">100</b></div><div class="meter"><i id="energy-meter"></i></div><small>Запас сил персонажа</small></div>
 <div class="side-stat"><div><span>Концентрация</span><b id="focus-value">75</b></div><div class="meter"><i id="focus-meter"></i></div><small>Способность держать внимание</small></div>
 <div class="side-stat"><div><span>Стресс</span><b id="stress-value">15</b></div><div class="meter stress-meter"><i id="stress-meter"></i></div><small>Чем выше, тем сложнее сохранять ясность</small></div><div class="xp-line"><span>ОПЫТ / XP</span><b id="xp-value">0 XP</b></div></div>
-<div class="side-card"><div class="side-eyebrow">PROJECT STATUS / 02</div>
+<div class="side-card"><div class="side-eyebrow">PROJECT STATUS / 03</div>
 <div class="side-stat"><div><span>Качество кода</span><b id="quality-value">50</b></div><div class="meter"><i id="quality-meter"></i></div></div>
 <div class="side-stat"><div><span>Доверие команды</span><b id="team-value">50</b></div><div class="meter"><i id="team-meter"></i></div></div>
 <div class="side-stat"><div><span>Надёжность</span><b id="reliability-value">50</b></div><div class="meter"><i id="reliability-meter"></i></div></div></div>
-<div class="side-card"><div class="side-eyebrow">SKILL INVENTORY / 03</div><b class="mission-title">Навыки, которые ты прокачиваешь</b><div class="skill-grid" id="skill-inventory"><span class="skill-chip">Требования</span><span class="skill-chip">Debugging</span><span class="skill-chip">Git</span><span class="skill-chip">JavaScript</span><span class="skill-chip">Безопасность</span><span class="skill-chip">Testing</span><span class="skill-chip">Code review</span><span class="skill-chip">Deploy</span></div><small style="display:block;color:#928598;font-size:8px;line-height:1.5;margin-top:10px">Навыки открываются по мере прохождения этапов.</small></div><div class="side-card"><div class="side-eyebrow">MISSION / CHECKLIST</div><b class="mission-title">Исправить оформление заказа</b><div class="mission-list" id="mission-list"><div><i></i><span>Понять требования</span></div><div><i></i><span>Найти причину бага</span></div><div><i></i><span>Исправить код</span></div><div><i></i><span>Протестировать</span></div><div><i></i><span>Выпустить обновление</span></div></div></div>
-</aside><div class="game-stage"><div class="workstation" id="workstation"><div class="ws-head"><b>WORKSTATION / DEV ENVIRONMENT</b><span>LOCAL SESSION · PRIVATE</span></div><div class="ws-tabs" role="tablist"><button class="ws-tab active" data-tool="editor">⌘ Редактор</button><button class="ws-tab" data-tool="terminal">› Терминал</button><button class="ws-tab" data-tool="browser">◎ Браузер</button><button class="ws-tab" data-tool="chat">▤ Команда</button></div><div class="ws-screen" id="ws-screen" aria-live="polite"></div></div><div id="scene-host" aria-live="polite"></div><div id="final-host" class="hidden" aria-live="polite"></div></div></div>
-</section>
+</aside></div></section>
 <section class="glossary">
 <div class="sim-kicker">QUICK REFERENCE / 01</div><h2>СЛОВАРЬ РАБОЧЕГО ДНЯ</h2>
 <div class="glossary-grid">
