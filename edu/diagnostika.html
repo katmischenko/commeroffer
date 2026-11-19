@@ -341,31 +341,19 @@ function finish(){
   '<p class="diag-hint">Это предварительная диагностика по 15 заданиям, а не школьная отметка и не итоговая оценка знаний. Выводы ограничены темами и навыками, которые представлены в этом наборе.</p>'+
   '<div class="diag-actions"><button class="btn btn-pen" id="restart">Пройти ещё раз</button><a class="btn btn-ghost" id="discuss-result" href="https://t.me/katerin_mischenko" target="_blank" rel="noopener">Обсудить результат</a></div>'+
  '<p class="diag-hint" id="discuss-note">При нажатии чат откроется, а полный отчёт скопируется. Вставь его в сообщение.</p>';
- const topicLines=(items)=>items.length?items.map(([name,v])=>'- '+name+': '+v.right+'/'+v.total+' (вопросы №'+v.items.join(', ')+')').join('\n'):'- нет';
- const detailLines=report.map(({q,a,ok},i)=>{
-  const userAnswer=answerLabel(q,a)||'не указан';
-  const correctAnswer=q.type==='short'?q.correctText:q.options[q.correctIndex];
-  return (i+1)+'. '+q.topic+' — '+(ok?'верно':'ошибка/нет ответа')+'\n   Ответ ученика: '+userAnswer+(ok?'':'\n   Правильный ответ: '+correctAnswer);
- }).join('\n');
- const message=[
-  'Здравствуйте! Хочу обсудить результат диагностики mischenko edu.',
-  'Ученик: '+(student||'не указано'),
-  'Предмет: '+direction+', класс: '+grade,
-  'Результат: '+score+' из '+bank.length+' ('+percent+'%).',
-  'Комментарий: '+title+'.',
-  '',
-  'Сильные темы:',
-  topicLines(strong),
-  '',
-  'Темы для повторения:',
-  topicLines(weak),
-  '',
-  'Ответы по заданиям:',
-  detailLines,
-  '',
-  'Прошу помочь разобрать результат и определить дальнейшие шаги.'
- ].filter(Boolean).join('\n');
- const discuss=$('discuss-result');
+ const shortTopics=(items,emptyText)=>{
+   if(!items.length)return emptyText;
+   const names=items.slice(0,3).map(([name,v])=>name+' ('+v.right+'/'+v.total+')');
+   return names.join(', ')+(items.length>3?' и другие':'');
+  };
+  const strengths=shortTopics(strong,'пока нет тем, где все задания выполнены верно');
+  const areas=shortTopics(weak,'ошибок в проверенных темах нет');
+  const message=[
+   'Здравствуйте! Я прошёл(ла) диагностику mischenko edu по предмету «'+direction+'», '+grade+' класс: '+score+' из '+bank.length+' ('+percent+'%).',
+   'Лучше всего получились темы: '+strengths+'. Повторить стоит: '+areas+'.',
+   'Хочу обсудить результат и определить следующие шаги в обучении.'
+  ].join('\n');
+  const discuss=$('discuss-result');
  discuss.href='https://t.me/katerin_mischenko';
  discuss.addEventListener('click',()=>{
   const note=$('discuss-note');
@@ -378,8 +366,8 @@ function finish(){
    try{copied=document.execCommand('copy');}catch(error){}
    field.remove();
    note.textContent=copied
-    ?'Отчёт скопирован. В открывшемся чате вставь его в поле сообщения.'
-    :'Чат открыт. Скопируй отчёт вручную из блока «Подробный разбор заданий» на этой странице.';
+    ?'Краткий итог диагностики скопирован. В открывшемся чате вставь сообщение.'
+    :'Чат открыт. Если сообщение не скопировалось автоматически, скопируй короткий итог вручную.';
   };
   if(navigator.clipboard&&window.isSecureContext){
    navigator.clipboard.writeText(message)
