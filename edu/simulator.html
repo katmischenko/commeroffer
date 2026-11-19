@@ -108,7 +108,7 @@ body{background:#08070d;color:var(--sim-text)}
 .mission-list{display:grid;gap:9px}.mission-list>div{display:flex;gap:8px;align-items:center;font-size:9px;color:#b7aabd}
 .mission-list i{width:11px;height:11px;border:1px solid #65546a;display:block;flex:none}
 .mission-list .done{color:#9be2b4}.mission-list .done i{background:#9be2b4;border-color:#9be2b4;box-shadow:inset 0 0 0 2px #17101e}
-.game-stage{min-width:0;border:1px solid var(--sim-line);background:#100c15;padding:clamp(16px,2.6vw,25px);min-height:570px}
+.game-stage{position:sticky;top:18px;max-height:calc(100vh - 36px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#75445f #100c15;min-width:0;border:1px solid var(--sim-line);background:#100c15;padding:clamp(16px,2.6vw,25px);min-height:570px}
 .game-stage .scene{border-top:0;padding-top:0}
 .game-stage .scene h3{font-size:clamp(23px,3vw,34px)}
 .game-stage .choice{min-height:72px;align-items:center}
@@ -120,7 +120,7 @@ body{background:#08070d;color:var(--sim-text)}
 .game-topline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--sim-line)}
 .game-topline span{font:9px 'Space Mono';color:#a99bad}.game-topline b{font:10px 'Space Mono';color:#ff9cbd}
 @media(max-width:1120px){.game-layout{grid-template-columns:minmax(165px,190px) minmax(0,1fr) minmax(170px,195px);gap:10px}.game-right .side-card,.game-left .side-card{padding:11px}}
-@media(max-width:860px){.game-layout{grid-template-columns:1fr}.game-stage{grid-row:1;min-height:0}.game-left,.game-right{position:static;grid-template-columns:repeat(2,minmax(0,1fr))}.game-left .side-card,.game-right .side-card{grid-column:auto}}
+@media(max-width:860px){.game-layout{grid-template-columns:1fr}.game-stage{position:static;top:auto;max-height:none;overflow:visible;grid-row:1;min-height:0}.game-left,.game-right{position:static;grid-template-columns:repeat(2,minmax(0,1fr))}.game-left .side-card,.game-right .side-card{grid-column:auto}}
 @media(max-width:520px){.game-left,.game-right{grid-template-columns:1fr}.game-left .skill-grid{grid-template-columns:1fr 1fr}.game-stage{padding:14px}}
 @media(max-width:520px){.game-sidebar{grid-template-columns:1fr}.game-sidebar .side-card:last-child{grid-column:auto}.game-stage{padding:14px}}
 
