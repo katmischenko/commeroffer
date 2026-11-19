@@ -134,11 +134,10 @@ footer{padding:35px 0 28px;border-top:1px solid var(--line)}.foot{display:flex;j
 .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:52% 42%;display:block}
 .hero-photo-frame:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#08070d55 0%,transparent 48%),linear-gradient(0deg,#08070dcc 0%,transparent 34%,#08070d22 100%);pointer-events:none}
 .hero-photo-frame .visual-top,.hero-photo-frame .visual-bottom{z-index:2}
-.about-photo-panel{display:block;min-height:400px;background:#0d0b12}
-.about-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center center;display:block}
-.about-photo-panel:before,.about-photo-panel:after{display:none}
-@media(max-width:900px){.about-photo-panel{min-height:340px}}
-@media(max-width:560px){.about-photo-panel{min-height:300px}}
+.about-photo-panel{display:block;min-height:0;height:auto;background:#0d0b12}
+.about-photo{position:relative;inset:auto;width:100%;height:auto;object-fit:initial;object-position:center;display:block;z-index:1}
+.about-photo-panel:before{z-index:2;pointer-events:none}
+.about-photo-panel:after{z-index:2;pointer-events:none}
 
 </style>
 </head>
