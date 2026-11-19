@@ -224,7 +224,7 @@ function clamp(n){return Math.max(0,Math.min(100,n))}
 function updateMetrics(){
  ['quality','team','reliability','energy','focus','stress'].forEach(k=>{$(k+'-value').textContent=state[k];$(k+'-meter').style.width=state[k]+'%'});
  $('xp-value').textContent=state.xp+' XP';
- const done=state.index,checks=[done>=1,done>=3,done>=5,done>=6,done>=8];
+ const done=state.index,checks=[done>=1,done>=2,done>=4,done>=6,done>=8];
  $('mission-list').innerHTML=['Понять требования','Найти причину бага','Исправить код','Протестировать','Выпустить обновление'].map((s,i)=>'<div class="'+(checks[i]?'done':'')+'"><i></i><span>'+s+'</span></div>').join('');
 }
 function safe(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
@@ -259,6 +259,7 @@ function choose(i){
 }
 function takeBreak(){if(state.breakTaken)return;state.breakTaken=true;state.energy=clamp(state.energy+18);state.focus=clamp(state.focus+6);state.stress=clamp(state.stress-12);updateMetrics();$('time-text').textContent='12:15';const b=$('take-break');if(b){b.disabled=true;b.textContent='✓ Перерыв использован · 12:15';}const p=document.createElement('p');p.className='lesson';p.textContent='Ты отвлёкся от экрана, восстановил силы и вернулся к задаче. Перерыв — часть продуктивной работы.';$('feedback-host').appendChild(p);}
 function finish(){
+ updateMetrics();
  $('progress').style.width='100%';$('progress-text').textContent='8 из 8 этапов';$('time-text').textContent='18:00';$('panel-title').textContent='Рабочий день завершён';$('day-label').textContent='DAY COMPLETE';
  $('scene-host').classList.add('hidden');$('final-host').classList.remove('hidden');
  const avg=Math.round((state.quality+state.team+state.reliability)/3);
