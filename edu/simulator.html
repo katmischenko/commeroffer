@@ -197,6 +197,85 @@ body{background:#08070d;color:var(--sim-text)}
 .command-option small,.code-option small{font-size:9px;line-height:1.5;color:#b4a6ba}
 @media(max-width:600px){.challenge-bottom{align-items:flex-start;flex-direction:column}.challenge-submit{width:100%}}
 
+
+/* RESPONSIVE REWORK — layout adapts by available space, not by device labels */
+html{overflow-x:hidden}
+body{min-width:320px;overflow-x:hidden}
+.sim-wrap{width:min(1240px,calc(100% - 48px))}
+.game-layout{grid-template-columns:minmax(175px,205px) minmax(0,1fr) minmax(175px,205px);gap:14px}
+.game-stage{position:static;top:auto;max-height:none;overflow:visible;min-height:0}
+.game-sidebar{position:sticky;top:14px;max-height:calc(100vh - 28px);overflow:auto;scrollbar-width:thin}
+.game-stage,.side-card,.mission-card,.workstation,.code-box{min-width:0}
+.game-stage .scene-lead,.mission-brief,.action-main,.choice-copy{overflow-wrap:anywhere}
+.code-box pre,.mission-code pre,.ws-screen{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain}
+button,a,input,summary{touch-action:manipulation}
+.sim-button,.break-button,.mission-action,.event-action,.choice,.command-option,.code-option,.challenge-submit{min-height:44px}
+@media (max-width:1100px){
+ .sim-wrap{width:min(100% - 36px,900px)}
+ .game-layout{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+ .game-stage{grid-column:1/-1;grid-row:1}
+ .game-left{grid-column:1;grid-row:2;position:static}
+ .game-right{grid-column:2;grid-row:2;position:static}
+ .game-left,.game-right{display:grid;grid-template-columns:1fr;align-content:start}
+ .game-sidebar{max-height:none;overflow:visible}
+}
+@media (max-width:700px){
+ .sim-wrap{width:calc(100% - 28px)}
+ .sim-hero{grid-template-columns:1fr;gap:18px;padding:34px 0 24px}
+ .sim-hero h1{font-size:clamp(36px,10vw,58px)}
+ .sim-stamp{max-width:none;padding:18px}
+ .brief-grid{grid-template-columns:1fr}
+ .game-layout{grid-template-columns:minmax(0,1fr);gap:10px}
+ .game-stage{grid-column:1;grid-row:1;padding:14px}
+ .game-right{grid-column:1;grid-row:2;display:grid;grid-template-columns:minmax(0,1fr);position:static;overflow:visible;padding:0;background:transparent}
+ .game-left{grid-column:1;grid-row:3;display:grid;grid-template-columns:minmax(0,1fr)}
+ .game-right .side-card{width:100%;min-width:0;flex:auto;padding:12px}
+ .game-right .side-eyebrow,.game-right .player-name{display:flex}
+ .game-right .side-stat{display:inline-block;width:31%;margin:5px 1%}
+ .game-right .side-stat>div:first-child{display:flex;gap:5px;justify-content:space-between;font-size:10px}
+ .game-right .side-stat b{display:inline;margin:0}
+ .game-right .side-stat small{display:block}
+ .game-right .xp-line{padding-top:9px;margin-top:8px}
+ .game-left .side-card{padding:12px}
+ .game-stage .game-topline{align-items:flex-start;flex-wrap:wrap}
+ .play-guide{gap:6px;padding:9px;flex-wrap:wrap}
+ .play-guide-step{white-space:normal;line-height:1.35}
+ .play-guide-line{min-width:8px}
+ .mission-card{padding:14px}
+ .mission-card h3{font-size:clamp(22px,6vw,29px)}
+ .mission-action{grid-template-columns:28px minmax(0,1fr);gap:9px;padding:12px}
+ .action-arrow{grid-column:2}
+ .decision-footer{display:grid;grid-template-columns:1fr}
+ .decision-footer>*{width:100%}
+ .scene-actions{display:grid;grid-template-columns:1fr}
+ .scene-actions>*{width:100%;justify-content:center}
+ .metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .result-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .glossary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .ws-tabs{max-width:100%}
+ .ws-tab{flex:0 0 auto;min-height:44px}
+ .mission-card-top{align-items:flex-start;flex-wrap:wrap}
+ .mission-clock{white-space:normal}
+}
+@media (max-width:420px){
+ .sim-wrap{width:calc(100% - 22px)}
+ .sim-hero h1{font-size:36px}
+ .game-stage{padding:11px}
+ .game-right .side-stat{width:30%;margin:4px 1.2%}
+ .game-right .side-stat>div:first-child{display:block;font-size:9px}
+ .game-right .side-stat b{display:block;margin-top:3px}
+ .metrics,.result-grid,.glossary-grid{grid-template-columns:1fr}
+ .mission-action{grid-template-columns:25px minmax(0,1fr);padding:11px}
+ .action-key{width:24px;height:24px}
+ .decision-result-head{align-items:flex-start;flex-wrap:wrap}
+ .delta-chips{gap:5px}
+ .delta-chips span{font-size:7px}
+ .code-box pre,.mission-code pre{font-size:11px;padding:12px}
+}
+@media (prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
 </style>
 </head>
 <body>
