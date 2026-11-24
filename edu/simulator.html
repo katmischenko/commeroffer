@@ -124,6 +124,40 @@ body{background:#08070d;color:var(--sim-text)}
 @media(max-width:520px){.game-left,.game-right{grid-template-columns:1fr}.game-left .skill-grid{grid-template-columns:1fr 1fr}.game-stage{padding:14px}}
 @media(max-width:520px){.game-sidebar{grid-template-columns:1fr}.game-sidebar .side-card:last-child{grid-column:auto}.game-stage{padding:14px}}
 
+/* MOBILE GAMEPLAY: one natural page scroll + compact sticky status strip */
+@media(max-width:860px){
+ .game-layout{grid-template-columns:minmax(0,1fr);gap:12px}
+ .game-right{grid-row:1;position:sticky;top:0;z-index:30;display:flex;gap:8px;overflow-x:auto;overflow-y:hidden;padding:7px 0;background:#08070d;scrollbar-width:none;overscroll-behavior-x:contain}
+ .game-right::-webkit-scrollbar{display:none}
+ .game-right .side-card{flex:0 0 min(78vw,330px);min-width:0;padding:9px 11px}
+ .game-right .side-eyebrow,.game-right .player-name,.game-right .side-stat small{display:none}
+ .game-right .side-stat{display:inline-block;vertical-align:top;width:31%;margin:3px 1% 5px}
+ .game-right .side-stat>div:first-child{display:block;font-size:9px;line-height:1.3}
+ .game-right .side-stat b{display:block;margin-top:3px;font-size:10px}
+ .game-right .side-stat .meter{height:3px;margin-top:5px}
+ .game-right .xp-line{padding-top:6px;margin-top:3px}
+ .game-stage{grid-row:2;position:static;top:auto;max-height:none;overflow:visible;min-height:0}
+ .game-left{grid-row:3;position:static;display:grid;grid-template-columns:1fr}
+ .game-left .side-card{padding:13px}
+}
+@media(max-width:520px){
+ .game-layout{gap:10px}
+ .game-right{margin:0 -2px;gap:7px}
+ .game-right .side-card{flex-basis:84vw;padding:8px 10px}
+ .game-right .side-stat{width:30%;margin:2px 1.2% 4px}
+ .game-stage{padding:12px}
+ .game-stage .game-topline{margin-bottom:11px}
+ .game-stage .play-guide{overflow:hidden}
+ .game-stage .play-guide-step{white-space:normal;line-height:1.25}
+ .game-stage .mission-card{padding:13px}
+ .game-stage .mission-card h3{font-size:23px}
+ .game-stage .mission-brief{font-size:12px}
+ .game-stage .mission-action{grid-template-columns:25px minmax(0,1fr);gap:8px;padding:11px}
+ .game-stage .action-arrow{grid-column:2}
+ .game-stage .decision-footer .sim-button{width:100%}
+ .game-left .skill-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
 /* INTERACTIVE WORKSTATION */
 .workstation{border:1px solid #ffffff20;background:#09070d;margin:0 0 18px;overflow:hidden}
 .ws-head{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid #ffffff18}
