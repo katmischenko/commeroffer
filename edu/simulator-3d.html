@@ -79,6 +79,11 @@ const board=new THREE.Group();board.position.set(-8,0,-6.7);board.rotation.y=.22
 for(const x of [-1.5,1.5])line(board,[x,.8,0],[x,.02,0],.07,M.wood);
 // sofa + low table
 const lounge=new THREE.Group();lounge.position.set(6,0,3);room.add(lounge);box(lounge,0,.55,0,3,.55,1.1,M.fabric);box(lounge,0,.98,-.42,3,.95,.25,M.fabric);for(const x of [-1.35,1.35])box(lounge,x,.75,.03,.28,.65,1.15,M.rose);box(lounge,0,.28,1.2,1.8,.12,.9,M.wood2);for(const x of [-.7,.7])line(lounge,[x,.02,1.2],[x,.28,1.2],.045,M.metal);
+// coffee service on the lounge table
+cyl(lounge,.48,.43,1.18,.13,.15,.24,mat(0xddd0c7));
+cyl(lounge,.48,.56,1.18,.115,.115,.025,mat(0x33252c));
+const mugHandle=new THREE.Mesh(new THREE.TorusGeometry(.09,.025,8,16),M.paper);mugHandle.position.set(.62,.47,1.18);mugHandle.rotation.y=Math.PI/2;lounge.add(mugHandle);
+cyl(lounge,-.42,.39,1.18,.12,.12,.12,mat(0x5d4854));
 // bookshelf
 const shelf=new THREE.Group();shelf.position.set(-10.3,0,1);room.add(shelf);box(shelf,0,1.6,0,2.5,3.2,.55,M.wood2);for(let y of [.55,1.45,2.35]){box(shelf,0,y, -.0,2.35,.1,.62,M.wood);for(let i=0;i<7;i++){const h=.45+Math.random()*.25;const b=box(shelf,-.95+i*.31,y+.1+h/2,-.16,.2,h,.35,mat([0x795766,0x4b596d,0x9a826b,0x53695f][(i+Math.floor(y))%4]));b.rotation.z=(Math.random()-.5)*.08}}
 // plants
