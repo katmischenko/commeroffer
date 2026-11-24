@@ -486,6 +486,24 @@ button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible{
  .brief-card,.term,.mission-action,.command-option,.code-option,.event-action,.sim-button,.break-button,.challenge-submit{transition:none}
 }
 
+
+/* DECISION FEEDBACK — keep the explanation beside the selected action */
+#feedback-host{width:100%;min-width:0;scroll-margin:18px}
+.decision-result{margin-top:12px;border-color:rgba(155,226,180,.28);background:linear-gradient(145deg,rgba(21,17,27,.99),rgba(10,8,14,.99));box-shadow:0 10px 28px rgba(0,0,0,.18)}
+.decision-result-head{gap:8px;flex-wrap:wrap}
+.decision-result>p{margin:10px 0;max-width:72ch}
+.decision-result .lesson-details{margin-top:8px}
+.decision-result .delta-chips{margin-top:10px}
+.decision-footer{margin-top:12px}
+@media(max-width:700px){
+ #feedback-host{scroll-margin:12px}
+ .decision-result{padding:12px}
+ .decision-result-head{font-size:8px}
+ .decision-result>p{font-size:12px;line-height:1.6}
+ .decision-footer{display:grid;grid-template-columns:1fr}
+ .decision-footer>*{width:100%}
+}
+
 </style>
 </head>
 <body>
@@ -673,9 +691,16 @@ function choose(i){
  document.querySelectorAll('.play-guide-step').forEach((el,n)=>el.classList.toggle('active',n===2));
  const eventIndex=[1,3,5].indexOf(state.index);state.event=eventIndex>=0?nextEvent():null;state.eventResolved=!state.event;
  const delta='Энергия '+d.energy+' · Фокус '+(d.focus>0?'+':'')+d.focus+' · Стресс '+(d.stress>0?'+':'')+d.stress+' · XP +'+d.xp;
- const host=$('feedback-host');host.innerHTML='<div class="decision-result"><div class="decision-result-head"><span>РЕЗУЛЬТАТ ТВОЕГО РЕШЕНИЯ</span><b class="'+(q.tag==='strong'?'good':q.tag==='risky'?'bad':'neutral')+'">'+(q.tag==='strong'?'УДАЧНО':q.tag==='risky'?'ЕСТЬ РИСК':'ПРИЕМЛЕМО')+'</b></div><p>'+safe(q.feedback)+'</p><details class="lesson-details"><summary>Что стоит запомнить</summary><p>'+safe(q.lesson)+'</p></details><div class="delta-chips">'+delta.split(' · ').map(t=>'<span>'+safe(t)+'</span>').join('')+'</div></div>';
+ const host=$('feedback-host');
+ // Put the feedback directly beside the action that produced it, not at the end of the whole mission card.
+ const selectedAction=$('scene-host').querySelector('[data-choice].correct, [data-choice].risky, [data-choice].selected');
+ const challengePanel=$('scene-host').querySelector('.challenge-panel');
+ if(selectedAction)selectedAction.insertAdjacentElement('afterend',host);
+ else if(challengePanel)challengePanel.insertAdjacentElement('afterend',host);
+ host.innerHTML='<div class="decision-result"><div class="decision-result-head"><span>РЕЗУЛЬТАТ ТВОЕГО РЕШЕНИЯ</span><b class="'+(q.tag==='strong'?'good':q.tag==='risky'?'bad':'neutral')+'">'+(q.tag==='strong'?'УДАЧНО':q.tag==='risky'?'ЕСТЬ РИСК':'ПРИЕМЛЕМО')+'</b></div><p>'+safe(q.feedback)+'</p><details class="lesson-details"><summary>Что стоит запомнить</summary><p>'+safe(q.lesson)+'</p></details><div class="delta-chips">'+delta.split(' · ').map(t=>'<span>'+safe(t)+'</span>').join('')+'</div></div>';
  if(state.event){host.innerHTML+='<section class="side-mission" id="event-box"></section>';renderEvent();}
  else{const footer=document.createElement('div');footer.className='decision-footer';host.appendChild(footer);if(state.index===4&&!state.breakTaken){footer.innerHTML='<button class="break-button" id="take-break">☕ Сделать перерыв 15 минут</button>';$('take-break').addEventListener('click',takeBreak);}footer.appendChild(continueButton());}
+ requestAnimationFrame(()=>host.scrollIntoView({behavior:'smooth',block:'nearest'}));
 }
 function resolveEvent(i){
  if(state.eventResolved)return;const q=state.event.options[i];state.eventResolved=true;Object.entries(q.delta).forEach(([k,v])=>{if(k==='xp')state.xp+=v;else state[k]=clamp(state[k]+v)});updateMetrics();
