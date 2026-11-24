@@ -1,147 +1,138 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#090811">
-<title>Один день из жизни разработчика — 3D симулятор</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#08090f">
+<title>Один день из жизни разработчика — Mischenko Edu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root{color-scheme:dark;--bg:#090811;--panel:#15111e;--line:#ffffff20;--pink:#ff4f91;--violet:#a879ff;--muted:#a99caf;--green:#9be2b4}
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:#f7f1fa;font-family:Inter, sans-serif}body{overflow:hidden}
-#app{height:100svh;display:grid;grid-template-rows:auto minmax(0,1fr) auto;background:radial-gradient(ellipse at 50% 40%,#24152d 0,#0d0a14 58%,#08070d 100%)}
-header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 22px;border-bottom:1px solid var(--line);background:#090811d9;z-index:3}
-.brand{display:flex;align-items:center;gap:12px}.brand-mark{width:34px;height:34px;display:grid;place-items:center;background:linear-gradient(135deg,var(--pink),var(--violet));font:700 12px 'Space Mono';color:#140b18}.brand small{display:block;color:#b6a8bd;font:9px 'Space Mono';letter-spacing:.12em}.brand b{display:block;font-size:13px;margin-top:3px}
-.top-stats{display:flex;gap:8px;align-items:center}.stat{border:1px solid var(--line);background:#15111e;padding:8px 11px;min-width:88px}.stat span{display:block;color:var(--muted);font:8px 'Space Mono';text-transform:uppercase}.stat b{display:block;font:11px 'Space Mono';margin-top:4px;color:#ffb1ce}
-main{position:relative;min-height:0;overflow:hidden}#world{position:absolute;inset:0;cursor:grab}#world:active{cursor:grabbing}canvas{display:block;width:100%;height:100%;outline:0}
-.hud{position:absolute;z-index:2;pointer-events:none}.hud>*{pointer-events:auto}.left-hud{left:18px;top:18px;width:min(235px,calc(100vw - 36px))}.right-hud{right:18px;top:18px;width:205px}.hud-card{border:1px solid var(--line);background:#100d19d9;backdrop-filter:blur(12px);padding:14px;margin-bottom:9px;box-shadow:0 12px 40px #0005}.eyebrow{font:8px 'Space Mono';letter-spacing:.14em;color:#ff9fc0;margin-bottom:10px}.mission-name{font-size:13px;font-weight:700;line-height:1.4}.mission-desc{font-size:10px;line-height:1.6;color:#b8acbf;margin:7px 0 0}.progress{height:4px;background:#382b40;margin-top:12px}.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--violet));transition:width .3s}.objective{display:flex;gap:8px;align-items:flex-start;font-size:10px;line-height:1.5;color:#d9ccdf}.objective:before{content:'◈';color:var(--pink)}
-.hud-metric{margin:10px 0}.hud-metric>div{display:flex;justify-content:space-between;font-size:9px;color:#c5b8cc}.hud-metric b{font:9px 'Space Mono';color:#ffb1ce}.bar{height:3px;background:#3a2d42;margin-top:6px}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--pink),var(--violet))}
-.hint{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:2;padding:10px 15px;border:1px solid #ffffff25;background:#100d19dc;backdrop-filter:blur(10px);font-size:10px;color:#d6c9dc;white-space:nowrap}.hint kbd{font:9px 'Space Mono';color:#ffb0cc;border:1px solid #ffffff30;padding:3px 6px;margin:0 3px}
-.object-label{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);padding:7px 10px;background:#0c0914e8;border:1px solid #ff7eaa88;color:#ffc0d5;font:9px 'Space Mono';pointer-events:none;display:none}
-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 18px;border-top:1px solid var(--line);background:#090811;z-index:3}.footer-note{font:9px 'Space Mono';color:#91849a}.controls{display:flex;gap:8px}.btn{border:1px solid #ff6f9f88;background:#ff4f91;color:#170b15;padding:10px 13px;font:700 9px 'Space Mono';cursor:pointer}.btn.ghost{background:transparent;color:#ffb1ce}.btn:hover{filter:brightness(1.12)}.btn:focus-visible,button:focus-visible{outline:2px solid white;outline-offset:3px}
-.modal{position:absolute;inset:0;z-index:10;background:#05040bd9;backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.dialog{width:min(760px,100%);max-height:min(84svh,800px);overflow:auto;border:1px solid #ffffff28;background:#120e1a;box-shadow:0 25px 100px #000b}.dialog-head{display:flex;justify-content:space-between;align-items:center;padding:15px 18px;border-bottom:1px solid var(--line)}.dialog-head b{font:10px 'Space Mono';color:#ffb1ce;letter-spacing:.08em}.dialog-body{padding:20px}.dialog h2{font-size:clamp(21px,3vw,30px);margin:0 0 9px;letter-spacing:-.05em}.dialog p{font-size:12px;line-height:1.7;color:#c2b6ca}.close{border:1px solid var(--line);background:#211828;color:white;padding:7px 10px;cursor:pointer}
-.interaction-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:16px}.interaction{padding:13px;border:1px solid var(--line);background:#0d0a13;text-align:left;color:#f4edf7;cursor:pointer}.interaction b{display:block;font-size:11px}.interaction small{display:block;color:var(--muted);font-size:10px;line-height:1.5;margin-top:5px}
-#gameFrame{width:100%;height:68svh;border:0;background:#08070d}.frame-dialog{width:min(1180px,100%);height:min(92svh,1000px);display:flex;flex-direction:column}.frame-dialog .dialog-body{padding:0;flex:1;min-height:0}.frame-dialog iframe{height:100%;min-height:500px}
-.toast{position:absolute;left:50%;top:20px;transform:translate(-50%,-10px);z-index:20;padding:10px 14px;border:1px solid #9be2b477;background:#0b1712;color:#b6f2c8;font:10px 'Space Mono';opacity:0;transition:.2s;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}
-@media(max-width:760px){body{overflow:hidden}header{padding:9px 12px}.brand small{font-size:7px}.brand b{font-size:11px}.top-stats .stat{min-width:0;padding:7px}.top-stats .stat:nth-child(2){display:none}.left-hud{left:9px;top:9px;width:165px}.right-hud{right:9px;top:auto;bottom:62px;width:150px}.hud-card{padding:10px}.right-hud .hud-card{margin:0}.right-hud .eyebrow{margin-bottom:6px}.hud-metric{margin:7px 0}.hint{bottom:10px;font-size:8px;max-width:calc(100% - 20px);white-space:normal;text-align:center}.footer-note{display:none}footer{justify-content:flex-end;padding:8px 10px}.btn{padding:10px;font-size:8px}.interaction-grid{grid-template-columns:1fr}.modal{padding:8px}.dialog-body{padding:14px}}
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+:root{--ink:#f3edf2;--muted:#a79ba9;--line:#ffffff20;--panel:#11121beF;--rose:#d77b91;--violet:#9d8bc7;--mint:#9cc9b4}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#08090f;color:var(--ink);font-family:Inter, sans-serif}
+#game{position:fixed;inset:0}canvas{display:block;width:100%;height:100%}
+.hud{position:fixed;z-index:4;pointer-events:none}.top{top:18px;left:20px;right:20px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.brand{font:10px 'Space Mono';letter-spacing:.16em;color:#e4a3b1;text-transform:uppercase}.brand strong{display:block;color:#f5edf1;font:700 16px Inter;letter-spacing:-.04em;margin-top:6px}
+.day{margin-top:8px;color:#b9aeb9;font:9px 'Space Mono';letter-spacing:.12em}
+.status{display:flex;gap:8px}.stat{min-width:95px;padding:10px 12px;background:#10121bd9;border:1px solid #ffffff20;backdrop-filter:blur(12px)}.stat span{display:block;color:#a99eaa;font:8px 'Space Mono';letter-spacing:.1em}.stat b{display:block;margin-top:6px;font:13px 'Space Mono';color:#f0c2cb}
+.mission{left:20px;top:105px;width:230px;padding:15px 16px;background:#10121bd9;border:1px solid #ffffff20;backdrop-filter:blur(14px)}.eyebrow{font:8px 'Space Mono';letter-spacing:.16em;color:#d99aaa}.mission h2{font-size:15px;letter-spacing:-.04em;margin:9px 0 6px}.mission p{font-size:10px;line-height:1.6;color:#b8adb8;margin:0}.progress{height:3px;background:#3a3541;margin-top:14px}.progress i{display:block;height:100%;background:linear-gradient(90deg,#c77b91,#9b8ac5);width:0;transition:width .3s}.progress-label{display:flex;justify-content:space-between;margin-top:7px;color:#9c91a0;font:8px 'Space Mono'}
+.controls-hint{right:20px;bottom:20px;padding:12px 15px;background:#10121bd9;border:1px solid #ffffff20;color:#b8adb8;font:9px 'Space Mono';line-height:1.9;backdrop-filter:blur(12px)}kbd{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 5px;border:1px solid #ffffff35;color:#f1d0d7;margin:0 2px;font:9px 'Space Mono'}
+.prompt{position:fixed;z-index:5;left:50%;bottom:7%;transform:translateX(-50%);padding:11px 17px;background:#11131deF;border:1px solid #d99aaa77;box-shadow:0 10px 40px #0008;color:#f5e9ed;font:10px 'Space Mono';opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap}.prompt.show{opacity:1}.prompt b{color:#e8aab8;margin-right:8px}
+.overlay{position:fixed;z-index:10;inset:0;display:none;place-items:center;padding:20px;background:#05060bd9;backdrop-filter:blur(14px)}.overlay.open{display:grid}.window{width:min(650px,100%);max-height:min(86vh,760px);overflow:auto;background:linear-gradient(145deg,#191923,#101019);border:1px solid #ffffff25;box-shadow:0 30px 100px #000b;padding:clamp(20px,4vw,34px);position:relative}.window:before{content:"";position:absolute;left:0;top:0;width:100%;height:2px;background:linear-gradient(90deg,#c77b91,#9b8ac5,transparent)}.window-head{display:flex;justify-content:space-between;gap:20px;align-items:center}.window-head small{font:9px 'Space Mono';letter-spacing:.15em;color:#d99aaa}.close{border:1px solid #ffffff2a;background:transparent;color:#c8bdc8;width:32px;height:32px;cursor:pointer}.window h2{font-size:clamp(24px,4vw,34px);letter-spacing:-.06em;margin:20px 0 9px}.window .lead{color:#b8adb8;font-size:12px;line-height:1.7}.task-code{margin:18px 0;padding:16px;background:#090a11;border:1px solid #ffffff18;color:#d8cad7;font:11px/1.8 'Space Mono';white-space:pre-wrap}.answers{display:grid;gap:8px;margin-top:16px}.answer{display:flex;gap:12px;align-items:flex-start;text-align:left;padding:13px;border:1px solid #ffffff20;background:#13131d;color:#eee;font:11px/1.55 Inter;cursor:pointer}.answer:hover{border-color:#d99aaa}.answer:disabled{cursor:default;opacity:1}.answer em{font:10px 'Space Mono';font-style:normal;color:#e4a3b1}.answer.good{border-color:#9cc9b4;background:#9cc9b411}.answer.bad{border-color:#d77b91;background:#d77b9111}.feedback{padding:14px;margin-top:14px;background:#0c0d14;border-left:2px solid var(--mint);font-size:11px;line-height:1.7;color:#d5cbd5}.primary{margin-top:18px;padding:12px 17px;border:1px solid #d99aaa;background:#d99aaa;color:#171018;font:700 9px 'Space Mono';letter-spacing:.1em;cursor:pointer}.secondary{background:transparent;color:#e5b1bd;margin-left:8px}
+.mobile-pad{display:none;position:fixed;z-index:6;left:16px;bottom:18px;grid-template-columns:repeat(3,42px);grid-template-rows:repeat(2,42px);gap:4px;touch-action:none}.mobile-pad button,.mobile-interact{border:1px solid #ffffff35;background:#11131dcc;color:#f3dce2;backdrop-filter:blur(8px);font:15px 'Space Mono';border-radius:8px;touch-action:none}.mobile-pad button:nth-child(1){grid-column:2}.mobile-pad button:nth-child(2){grid-column:1;grid-row:2}.mobile-pad button:nth-child(3){grid-column:2;grid-row:2}.mobile-pad button:nth-child(4){grid-column:3;grid-row:2}.mobile-interact{display:none;position:fixed;z-index:6;right:18px;bottom:28px;width:58px;height:58px;border-color:#d99aaa;color:#f1c0cb}
+.toast{position:fixed;z-index:8;top:25%;left:50%;transform:translateX(-50%);background:#11131df2;border:1px solid #9cc9b477;padding:12px 18px;font:10px 'Space Mono';color:#c5e1d2;opacity:0;transition:opacity .25s;pointer-events:none}.toast.show{opacity:1}
+@media(max-width:760px){.top{top:10px;left:12px;right:12px}.brand strong{font-size:13px}.status{gap:5px}.stat{min-width:65px;padding:8px}.stat span{font-size:7px}.stat b{font-size:11px}.mission{top:84px;left:12px;width:190px;padding:11px}.mission h2{font-size:13px}.mission p{font-size:9px}.controls-hint{display:none}.mobile-pad{display:grid}.mobile-interact{display:block}.prompt{bottom:105px;font-size:9px}.overlay{padding:12px}.window{max-height:90vh}}
+@media(max-width:390px){.status .stat:nth-child(3){display:none}.mission{width:170px}.brand{font-size:8px}.brand strong{font-size:12px}}
 </style>
 </head>
 <body>
-<div id="app">
-<header>
- <div class="brand"><div class="brand-mark">3D</div><div><small>MISCHENKO EDU / CAREER SIM</small><b>Один день из жизни разработчика</b></div></div>
- <div class="top-stats"><div class="stat"><span>Время</span><b id="clock">09:00</b></div><div class="stat"><span>День</span><b>ПОНЕДЕЛЬНИК</b></div><div class="stat"><span>Уровень</span><b>JUNIOR · 01</b></div></div>
-</header>
-<main>
- <div id="world" aria-label="Интерактивная 3D-комната разработчика"></div>
- <aside class="hud left-hud"><div class="hud-card"><div class="eyebrow">ТЕКУЩАЯ МИССИЯ</div><div class="mission-name" id="missionTitle">Первый рабочий день</div><p class="mission-desc" id="missionDesc">Осмотрись в офисе. Твой рабочий день начинается.</p><div class="progress"><i id="missionProgress"></i></div></div><div class="hud-card"><div class="eyebrow">ЦЕЛЬ ДНЯ</div><div class="objective" id="objective">Разобраться с задачей, внести изменение и безопасно выпустить его.</div></div></aside>
- <aside class="hud right-hud"><div class="hud-card"><div class="eyebrow">СОСТОЯНИЕ ИГРОКА</div><div class="hud-metric"><div><span>Энергия</span><b id="energyVal">100</b></div><div class="bar"><i id="energyBar" style="width:100%"></i></div></div><div class="hud-metric"><div><span>Фокус</span><b id="focusVal">75</b></div><div class="bar"><i id="focusBar" style="width:75%"></i></div></div><div class="hud-metric"><div><span>Стресс</span><b id="stressVal">15</b></div><div class="bar"><i id="stressBar" style="width:15%"></i></div></div><div class="hud-metric"><div><span>XP</span><b id="xpVal">0</b></div><div class="bar"><i id="xpBar" style="width:0%"></i></div></div></div></aside>
- <div class="hint">Нажми на объекты в комнате · <kbd>мышь</kbd> вращать · <kbd>колесо</kbd> приблизить</div>
- <div class="toast" id="toast"></div>
- <section class="modal" id="modal" role="dialog" aria-modal="true"><div class="dialog"><div class="dialog-head"><b id="modalTitle">ОБЪЕКТ</b><button class="close" id="closeModal">ЗАКРЫТЬ ✕</button></div><div class="dialog-body" id="modalBody"></div></div></section>
- <section class="modal" id="gameModal" role="dialog" aria-modal="true"><div class="dialog frame-dialog"><div class="dialog-head"><b>РАБОЧАЯ СТАНЦИЯ / ИНТЕРАКТИВНЫЙ СИМУЛЯТОР</b><button class="close" id="closeGame">ВЕРНУТЬСЯ В ОФИС ✕</button></div><div class="dialog-body"><iframe id="gameFrame" title="Игровая рабочая станция" src="simulator.html"></iframe></div></div></section>
-</main>
-<footer><div class="footer-note">3D OFFICE SIMULATION · THREE.JS · BROWSER GAME</div><div class="controls"><button class="btn ghost" id="resetView">СБРОСИТЬ КАМЕРУ</button><button class="btn" id="openComputer">ВОЙТИ В РАБОЧУЮ СТАНЦИЮ →</button></div></footer>
-</div>
-<script type="importmap">
-{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
-</script>
+<div id="game"></div>
+<div class="hud top"><div><div class="brand">MISCHENKO EDU <strong>Один день из жизни разработчика</strong></div><div class="day">СМЕНА 01 · 09:00 — 18:00</div></div><div class="status"><div class="stat"><span>ВРЕМЯ</span><b id="clock">09:00</b></div><div class="stat"><span>ЭНЕРГИЯ</span><b id="energy">86%</b></div><div class="stat"><span>ОПЫТ</span><b id="xp">0 XP</b></div></div></div>
+<section class="hud mission"><div class="eyebrow">ТЕКУЩАЯ ЦЕЛЬ</div><h2 id="missionTitle">Принять задачу</h2><p id="missionText">Подойди к рабочему столу и изучи задачу от команды.</p><div class="progress"><i id="progress"></i></div><div class="progress-label"><span>ПРОГРЕСС ДНЯ</span><span id="progressText">0 / 6</span></div></section>
+<div class="controls-hint">ПЕРЕМЕЩЕНИЕ <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><br>КАМЕРА · ЗАЖМИ И ДВИГАЙ МЫШЬ<br>ВЗАИМОДЕЙСТВИЕ <kbd>E</kbd> · ПРЫЖОК <kbd>SPACE</kbd></div>
+<div class="prompt" id="prompt"><b>E</b><span id="promptText">Взаимодействовать</span></div>
+<div class="mobile-pad" id="pad"><button data-key="w">↑</button><button data-key="a">←</button><button data-key="s">↓</button><button data-key="d">→</button></div><button class="mobile-interact" id="mobileE">E</button>
+<div class="toast" id="toast"></div>
+<div class="overlay" id="overlay"><div class="window"><div class="window-head"><small id="modalTag">РАБОЧАЯ СТАНЦИЯ</small><button class="close" id="close">×</button></div><h2 id="modalTitle"></h2><p class="lead" id="modalLead"></p><div id="modalBody"></div></div></div>
 <script type="module">
-import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-
-const mount=document.getElementById('world');
-const scene=new THREE.Scene();scene.background=new THREE.Color('#100b18');scene.fog=new THREE.Fog('#100b18',15,30);
-const camera=new THREE.PerspectiveCamera(34,1,.1,100);camera.position.set(9,8,11);
-const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.35;mount.appendChild(renderer.domElement);
-const controls=new OrbitControls(camera,renderer.domElement);controls.target.set(0,1.1,0);controls.enableDamping=true;controls.minDistance=7;controls.maxDistance=18;controls.maxPolarAngle=Math.PI/2.05;controls.minPolarAngle=.35;controls.update();
-scene.add(new THREE.HemisphereLight('#d9c8ff','#211528',2.1));
-const key=new THREE.DirectionalLight('#ffd8eb',3.2);key.position.set(-5,9,7);key.castShadow=true;key.shadow.mapSize.set(2048,2048);key.shadow.camera.left=-10;key.shadow.camera.right=10;key.shadow.camera.top=10;key.shadow.camera.bottom=-10;scene.add(key);
-const pinkLight=new THREE.PointLight('#ff3f91',24,9);pinkLight.position.set(3,3,1);scene.add(pinkLight);
-const purpleLight=new THREE.PointLight('#8a58ff',18,8);purpleLight.position.set(-4,3,-2);scene.add(purpleLight);
-const mat=(color,roughness=.8,metalness=0)=>new THREE.MeshStandardMaterial({color,roughness,metalness});
-const M={wall:mat('#21182a'),floor:mat('#302538'),dark:mat('#100d17'),desk:mat('#503747'),wood:mat('#79566a'),pink:mat('#fa4f91',.35),violet:mat('#9b70fa',.35),metal:mat('#777083',.35,.7),screen:mat('#101b27',.25,.2),white:mat('#d8c9dd'),plant:mat('#356b59'),skin:mat('#e0b5a0'),shirt:mat('#26212f'),pants:mat('#17151e'),gold:mat('#d49b64',.3,.65)};
-function box(parent,name,pos,size,material,opts={}){const mesh=new THREE.Mesh(new THREE.BoxGeometry(...size),material);mesh.position.set(...pos);mesh.castShadow=true;mesh.receiveShadow=true;mesh.name=name;parent.add(mesh);return mesh}
-function cylinder(parent,name,pos,r1,r2,h,material,segments=12){const mesh=new THREE.Mesh(new THREE.CylinderGeometry(r1,r2,h,segments),material);mesh.position.set(...pos);mesh.castShadow=true;mesh.name=name;parent.add(mesh);return mesh}
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+const mount=document.querySelector('#game');
+const scene=new THREE.Scene();scene.background=new THREE.Color(0x090b13);scene.fog=new THREE.Fog(0x090b13,22,48);
+const camera=new THREE.PerspectiveCamera(48,innerWidth/innerHeight,.1,100);camera.position.set(0,5,9);
+const renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});renderer.setPixelRatio(Math.min(devicePixelRatio,1.8));renderer.setSize(innerWidth,innerHeight);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.18;mount.appendChild(renderer.domElement);
+scene.add(new THREE.HemisphereLight(0x9ba7d0,0x17121b,1.45));
+const keyLight=new THREE.DirectionalLight(0xffd8c0,2.2);keyLight.position.set(-7,13,7);keyLight.castShadow=true;keyLight.shadow.mapSize.set(2048,2048);keyLight.shadow.camera.left=-18;keyLight.shadow.camera.right=18;keyLight.shadow.camera.top=18;keyLight.shadow.camera.bottom=-18;scene.add(keyLight);
+function area(x,y,z,color,intensity,distance){const l=new THREE.PointLight(color,intensity,distance,2);l.position.set(x,y,z);scene.add(l);return l}
+area(-7,4,-5,0xb06a8a,35,13);area(6,4,-5,0x7286ca,28,14);area(0,3,5,0xc58a73,18,10);
+const mat=(color,rough=.7,metal=0)=>new THREE.MeshStandardMaterial({color,roughness:rough,metalness:metal});
+const M={floor:mat(0x282630),wall:mat(0x25242f),dark:mat(0x11121b),wood:mat(0x59443e),wood2:mat(0x382f35),metal:mat(0x777783,.35,.7),black:mat(0x090b12,.25,.35),fabric:mat(0x333341),rose:mat(0xb66f83,.45),glass:new THREE.MeshPhysicalMaterial({color:0x7185a4,metalness:.25,roughness:.12,transparent:true,opacity:.24}),leaf:mat(0x536c5c),paper:mat(0xd5c7bb),screen:mat(0x101722,.3,.15)};
+function box(parent,x,y,z,w,h,d,material,cast=true){const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),material);o.position.set(x,y,z);o.castShadow=cast;o.receiveShadow=true;parent.add(o);return o}
+function cyl(parent,x,y,z,r1,r2,h,material,segments=12){const o=new THREE.Mesh(new THREE.CylinderGeometry(r1,r2,h,segments),material);o.position.set(x,y,z);o.castShadow=true;o.receiveShadow=true;parent.add(o);return o}
+function sphere(parent,x,y,z,sx,sy,sz,material){const o=new THREE.Mesh(new THREE.SphereGeometry(1,16,12),material);o.position.set(x,y,z);o.scale.set(sx,sy,sz);o.castShadow=true;o.receiveShadow=true;parent.add(o);return o}
+function line(parent,a,b,r,material){const A=new THREE.Vector3(...a),B=new THREE.Vector3(...b),v=B.clone().sub(A);const o=new THREE.Mesh(new THREE.CylinderGeometry(r,r,v.length(),8),material);o.position.copy(A.add(B).multiplyScalar(.5));o.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),v.normalize());o.castShadow=true;parent.add(o);return o}
 const room=new THREE.Group();scene.add(room);
-box(room,'floor',[0,-.12,0],[12,.24,10],M.floor);
-box(room,'back wall',[0,2.5,-5],[12,5,.2],M.wall);
-box(room,'left wall',[-6,2.5,0],[.2,5,10],M.wall);
-for(let x=-5.5;x<=5.5;x+=1){const line=box(room,'floor grid',[x,.006,0],[.012,.01,9.8],mat('#59415b'));line.castShadow=false}
-for(let z=-4.5;z<=4.5;z+=1){const line=box(room,'floor grid',[0,.007,z],[11.8,.01,.012],mat('#59415b'));line.castShadow=false}
-for(let x=-5.5;x<=5.5;x+=.5){box(room,'wall detail',[x,4.9,-4.88],[.018,.018,.02],M.pink)}
-const windowGroup=new THREE.Group();windowGroup.position.set(-2.7,2.7,-4.82);room.add(windowGroup);
-box(windowGroup,'window frame',[0,0,0],[3.1,2.5,.12],M.metal);box(windowGroup,'night window',[0,0,.08],[2.88,2.28,.06],mat('#20294b',.25));
-for(let i=0;i<18;i++){const h=.15+Math.random()*.8;box(windowGroup,'city light',[-1.3+(i%9)*.32,-.95+h/2,.12],[.09,h,.02],i%3?M.violet:M.pink)}
-box(windowGroup,'window mullion',[0,0,.15],[.045,2.3,.04],M.metal);box(windowGroup,'window mullion',[0,0,.15],[2.9,.045,.04],M.metal);
-const desk=new THREE.Group();desk.position.set(.7,0,-1.2);room.add(desk);
-box(desk,'desk top',[0,1.2,0],[4.2,.16,1.65],M.desk);
-for(const x of [-1.8,1.8])for(const z of [-.62,.62])box(desk,'desk leg',[x,.59,z],[.12,1.18,.12],M.metal);
-box(desk,'desk drawer',[-1.35,.92,0],[.65,.48,1.15],M.wood);
-const monitor=new THREE.Group();monitor.position.set(.15,1.32,-.35);desk.add(monitor);
-box(monitor,'monitor frame',[0,.9,0],[1.9,1.18,.12],M.dark);
-const display=box(monitor,'monitor screen',[0,.9,.07],[1.75,1.02,.025],M.screen);display.material=new THREE.MeshStandardMaterial({color:'#162337',emissive:'#19365a',emissiveIntensity:.55,roughness:.25});
-box(monitor,'monitor stand',[0,.23,0],[.12,.38,.12],M.metal);box(monitor,'monitor base',[0,.04,0],[.65,.06,.34],M.metal);
-for(let i=0;i<5;i++)box(monitor,'code line',[-.55,.61-i*.14,.09],[.45+(i%3)*.17,.025,.008],i%2?M.violet:M.pink);
-const keyboard=box(desk,'keyboard',[-.05,1.31,.48],[1.1,.055,.35],M.dark);for(let i=0;i<9;i++)box(desk,'key',[ -.53+i*.12,1.345,.48],[.07,.012,.24],M.metal);
-const mouse=cylinder(desk,'mouse',[.78,1.35,.48],.1,.12,.08,M.metal,16);mouse.rotation.x=Math.PI/2;
-const chair=new THREE.Group();chair.position.set(.7,0,1.1);room.add(chair);
-cylinder(chair,'chair post',[0,.55,0],.07,.07,.9,M.metal);box(chair,'chair seat',[0,1,0],[1,.18,.9],M.shirt);box(chair,'chair back',[0,1.65,-.36],[1,.95,.16],M.shirt);
-for(const x of [-.4,.4]){box(chair,'chair arm',[x,1.25,.05],[.1,.08,.65],M.metal)}
-// Low-poly developer avatar
-const avatar=new THREE.Group();avatar.position.set(2.55,0,1.25);room.add(avatar);
-cylinder(avatar,'body',[0,1.12,0],.34,.42,.85,M.shirt,8);const head=new THREE.Mesh(new THREE.SphereGeometry(.28,10,8),M.skin);head.position.set(0,1.82,0);head.castShadow=true;avatar.add(head);
-const hair=new THREE.Mesh(new THREE.SphereGeometry(.29,9,6,0,Math.PI*2,0,Math.PI*.55),mat('#241b2b'));hair.position.set(0,1.9,0);avatar.add(hair);
-for(const x of [-.16,.16]){const eye=new THREE.Mesh(new THREE.SphereGeometry(.025,8,6),M.dark);eye.position.set(x,1.83,.25);avatar.add(eye)}
-for(const x of [-.17,.17]){cylinder(avatar,'arm',[x,1.2,.02],.09,.08,.68,M.skin,8).rotation.z=x<0?-.45:.45;cylinder(avatar,'leg',[x*.8,.42,0],.13,.11,.78,M.pants,8)}
-// bookshelf and books
-box(room,'bookshelf',[-4.9,1.3,-1.3],[.7,2.6,2.2],M.wood);
-for(const y of [.55,1.3,2.05])box(room,'shelf',[ -4.5,y,-1.3],[.18,.08,2.05],M.metal);
-for(let i=0;i<12;i++){const h=.35+Math.random()*.28;box(room,'book',[-4.37,.78+(i%4)*.05,-2.1+i*.14],[.12,h,.1],[M.pink,M.violet,M.white,M.plant][i%4]);}
-const board=new THREE.Group();board.position.set(2.7,2.3,-4.78);room.add(board);
-box(board,'task board',[0,0,0],[2.4,1.5,.13],M.dark);
-for(let i=0;i<3;i++){box(board,'sticky note',[-.72+i*.72,.15,.09],[.55,.72,.035],[M.pink,M.violet,M.white][i]);}
-const phone=new THREE.Group();phone.position.set(-3.4,0,2.3);room.add(phone);box(phone,'phone body',[0,.65,0],[.45,.75,.12],M.dark);box(phone,'phone display',[0,.67,.07],[.36,.62,.02],M.violet);
-const coffee=new THREE.Group();coffee.position.set(3.4,0,-.1);room.add(coffee);cylinder(coffee,'coffee cup',[0,.23,0],.19,.15,.42,M.white,16);cylinder(coffee,'coffee',[0,.45,0],.15,.15,.025,mat('#4a2b24'),16);
-const plant=new THREE.Group();plant.position.set(-4.6,0,3.7);room.add(plant);cylinder(plant,'plant pot',[0,.25,0],.3,.22,.5,M.desk);for(let i=0;i<7;i++){const leaf=new THREE.Mesh(new THREE.ConeGeometry(.13,.8,5),M.plant);leaf.position.set(Math.sin(i)*.2,.8+Math.cos(i)*.1,Math.cos(i)*.2);leaf.rotation.z=Math.sin(i)*.6;plant.add(leaf)}
-// Neon wall sign
-const sign=box(room,'neon sign',[4.6,3.5,-4.82],[1.4,.55,.06],M.dark);const signText=new THREE.Mesh(new THREE.BoxGeometry(1.1,.04,.025),M.pink);signText.position.set(4.6,3.5,-4.75);room.add(signText);
-const interactive=[{obj:monitor,label:'КОМПЬЮТЕР',type:'computer'},{obj:board,label:'ДОСКА ЗАДАЧ',type:'board'},{obj:phone,label:'ТЕЛЕФОН',type:'phone'},{obj:coffee,label:'КОФЕ / ПЕРЕРЫВ',type:'coffee'},{obj:chair,label:'РАБОЧЕЕ МЕСТО',type:'chair'}];
-interactive.forEach(x=>{x.obj.traverse(o=>{if(o.isMesh)o.userData.interaction=x})});
-const raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();let hovered=null;
-function resize(){const w=mount.clientWidth,h=mount.clientHeight;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h)}
-window.addEventListener('resize',resize);resize();
-function pick(e){const r=renderer.domElement.getBoundingClientRect();pointer.x=((e.clientX-r.left)/r.width)*2-1;pointer.y=-((e.clientY-r.top)/r.height)*2+1;raycaster.setFromCamera(pointer,camera);const hits=raycaster.intersectObjects(room.children,true);const hit=hits.find(h=>h.object.userData.interaction);return hit?.object.userData.interaction||null}
-renderer.domElement.addEventListener('pointermove',e=>{hovered=pick(e);renderer.domElement.style.cursor=hovered?'pointer':'grab'});
-renderer.domElement.addEventListener('click',e=>{const target=pick(e);if(target)interact(target.type)});
-const $=id=>document.getElementById(id);const modal=$('modal'),gameModal=$('gameModal');let currentMission=0,clockMinutes=9*60,energy=100,focus=75,stress=15,xp=0,breakDone=false;
-const missions=[
-['Планирование дня','Посмотри доску задач и разберись, что команда ждёт от тебя.','Уточнить задачу и критерии готовности.'],
-['Разбор ошибки','На компьютере изучи проект и воспроизведи проблему.','Найти причину некорректного итога корзины.'],
-['Работа с Git','Подготовь отдельную ветку для исправления.','Сохранить безопасный рабочий процесс.'],
-['Исправление кода','Внеси изменение и проверь условие.','Исправить логику расчёта.'],
-['Командная коммуникация','Ответь коллеге и покажи промежуточный результат.','Согласовать решение с командой.'],
-['Тестирование','Проверь обычные и граничные сценарии.','Убедиться, что исправление не ломает другие случаи.'],
-['Code review','Проверь замечания и подготовь изменения к слиянию.','Сделать код понятным и надёжным.'],
-['Релиз','Убедись, что проект готов к публикации.','Выпустить изменение и подвести итоги.']
+box(room,0,-.18,0,25,.35,21,M.floor);
+const grid=new THREE.GridHelper(25,25,0x484452,0x34313d);grid.position.y=.005;room.add(grid);
+box(room,0,2.5,-10.4,25,5,.35,M.wall);box(room,-12.4,2.5,0,.35,5,21,M.wall);box(room,12.4,2.5,0,.35,5,21,M.wall);
+box(room,0,5.05,0,25,.25,21,M.dark);
+for(let x=-10;x<=10;x+=5)box(room,x,4.93,0,.12,.12,20,M.wood2);
+for(let z=-8;z<=8;z+=4)box(room,0,4.93,z,24,.12,.12,M.wood2);
+// Panoramic window and stylized city
+box(room,0,2.65,-10.17,15.8,3.7,.08,M.black,false);
+const win=new THREE.Mesh(new THREE.PlaneGeometry(15.4,3.35),new THREE.MeshBasicMaterial({color:0x17243c}));win.position.set(0,2.75,-10.1);room.add(win);
+for(let i=0;i<19;i++){const x=-7.3+i*.8,h=1+Math.random()*3.1;box(room,x,-.03,-10.0,.55,h,.18,mat(i%3===0?0x333b55:0x222b42),false);for(let j=0;j<3;j++)for(let k=0;k<2;k++){const w=sphere(room,x-.15+k*.3,.15+j*.42,-9.88,.035,.045,.02,mat([0x9b8191,0x758ba8,0xc5a77d][(i+j+k)%3]));w.castShadow=false}}
+for(let x=-7.7;x<=7.8;x+=3.85)box(room,x,2.7,-9.95,.1,3.8,.18,M.metal);
+box(room,0,.78,-9.95,15.6,.12,.2,M.metal);
+// desk cluster, screen with generated code texture
+const desk=new THREE.Group();desk.position.set(0,0,-5.2);room.add(desk);
+box(desk,0,1.12,0,4.8,.18,1.65,M.wood);for(const x of [-2.15,2.15])for(const z of [-.55,.55])box(desk,x,.53,z,.12,1.05,.12,M.metal);
+box(desk,0,1.25,-.56,1.72,1.05,.09,M.black);box(desk,0,1.25,-.5,1.57,.89,M.screen);
+const codeCanvas=document.createElement('canvas');codeCanvas.width=512;codeCanvas.height=300;const cx=codeCanvas.getContext('2d');cx.fillStyle='#111923';cx.fillRect(0,0,512,300);cx.fillStyle='#d68da0';cx.font='bold 17px monospace';cx.fillText('workspace / sprint-01',22,34);for(let i=0;i<10;i++){cx.fillStyle=['#8fb6a3','#b9a2d1','#d3a4a9','#8798b7'][i%4];cx.font='14px monospace';cx.fillText(['const sprint = async () => {','  await review(task);','  if (tests.ok) {','    deploy(build);','  } else {','    debug(errors);','  }','};','// focus on quality','> npm run dev'][i],22,72+i*21)}const screenTex=new THREE.CanvasTexture(codeCanvas);const screenFace=new THREE.Mesh(new THREE.PlaneGeometry(1.48,.8),new THREE.MeshBasicMaterial({map:screenTex}));screenFace.position.set(0,1.25,-.448);desk.add(screenFace);
+box(desk,0,.7,-.49,.22,.1,.18,M.metal);
+box(desk,0,1.22,.38,1.1,.035,.36,M.black);for(let i=0;i<5;i++)box(desk,-.45+i*.22,1.245,.38,.14,.012,.23,M.metal,false);
+sphere(desk,.95,1.22,.37,.12,.045,.16,M.black);
+cyl(desk,-1.85,1.31,.5,.12,.12,.08,M.black);cyl(desk,-1.85,1.39,.5,.1,.1,.1,M.rose);
+for(const x of [-.65,.65]){line(desk,[x,.02,.15],[x*.8,.8,.4],.055,M.metal);}
+// chair
+const chair=new THREE.Group();chair.position.set(0,0,-2.7);room.add(chair);cyl(chair,0,.18,0,.48,.48,.12,M.black);line(chair,[0,.2,0],[0,.55,0],.09,M.metal);box(chair,0,.9,-.2,.95,.85,.2,M.fabric);box(chair,0,.55,.15,.95,.12,.75,M.fabric);for(const a of [-1,1]){line(chair,[a*.38,.55,.1],[a*.52,.2,.05],.045,M.metal);line(chair,[a*.38,.18,.05],[a*.68,.05,.05],.035,M.metal)}
+// task board
+const board=new THREE.Group();board.position.set(-8,0,-6.7);board.rotation.y=.22;room.add(board);box(board,0,2,0,3.8,2.35,.18,M.wood2);box(board,0,2,.11,3.55,2.1,.04,mat(0x252a35));for(let i=0;i<3;i++){box(board,-1.12+i*1.12,2,.15,.98,1.65,.035,mat([0x34313d,0x343342,0x3b303b][i]));box(board,-1.12+i*1.12,2.62,.18,.65,.035,.02,mat([0xb8788c,0x8d83b1,0x86a895][i]));for(let j=0;j<3;j++)box(board,-1.12+i*1.12,2.35-j*.25,.18,.65,.025,.02,M.paper,false)}
+for(const x of [-1.5,1.5])line(board,[x,.8,0],[x,.02,0],.07,M.wood);
+// sofa + low table
+const lounge=new THREE.Group();lounge.position.set(6,0,3);room.add(lounge);box(lounge,0,.55,0,3,.55,1.1,M.fabric);box(lounge,0,.98,-.42,3,.95,.25,M.fabric);for(const x of [-1.35,1.35])box(lounge,x,.75,.03,.28,.65,1.15,M.rose);box(lounge,0,.28,1.2,1.8,.12,.9,M.wood2);for(const x of [-.7,.7])line(lounge,[x,.02,1.2],[x,.28,1.2],.045,M.metal);
+// bookshelf
+const shelf=new THREE.Group();shelf.position.set(-10.3,0,1);room.add(shelf);box(shelf,0,1.6,0,2.5,3.2,.55,M.wood2);for(let y of [.55,1.45,2.35]){box(shelf,0,y, -.0,2.35,.1,.62,M.wood);for(let i=0;i<7;i++){const h=.45+Math.random()*.25;const b=box(shelf,-.95+i*.31,y+.1+h/2,-.16,.2,h,.35,mat([0x795766,0x4b596d,0x9a826b,0x53695f][(i+Math.floor(y))%4]));b.rotation.z=(Math.random()-.5)*.08}}
+// plants
+function plant(x,z){const g=new THREE.Group();g.position.set(x,0,z);room.add(g);cyl(g,0,.35,0,.36,.27,.7,mat(0x66504d));for(let i=0;i<9;i++){const a=i*Math.PI*2/9;const leaf=sphere(g,Math.cos(a)*.28,.95+Math.sin(i*2)*.18,Math.sin(a)*.28,.13,.48,.12,M.leaf);leaf.rotation.z=Math.cos(a)*-.6;leaf.rotation.x=Math.sin(a)*.5}line(g,[0,.6,0],[0,1.3,0],.035,M.leaf)}plant(-9,5);plant(9,-5);plant(9,5);
+// warm pendants
+for(const x of [-5,0,5]){line(room,[x,4.8,-1],[x,3.5,-1],.025,M.metal);sphere(room,x,3.42,-1,.42,.08,.42,mat(0x5b4854));area(x,3.2,-1,0xffc69c,11,7)}
+// character rig
+const player=new THREE.Group();scene.add(player);player.position.set(0,0,0);
+const rig=new THREE.Group();player.add(rig);
+const skin=mat(0xc18f7d),hair=mat(0x211b27),coat=mat(0x34313e),pants=mat(0x242633),shoe=mat(0x11131a),accent=mat(0xb97589);
+sphere(rig,0,1.63,0,.29,.34,.25,skin);sphere(rig,0,1.84,-.015,.3,.2,.27,hair);sphere(rig,-.22,1.7,.03,.08,.23,.25,hair);sphere(rig,.22,1.7,.03,.08,.23,.25,hair);
+box(rig,0,1.13,0,.65,.72,.34,coat);box(rig,0,1.17,.19,.12,.55,.025,accent);
+const armPivots=[];for(const side of [-1,1]){const pivot=new THREE.Group();pivot.position.set(side*.39,1.42,0);rig.add(pivot);line(pivot,[0,0,0],[side*.02,-.48,.04],.105,coat);sphere(pivot,side*.02,-.5,.04,.11,.12,.11,skin);armPivots.push(pivot)}
+const legs=[];for(const side of [-1,1]){const pivot=new THREE.Group();pivot.position.set(side*.18,.82,0);rig.add(pivot);line(pivot,[0,0,0],[0,-.52,0],.13,pants);box(pivot,0,-.57,.09,.25,.16,.42,shoe);legs.push(pivot)}
+sphere(rig,0,1.42,.255,.035,.035,.025,skin); // small collar detail
+// collision-free bounds and interactable points
+const interactables=[
+{id:'desk',name:'Рабочая станция',x:0,z:-4.05,range:2.25,action:openWork},
+{id:'board',name:'Доска задач',x:-7.6,z:-5.4,range:2.2,action:openBoard},
+{id:'coffee',name:'Кофе и перерыв',x:5.4,z:3.2,range:2.1,action:takeBreak},
+{id:'sofa',name:'Зона отдыха',x:6,z:4.3,range:2.1,action:rest}
 ];
-window.addEventListener('message',e=>{if(e.origin!==location.origin||!e.data)return;const d=e.data;if(d.type==='mission-start'){currentMission=d.index;clockMinutes=9*60+d.index*65;updateHud();}if(d.type==='mission-complete'){currentMission=Math.max(currentMission,d.index+1);xp=Math.max(xp,d.xp||0);energy=Math.max(12,energy-5);focus=Math.min(100,focus+2);stress=Math.min(100,stress+3);updateHud();toast('Миссия закрыта · '+d.title);clockTick();}if(d.type==='day-complete'){currentMission=8;xp=d.xp||xp;updateHud();$('missionTitle').textContent='Рабочий день завершён';$('missionDesc').textContent='Все восемь миссий пройдены. Вернись в комнату за итогами.';toast('Рабочий день завершён!');}});
-function updateHud(){const m=missions[Math.min(currentMission,7)];$('missionTitle').textContent=currentMission>=8?'Рабочий день завершён':m[0];$('missionDesc').textContent=currentMission>=8?'Ты прошёл все этапы рабочего дня.':m[1];$('objective').textContent=currentMission>=8?'Подведи итоги и попробуй пройти день с другими решениями.':m[2];$('missionProgress').style.width=(currentMission/8*100)+'%';for(const [id,v] of [['energy',energy],['focus',focus],['stress',stress],['xp',xp]]){$(id+'Val').textContent=v;$(id+'Bar').style.width=Math.min(100,v)+'%'} }
-function clockTick(){clockMinutes+=Math.floor(Math.random()*3+2);if(clockMinutes>18*60)clockMinutes=18*60;const h=String(Math.floor(clockMinutes/60)).padStart(2,'0'),m=String(clockMinutes%60).padStart(2,'0');$('clock').textContent=h+':'+m}
-function toast(s){$('toast').textContent=s;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),2100)}
-function openModal(title,html){$('modalTitle').textContent=title; $('modalBody').innerHTML=html;modal.classList.add('open')}
-function interact(type){
- if(type==='computer'){gameModal.classList.add('open');return}
- if(type==='board'){openModal('ДОСКА ЗАДАЧ / SPRINT BOARD',`<h2>План на сегодня</h2><p>В команде обнаружили проблему: итоговая сумма корзины иногда не обновляется после изменения количества товара. Твоя задача — пройти весь путь от понимания проблемы до безопасного релиза.</p><div class="interaction-grid">${missions.map((m,i)=>'<div class="interaction"><b>'+String(i+1).padStart(2,'0')+' / '+m[0]+'</b><small>'+m[2]+'</small></div>').join('')}</div><p>Нажми на компьютер, чтобы начать интерактивные миссии. Доска показывает маршрут рабочего дня.</p>`);return}
- if(type==='phone'){openModal('ТЕЛЕФОН / УВЕДОМЛЕНИЯ',`<h2>Командный чат</h2><p><b style="color:#ffb1ce">Наставник · 09:12</b><br>Добро пожаловать! Не торопись сразу писать код. Сначала пойми, как должна работать корзина.</p><p><b style="color:#b99cff">Тестировщик · 09:24</b><br>Я заметил проблему при быстром изменении количества товара. Если воспроизведёшь — напиши шаги.</p><p><b style="color:#9be2b4">Дизайнер · 09:40</b><br>Пожалуйста, проверь мобильную ширину после исправления.</p>`);return}
- if(type==='coffee'){if(breakDone){toast('Перерыв уже использован. Возвращаемся к работе.');return}breakDone=true;energy=Math.min(100,energy+18);focus=Math.min(100,focus+6);stress=Math.max(0,stress-12);clockMinutes+=15;updateHud();toast('Перерыв 15 минут: энергия восстановлена.');openModal('ПЕРЕРЫВ / 15 МИНУТ',`<h2>Небольшая пауза — тоже часть работы.</h2><p>Ты отошёл от монитора, размялся и выпил кофе. Энергия и концентрация восстановились, стресс снизился.</p><div class="interaction-grid"><div class="interaction"><b>Энергия +18</b><small>Теперь ${energy}/100</small></div><div class="interaction"><b>Фокус +6</b><small>Теперь ${focus}/100</small></div></div>`);return}
- if(type==='chair'){openModal('РАБОЧЕЕ МЕСТО',`<h2>Твоя рабочая станция</h2><p>Здесь ты будешь читать код, работать с терминалом, смотреть результат в браузере и обсуждать изменения с командой.</p><div class="interaction-grid"><button class="interaction" onclick="document.getElementById('closeModal').click();document.getElementById('openComputer').click()"><b>Открыть компьютер →</b><small>Перейти к рабочим инструментам и миссиям</small></button><div class="interaction"><b>Совет наставника</b><small>Делай небольшие изменения и проверяй каждое из них.</small></div></div>`)}
+let yaw=0,pitch=.2,dragging=false,lastX=0,lastY=0,keys={},near=null,walking=0,energy=86,xp=0,done=0,stage=0,gameMinutes=0;
+const missions=[
+{title:'Принять задачу',text:'Изучи запрос команды: нужно подготовить небольшое обновление продукта.',tag:'01 · ПЛАНИРОВАНИЕ',lead:'Утро начинается с задачи в трекере. Перед тем как писать код, важно понять ожидаемый результат.',question:'Что разработчику стоит сделать первым?',code:'TASK #1042\nДобавить форму обратной связи\nСрок: сегодня, 17:00\nПриоритет: высокий',answers:[['Сразу открыть редактор и начать писать код','Без понимания требований легко сделать не то.',false],['Уточнить требования и критерии готовности','Верно. Сначала фиксируем ожидаемое поведение и границы задачи.',true],['Попросить коллегу сделать задачу вместо себя','Делегирование не заменяет понимание своей зоны ответственности.',false]]},
+{title:'Разобраться в коде',text:'Найди нужный участок проекта и пойми, как устроена текущая форма.',tag:'02 · АНАЛИЗ КОДА',lead:'В проекте уже есть компоненты. Хороший разработчик сначала изучает существующую структуру, а не переписывает всё подряд.',question:'Как безопаснее начать работу с незнакомым проектом?',code:'src/\n ├─ components/\n ├─ pages/\n ├─ services/\n └─ tests/',answers:[['Просмотреть структуру, документацию и связанные компоненты','Да. Контекст помогает не сломать существующую архитектуру.',true],['Удалить старые файлы и создать новые','Рискованно: можно потерять нужную функциональность.',false],['Менять всё по ходу, не запуская проект','Без исходной проверки сложно заметить регрессии.',false]]},
+{title:'Написать решение',text:'Добавь проверку обязательных полей формы перед отправкой.',tag:'03 · РАЗРАБОТКА',lead:'Нужно проверить ввод пользователя и не отправлять пустую форму. Выбирай простое и понятное решение.',question:'Какое условие корректно проверит, что поле заполнено?',code:'const message = input.value.trim();\n// Проверка перед отправкой',answers:[['if (message.length > 0) { submit(); }','Верно: trim убирает пробелы, а длина больше нуля означает непустое значение.',true],['if (input.value = "") { submit(); }','Один знак меняет значение, а не сравнивает его. Это ошибка присваивания.',false],['if (message === null) { submit(); }','Пустая строка — не null. Такая проверка не решает задачу.',false]]},
+{title:'Найти ошибку',text:'После отправки форма иногда принимает сообщение из одних пробелов.',tag:'04 · ОТЛАДКА',lead:'Баг проявляется не на обычном вводе, а на граничном случае. Воспроизведи проблему и проверь нормализацию строки.',question:'Какой тест лучше всего выявит эту ошибку?',code:'Ввод: "   "\nОжидаемый результат: сообщение не отправляется',answers:[['Отправить обычный текст: "Привет"','Обычный сценарий не проверяет найденный граничный случай.',false],['Отправить строку из пробелов','Именно этот тест воспроизводит дефект.',true],['Открыть страницу и ничего не вводить','Это другой сценарий, он не проверяет пробельную строку.',false]]},
+{title:'Сохранить изменения',text:'Подготовь изменения к отправке в общий репозиторий.',tag:'05 · GIT',lead:'Перед коммитом важно проверить, какие файлы изменены, и сохранить логичный набор изменений.',question:'Какая последовательность действий наиболее уместна?',code:'git status\ngit add <нужные-файлы>\ngit commit -m "Validate feedback form"',answers:[['Сначала git status, затем добавить нужные файлы и сделать commit','Верно. Проверяем рабочее дерево и фиксируем осмысленный набор изменений.',true],['Сразу git push --force','Это опасно: можно перезаписать чужую историю.',false],['Удалить .git и отправить архив','Так теряется история проекта и командный процесс.',false]]},
+{title:'Проверить и выпустить',text:'Запусти проверки, оцени результат и подготовь задачу к передаче.',tag:'06 · ТЕСТИРОВАНИЕ И РЕЛИЗ',lead:'Работа не заканчивается на написании кода. Нужно проверить поведение, учесть замечания и убедиться, что обновление готово.',question:'Что лучше сделать перед завершением задачи?',code:'✓ Проверить пустое поле\n✓ Проверить пробелы\n✓ Проверить обычное сообщение\n✓ Убедиться, что форма работает после обновления',answers:[['Пропустить тесты: код уже выглядит правильно','Внешний вид кода не гарантирует корректное поведение.',false],['Пройти проверки и исправить найденные проблемы','Да. Проверка сценариев снижает риск дефектов в релизе.',true],['Сразу закрыть задачу без проверки','Задача считается готовой только после проверки критериев.',false]]}
+];
+function updateHud(){document.querySelector('#energy').textContent=Math.round(energy)+'%';document.querySelector('#xp').textContent=xp+' XP';document.querySelector('#progress').style.width=(done/missions.length*100)+'%';document.querySelector('#progressText').textContent=done+' / '+missions.length;document.querySelector('#missionTitle').textContent=done===6?'Смена завершена':missions[stage].title;document.querySelector('#missionText').textContent=done===6?'Ты прошёл все этапы рабочего дня. Отличная работа.':missions[stage].text;document.querySelector('#clock').textContent=String(9+Math.floor(gameMinutes/60)).padStart(2,'0')+':'+String(gameMinutes%60).padStart(2,'0')}
+function showToast(t){const el=document.querySelector('#toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1900)}
+function openModal(tag,title,lead,body){document.querySelector('#modalTag').textContent=tag;document.querySelector('#modalTitle').textContent=title;document.querySelector('#modalLead').textContent=lead;document.querySelector('#modalBody').innerHTML=body;document.querySelector('#overlay').classList.add('open')}
+function closeModal(){document.querySelector('#overlay').classList.remove('open')}
+document.querySelector('#close').onclick=closeModal;document.querySelector('#overlay').addEventListener('click',e=>{if(e.target.id==='overlay')closeModal()});
+function openWork(){if(done===6){openModal('РАБОЧАЯ СТАНЦИЯ','Рабочий день завершён','Ты выполнил все шесть этапов. Можно осмотреть офис или начать смену заново.','<button class="primary" id="restart">НАЧАТЬ НОВУЮ СМЕНУ</button>');document.querySelector('#restart').onclick=()=>location.reload();return}const m=missions[stage];const letters=['A','B','C'];openModal(m.tag,m.title,m.lead,'<div class="task-code">'+m.code+'</div><p class="eyebrow">'+m.question+'</p><div class="answers">'+m.answers.map((a,i)=>'<button class="answer" data-answer="'+i+'"><em>'+letters[i]+'</em><span>'+a[0]+'</span></button>').join('')+'</div><div id="feedback"></div>');document.querySelectorAll('[data-answer]').forEach(b=>b.onclick=()=>{if(document.querySelector('#feedback').innerHTML)return;const i=+b.dataset.answer,a=m.answers[i];document.querySelectorAll('[data-answer]').forEach((x,j)=>{x.disabled=true;if(m.answers[j][2])x.classList.add('good');else if(j===i)x.classList.add('bad')});const fb=document.querySelector('#feedback');fb.className='feedback';fb.textContent=a[1];if(a[2]){xp+=100;energy=Math.max(15,energy-5);done++;stage++;gameMinutes+=65;fb.innerHTML+='<br><b style="color:#9cc9b4">+100 XP · ЭТАП ЗАВЕРШЁН</b>';updateHud();const next=document.createElement('button');next.className='primary';next.textContent=done===6?'ЗАВЕРШИТЬ СМЕНУ':'СЛЕДУЮЩИЙ ЭТАП';next.onclick=()=>{closeModal();showToast(done===6?'Рабочий день завершён!': 'Этап выполнен · +100 XP')};fb.appendChild(next)}else{energy=Math.max(10,energy-3);updateHud();const retry=document.createElement('button');retry.className='primary secondary';retry.textContent='ПОПРОБОВАТЬ ЕЩЁ';retry.onclick=()=>openWork();fb.appendChild(retry)}})}
+function openBoard(){const list=missions.map((m,i)=>'<div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #ffffff18;font-size:11px"><span style="font:10px Space Mono;color:'+(i<done?'#9cc9b4':'#d99aaa')+'">'+(i<done?'✓':String(i+1).padStart(2,'0'))+'</span><span>'+m.title+'</span><span style="margin-left:auto;color:#968b9a;font:8px Space Mono">'+(i<done?'ГОТОВО':i===stage?'ТЕКУЩАЯ':'ОЖИДАЕТ')+'</span></div>').join('');openModal('СПРИНТ · #1042','Доска задач','План рабочего дня: шесть последовательных этапов от постановки задачи до релиза.','<div style="margin-top:18px">'+list+'</div>')}
+function takeBreak(){if(energy>=98){showToast('Ты уже полон сил. Возвращайся к задачам.');return}energy=Math.min(100,energy+22);gameMinutes+=20;updateHud();showToast('Перерыв помог восстановить энергию · +22%')}
+function rest(){openModal('ЗОНА ОТДЫХА','Небольшая передышка','В настоящей работе важно вовремя переключаться. Можно восстановить силы перед следующим этапом.','<button class="primary" id="restBtn">ОТДОХНУТЬ · +15% ЭНЕРГИИ</button>');document.querySelector('#restBtn').onclick=()=>{energy=Math.min(100,energy+15);gameMinutes+=15;updateHud();closeModal();showToast('Энергия восстановлена')}} 
+function interact(){if(near){near.action();return}showToast('Подойди ближе к объекту')}
+window.addEventListener('keydown',e=>{keys[e.key.toLowerCase()]=true;if(e.key.toLowerCase()==='e'&&!e.repeat&&!document.querySelector('#overlay').classList.contains('open'))interact();if(e.code==='Space')player.position.y=.18});
+window.addEventListener('keyup',e=>{keys[e.key.toLowerCase()]=false;if(e.code==='Space')player.position.y=0});
+document.querySelector('#mobileE').onclick=interact;
+document.querySelectorAll('[data-key]').forEach(b=>{const k=b.dataset.key;b.addEventListener('pointerdown',e=>{e.preventDefault();keys[k]=true});['pointerup','pointerleave','pointercancel'].forEach(ev=>b.addEventListener(ev,()=>keys[k]=false))});
+renderer.domElement.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;dragging=true;lastX=e.clientX;lastY=e.clientY;renderer.domElement.setPointerCapture(e.pointerId)});
+renderer.domElement.addEventListener('pointermove',e=>{if(!dragging)return;const dx=e.clientX-lastX,dy=e.clientY-lastY;lastX=e.clientX;lastY=e.clientY;yaw-=dx*.005;pitch=THREE.MathUtils.clamp(pitch+dy*.003,-.05,.65)});
+renderer.domElement.addEventListener('pointerup',()=>dragging=false);renderer.domElement.addEventListener('pointercancel',()=>dragging=false);
+function update(dt){const forward=(keys.w||keys.arrowup?1:0)-(keys.s||keys.arrowdown?1:0),side=(keys.d||keys.arrowright?1:0)-(keys.a||keys.arrowleft?1:0);const moving=forward!==0||side!==0;if(moving){const dir=new THREE.Vector3(side,0,-forward).normalize();dir.applyAxisAngle(new THREE.Vector3(0,1,0),yaw);player.position.addScaledVector(dir,dt*3.2);player.position.x=THREE.MathUtils.clamp(player.position.x,-10.8,10.8);player.position.z=THREE.MathUtils.clamp(player.position.z,-8.8,8.8);player.rotation.y=Math.atan2(dir.x,dir.z);walking+=dt*9;legs[0].rotation.x=Math.sin(walking)*.55;legs[1].rotation.x=-Math.sin(walking)*.55;armPivots[0].rotation.x=-Math.sin(walking)*.32;armPivots[1].rotation.x=Math.sin(walking)*.32}else{legs.forEach(l=>l.rotation.x=THREE.MathUtils.damp(l.rotation.x,0,8,dt));armPivots.forEach(l=>l.rotation.x=THREE.MathUtils.damp(l.rotation.x,0,8,dt))}
+const target=new THREE.Vector3(player.position.x,1.1,player.position.z);const offset=new THREE.Vector3(Math.sin(yaw)*Math.cos(pitch)*6,2.7+pitch*2,Math.cos(yaw)*Math.cos(pitch)*6);const desired=target.clone().add(offset);camera.position.lerp(desired,1-Math.exp(-5*dt));camera.lookAt(target);
+near=null;let best=99;for(const o of interactables){const d=Math.hypot(player.position.x-o.x,player.position.z-o.z);if(d<o.range&&d<best){best=d;near=o}}const prompt=document.querySelector('#prompt');if(near){document.querySelector('#promptText').textContent=near.name;prompt.classList.add('show')}else prompt.classList.remove('show');
 }
-$('closeModal').onclick=()=>modal.classList.remove('open');$('closeGame').onclick=()=>gameModal.classList.remove('open');$('openComputer').onclick=()=>gameModal.classList.add('open');$('resetView').onclick=()=>{camera.position.set(9,8,11);controls.target.set(0,1.1,0);controls.update()};
-window.addEventListener('keydown',e=>{if(e.key==='Escape'){modal.classList.remove('open');gameModal.classList.remove('open')}});
-function animate(){requestAnimationFrame(animate);controls.update();pinkLight.intensity=22+Math.sin(performance.now()*.0015)*3;renderer.render(scene,camera)}animate();updateHud();setInterval(clockTick,12000);
+let prev=performance.now();function loop(now){const dt=Math.min((now-prev)/1000,.04);prev=now;update(dt);renderer.render(scene,camera);requestAnimationFrame(loop)}requestAnimationFrame(loop);
+addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(Math.min(devicePixelRatio,1.8))});
+updateHud();
 </script>
-</body>
-</html>
+</body></html>
