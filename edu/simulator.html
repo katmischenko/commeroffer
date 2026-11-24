@@ -661,7 +661,7 @@ function renderChallenge(s,index){
  return '<div class="mission-actions">'+actionCards+'</div>';
 }
 function render(){
- const s=scenes[state.index],host=$('scene-host');setTool(state.tool);
+ const s=scenes[state.index],host=$('scene-host');setTool(state.tool);try{window.parent.postMessage({type:'mission-start',index:state.index,time:s.time,title:s.title},location.origin)}catch(e){}
  $('panel-title').textContent='Миссия '+String(state.index+1).padStart(2,'0')+' / 08';$('day-label').textContent='DAY '+String(state.index+1).padStart(2,'0')+' / 08';$('progress').style.width=(state.index/scenes.length*100)+'%';$('progress-text').textContent=(state.index+1)+' из '+scenes.length+' миссий';$('time-text').textContent=s.time;updateMetrics();
  const code=s.code?'<div class="code-box mission-code"><div class="code-top"><span>ФРАГМЕНТ КОДА</span><span>ИЗУЧИ ПЕРЕД РЕШЕНИЕМ</span></div><pre>'+safe(s.code)+'</pre>'+(s.codeNote?'<details class="hint-details"><summary>Подсказка к коду</summary><p>'+safe(s.codeNote)+'</p></details>':'')+'</div>':'';
  const challenge=renderChallenge(s,state.index);
@@ -685,7 +685,7 @@ function renderEvent(){
 }
 function choose(i){
  if(state.selected!==null)return;const s=scenes[state.index],q=s.choices[i];state.selected=i;Object.keys(q.delta).forEach(k=>state[k]=clamp(state[k]+q.delta[k]));
- const d=q.tag==='strong'?{energy:-5,focus:8,stress:-4,xp:20}:q.tag==='good'?{energy:-6,focus:4,stress:-2,xp:12}:{energy:-10,focus:-7,stress:10,xp:5};['energy','focus','stress'].forEach(k=>state[k]=clamp(state[k]+d[k]));state.xp+=d.xp;state.history.push({scene:s.title,choice:q.title,tag:q.tag,lesson:q.lesson,playerDelta:d});updateMetrics();
+ const d=q.tag==='strong'?{energy:-5,focus:8,stress:-4,xp:20}:q.tag==='good'?{energy:-6,focus:4,stress:-2,xp:12}:{energy:-10,focus:-7,stress:10,xp:5};['energy','focus','stress'].forEach(k=>state[k]=clamp(state[k]+d[k]));state.xp+=d.xp;state.history.push({scene:s.title,choice:q.title,tag:q.tag,lesson:q.lesson,playerDelta:d});try{window.parent.postMessage({type:'mission-complete',index:state.index,title:s.title,tag:q.tag,xp:state.xp},location.origin)}catch(e){}updateMetrics();
  $('scene-host').querySelectorAll('[data-choice]').forEach((btn,n)=>{btn.disabled=true;if(n===i)btn.classList.add(q.tag==='strong'?'correct':q.tag==='risky'?'risky':'selected')});
  document.querySelectorAll('[data-check],[data-submit]').forEach(el=>el.disabled=true);
  document.querySelectorAll('.play-guide-step').forEach((el,n)=>el.classList.toggle('active',n===2));
@@ -710,6 +710,7 @@ function resolveEvent(i){
 }
 function takeBreak(){if(state.breakTaken)return;state.breakTaken=true;state.energy=clamp(state.energy+18);state.focus=clamp(state.focus+6);state.stress=clamp(state.stress-12);updateMetrics();$('time-text').textContent='12:15';const b=$('take-break');if(b){b.disabled=true;b.textContent='✓ Перерыв использован · 12:15';}const p=document.createElement('p');p.className='lesson';p.textContent='Ты отвлёкся от экрана, восстановил силы и вернулся к задаче. Перерыв — часть продуктивной работы.';$('feedback-host').appendChild(p);}
 function finish(){
+ try{window.parent.postMessage({type:'day-complete',xp:state.xp,quality:state.quality,team:state.team,reliability:state.reliability},location.origin)}catch(e){}
  updateMetrics();
  $('progress').style.width='100%';$('progress-text').textContent='8 из 8 этапов';$('time-text').textContent='18:00';$('panel-title').textContent='Рабочий день завершён';$('day-label').textContent='DAY COMPLETE';
  $('scene-host').classList.add('hidden');$('final-host').classList.remove('hidden');
