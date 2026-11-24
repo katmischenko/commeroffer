@@ -71,7 +71,7 @@ box(room,'back wall',[0,2.5,-5],[12,5,.2],M.wall);
 box(room,'left wall',[-6,2.5,0],[.2,5,10],M.wall);
 for(let x=-5.5;x<=5.5;x+=1){const line=box(room,'floor grid',[x,.006,0],[.012,.01,9.8],mat('#59415b'));line.castShadow=false}
 for(let z=-4.5;z<=4.5;z+=1){const line=box(room,'floor grid',[0,.007,z],[11.8,.01,.012],mat('#59415b'));line.castShadow=false}
-for(let x=-5.5;x<=5.5;x+=.5){box(room,'wall detail',[x,4.9,-4.88],[.018,.018,.02,M.pink])}
+for(let x=-5.5;x<=5.5;x+=.5){box(room,'wall detail',[x,4.9,-4.88],[.018,.018,.02],M.pink)}
 const windowGroup=new THREE.Group();windowGroup.position.set(-2.7,2.7,-4.82);room.add(windowGroup);
 box(windowGroup,'window frame',[0,0,0],[3.1,2.5,.12],M.metal);box(windowGroup,'night window',[0,0,.08],[2.88,2.28,.06],mat('#20294b',.25));
 for(let i=0;i<18;i++){const h=.15+Math.random()*.8;box(windowGroup,'city light',[-1.3+(i%9)*.32,-.95+h/2,.12],[.09,h,.02],i%3?M.violet:M.pink)}
