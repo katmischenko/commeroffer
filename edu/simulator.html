@@ -276,6 +276,216 @@ button,a,input,summary{touch-action:manipulation}
  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 
+
+/* VISUAL LAYER / GAME INTERFACE REDESIGN */
+:root{
+ --sim-panel:#100c17;
+ --sim-panel-2:#15101d;
+ --sim-line:rgba(226,196,235,.16);
+ --sim-glow:rgba(255,40,111,.12);
+}
+body{
+ background:
+  radial-gradient(ellipse at 12% 8%,rgba(167,106,255,.10),transparent 32rem),
+  radial-gradient(ellipse at 88% 34%,rgba(255,40,111,.07),transparent 30rem),
+  #08070d;
+}
+.sim-wrap{position:relative}
+.sim-hero{position:relative}
+.sim-hero:after{
+ content:"01 / DEV LIFE";position:absolute;right:0;top:24px;
+ color:rgba(255,255,255,.16);font:9px 'Space Mono';letter-spacing:.18em;
+}
+.sim-stamp{
+ border-color:rgba(255,119,164,.32);
+ box-shadow:0 18px 55px rgba(0,0,0,.24),inset 0 1px rgba(255,255,255,.04);
+}
+.stamp-clock{color:#fff;text-shadow:0 0 30px rgba(255,40,111,.22)}
+.brief-card{
+ position:relative;overflow:hidden;border-radius:3px;
+ background:linear-gradient(145deg,rgba(24,17,31,.96),rgba(13,10,18,.98));
+ transition:border-color .2s,transform .2s;
+}
+.brief-card:after{
+ content:"";position:absolute;left:0;top:0;width:2px;height:100%;
+ background:linear-gradient(180deg,var(--sim-pink),var(--sim-violet));
+ opacity:.7;
+}
+.brief-card:hover{border-color:rgba(255,119,164,.42);transform:translateY(-2px)}
+.brief-card small{letter-spacing:.12em}
+.brief-card b{font-size:14px}
+.sim-panel{
+ position:relative;border-color:rgba(224,190,235,.2);
+ background:linear-gradient(145deg,rgba(19,14,25,.98),rgba(10,8,14,.98));
+ box-shadow:0 24px 70px rgba(0,0,0,.24);
+}
+.sim-panel:before{
+ content:"";position:absolute;inset:0;pointer-events:none;opacity:.16;
+ background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+ background-size:34px 34px;
+ mask-image:linear-gradient(180deg,#000,transparent 58%);
+}
+.sim-panel>*{position:relative}
+.panel-head{align-items:center}
+.panel-head h2{font-size:clamp(24px,3.2vw,36px)}
+.day-label{padding:8px 10px;border:1px solid rgba(255,119,164,.28);background:rgba(255,40,111,.07)}
+.progress-track{height:7px;border-radius:20px;background:#2a2030;overflow:hidden}
+.progress-track span{border-radius:20px;box-shadow:0 0 18px rgba(255,40,111,.38)}
+.progress-meta{font-size:10px}
+.game-layout{position:relative;z-index:1;align-items:stretch}
+.game-stage{
+ border:1px solid rgba(255,255,255,.17);
+ border-radius:4px;
+ background:
+  radial-gradient(ellipse at 50% 0%,rgba(167,106,255,.075),transparent 55%),
+  linear-gradient(160deg,#120e19,#0b0910);
+ box-shadow:0 18px 50px rgba(0,0,0,.25),inset 0 1px rgba(255,255,255,.035);
+}
+.game-sidebar{gap:12px}
+.side-card{
+ position:relative;overflow:hidden;border-radius:3px;
+ background:linear-gradient(150deg,rgba(25,18,32,.98),rgba(12,9,16,.98));
+ border-color:rgba(226,196,235,.17);
+ box-shadow:0 10px 28px rgba(0,0,0,.16);
+}
+.side-card:before{
+ content:"";position:absolute;top:0;left:0;width:34px;height:1px;
+ background:linear-gradient(90deg,var(--sim-pink),transparent);
+}
+.side-eyebrow{letter-spacing:.16em;color:#d58aaa}
+.player-name{gap:12px}
+.avatar{width:40px;height:40px;border:1px solid rgba(255,255,255,.2);box-shadow:0 0 22px rgba(255,40,111,.18)}
+.skill-chip{border-radius:2px;letter-spacing:.02em}
+.skill-chip.unlocked{box-shadow:inset 0 0 14px rgba(167,106,255,.08)}
+.mission-list>div{padding:5px 0}
+.mission-list i{border-radius:2px}
+.side-stat .meter,.meter{border-radius:20px;overflow:hidden;background:#302438}
+.side-stat .meter i,.meter i{border-radius:20px}
+.game-topline{margin-bottom:18px}
+.game-topline span{letter-spacing:.13em}
+.game-topline b{padding:6px 9px;background:rgba(255,40,111,.08);border:1px solid rgba(255,40,111,.2)}
+.play-guide{border-radius:3px;background:rgba(7,6,11,.72)}
+.play-guide-step.active i{box-shadow:0 0 14px rgba(255,40,111,.2)}
+.mission-card{
+ position:relative;overflow:hidden;border-radius:3px;
+ background:
+  radial-gradient(ellipse at 100% 0%,rgba(167,106,255,.09),transparent 42%),
+  linear-gradient(150deg,#191220,#0d0a12);
+ border-color:rgba(255,255,255,.19);
+ box-shadow:0 16px 40px rgba(0,0,0,.18);
+}
+.mission-card:after{
+ content:"";position:absolute;right:-28px;top:70px;width:100px;height:100px;
+ border:1px solid rgba(255,119,164,.09);transform:rotate(45deg);pointer-events:none;
+}
+.mission-card>*{position:relative;z-index:1}
+.mission-tag{background:rgba(255,40,111,.08);border-radius:2px}
+.mission-number{letter-spacing:.2em}
+.mission-card h3{max-width:760px}
+.mission-objective{border-radius:2px}
+.mission-action,.command-option,.code-option,.challenge-check,.event-action{
+ border-radius:3px;transition:border-color .18s,background .18s,transform .18s;
+}
+.mission-action:hover:not(:disabled),.command-option:hover,.code-option:hover,.event-action:hover:not(:disabled){
+ transform:translateY(-1px);box-shadow:0 7px 20px rgba(0,0,0,.18);
+}
+.action-key,.event-action-key{border-radius:2px}
+.decision-result{border-radius:3px;background:linear-gradient(145deg,#100c16,#0a080e)}
+.decision-result-head{letter-spacing:.13em}
+.delta-chips span{border-radius:2px}
+.workstation-drawer{border-radius:3px;overflow:hidden}
+.workstation-drawer>summary{display:flex;align-items:center;min-height:44px;background:linear-gradient(90deg,rgba(167,106,255,.08),transparent)}
+.ws-tab{transition:background .18s,color .18s}
+.ws-tab.active{background:linear-gradient(180deg,#25162a,#1a111f)}
+.ws-screen{background:radial-gradient(ellipse at 0 0,rgba(167,106,255,.06),transparent 55%)}
+.event-box,.side-mission{border-radius:3px}
+.result-card,.term{border-radius:3px;background:linear-gradient(145deg,#17101e,#0d0a12)}
+.result-card b{font-size:30px;text-shadow:0 0 22px rgba(255,40,111,.16)}
+.recommendation{border-radius:2px}
+.glossary-grid{gap:10px}
+.term{transition:border-color .18s,transform .18s}
+.term:hover{border-color:rgba(255,119,164,.38);transform:translateY(-2px)}
+.sim-button,.break-button,.challenge-submit{border-radius:2px;letter-spacing:.06em;transition:transform .18s,box-shadow .18s,background .18s}
+.sim-button:hover:not(:disabled),.break-button:hover:not(:disabled),.challenge-submit:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 7px 22px rgba(255,40,111,.15)}
+button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible{
+ outline:2px solid #ff9cbd;outline-offset:3px;
+}
+@media(max-width:1100px){
+ .game-layout{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+ .game-stage{grid-column:1/-1;grid-row:1}
+ .game-left{grid-column:1;grid-row:2}
+ .game-right{grid-column:2;grid-row:2}
+ .game-sidebar{position:static;max-height:none;overflow:visible}
+}
+@media(max-width:860px){
+ /* Tablet: the mission stays first; the HUD becomes two readable panels below it. */
+ .game-layout{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+ .game-stage{grid-column:1/-1;grid-row:1}
+ .game-left{grid-column:1;grid-row:2;display:grid;grid-template-columns:1fr;position:static}
+ .game-right{grid-column:2;grid-row:2;display:grid;grid-template-columns:1fr;position:static;overflow:visible;padding:0;background:transparent}
+ .game-right .side-card{flex:auto;width:100%;min-width:0;padding:12px}
+ .game-right .side-eyebrow,.game-right .player-name{display:flex}
+ .game-right .side-stat{display:block;width:auto;margin:12px 0}
+ .game-right .side-stat>div:first-child{display:flex;justify-content:space-between;font-size:10px}
+ .game-right .side-stat b{display:block;margin:0}
+ .game-right .side-stat small{display:block}
+ .game-right .xp-line{padding-top:9px;margin-top:8px}
+ .game-stage{position:static;max-height:none;overflow:visible}
+}
+@media(max-width:700px){
+ /* Phone: one column, natural page scroll, no sideways status carousel. */
+ .sim-wrap{width:calc(100% - 28px)}
+ .sim-hero:after{display:none}
+ .game-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+ .game-stage{grid-column:1;grid-row:1;padding:13px}
+ .game-right{grid-column:1;grid-row:2;display:grid;grid-template-columns:1fr;position:static;overflow:visible;padding:0;margin:0;background:transparent}
+ .game-left{grid-column:1;grid-row:3;display:grid;grid-template-columns:1fr;position:static}
+ .game-right .side-card{flex:auto;width:100%;min-width:0;padding:12px}
+ .game-right .side-stat{display:inline-block;vertical-align:top;width:31%;margin:7px 1%}
+ .game-right .side-stat>div:first-child{display:block;font-size:9px;line-height:1.35}
+ .game-right .side-stat b{display:block;margin-top:4px}
+ .game-right .side-stat small{display:none}
+ .game-right .side-eyebrow{display:block}
+ .game-right .player-name{display:flex}
+ .game-right .xp-line{padding-top:8px;margin-top:5px}
+ .game-left .skill-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .game-stage .play-guide{flex-wrap:wrap}
+ .game-stage .play-guide-step{white-space:normal}
+ .mission-card{padding:13px}
+ .mission-card:after{display:none}
+ .mission-action{grid-template-columns:27px minmax(0,1fr);gap:9px;padding:12px}
+ .action-arrow{grid-column:2}
+ .decision-footer{display:grid;grid-template-columns:1fr}
+ .decision-footer>*{width:100%}
+ .challenge-bottom{align-items:stretch;flex-direction:column}
+ .challenge-submit{width:100%}
+ .result-grid,.glossary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:420px){
+ .sim-wrap{width:calc(100% - 22px)}
+ .sim-panel{padding:15px 12px}
+ .panel-head{display:flex;align-items:flex-start}
+ .panel-head h2{font-size:23px}
+ .day-label{font-size:8px}
+ .game-right .side-stat{width:30%;margin:6px 1.2%}
+ .game-right .side-stat>div:first-child{font-size:8px}
+ .game-stage{padding:10px}
+ .mission-card{padding:11px}
+ .mission-card h3{font-size:22px}
+ .play-guide{gap:5px}
+ .play-guide-step{font-size:7px}
+ .play-guide-step i{width:17px;height:17px}
+ .result-grid,.glossary-grid{grid-template-columns:1fr}
+ .result-card{display:flex;align-items:center;justify-content:space-between;gap:12px}
+ .result-card b{font-size:24px}
+ .result-card span{text-align:right}
+ .ws-head{align-items:flex-start;flex-direction:column}
+ .challenge-panel{padding:11px}
+}
+@media(prefers-reduced-motion:reduce){
+ .brief-card,.term,.mission-action,.command-option,.code-option,.event-action,.sim-button,.break-button,.challenge-submit{transition:none}
+}
+
 </style>
 </head>
 <body>
