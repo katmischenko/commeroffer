@@ -719,6 +719,18 @@
       ],
       "rules": [
         {
+          "groupId": "unit_identification",
+          "containsAny": [
+            "Распознавание основной единицы времени СИ"
+          ]
+        },
+        {
+          "groupId": "unit_identification",
+          "containsAny": [
+            "Распознавание единицы измерения силы"
+          ]
+        },
+        {
           "groupId": "nuclear_physics",
           "containsAny": [
             "Определение изменения массового числа при бета-минус-распаде"
@@ -1538,18 +1550,6 @@
           "groupId": "unit_identification",
           "containsAny": [
             "Распознавание основной единицы длины СИ"
-          ]
-        },
-        {
-          "groupId": "unit_identification",
-          "containsAny": [
-            "Распознавание основной единицы времени СИ"
-          ]
-        },
-        {
-          "groupId": "unit_identification",
-          "containsAny": [
-            "Распознавание единицы измерения силы"
           ]
         },
         {
