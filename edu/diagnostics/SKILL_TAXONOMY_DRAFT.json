@@ -1541,6 +1541,18 @@
           ]
         },
         {
+          "groupId": "unit_identification",
+          "containsAny": [
+            "Распознавание основной единицы времени СИ"
+          ]
+        },
+        {
+          "groupId": "unit_identification",
+          "containsAny": [
+            "Распознавание единицы измерения силы"
+          ]
+        },
+        {
           "groupId": "integrated_generic",
           "containsAny": [
             "понимание и применение"
