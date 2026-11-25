@@ -113,20 +113,20 @@ def main():
         "gas_laws": 2,
         "relativity": 2,
         "transformers": 2,
-        "percent_calculation": 2,
+        "percent_calculation": 3,
         "optical_phenomena": 2,
         "percent_proportional": 4,
         "equations_inequalities": 2,
         "ohm_law": 2,
         "oscillations_waves": 2,
-        "coordinate_interpretation": 2,
-        "fraction_operations": 2,
-        "sequences": 2,
-        "formula_selection": 2,
+        "coordinate_interpretation": 3,
+        "fraction_operations": 3,
+        "sequences": 3,
+        "formula_selection": 3,
         "unit_identification": 2,
-        "unit_conversion": 2,
-        "relationship_analysis": 2,
-        "magnetic_effects": 2,
+        "unit_conversion": 3,
+        "relationship_analysis": 3,
+        "magnetic_effects": 3,
         "electrostatics": 2,
         "astrophysics": 2,
         "interference": 2,
@@ -198,6 +198,24 @@ def main():
         "design_system_governance": 2,
         "library_release": 2,
     }
+    expected_context_counts = {
+        ("math", 6, "ru", "coordinate_interpretation"): 1,
+        ("math", 6, "ru", "fraction_operations"): 1,
+        ("math", 6, "ru", "percent_calculation"): 1,
+        ("math", 9, "ru", "sequences"): 1,
+        ("physics", 7, "ru", "formula_selection"): 1,
+        ("physics", 7, "ru", "unit_conversion"): 1,
+        ("physics", 7, "ru", "relationship_analysis"): 1,
+        ("physics", 8, "ru", "magnetic_effects"): 1,
+    }
+    context_counts = {}
+    for q in questions:
+        key = (q.get("directionId"), q.get("class"), q.get("curriculumId"), q.get("groupId"))
+        context_counts[key] = context_counts.get(key, 0) + 1
+    for key, expected in expected_context_counts.items():
+        if context_counts.get(key, 0) != expected:
+            errors.append(f"expected {expected} draft questions for context {key}, got {context_counts.get(key, 0)}")
+
     if len(questions) != sum(expected_groups.values()):
         errors.append(f"expected {sum(expected_groups.values())} draft questions, got {len(questions)}")
     if group_counts != expected_groups:
