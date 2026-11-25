@@ -725,6 +725,18 @@
           ]
         },
         {
+          "groupId": "electrical_measurements",
+          "containsAny": [
+            "Распознавание единицы измерения силы тока"
+          ]
+        },
+        {
+          "groupId": "unit_identification",
+          "containsAny": [
+            "Распознавание единицы измерения силы"
+          ]
+        },
+        {
           "groupId": "unit_identification",
           "containsAny": [
             "Распознавание основной единицы времени СИ"
@@ -1361,12 +1373,6 @@
           ]
         },
         {
-          "groupId": "dynamics",
-          "containsAny": [
-            "Распознавание единицы измерения силы"
-          ]
-        },
-        {
           "groupId": "kinematics",
           "containsAny": [
             "Определение средней путевой скорости"
@@ -1436,12 +1442,6 @@
           "groupId": "optical_phenomena",
           "containsAny": [
             "Определение преломления света"
-          ]
-        },
-        {
-          "groupId": "electrical_measurements",
-          "containsAny": [
-            "Распознавание единицы измерения силы тока"
           ]
         },
         {
