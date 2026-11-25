@@ -326,6 +326,19 @@ test("all library pages render their expected layout on desktop and mobile", asy
         "rgb(8, 7, 13)",
         route + " should use the editorial background"
       );
+    } else if (route === "/edu/simulator.html") {
+      // The interactive developer-day simulator intentionally uses its own game HUD,
+      // not the shared .hero / .quickbar layout used by the static library pages.
+      await page.locator("main .sim-hero h1").waitFor();
+      assert.equal(await page.locator(".topline").count(), 1, route + " should have the Cyber top line");
+      assert.equal(await page.locator("main .game-layout").count(), 1, route + " should render the game layout");
+      assert.equal(await page.locator("main .game-stage").count(), 1, route + " should render the game stage");
+      assert.equal(await page.locator(".coming-page").count(), 0, route + " must not retain the old placeholder layout");
+      assert.equal(
+        await page.locator("body").evaluate(el => getComputedStyle(el).backgroundColor),
+        "rgb(8, 7, 13)",
+        route + " should use the Cyber background"
+      );
     } else {
       await page.locator("main .hero h1").waitFor();
       assert.equal(await page.locator(".topline").count(), 1, route + " should have the Cyber top line");
